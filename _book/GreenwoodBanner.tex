@@ -138,1377 +138,1196 @@
 \chapter*{Acknowledgments}\label{acknowledgments}
 \addcontentsline{toc}{chapter}{Acknowledgments}
 
-\chapter{Placeholder}\label{placeholder}
-
-\chapter{(R)e-Introduction to
-statistics}\label{re-introduction-to-statistics}
-
-The previous material served to get us started in R and to get a quick
-review of same basic descriptive statistics. Now we will begin to engage
-some new material and exploit the power of R to do some statistical
-inference. Because inference is one of the hardest topics to master in
-statistics, we will also review some basic terminology that is required
-to move forward in learning more sophisticated statistical methods. To
-keep this ``review'' as short as possible, we will not consider every
-situation you learned in introductory statistics and instead focus
-exclusively on the situation where we have a quantitative response
-variable measured on two groups, adding a new graphic called a ``bean
-plot'' to help us see the differences in the observations in the groups.
-
-\section{Histograms, boxplots, and density curves}\label{section_2-1}
-
-Part of learning statistics is learning to correctly use the
-terminology, some of which is used colloquially differently than it is
-used in formal statistical settings. The most commonly ``misused'' term
-is \textbf{\emph{data}}. In statistical parlance, we want to note the
-plurality of data. Specifically, \textbf{\emph{datum}} is a single
-measurement, possibly on multiple random variables, and so it is
-appropriate to say that ``\textbf{a datum is\ldots{}}''. Once we move to
-discussing data, we are now referring to more than one observation,
-again on one, or possibly more than one, random variable, and so we need
-to use ``\textbf{data are\ldots{}}'' when talking about our
-observations. We want to distinguish our use of the term ``data'' from
-its more colloquial\footnote{You will more typically hear ``data is''
-  but that more often refers to information, sometimes even statistical
-  summaries of data sets, than to observations collected as part of a
-  study, suggesting the confusion of this term in the general public. We
-  will explore a data set in Chapter 4 related to perceptions of this
-  issue collected by researchers at \url{http://fivethirtyeight.com/}.}
-usage that often involves treating it as singular. In a statistical
-setting ``data'' refers to measurements of our cases or units. When we
-summarize the results of a study (say providing the mean and SD), that
-information is not ``data''. We used our data to generate that
-information. Sometimes we also use the term ``data set'' to refer to all
-our observations and this is a singular term to refer to the group of
-observations and this makes it really easy to make mistakes on the usage
-of this term.
-
-It is also really important to note that \textbf{\emph{variables}} have
-to vary -- if you measure the sex of your subjects but are only
-measuring females, then you do not have a ``variable''. You may not know
-if you have real variability in a ``variable'' until you explore the
-results you obtained.
-
-The last, but probably most important, aspect of data is the context of
-the measurement. The ``who, what, when, and where'' of the collection of
-the observations is critical to the sort of conclusions we can make
-based on the results. The information on the study design provides
-information required to assess the scope of inference of the study.
-Generally, remember to think about the research questions the
-researchers were trying to answer and whether their study actually would
-answer those questions. There are no formulas to help us sort some of
-these things out, just critical thinking about the context of the
-measurements.
-
-To make this concrete, consider the data collected from a study
-(Plaster, 1989) to investigate whether perceived physical attractiveness
-had an impact on the sentences or perceived seriousness of a crime that
-male jurors might give to female defendants. The researchers showed the
-participants in the study (men who volunteered from a prison) pictures
-of one of three young women. Each picture had previously been decided to
-be either beautiful, average, or unattractive by the researchers. Each
-``juror'' was randomly assigned to one of three levels of this factor
-(which is a categorical predictor or explanatory variable) and then each
-rated their picture on a variety of traits such as how warm or sincere
-the woman appeared. Finally, they were told the women had committed a
-crime (also randomly assigned to either be told she committed a burglary
-or a swindle) and were asked to rate the seriousness of the crime and
-provide a suggested length of sentence. We will bypass some aspects of
-their research and just focus on differences in the sentence suggested
-among the three pictures. To get a sense of these data, let's consider
-the first and last parts of the data set:
-
-\begin{longtable}[]{@{}lllllll@{}}
-\toprule
-\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-Subject\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
-Attr\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
-Crime\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Years\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-Serious\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
-independent\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Sincere\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-10\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-108\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-4\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-109\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-9\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-110\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-111\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-112\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-2\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-113\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-12\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-114\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-5\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-
-When working with data, we should always start with summarizing the
-sample size. We will use \textbf{\emph{n}} for the number of subjects in
-the sample and denote the population size (if available) with
-\textbf{\emph{N}}. Here, the sample size is \textbf{\emph{n=114}}. In
-this situation, we do not have a random sample from a population (these
-were volunteers from the population of prisoners at the particular
-prison) so we cannot make inferences to a larger group. But we can
-assess whether there is a \textbf{\emph{causal effect}}\footnote{As
-  noted previously, we reserve the term ``effect'' for situations where
-  random assignment allows us to consider causality as the reason for
-  the differences in the response variable among levels of the
-  explanatory variable, but this is only the case if we find evidence
-  against the null hypothesis of no difference in the groups.}: if
-sufficient evidence is found to conclude that there is some difference
-in the responses across the treated groups, we can attribute those
-differences to the treatments applied, since the groups should be same
-otherwise due to the pictures being randomly assigned to the ``jurors''.
-The story of the data set ? that it was collected on prisoners --
-becomes pretty important in thinking about the ramifications of any
-results. Are male prisoners different from the population of college
-males or all residents of a state such as Montana? If so, then we should
-not assume that the detected differences, if detected, would also exist
-in some other group of male subjects. The lack of a random sample makes
-it impossible to assume that this set of prisoners might be like other
-prisoners. So there are definite limitations to the inferences in the
-following results. But it is still interesting to see if the pictures
-caused a difference in the suggested mean sentences, even though the
-inferences are limited to this group of prisoners. If this had been an
-observational study (suppose that the prisoners could select one of the
-three pictures), then we would have to avoid any of the ``causal''
-language that we can consider here because the pictures were not
-randomly assigned to the subjects. Without random assignment, the
-explanatory variable of picture choice could be
-\textbf{\emph{confounded}} with another characteristic of prisoners that
-was related to which picture they selected and the rating they provided.
-Confounding is not the only reason to avoid causal statements with
-non-random assignment but the inability to separate the effect of other
-variables (measured or unmeasured) from the differences we are observing
-means that our inferences in these situations need to be carefully
-stated.
-
-Instead of loading this data set into R using the ``Import Dataset''
-functionality, we can load an R package that contains the data, making
-for easy access to this data set. The package called \texttt{heplots}
-contains a data set called MockJury that contains the results of the
-study. We also rely the R package called \texttt{mosaic} (Pruim, Kaplan,
-and Horton, 2016) that was introduced previously. First (but only once),
-you need to install both packages, which can be done either using the
-Packages tab in the lower right panel of R-studio or using the
-\texttt{install.packages} function with quotes around the package name:
-
-\begin{verbatim}
-> install. packages("heplots")
-\end{verbatim}
-
-After making sure that both packages are installed, we use the
-\texttt{require} function around the package name (no quotes now!) to
-load the package, something that you need to do any time you want to use
-features of a package.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{require}\NormalTok{(heplots)}
-\KeywordTok{require}\NormalTok{(mosaic)}
-\end{Highlighting}
-\end{Shaded}
-
-There will be some results of the loading process that may discuss
-loading other required packages. If the output says that it needs a
-package that is unavailable, then follow the same process noted above to
-install that package as well.
-
-To load the data set that is available in an active package, we use the
-\texttt{data} function.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{data}\NormalTok{(MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-Now there will be a data.frame called \texttt{MockJury} available for us
-to analyze and some information about it in the Environment tab. Again,
-we can find out more about the data set in a couple of ways. First, we
-can use the \texttt{View} function to provide a spreadsheet type of
-display in the upper left panel. Second, we can use the \texttt{head}
-and \texttt{tail} functions to print out the beginning and end of the
-data set. Because there are so many variables, it may wrap around to
-show all the columns.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{View}\NormalTok{(MockJury)}
-\KeywordTok{head}\NormalTok{(MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##        Attr    Crime Years Serious exciting calm independent sincere warm
-## 1 Beautiful Burglary    10       8        6    9           9       8    5
-## 2 Beautiful Burglary     3       8        9    5           9       3    5
-## 3 Beautiful Burglary     5       5        3    4           6       3    6
-## 4 Beautiful Burglary     1       3        3    6           9       8    8
-## 5 Beautiful Burglary     7       9        1    1           5       1    8
-## 6 Beautiful Burglary     7       9        1    5           7       5    8
-##   phyattr sociable kind intelligent strong sophisticated happy ownPA
-## 1       9        9    9           6      9             9     5     9
-## 2       9        9    4           9      5             5     5     7
-## 3       7        4    2           4      5             4     5     5
-## 4       9        9    9           9      9             9     9     9
-## 5       8        9    4           7      9             9     8     7
-## 6       8        9    5           8      9             9     9     9
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{tail}\NormalTok{(MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##        Attr   Crime Years Serious exciting calm independent sincere warm
-## 109 Average Swindle     3       2        7    6           9       9    6
-## 110 Average Swindle     2       1        8    8           8       8    8
-## 111 Average Swindle     7       4        1    6           9       1    1
-## 112 Average Swindle     6       3        5    3           5       2    4
-## 113 Average Swindle    12       9        1    9           9       1    1
-## 114 Average Swindle     8       8        1    9           1       5    1
-##     phyattr sociable kind intelligent strong sophisticated happy ownPA
-## 109       4        7    6           8      6             5     7     2
-## 110       8        9    9           9      9             9     9     6
-## 111       1        9    4           1      1             1     1     9
-## 112       1        4    9           3      3             9     5     3
-## 113       1        9    1           9      9             1     9     1
-## 114       1        9    1           1      9             5     1     1
-\end{verbatim}
-
-When data sets are loaded from packages, there is often extra
-documentation available about the data set which can be accessed using
-the help function. In this case, it will bring up a screen with
-information about the study and each variable that was measured.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{help}\NormalTok{(MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-The help function is also useful with functions in R to help you
-understand options and, at the bottom of the help, see examples of using
-the function.
-
-With many variables in a data set, it is often useful to get some quick
-information about all of them; the \texttt{summary} function provides
-useful information whether the variables are categorical or quantitative
-and notes if any values were missing.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##            Attr         Crime        Years           Serious     
-##  Beautiful   :39   Burglary:59   Min.   : 1.000   Min.   :1.000  
-##  Average     :38   Swindle :55   1st Qu.: 2.000   1st Qu.:3.000  
-##  Unattractive:37                 Median : 3.000   Median :5.000  
-##                                  Mean   : 4.693   Mean   :5.018  
-##                                  3rd Qu.: 7.000   3rd Qu.:6.750  
-##                                  Max.   :15.000   Max.   :9.000  
-##     exciting          calm        independent       sincere     
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:3.000   1st Qu.:4.250   1st Qu.:5.000   1st Qu.:3.000  
-##  Median :5.000   Median :6.500   Median :6.500   Median :5.000  
-##  Mean   :4.658   Mean   :5.982   Mean   :6.132   Mean   :4.789  
-##  3rd Qu.:6.000   3rd Qu.:8.000   3rd Qu.:8.000   3rd Qu.:7.000  
-##  Max.   :9.000   Max.   :9.000   Max.   :9.000   Max.   :9.000  
-##       warm         phyattr        sociable          kind      
-##  Min.   :1.00   Min.   :1.00   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:2.00   1st Qu.:2.00   1st Qu.:5.000   1st Qu.:3.000  
-##  Median :5.00   Median :5.00   Median :7.000   Median :5.000  
-##  Mean   :4.57   Mean   :4.93   Mean   :6.132   Mean   :4.728  
-##  3rd Qu.:7.00   3rd Qu.:8.00   3rd Qu.:8.000   3rd Qu.:7.000  
-##  Max.   :9.00   Max.   :9.00   Max.   :9.000   Max.   :9.000  
-##   intelligent        strong      sophisticated       happy      
-##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
-##  1st Qu.:4.000   1st Qu.:4.000   1st Qu.:3.250   1st Qu.:3.000  
-##  Median :7.000   Median :6.000   Median :5.000   Median :5.000  
-##  Mean   :6.096   Mean   :5.649   Mean   :5.061   Mean   :5.061  
-##  3rd Qu.:8.750   3rd Qu.:7.000   3rd Qu.:7.000   3rd Qu.:7.000  
-##  Max.   :9.000   Max.   :9.000   Max.   :9.000   Max.   :9.000  
-##      ownPA      
-##  Min.   :1.000  
-##  1st Qu.:5.000  
-##  Median :6.000  
-##  Mean   :6.377  
-##  3rd Qu.:9.000  
-##  Max.   :9.000
-\end{verbatim}
-
-If we take a few moments to explore the output we can discover some
-useful aspects of the data set. The output is organized by variable,
-providing summary information based on the type of variable, either
-counts by category for categorical variables \texttt{Attr}\\
-and \texttt{Crime} mean for quantitative variables. If present, you
-would also get a count ofmissing values that are called ``NAs'' in R.
-For the first variable, called \texttt{Attr} in the data.frame and that
-we might we find counts of the number of subjects shown each picture:
-37/114 viewed the ``Unattractive'' picture, 38 viewed ``Average'', and
-39 viewed ``Beautiful''. We can also see that suggested prison sentences
-(data.frame variable \texttt{Years} ) ranged from 1 year to 15 years
-with a median of 3 years. It seems that all the other variables except
-for \emph{Crime} (type of crime that they were told the pictured woman
-committed) contained responses between 1 and 9 based on rating scales
-from 1 = low to 9 = high.
-
-To accompany the numerical summaries, histograms, and boxplots can
-provide some initial information on the shape of the distribution of the
-responses for the Figure \ref{fig:Figure2-1} contains the histogram and
-boxplot of Years, ignoring any information on which picture the
-``jurors'' were shown. The calls to the two plotting functions are
-enhanced slightly to add better labels.
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(MockJury$Years, }\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{main=}\StringTok{"Histogram of Years"}\NormalTok{)}
-\KeywordTok{boxplot}\NormalTok{(MockJury$Years, }\DataTypeTok{ylab=}\StringTok{"Years"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Boxplot of Years"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf}
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf}
-
-The distribution appears to have a strong right skew with three
-observations at 15 years flagged as potential outliers. You can only
-tell that there are three observations and that they are at 15 by
-looking at both plots -- the bar around 15 years in the histogram has a
-count of three and the boxplot only shows a single point at 15 which is
-actually three tied points at exactly 15 years plotted on top of each
-other (we call this ``overplotting''). These three observations really
-seem to be the upper edge of the overall pattern of a strongly right
-skewed distribution, so even though they are flagged in the boxplot, we
-likely would not want to remove them from our data set. In real data
-sets, outliers are commonly encountered and the first step is to verify
-that they were not errors in recording. The next step is to study their
-impact on the statistical analyses performed, potentially considering
-reporting results with and without the influential observation(s) in the
-results. If the analysis is unaffected by the ``unusual'' observations,
-then it matters little whether they are dropped or not. If they do
-affect the results, then reporting both versions of results allows the
-reader to judge the impacts for themselves. It is important to remember
-that sometimes the outliers are the most interesting part of the data
-set.
-
-Often when statisticians think of distributions, we think of the smooth
-underlying shape that led to the data set that is being displayed in the
-histogram. Instead of binning up observations and making bars in the
-histogram, we can estimate what is called a \textbf{\emph{density curve
-}} as a smooth curve that represents the observed distribution of the
-responses. Density curves can sometimes help us see features of the data
-sets more clearly.
-
-To understand the density curve, it is useful to initially see the
-histogram and density curve together. The density curve is scaled so
-that the total area\footnote{If you've taken calculus, you will know
-  that the curve is being constructed so that the integral from
-  \(-\infty\) to \(\infty\) is 1. If you don't know calculus, think of a
-  rectangle with area of 1 based on its height and width. These cover
-  the same area but the top of the region wiggles.} under the curve is
-1. To make a comparable histogram, the y-axis needs to be scaled so that
-the histogram is also on the ``density'' scale which makes the bar
-heights required so that the proportion of the total data set in each
-bar is represented by the area in each bar (remember that area is height
-times width). So the height depends on the width of the bars and the
-total area across all the bars has to be 1. In the \texttt{hist}
-function, the \texttt{freq=F} to get density-scaled histogram bars. The
-density curve is added to the histogram using the R code of
-\texttt{lines(density())}, producing the result in Figure 1-2 with added
-modifications of options for \texttt{lwd} (line width) and \texttt{col}
-(color) to make the plot more interesting. You can see how the density
-curve somewhat matches the histogram bars but deals with the bumps up
-and down and edges a little differently. We can pick out the strong
-right skew using either display and will rarely make both together.
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(MockJury$Years,}\DataTypeTok{freq=}\NormalTok{F,}\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Histogram of Years"}\NormalTok{)}
-\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury$Years),}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf}
-\caption{\label{fig:Figure2-2}Histogram and density curve of Years data.}
-\end{figure}
-
-Histograms can be sensitive to the choice of the number of bars and even
-the cut-offs used to define the bins for a given number of bars. Small
-changes in the definition of cut-offs for the bins can have noticeable
-impacts on the shapes observed but this does not impact density curves.
-We are not going to tinker with the default choices for bars in
-histogram as they are reasonably selected, but we can add information on
-the original observations being included in each bar to better
-understand the choices that \texttt{hist} is making. In the previous
-display, we can add what is called a \textbf{\emph{rug}} to the plot,
-were a tick mark is made on the x-axis for each observation. Because the
-responses were provided as whole years (1, 2, 3, \ldots{}, 15), we need
-to use a graphical technique called \textbf{\emph{jittering}} to add a
-little noise\footnote{Jittering typically involves adding random
-  variability to each observation that is uniformly distributed in a
-  range determined based on the spacing of the function, the results
-  will change. For more details, type \texttt{help(jitter)}\\
-  in R.} to each observation so all the observations at each year value
-do not plot as a single line. In Figure \ref{fig:Figure2-3}, the added
-tick marks on the x-axis show the approximate locations of the original
-observations. We can see how there are 3 observations at 15 (all were 15
-and the noise added makes it possible to see them all). The limitations
-of the histogram arise around the 10 year sentence area where there are
-many responses at 10 years and just one at both 9 and 11 years, but the
-histogram bars sort of miss this that aspect of the data set. The
-density curve did show a small bump at 10 years. Density curves are,
-however, not perfect and this one shows area for sentences less than 0
-years which is not possible here.
-
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(MockJury$Years, }\DataTypeTok{freq=}\NormalTok{F, }\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{,}
-     \DataTypeTok{main=}\StringTok{"Histogram of Years with density curve and rug"}\NormalTok{)}
-\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury$Years),}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
-\KeywordTok{rug}\NormalTok{(}\KeywordTok{jitter}\NormalTok{(MockJury$Years),}\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf}
-\caption{\label{fig:Figure2-3}Histogram with density curve and rug plot of the jittered
-responses.}
-\end{figure}
-
-The graphical tools we've just discussed are going to help us move to
-comparing the distribution of responses across more than one group. We
-will have two displays that will help us make these comparisons. The
-simplest is \emph{the \textbf{side-by-side boxplot}}, where a boxplot is
-displayed for each group of interest using the same y-axis scaling. In
-R, we can use its \textbf{\emph{formula}} notation to see if the
-response (\texttt{Years}) differs based on the group (\texttt{Attr}) by
-using something like \texttt{Y\textasciitilde{}X} or, here,
-\texttt{Years\textasciitilde{}Attr} . We also need to tell R where to
-find the variables -- use the last option in the command,
-\texttt{data=DATASETNAME} , to inform R of the data.frame to look in to
-find the variables. In this example, \texttt{data=MockJury}. We will use
-the formula and \texttt{data=...} options in almost every function we
-use from here forward. Figure \ref{fig:Figure2-4} contains the
-side-by-side boxplots showing right skew for all the groups, slightly
-higher median and more variability for the \emph{Unattractive} group
-along with some potential outliers indicated in two of the three groups.
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{boxplot}\NormalTok{(Years~Attr,}\DataTypeTok{data=}\NormalTok{MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf}
-\caption{\label{fig:Figure2-4}Side-by-side boxplot of Years based on picture groups.}
-\end{figure}
-
-The ``\textasciitilde{}'' (which is read as the \emph{tilde} symbol,
-which you can find in the upper left corner of your keyboard) notation
-will be used in two ways this semester. The formula use in R employed
-previously declares that the response variable here is \emph{Years} and
-the explanatory variable is \emph{Attr}. The other use for
-``\textasciitilde{}'' is as shorthand for ``is distributed as'' and is
-used in the context of \texttt{Y\textasciitilde{}N(0,1)}, which
-translates (in statistics) to defining the random variable \emph{Y} as
-following a Normal distribution\footnote{Remember the bell-shaped curve
-  you encountered in introductory statistics? If not, you can see some
-  at \url{https://en.wikipedia.org/wiki/Normal_distribution}} with mean
-0 and standard deviation of 1. In the current situation, we could ask
-whether the \texttt{Years} variable seems like it may follow a normal
-distribution, in other words, is
-\emph{Years}\texttt{\textasciitilde{}N(0,1)}? Since the responses are
-right skewed with some groups having outliers, it is not reasonable to
-assume that the \emph{Years} variable for any of the three groups may
-follow a Normal distribution (more later on the issues this creates!).
-Remember that\\
-\(\mu\) and \(\sigma\) are parameters where\\
-\(\mu\) (``mu'') is our standard symbol for the \textbf{\emph{population
-mean}} and that \(\sigma\) (``sigma'') is the symbol of the\\
-\textbf{\emph{population standard deviation}}.
-
-\section{Beanplots}\label{section_2-2}
-
-The other graphical display for comparing multiple groups we will use is
-a newer display called a \textbf{\emph{beanplot}} (Kampstra, 2008).
-Figure \ref{fig:Figure2-5} shows an example of a beanplot that provides
-a side-by-side display that contains the density curves, the original
-observations that generated the density curve in a (jittered) rug-plot,
-the mean of each group, and the overall mean of the entire data set. For
-each group, the density curves are mirrored to aid in visual assessment
-of the shape of the distribution, which makes a ``bean'' in some cases.
-This mirroring also creates a shape that resembles a violin with skewed
-distributions so this display has also been called a ``violin plot''.
-The innovation in the beanplot is to add bold horizontal lines at the
-mean for each group. It also adds a lighter dashed line for the overall
-mean. All together this plot shows us information on the center (mean),
-spread, and shape of the distributions of the responses. Our inferences
-typically focus on the means of the groups and this plot allows us to
-compare those across the groups while gaining information on the shapes
-of the distributions of responses in each group.
-
-To use the \texttt{beanplot} function we need to install and load the
-\texttt{beanplot} package. The function works like the boxplot used
-previously except that options for \texttt{log}, \texttt{col}, and
-\texttt{method} need to be specified. Use these\footnote{Well, you can
-  use other colors (try ``lightblue'' for example), but I think bisque
-  looks nice in these plots.} options for any beanplots you make:
-\texttt{log="",\ col="bisque",\ method="jitter"}
-
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{require}\NormalTok{(beanplot)}
-\KeywordTok{beanplot}\NormalTok{(Years~Attr,}\DataTypeTok{data=}\NormalTok{MockJury,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf}
-\caption{\label{fig:Figure2-5}Beanplot of Years by picture group. Long, bold lines
-correspond to mean of each group.}
-\end{figure}
-
-Figure \ref{fig:Figure2-5} reinforces the strong right skews that were
-also detected in the boxplots previously. The three large sentences of
-15 years can now be clearly identified, with one in the \emph{Beautiful}
-group and two in the \emph{Unattractive} group. The \emph{Unattractive}
-group seems to have more high observations than the other groups even
-though the \emph{Beautiful} group had the largest number of observations
-around 10years. The mean sentence was highest for the
-\emph{Unattractive} group and the difference in the means between
-\emph{Beautiful} and \emph{Average} was small.
-
-In this example, it appears that the mean for \emph{Unattractive} is
-larger than the other two groups. But is this difference real? We will
-never know the answer to that question, but we can assess how likely we
-are to have seen a result as extreme or more extreme than our result,
-assuming that there is no difference in the means of the groups. And if
-the observed result is (extremely) unlikely to occur, then we can reject
-the hypothesis that the groups have the same mean and conclude that
-there is evidence of a real difference. To start exploring whether there
-are differences in the means, we need to have numerical values to
-compare. We can get means and standard deviations by groups easily using
-the same formula notation with the \texttt{mean} and \texttt{sd}
-functions if the \texttt{mosaic} package is loaded.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =} \NormalTok{MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    Beautiful      Average Unattractive 
-##     4.333333     3.973684     5.810811
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{sd}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =} \NormalTok{MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    Beautiful      Average Unattractive 
-##     3.405362     2.823519     4.364235
-\end{verbatim}
-
-We can also use the \texttt{favstats} function to get those summaries
-and others.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =} \NormalTok{MockJury)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##           Attr min Q1 median   Q3 max     mean       sd  n missing
-## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
-## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
-## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0
-\end{verbatim}
-
-Based on these results, we can see that there is an estimated difference
-of almost 2 years in the mean sentence between \emph{Average} and
-\emph{Unattractive} groups. Because there are three groups being
-compared in this study, we will have to wait until Chapter 3 and the
-One-Way ANOVA test to fully assess evidence related to some difference
-among the three groups. For now, we are going to focus on comparing the
-mean \emph{Years} between \emph{Average} and \emph{Unattractive} groups
--- which is a \textbf{\emph{2 independent sample mean}} situation and
-something you should have seen before. Remember that the ``independent''
-sample part of this refers to observations that are independently
-observed for the two groups as opposed to the paired sample situation
-that you may have explored where one observation from the first group is
-related to an observation in the second group (repeated measures on the
-same person or the famous ``twin'' studies with one twin assigned to
-each group).
-
-Here we are going to use the ``simple'' two independent group scenario
-to review some basic statistical concepts and connect two different
-frameworks for conducting statistical inference: randomization and
-parametric inference techniques. \textbf{\emph{Parametric}} statistical
-methods involve making assumptions about the distribution of the
-responses and obtaining confidence intervals and/or p-values using a
-\emph{named} distribution (like the z or \emph{t}-distributions).
-Typically these results are generated using formulas and looking up
-areas under curves or cutoffs using a table or a computer.
-\textbf{\emph{Randomization}}-based statistical methods use a computer
-to shuffle, sample, or simulate observations in ways that allow you to
-obtain distributions of possible results to find areas and cutoffs
-without resorting to using tables and named distributions. Randomization
-methods are what are called \textbf{\emph{nonparametric}} methods that
-often make fewer assumptions (they are \textbf{\emph{not free of
-assumptions}}!) and so can handle a larger set of problems more easily
-than parametric methods. When the assumptions involved in the parametric
-procedures are met by a data set, the randomization methods often
-provide very similar results to those provided by the parametric
-techniques. To be a more sophisticated statistical consumer, it is
-useful to have some knowledge of both of these approaches to statistical
-inference and the fact that they can provide similar results might
-deepen your understanding of both approaches.
-
-We will start with comparing the \emph{Average} and \emph{Unattractive}
-groups to compare these two ways of doing inference. We could remove the
-\emph{Beautiful} group observations in a spreadsheet program and read
-that new data set back into R, but it is actually pretty easy to use R
-to do data management once the data set is loaded. To remove the
-observations that came from the \emph{Beautiful} group, we are going to
-generate a new variable that we will call \texttt{NotBeautiful} that is
-true when observations came from another group (\emph{Average} or
-\emph{Unattractive}) and false for observations from the
-\emph{Beautiful} group. To do this, we will apply the \textbf{\emph{not
-equal}} logical function (\texttt{!=} ) to the variable \texttt{Attr},
-inquiring whether it was different from the \texttt{"Beautiful"} level.
-You can see the content of the new variable in the output:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{MockJury$NotBeautiful <-}\StringTok{ }\NormalTok{MockJury$Attr !=}\StringTok{ "Beautiful"}
-\NormalTok{MockJury$NotBeautiful}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-##  [23]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [45]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [56]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [67]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
-##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [89] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [100]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [111]  TRUE  TRUE  TRUE  TRUE
-\end{verbatim}
-
-This new variable is only FALSE for the \emph{Beautiful} responses as we
-can see if we compare some of the results from the original and new
-variable:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(MockJury$Attr, MockJury$NotBeautiful))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   MockJury.Attr MockJury.NotBeautiful
-## 1     Beautiful                 FALSE
-## 2     Beautiful                 FALSE
-## 3     Beautiful                 FALSE
-## 4     Beautiful                 FALSE
-## 5     Beautiful                 FALSE
-## 6     Beautiful                 FALSE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{tail}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(MockJury$Attr, MockJury$NotBeautiful))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##     MockJury.Attr MockJury.NotBeautiful
-## 109       Average                  TRUE
-## 110       Average                  TRUE
-## 111       Average                  TRUE
-## 112       Average                  TRUE
-## 113       Average                  TRUE
-## 114       Average                  TRUE
-\end{verbatim}
-
-To get rid of one of the groups, we need to learn a little bit about
-data management in R. \textbf{\emph{Brackets}} \texttt{({[},\ {]})} are
-used to modify the rows or columns in a data.frame with entries before
-the comma operating on rows and entries after the comma on the columns.
-For example, if you want to see the results for the 5\(^{th}\) subject,
-you can reference the 5\(^{th}\) row of the data.frame using
-\texttt{{[}5,\ {]}} after the data.frame name:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{MockJury[}\DecValTok{5}\NormalTok{,]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##        Attr    Crime Years Serious exciting calm independent sincere warm
-## 5 Beautiful Burglary     7       9        1    1           5       1    8
-##   phyattr sociable kind intelligent strong sophisticated happy ownPA
-## 5       8        9    4           7      9             9     8     7
-##   NotBeautiful
-## 5        FALSE
-\end{verbatim}
-
-We could just extract the \emph{Years} response for the 5\(^{th}\)
-subject by incorporating information on the row and column of interest
-(\texttt{Years} is the 3\(^{rd}\) column):
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{MockJury[}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 7
-\end{verbatim}
-
-In R, we can use logical vectors to keep any rows of the data.frame
-where the variable is true and drop any rows where it is false by
-placing the logical variable in the first element of the brackets. The
-reduced version of the data set should be saved with a different name
-such as \texttt{MockJury2} that is used here to reduce the chances of
-confusing it with the previous full data set:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{MockJury2 <-}\StringTok{ }\NormalTok{MockJury[MockJury$NotBeautiful,]}
-\end{Highlighting}
-\end{Shaded}
-
-You will always want to check that the correct observations were dropped
-either using \texttt{View(MockJury2)} or by doing a quick summary of the
-\texttt{Attr} variable in the new data.frame.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(MockJury2$Attr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    Beautiful      Average Unattractive 
-##            0           38           37
-\end{verbatim}
-
-It ends up that R remembers the \emph{Beautiful} category even though
-there are 0 observations in it now and that can cause us some problems.
-When we remove a group of observations, we sometimes need to clean up
-categorical variables to just reflect the categories that are present.
-The \texttt{factor} function creates categorical variables based on the
-levels of the variables that are observed and is useful to run here to
-clean up \texttt{Attr}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{MockJury2$Attr <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(MockJury2$Attr) }
-\KeywordTok{summary}\NormalTok{(MockJury2$Attr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Average Unattractive 
-##           38           37
-\end{verbatim}
-
-Now if we remake the boxplots and beanplots, they only contain results
-for the two groups of interest here as seen in Figure
-\ref{fig:Figure2-6}.
-
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{boxplot}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2) }
-\KeywordTok{beanplot}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf}
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf}
-
-The two-sample mean techniques you learned in your previous course all
-start with comparing the means the two groups. We can obtain the two
-means using the \texttt{mean} function or directly obtain the difference
-in the means using the \texttt{diffmean} function (both require the
-\texttt{mosaic} package). The \texttt{diffmean} function provides
-\(\bar{x}_{Unattractive} - \bar{x}_{Average}\) where \(\bar{x}\) (read
-as ``x-bar'') is the sample mean ofobservations in the subscripted
-group. Note that there are two directions that you could compare the
-means and this function chooses to take the mean from the second group
-name \emph{alphabetically} and subtract the mean from the first
-alphabetical group name. It is always good to check the direction of
-this calculation as having a difference of \(-1.84\) years versus
-\(1.84\) years could be important.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Average Unattractive 
-##     3.973684     5.810811
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{diffmean}\NormalTok{(Years ~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## diffmean 
-## 1.837127
-\end{verbatim}
-
-\section{Models, hypotheses, and permutations for the 2 sample mean
-situation}\label{section_2-3}
-
-There appears to be some evidence that the \emph{Unattractive} group is
-getting higher average lengths of sentences from the prisoner ``jurors''
-than the \emph{Average} group, but we want to make sure that the
-difference is real -- that there is evidence to reject the assumption
-that the means are the same ``in the population''. First, a
-\textbf{\emph{null hypothesis}}\footnote{The hypothesis of no difference
-  that is typically generated in the hopes of being rejected in favor of
-  the alternative hypothesis which contains the sort of difference that
-  is of interest in the application.} which defines a \textbf{\emph{null
-model}}\footnote{The null model is the statistical model that is implied
-  by the chosen null hypothesis. Here, a null hypothesis of no
-  difference translates to having a model with the same mean for both
-  groups.} needs to be determined in terms of \textbf{\emph{parameters}}
-(the true values in the population). The research question should help
-you determine the form of the hypotheses for the assumed population. In
-the 2 independent sample mean problem, the interest is in testing a null
-hypothesis of \(H_0: \mu_1 = \mu_2\) versus the alternative hypothesis
-of \(H_A: \mu_1 \ne \mu_2\), where \(\mu_1\) is the parameter for the
-true mean of the first group and \(\mu_2\) is the parameter for the true
-mean of the second group. The alternative hypothesis involves assuming a
-statistical model for the \(i^{th} (i=1,\ldots,n_j)\) response from the
-\(j^{th} (j=1,2)\) group, \(\boldsymbol{y}_{ij}\), that involves
-modeling it as \(y_{ij} = \mu_j + \epsilon_{ij}\), where we assume that
-\(\epsilon_{ij} \sim N(0,\sigma^2)\). For the moment, focus on the
-models that either assume the means are the same (null) or different
-(alternative), which imply:
-
-\begin{itemize}
-\item
-  Null Model: \(y_{ij} = \mu + \epsilon_{ij}\) There is \textbf{no}
-  difference in \textbf{true} means for the two groups.
-\item
-  Alternative Model: \(y_{ij} = \mu_j + \epsilon_{ij}\) There is
-  \textbf{a} difference in \textbf{true} means for the two groups.
-\end{itemize}
-
-Suppose we are considering thealternative model for the 4th observation
-(\(i=4\)) from the second group (\(j=2\)), then the model for this
-observation is \(y_{42} = \mu_2 +\epsilon_{42}\), that defines the
-response as coming from the true mean for the second group plus a random
-error term for that observation, \(\epsilon_{42}\). For, say, the 5th
-observation from the first group (\(j=1\)), the model is
-\(y_{51} = \mu_1 +\epsilon_{51}\). If we were working with the null
-model, the mean is always the same (\(\mu\)) - the group specified does
-not change the mean we use for that observation.
-
-It can be helpful to think about the null and alternative models
-graphically. By assuming the null hypothesis is true (means are equal)
-and that the random errors around the mean follow a normal distribution,
-we assume that the truth is as displayed in the left panel of Figure
-\ref{fig:Figure2-7} -- two normal distributions with the same mean and
-variability. The alternative model allows the two groups to potentially
-have different means, such as those displayed in the right panel of
-Figure \ref{fig:Figure2-7} where the second group has a larger mean.
-Note that in this scenario, we assume that the observations all came
-from the same distribution except that they had different means.
-Depending on the statistical procedure we are using, we basically are
-going to assume that the observations (\(y_{ij}\)) either were generated
-as samples from the null or alternative model. You can imagine drawing
-observations at random from the pictured distributions. For hypothesis
-testing, the null model is assumed to be true and then the unusualness
-of the actual result is assessed relative to that assumption. In
-hypothesis testing, we have to decide if we have enough evidence to
-reject the assumption that the null model (or hypothesis) is true. If we
-reject the null hypothesis, then we would conclude that the other model
-considered (the alternative model) is more reasonable. The researchers
-obviously would have hoped to encounter some sort of noticeable
-difference in the sentences provided for the different pictures and been
-able to find enough evidence to reject the null model where the groups
-``look the same''.
-
-
+\chapter{Preface}\label{preface}
+
+This book is designed primarily for use in a second semester statistics
+course although it can also be useful for researchers needing a quick
+review or ideas for using R for the methods discussed in the text. As a
+text primarily designed for a second statistics course, it presumes that
+you have had an introductory statistics course. There are now many
+different varieties of introductory statistics from traditional,
+formula-based courses (called ``consensus'' curriculum courses) to more
+modern, computing-intensity courses that use randomization ideas to try
+to enhance learning of basic statistical methods. We are not going to
+presume that you have had a particular ``flavor'' of introductory
+statistics or that you had your introductory statistics out of a
+particular text, just that you have had a course that tried to introduce
+you to the basic terminology and ideas underpinning statistical
+reasoning. We would expect that you are familiar with the logic (or
+sometimes illogic) of hypothesis testing including null and alternative
+hypothesis and confidence interval construction and interpretation and
+that you have seen all of this in a couple of basic situations. We start
+with a review of these ideas in one and two group situations with a
+quantitative response, something that you should have seen before.
+
+This text covers a wide array of statistical tools that are connected
+through situation, methods used, or both. As we explore various
+techniques, look for the identifying characteristics of each method --
+what type of research questions are being addressed (relationships or
+group differences, for example) and what type of variables are being
+analyzed (quantitative or categorical). \textbf{\emph{Quantitative
+variables}} are made up of numerical measurements that have meaningful
+units attached to them. \textbf{\emph{Categorical variables}} take on
+values that are categories or labels. Additionally, you will need to
+carefully identify the \textbf{\emph{response}} variables, where the
+study and variable characteristics should suggest which variables should
+be used as the explanatory variables that may explain variation in the
+response variable. Because this is an intermediate statistics course, we
+will start to handle more complex situations (many explanatory
+variables) and will provide some tools for graphical explorations to
+complement the more sophisticated statistical models required to handle
+these situations.
+
+\section{Overview of methods}\label{overview-of-methods}
+
+After you are introduced to basic statistical ideas, a wide array of
+statistical methods become available. The methods explored here focus on
+assessing (estimating and testing for) relationships between variables,
+sometimes when controlling for or modifying relationships based on
+levels of another variable -- which is where statistics gets interesting
+and really useful. Early statistical analyses (approximately 100 years
+ago) were focused on describing a single variable. Your introductory
+statistics course should have heavily explored methods for summarizing
+and doing inference in situations with one group or where you were
+comparing results for two groups of observations. Now, we get to
+consider more complicated situations -- culminating in a set of tools
+for working with multiple explanatory variables, some of which might be
+categorical and related to having different groups of subjects that are
+being compared. Throughout the methods we will cover, it will be
+important to retain a focus on how the appropriate statistical analysis
+depends on the research question and data collection process as well as
+the types of variables measured.
+
+Figure \ref{fig:Figure1} frames the topics we will discuss. Taking a
+broad vision of the methods we will consider, there are basically two
+scenarios -- one when the response is quantitative and one when the
+response is categorical. Examples of quantitative responses we will see
+later involve \emph{suggested jail sentence} (in years) and \emph{body
+fat} (percentage). Examples of categorical variables include
+\emph{improvement} (none, some, or marked) in a clinical trial or
+whether a student has turned in copied work (never, exam or paper, or
+both). There are going to be some more nuanced aspects to all these
+analyses as the complexity of both sides of Figure \ref{fig:Figure1}
+suggest, but note that near the bottom, each tree converges on a single
+procedure, using a \textbf{\emph{linear model}} for a quantitative
+response variable or using a \textbf{\emph{Chi-square test}} for a
+categorical response. After selecting the appropriate procedure and
+completing the necessary technical steps to get results for a given data
+set, the final step involves assessing the scope of inference and types
+of conclusions that are appropriate based on the design of the study.
 
 
 
 \begin{figure}
-\includegraphics[width=13.33in]{chapter1_files/image015} \caption{Illustration of the assumed situations under the null
-(left) and a single possibility that could occur if the alternative were
-true (right) and the true means were different.}\label{fig:Figure2-7}
+\includegraphics[width=8.89in]{chapter0_files/image001} \caption{Flow chart of methods}\label{fig:Figure1}
 \end{figure}
 
-In statistical inference, null hypotheses (and their implied models) are
-set up as ``straw men'' with every interest in rejecting them even
-though we assume they are true to be able to assess the evidence against
-them. Consider the original study design here, the pictures were
-randomly assigned to the subjects. If the null hypothesis were true,
-then we would have no difference in the population means of the groups.
-And this would apply if we had done a different random assignment of the
-pictures to the subjects. So let's try this: assume that the null
-hypothesis is true and randomly re-assign the treatments (pictures) to
-the observations that were obtained. In other words, keep the sentences
-(\emph{Years}) the same and shuffle the group labels randomly. The
-technical term for this is doing a \textbf{\emph{permutation}} (a random
-shuffling of the treatments relative to the responses). If the null is
-true and the means in the two groups are the same, then we should be
-able to re-shuffle the groups to the observed sentences (\emph{Years})
-and get results similar to those we actually observed. If the null is
-false and the means are really different in the two groups, then what we
-observed should differ from what we get under other random permutations.
-The differences between the two groups should be more noticeable in the
-observed data set than in (most) of the shuffled data sets. It helps to
-see an example of a permutation of the labels to understand what this
-means here.
+We will be spending most of the semester working on methods for
+quantitative response variables (the left side of Figure
+\ref{fig:Figure1} covered in Chapters 1, 2, 3, 5, 6, and 7) and stepping
+over to handle the situation with a categorical response variable (right
+side of Figure \ref{fig:Figure1} that is discussed in Chapter 4).
+Chapter 8 contains case studies illustrating all the methods discussed
+previously, providing a final opportunity to explore additional examples
+that illustrate how finding your way through the paths in Figure
+\ref{fig:Figure1} leads to the appropriate analysis.
 
-In the \texttt{mosaic} package, the \texttt{shuffle} function allows us
-to easily perform a permutation\footnote{We'll see the \texttt{shuffle}
-  function in a more common usage below; while the code to generate
-  \texttt{Perm1} is provided, it isn't something to worry about right
-  now.}. Just one time, we can explore what a permutation of the
-treatment labels could look like in the \texttt{PermutedAttr} variable
-below. Note that the \texttt{Years} are held in the same place the group
-labels are shuffled.
+The first topics (Chapters 0 and 1) will be more familiar as we start
+with single and two group situations with a quantitative response. In
+your previous statistics course, you should have seen methods for
+estimating and quantifying uncertainty for the mean of a single group
+and for differences in the means of two groups. Once we have briefly
+reviewed these methods and introduced the statistical software that we
+will use throughout the course, we will consider the first new
+statistical material in Chapter 2. It involves the situation with a
+quantitative response variable where there are more than 2 groups to
+compare -- this is what we call the \textbf{\emph{One-Way ANOVA}}
+situation. It generalizes the 2-independent sample hypothesis test to
+handle situations where more than 2 groups are being studied. When we
+learn this method, we will begin discussing model assumptions and
+methods for assessing those assumptions that will be present in every
+analysis involving a quantitative response. The \textbf{\emph{Two-Way
+ANOVA}} (Chapter 3) considers situations with two categorical
+explanatory variables and a quantitative response. To make this somewhat
+concrete, suppose we are interested in assessing differences in, say,
+the \emph{yield} of wheat from a field based on the amount of
+\emph{fertilizer} applied(none, low, or high) and \emph{variety} of
+wheat (two types). Here, \emph{yield} is a quantitative response
+variable that might be measured in bushels per acre and there are two
+categorical explanatory variables, \emph{fertilizer}, with 3 levels, and
+\emph{variety}, with two levels. In this material, we introduce the idea
+of an \textbf{\emph{interaction}} between the two explanatory variables:
+the relationship between one categorical variable and the mean of the
+response changes depending on the levels of the other categorical
+variable. For example, extra fertilizer might enhance the growth of one
+variety and hinder the growth of another so we would say that
+\emph{fertilizer} has different impacts based this interaction may or
+may not actually be present, we will consider two versions of the model
+in Two-Way ANOVAs, what are called the \textbf{\emph{additive}} (no
+interaction) and the \textbf{\emph{interaction}} models.
+
+Following the methods for two categorical variables and a quantitative
+response, we explore a method for analyzing data where the response is
+categorical, called the \textbf{\emph{Chi-square test}} in Chapter 4.
+This most closely matches the One-Way ANOVA situation with a single
+categorical explanatory variable, except now the response variable is
+categorical. For example, we will assess whether taking a drug (vs
+taking a \textbf{\emph{placebo}}\footnote{A \textbf{\emph{placebo}} is a
+  treatment level designed to mimic the potentially efficacious level(s)
+  but that can have no actual effect. The \textbf{\emph{placebo effect}}
+  is the effect that thinking that an effective treatment was received
+  has on subjects. There are other related issues in performing
+  experiments like the \textbf{\emph{Hawthorne}} or observer
+  \textbf{\emph{effect}} where subjects modify behavior because they are
+  being observed.}) has an \textbf{\emph{effect}}\footnote{We will
+  reserve the term ``effect'' for situations where we could potentially
+  infer causal impacts on the response of the explanatory variable which
+  occurs in situations where the levels of the explanatory variable are
+  randomly assigned to the subjects.} on the type of improvement the
+subjects demonstrate. There are two different scenarios for study design
+that impact the analysis technique and hypotheses tested in Chapter 4.
+If the explanatory variable reflects the group that subjects were
+obtained from, either through randomization of the treatment level to
+the subjects or by taking samples from separate populations, this is
+called a \textbf{\emph{Chi-square Homogeneity Test}}. It is also
+possible to obtain a single sample from a population and then obtain
+information on the levels of the explanatory variable for each subject.
+We will analyze these results using what is called a
+\textbf{\emph{Chi-square Independence Test}}. They both use the same
+test statistic but we use slightly different graphics and are testing
+different hypotheses in these two related situations. Figure
+\ref{fig:Figure1} also shows that if we had a quantitative explanatory
+variable and a categorical response that we would need to ``bin'' or
+create categories of responses from the quantitative variable to use the
+Chi-square testing methods.
+
+If the predictor and response variables are both quantitative, we start
+with scatterplots, correlation, and \textbf{\emph{simple linear
+regression}} models (Chapters 5 and 6) -- things you should have seen,
+at least to some degree, previously. The biggest differences here will
+be the depth of exploration of diagnostics and inferences for this model
+and discussions of transformations of variables. If there is more than
+one explanatory variable, then we say that we are doing
+\textbf{\emph{multiple linear regression}} (Chapter 7) -- the
+``multiple'' part of the name reflects that there will be more than one
+explanatory variable. We use the same name if we have a mix of
+categorical and quantitative predictor variables but there are some new
+issues in setting up the models and interpreting the coefficients that
+we need to consider. In the situation with one categorical predictor and
+one quantitative predictor, we revisit the idea of an interaction. It
+allows us to consider situations where the estimated relationship
+between a quantitative predictor and the mean response varies among
+different levels of the categorical variable.
+
+By the end of Chapter 8 you should be able to identify, perform using
+the statistical software R (R Core Team, 2016), and interpret the
+results from each of these methods. There is a lot to learn, but many of
+the tools for using R and interpreting results of the analyses
+accumulate and repeat during the semester. If you work hard to
+understand the initial methods, it will help you when the methods get
+more complicated. You will likely feel like you are just starting to
+learn how to use R at the end of the semester and for learning a new
+language that is actually an accomplishment. We will just be taking you
+on the first steps of a potentially long journey and it is up to you to
+decide how much further you want to go with learning the software.
+
+All the methods you will learn require you to carefully consider how the
+data were collected, how that pertains to the population of interest,
+and how that impacts the inferences that can be made. The
+\textbf{\emph{scope of inference}} from the bottom of Figure
+\ref{fig:Figure1} is our shorthand term for remembering to think about
+two aspects of the study -- \textbf{\emph{random assignment}} and
+\textbf{\emph{random sampling}} . In a given situation, you need to use
+the description of the study to decide if the explanatory variable was
+randomly assigned to study units (this allows for \textbf{\emph{causal
+inferences}} if differences are detected) or not (so no causal
+statements are possible). As an example, think about two studies, one
+where students are randomly assigned to either get tutoring with their
+statistics course or not and another where the students are asked at the
+end of the semester whether they sought out tutoring or not. Suppose we
+compare the final grades in the course for the two groups (tutoring/not)
+and find a big difference. In the first study with random assignment, we
+can say the tutoring caused the differences we observed. In the second,
+we could only say that the tutoring was associated with differences but
+because students self-selected the group they ended up in, we can't say
+that the tutoring caused the differences. The other aspect of scope of
+inference concerns random sampling: If the data were obtained using a
+random sampling mechanism, then our inferences can be safely extended to
+the population that the sample was taken from. However, if we have
+non-random sample, our inference can only apply to the sample collected.
+In the previous example, the difference would be studying a random
+sample of students from the population of, say, Introductory Statistics
+students at a university vs studying a sample of students that
+volunteered for the research project, maybe for extra credit in the
+class. We could still randomly assign them to tutoring/not but the
+non-random sample would only lead to conclusions about those students
+that volunteered. The most powerful scope of inference is when there are
+randomly assigned levels of explanatory variables with a random sample
+from population -- conclusions would be about causal impacts that would
+happen in the population.
+
+By the end of this material, you should have some basic R skills and
+abilities to create basic ANOVA and Regression models, as well as to
+handle Chi-squared testing situations. Together, this should prepare you
+for future statistics courses or for other situations where you are
+expected to be able to identify an appropriate analysis, do the
+calculations for a given data set, and then effectively communicate
+interpretations for the methods discussed here.
+
+\section{Getting started in R}\label{getting-started-in-r}
+
+You will need to download the statistical software package called R and
+an enhanced interface to R called RStudio (RStudio, 2016). They are open
+source and free to download and use (and will always be that way). This
+means that the skills you learn now can follow you the rest of your
+life. R is becoming the primary language of statistics and is being
+adopted across academia, government, and businesses to help manage and
+learn from the growing volume of data being obtained. Hopefully you will
+get a sense of some of the power of R in this book.
+
+The next pages will walk you through the process of getting the software
+downloaded and provide you with an initial experience using RStudio to
+do things that should look familiar even though the interface will be a
+new experience. Do not expect to master R quickly -- it takes years
+(sorry!) even if you know the statistical methods being used. We will
+try to keep all your interactions with R code in a similar code format
+and that should help you in learning how to use R as we move through
+various methods. We will also usually provide you with example code.
+Everyone that learns R starts with copying other people's code and then
+making changes for specific applications -- so expect to go back to
+examples from the text and focus on learning how to modify that code to
+work for your particular data set. Only really experienced R users
+``know'' functions without having to check other resources. After we
+complete this basic introduction, Chapter 1 begins doing more
+sophisticated things with R, allowing us to compare quantitative
+responses from two groups, make some graphical displays, do hypothesis
+testing and create confidence intervals in a couple of different ways.
+
+You will have two downloading activities to complete before you can do
+anything more than read this book\footnote{I recorded a video that walks
+  through the material on the following pages that is available here:
+  \url{https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html}
+  in the digital version of the book.}. First, you need to download R.
+It is the engine that will do all the computing for us, but you will
+only interact with it once. Go to \url{http://cran.rstudio.com} and
+click on the ``\textbf{Download R for\ldots{}}'' button that corresponds
+to your operating system. On the next page, click on ``\textbf{base}''
+and then it will take you to a screen to download the most current
+version of R that is compiled for your operating system, something like
+``\textbf{Download R 3.3.1 for Windows}''. Click on that link and then
+open the file you downloaded. You will need to select your preferred
+language (choose English so your instructor can help you), then hit
+``\textbf{Next}'' until it starts to unpack and install the program (all
+the base settings will be fine). After you hit ``\textbf{Finish}'' you
+will not do anything further with R directly.
+
+Second, you need to download RStudio. It is an enhanced interface that
+will make interacting with R less frustrating. To download RStudio, go
+to \url{http://www.rstudio.com/products/rstudio/download/} and select
+the correct version under ``Installers for Supported Platforms'' for
+your operating system. Download and then install RStudio using the
+installer. From this point forward, you should only open RStudio; it
+provides your interface with R. Note that both R and RStudio are updated
+frequently (up to four times a year) and if you downloaded either more
+than a few months previously, you should download the up-to-date
+versions, especially if something you are trying to do is not working.
+Sometimes code will not work in older versions of R and sometimes old
+code won't work in new versions of R.\footnote{The need to keep the code
+  up-to-date as R continues to evolve is one reason that this book is
+  locally published and that this is the 3\(^{rd}\) version in three
+  years\ldots{}}
+
+To get started, we can complete some basic tasks in R using the RStudio
+interface. When you open RStudio, you will see a screen like Figure 2.
+The added annotation in this and the following screen-grabs is there to
+help you get initially oriented to the software interface. R is
+command-line software -- meaning that most of the time you have to
+create code and then enter and execute it at a command prompt to get any
+results. RStudio makes the management and execution of that code more
+efficient than the basic version of R. In RStudio, the lower left panel
+is called the ``console'' window and is where you can type R code
+directly into R or where you will see the code you run and (most
+importantly!) where the results of your executed commands will show up.
+The most basic interaction with R is available once you get the cursor
+active at the command prompt ``\textgreater{}'' by clicking in that
+panel (look for a blinking vertical line). The upper left panel is for
+writing, saving, and running your R code. Once you have code available
+in this window, the ``Run'' button will execute the code for the line
+that your cursor is on or for any text that you have highlighted with
+your mouse. The ``data management'' or environment panel is in the upper
+right, providing information on what data sets have been loaded. It also
+contains the ``Import Dataset'' button that provides the easiest way for
+you to read a data set into R so you can analyze it. The lower right
+panel contains information on the ``Packages'' (additional code we will
+download and install to add functionality to R) that are available and
+is where you will see plots that you make and requests for ``Help'' on
+specific functions.
+
+
+
+\begin{figure}
+\includegraphics[width=14.72in]{chapter0_files/image003} \caption{Initial RStudio layout}\label{fig:Figure2}
+\end{figure}
+
+As a first interaction with R we can use it as a calculator. To do this,
+click near the command prompt (\texttt{\textgreater{}}) in the lower
+left ``console'' panel, type 3+4, and then hit enter. It should look
+like this:
+
+\begin{verbatim}
+> 3+4
+[1] 7
+\end{verbatim}
+
+You can do more interesting calculations, like finding the mean of the
+numbers 3, 5, 7, and 8 by adding them up and dividing by 4:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Perm1 <-}\StringTok{ }\KeywordTok{with}\NormalTok{(MockJury2,}\KeywordTok{data.frame}\NormalTok{(Years,Attr,}\DataTypeTok{PermutedAttr=}\KeywordTok{shuffle}\NormalTok{(Attr)))}
-\NormalTok{Perm1}
+\NormalTok{>}\StringTok{ }\NormalTok{(-}\DecValTok{3+5+7+8}\NormalTok{)/}\DecValTok{4}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{4}\NormalTok{. }\DecValTok{25}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the parentheses help R to figure out your desired order of
+operations. If you drop that grouping, you get a very different (and
+wrong!) result:
+
+\begin{verbatim}
+> -3+5+7+8/4
+[1] 11
+\end{verbatim}
+
+We could estimate the standard deviation similarly using the formula you
+might remember from introductory statistics, but that will only work in
+very limited situations. To use the real power of R this semester, we
+need to work with data sets that store the Basically, we need to store
+observations in named vectors (one dimensional arrays) that contain a
+list of the observations. To create a vector containing the four numbers
+and assign it to a variable named \emph{variable1}, we need to create a
+vector using the function \texttt{c} which means ``combine the items''
+that follow, if they are inside parentheses and have commas separating
+the values, as follows:
+
+\begin{verbatim}
+> c(-3, 5, 7, 8)
+[1] -3 5 7 8
+\end{verbatim}
+
+To get this vector stored in a variable called \emph{variable1} we need
+to use the assignment operator, \texttt{\textless{}-} (read as ``stored
+as'') that assigns the information on the right into the variable that
+you are creating on the left.
+
+\begin{verbatim}
+> variable1 <- c(-3, 5, 7, 8)
+\end{verbatim}
+
+In R, the assignment operator, \texttt{\textless{}-}, is created by
+typing a ``less than'' symbol \texttt{\textless{}} followed by a
+``minus'' sign (\texttt{-}) ever want to see what numbers are residing
+in an object in R, just type its name and hit \emph{enter}. You can see
+how that variable contains the same information that was initially
+generated by \texttt{c(-3,\ 5,\ 7,\ 8)} but is easier to access since we
+just need the text for the variable name representing that vector.
+
+\begin{verbatim}
+> variable1
+[1] -3 5 7 8
+\end{verbatim}
+
+With the data stored in a variable, wean use functions such as
+\texttt{mean} and \texttt{sd} to find the mean and standard deviation of
+the observations contained in \texttt{variable1} :
+
+\begin{verbatim}
+> mean(variable1)
+[1] 4.25
+> sd(variable1)
+[1] 4.99166
+\end{verbatim}
+
+When dealing with real data, we will often have information about more
+than one variable. We could enter all observations by hand for each
+variable but this is prone to error and onerous for all but the smallest
+data sets. If you are to ever utilize the power of statistics in the
+evolving data-centered world, data management has to be accomplished in
+a more sophisticated way. While you can manage data sets quite
+effectively in R, it is often easiest to start with your data set in
+something like Microsoft Excel or OpenOffice's Calc. You want to make
+sure that observations are in the rows and the names of variables are in
+the columns and that there is no ``extra stuff'' in the spreadsheet. If
+you have missing observations, they should be represented with blank
+cells. The file should be saved as a ``.csv'' file (stands for
+comma-separated values although Excel calls it ``CSV (Comma
+Delimited)'', which basically strips off some of the junk that Excel
+adds to the necessary information in the file. Excel will tell you that
+this is a bad idea, but it actually creates a more stable archival
+format and one that R can use directly\footnote{There are ways to read
+  ``.xls'' and ``.xlsx'' files directly into R but to handle multiple
+  sheets they are more complicated and not as stable across operating
+  systems as the simpler version we recommend.}.
+
+With data set converted to a CSV file, we need to read the data set into
+R. There are two ways to do this, either using the point-and-click GUI
+in RStudio (click the ``Import Data Set'' button in the upper right
+``Environment'' panel as indicated in Figure \ref{fig:Figure2}) or
+modifying the
+
+\texttt{read.csv} function to find the file of interest. To practice
+this, you can download an Excel (.xls) file from
+\url{http://www.math.montana.edu/courses/s217/documents/treadmill.xls}
+31 males that volunteered for a study on methods for measuring
+fitness(Westfall and Young, 1993). In the spreadsheet, you will find a
+data set that starts and ends with the following information (only
+results for Subjects 1, 2, 30, and 31 shown here):
+
+\begin{longtable}[]{@{}lllrrlrr@{}}
+\toprule
+\begin{minipage}[b]{0.07\columnwidth}\raggedright\strut
+Sub- ject\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+Tread- MillOx\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\raggedright\strut
+TreadMill- MaxPulse\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
+RunTime\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
+RunPulse\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedright\strut
+Rest Pulse\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedleft\strut
+BodyWeight\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedleft\strut
+Age\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.07\columnwidth}\raggedright\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+60.05\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+186\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+8.63\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+170\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+48\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
+81.87\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+38\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+59.57\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+172\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+8.17\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+166\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+40\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
+68.15\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+42\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
+\ldots{}\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+\ldots{}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright\strut
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+39.2\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+172\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+12.88\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+168\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+44\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
+91.63\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+54\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright\strut
+31\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+37.39\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\raggedright\strut
+192\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+14.03\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+186\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedright\strut
+56\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedleft\strut
+87.66\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+45\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+The variables contain information on the subject number
+(\emph{Subject}), subjects' treadmill oxygen consumption
+(\emph{TreadMillOx}, in ml per kg per minute) and maximum pulse rate
+(\emph{TreadMillMaxPulse}, in beats per minute), time to run 1.5 miles
+(\emph{Run Time}, in minutes), maximum pulse during 1.5 mile run
+(\emph{RunPulse}, in beats per minute), resting pulse rate
+(\emph{RestPulse}, beats per minute), Body Weight (\emph{BodyWeight}, in
+kg), and \emph{Age} (in years). Open the file in Excel or equivalent
+software and then save it as a .csv file in a location you can find on
+your computer. Then go to RStudio and click on \textbf{File} , then
+\textbf{Import Dataset} , then \textbf{From CSV\ldots{}}\footnote{If you
+  are having trouble getting the file converted and read into R, copy
+  and run the following code:
+  \texttt{treadmill\ \textless{}-read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",\ header=T)}.}
+Find your file and check ``\textbf{Import}''. R will store the data set
+as an object named whatever the .csv file was named. You could use
+another name as well, but it is often easiest just to keep the data set
+name in R related to the original file name. You should see some text
+appear in the console (lower left panel) like in Figure
+\ref{fig:Figure3}. The text that is created will look something like the
+following -- if you had stored the file in a drive labeled D:, it would
+be:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{treadmill <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"D:/treadmill.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+What is put inside the \texttt{"\ "} will depend on the location and
+name of your saved .csv file. A version of the data set in what looks
+like a spreadsheet will appear in the upper left window due to the
+second line of code (\texttt{View(treadmill})).
+
+
+
+\begin{figure}
+\includegraphics[width=14.72in]{chapter0_files/image005} \caption{RStudio with initial data set loaded}\label{fig:Figure3}
+\end{figure}
+
+Just directly typing (or using) a line of code like this is actually the
+other way that we can read in files. If you choose to use the text-only
+interface, then you need to tell R where to look in your computer to
+find the data file. \texttt{read.csv} is a function that takes a path as
+an argument. To use it, specify the path to your data file, put quotes
+around it, and put it as the input to \texttt{read.csv(...)} . For some
+examples later in the book, you will be able to copy a command like this
+from the text and read data sets and other code directly from my the
+course folder, assuming you are connected to the internet.
+
+To verify that you read the data set in correctly, it is always good to
+check its contents. We can view the first and last rows in the data set
+using the \texttt{head} and \texttt{tail} functions on the data set,
+which show the following results for the \texttt{treadmill} data. Note
+that you will sometimes need to resize the console window in RStudio to
+get all the columns to display in a single row which can be performed by
+dragging the gray bars that separate the panels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(treadmill)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##    Years         Attr PermutedAttr
-## 1      1 Unattractive      Average
-## 2      4 Unattractive      Average
-## 3      3 Unattractive      Average
-## 4      2 Unattractive Unattractive
-## 5      8 Unattractive Unattractive
-## 6      8 Unattractive      Average
-## 7      1 Unattractive      Average
-## 8      1 Unattractive Unattractive
-## 9      5 Unattractive Unattractive
-## 10     7 Unattractive Unattractive
-## 11     1 Unattractive      Average
-## 12     5 Unattractive      Average
-## 13     2 Unattractive Unattractive
-## 14    12 Unattractive      Average
-## 15    10 Unattractive Unattractive
-## 16     1 Unattractive      Average
-## 17     6 Unattractive Unattractive
-## 18     2 Unattractive Unattractive
-## 19     5 Unattractive      Average
-## 20    12 Unattractive      Average
-## 21     6 Unattractive      Average
-## 22     3 Unattractive Unattractive
-## 23     8 Unattractive      Average
-## 24     4 Unattractive Unattractive
-## 25    10 Unattractive      Average
-## 26    10 Unattractive      Average
-## 27    15 Unattractive      Average
-## 28    15 Unattractive      Average
-## 29     3 Unattractive      Average
-## 30     3 Unattractive Unattractive
-## 31     3 Unattractive      Average
-## 32    11 Unattractive      Average
-## 33    12 Unattractive Unattractive
-## 34     2 Unattractive Unattractive
-## 35     1 Unattractive Unattractive
-## 36     1 Unattractive      Average
-## 37    12 Unattractive      Average
-## 38     5      Average Unattractive
-## 39     5      Average Unattractive
-## 40     4      Average Unattractive
-## 41     3      Average Unattractive
-## 42     6      Average Unattractive
-## 43     4      Average      Average
-## 44     9      Average Unattractive
-## 45     8      Average      Average
-## 46     3      Average      Average
-## 47     2      Average      Average
-## 48    10      Average Unattractive
-## 49     1      Average Unattractive
-## 50     1      Average      Average
-## 51     3      Average Unattractive
-## 52     1      Average Unattractive
-## 53     3      Average Unattractive
-## 54     5      Average      Average
-## 55     8      Average Unattractive
-## 56     3      Average Unattractive
-## 57     1      Average Unattractive
-## 58     1      Average      Average
-## 59     1      Average Unattractive
-## 60     2      Average Unattractive
-## 61     2      Average Unattractive
-## 62     1      Average      Average
-## 63     1      Average      Average
-## 64     2      Average      Average
-## 65     3      Average      Average
-## 66     4      Average Unattractive
-## 67     5      Average Unattractive
-## 68     3      Average      Average
-## 69     3      Average      Average
-## 70     3      Average      Average
-## 71     2      Average      Average
-## 72     7      Average Unattractive
-## 73     6      Average Unattractive
-## 74    12      Average Unattractive
-## 75     8      Average      Average
-\end{verbatim}
-
-If you count up the number of subjects in each group by counting the
-number of times each label (Average, Unattractive) occurs, it is the
-same in both the \texttt{Attr} and \texttt{PermutedAttr} columns.
-Permutations involve randomly re-ordering the values of a variable --
-here the \texttt{Attr} group labels -- without changing the content of
-the variable. This result can also be generated using what is called
-\textbf{\emph{sampling without replacement}}: sequentially select \(n\)
-labels from the original variable, removing each used label and making
-sure that each original \texttt{Attr} label is selected once and only
-once. The new, randomly selected order of selected labels provides the
-permuted labels. Stepping through the process helps to understand how it
-works: after the initial random sample of one label, there would
-\(n - 1\) choices possible; on the \(n^{th}\) selection, there would
-only be one label remaining to select. This makes sure that all original
-labels are re-used but that the order is random. Sampling without
-replacement is like picking names out of a hat, one-at-a-time, and not
-putting the names back in after they are selected. It is an exhaustive
-process for all the original observations. \textbf{\emph{Sampling with
-replacement}} , in contrast, involves sampling from the specified list
-with each observation having an equal chance of selection for each
-sampled observation -- in other words, observations can be selected more
-than once. This is like picking \(n\) names out of a hat that contains
-\(n\) names, except that every time a name is selected, it goes back
-into the hat -- we'll use this technique in Section @ref(section\_2-8)
-to do what is called \textbf{\emph{bootstrapping}} . Both sampling
-mechanisms can be used to generate inferences but each has particular
-situations where they are most useful. For hypothesis testing, we will
-use permutations (sampling without replacement).
-
-The comparison of the beanplots for the real data set and permuted
-version of the labels is what is really interesting (Figure
-\ref{fig:Figure2-8}). The original difference in the sample means of the
-two groups was 1.84 years (Unattractive minus Average). The sample means
-are the \textbf{\emph{statistics}}\\
-that estimate the parameters for the true means of the two groups. In
-the permuted data set, the difference in the means is 1.15 years in the
-opposite direction (Average had a higher mean than Unattractive in the
-permuted data).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years ~}\StringTok{ }\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Average Unattractive 
-##     5.184211     4.567568
+##   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse
+## 1       1       60.05               186    8.63      170        48
+## 2       2       59.57               172    8.17      166        40
+## 3       3       54.62               155    8.92      146        48
+## 4       4       54.30               168    8.65      156        45
+## 5       5       51.85               170   10.33      166        50
+## 6       6       50.55               155    9.93      148        49
+##   BodyWeight Age
+## 1      81.87  38
+## 2      68.15  42
+## 3      70.87  50
+## 4      85.84  44
+## 5      83.12  54
+## 6      59.08  57
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{diffmean}\NormalTok{(Years ~}\StringTok{ }\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
+\KeywordTok{tail}\NormalTok{(treadmill)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##  diffmean 
-## -0.616643
+##    Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse
+## 26      26       44.61               182   11.37      178        62
+## 27      27       40.84               172   10.95      168        57
+## 28      28       39.44               176   13.08      174        63
+## 29      29       39.41               176   12.63      174        58
+## 30      30       39.20               172   12.88      168        44
+## 31      31       37.39               192   14.03      186        56
+##    BodyWeight Age
+## 26      89.47  44
+## 27      69.63  51
+## 28      81.42  44
+## 29      73.37  57
+## 30      91.63  54
+## 31      87.66  45
 \end{verbatim}
 
+While not always required, for many of the analyses, we will tap into a
+large suite of additional functions available in R packages by
+``installing'' (basically downloading) and then ``loading'' the
+packages. There are some packages that we will use frequently, starting
+with the \texttt{mosaic} package (Pruim, Kaplan, and Horton, tab in the
+lower right panel of RStudio. Click on the \textbf{Install} button and
+then type in the name of the package in the box (here type in
+\texttt{mosaic}). RStudio will try to auto-complete the package name you
+are typing which should help you make sure you got it typed correctly.
+This will be the first of \emph{many} times that we will mention that R
+is case sensitive -- in other words, \texttt{Mosaic} is different from
+\texttt{mosaic} in R syntax and this sort of thing applies to everything
+you do in R. You should only need to install each R package once on a
+given computer. If you ever see a message that R can't find a package,
+make sure it appears in the list in the \textbf{Packages} tab and if it
+doesn't, repeat the previous steps to install it.
+
+After installing the package, we need to load it to make it active in a
+given work session. Go to the command prompt and type (or copy and
+paste) \texttt{require(mosaic)} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(mosaic)}
+\end{Highlighting}
+\end{Shaded}
+
+You may see a warning message about versions of the package and versions
+of R -- this is \emph{usually} something you can ignore. Other warning
+messages could be more ominous for proceeding but before getting too
+concerned, there are couple of basic things to check. First, double
+check that the package is installed (see previous steps). Second, check
+for typographical errors in your code -- especially for mis-spellings or
+unintended capitalization. If you are still having issues, try repeating
+the installation process. If that fails, find someone more used to using
+R to help you (for example in the Math Learning Center or by emailing
+your instructor)\footnote{Most computer lab computers at Montana State
+  University have RStudio installed and so provide another venue to try
+  this where the software is already installed.}.
+
+To help you go from basic to intermediate R usage and especially to help
+with more complicated problems, you will want to learn how to manage and
+save your R code. The best way to do this is using the upper left panel
+in RStudio using what are called R Scripts, which are files that have a
+file extension of ``.R''. To start a new ``.R''" file to store your
+code, click on \textbf{File} , then \textbf{New File}, then **R Script*.
+This will create a blank page to enter and edit code -- then save the
+file as MyFileName.R in your preferred location. Saving your code will
+mean that you can return to where you last were working by simply
+re-running the saved script file. With code in the script window, you
+can place the cursor on a line of code or highlight a chunk of code and
+hit the ``Run'' button on the upper part of the panel. It will appear in
+the console with results just like what you would obtain if you typed it
+after the command prompt and hit enter for each line.
+
+Figure \ref{fig:Figure4} shows the screen with the code used in this
+section in the upper left panel, saved in file called Ch0.R, with the
+results of highlighting and executing the first section of code using
+the ``Run'' button.
 
 
+
+\begin{figure}
+\includegraphics[width=26.67in]{chapter0_files/image006} \caption{RStudio with highlighted code run}\label{fig:Figure4}
+\end{figure}
+
+\section{Basic summary statistics, histograms, and boxplots using
+R}\label{basic-summary-statistics-histograms-and-boxplots-using-r}
+
+With RStudio running, the \texttt{mosaic} package loaded, a place to
+write and save code, and the \texttt{treadmill} data set loaded, we can
+(finally!) start to summarize the results of the study. The
+\texttt{treadmill} object is what R calls a
+\textbf{\emph{data.frame}}\footnote{Data frames in R are objects that
+  can contain both categorical and quantitative variables on your n
+  subjects with a name for each variable that is also the name of each
+  column in a matrix. Each subject is a row of the data set.} and
+contains columns corresponding to each variable in the spreadsheet.
+Every function in R will involve specifying the variable(s) of interest
+and how you want to use them. To access a particular variable (column)
+in a data. frame, you can use a \$ between the data. frame name and the
+name of the variable of interest, generically as
+\texttt{dataframename\$variablename}. To identify the \texttt{RunTime}
+variable here it would be \texttt{treadmill\$RunTime}. In the command
+line it would look like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{treadmill$RunTime}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
-## log="y" selected
-## log="y" selected
+##  [1]  8.63  8.17  8.92  8.65 10.33  9.93 10.13 10.08  9.22  8.95 10.85
+## [12]  9.40 11.50 10.50 10.60 10.25 10.00 11.17 10.47 11.95  9.63 10.07
+## [23] 11.08 11.63 11.12 11.37 10.95 13.08 12.63 12.88 14.03
 \end{verbatim}
 
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf}
-\includegraphics{GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf}
+Just as in the previous section, we can generate summary statistics
+using functions like \texttt{mean} and \texttt{sd} by running them on a
+specific variable:
 
-These results suggest that the observed difference was larger than what
-we got when we did a single permutation although it was only a little
-bit larger than a difference we could observe in permutations if we
-ignore the difference in directions. Conceptually, permuting
-observations between group labels is consistent with the null hypothesis
--- this is a technique to generate results that we might have gotten if
-the null hypothesis were true since the responses are the same in the
-two groups if the null is true. We just need to repeat the permutation
-process many times and track how unusual our observed result is relative
-to this distribution of potential responses if the null were true. If
-the observed differences are unusual relative to the results under
-permutations, then there is evidence against the null hypothesis, the
-null hypothesis should be rejected ( Reject \(H_0\)), and a conclusion
-should be made, in the direction of the alternative hypothesis, that
-there is evidence that the true means differ. If the observed
-differences are similar to (or at least not unusual relative to) what we
-get under random shuffling under the null model, we would have a tough
-time concluding that there is any real difference between the groups
-based on our observed data set.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
 
-\section{Permutation testing for the 2 sample mean
-situation}\label{section_2-4}
+\begin{verbatim}
+## [1] 10.58613
+\end{verbatim}
 
-\section{Hypothesis testing (general)}\label{section_2-5}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
 
-\section{Connecting randomization (nonparametric) and parametric
-tests}\label{section_2-6}
+\begin{verbatim}
+## [1] 1.387414
+\end{verbatim}
 
-\section{Second example of permutation tests}\label{section_2-7}
+And now we know that the average running time for 1.5 miles for the
+subjects in the study was 10.6 minutes with a standard deviation (SD) of
+1.39 minutes. But you should remember that the mean and SD are only
+appropriate summaries if the distribution is roughly
+\textbf{\emph{symmetric}} (both sides of the distribution are
+approximately the same). The \texttt{mosaic} package provides a useful
+function called \texttt{favstats} that provides the mean and SD as well
+as the \textbf{\emph{5 number summary}} : the minimum (\texttt{min}),
+the first quartile (\texttt{Q1}, the 25\(^{th}\) percentile), the median
+(50\(^{th}\) percentile), the third quartile (\texttt{Q3} , the
+75\(^{th}\) percentile), and the maximum (\texttt{max}). It also
+provides the number of observations (\texttt{n}) which was 31, as noted
+above, and a count of whether any missing values were encountered
+(\texttt{missing}), which was 0 here since all subjects had measurements
+available on this variable.
 
-\section{Confidence intervals and bootstrapping}\label{section_2-8}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{favstats}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
 
-\section{Bootstrap confidence intervals for difference in
-GPAs}\label{section_2-9}
+\begin{verbatim}
+##   min   Q1 median    Q3   max     mean       sd  n missing
+##  8.17 9.78  10.47 11.27 14.03 10.58613 1.387414 31       0
+\end{verbatim}
 
-\section{Chapter summary}\label{section_2-10}
+We are starting to get somewhere with understanding that the runners
+were somewhat fit with worst runner covering 1.5 miles in 14 minutes
+(the equivalent of a 9.3 minute mile) and the best running at a 5.4
+minute mile pace. The limited variation in the results suggests that the
+sample was obtained from a restricted group with somewhat common
+characteristics. When you explore the ages and weights of the subjects
+in the Practice Problems in Section 0.5, you will get even more
+information about how similar all the subjects in this study were.
 
-\section{Summary of important R code}\label{section_2-11}
+A graphical display of these results will help us to assess the shape of
+the distribution of run times -- including considering the potential for
+the presence of a \textbf{\emph{skew}} (whether the right or left tail
+of the distribution is noticeably more spread out with left skew meaning
+that the left tail is more spread out than the right tail) and
+\textbf{\emph{outliers}}\\
+(unusual observations). A \textbf{\emph{histogram }} is a good place to
+start. Histograms display connected bars with counts of observations
+defining the height of bars based on a set of bins of values of the
+quantitative variable. We will apply the \texttt{hist} function to the
+\texttt{RunTime} variable, which produces Figure \ref{fig:Figure5}.
 
-\section{Practice problems}\label{section_2-12}
+
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{GreenwoodBanner_files/figure-latex/Figure5-1.pdf}
+\caption{\label{fig:Figure5}Histogram of Run Times \#(minutes) of n=31 subjects in
+Treadmill study.}
+\end{figure}
+
+I used the \textbf{Export} button found above the plot, followed by
+\textbf{Copy to Clipboard} and clicking on the \textbf{Copy Plot}
+button. Then if you open your favorite word-processing program, you
+should be able to paste it into a document for writing reports that
+include the figures. You can see the first parts of this process in the
+screen grab in Figure \ref{fig:Figure6}.
+
+
+
+\begin{figure}
+\includegraphics[width=26.67in]{chapter0_files/image010} \caption{RStudio while in the process of copying the histogram}\label{fig:Figure6}
+\end{figure}
+
+You can also directly save the figures as separate files using
+\textbf{Save as Image} or \textbf{Save as PDF}and then insert them into
+your word processing documents.
+
+The function \texttt{hist} defaults into providing a histogram on the
+\textbf{\emph{frequency}} (count) scale. In most R functions, there are
+the default options that will occur if we don't make any specific
+choices but we can override the default options if we desire. One option
+we can modify here is to add labels to the bars to be able to see
+exactly how many observations fell into each bar. Specifically, we can
+turn the \texttt{labels} option ``on'' by making it true (``T'') by
+adding \texttt{labels=T} to the previous call to the \texttt{hist}
+function, separated by a comma:
+
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(treadmill$RunTime, }\DataTypeTok{labels=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{GreenwoodBanner_files/figure-latex/Figure7-1.pdf}
+\caption{\label{fig:Figure7}Histogram of \#Run Times with counts in bars labeled.}
+\end{figure}
+
+Based on this histogram, it does not appear that there any outliers in
+the responses since there are no bars that are separated from the other
+observations. However, the distribution does not look symmetric and
+there might be a skew to the distribution. Specifically, it appears to
+be \textbf{\emph{skewed right}} (the right tail is longer than the
+left). But histograms can sometimes mask features of the data set by
+binning observations and it is hard to find the percentiles accurately
+from the plot.
+
+When assessing outliers and skew, the \textbf{\emph{boxplot}}\\
+(or \emph{Box and Whiskers} plot) can also be helpful (Figure
+\ref{fig:Figure8}) to describe the shape of the distribution as it
+displays the 5-number summary and will also indicate observations that
+are ``far'' above the middle of the observations. R's \texttt{boxplot}
+function uses the standard rule to indicate an observation as a
+\textbf{\emph{potential outlier}} if it falls more than 1.5 times the
+\textbf{\emph{IQR}} (Inter-Quartile Range, calculated as Q3-Q1) below Q1
+or above Q3. The potential outliers are plotted with circles and the
+\emph{Whiskers} (lines that extend from Q1 and Q3 typically to the
+minimum and maximum) are shortened to only go as far as observations
+that are within \(1.5*\)IQR of the upper and lower quartiles. The
+\emph{box} part of the boxplot is a box that goes from Q1 to Q3 and the
+median is displayed as a line somewhere inside the box\footnote{The
+  median, quartiles and whiskers sometimes occur at the same values when
+  there are many tied observations. If you can't see all the components
+  of the boxplot, produce the numerical summary to help you understand
+  what happened.}. Looking back at the summary statistics above, Q1=9.78
+and Q3=11.27, providing an IQR of:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{IQR <-}\StringTok{ }\FloatTok{11.27} \NormalTok{-}\StringTok{ }\FloatTok{9.78}
+\end{Highlighting}
+\end{Shaded}
+
+One observation (the maximum value of 14.03) is indicated as a potential
+outlier based on this result by being larger than Q3 \(+1.5*\)IQR, which
+was 13.505:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{11.27} \NormalTok{+}\StringTok{ }\FloatTok{1.5}\NormalTok{*IQR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13.505
+\end{verbatim}
+
+The boxplot also shows a slight indication of a right skew (skew towards
+larger values) with the distance from the minimum to the median being
+smaller than the distance from the median to the maximum. Additionally,
+the distance from Q1 to the median is smaller than the distance from the
+median to Q3. It is modest skew, but worth noting.
+
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{GreenwoodBanner_files/figure-latex/Figure8-1.pdf}
+\caption{\label{fig:Figure8}Boxplot of 1.5 mile Run Times.}
+\end{figure}
+
+While the default boxplot is fine, it fails to provide good graphical
+labels, especially on the y-axis. Additionally, there is no title on the
+plot. The following code provides some enhancements to the plot by using
+the \texttt{ylab} and \texttt{main} options in the call to
+\texttt{boxplot}, with the results displayed in Figure
+\ref{fig:Figure9}. When we add text to plots, it will be contained
+within quotes and be assigned into the options \texttt{ylab} (for
+y-axis) or \texttt{main} (for the title) here to put it into those
+locations.
+
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(treadmill$RunTime, }\DataTypeTok{ylab=}\StringTok{"1.5 Mile Run Time (minutes)"}\NormalTok{, }
+        \DataTypeTok{main=}\StringTok{"Boxplot of the Run Times of n=31 participants"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{GreenwoodBanner_files/figure-latex/Figure9-1.pdf}
+\caption{\label{fig:Figure9}Boxplot of Run Times with improved labels.}
+\end{figure}
+
+Throughout the book, we will often use extra options to make figures
+that are easier for you to understand. There are often simpler versions
+of the functions that will suffice but the extra work to get better
+labeled figures is often worth it. I guess the point is that ``a picture
+is worth a thousand words'' but in data visualization, that is only true
+if the reader can understand what is being displayed. It is also
+important to think about the quality of the information that is being
+displayed, regardless of how pretty the graphic might be.
+
+All the previous results were created by running the R code and then
+``grabbing'' the results from either the console or by copying the
+figure. There is another way to use RStudio where you can have it
+compile the results (both output and figures) directly into a document
+together with the code that generated it, using what is called RMarkdown
+(\url{http://shiny.rstudio.com/articles/rmarkdown.html}). It adds some
+additional setup complexity we want to avoid for now but is what we used
+to do all the analyses that follow in the book. The main reason to
+mention this is that you will see a change in formatting of the R code
+and output from here forward as you will no longer see the command
+prompt (``\textgreater{}'') with the code. The output will be flagged by
+having two ``\#\#'''s before it. For example, the summary statistics for
+the \emph{RunTime} variable from `\texttt{favstats} function would look
+like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{favstats}\NormalTok{(treadmill$RunTime)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   min   Q1 median    Q3   max     mean       sd  n missing
+##  8.17 9.78  10.47 11.27 14.03 10.58613 1.387414 31       0
+\end{verbatim}
+
+Statisticians (and other scientists) are starting to use these methods
+because they provide what is called ``Reproducible research'' (Gandrud,
+2015) where all the code and output it produced are available in a
+single place. This allows different researchers to run and verify
+results or the original researchers to revisit their earlier work at a
+later date and recreate all their results. Scientific publications are
+currently encouraging researchers to work in this way and may someday
+require it. In this book, we focus on the R code and show the results
+from running it, but you may want to consider exploring these
+alternative options.
+
+Finally, when you are done with your work and attempt to exit out of
+RStudio, it will ask you to save your workspace. You do not need to do
+this and would be better served not to do this. If you are in the
+practice of saving your workspace, you will end up with tons of data.
+frames that open each time you use it and it will be harder to find and
+manage the ones you are currently working with. If you save your R code
+via the script window, you can re-create any results by simply
+re-running that code. If you find that you have lots of ``stuff'' in
+your workspace, just run \texttt{rm(list\ =\ ls())}. It will delete all
+the data sets from your workspace.
+
+\section{Chapter summary}\label{chapter-summary}
+
+This chapter covered getting R and RStudio downloaded and some basics of
+working with R via RStudio. You should be able to read a data set into R
+and run some basic functions, all done using the RStudio interface. If
+you are struggling with this, you should seek additional help with these
+technical issues so that you are ready for more complicated statistical
+methods that are going to be encountered in the following chapters. For
+most assignments, we will give you a seed of the basic R code that you
+need and then you will modify it to work on your data set of interest.
+As mentioned previously, the way everyone learns R is by starting with
+some example code that does most of what you want to do and then you
+modify it. If you can complete the Practice Problems that follow, you
+are well on your way to learning to use R.
+
+The statistical methods in this chapter were minimal and all should have
+been review. They involved a quick reminder of summarizing the center,
+spread, and shape of distributions using numerical summaries of the mean
+and SD and/or the min, Q1, median, Q3, and max and the histogram and
+boxplot as graphical summaries. We revisited the ideas of symmetry and
+skew. But the main point was really to get a start on using R to provide
+results you should be familiar with from your previous statistics
+experience(s).
+
+\section{Important R Code}\label{important-r-code}
+
+To help you learn and use R, there is a section highlighting the most
+important R code used near the end of each chapter. The dark text will
+never change but the lighter (red) text will need to be customized to
+your particular application. The sub-bullet for each function will
+discuss the use of the function and pertinent options or packages
+required. You can use this as a guide to finding the function names and
+some hints about options that will help you to get the code to work or
+you can revisit the worked examples using each of the functions.
+
+\begin{itemize}
+\item
+  FILENAME
+  \texttt{\textless{}-\ read.csv("path\ to\ csv\ file/FILENAME.csv")}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can be generated using ``Import Dataset'' button or by modifying
+    this text.
+  \end{itemize}
+\item
+  DATASETNAME \texttt{\$}VARIABLENAME
+
+  \begin{itemize}
+  \tightlist
+  \item
+    To access a particular variable in a data. frame called DATASETNAME,
+    use a \$ and then the VARIABLENAME.
+  \end{itemize}
+\item
+  \texttt{head(}DATASETNAME\texttt{)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Provides a list of the first few rows of the data set for all the
+    variables in it.
+  \end{itemize}
+\item
+  \texttt{mean(}DATASETNAME\texttt{\$}VARIABLENAME\texttt{)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Calculates the mean of the observations in a variable.
+  \end{itemize}
+\item
+  \texttt{sd(}DATASETNAME\texttt{\$}VARIABLENAME\texttt{)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Calculates the SD of the observations in a variable.
+  \end{itemize}
+\item
+  \texttt{favstats(}DATASETNAME\texttt{\$}VARIABLENAME\texttt{)}
+
+  \begin{itemize}
+  \item
+    Provides a suite of numerical summaries of the observations in a
+    variable.
+  \item
+    Requires the package to be loaded (\texttt{require(mosaic}) after
+    installing the package).
+  \end{itemize}
+\item
+  \texttt{hist(}DATASETNAME\texttt{\$}VARIABLENAME\texttt{)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Makes a histogram.
+  \end{itemize}
+\item
+  \texttt{boxplot(}DATASETNAME\texttt{\$}VARIABLENAME\texttt{)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Makes a boxplot.
+  \end{itemize}
+\end{itemize}
+
+\section{Practice problems}\label{practice-problems}
+
+In each chapter, the last section contains some questions for you to
+complete to make sure you understood the material. You can download the
+code to answer questions 0.1 to 0.5 below at
+\url{http://www.math.montana.edu/courses/s217/documents/Ch0.Rmd}. But to
+practice learning R, it would be most useful for you to try to
+accomplish the requested tasks yourself and then only refer to the
+provided R code if/when you struggle. These questions provide a great
+venue to check your learning, often to see the methods applied to
+another data set, and for something to discuss in study groups, with
+your instructor, and/or at the Math Learning Center.
+
+0.1. Read in the treadmill data set discussed above and find the mean
+and SD of the Ages (\emph{Age} variable) and Body Weights
+(\emph{BodyWeight} variable). In studies involving human subjects, it is
+common to report a summary of characteristics of the subjects. Why does
+this matter? Think about how your interpretation of any study of the
+fitness of subjects would change if the mean age had been 20 years older
+or 35 years younger.
+
+0.2. How does knowing about the distribution of results for \emph{Age}
+and \emph{BodyWeight} help you understand the results for the Run Times
+discussed above?
+
+0.3. The mean and SD are most useful as summary statistics only if the
+distribution is relatively symmetric. Make a discuss the shape of the
+distribution (is it skewed right, skewed left, approximately symmetric?;
+are there outliers?). Approximately what range of ages does this study
+pertain to?
+
+0.4. The weight responses are in kilograms and you might prefer to see
+them in pounds. The conversion is lbs=2. 205\emph{kgs. Create a new
+variable in the \texttt{treadmill}\\
+data.frame called }BWlb* using this code:
+
+\texttt{treadmill\$BWlb\ \textless{}-\ 2.\ 205*treadmill\$BodyWeight}
+
+and find the mean and SD of the new variable (\emph{BWlb}).
+
+0.5. Make histograms and boxplots of the original \emph{BodyWeight} and
+new \emph{BWlb} variables. Discuss aspects of the distributions that
+changed and those that remained the same with the transformation from
+kilograms to pounds.
+
+\chapter{Placeholder}\label{placeholder}
 
 \bibliography{packages,book}
 
