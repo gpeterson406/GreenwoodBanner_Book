@@ -1,2 +1,15 @@
 \contentsline {chapter}{Acknowledgments}{5}{chapter*.2}
 \contentsline {chapter}{\numberline {1}Placeholder}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}(R)e-Introduction to statistics}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Histograms, boxplots, and density curves}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Beanplots}{18}{section.2.2}
+\contentsline {section}{\numberline {2.3}Models, hypotheses, and permutations for the 2 sample mean situation}{22}{section.2.3}
+\contentsline {section}{\numberline {2.4}Permutation testing for the 2 sample mean situation}{28}{section.2.4}
+\contentsline {section}{\numberline {2.5}Hypothesis testing (general)}{28}{section.2.5}
+\contentsline {section}{\numberline {2.6}Connecting randomization (nonparametric) and parametric tests}{28}{section.2.6}
+\contentsline {section}{\numberline {2.7}Second example of permutation tests}{28}{section.2.7}
+\contentsline {section}{\numberline {2.8}Confidence intervals and bootstrapping}{28}{section.2.8}
+\contentsline {section}{\numberline {2.9}Bootstrap confidence intervals for difference in GPAs}{28}{section.2.9}
+\contentsline {section}{\numberline {2.10}Chapter summary}{28}{section.2.10}
+\contentsline {section}{\numberline {2.11}Summary of important R code}{28}{section.2.11}
+\contentsline {section}{\numberline {2.12}Practice problems}{28}{section.2.12}

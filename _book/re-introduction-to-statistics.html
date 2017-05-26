@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Second Semester Statistics Course with R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="A Second Semester Statistics Course with R">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Second Semester Statistics Course with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="gpeterson406/GreenwoodBanner_Book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Second Semester Statistics Course with R" />
+  
+  
+  
+
+<meta name="author" content="Mark Greenwood and Katherine Banner">
+
+
+<meta name="date" content="2017-05-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="preface.html">
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="1" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="preface.html"><a href="preface.html#overview-of-methods"><i class="fa fa-check"></i><b>1.1</b> Overview of methods</a></a></li>
+<li class="chapter" data-level="1.2" data-path="preface.html"><a href="preface.html#getting-started-in-r"><i class="fa fa-check"></i><b>1.2</b> Getting started in R</a></li>
+<li class="chapter" data-level="1.3" data-path="preface.html"><a href="preface.html#basic-summary-statistics-histograms-and-boxplots-using-r"><i class="fa fa-check"></i><b>1.3</b> Basic summary statistics, histograms, and boxplots using R</a></li>
+<li class="chapter" data-level="1.4" data-path="preface.html"><a href="preface.html#chapter-summary"><i class="fa fa-check"></i><b>1.4</b> Chapter summary</a></li>
+<li class="chapter" data-level="1.5" data-path="preface.html"><a href="preface.html#important-r-code"><i class="fa fa-check"></i><b>1.5</b> Important R Code</a></li>
+<li class="chapter" data-level="1.6" data-path="preface.html"><a href="preface.html#practice-problems"><i class="fa fa-check"></i><b>1.6</b> Practice problems</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html"><i class="fa fa-check"></i><b>2</b> (R)e-Introduction to statistics</a><ul>
+<li class="chapter" data-level="2.1" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-1"><i class="fa fa-check"></i><b>2.1</b> Histograms, boxplots, and density curves</a></li>
+<li class="chapter" data-level="2.2" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-2"><i class="fa fa-check"></i><b>2.2</b> Beanplots</a></li>
+<li class="chapter" data-level="2.3" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-3"><i class="fa fa-check"></i><b>2.3</b> Models, hypotheses, and permutations for the 2 sample mean situation</a></li>
+<li class="chapter" data-level="2.4" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-4"><i class="fa fa-check"></i><b>2.4</b> Permutation testing for the 2 sample mean situation</a></li>
+<li class="chapter" data-level="2.5" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-5"><i class="fa fa-check"></i><b>2.5</b> Hypothesis testing (general)</a></li>
+<li class="chapter" data-level="2.6" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-6"><i class="fa fa-check"></i><b>2.6</b> Connecting randomization (nonparametric) and parametric tests</a></li>
+<li class="chapter" data-level="2.7" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-7"><i class="fa fa-check"></i><b>2.7</b> Second example of permutation tests</a></li>
+<li class="chapter" data-level="2.8" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section2-8"><i class="fa fa-check"></i><b>2.8</b> Confidence intervals and bootstrapping</a></li>
+<li class="chapter" data-level="2.9" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-9"><i class="fa fa-check"></i><b>2.9</b> Bootstrap confidence intervals for difference in GPAs</a></li>
+<li class="chapter" data-level="2.10" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-10"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
+<li class="chapter" data-level="2.11" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-11"><i class="fa fa-check"></i><b>2.11</b> Summary of important R code</a></li>
+<li class="chapter" data-level="2.12" data-path="re-introduction-to-statistics.html"><a href="re-introduction-to-statistics.html#section_2-12"><i class="fa fa-check"></i><b>2.12</b> Practice problems</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Second Semester Statistics Course with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="re-introduction-to-statistics" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> (R)e-Introduction to statistics</h1>
+<p>The previous material served to get us started in R and to get a quick review of same basic descriptive statistics. Now we will begin to engage some new material and exploit the power of R to do some statistical inference. Because inference is one of the hardest topics to master in statistics, we will also review some basic terminology that is required to move forward in learning more sophisticated statistical methods. To keep this “review” as short as possible, we will not consider every situation you learned in introductory statistics and instead focus exclusively on the situation where we have a quantitative response variable measured on two groups, adding a new graphic called a “bean plot” to help us see the differences in the observations in the groups.</p>
+<div id="section_2-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Histograms, boxplots, and density curves</h2>
+<p>Part of learning statistics is learning to correctly use the terminology, some of which is used colloquially differently than it is used in formal statistical settings. The most commonly “misused” term is <strong><em>data</em></strong>. In statistical parlance, we want to note the plurality of data. Specifically, <strong><em>datum</em></strong> is a single measurement, possibly on multiple random variables, and so it is appropriate to say that “<strong>a datum is…</strong>”. Once we move to discussing data, we are now referring to more than one observation, again on one, or possibly more than one, random variable, and so we need to use “<strong>data are…</strong>” when talking about our observations. We want to distinguish our use of the term “data” from its more colloquial<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> usage that often involves treating it as singular. In a statistical setting “data” refers to measurements of our cases or units. When we summarize the results of a study (say providing the mean and SD), that information is not “data”. We used our data to generate that information. Sometimes we also use the term “data set” to refer to all our observations and this is a singular term to refer to the group of observations and this makes it really easy to make mistakes on the usage of this term.</p>
+<p>It is also really important to note that <strong><em>variables</em></strong> have to vary – if you measure the sex of your subjects but are only measuring females, then you do not have a “variable”. You may not know if you have real variability in a “variable” until you explore the results you obtained.</p>
+<p>The last, but probably most important, aspect of data is the context of the measurement. The “who, what, when, and where” of the collection of the observations is critical to the sort of conclusions we can make based on the results. The information on the study design provides information required to assess the scope of inference of the study. Generally, remember to think about the research questions the researchers were trying to answer and whether their study actually would answer those questions. There are no formulas to help us sort some of these things out, just critical thinking about the context of the measurements.</p>
+<p>To make this concrete, consider the data collected from a study (Plaster, 1989) to investigate whether perceived physical attractiveness had an impact on the sentences or perceived seriousness of a crime that male jurors might give to female defendants. The researchers showed the participants in the study (men who volunteered from a prison) pictures of one of three young women. Each picture had previously been decided to be either beautiful, average, or unattractive by the researchers. Each “juror” was randomly assigned to one of three levels of this factor (which is a categorical predictor or explanatory variable) and then each rated their picture on a variety of traits such as how warm or sincere the woman appeared. Finally, they were told the women had committed a crime (also randomly assigned to either be told she committed a burglary or a swindle) and were asked to rate the seriousness of the crime and provide a suggested length of sentence. We will bypass some aspects of their research and just focus on differences in the sentence suggested among the three pictures. To get a sense of these data, let’s consider the first and last parts of the data set:</p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="16%" />
+<col width="16%" />
+<col width="10%" />
+<col width="13%" />
+<col width="18%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Subject</th>
+<th align="left">Attr</th>
+<th align="left">Crime</th>
+<th align="left">Years</th>
+<th align="left">Serious</th>
+<th align="left">independent</th>
+<th align="left">Sincere</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Beautiful</td>
+<td align="left">Burglary</td>
+<td align="left">10</td>
+<td align="left">8</td>
+<td align="left">9</td>
+<td align="left">8</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Beautiful</td>
+<td align="left">Burglary</td>
+<td align="left">3</td>
+<td align="left">8</td>
+<td align="left">9</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">Beautiful</td>
+<td align="left">Burglary</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">3</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">Beautiful</td>
+<td align="left">Burglary</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">9</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">Beautiful</td>
+<td align="left">Burglary</td>
+<td align="left">7</td>
+<td align="left">9</td>
+<td align="left">5</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+<tr class="odd">
+<td align="left">108</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">109</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">9</td>
+<td align="left">9</td>
+</tr>
+<tr class="odd">
+<td align="left">110</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">8</td>
+<td align="left">8</td>
+</tr>
+<tr class="even">
+<td align="left">111</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">9</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">112</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">6</td>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">113</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">12</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">114</td>
+<td align="left">Average</td>
+<td align="left">Swindle</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">1</td>
+<td align="left">5</td>
+</tr>
+</tbody>
+</table>
+<p>When working with data, we should always start with summarizing the sample size. We will use <strong><em>n</em></strong> for the number of subjects in the sample and denote the population size (if available) with <strong><em>N</em></strong>. Here, the sample size is <strong><em>n=114</em></strong>. In this situation, we do not have a random sample from a population (these were volunteers from the population of prisoners at the particular prison) so we cannot make inferences to a larger group. But we can assess whether there is a <strong><em>causal effect</em></strong><a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>: if sufficient evidence is found to conclude that there is some difference in the responses across the treated groups, we can attribute those differences to the treatments applied, since the groups should be same otherwise due to the pictures being randomly assigned to the “jurors”. The story of the data set ? that it was collected on prisoners – becomes pretty important in thinking about the ramifications of any results. Are male prisoners different from the population of college males or all residents of a state such as Montana? If so, then we should not assume that the detected differences, if detected, would also exist in some other group of male subjects. The lack of a random sample makes it impossible to assume that this set of prisoners might be like other prisoners. So there are definite limitations to the inferences in the following results. But it is still interesting to see if the pictures caused a difference in the suggested mean sentences, even though the inferences are limited to this group of prisoners. If this had been an observational study (suppose that the prisoners could select one of the three pictures), then we would have to avoid any of the “causal” language that we can consider here because the pictures were not randomly assigned to the subjects. Without random assignment, the explanatory variable of picture choice could be <strong><em>confounded</em></strong> with another characteristic of prisoners that was related to which picture they selected and the rating they provided. Confounding is not the only reason to avoid causal statements with non-random assignment but the inability to separate the effect of other variables (measured or unmeasured) from the differences we are observing means that our inferences in these situations need to be carefully stated.</p>
+<p>Instead of loading this data set into R using the “Import Dataset” functionality, we can load an R package that contains the data, making for easy access to this data set. The package called <code>heplots</code> contains a data set called MockJury that contains the results of the study. We also rely the R package called <code>mosaic</code> (Pruim, Kaplan, and Horton, 2016) that was introduced previously. First (but only once), you need to install both packages, which can be done either using the Packages tab in the lower right panel of R-studio or using the <code>install.packages</code> function with quotes around the package name:</p>
+
+<p>After making sure that both packages are installed, we use the <code>require</code> function around the package name (no quotes now!) to load the package, something that you need to do any time you want to use features of a package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(heplots)
+<span class="kw">require</span>(mosaic)</code></pre></div>
+<p>There will be some results of the loading process that may discuss loading other required packages. If the output says that it needs a package that is unavailable, then follow the same process noted above to install that package as well.</p>
+<p>To load the data set that is available in an active package, we use the <code>data</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(MockJury)</code></pre></div>
+<p>Now there will be a data.frame called <code>MockJury</code> available for us to analyze and some information about it in the Environment tab. Again, we can find out more about the data set in a couple of ways. First, we can use the <code>View</code> function to provide a spreadsheet type of display in the upper left panel. Second, we can use the <code>head</code> and <code>tail</code> functions to print out the beginning and end of the data set. Because there are so many variables, it may wrap around to show all the columns.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(MockJury)
+<span class="kw">head</span>(MockJury)</code></pre></div>
+<pre><code>##        Attr    Crime Years Serious exciting calm independent sincere warm
+## 1 Beautiful Burglary    10       8        6    9           9       8    5
+## 2 Beautiful Burglary     3       8        9    5           9       3    5
+## 3 Beautiful Burglary     5       5        3    4           6       3    6
+## 4 Beautiful Burglary     1       3        3    6           9       8    8
+## 5 Beautiful Burglary     7       9        1    1           5       1    8
+## 6 Beautiful Burglary     7       9        1    5           7       5    8
+##   phyattr sociable kind intelligent strong sophisticated happy ownPA
+## 1       9        9    9           6      9             9     5     9
+## 2       9        9    4           9      5             5     5     7
+## 3       7        4    2           4      5             4     5     5
+## 4       9        9    9           9      9             9     9     9
+## 5       8        9    4           7      9             9     8     7
+## 6       8        9    5           8      9             9     9     9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(MockJury)</code></pre></div>
+<pre><code>##        Attr   Crime Years Serious exciting calm independent sincere warm
+## 109 Average Swindle     3       2        7    6           9       9    6
+## 110 Average Swindle     2       1        8    8           8       8    8
+## 111 Average Swindle     7       4        1    6           9       1    1
+## 112 Average Swindle     6       3        5    3           5       2    4
+## 113 Average Swindle    12       9        1    9           9       1    1
+## 114 Average Swindle     8       8        1    9           1       5    1
+##     phyattr sociable kind intelligent strong sophisticated happy ownPA
+## 109       4        7    6           8      6             5     7     2
+## 110       8        9    9           9      9             9     9     6
+## 111       1        9    4           1      1             1     1     9
+## 112       1        4    9           3      3             9     5     3
+## 113       1        9    1           9      9             1     9     1
+## 114       1        9    1           1      9             5     1     1</code></pre>
+<p>When data sets are loaded from packages, there is often extra documentation available about the data set which can be accessed using the help function. In this case, it will bring up a screen with information about the study and each variable that was measured.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(MockJury)</code></pre></div>
+<p>The help function is also useful with functions in R to help you understand options and, at the bottom of the help, see examples of using the function.</p>
+<p>With many variables in a data set, it is often useful to get some quick information about all of them; the <code>summary</code> function provides useful information whether the variables are categorical or quantitative and notes if any values were missing.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(MockJury)</code></pre></div>
+<pre><code>##            Attr         Crime        Years           Serious     
+##  Beautiful   :39   Burglary:59   Min.   : 1.000   Min.   :1.000  
+##  Average     :38   Swindle :55   1st Qu.: 2.000   1st Qu.:3.000  
+##  Unattractive:37                 Median : 3.000   Median :5.000  
+##                                  Mean   : 4.693   Mean   :5.018  
+##                                  3rd Qu.: 7.000   3rd Qu.:6.750  
+##                                  Max.   :15.000   Max.   :9.000  
+##     exciting          calm        independent       sincere     
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:3.000   1st Qu.:4.250   1st Qu.:5.000   1st Qu.:3.000  
+##  Median :5.000   Median :6.500   Median :6.500   Median :5.000  
+##  Mean   :4.658   Mean   :5.982   Mean   :6.132   Mean   :4.789  
+##  3rd Qu.:6.000   3rd Qu.:8.000   3rd Qu.:8.000   3rd Qu.:7.000  
+##  Max.   :9.000   Max.   :9.000   Max.   :9.000   Max.   :9.000  
+##       warm         phyattr        sociable          kind      
+##  Min.   :1.00   Min.   :1.00   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:2.00   1st Qu.:2.00   1st Qu.:5.000   1st Qu.:3.000  
+##  Median :5.00   Median :5.00   Median :7.000   Median :5.000  
+##  Mean   :4.57   Mean   :4.93   Mean   :6.132   Mean   :4.728  
+##  3rd Qu.:7.00   3rd Qu.:8.00   3rd Qu.:8.000   3rd Qu.:7.000  
+##  Max.   :9.00   Max.   :9.00   Max.   :9.000   Max.   :9.000  
+##   intelligent        strong      sophisticated       happy      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:4.000   1st Qu.:4.000   1st Qu.:3.250   1st Qu.:3.000  
+##  Median :7.000   Median :6.000   Median :5.000   Median :5.000  
+##  Mean   :6.096   Mean   :5.649   Mean   :5.061   Mean   :5.061  
+##  3rd Qu.:8.750   3rd Qu.:7.000   3rd Qu.:7.000   3rd Qu.:7.000  
+##  Max.   :9.000   Max.   :9.000   Max.   :9.000   Max.   :9.000  
+##      ownPA      
+##  Min.   :1.000  
+##  1st Qu.:5.000  
+##  Median :6.000  
+##  Mean   :6.377  
+##  3rd Qu.:9.000  
+##  Max.   :9.000</code></pre>
+<p>If we take a few moments to explore the output we can discover some useful aspects of the data set. The output is organized by variable, providing summary information based on the type of variable, either counts by category for categorical variables <code>Attr</code><br />
+and <code>Crime</code> mean for quantitative variables. If present, you would also get a count ofmissing values that are called “NAs” in R. For the first variable, called <code>Attr</code> in the data.frame and that we might we find counts of the number of subjects shown each picture: 37/114 viewed the “Unattractive” picture, 38 viewed “Average”, and 39 viewed “Beautiful”. We can also see that suggested prison sentences (data.frame variable <code>Years</code> ) ranged from 1 year to 15 years with a median of 3 years. It seems that all the other variables except for <em>Crime</em> (type of crime that they were told the pictured woman committed) contained responses between 1 and 9 based on rating scales from 1 = low to 9 = high.</p>
+<p>To accompany the numerical summaries, histograms, and boxplots can provide some initial information on the shape of the distribution of the responses for the Figure <a href="re-introduction-to-statistics.html#fig:Figure2-1">2.1</a> contains the histogram and boxplot of Years, ignoring any information on which picture the “jurors” were shown. The calls to the two plotting functions are enhanced slightly to add better labels.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(MockJury$Years, <span class="dt">xlab=</span><span class="st">&quot;Years&quot;</span>, <span class="dt">labels=</span>T, <span class="dt">main=</span><span class="st">&quot;Histogram of Years&quot;</span>)
+<span class="kw">boxplot</span>(MockJury$Years, <span class="dt">ylab=</span><span class="st">&quot;Years&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Boxplot of Years&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-1"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-1-1.png" alt="Histogram and boxplot of suggested sentences in years." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-1-2.png" alt="Histogram and boxplot of suggested sentences in years." width="288" />
+<p class="caption">
+Figure 2.1: Histogram and boxplot of suggested sentences in years.
+</p>
+</div>
+<p>The distribution appears to have a strong right skew with three observations at 15 years flagged as potential outliers. You can only tell that there are three observations and that they are at 15 by looking at both plots – the bar around 15 years in the histogram has a count of three and the boxplot only shows a single point at 15 which is actually three tied points at exactly 15 years plotted on top of each other (we call this “overplotting”). These three observations really seem to be the upper edge of the overall pattern of a strongly right skewed distribution, so even though they are flagged in the boxplot, we likely would not want to remove them from our data set. In real data sets, outliers are commonly encountered and the first step is to verify that they were not errors in recording. The next step is to study their impact on the statistical analyses performed, potentially considering reporting results with and without the influential observation(s) in the results. If the analysis is unaffected by the “unusual” observations, then it matters little whether they are dropped or not. If they do affect the results, then reporting both versions of results allows the reader to judge the impacts for themselves. It is important to remember that sometimes the outliers are the most interesting part of the data set.</p>
+<p>Often when statisticians think of distributions, we think of the smooth underlying shape that led to the data set that is being displayed in the histogram. Instead of binning up observations and making bars in the histogram, we can estimate what is called a <strong><em>density curve </em></strong> as a smooth curve that represents the observed distribution of the responses. Density curves can sometimes help us see features of the data sets more clearly.</p>
+<p>To understand the density curve, it is useful to initially see the histogram and density curve together. The density curve is scaled so that the total area<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> under the curve is 1. To make a comparable histogram, the y-axis needs to be scaled so that the histogram is also on the “density” scale which makes the bar heights required so that the proportion of the total data set in each bar is represented by the area in each bar (remember that area is height times width). So the height depends on the width of the bars and the total area across all the bars has to be 1. In the <code>hist</code> function, the <code>freq=F</code> to get density-scaled histogram bars. The density curve is added to the histogram using the R code of <code>lines(density())</code>, producing the result in Figure 1-2 with added modifications of options for <code>lwd</code> (line width) and <code>col</code> (color) to make the plot more interesting. You can see how the density curve somewhat matches the histogram bars but deals with the bumps up and down and edges a little differently. We can pick out the strong right skew using either display and will rarely make both together.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(MockJury$Years,<span class="dt">freq=</span>F,<span class="dt">xlab=</span><span class="st">&quot;Years&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Histogram of Years&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(MockJury$Years),<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-2"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-2-1.png" alt="Histogram and density curve of Years data." width="672" />
+<p class="caption">
+Figure 2.2: Histogram and density curve of Years data.
+</p>
+</div>
+<p>Histograms can be sensitive to the choice of the number of bars and even the cut-offs used to define the bins for a given number of bars. Small changes in the definition of cut-offs for the bins can have noticeable impacts on the shapes observed but this does not impact density curves. We are not going to tinker with the default choices for bars in histogram as they are reasonably selected, but we can add information on the original observations being included in each bar to better understand the choices that <code>hist</code> is making. In the previous display, we can add what is called a <strong><em>rug</em></strong> to the plot, were a tick mark is made on the x-axis for each observation. Because the responses were provided as whole years (1, 2, 3, …, 15), we need to use a graphical technique called <strong><em>jittering</em></strong> to add a little noise<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> to each observation so all the observations at each year value do not plot as a single line. In Figure <a href="re-introduction-to-statistics.html#fig:Figure2-3">2.3</a>, the added tick marks on the x-axis show the approximate locations of the original observations. We can see how there are 3 observations at 15 (all were 15 and the noise added makes it possible to see them all). The limitations of the histogram arise around the 10 year sentence area where there are many responses at 10 years and just one at both 9 and 11 years, but the histogram bars sort of miss this that aspect of the data set. The density curve did show a small bump at 10 years. Density curves are, however, not perfect and this one shows area for sentences less than 0 years which is not possible here.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(MockJury$Years, <span class="dt">freq=</span>F, <span class="dt">xlab=</span><span class="st">&quot;Years&quot;</span>,
+     <span class="dt">main=</span><span class="st">&quot;Histogram of Years with density curve and rug&quot;</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(MockJury$Years),<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">rug</span>(<span class="kw">jitter</span>(MockJury$Years),<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-3"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-3-1.png" alt="Histogram with density curve and rug plot of the jittered responses." width="672" />
+<p class="caption">
+Figure 2.3: Histogram with density curve and rug plot of the jittered responses.
+</p>
+</div>
+<p>The graphical tools we’ve just discussed are going to help us move to comparing the distribution of responses across more than one group. We will have two displays that will help us make these comparisons. The simplest is <em>the <strong>side-by-side boxplot</strong></em>, where a boxplot is displayed for each group of interest using the same y-axis scaling. In R, we can use its <strong><em>formula</em></strong> notation to see if the response (<code>Years</code>) differs based on the group (<code>Attr</code>) by using something like <code>Y~X</code> or, here, <code>Years~Attr</code> . We also need to tell R where to find the variables – use the last option in the command, <code>data=DATASETNAME</code> , to inform R of the data.frame to look in to find the variables. In this example, <code>data=MockJury</code>. We will use the formula and <code>data=...</code> options in almost every function we use from here forward. Figure <a href="re-introduction-to-statistics.html#fig:Figure2-4">2.4</a> contains the side-by-side boxplots showing right skew for all the groups, slightly higher median and more variability for the <em>Unattractive</em> group along with some potential outliers indicated in two of the three groups.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Years~Attr,<span class="dt">data=</span>MockJury)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-4"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-4-1.png" alt="Side-by-side boxplot of Years based on picture groups." width="672" />
+<p class="caption">
+Figure 2.4: Side-by-side boxplot of Years based on picture groups.
+</p>
+</div>
+<p>The “~” (which is read as the <em>tilde</em> symbol, which you can find in the upper left corner of your keyboard) notation will be used in two ways this semester. The formula use in R employed previously declares that the response variable here is <em>Years</em> and the explanatory variable is <em>Attr</em>. The other use for “~” is as shorthand for “is distributed as” and is used in the context of <code>Y~N(0,1)</code>, which translates (in statistics) to defining the random variable <em>Y</em> as following a Normal distribution<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> with mean 0 and standard deviation of 1. In the current situation, we could ask whether the <code>Years</code> variable seems like it may follow a normal distribution, in other words, is <em>Years</em><code>~N(0,1)</code>? Since the responses are right skewed with some groups having outliers, it is not reasonable to assume that the <em>Years</em> variable for any of the three groups may follow a Normal distribution (more later on the issues this creates!). Remember that<br />
+<span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are parameters where<br />
+<span class="math inline">\(\mu\)</span> (“mu”) is our standard symbol for the <strong><em>population mean</em></strong> and that <span class="math inline">\(\sigma\)</span> (“sigma”) is the symbol of the<br />
+<strong><em>population standard deviation</em></strong>.</p>
+</div>
+<div id="section_2-2" class="section level2">
+<h2><span class="header-section-number">2.2</span> Beanplots</h2>
+<p>The other graphical display for comparing multiple groups we will use is a newer display called a <strong><em>beanplot</em></strong> (Kampstra, 2008). Figure <a href="re-introduction-to-statistics.html#fig:Figure2-5">2.5</a> shows an example of a beanplot that provides a side-by-side display that contains the density curves, the original observations that generated the density curve in a (jittered) rug-plot, the mean of each group, and the overall mean of the entire data set. For each group, the density curves are mirrored to aid in visual assessment of the shape of the distribution, which makes a “bean” in some cases. This mirroring also creates a shape that resembles a violin with skewed distributions so this display has also been called a “violin plot”. The innovation in the beanplot is to add bold horizontal lines at the mean for each group. It also adds a lighter dashed line for the overall mean. All together this plot shows us information on the center (mean), spread, and shape of the distributions of the responses. Our inferences typically focus on the means of the groups and this plot allows us to compare those across the groups while gaining information on the shapes of the distributions of responses in each group.</p>
+<p>To use the <code>beanplot</code> function we need to install and load the <code>beanplot</code> package. The function works like the boxplot used previously except that options for <code>log</code>, <code>col</code>, and <code>method</code> need to be specified. Use these<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a> options for any beanplots you make: <code>log=&quot;&quot;, col=&quot;bisque&quot;, method=&quot;jitter&quot;</code></p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(beanplot)
+<span class="kw">beanplot</span>(Years~Attr,<span class="dt">data=</span>MockJury,<span class="dt">log=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;bisque&quot;</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-5"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-5-1.png" alt="Beanplot of Years by picture group. Long, bold lines correspond to mean of each group." width="672" />
+<p class="caption">
+Figure 2.5: Beanplot of Years by picture group. Long, bold lines correspond to mean of each group.
+</p>
+</div>
+<p>Figure <a href="re-introduction-to-statistics.html#fig:Figure2-5">2.5</a> reinforces the strong right skews that were also detected in the boxplots previously. The three large sentences of 15 years can now be clearly identified, with one in the <em>Beautiful</em> group and two in the <em>Unattractive</em> group. The <em>Unattractive</em> group seems to have more high observations than the other groups even though the <em>Beautiful</em> group had the largest number of observations around 10years. The mean sentence was highest for the <em>Unattractive</em> group and the difference in the means between <em>Beautiful</em> and <em>Average</em> was small.</p>
+<p>In this example, it appears that the mean for <em>Unattractive</em> is larger than the other two groups. But is this difference real? We will never know the answer to that question, but we can assess how likely we are to have seen a result as extreme or more extreme than our result, assuming that there is no difference in the means of the groups. And if the observed result is (extremely) unlikely to occur, then we can reject the hypothesis that the groups have the same mean and conclude that there is evidence of a real difference. To start exploring whether there are differences in the means, we need to have numerical values to compare. We can get means and standard deviations by groups easily using the same formula notation with the <code>mean</code> and <code>sd</code> functions if the <code>mosaic</code> package is loaded.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data =</span> MockJury)</code></pre></div>
+<pre><code>##    Beautiful      Average Unattractive 
+##     4.333333     3.973684     5.810811</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data =</span> MockJury)</code></pre></div>
+<pre><code>##    Beautiful      Average Unattractive 
+##     3.405362     2.823519     4.364235</code></pre>
+<p>We can also use the <code>favstats</code> function to get those summaries and others.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data =</span> MockJury)</code></pre></div>
+<pre><code>##           Attr min Q1 median   Q3 max     mean       sd  n missing
+## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
+## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
+## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0</code></pre>
+<p>Based on these results, we can see that there is an estimated difference of almost 2 years in the mean sentence between <em>Average</em> and <em>Unattractive</em> groups. Because there are three groups being compared in this study, we will have to wait until Chapter 3 and the One-Way ANOVA test to fully assess evidence related to some difference among the three groups. For now, we are going to focus on comparing the mean <em>Years</em> between <em>Average</em> and <em>Unattractive</em> groups – which is a <strong><em>2 independent sample mean</em></strong> situation and something you should have seen before. Remember that the “independent” sample part of this refers to observations that are independently observed for the two groups as opposed to the paired sample situation that you may have explored where one observation from the first group is related to an observation in the second group (repeated measures on the same person or the famous “twin” studies with one twin assigned to each group).</p>
+<p>Here we are going to use the “simple” two independent group scenario to review some basic statistical concepts and connect two different frameworks for conducting statistical inference: randomization and parametric inference techniques. <strong><em>Parametric</em></strong> statistical methods involve making assumptions about the distribution of the responses and obtaining confidence intervals and/or p-values using a <em>named</em> distribution (like the z or <em>t</em>-distributions). Typically these results are generated using formulas and looking up areas under curves or cutoffs using a table or a computer. <strong><em>Randomization</em></strong>-based statistical methods use a computer to shuffle, sample, or simulate observations in ways that allow you to obtain distributions of possible results to find areas and cutoffs without resorting to using tables and named distributions. Randomization methods are what are called <strong><em>nonparametric</em></strong> methods that often make fewer assumptions (they are <strong><em>not free of assumptions</em></strong>!) and so can handle a larger set of problems more easily than parametric methods. When the assumptions involved in the parametric procedures are met by a data set, the randomization methods often provide very similar results to those provided by the parametric techniques. To be a more sophisticated statistical consumer, it is useful to have some knowledge of both of these approaches to statistical inference and the fact that they can provide similar results might deepen your understanding of both approaches.</p>
+<p>We will start with comparing the <em>Average</em> and <em>Unattractive</em> groups to compare these two ways of doing inference. We could remove the <em>Beautiful</em> group observations in a spreadsheet program and read that new data set back into R, but it is actually pretty easy to use R to do data management once the data set is loaded. To remove the observations that came from the <em>Beautiful</em> group, we are going to generate a new variable that we will call <code>NotBeautiful</code> that is true when observations came from another group (<em>Average</em> or <em>Unattractive</em>) and false for observations from the <em>Beautiful</em> group. To do this, we will apply the <strong><em>not equal</em></strong> logical function (<code>!=</code> ) to the variable <code>Attr</code>, inquiring whether it was different from the <code>&quot;Beautiful&quot;</code> level. You can see the content of the new variable in the output:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury$NotBeautiful &lt;-<span class="st"> </span>MockJury$Attr !=<span class="st"> &quot;Beautiful&quot;</span>
+MockJury$NotBeautiful</code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+##  [23]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [45]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [56]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [67]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [100]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [111]  TRUE  TRUE  TRUE  TRUE</code></pre>
+<p>This new variable is only FALSE for the <em>Beautiful</em> responses as we can see if we compare some of the results from the original and new variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">data.frame</span>(MockJury$Attr, MockJury$NotBeautiful))</code></pre></div>
+<pre><code>##   MockJury.Attr MockJury.NotBeautiful
+## 1     Beautiful                 FALSE
+## 2     Beautiful                 FALSE
+## 3     Beautiful                 FALSE
+## 4     Beautiful                 FALSE
+## 5     Beautiful                 FALSE
+## 6     Beautiful                 FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(<span class="kw">data.frame</span>(MockJury$Attr, MockJury$NotBeautiful))</code></pre></div>
+<pre><code>##     MockJury.Attr MockJury.NotBeautiful
+## 109       Average                  TRUE
+## 110       Average                  TRUE
+## 111       Average                  TRUE
+## 112       Average                  TRUE
+## 113       Average                  TRUE
+## 114       Average                  TRUE</code></pre>
+<p>To get rid of one of the groups, we need to learn a little bit about data management in R. <strong><em>Brackets</em></strong> <code>([, ])</code> are used to modify the rows or columns in a data.frame with entries before the comma operating on rows and entries after the comma on the columns. For example, if you want to see the results for the 5<span class="math inline">\(^{th}\)</span> subject, you can reference the 5<span class="math inline">\(^{th}\)</span> row of the data.frame using <code>[5, ]</code> after the data.frame name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury[<span class="dv">5</span>,]</code></pre></div>
+<pre><code>##        Attr    Crime Years Serious exciting calm independent sincere warm
+## 5 Beautiful Burglary     7       9        1    1           5       1    8
+##   phyattr sociable kind intelligent strong sophisticated happy ownPA
+## 5       8        9    4           7      9             9     8     7
+##   NotBeautiful
+## 5        FALSE</code></pre>
+<p>We could just extract the <em>Years</em> response for the 5<span class="math inline">\(^{th}\)</span> subject by incorporating information on the row and column of interest (<code>Years</code> is the 3<span class="math inline">\(^{rd}\)</span> column):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury[<span class="dv">5</span>,<span class="dv">3</span>]</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>In R, we can use logical vectors to keep any rows of the data.frame where the variable is true and drop any rows where it is false by placing the logical variable in the first element of the brackets. The reduced version of the data set should be saved with a different name such as <code>MockJury2</code> that is used here to reduce the chances of confusing it with the previous full data set:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury2 &lt;-<span class="st"> </span>MockJury[MockJury$NotBeautiful,]</code></pre></div>
+<p>You will always want to check that the correct observations were dropped either using <code>View(MockJury2)</code> or by doing a quick summary of the <code>Attr</code> variable in the new data.frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(MockJury2$Attr)</code></pre></div>
+<pre><code>##    Beautiful      Average Unattractive 
+##            0           38           37</code></pre>
+<p>It ends up that R remembers the <em>Beautiful</em> category even though there are 0 observations in it now and that can cause us some problems. When we remove a group of observations, we sometimes need to clean up categorical variables to just reflect the categories that are present. The <code>factor</code> function creates categorical variables based on the levels of the variables that are observed and is useful to run here to clean up <code>Attr</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury2$Attr &lt;-<span class="st"> </span><span class="kw">factor</span>(MockJury2$Attr) 
+<span class="kw">summary</span>(MockJury2$Attr)</code></pre></div>
+<pre><code>##      Average Unattractive 
+##           38           37</code></pre>
+<p>Now if we remake the boxplots and beanplots, they only contain results for the two groups of interest here as seen in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-6">2.6</a>.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Years ~<span class="st"> </span>Attr,<span class="dt">data=</span>MockJury2) 
+<span class="kw">beanplot</span>(Years ~<span class="st"> </span>Attr,<span class="dt">data=</span>MockJury2,<span class="dt">log=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;bisque&quot;</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-6"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-6-1.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-6-2.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" />
+<p class="caption">
+Figure 2.6: Boxplot and beanplot of the Years responses on the reduced data set.
+</p>
+</div>
+<p>The two-sample mean techniques you learned in your previous course all start with comparing the means the two groups. We can obtain the two means using the <code>mean</code> function or directly obtain the difference in the means using the <code>diffmean</code> function (both require the <code>mosaic</code> package). The <code>diffmean</code> function provides <span class="math inline">\(\bar{x}_{Unattractive} - \bar{x}_{Average}\)</span> where <span class="math inline">\(\bar{x}\)</span> (read as “x-bar”) is the sample mean ofobservations in the subscripted group. Note that there are two directions that you could compare the means and this function chooses to take the mean from the second group name <em>alphabetically</em> and subtract the mean from the first alphabetical group name. It is always good to check the direction of this calculation as having a difference of <span class="math inline">\(-1.84\)</span> years versus <span class="math inline">\(1.84\)</span> years could be important.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data=</span>MockJury2)</code></pre></div>
+<pre><code>##      Average Unattractive 
+##     3.973684     5.810811</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diffmean</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data=</span>MockJury2)</code></pre></div>
+<pre><code>## diffmean 
+## 1.837127</code></pre>
+</div>
+<div id="section_2-3" class="section level2">
+<h2><span class="header-section-number">2.3</span> Models, hypotheses, and permutations for the 2 sample mean situation</h2>
+<p>There appears to be some evidence that the <em>Unattractive</em> group is getting higher average lengths of sentences from the prisoner “jurors” than the <em>Average</em> group, but we want to make sure that the difference is real – that there is evidence to reject the assumption that the means are the same “in the population”. First, a <strong><em>null hypothesis</em></strong><a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> which defines a <strong><em>null model</em></strong><a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a> needs to be determined in terms of <strong><em>parameters</em></strong> (the true values in the population). The research question should help you determine the form of the hypotheses for the assumed population. In the 2 independent sample mean problem, the interest is in testing a null hypothesis of <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span> versus the alternative hypothesis of <span class="math inline">\(H_A: \mu_1 \ne \mu_2\)</span>, where <span class="math inline">\(\mu_1\)</span> is the parameter for the true mean of the first group and <span class="math inline">\(\mu_2\)</span> is the parameter for the true mean of the second group. The alternative hypothesis involves assuming a statistical model for the <span class="math inline">\(i^{th} (i=1,\ldots,n_j)\)</span> response from the <span class="math inline">\(j^{th} (j=1,2)\)</span> group, <span class="math inline">\(\boldsymbol{y}_{ij}\)</span>, that involves modeling it as <span class="math inline">\(y_{ij} = \mu_j + \epsilon_{ij}\)</span>, where we assume that <span class="math inline">\(\epsilon_{ij} \sim N(0,\sigma^2)\)</span>. For the moment, focus on the models that either assume the means are the same (null) or different (alternative), which imply:</p>
+<ul>
+<li><p>Null Model: <span class="math inline">\(y_{ij} = \mu + \epsilon_{ij}\)</span> There is <strong>no</strong> difference in <strong>true</strong> means for the two groups.</p></li>
+<li><p>Alternative Model: <span class="math inline">\(y_{ij} = \mu_j + \epsilon_{ij}\)</span> There is <strong>a</strong> difference in <strong>true</strong> means for the two groups.</p></li>
+</ul>
+<p>Suppose we are considering the alternative model for the 4<sup>th</sup> observation (<span class="math inline">\(i=4\)</span>) from the second group (<span class="math inline">\(j=2\)</span>), then the model for this observation is <span class="math inline">\(y_{42} = \mu_2 +\epsilon_{42}\)</span>, that defines the response as coming from the true mean for the second group plus a random error term for that observation, <span class="math inline">\(\epsilon_{42}\)</span>. For, say, the 5<sup>th</sup> observation from the first group (<span class="math inline">\(j=1\)</span>), the model is <span class="math inline">\(y_{51} = \mu_1 +\epsilon_{51}\)</span>. If we were working with the null model, the mean is always the same (<span class="math inline">\(\mu\)</span>) - the group specified does not change the mean we use for that observation.</p>
+<p>It can be helpful to think about the null and alternative models graphically. By assuming the null hypothesis is true (means are equal) and that the random errors around the mean follow a normal distribution, we assume that the truth is as displayed in the left panel of Figure <a href="re-introduction-to-statistics.html#fig:Figure2-7">2.7</a> – two normal distributions with the same mean and variability. The alternative model allows the two groups to potentially have different means, such as those displayed in the right panel of Figure <a href="re-introduction-to-statistics.html#fig:Figure2-7">2.7</a> where the second group has a larger mean. Note that in this scenario, we assume that the observations all came from the same distribution except that they had different means. Depending on the statistical procedure we are using, we basically are going to assume that the observations (<span class="math inline">\(y_{ij}\)</span>) either were generated as samples from the null or alternative model. You can imagine drawing observations at random from the pictured distributions. For hypothesis testing, the null model is assumed to be true and then the unusualness of the actual result is assessed relative to that assumption. In hypothesis testing, we have to decide if we have enough evidence to reject the assumption that the null model (or hypothesis) is true. If we reject the null hypothesis, then we would conclude that the other model considered (the alternative model) is more reasonable. The researchers obviously would have hoped to encounter some sort of noticeable difference in the sentences provided for the different pictures and been able to find enough evidence to reject the null model where the groups “look the same”.</p>
+
+<div class="figure"><span id="fig:Figure2-7"></span>
+<img src="chapter1_files/image015.png" alt="Illustration of the assumed situations under the null (left) and a single possibility that could occur if the alternative were true (right) and the true means were different." width="480" />
+<p class="caption">
+Figure 2.7: Illustration of the assumed situations under the null (left) and a single possibility that could occur if the alternative were true (right) and the true means were different.
+</p>
+</div>
+<p>In statistical inference, null hypotheses (and their implied models) are set up as “straw men” with every interest in rejecting them even though we assume they are true to be able to assess the evidence <u>against them</u>. Consider the original study design here, the pictures were randomly assigned to the subjects. If the null hypothesis were true, then we would have no difference in the population means of the groups. And this would apply if we had done a different random assignment of the pictures to the subjects. So let’s try this: assume that the null hypothesis is true and randomly re-assign the treatments (pictures) to the observations that were obtained. In other words, keep the sentences (<em>Years</em>) the same and shuffle the group labels randomly. The technical term for this is doing a <strong><em>permutation</em></strong> (a random shuffling of the treatments relative to the responses). If the null is true and the means in the two groups are the same, then we should be able to re-shuffle the groups to the observed sentences (<em>Years</em>) and get results similar to those we actually observed. If the null is false and the means are really different in the two groups, then what we observed should differ from what we get under other random permutations. The differences between the two groups should be more noticeable in the observed data set than in (most) of the shuffled data sets. It helps to see an example of a permutation of the labels to understand what this means here.</p>
+<p>In the <code>mosaic</code> package, the <code>shuffle</code> function allows us to easily perform a permutation<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Just one time, we can explore what a permutation of the treatment labels could look like in the <code>PermutedAttr</code> variable below. Note that the <code>Years</code> are held in the same place the group labels are shuffled.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Perm1 &lt;-<span class="st"> </span><span class="kw">with</span>(MockJury2,<span class="kw">data.frame</span>(Years,Attr,<span class="dt">PermutedAttr=</span><span class="kw">shuffle</span>(Attr)))
+Perm1</code></pre></div>
+<pre><code>##    Years         Attr PermutedAttr
+## 1      1 Unattractive      Average
+## 2      4 Unattractive Unattractive
+## 3      3 Unattractive Unattractive
+## 4      2 Unattractive      Average
+## 5      8 Unattractive Unattractive
+## 6      8 Unattractive Unattractive
+## 7      1 Unattractive Unattractive
+## 8      1 Unattractive      Average
+## 9      5 Unattractive      Average
+## 10     7 Unattractive      Average
+## 11     1 Unattractive      Average
+## 12     5 Unattractive Unattractive
+## 13     2 Unattractive      Average
+## 14    12 Unattractive      Average
+## 15    10 Unattractive Unattractive
+## 16     1 Unattractive      Average
+## 17     6 Unattractive Unattractive
+## 18     2 Unattractive Unattractive
+## 19     5 Unattractive      Average
+## 20    12 Unattractive Unattractive
+## 21     6 Unattractive      Average
+## 22     3 Unattractive      Average
+## 23     8 Unattractive      Average
+## 24     4 Unattractive Unattractive
+## 25    10 Unattractive Unattractive
+## 26    10 Unattractive      Average
+## 27    15 Unattractive      Average
+## 28    15 Unattractive Unattractive
+## 29     3 Unattractive      Average
+## 30     3 Unattractive Unattractive
+## 31     3 Unattractive Unattractive
+## 32    11 Unattractive Unattractive
+## 33    12 Unattractive Unattractive
+## 34     2 Unattractive      Average
+## 35     1 Unattractive Unattractive
+## 36     1 Unattractive      Average
+## 37    12 Unattractive Unattractive
+## 38     5      Average Unattractive
+## 39     5      Average Unattractive
+## 40     4      Average Unattractive
+## 41     3      Average Unattractive
+## 42     6      Average      Average
+## 43     4      Average Unattractive
+## 44     9      Average      Average
+## 45     8      Average Unattractive
+## 46     3      Average      Average
+## 47     2      Average Unattractive
+## 48    10      Average Unattractive
+## 49     1      Average      Average
+## 50     1      Average Unattractive
+## 51     3      Average      Average
+## 52     1      Average      Average
+## 53     3      Average Unattractive
+## 54     5      Average Unattractive
+## 55     8      Average Unattractive
+## 56     3      Average Unattractive
+## 57     1      Average      Average
+## 58     1      Average      Average
+## 59     1      Average      Average
+## 60     2      Average      Average
+## 61     2      Average      Average
+## 62     1      Average      Average
+## 63     1      Average      Average
+## 64     2      Average Unattractive
+## 65     3      Average      Average
+## 66     4      Average      Average
+## 67     5      Average Unattractive
+## 68     3      Average Unattractive
+## 69     3      Average      Average
+## 70     3      Average      Average
+## 71     2      Average Unattractive
+## 72     7      Average      Average
+## 73     6      Average      Average
+## 74    12      Average      Average
+## 75     8      Average Unattractive</code></pre>
+<p>If you count up the number of subjects in each group by counting the number of times each label (Average, Unattractive) occurs, it is the same in both the <code>Attr</code> and <code>PermutedAttr</code> columns. Permutations involve randomly re-ordering the values of a variable – here the <code>Attr</code> group labels – without changing the content of the variable. This result can also be generated using what is called <strong><em>sampling without replacement</em></strong>: sequentially select <span class="math inline">\(n\)</span> labels from the original variable, removing each used label and making sure that each original <code>Attr</code> label is selected once and only once. The new, randomly selected order of selected labels provides the permuted labels. Stepping through the process helps to understand how it works: after the initial random sample of one label, there would <span class="math inline">\(n - 1\)</span> choices possible; on the <span class="math inline">\(n^{th}\)</span> selection, there would only be one label remaining to select. This makes sure that all original labels are re-used but that the order is random. Sampling without replacement is like picking names out of a hat, one-at-a-time, and not putting the names back in after they are selected. It is an exhaustive process for all the original observations. <strong><em>Sampling with replacement</em></strong> , in contrast, involves sampling from the specified list with each observation having an equal chance of selection for each sampled observation – in other words, observations can be selected more than once. This is like picking <span class="math inline">\(n\)</span> names out of a hat that contains <span class="math inline">\(n\)</span> names, except that every time a name is selected, it goes back into the hat – we’ll use this technique in Section <a href="re-introduction-to-statistics.html#section2-8">2.8</a> to do what is called <strong><em>bootstrapping</em></strong> . Both sampling mechanisms can be used to generate inferences but each has particular situations where they are most useful. For hypothesis testing, we will use permutations (sampling without replacement).</p>
+<p>The comparison of the beanplots for the real data set and permuted version of the labels is what is really interesting (Figure <a href="re-introduction-to-statistics.html#fig:Figure2-8">2.8</a>). The original difference in the sample means of the two groups was 1.84 years (Unattractive minus Average). The sample means are the <strong><em>statistics</em></strong><br />
+that estimate the parameters for the true means of the two groups. In the permuted data set, the difference in the means is 1.15 years in the opposite direction (Average had a higher mean than Unattractive in the permuted data).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Years ~<span class="st"> </span>PermutedAttr, <span class="dt">data=</span>Perm1)</code></pre></div>
+<pre><code>##      Average Unattractive 
+##     4.078947     5.702703</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diffmean</span>(Years ~<span class="st"> </span>PermutedAttr, <span class="dt">data=</span>Perm1)</code></pre></div>
+<pre><code>## diffmean 
+## 1.623755</code></pre>
+
+<pre><code>## log=&quot;y&quot; selected
+## log=&quot;y&quot; selected</code></pre>
+<div class="figure"><span id="fig:Figure2-8"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-8-1.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-8-2.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" />
+<p class="caption">
+Figure 2.8: Boxplots of Years responses versus actual treatment groups and permuted groups.
+</p>
+</div>
+<p>These results suggest that the observed difference was larger than what we got when we did a single permutation although it was only a little bit larger than a difference we could observe in permutations if we ignore the difference in directions. Conceptually, permuting observations between group labels is consistent with the null hypothesis – this is a technique to generate results that we might have gotten if the null hypothesis were true since the responses are the same in the two groups if the null is true. We just need to repeat the permutation process many times and track how unusual our observed result is relative to this distribution of potential responses if the null were true. If the observed differences are unusual relative to the results under permutations, then there is evidence against the null hypothesis, the null hypothesis should be rejected ( Reject <span class="math inline">\(H_0\)</span>), and a conclusion should be made, in the direction of the alternative hypothesis, that there is evidence that the true means differ. If the observed differences are similar to (or at least not unusual relative to) what we get under random shuffling under the null model, we would have a tough time concluding that there is any real difference between the groups based on our observed data set.</p>
+</div>
+<div id="section_2-4" class="section level2">
+<h2><span class="header-section-number">2.4</span> Permutation testing for the 2 sample mean situation</h2>
+</div>
+<div id="section_2-5" class="section level2">
+<h2><span class="header-section-number">2.5</span> Hypothesis testing (general)</h2>
+</div>
+<div id="section_2-6" class="section level2">
+<h2><span class="header-section-number">2.6</span> Connecting randomization (nonparametric) and parametric tests</h2>
+</div>
+<div id="section_2-7" class="section level2">
+<h2><span class="header-section-number">2.7</span> Second example of permutation tests</h2>
+<p>adfaveaea</p>
+</div>
+<div id="section2-8" class="section level2">
+<h2><span class="header-section-number">2.8</span> Confidence intervals and bootstrapping</h2>
+<p>dadarae</p>
+</div>
+<div id="section_2-9" class="section level2">
+<h2><span class="header-section-number">2.9</span> Bootstrap confidence intervals for difference in GPAs</h2>
+</div>
+<div id="section_2-10" class="section level2">
+<h2><span class="header-section-number">2.10</span> Chapter summary</h2>
+</div>
+<div id="section_2-11" class="section level2">
+<h2><span class="header-section-number">2.11</span> Summary of important R code</h2>
+</div>
+<div id="section_2-12" class="section level2">
+<h2><span class="header-section-number">2.12</span> Practice problems</h2>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>You will more typically hear “data is” but that more often refers to information, sometimes even statistical summaries of data sets, than to observations collected as part of a study, suggesting the confusion of this term in the general public. We will explore a data set in Chapter 4 related to perceptions of this issue collected by researchers at <a href="http://fivethirtyeight.com/" class="uri">http://fivethirtyeight.com/</a>.<a href="re-introduction-to-statistics.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>As noted previously, we reserve the term “effect” for situations where random assignment allows us to consider causality as the reason for the differences in the response variable among levels of the explanatory variable, but this is only the case if we find evidence against the null hypothesis of no difference in the groups.<a href="re-introduction-to-statistics.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>If you’ve taken calculus, you will know that the curve is being constructed so that the integral from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span> is 1. If you don’t know calculus, think of a rectangle with area of 1 based on its height and width. These cover the same area but the top of the region wiggles.<a href="re-introduction-to-statistics.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>Jittering typically involves adding random variability to each observation that is uniformly distributed in a range determined based on the spacing of the function, the results will change. For more details, type <code>help(jitter)</code><br />in R.<a href="re-introduction-to-statistics.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>Remember the bell-shaped curve you encountered in introductory statistics? If not, you can see some at <a href="https://en.wikipedia.org/wiki/Normal_distribution" class="uri">https://en.wikipedia.org/wiki/Normal_distribution</a><a href="re-introduction-to-statistics.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>Well, you can use other colors (try “lightblue” for example), but I think bisque looks nice in these plots.<a href="re-introduction-to-statistics.html#fnref15">↩</a></p></li>
+<li id="fn16"><p>The hypothesis of no difference that is typically generated in the hopes of being rejected in favor of the alternative hypothesis which contains the sort of difference that is of interest in the application.<a href="re-introduction-to-statistics.html#fnref16">↩</a></p></li>
+<li id="fn17"><p>The null model is the statistical model that is implied by the chosen null hypothesis. Here, a null hypothesis of no difference translates to having a model with the same mean for both groups.<a href="re-introduction-to-statistics.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>We’ll see the <code>shuffle</code> function in a more common usage below; while the code to generate <code>Perm1</code> is provided, it isn’t something to worry about right now.<a href="re-introduction-to-statistics.html#fnref18">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preface.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["GreenwoodBanner.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

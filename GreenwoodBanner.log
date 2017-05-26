@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  26 MAY 2017 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  26 MAY 2017 12:50
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -760,42 +760,69 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip49
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count115
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+(C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+\Gread@gobject=\count116
+)) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count117
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count118
+\FV@StepNumber=\count119
+\FV@OutFile=\write3
+) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip50
+\fb@frw=\dimen125
+\fb@frh=\dimen126
+\FrameRule=\dimen127
+\FrameSep=\dimen128
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\longtable.sty"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip50
-\LTright=\skip51
-\LTpre=\skip52
-\LTpost=\skip53
-\LTchunksize=\count116
-\LTcapwidth=\dimen125
-\LT@head=\box28
-\LT@firsthead=\box29
-\LT@foot=\box30
-\LT@lastfoot=\box31
-\LT@cols=\count117
-\LT@rows=\count118
-\c@LT@tables=\count119
-\c@LT@chunks=\count120
+\LTleft=\skip51
+\LTright=\skip52
+\LTpre=\skip53
+\LTpost=\skip54
+\LTchunksize=\count120
+\LTcapwidth=\dimen129
+\LT@head=\box29
+\LT@firsthead=\box30
+\LT@foot=\box31
+\LT@lastfoot=\box32
+\LT@cols=\count121
+\LT@rows=\count122
+\c@LT@tables=\count123
+\c@LT@chunks=\count124
 \LT@p@ftn=\toks25
 ) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen126
-\lightrulewidth=\dimen127
-\cmidrulewidth=\dimen128
-\belowrulesep=\dimen129
-\belowbottomsep=\dimen130
-\aboverulesep=\dimen131
-\abovetopsep=\dimen132
-\cmidrulesep=\dimen133
-\cmidrulekern=\dimen134
-\defaultaddspace=\dimen135
-\@cmidla=\count121
-\@cmidlb=\count122
-\@aboverulesep=\dimen136
-\@belowrulesep=\dimen137
-\@thisruleclass=\count123
-\@lastruleclass=\count124
-\@thisrulewidth=\dimen138
+\heavyrulewidth=\dimen130
+\lightrulewidth=\dimen131
+\cmidrulewidth=\dimen132
+\belowrulesep=\dimen133
+\belowbottomsep=\dimen134
+\aboverulesep=\dimen135
+\abovetopsep=\dimen136
+\cmidrulesep=\dimen137
+\cmidrulekern=\dimen138
+\defaultaddspace=\dimen139
+\@cmidla=\count125
+\@cmidlb=\count126
+\@aboverulesep=\dimen140
+\@belowrulesep=\dimen141
+\@thisruleclass=\count127
+\@lastruleclass=\count128
+\@thisrulewidth=\dimen142
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
@@ -807,12 +834,9 @@ g
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
-\Gread@gobject=\count125
-))
-\Gin@req@height=\dimen139
-\Gin@req@width=\dimen140
+)
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grffile.sty"
 Package: grffile 2016/05/16 v1.17 Extended file name support for graphics (HO)
 Package grffile Info: Option `multidot' is set to `true'.
@@ -823,39 +847,40 @@ Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 486.
 Package: parskip 2001/04/09 non-zero parskip adjustments
 ) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\titling\titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip54
-\thanksmargin=\skip55
-\droptitle=\skip56
+\thanksmarkwidth=\skip55
+\thanksmargin=\skip56
+\droptitle=\skip57
 ) (GreenwoodBanner.aux)
 \openout1 = `GreenwoodBanner.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 91.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 91.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 131.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 131.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 91.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 131.
+LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 131.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 91.
+LaTeX Info: Redefining \microtypecontext on input line 131.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -903,34 +928,34 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring OFF on input line 91.
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring OFF on input line 131.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count126
+\c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 91.
-LaTeX Info: Redefining \pageref on input line 91.
-LaTeX Info: Redefining \nameref on input line 91.
+LaTeX Info: Redefining \ref on input line 131.
+LaTeX Info: Redefining \pageref on input line 131.
+LaTeX Info: Redefining \nameref on input line 131.
 (GreenwoodBanner.out) (GreenwoodBanner.out)
-\@outlinefile=\write3
-\openout3 = `GreenwoodBanner.out'.
+\@outlinefile=\write4
+\openout4 = `GreenwoodBanner.out'.
 
 (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count127
-\scratchdimen=\dimen141
-\scratchbox=\box33
-\nofMPsegments=\count128
-\nofMParguments=\count129
+\scratchcounter=\count130
+\scratchdimen=\dimen145
+\scratchbox=\box34
+\nofMPsegments=\count131
+\nofMParguments=\count132
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count130
-\MPscratchDim=\dimen142
-\MPnumerator=\count131
-\makeMPintoPDFobject=\count132
+\MPscratchCnt=\count133
+\MPscratchDim=\dimen146
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
 \everyMPtoPDFconversion=\toks27
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -948,90 +973,255 @@ G,.JBIG2,.JB2,.eps]
 
 {C:/Users/greta/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
-] (GreenwoodBanner.toc)
-\tf@toc=\write4
-\openout4 = `GreenwoodBanner.toc'.
-
-[3] [4
-
-]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 147.
-
+] (GreenwoodBanner.toc
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 147.
-
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 147
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 147
-.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 147.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 147.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 147.
-LaTeX Font Info:    Try loading font information for U+msa on input line 147.
+(Font)              <5> on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 147.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [5] [6
+))
+\tf@toc=\write5
+\openout5 = `GreenwoodBanner.toc'.
+
+[3] [4
+
+] [5] [6
 
 ]
 Chapter 1.
-(GreenwoodBanner.bbl [7] [8
+[7] [8
 
 ]
+Chapter 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 176.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 176.
+[9]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 481.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [10]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 500.
+[11] [12]
+
+LaTeX Warning: Reference `fig:Figure2-1' on page 13 undefined on input line 657
+.
+
+
+<GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf, id=147, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf use
+d on input line 671.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+
+<GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf, id=148, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf use
+d on input line 672.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+[13 <./GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf> <./GreenwoodBanner_f
+iles/figure-latex/Figure2-1-2.pdf>]
+<GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf, id=168, 469.755pt x 325.21
+5pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf use
+d on input line 736.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+<GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf, id=171, 469.755pt x 325.21
+5pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf use
+d on input line 782.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[14] [15 <./GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf>] [16 <./Greenwo
+odBanner_files/figure-latex/Figure2-3-1.pdf>]
+<GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf, id=203, 469.755pt x 325.21
+5pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf use
+d on input line 815.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 3838) has occurred while \output is active []
+
+[17 <./GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf>]
+<GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf, id=221, 469.755pt x 325.21
+5pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf use
+d on input line 883.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[18 <./GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf>] [19] [20]
+
+LaTeX Warning: Reference `fig:Figure2-6' on page 21 undefined on input line 114
+7.
+
+
+<GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf, id=244, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf use
+d on input line 1159.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+
+<GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf, id=245, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf use
+d on input line 1160.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[21] [22 <./GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf> <./GreenwoodBan
+ner_files/figure-latex/Figure2-6-2.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 1230
+.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) <chapter1_files/image015.png, id=270, 722.7pt x 505.89pt>
+File: chapter1_files/image015.png Graphic file (type png)
+<use chapter1_files/image015.png>
+Package pdftex.def Info: chapter1_files/image015.png used on input line 1277.
+(pdftex.def)             Requested size: 722.70924pt x 505.89645pt.
+
+Overfull \hbox (252.95422pt too wide) in paragraph at lines 1277--1279
+[][] 
+ []
+
+[23] [24 <./chapter1_files/image015.png>] [25]
+
+LaTeX Warning: Reference `fig:Figure2-8' on page 26 undefined on input line 143
+1.
+
+
+Underfull \vbox (badness 1178) has occurred while \output is active []
+
+[26]
+<GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf, id=297, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf use
+d on input line 1469.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+
+<GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf, id=298, 216.81pt x 325.215
+pt>
+File: GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf Graphic file (type pdf
+)
+<use GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf use
+d on input line 1470.
+(pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
+(GreenwoodBanner.bbl
+Underfull \vbox (badness 5189) has occurred while \output is active []
+
+[27 <./GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf> <./GreenwoodBanner_f
+iles/figure-latex/Figure2-8-2.pdf>] [28]
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
-[9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1516.
+[29
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1516.
 (GreenwoodBanner.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 165.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 165.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1516.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1516.
+
 Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
-(rerunfilecheck)             Checksum: EA535E6DFB78DEB44EFA5A5F899CDF30;219.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 165.
+(rerunfilecheck)             Checksum: AABED17BD5AC04D430E302485894CF4A;3459.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1516.
  ) 
 Here is how much of TeX's memory you used:
- 12752 strings out of 493366
- 183695 string characters out of 3137241
- 288211 words of memory out of 3000000
- 16037 multiletter control sequences out of 15000+200000
- 46959 words of font info for 62 fonts, out of 3000000 for 9000
+ 13641 strings out of 493366
+ 198556 string characters out of 3137241
+ 315544 words of memory out of 3000000
+ 16729 multiletter control sequences out of 15000+200000
+ 95700 words of font info for 145 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
- 32i,4n,38p,242b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/
-lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb>
-Output written on GreenwoodBanner.pdf (9 pages, 168406 bytes).
+ 32i,8n,38p,475b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)
+/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvip
+s/lm/lm-ec.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.
+pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/lm/lmmib10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
+/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/lm/lmtt8.pfb>
+Output written on GreenwoodBanner.pdf (29 pages, 573901 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 10257 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 407 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
+ 16560 words of extra memory for PDF output out of 17280 (max. 10000000)
 
