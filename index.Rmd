@@ -13,6 +13,7 @@ output:
   bookdown::gitbook: default
 documentclass: book
 link-citations: yes
+github-repo: gpeterson406/GreenwoodBanner_Book
 bibliography:
 - book.bib
 - packages.bib
@@ -36,8 +37,6 @@ We have made every attempt to keep costs as low as possible by making it possibl
 Enjoy your journey from introductory to intermediate statistics!
  
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-
-Trying to render $\alpha$
 
 ```{r include=FALSE}
 knitr::write_bib(c(

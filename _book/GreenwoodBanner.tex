@@ -1,0 +1,165 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={A Second Semester Statistics Course with R},
+            pdfauthor={Mark Greenwood and Katherine Banner},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{A Second Semester Statistics Course with R}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Mark Greenwood and Katherine Banner}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2017-05-26}
+
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter*{Acknowledgments}\label{acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+
+We would like to thank all the students and instructors who have
+provided input in the development of the current version of STAT 217 and
+that have impacted the choice of topics and how we try to teach them.
+Dr.~Robison-Cox initially developed this course using R and much of this
+work retains his initial ideas. Many years of teaching these topics and
+helping researchers use these topics has helped to refine how they are
+presented here. Observing students years after the course has also
+helped to refine what we try to teach in the course, trying to prepare
+these students for the next levels of statistics courses that they might
+encounter and the next class where they might need or want to use
+statistics.
+
+I (Greenwood) have intentionally taken a first person perspective at
+times to be able to include stories from some of those interactions to
+try to help you avoid some of their pitfalls in your current or future
+usage of statistics. I would like to thank my wife, Teresa Greenwood,
+for allowing me the time and support to work on this. I would also like
+to acknowledge Dr.~Gordon Bril (Luther College) who introduced me to
+statistics while I was an undergraduate and Dr.~Snehalata Huzurbazar
+(University of Wyoming) that guided me to completing my Master's and
+Ph.D.~in Statistics and still serves as a valued mentor and friend to
+me.
+
+The development of this text was initially supported with funding from
+Montana State University's Instructional Innovation Grant Program with a
+grant titled Towards more active learning in STAT 217. This book was
+born with the goal of having a targeted presentation of topics that we
+cover (and few that we don't) that minimizes cost to students and
+incorporates the statistical software R from day one and every day after
+that. The software is a free, open-source platform and so is dynamically
+changing over time. This has necessitated frequent revisions of the
+text.
+
+This is Version 3.01 of the book. It fixes a problem created with the
+digital links in the book that occurred during Spring 2017. Version 3.0
+of the book, prepared for Fall 2016, involved edits, a couple of
+partially new sections, and updated R code along with a new format for
+how the R code is displayed to more easily distinguish it from other
+text. Each revision has involved a similar amount of change with Version
+2.0 published in January 2015 and Version 1.0 in January 2014 after
+using draft chapters that were initially developed during Fall 2013.
+
+We have made every attempt to keep costs as low as possible by making it
+possible for most pages to be printed in black and white. The text (in
+full color and with dynamic links) is also available as a free digital
+download from Montana State University's ScholarWorks repository at
+\url{https://scholarworks.montana.edu/xmlui/handle/1/2999}.
+
+Enjoy your journey from introductory to intermediate statistics!
+
+This work is licensed under the Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License. To
+view a copy of this license, visit
+\url{http://creativecommons.org/licenses/by-nc-nd/4.0/} or send a letter
+to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+California, 94041, USA.
+
+Trying to render \(\alpha\)
+
+\chapter{Placeholder}\label{placeholder}
+
+\bibliography{packages,book}
+
+
+\end{document}
