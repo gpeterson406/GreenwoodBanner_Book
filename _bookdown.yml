@@ -1,0 +1,7 @@
+book_filename: "GreenwoodBanner"
+language:
+  ui:
+    chapter_name: "Chapter "
+rmd_files: ["index.Rmd","01-preface.rmd","02-reintroductionToStatistics.rmd"]
+header-includes:
+- \usepackage{amsmath}
