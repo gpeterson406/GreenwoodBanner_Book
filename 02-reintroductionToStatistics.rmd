@@ -120,7 +120,7 @@ But we can assess whether there is a  ***causal effect***^[As noted previously, 
 in the groups.]: if sufficient evidence is found to conclude that there is some difference in
 the responses across the treated groups, we can attribute those differences to
 the treatments applied, since the groups should be same otherwise due to the
-pictures being randomly assigned to the "jurors". The story of the data set ?
+pictures being randomly assigned to the "jurors". The story of the data set --
 that it was collected on prisoners -- becomes pretty important in thinking about
 the ramifications of any results. Are male prisoners different from the
 population of college males or all residents of a state such as Montana? If so, 
@@ -277,8 +277,8 @@ total data set in each bar is represented by the area in each bar
 width of the bars and the total area across all the bars has to be 1. In the 
 ``hist``  function, the ``freq=F`` to get density-scaled histogram bars. The 
 density curve is added to the histogram using the R code of 
-``lines(density())``, producing the result in Figure 1-2 with added 
-modifications of options for ``lwd``  (line width) and ``col`` (color)
+``lines(density())``, producing the result in Figure \@ref(fig:Figure2-2) with 
+added modifications of options for ``lwd``  (line width) and ``col`` (color)
 to make the plot more interesting. You can see how the density curve 
 somewhat matches the histogram bars but deals with the bumps up and down 
 and edges a little differently. We can pick out the strong right skew using 
@@ -333,7 +333,7 @@ distribution of responses across more than one group. We will have two displays
 that will help us make these comparisons. The simplest is 
 *the **side-by-side boxplot***, where a boxplot is displayed for each group 
 of interest using the same y-axis scaling. In R, we can use its  ***formula***  notation to see if the response (``Years``) differs based on the group 
-(``Attr``) by using something like ``Y~X``  or, here, ``Years~Attr`` . 
+(``Attr``) by using something like ``Y~X``  or, here, ``Years~Attr``. 
 We also need to tell R where to find the variables -- use the last option in the command, ``data=DATASETNAME`` , to inform R of the data.frame to look in 
 to find the variables. In this example, ``data=MockJury``. We will use 
 the formula and ``data=...`` options in almost every function we use
@@ -453,7 +453,7 @@ frameworks for conducting statistical inference: randomization and
 parametric inference techniques.  ***Parametric*** statistical methods 
 involve making assumptions about the distribution of the
 responses and obtaining confidence intervals and/or p-values using a 
-*named* distribution (like the z or *t*-distributions). Typically these
+*named* distribution (like the z or $t$-distributions). Typically these
 results are generated using formulas and looking up areas under curves or
 cutoffs using a table or a computer.  ***Randomization***-based statistical
 methods use a computer to shuffle, sample, or simulate observations in ways
@@ -704,7 +704,7 @@ chance of selection for each sampled observation -- in other words, observations
 can be selected more than once. This is like picking $n$ names out of a hat that
 contains $n$ names, except that every time a name is selected, it goes back into 
 the hat -- we'll use this technique in Section \@ref(section2-8)
-to do what is called  ***bootstrapping*** . Both sampling mechanisms can be 
+to do what is called  ***bootstrapping***. Both sampling mechanisms can be 
 used to generate inferences but each has particular situations
 where they are most useful. For hypothesis testing, we will use permutations
 (sampling without replacement). 
@@ -872,7 +872,7 @@ Five permutations are still not enough to assess whether our $T_{obs}$
 of 1.84 is unusual and we need to do many permutations to get an accurate 
 assessment of the possibilities under the null hypothesis. It is common practice 
 to consider something like 1,000 permutations. The ``Tstar`` vector when we set 
-*B*the permutation distribution for the selected test statistic under^[We often say
+*B* the permutation distribution for the selected test statistic under^[We often say
 "under" in statistics and we mean "given that the following is true".] the null
 hypothesis -- what is called the  ***null distribution***  of the statistic. The 
 null distribution is the distribution of possible values of a statistic
@@ -929,7 +929,7 @@ larger than what we observed, we will use the ``pdata`` function. To use this
 function, we need to provide the distribution of values to compare to the cut-off
 (``Tstar``), the cut-off point (``Tobs``), and whether we want calculate the
 proportion that are below (left of) or above (right of) the cut-off 
-(``lower. tail=F`` option provides the proportion of values above the cutoff 
+(``lower.tail=F`` option provides the proportion of values above the cutoff 
 of interest). 
 
 ```{r}
@@ -956,7 +956,7 @@ here in advance of seeing the observations.] which group should have a larger me
 if there is going to be any sort of difference. In this situation, we did not 
 know enough about the potential impacts of the pictures to know which group should 
 be larger than the other so should do a two-sided test. It is important to 
-remember that you can'?'t look at the responses to decide on the hypotheses. It is
+remember that you can't look at the responses to decide on the hypotheses. It is
 often safer and more  ***conservative***^[Statistically, a conservative method is 
 one that provides less chance of rejecting the null hypothesis in comparison to 
 some other method or less than some pre-defined standard.] to start with a
@@ -968,7 +968,7 @@ information on the number that were more extreme than the same value in the othe
 tail. In other words, we count the proportion over 1.84 and below -1.84. So 
 we need to also find how many of the permuted results were smaller than -1.84years 
 to add to our previous proportion. Using ``pdata`` ``-Tobs`` as the cut-off and 
-``lower. tail=T`` provides this result:
+``lower.tail=T`` provides this result:
 
 ```{r}
 pdata(Tstar, -Tobs, lower.tail=T)
@@ -1012,7 +1012,7 @@ pdata(abs(Tstar), abs(Tobs), lower.tail=F)
 
 We will discuss the choice of  ***significance level*** below, but for the moment,
 assume that $\alpha$ is chosen to be our standard value of 0.05. Since the p-value 
-is smaller than $\alpha$ , this suggests that we can  ***reject the null hypothesis***
+is smaller than $\alpha$, this suggests that we can  ***reject the null hypothesis***
 and conclude that there is evidence of some difference in the true mean sentences 
 given between the two types of pictures. 
 
@@ -1065,12 +1065,635 @@ things that can happen when testing hypotheses.
 
 ## Hypothesis testing (general) {#section2-5}
 
+In hypothesis testing, it is formulated to answer a specific question about
+a population or true parameter(s) using a statistic based on a data set.
+In your previous statistics course, you (hopefully) considered one-sample 
+hypotheses about population means and proportions and the two sample mean 
+situation we are focused on here. Our hypotheses relate to trying to answer 
+the question about whether the population mean sentences between the two 
+groups are different, with an initial assumption of no difference. 
+
+Hypothesis testing is much like a criminal trial where you are in the role
+of a jury member or judge, if no jury is present. Initially, the defendant
+is assumed innocent. In our situation, the true means are assumed to be 
+equal between the groups. Then evidence is presented and, as a juror,
+you analyze it. In statistical hypothesis testing, data are collected and 
+analyzed. Then you have to decide if we had "enough" evidence to reject 
+the initial assumption ("innocence" that is initially assumed). To make 
+this decision, you want to have previously decided on the standard of 
+evidence required to reject the initial assumption. In criminal cases, 
+"beyond a reasonable doubt" is used. Wikipedia's definition
+(https://en.wikipedia.org/wiki/Reasonable_doubt) suggests that this 
+standard is that "there can still be a doubt, but only to the extent 
+that it would not affect a reasonable person's belief regarding whether 
+or not the defendant is guilty". In civil trials, a lower standard called 
+a "preponderance of evidence" is used. Based on that defined and pre-decided
+(*a priori*) measure, you decide that the defendant is guilty or not guilty.
+In statistics, we compare our p-value to a significance level, $\alpha$, 
+which is most of the time selected to be 5%. If our p-value is less than 
+$\alpha$, we reject the null hypothesis. The choice of the significance level 
+is like the variation in standards of evidence between criminal and civil 
+trials -- and in all situations everyone should know the standards required 
+for rejecting the initial assumption before any information is "analyzed".
+Once someone is found guilty, then there is the matter of sentencing which 
+is related to the impacts ("size") of the crime. In statistics, this is 
+similar to the estimated size of differences and the related judgments 
+about whether the differences are practically important or not. If the 
+crime is proven beyond a reasonable doubt but it is a minor crime, then 
+the sentence will be small. With the same level of evidence and a more 
+serious crime, the sentence will be more dramatic. 
+
+There are some important aspects of the testing process to note that inform 
+how we interpret statistical hypothesis test results. When someone is found 
+"not guilty", it does not mean "innocent", it just means that there was not 
+enough evidence to find the person guilty "beyond a reasonable doubt".
+Not finding enough evidence to reject the null hypothesis does not imply 
+that the true means are equal, just that there was not enough evidence to 
+conclude that they were different. There are many potential reasons why we 
+might fail to reject the null, but the most common one is that our sample 
+size was too small (which is related to having too little evidence). 
+
+Throughout this material, we will continue to re-iterate the distinctions 
+between parameters and statistics and want you to be clear about the 
+distinctions between estimates based on the sample and inferences for the
+population or true values of the parameters of interest. Remember that 
+statistics are summaries of the sample information and parameters are 
+characteristics of populations (which we rarely know). In the two-sample 
+mean situation, the sample means are always at least a little different 
+-- that is not an interesting conclusion. What is interesting is whether
+we have enough evidence to prove that the population or true means
+differ "beyond a reasonable doubt". 
+
+The scope of any inferences is constrained based on whether there is a  
+***random sample*** (RS) and/or ***random assignment*** (RA).
+Table \@ref(tab:Table2-1) contains the four possible combinations of these 
+two characteristics of a given study. Random assignment allows for causal
+inferences for differences that are observed -- the difference in treatment
+levels causes differences in the mean responses. Random sampling (or at least
+some sort of representative sample) allows inferences to be made to the
+population of interest. If we do not have RA, then causal inferences cannot be
+made. If we do not have a representative sample, then our inferences are
+limited to the sampled subjects. 
+
+(ref:tab2-1) Scope of inference summary.
+
+```{r Table2-1, echo=F}
+columnHeaders <- c("**Random Sampling/Random Assignment**","**Random Assignment (RA) -- Yes (controlled experiment)**","**Random Assignment (RA) -- No (observational study)**")
+cell21 <- '**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)**'
+cell22 <- 'Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. '
+cell23 <- 'Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).'
+cell31 <- '**Random Sampling (RS) -- No (usually a convenience sample)**'
+cell32 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA 	&rarr; the inference from this type of study applies only to the sample.'
+cell33 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.'
+x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),nrow=,ncol=3,byrow=TRUE)
+library(knitr)
+kable(x,col.names=columnHeaders,caption='(ref:tab2-1)')
+```
+
+A simple example helps to clarify how the scope of inference can change. Suppose
+we are interested in studying the GPA of students. If we had taken a random 
+sample from, say, the STAT 217 students in a given semester, our scope of 
+inference would be the population of 217 students in that semester. If we had 
+taken a random sample from the entire MSU population, then the inferences would 
+be to the entire MSU population in that semester. These are similar types of 
+problems but the two populations are very different and the group you are trying 
+to make conclusions about should be noted carefully in your results -- it does 
+matter! If we did not have a representative sample, say the students could 
+choose to provide this information or not, then we can only make inferences to
+volunteers. These volunteers might differ in systematic ways from the entire
+population of STAT 217 students so we cannot safely extend our inferences beyond 
+the group that volunteered. 
+
+To consider the impacts of RA versus observational studies, we need to be 
+comparing groups. Suppose that we are interested in differences in the mean 
+GPAs for different sections of STAT 217 and that we take a random sample of 
+students from each section and compare the results and find evidence of some
+difference. In this scenario, we can conclude that there is some difference in
+the population of STAT 217 students but we can't say that being in different 
+sections caused the differences in the mean GPAs. Now suppose that we randomly
+assigned every 217 student to get extra training in one of three different 
+study techniques and found evidence of differences among the training methods.
+We could conclude that the training methods caused the differences in these 
+students. These conclusions would only apply to STAT 217 students and could 
+not be generalized to a larger population of students. If we took a random 
+sample of STAT 217 students (say only 10 from each section) and then randomly 
+assigned them to one of three training programs and found evidence of 
+differences, then we can say that the training programs caused the differences.
+We can also say that we have evidence that those differences pertain to the 
+population of STAT 217 students. This seems similar to the scenario where all
+217 students participated in the training programs except that by using random
+sampling, only a fraction of the population needs to actually be studied to 
+make inferences to the entire population of interest -- saving time and money. 
+
+A quick summary of the terminology of hypothesis testing is useful at this 
+point. The ***null hypothesis*** ($H_0$) states that there is no difference 
+or no relationship in the population. This is the statement of no effect or 
+no difference and the claim that we are trying to find evidence against. In 
+this chapter,  $H_0$: $\mu_1=\mu_2$. When doing two-group problems, you 
+always need to specify which group is 1 and which one is 2 because the order 
+does matter. The  ***alternative hypothesis*** ($H_1$ or $H_A$) states a 
+specific difference between parameters. This is the research hypothesis and 
+the claim about the population that we hope to demonstrate is more reasonable 
+to conclude than the null hypothesis. In the two-group situation, we can have
+***one-sided alternatives*** $H_A$:$\mu_1 > \mu_2$ (greater than) or
+$H_A$:$\mu_1 < \mu_2$ (less than) or, the more common,  ***two-sided 
+alternative*** $H_A$:$\mu_1 \ne \mu_2$ (not equal to). We usually default to 
+using two-sided tests because we often do not know enough to know the 
+direction of a difference in advance, especially in more complicated 
+situations. The  ***sampling distribution under the null***  is the 
+distribution of all possible values of a statistic under $H_0$ is true. It 
+is used to calculate the  ***p-value*** , the probability of obtaining a 
+result as extreme or more extreme than what we observed given that the null 
+hypothesis is true. We will find sampling distributions using  
+***nonparametric***  approaches (like the permutation approach used above) 
+and  ***parametric*** methods (using "named" distributions like the 
+$t$, F, and $\chi^2$). 
+
+Small p-values are evidence against the null hypothesis because the observed
+result is unlikely due to chance if $H_0$ is true. Large p-values provide
+no evidence against $H_0$ but do not allow us to conclude that there is no 
+difference. The  ***level of significance*** is an *a priori* definition of
+how small the p-value needs to be to provide "enough" (sufficient) evidence
+against $H_0$. This is most useful to prevent sliding the standards after 
+the results are found. We compare the p-value to the level of significance to
+decide if the p-value is small enough to constitute sufficient evidence to 
+reject the null hypothesis. We use $\alpha$ to denote the level of 
+significance and most typically use 0.05 which we refer to as the 5% 
+significance level. We compare the p-value to this level and make a decision. 
+The two options for *decisions* are to either *reject the null hypothesis* 
+if the p-value $\le \alpha$ or *fail to reject the null hypothesis* if the 
+p-value $> \alpha$. When interpreting hypothesis testing results, remember 
+that the p-value is a measure of how unlikely the observed outcome was, 
+assuming that the null hypothesis is true. It is  **NOT** the probability of 
+the data or the probability of either hypothesis being true. The p-value, 
+simply, is a measure of evidence against the null hypothesis. 
+
+The specific definition of $\alpha$ is that it is the probability of rejecting
+$H_0$ when $H_0$ is true, the probability of what is called a
+***Type I error***. Type I errors are also called  ***false rejections***. 
+In the two-group mean situation, a Type I error would be concluding that there 
+is a difference in the true means between the groups when none really exists 
+in the population. In the courtroom setting, this is like falsely finding 
+someone guilty. We don't want to do this very often, so we use small values 
+of the significance level, allowing us to control the rate of Type I errors 
+at $\alpha$. We also have to worry about  **Type II errors**, which are failing
+to reject the null hypothesis when it's false. In a courtroom, this is the same
+as failing to convict a truley guilty person. This most often occurs due to a 
+lack of evidence. You can use the Table \@ref(tab:Table2-2) to help you 
+remember all the possibilities. 
+
+(ref:tab2-2) Table of decisions and truth scenarios in a hypothesis 
+testing situation. But we never know the truth in a real situation. 
+
+```{r Table2-2, echo=F}
+columnHeaders <- c("","**H<sub>0</sub> True**","**H<sub>0</sub> False**")
+cell21 <- '**FTR H<sub>0</sub>**'
+cell22 <- 'Correct decision'
+cell23 <- 'Type II error'
+cell31 <- '**Reject H<sub>0</sub>** '
+cell32 <- 'Type I error'
+cell33 <- 'Correct decision'
+x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),nrow=,ncol=3,byrow=TRUE)
+library(knitr)
+kable(x,col.names=columnHeaders,caption='(ref:tab2-2)')
+```
+
+In comparing different procedures, there is an interest in studying the rate or
+probability of Type I and II errors. The probability of a Type I error was 
+defined previously as $\alpha$, the significance level. The  ***power***  of a
+procedure is the probability of rejecting the null hypothesis when it is false.
+Power is defined as
+
+$$\text{Power} = 1 - \text{Probability(Type II error) } = 
+\text{Probability(Reject) } H_0 | H_0 \text{ is false),}$$
+
+or, in words, the probability of detecting a difference when it actually
+exists. We want to use a statistical procedure that controls the Type I error 
+rate at the pre-specified level and has high power to detect false null 
+alternatives. Increasing the sample size is one of the most commonly used 
+methods for increasing the power in a given situation. Sometimes we can choose 
+among different procedures and use the power of the procedures to help us make 
+that selection. Note that there are many ways $H_0$ false and the power changes 
+based on how false the null hypothesis actually is. To make this concrete, 
+suppose that the true mean sentences differed by either 1 or 20 years in 
+previous example. The chances of rejecting the null hypothesis are much larger 
+when the groups actually differ by 20 years than if they differ by just 1 year. 
+
+After making a decision (was there enough evidence to reject the null or not), 
+we want to make the conclusions specific to the problem of interest. If we
+reject $H_0$, then we can conclude that there was sufficient evidence at the 
+$\alpha$-level that the null hypothesis is wrong (and the results point in the
+direction of the alternative). If we fail to reject $H_0$ (FTR $H_0$), then we 
+can conclude that there was insufficient evidence at the $\alpha$-level to say 
+that the null hypothesis is wrong. We are **NOT** saying that the null is 
+correct and we  **NEVER** accept the null hypothesis. We just failed to find 
+enough evidence to say it's wrong. If we find sufficient evidence to reject the 
+null, then we need to revisit the method of data collection and design of the 
+study to discuss scope of inference. Can we discuss causality (due to RA) and/or 
+make inferences to a larger group than those in the sample (due to RS)? 
+
+To perform a hypothesis test, there are some steps to remember to complete to 
+make sure you have thought through all the aspects of the results. 
+
+-------------------------------------------------------------------------------
+**Outline of 6+ steps to perform a Hypothesis Test**
+
+Isolate the claim to be proved, method to use (define a test statistic T),
+and significance level. 
+
+1. Write the null and alternative hypotheses, 
+
+2. Assess the "Validity Conditions" for the procedure being used 
+(discussed below), 
+
+3. Find the value of the appropriate test statistic, 
+
+4. Find the p-value, 
+
+5. Make a decision, and
+
+6. Write a conclusion specific to the problem, including scope of 
+inference discussion. 
+-------------------------------------------------------------------------------
 
 ## Connecting randomization (nonparametric) and parametric tests {#section2-6}
 
+In developing statistical inference techniques, we need to define the test
+quantity of interest. To compare the means of two groups, a statistic is needed 
+that measures their differences. In general, for comparing two groups, the
+choices are simple -- a difference in the means often works well and is a
+natural choice. There are other options such as tracking the ratio of means or
+possibly the difference in medians. Instead of just using the difference in the
+means, we also could "standardize" the difference in the means by dividing by
+an appropriate quantity that reflects the variation in the difference in the
+means. All of these are valid and can sometimes provide similar results - it
+ends up that there are many possibilities for testing using the randomization
+(nonparametric) techniques introduced previously. Parametric statistical
+methods focus on means because the statistical theory surrounding means is
+quite a bit easier (not easy, just easier) than other options but there are
+just a couple of test statistics that you can use and end up with named
+distributions to use for generating inferences. Randomization techniques allow
+inference for other quantities but our focus here will be on using
+randomization for inferences on means to see the similarities with the more
+traditional parametric procedures. 
+
+In two-sample mean situations, instead of working just with the difference in 
+the means, we often calculate a test statistic that is called the  
+***equal variance two-independent samples t-statistic***. The test statistic is
+
+$$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}},$$
+
+where $s_1^2$ and $s_2^2$ are the sample variances for the two groups, $n_1$ and 
+$n_2$ are the sample sizes for the two groups, and the 
+***pooled sample standard deviation*** , 
+
+$$s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}.$$
+
+The $t$-statistic keeps the important comparison between the means in the
+numerator that we used before and standardizes (re-scales) that difference so
+that $t$ will follow a $t$-distribution (a parametric "named"distribution) if 
+certain assumptions are met. But first we should see if standardizing the 
+difference in the means had an impact on our permutation test results. Instead 
+of using the ``diffmean`` function, we will use the ``t.test`` function (see 
+its full use below) and have it calculate the formula for $t$ for us. The R 
+code "``$statistic``" is basically a way of extracting just the number we want 
+to use for $T$ from a larger set of output the ``t.test`` function wants to 
+provide you. We will see below that ``t.test`` switches the order of the 
+difference (now it is *Average* - *Unattractive*) -- always carefully check for 
+the direction of the difference in the results. Since we are doing a two-sided 
+test, the code resembles the permutation test code in Section \@ref(section2-4) 
+with the new $t$-statistic replacing the difference in the sample means that we 
+used before. 
+
+The permutation distribution in Figure \@ref(fig:Figure2-12) looks similar to 
+the previous results with slightly different $x$-axis scaling. The the 
+proportion of permuted results that were more extreme than the observed result 
+was 0.031. This difference is due to a different set of random permutations 
+being selected. If you run permutation code, you will often get slightly 
+different results each time you run it. If you are uncomfortable with the 
+variation in the results, you can run more than $B=$ 1,000 permutations (say 
+10,000) and the variability in the resulting p-values will be reduced further. 
+Usually this uncertainty will not cause any substantive problems -- but do not 
+be surprised if your results vary from a colleagues if you are both analyzing 
+the same data set or if you re-run your permutation code. 
+
+(ref:fig2-12) Permutation distribution of the $t$-statistic
+
+```{r Figure2-12, fig.cap="(ref:fig2-12)", fig.show="hold", fig.width=3}
+Tobs <- t.test(Years ~ Attr, data=MockJury2, var.equal=T)$statistic
+Tobs
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- t.test(Years ~ shuffle(Attr), data=MockJury2, var.equal=T)$statistic
+}
+hist(Tstar, labels=T)
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+pdata(abs(Tstar),abs(Tobs),lower.tail=F)
+```
+
+The parametric version of these results is based on using what is called the
+***two-independent sample t-test***. There are actually two versions of this 
+test, one that assumes that variances are equal in the groups and one that 
+does not. There is a rule of thumb that if the **ratio of the larger standard
+deviation over the smaller standard deviation is less than 2, the equal variance
+procedure is ok**. It ends up that this assumption 
+is less important if the sample sizes in the groups are approximately equal 
+and more important if the groups contain different numbers of observations. In
+comparing the two potential test statistics, the procedure that assumes equal
+variances has a complicated denominator (see the formula above for $t$ 
+involving $s_p$) but a simple formula for  ***degrees of freedom*** (***df***)
+for the $t$-distribution ($df=n_1+n_2-2$) that approximates the
+distribution of the test statistic, $t$, under the null hypothesis. The 
+procedure that assumes unequal variances has a simpler test statistic and a 
+very complicated degrees of freedom formula. The equal variance procedure is 
+most similar to the ANOVA methods we will consider in Chapters 2 and 3 so that 
+will be our focus for the two group problem. Fortunately, both of these methods 
+are readily available in the ``t.test`` function in R if needed. 
+
+If the assumptions for the equal variance $t$-test are met and the null 
+hypothesis is true, then the sampling distribution of the test statistic should 
+follow a $t$-distribution with $n_1+n_2-2$ degrees of freedom. The  ***t-distribution*** is a bell-shaped curve that is more spread out for smaller 
+values of degrees of freedom as shown in Figure \@ref(fig:Figure2-13). The
+$t$-distribution looks more and more like a  ***standard normal distribution***
+($N(0,1)$) as the degrees of freedom increase. 
+
+(ref:fig2-13) Plots of $t$ and normal distributions
+
+```{r Figure2-13, echo=FALSE, fig.cap ="(ref:fig2-13)"}
+knitr::include_graphics('chapter1_files/image045.png')
+```
+
+To get the p-value for the parametric $t$-test, we need to calculate the test
+statistic and $df$, then look up the areas in the tails of the $t$-distribution
+relative to the observed $t$-statistic. We'll learn how to use R to do this 
+below, but for now we will allow the ``t.test`` function to take care of this 
+for us. The ``t.test``  function uses our formula notation (``Years ~ Attr``) 
+and then ``data=...`` as we saw before for making plots. To get the 
+equal-variance test result, the ``var.equal=T`` option needs to be turned on.
+Then ``t.test`` provides us with lots of useful output. The three results we've 
+been discussing are highlighted in the output below -- the test statistic value 
+(-2.17), $df=73$, and the p-value, from the $t$-distribution with 73 degrees of freedom, of 0.033. 
+
+```{r}
+t.test(Years ~ Attr, data=MockJury2, var.equal=T)
+```
+
+So the parametric $t$-test gives a p-value of 0.033 from a test statistic of 
+-2.1702. The negative sign on the test statistic occurred because the function 
+took *Average* - *Unattractive* which is the opposite direction as ``diffmean``. 
+The p-value is very similar to the two permutation results found before. The 
+reason for this similarity is that the permutation distribution with 73 degrees 
+of freedom. Figure \@ref(fig:Figure2-14) shows how similar the two distributions
+happened to be here. 
+
+(ref:fig2-14) Plot of permutation and $t$ distribution with $df=73$. 
+
+```{r Figure2-14, echo=FALSE, fig.cap ="(ref:fig2-14)"}
+knitr::include_graphics('chapter1_files/image047.png')
+```
+
+In your previous statistics course, you might have used an applet or a table to 
+find p-values such as what was provided in the previous R output. When not 
+directly provided in the output of a function, R can be used to look up 
+p-values^[On exams, you will be asked to describe the area of interest, sketch a
+picture of the area of interest, and/or note the distribution you would use.] from
+named distributions such as the $t$-distribution. In this case, the distribution 
+of the test statistic under the null hypothesis is a $t(73)$ or a $t$ with 73 
+degrees of freedom. The ``pt`` function is used to get p-values from the
+$t$-distribution in the same manner that ``pdata`` could help us to find p-values
+from the permutation distribution. We need to provide the ``df=...`` and specify 
+the tail of the distribution of interest using the ``lower.tail`` option along 
+with the cutoff of interest. If we want the area to the left of -2.17:
+
+```{r}
+pt(-2.1702, df=73, lower.tail=T)
+```
+
+And we can double it to get the p-value that ``t.test`` provided earlier, because 
+the $t$-distribution is symmetric:
+
+```{r}
+2*pt(-2.1702, df=73, lower.tail=T)
+```
+
+More generally, we could always make the test statistic positive using the 
+absolute value, find the area to the right of it, and then double that for a 
+two-sided test p-value:
+
+```{r}
+2*pt(abs(-2.1702), df=73, lower.tail=T)
+```
+
+Permutation distributions do not need to match the named parametric distribution 
+to work correctly, although this happened in the previous example. The 
+parametric certain conditions to be met for the sampling distribution of the 
+statistic to follow the named distribution and provide accurate p-values. The
+conditions for the equal variance t-test are:
+
+1. **Independent observations**: Each observation obtained is unrelated to all other
+observations. To assess this, consider whether anything in the data collection
+might lead to clustered or related observations that are un-related to the
+differences in the groups. For example, was the same person measured more than
+once?^[In some studies, the same subject might be measured in both conditions and 
+this violates the assumptions of this procedure.]
+
+2. **Equal variances** in the groups (because we used a procedure that assumes 
+equal variances! -- there is another procedure that allows you to relax this
+assumption if needed...). To assess this, compare the standard deviations and
+variability in the beanplots and see if they look noticeably different. Be
+particularly critical of this assessment if the sample sizes differ greatly 
+between groups. 
+
+3. **Normal distributions**  of the observations in each group. We'll learn more
+diagnostics later, but the boxplots and beanplots are a good place to start to 
+help you look for skews or outliers, which were both present here. If you find 
+skew and/or outliers, that would suggest a problem with the assumption of 
+normality as normal distributions are symmetric and extreme observations occur 
+very rarely. 
+
+For the permutation test, we relax the third condition and replace it with:
+
+3. ***Similar distributions between the groups:*** The permutation approach 
+allows valid inferences as long as the two groups have similar shapes and only
+possibly differ in their centers. In other words, the distributions need not 
+look normal for the procedure to work well, but they do need to look similar. 
+
+In the prisoner "juror" study, we can assume that the independent observation 
+condition is met because there is no information suggesting that the same 
+subjects were measured more than once or that some other type of grouping in 
+the responses was present (like the subjects were divided in groups and placed 
+in rooms to discuss their responses prior to submitting them). The equal variance
+condition might be violated. The variances need not be equal as the procedure 
+can still provide reasonable results with some violation of this assumption.
+The standard deviations are 2.8 vs 4.4, so this difference is not "large" 
+according to the rule of thumb noted above. It is, however, close to being 
+considered problematic. It would be difficult to reasonably assume that the 
+normality condition is met here (Figure \@ref(fig:Figure2-6) with clear right 
+skews in both groups and potential outliers which causes concerns for (3) for 
+the parametric procedure. The shapes look similar for the two groups so there 
+is less reason to be concerned with using the permutation approach based on 
+its version of (3) above. 
+
+The permutation approach is resistant to impacts of violations of the normality
+assumption. It is not resistant to impact of violations of any of the other
+assumptions. In fact, it can be quite sensitive to unequal variances as it will
+detect differences in the variances of the groups instead of differences in the
+means. Its scope of inference is the same as the parametric approach and can
+lead to similarly inaccurate conclusions in the presence of non-independent
+observations as for the parametric approach. In this example, we discover that
+parametric and permutation approaches provide very similar inferences. 
 
 ## Second example of permutation tests {#section2-7}
-adfaveaea
+
+In every chapter, we will follow the first example used to motivate and explain 
+the methods with a "worked" example where we focus just on the results. In a 
+previous semester, some of the STAT 217 students ( ***n***=79) provided 
+information on their *Sex*, *Age*, and current cumulative *GPA*. We might be
+interested in whether Males and Females had different average GPAs. First, 
+we can take a look at the difference in the responses by groups based on the
+output and as displayed in Figure \@ref(fig:Figure2-15). 
+
+(ref:fig2-15) Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex.
+
+```{r Figure2-15, fig.cap="(ref:fig2-15)", warning=F,message=F}
+s217 <- read.csv("http://www.math.montana.edu/courses/s217/documents/s217.csv")
+require(mosaic)
+par(mfrow=c(1,2))
+boxplot(GPA~Sex, data=s217)
+require(beanplot)
+beanplot(GPA~Sex, data=s217, log="", col="lightblue", method="jitter")
+mean(GPA~Sex, data=s217)
+favstats(GPA~Sex, data=s217)
+```
+
+In these data, the distributions of the GPAs look to be left skewed but maybe not
+as dramatically as the responses were right-skewed in the previous example. The 
+Female GPAs look to be slightly higher than for Males (0.25 GPA difference in the
+means) but is that a "real" difference? We need our inference tools to more fully
+assess these differences. 
+
+```{r}
+diffmean(GPA~Sex, data=s217)
+```
+
+First, we can try the parametric approach:
+
+```{r}
+t.test(GPA~Sex, data=s217, var.equal=T)
+```
+
+```{r echo=F}
+set.seed(201706)
+B=1000
+Tobs <- t.test(GPA~Sex, data=s217, var.equal=T)$statistic
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- t.test(GPA~shuffle(Sex), data=s217, var.equal=T)$statistic
+}
+perm_pval = pdata(abs(Tstar),abs(Tobs),lower.tail=F)
+```
+
+So the test statistic was observed to be $t=2.69$ and it hopefully follows a
+$t(77)$ distribution under the null hypothesis. This provides a p-value of 
+0.008713 that we can trust if all the conditions to use this procedure are met.
+Compare these results to the permutation approach, which relaxes that normality
+assumption, with the results that follow. In the permutation test, $T=2.692$ and 
+the p-value is `r perm_pval` which is a little smaller than the result provided by the
+parametric approach. The agreement of the two approaches, again, provides some
+re-assurance about the use of either approach. 
+
+```{r eval=F}
+Tobs <- t.test(GPA~Sex, data=s217, var.equal=T)$statistic
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- t.test(GPA~shuffle(Sex), data=s217, var.equal=T)$statistic
+}
+```
+
+(ref:fig2-16) Histogram and density curve of permutation distribution of test
+statistic for STAT 217 GPAs.
+
+```{r Figure2-16, fig.cap="(ref:fig2-16)"}
+par(mfrow=c(1,2))
+hist(Tstar,labels=T)
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+```
+
+```{r}
+pdata(abs(Tstar),abs(Tobs),lower.tail=F)
+```
+
+Here is a full write-up of the results using all 6+ hypothesis testing steps, using the permutation results:
+
+0. *Isolate the claim to be proved and method to use (define a test statistic T)*
+    We want to test for a difference in the means between males and females and 
+    will use the equal-variance two-sample t-test statistic to compare them, 
+    making a decision at the 5% significance level. 
+
+1. Write the null and alternative hypotheses
+
+    * $H_0: \mu_{male} = \mu_{female}$
+
+        * where $\mu_{male}$ is the true mean GPA for males and $\mu_{female}$
+        is true mean GPA for females. 
+        
+    * $H_A: \mu_{male} \ne \mu_{female}$
+
+2. Check conditions for the procedure being used
+
+    * **Independent observations condition**: It appears that this assumption 
+    is met because there is no reason to assume any clustering or grouping of
+    responses that might create dependence in the observations. The only 
+    possible consideration is that the observations were taken from different 
+    sections and there could be some differences between the sections. However, 
+    for overall GPA this not likely to be a big issue. The only way this could 
+    create a violation here is if certain sections tended to attract students 
+    with different GPA levels (such as the 9 am section had the best/worst GPA
+    students...). 
+
+    * **Equal variance condition** : There is a small difference in the range 
+    of the observations in the two groups but the standard deviations are very 
+    similar so there is no evidence that this condition is violated. 
+
+    * **Similar distribution condition**: Based on the side-by-side boxplots and
+    beanplots, it appears that both groups have slightly left-skewed 
+    distributions, which could be problematic for the parametric approach, but 
+    the permutation approach condition is not violated since the distributions 
+    look to have fairly similar shapes. 
+
+3. Find the value of the appropriate test statistic
+
+    * $T=2.69$ from the previous R output. 
+
+4. Find the p-value
+
+    * p-value=`r perm_pval` from the permutation distribution results. 
+
+    * This means that there is about a `r perm_pval*100`% chance we would observe 
+    a difference in mean GPA (female-male or male-female) of 0.25 points or more 
+    if there in fact no difference in true mean GPA between females and males 
+    in STAT 217 in a particular semester. 
+
+5. Decision
+
+    * Since the p-value is "small" (*a priori* 5% significance level selected), 
+    we can reject the null hypothesis. 
+
+6. Conclusion and scope of inference, specific to the problem
+
+    * There is strong evidence against the null hypothesis of no difference 
+    in the true mean GPA between males and females for the STAT 217 students 
+    in this semester and so we conclude that there is evidence of a difference 
+    in the mean GPAs between males and females in STAT 217 students. 
+    
+    * Because this was not a randomized experiment, we can't say that the 
+    difference in sex causes the difference in mean GPA and because it was 
+    not a random sample from a larger population, our inferences only pertain 
+    the STAT 217 students that responded to the survey in that semester. 
 
 ## Confidence intervals and bootstrapping {#section2-8}
 dadarae
