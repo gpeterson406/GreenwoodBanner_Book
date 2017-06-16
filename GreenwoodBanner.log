@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  16 JUN 2017 11:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  16 JUN 2017 16:57
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -1046,10 +1046,11 @@ LaTeX Font Info:    Try loading font information for T1+lmtt on input line 530.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [11] [12 <./chapter0_files/image003.png>]
+)
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 575.
-[13] <chapter0_files/image005.png, id=213, 797.98125pt x 450.18187pt>
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 536.
+[11] [12 <./chapter0_files/image003.png>] [13] <chapter0_files/image005.png, id
+=213, 797.98125pt x 450.18187pt>
 File: chapter0_files/image005.png Graphic file (type png)
 <use chapter0_files/image005.png>
 Package pdftex.def Info: chapter0_files/image005.png used on input line 800.
@@ -1111,32 +1112,28 @@ File: GreenwoodBanner_files/figure-latex/Figure8-1.pdf Graphic file (type pdf)
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure8-1.pdf used 
 on input line 1159.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-<GreenwoodBanner_files/figure-latex/Figure9-1.pdf, id=287, 469.755pt x 325.215p
+[22 <./GreenwoodBanner_files/figure-latex/Figure8-1.pdf>]
+<GreenwoodBanner_files/figure-latex/Figure9-1.pdf, id=297, 469.755pt x 325.215p
 t>
 File: GreenwoodBanner_files/figure-latex/Figure9-1.pdf Graphic file (type pdf)
 <use GreenwoodBanner_files/figure-latex/Figure9-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure9-1.pdf used 
 on input line 1184.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[22 <./GreenwoodBanner_files/figure-latex/Figure8-1.pdf>] [23 <./GreenwoodBanne
-r_files/figure-latex/Figure9-1.pdf>]
-Underfull \vbox (badness 1178) has occurred while \output is active []
-
-[24]
+[23 <./GreenwoodBanner_files/figure-latex/Figure9-1.pdf>]
 LaTeX Font Info:    Try loading font information for TS1+lmr on input line 1282
 .
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [25] [26]
+) [24] [25] [26
+
+]
 Chapter 2.
 LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 140
 3.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [27
-
-] [28] [29] [30]
+) [27] [28] [29] [30]
 
 LaTeX Warning: Reference `fig:Figure2-1' on page 31 undefined on input line 191
 8.
@@ -1481,31 +1478,31 @@ ed on input line 4874.
 
 LaTeX Warning: Reference `chapter3' on page 78 undefined on input line 4936.
 
-(GreenwoodBanner.bbl [78]
+[78] (GreenwoodBanner.bbl [79] [80
+
+]
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4958.
-[79
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4958.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5092.
+[81]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5092.
 (GreenwoodBanner.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4958.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4958.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5092.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5092.
 
 Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
 (rerunfilecheck)             Checksum: B4FCB71D8D76D18D66BBB70A32F1F602;4548.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4958.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5092.
  ) 
 Here is how much of TeX's memory you used:
- 14014 strings out of 493366
- 206838 string characters out of 3137241
- 318174 words of memory out of 3000000
+ 14016 strings out of 493366
+ 206852 string characters out of 3137241
+ 319112 words of memory out of 3000000
  16920 multiletter control sequences out of 15000+200000
  119577 words of font info for 180 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
@@ -1539,9 +1536,9 @@ TeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
 blic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt
 i10.pfb>
-Output written on GreenwoodBanner.pdf (79 pages, 1796597 bytes).
+Output written on GreenwoodBanner.pdf (81 pages, 1803461 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
+ 984 PDF objects out of 1000 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
  18786 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -2,6 +2,7 @@ book_filename: "GreenwoodBanner"
 language:
   ui:
     chapter_name: "Chapter "
-rmd_files: ["index.Rmd","01-preface.rmd","02-reintroductionToStatistics.rmd"]
+rmd_files: ["index.Rmd","01-preface.rmd","02-reintroductionToStatistics.rmd",
+"03-oneWayAnova.rmd"]
 header-includes:
 - \usepackage{amsmath}

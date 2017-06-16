@@ -3,6 +3,7 @@ title: "Scratch"
 author: "Greta Linse Peterson"
 date: "May 26, 2017"
 output:
+  pdf_document: default
   html_document: default
   word_document: default
 ---
@@ -11,10 +12,17 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r pander}
-library(pander)
-pander(table(mtcars[,1:3]))
-
-## caption
-pander(table(mtcars[,1:3], 'Motor Trend Car Road Tests'))
+```{r}
+#Color Format
+colFmt = function(x,color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
 ```
+
+`r colFmt("TEST","red")`

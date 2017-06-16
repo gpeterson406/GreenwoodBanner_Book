@@ -719,21 +719,21 @@ These questions provide a great venue to check your learning, often to see the
 methods applied to another data set, and for something to discuss in study groups,
 with your instructor, and/or at the Math Learning Center. 
 
-0.1. Read in the treadmill data set
+1.1. Read in the treadmill data set
 discussed above and find the mean and SD of the Ages (*Age* variable) and Body Weights (*BodyWeight* variable). In studies involving human subjects, it is common to report a
 summary of characteristics of the subjects. Why does this matter? Think about
 how your interpretation of any study of the fitness of subjects would change if
 the mean age had been 20 years older or 35 years younger. 
 
-0.2. How does knowing about the
+1.2. How does knowing about the
 distribution of results for *Age* and *BodyWeight* help you understand the results for the Run Times discussed above?
 
-0.3. The mean and SD are most useful
+1.3. The mean and SD are most useful
 as summary statistics only if the distribution is relatively symmetric. Make a
 discuss the shape of the distribution (is it skewed right, skewed left, approximately symmetric?; are there outliers?). Approximately what range of
 ages does this study pertain to?
 
-0.4. The weight responses are in
+1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
 lbs=2. 205*kgs. Create a new variable in the ``treadmill``  
 data.frame called *BWlb* using this code:
@@ -743,7 +743,7 @@ data.frame called *BWlb* using this code:
  
 and find the mean and SD of the new variable (*BWlb*). 
 
-0.5. Make histograms and boxplots of
+1.5. Make histograms and boxplots of
 the original *BodyWeight* and new *BWlb* variables. Discuss aspects of the distributions that changed and those that remained the same with the
 transformation from kilograms to pounds. 
 

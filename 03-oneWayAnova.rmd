@@ -1,0 +1,54 @@
+---
+output:
+  pdf_document: 
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{color}
+---
+
+#One-Way ANOVA {#chapter3}
+
+```{r echo=F,warning=F,message=F}
+set.seed(3234)
+library(pander)
+require(mosaic)
+```
+
+
+```{r echo=F}
+#Color Format
+colFmt = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+```
+
+In Chapter \@ref(chapter2), tools for comparing the means of two groups
+were considered. 
+
+## Situation {#section3-1}
+
+## Linear model for One-Way ANOVA (cell-means and reference-coding) {#section3-2}
+
+## One-Way ANOVA Sums of Squares, Mean Squares, and F-test {#section3-3}
+
+## ANOVA model diagnostics including QQ-plots {#section3-4}
+
+## Guinea pig tooth growth One-Way ANOVA example {#section3-5}
+
+## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
+
+## Pair-wise comparisons for Prisoner Rating data {#section3-7}
+
+## Chapter Summary {#section3-8}
+
+## Summary of important R code {#section3-9}
+
+## Practice problems {#section3-10}

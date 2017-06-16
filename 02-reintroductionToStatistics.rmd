@@ -3,14 +3,31 @@ output:
   pdf_document: 
     keep_tex: yes
   html_document: default
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{color}
 ---
 
 #(R)e-Introduction to statistics {#chapter2}
 
-```{r echo=F}
+```{r echo=F,warning=F,message=F}
 set.seed(3234)
 library(pander)
 require(mosaic)
+```
+
+
+```{r echo=F}
+#Color Format
+colFmt = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
 ```
 
 The previous material served to get us started in R and to get a quick review of same basic
@@ -215,7 +232,7 @@ useful aspects of the data set. The output is organized by variable,
 providing summary information based on the type of
 variable, either counts by category for categorical variables ``Attr``  
 and ``Crime`` mean for quantitative variables. If present, you would 
-also get a count ofmissing values that are called "NAs" in R. For the 
+also get a count of missing values that are called "NAs" in R. For the 
 first variable, called ``Attr``  in the data.frame and that we might 
 we find counts of the number of subjects shown each picture: 37/114 viewed the 
 "Unattractive" picture, 38 viewed "Average", and 39 viewed "Beautiful". 
@@ -563,7 +580,7 @@ means using the ``mean``  function or directly obtain the difference
 in the means using the ``diffmean``  function (both require the ``mosaic``
 package). The ``diffmean``  function provides 
 $\bar{x}_{Unattractive} - \bar{x}_{Average}$ where $\bar{x}$
-(read as "x-bar") is the sample mean ofobservations in the subscripted 
+(read as "x-bar") is the sample mean of observations in the subscripted 
 group. Note that there are two directions that you could compare the
 means and this function chooses to take the mean from the second group 
 name *alphabetically* and subtract the mean from the first alphabetical group 
@@ -819,7 +836,7 @@ it appears in the console, looking like this:
 +}
 ```
 
-When you run these three lines ofcode, the console will show you the following 
+When you run these three lines of code, the console will show you the following 
 output:
 
 ```r
@@ -832,10 +849,10 @@ output:
 
 Instead of printing the counter, we want to use the loop to repeatedly compute 
 our test statistic across B random permutations of the observations. The 
-``shuffle`` function performs permutations ofthe group labels relative to 
+``shuffle`` function performs permutations of the group labels relative to 
 responses and the ``diffmean`` difference in the two group means in the permuted 
 data set. For a single permutation, the combination of shuffling ``Attr`` and 
-finding the difference in themeans, storing it in a variable called ``Ts`` is:
+finding the difference in the means, storing it in a variable called ``Ts`` is:
 
 ```{r}
 Ts <- diffmean(Years ~ shuffle(Attr), data=MockJury2)
@@ -864,7 +881,7 @@ Tstar <- matrix(NA, nrow=B)
 Tstar
 ```
 
-Now we can run our loop B times andstore the results in ``Tstar``. 
+Now we can run our loop B times and store the results in ``Tstar``. 
 
 ```{r}
 for (b in (1:B)){
@@ -1047,7 +1064,7 @@ sets that produce more extreme differences in the sample means. When the
 observed differences are really large, we may not see any permuted results 
 that are as extreme as what we observed. When ``pdata``  gives you 0, the p-value
 should be reported to be smaller than 0.0001 (**not 0!**) since it happened 
-in less than 1 in 1000 tries but does occur once -- in the actual dataset. 
+in less than 1 in 1000 tries but does occur once -- in the actual data set. 
 
 4. Since our null model is not specific about the direction of the difference, 
 considering a result like ours but in the other direction (-1.84 years) needs to 
@@ -1243,7 +1260,7 @@ someone guilty. We don't want to do this very often, so we use small values
 of the significance level, allowing us to control the rate of Type I errors 
 at $\alpha$. We also have to worry about  **Type II errors**, which are failing
 to reject the null hypothesis when it's false. In a courtroom, this is the same
-as failing to convict a truley guilty person. This most often occurs due to a 
+as failing to convict a truly guilty person. This most often occurs due to a 
 lack of evidence. You can use the Table \@ref(tab:Table2-2) to help you 
 remember all the possibilities. 
 
@@ -1403,7 +1420,7 @@ The parametric version of these results is based on using what is called the
 test, one that assumes that variances are equal in the groups and one that 
 does not. There is a rule of thumb that if the **ratio of the larger standard
 deviation over the smaller standard deviation is less than 2, the equal variance
-procedure is ok**. It ends up that this assumption 
+procedure is OK**. It ends up that this assumption 
 is less important if the sample sizes in the groups are approximately equal 
 and more important if the groups contain different numbers of observations. In
 comparing the two potential test statistics, the procedure that assumes equal
@@ -2051,7 +2068,7 @@ qt(.975,df=73)*sp*sqrt(1/38+1/37)
 
 We can now apply the new confidence interval methods on the STAT 217 grade data. 
 This time we start with the parametric 95% confidence interval "by hand" in R
-and then use ``t. test`` to verify our result. The ``favstats`` output provides 
+and then use ``t.test`` to verify our result. The ``favstats`` output provides 
 us with the required information to calculate the confidence interval:
 
 ```{r}
@@ -2080,7 +2097,7 @@ All together, the 95% confidence interval is:
 
 So we are 95% confident that the difference in the true mean GPAs between 
 females and males (females minus males) is between 0. 065 and 0. 434 GPA points. 
-We get a similar^[We rounded the means a little and that causd the small
+We get a similar^[We rounded the means a little and that caused the small
 difference in results.] result from the ``t.test`` output:
 
 ```{r}
@@ -2184,7 +2201,7 @@ of a two-sample mean problem. You were introduced to using R to do permutation
 testing and generate bootstrap confidence intervals as well as obtaining 
 parametric $t$-test and confidence intervals in this same situation. You should 
 have learned how to use a ``for`` loop for doing the nonparametric inferences
-and the ``t. test`` function for generating parametric inferences. In the two
+and the ``t.test`` function for generating parametric inferences. In the two
 examples considered, the parametric and nonparametric methods provided similar
 results, suggesting that the assumptions were at least close to being met for
 the parametric procedures. When parametric and nonparametric approaches
@@ -2216,10 +2233,127 @@ The main components of R code used in this chapter follow with components to
 modify in red, remembering that any R packages mentioned need to be installed 
 and loaded for this code to have a chance of working:
 
-* ``summary``($\textcolor{red}{DATASETNAME}$)
+* summary(`r colFmt("DATASETNAME","red")`)
 
-* ``summary``(<span style='color:red'>``DATASETNAME``</span>)
+    * Provides numerical summaries of all variables in the data set. 
+
+* t.test(`r colFmt("Y","red")` ~ `r colFmt("X","red")`, 
+data=`r colFmt("DATASETNAME","red")`, conf.level=0.95)
+
+    * Provides two-sample t-test test statistic, df, p-value, and 95% 
+    confidence interval. 
+    
+* 2*pt(abs(`r colFmt("Tobs","red")`), df=`r colFmt("DF","red")`, lower.tail=F)
+
+    * Finds the two-sided test p-value for an observed 2-sample t-test 
+    statistic of ``Tobs``. 
+
+* hist(`r colFmt("DATASETNAME\\$Y","red")`)
+
+    * Makes a histogram of a variable named ``Y`` from the data set of 
+    interest. 
+    
+* boxplot(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`)
+
+    * Makes a boxplot of a variable named Y for groups in X from the data set. 
+    
+* beanplot(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`)
+
+    * Makes a beanplot of a variable named Y for groups in X from the data set. 
+    
+    * Requires the ``beanplot`` package is loaded. 
+
+* mean(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`); sd(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`) 
+
+    * Provides the mean and sd of responses of Y for each group described in X. 
+    
+    * This usage of ``mean`` and ``sd`` requires the ``mosaic`` package.
+
+* favstats(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`) 
+
+    * Provides numerical summaries of Y by groups described in X. 
+
+* Tobs ``<-`` t.test(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`, var.equal=T)\$statistic; Tobs  
+B ``<-`` 1000  
+Tstar ``<-`` matrix(NA, nrow=B)  
+for (b in (1:B)){  
+    Tstar[b] ``<-`` t.test(`r colFmt("Y","red")`~shuffle(`r colFmt("X","red")`), data=`r colFmt("DATASETNAME","red")`, var.equal=T)\$statistic  
+}
+
+    * Code to run a ``for`` loop to generate 1000 permuted versions of the test
+    statistic using the ``shuffle`` function and keep track of the results in 
+    ``Tstar`` 
+    
+* pdata(Tstar, abs(`r colFmt("Tobs","red")`, lower.tail=F)
+
+    * Finds the proportion of the permuted test statistics in Tstar that are 
+    less than -|Tobs| or greater than |Tobs|, useful for finding the two-sided 
+    test p-value. 
+
+* Tobs ``<-`` diffmean(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=`r colFmt("DATASETNAME","red")`, var.equal=T)\$statistic; Tobs  
+B ``<-`` 1000  
+Tstar ``<-`` matrix(NA, nrow=B)  
+for (b in (1:B)){  
+    Tstar[b] ``<-`` diffmean(`r colFmt("Y","red")`~`r colFmt("X","red")`, data=resample(`r colFmt("DATASETNAME","red")`))  
+}
+
+    * Code to run a ``for`` loop to generate 1000 bootstrapped versions of the 
+    data set using the ``resample``  function and keep track of the results of 
+    the statistic in ``Tstar``. 
+
+* qdata(Tstar, c(0. 025, 0. 975))
+
+    * Provides the values that delineate the middle 95% of the results in the
+    bootstrap distribution (``Tstar``)
 
 
 
 ## Practice problems {#section2-12}
+
+Load the ``HELPrct`` data set from the ``mosaicData`` package (you need to 
+install the ``mosaicData`` package once to be able to load it). The HELP study 
+was a clinical trial for adult inpatients recruited from a
+detoxification unit. Patients with no primary care physician were randomly
+assigned to receive a multidisciplinary assessment and a brief motivational
+intervention or usual care and various outcomes were observed. Two of the
+variables in the data set are ``sex``, a factor with levels male and female 
+and ``daysanysub`` which is the time (in days) to first use of any substance
+post-detox. We are interested in the difference in mean number of days to first 
+use of any substance post-detox between males and females. There are some 
+missing responses and the following code will produce ``favstats`` with the 
+missing values and then provide a data set that for complete observations by 
+applying the ``na.omit``  function that removes any observations with missing 
+values. 
+
+```
+require(mosaicData)
+data(HELPrct)
+HELPrct <- HELPrct[, c("daysanysub", "sex")] #Just focus on two variables
+HELPrct <- na.omit(HELPrct2) #Removes subjects with missing
+favstats(daysanysub~sex, data=HELPrct2)
+favstats(daysanysub~sex, data=HELPrct3)
+```
+
+2.1. Based on the results provided, how many observations were missing for males 
+and females? Missing values here likely mean that the subjects didn't use any
+substances post-detox in the time of the study but might have at a later 
+date -- the study just didn't run long enough. This is called  ***censoring***.
+What is the problem with the numerical summaries here if the missing responses 
+were all something larger than the largest observation?
+
+2.2. Make a beanplot and a boxplot of ``daysanysub`` ~ ``sex`` using the 
+``HELPrct3`` data set created above. Compare the distributions, recommending
+parametric or nonparametric inferences. 
+
+2.3. Generate the permutation results and write out the 6+ steps of the 
+hypothesis test, making sure to note the numerical value of observed test 
+statistic you are using and include a discussion of the scope of inference. 
+
+2.4. Interpret the p-value for these results. 
+
+2.5. Generate the parametric ``t.test`` results, reporting the test-statistic, 
+its distribution under the null hypothesis, and compare the p-value to those
+observed using the permutation approach. 
+
+2.6. Make and interpret a 95% bootstrap confidence interval for the difference 
+in the means. 

@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="chapter2.html">
 
-<link rel="next" href="preface.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,29 +152,84 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">A Second Semester Statistics Course with R</h1>
-<h4 class="author"><em>Mark Greenwood and Katherine Banner</em></h4>
-<h4 class="date"><em>2017-06-16</em></h4>
+<div id="chapter3" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> One-Way ANOVA</h1>
+<p>In Chapter <a href="chapter2.html#chapter2">2</a>, tools for comparing the means of two groups were considered.</p>
+<div id="section3-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Situation</h2>
 </div>
-<div id="acknowledgments" class="section level1 unnumbered">
-<h1>Acknowledgments</h1>
-<p>We would like to thank all the students and instructors who have provided input in the development of the current version of STAT 217 and that have impacted the choice of topics and how we try to teach them. Dr. Robison-Cox initially developed this course using R and much of this work retains his initial ideas. Many years of teaching these topics and helping researchers use these topics has helped to refine how they are presented here. Observing students years after the course has also helped to refine what we try to teach in the course, trying to prepare these students for the next levels of statistics courses that they might encounter and the next class where they might need or want to use statistics.</p>
-<p>I (Greenwood) have intentionally taken a first person perspective at times to be able to include stories from some of those interactions to try to help you avoid some of their pitfalls in your current or future usage of statistics. I would like to thank my wife, Teresa Greenwood, for allowing me the time and support to work on this. I would also like to acknowledge Dr. Gordon Bril (Luther College) who introduced me to statistics while I was an undergraduate and Dr. Snehalata Huzurbazar (University of Wyoming) that guided me to completing my Master’s and Ph.D. in Statistics and still serves as a valued mentor and friend to me.</p>
-<p>The development of this text was initially supported with funding from Montana State University’s Instructional Innovation Grant Program with a grant titled Towards more active learning in STAT 217. This book was born with the goal of having a targeted presentation of topics that we cover (and few that we don’t) that minimizes cost to students and incorporates the statistical software R from day one and every day after that. The software is a free, open-source platform and so is dynamically changing over time. This has necessitated frequent revisions of the text.</p>
-<p>This is Version 3.01 of the book. It fixes a problem created with the digital links in the book that occurred during Spring 2017. Version 3.0 of the book, prepared for Fall 2016, involved edits, a couple of partially new sections, and updated R code along with a new format for how the R code is displayed to more easily distinguish it from other text. Each revision has involved a similar amount of change with Version 2.0 published in January 2015 and Version 1.0 in January 2014 after using draft chapters that were initially developed during Fall 2013.</p>
-<p>We have made every attempt to keep costs as low as possible by making it possible for most pages to be printed in black and white. The text (in full color and with dynamic links) is also available as a free digital download from Montana State University’s ScholarWorks repository at <a href="https://scholarworks.montana.edu/xmlui/handle/1/2999" class="uri">https://scholarworks.montana.edu/xmlui/handle/1/2999</a>.</p>
-<p>Enjoy your journey from introductory to intermediate statistics!</p>
-<p>This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" class="uri">http://creativecommons.org/licenses/by-nc-nd/4.0/</a> or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p>
+<div id="section3-2" class="section level2">
+<h2><span class="header-section-number">3.2</span> Linear model for One-Way ANOVA (cell-means and reference-coding)</h2>
+</div>
+<div id="section3-3" class="section level2">
+<h2><span class="header-section-number">3.3</span> One-Way ANOVA Sums of Squares, Mean Squares, and F-test</h2>
+</div>
+<div id="section3-4" class="section level2">
+<h2><span class="header-section-number">3.4</span> ANOVA model diagnostics including QQ-plots</h2>
+</div>
+<div id="section3-5" class="section level2">
+<h2><span class="header-section-number">3.5</span> Guinea pig tooth growth One-Way ANOVA example</h2>
+</div>
+<div id="section3-6" class="section level2">
+<h2><span class="header-section-number">3.6</span> Multiple (pair-wise) comparisons using Tukey’s HSD and the compact letter display</h2>
+</div>
+<div id="section3-7" class="section level2">
+<h2><span class="header-section-number">3.7</span> Pair-wise comparisons for Prisoner Rating data</h2>
+</div>
+<div id="section3-8" class="section level2">
+<h2><span class="header-section-number">3.8</span> Chapter Summary</h2>
+</div>
+<div id="section3-9" class="section level2">
+<h2><span class="header-section-number">3.9</span> Summary of important R code</h2>
+</div>
+<div id="section3-10" class="section level2">
+<h2><span class="header-section-number">3.10</span> Practice problems</h2>
 
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
+<a href="chapter2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

@@ -11,51 +11,6 @@ output: html_document
 
 
 
-</div>
-
-
-<h2 style='margin-left:0in;text-indent:0in;mso-list:l3 level2 lfo7'>
-<a
-name="_Toc459020881">
-1. 8: Bootstrap confidence interval for difference in GPAs</a>
-</h2>
-
-
-????????????? </span>
-
-</span>
-
-
-
-&nbsp;
-</span>
-
-<h2 style='margin-left:0in;text-indent:0in;mso-list:l3 level2 lfo7'>
-<a
-name="_Toc459020882">
-1. 9: Chapter summary</a>
-</h2>
-
-
-
-
-</span>
-
-
-
-&nbsp;
-</span>
-
-<h2 style='margin-left:0in;text-indent:0in;mso-list:l3 level2 lfo7'>
-<a
-name="_Toc459020883">
-1. 10: Summary of important R code</a>
-</h2>
-
-
-
-1. 11: Practice problems</a>
-</h2>
 
 
 Load the </span>
