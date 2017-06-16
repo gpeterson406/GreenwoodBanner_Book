@@ -2,164 +2,19 @@
 title: "Scratch"
 author: "Greta Linse Peterson"
 date: "May 26, 2017"
-output: html_document
+output:
+  html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-Tobs <- 1.837
-pdata(Tstar, Tobs, lower.tail=F)
+```{r pander}
+library(pander)
+pander(table(mtcars[,1:3]))
+
+## caption
+pander(table(mtcars[,1:3], 'Motor Trend Car Road Tests'))
 ```
-
-```{r echo=F}
-pval = pdata(Tstar, Tobs, lower.tail=F)
-```
-
-The proportion of `r pval` tells us that `r pval*1000` of the 1,000 permuted results 
-(`r pval*100`%) were larger than what we observed. This type of work is how we can
-generate  ***p-values***  using permutation distributions. P-values, as you should
-remember, are the probability of getting a result as extreme as or more extreme than what we observed, <u>given that the null is true</u>. Finding only 20 permutations 
-of 1,000 that were larger than our observed result suggests that it is hard to find 
-a result like what we observed if there really were no difference, although it is 
-not impossible. 
-
-When testing hypotheses for two groups, there are two types of alternative
-hypotheses, one-sided or two-sided. ***One-sided tests*** involve only considering
-differences in one-direction (like $\mu_1 > \mu_2$) and are performed when 
-researchers can decide  ***a priori***^[This is a fancy way of saying "in advance",
-here in advance of seeing the observations.] which group should have a larger mean 
-if there is going to be any sort of difference. In this situation, we did not 
-know enough about the potential impacts of the pictures to know which group should 
-be larger than the other so should do a two-sided test. It is important to 
-remember that you can'?'t look at the responses to decide on the hypotheses. It is
-often safer and more  ***conservative***^[Statistically, a conservative method is 
-one that provides less chance of rejecting the null hypothesis in comparison to 
-some other method or less than some pre-defined standard.] to start with a  
-***two-sided alternative*** ($\mathbf{H_A: \mu_1 \ne \mu_2}$). To do a 2-sided 
-test, find the area larger than what we observed as above. We also need to add 
-the area in the other tail (here the left tail) similar to what we observed in the
-right tail. Some people suggest doubling the area in one tail but we will collect
-information on the number that were more extreme than the same value in the other 
-tail. In other words, we count the proportion over 1.84 and below -1.84. So 
-we need to also find how many of the permuted results were smaller than -1.84years 
-to add to our previous proportion. Using ``pdata`` ``-Tobs`` as the cut-off and 
-``lower. tail=T`` provides this result:
-
-```{r}
-pdata(Tstar, -Tobs, lower.tail=T)
-```
-
-```{r echo=F}
-pval_2 <- pdata(Tstar, -Tobs, lower.tail=T)
-```
-
-So the p-value to test our null hypothesis of no difference in the true means 
-between the groups is `r pval` + `r pval_2`, providing a p-value of `r pval+pval_2`.
-Figure \@ref(fig:Figure2-11) shows both cut-offs on the histogram and density curve. 
-
-(ref:fig2-11) Histogram and density curve of values of test statistic for 1,000
-permutations with bold lines for value of observed test statistic and its opposite
-value required for performing two-sided test.
-
-```{r Figure2-11, fig.cap="(ref:fig2-11)", fig.show="hold", fig.width=3}
-hist(Tstar, labels=T)
-abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-plot(density(Tstar),main="Density curve of Tstar")
-abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-```
-
-In general, the  ***one-sided test p-value***  is the proportion of the permuted
-results that are more extreme than observed in the direction of the *alternative*
-hypothesis (lower or upper tail, remembering that this also depends on the direction 
-of the difference taken). For the 2-sided test, the p-value is the proportion of the
-permuted results that are *less than the negative version of the observed statistic
-and greater than the positive version of the observed statistic*. Using absolute 
-values (| |), we can simplify this: the  ***two-sided p-value***  is the 
-*proportion of the |permuted statistics| that are larger than |observed statistic|*.
-This will always work and finds areas in both tails regardless of whether the 
-observed statistic is positive or negative. In R, the ``abs`` function provides the
-***absolute value*** and we can again use ``pdata`` to find our p-value in one line 
-of code: 
-
-```{r}
-pdata(abs(Tstar), abs(Tobs), lower.tail=F)
-```
-
-We will discuss the choice of  ***significance level*** below, but for the moment,
-assume that $\alpha$ is chosen to be our standard value of 0.05. Since the p-value 
-is smaller than $\alpha$ , this suggests that we can  ***reject the null hypothesis***
-and conclude that there is evidence of some difference in the true mean sentences 
-given between the two types of pictures. 
-
-Before we move on, let's note some interesting features of the permutation 
-distribution of the difference in the sample means shown in 
-Figure \@ref(fig:Figure2-11). 
-
-1. It is basically centered at 0. Since we are performing permutations assuming 
-the null model is true, we are assuming that $\mu_1 = \mu_2$ which implies that
-$\mu_1 - \mu_2 = 0$. This also suggests that 0 should be the center of the 
-permutation distribution and it was. 
-
-2. It is approximately normally distributed. This is due to the  ***Central Limit Theorem***^[We'll leave the discussion of the CLT to your previous stat coursework 
-or an internet search. Remember that it has something to do with distributions
-looking more normal as the sample size increases.], where the  
-***sampling distribution***  (distribution of all possible results for samples 
-of this size) of the difference in sample means ($\bar{x}_1 - \bar{x}_2$) becomes 
-more and normally distributed as the sample sizes increase. With 38 and 37 
-observations in the groups, we are likely to have a relatively normal looking
-distribution of the difference in the sample means. This result will allow us to 
-use a parametric method to approximate this sampling distribution under the null 
-model if some assumptions are met, as we'll discuss below. 
-
-3. Our observed difference in the sample means (1.84 years) is a fairly unusual 
-result relative to the rest of these results but there are some permuted data 
-sets that produce more extreme differences in the sample means. When the 
-observed differences are really large, we may not see any permuted results 
-that are as extreme as what we observed. When ``pdata``  gives you 0, the p-value
-should be reported to be smaller than 0.0001 (**not 0!**) since it happened 
-in less than 1 in 1000 tries but does occur once -- in the actual dataset. 
-
-4. Since our null model is not specific about the direction of the difference, 
-considering a result like ours but in the other direction (-1.84 years) needs to 
-be included. The observed result seems to put about the same area in both tails 
-of the distribution but it is not exactly the same. The small difference in the 
-tails is a useful aspect of this approach compared to the parametric method 
-discussed below as it accounts for slight asymmetry in the sampling distribution. 
-
-Earlier, we decided that the p-value was small enough to reject the null 
-hypothesis since it was smaller than our chosen level of significance. In this 
-course, you will often be allowed to use your own judgment about an appropriate
-significance level in a particular situation (in other words, if we forget to 
-tell you an $\alpha$ -level, you can still make a decision using a reasonably 
-selected significance level). Remembering that the p-value is the probability 
-you would observe a result like you did (or more extreme), assuming the null 
-hypothesis is true, this tells you that the smaller the p-value is, the more 
-evidence you have against the null. The next section provides a more formal 
-review of the hypothesis testing infrastructure, terminology, and some of 
-things that can happen when testing hypotheses. 
-
-## Hypothesis testing (general) {#section2-5}
-
-
-## Connecting randomization (nonparametric) and parametric tests {#section2-6}
-
-
-## Second example of permutation tests {#section2-7}
-adfaveaea
-
-## Confidence intervals and bootstrapping {#section2-8}
-dadarae
-
-## Bootstrap confidence intervals for difference in GPAs {#section2-9}
-
-
-## Chapter summary {#section2-10}
-
-
-## Summary of important R code {#section2-11}
-
-
-## Practice problems {#section2-12}

@@ -21,6 +21,7 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 header-includes:
 - \usepackage{amsmath}
+- \usepackage{color}
 ---
 
 # Acknowledgments {-}

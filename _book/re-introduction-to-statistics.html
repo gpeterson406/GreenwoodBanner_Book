@@ -26,7 +26,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-04">
+<meta name="date" content="2017-06-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,6 +142,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="re-introduction-to-statistics" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> (R)e-Introduction to statistics</h1>
+<pre><code>## Warning: package &#39;pander&#39; was built under R version 3.3.3</code></pre>
 <p>The previous material served to get us started in R and to get a quick review of same basic descriptive statistics. Now we will begin to engage some new material and exploit the power of R to do some statistical inference. Because inference is one of the hardest topics to master in statistics, we will also review some basic terminology that is required to move forward in learning more sophisticated statistical methods. To keep this “review” as short as possible, we will not consider every situation you learned in introductory statistics and instead focus exclusively on the situation where we have a quantitative response variable measured on two groups, adding a new graphic called a “bean plot” to help us see the differences in the observations in the groups.</p>
 <div id="section2-1" class="section level2">
 <h2><span class="header-section-number">2.1</span> Histograms, boxplots, and density curves</h2>
@@ -539,93 +540,94 @@ Figure 2.7: Illustration of the assumed situations under the null (left) and a s
 </div>
 <p>In statistical inference, null hypotheses (and their implied models) are set up as “straw men” with every interest in rejecting them even though we assume they are true to be able to assess the evidence <u>against them</u>. Consider the original study design here, the pictures were randomly assigned to the subjects. If the null hypothesis were true, then we would have no difference in the population means of the groups. And this would apply if we had done a different random assignment of the pictures to the subjects. So let’s try this: assume that the null hypothesis is true and randomly re-assign the treatments (pictures) to the observations that were obtained. In other words, keep the sentences (<em>Years</em>) the same and shuffle the group labels randomly. The technical term for this is doing a <strong><em>permutation</em></strong> (a random shuffling of the treatments relative to the responses). If the null is true and the means in the two groups are the same, then we should be able to re-shuffle the groups to the observed sentences (<em>Years</em>) and get results similar to those we actually observed. If the null is false and the means are really different in the two groups, then what we observed should differ from what we get under other random permutations. The differences between the two groups should be more noticeable in the observed data set than in (most) of the shuffled data sets. It helps to see an example of a permutation of the labels to understand what this means here.</p>
 <p>In the <code>mosaic</code> package, the <code>shuffle</code> function allows us to easily perform a permutation<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Just one time, we can explore what a permutation of the treatment labels could look like in the <code>PermutedAttr</code> variable below. Note that the <code>Years</code> are held in the same place the group labels are shuffled.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Perm1 &lt;-<span class="st"> </span><span class="kw">with</span>(MockJury2,<span class="kw">data.frame</span>(Years,Attr,<span class="dt">PermutedAttr=</span><span class="kw">shuffle</span>(Attr)))
 Perm1</code></pre></div>
 <pre><code>##    Years         Attr PermutedAttr
-## 1      1 Unattractive      Average
-## 2      4 Unattractive Unattractive
-## 3      3 Unattractive Unattractive
+## 1      1 Unattractive Unattractive
+## 2      4 Unattractive      Average
+## 3      3 Unattractive      Average
 ## 4      2 Unattractive      Average
 ## 5      8 Unattractive      Average
-## 6      8 Unattractive Unattractive
+## 6      8 Unattractive      Average
 ## 7      1 Unattractive Unattractive
 ## 8      1 Unattractive Unattractive
 ## 9      5 Unattractive      Average
-## 10     7 Unattractive      Average
+## 10     7 Unattractive Unattractive
 ## 11     1 Unattractive      Average
 ## 12     5 Unattractive Unattractive
 ## 13     2 Unattractive Unattractive
 ## 14    12 Unattractive      Average
 ## 15    10 Unattractive      Average
-## 16     1 Unattractive Unattractive
+## 16     1 Unattractive      Average
 ## 17     6 Unattractive Unattractive
-## 18     2 Unattractive Unattractive
+## 18     2 Unattractive      Average
 ## 19     5 Unattractive Unattractive
 ## 20    12 Unattractive Unattractive
-## 21     6 Unattractive Unattractive
-## 22     3 Unattractive Unattractive
-## 23     8 Unattractive Unattractive
-## 24     4 Unattractive      Average
-## 25    10 Unattractive      Average
+## 21     6 Unattractive      Average
+## 22     3 Unattractive      Average
+## 23     8 Unattractive      Average
+## 24     4 Unattractive Unattractive
+## 25    10 Unattractive Unattractive
 ## 26    10 Unattractive      Average
-## 27    15 Unattractive      Average
+## 27    15 Unattractive Unattractive
 ## 28    15 Unattractive      Average
 ## 29     3 Unattractive      Average
 ## 30     3 Unattractive      Average
 ## 31     3 Unattractive Unattractive
-## 32    11 Unattractive Unattractive
+## 32    11 Unattractive      Average
 ## 33    12 Unattractive      Average
 ## 34     2 Unattractive Unattractive
-## 35     1 Unattractive      Average
-## 36     1 Unattractive      Average
+## 35     1 Unattractive Unattractive
+## 36     1 Unattractive Unattractive
 ## 37    12 Unattractive      Average
-## 38     5      Average      Average
+## 38     5      Average Unattractive
 ## 39     5      Average Unattractive
 ## 40     4      Average Unattractive
-## 41     3      Average      Average
-## 42     6      Average Unattractive
+## 41     3      Average Unattractive
+## 42     6      Average      Average
 ## 43     4      Average      Average
 ## 44     9      Average      Average
 ## 45     8      Average Unattractive
-## 46     3      Average Unattractive
+## 46     3      Average      Average
 ## 47     2      Average Unattractive
-## 48    10      Average Unattractive
+## 48    10      Average      Average
 ## 49     1      Average Unattractive
-## 50     1      Average      Average
-## 51     3      Average      Average
-## 52     1      Average Unattractive
-## 53     3      Average Unattractive
+## 50     1      Average Unattractive
+## 51     3      Average Unattractive
+## 52     1      Average      Average
+## 53     3      Average      Average
 ## 54     5      Average      Average
-## 55     8      Average      Average
+## 55     8      Average Unattractive
 ## 56     3      Average      Average
-## 57     1      Average Unattractive
+## 57     1      Average      Average
 ## 58     1      Average Unattractive
 ## 59     1      Average      Average
-## 60     2      Average Unattractive
+## 60     2      Average      Average
 ## 61     2      Average Unattractive
 ## 62     1      Average      Average
-## 63     1      Average      Average
-## 64     2      Average      Average
-## 65     3      Average      Average
+## 63     1      Average Unattractive
+## 64     2      Average Unattractive
+## 65     3      Average Unattractive
 ## 66     4      Average Unattractive
-## 67     5      Average Unattractive
+## 67     5      Average      Average
 ## 68     3      Average Unattractive
 ## 69     3      Average      Average
 ## 70     3      Average      Average
 ## 71     2      Average Unattractive
-## 72     7      Average      Average
+## 72     7      Average Unattractive
 ## 73     6      Average Unattractive
-## 74    12      Average      Average
+## 74    12      Average Unattractive
 ## 75     8      Average      Average</code></pre>
 <p>If you count up the number of subjects in each group by counting the number of times each label (Average, Unattractive) occurs, it is the same in both the <code>Attr</code> and <code>PermutedAttr</code> columns. Permutations involve randomly re-ordering the values of a variable – here the <code>Attr</code> group labels – without changing the content of the variable. This result can also be generated using what is called <strong><em>sampling without replacement</em></strong>: sequentially select <span class="math inline">\(n\)</span> labels from the original variable, removing each used label and making sure that each original <code>Attr</code> label is selected once and only once. The new, randomly selected order of selected labels provides the permuted labels. Stepping through the process helps to understand how it works: after the initial random sample of one label, there would <span class="math inline">\(n - 1\)</span> choices possible; on the <span class="math inline">\(n^{th}\)</span> selection, there would only be one label remaining to select. This makes sure that all original labels are re-used but that the order is random. Sampling without replacement is like picking names out of a hat, one-at-a-time, and not putting the names back in after they are selected. It is an exhaustive process for all the original observations. <strong><em>Sampling with replacement</em></strong> , in contrast, involves sampling from the specified list with each observation having an equal chance of selection for each sampled observation – in other words, observations can be selected more than once. This is like picking <span class="math inline">\(n\)</span> names out of a hat that contains <span class="math inline">\(n\)</span> names, except that every time a name is selected, it goes back into the hat – we’ll use this technique in Section <a href="re-introduction-to-statistics.html#section2-8">2.8</a> to do what is called <strong><em>bootstrapping</em></strong>. Both sampling mechanisms can be used to generate inferences but each has particular situations where they are most useful. For hypothesis testing, we will use permutations (sampling without replacement).</p>
 <p>The comparison of the beanplots for the real data set and permuted version of the labels is what is really interesting (Figure <a href="re-introduction-to-statistics.html#fig:Figure2-8">2.8</a>). The original difference in the sample means of the two groups was 1.84 years (Unattractive minus Average). The sample means are the <strong><em>statistics</em></strong><br />
 that estimate the parameters for the true means of the two groups. In the permuted data set, the difference in the means is 1.15 years in the opposite direction (Average had a higher mean than Unattractive in the permuted data).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Years ~<span class="st"> </span>PermutedAttr, <span class="dt">data=</span>Perm1)</code></pre></div>
 <pre><code>##      Average Unattractive 
-##     5.631579     4.108108</code></pre>
+##     5.447368     4.297297</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diffmean</span>(Years ~<span class="st"> </span>PermutedAttr, <span class="dt">data=</span>Perm1)</code></pre></div>
 <pre><code>##  diffmean 
-## -1.523471</code></pre>
+## -1.150071</code></pre>
 
 <div class="figure"><span id="fig:Figure2-8"></span>
 <img src="GreenwoodBanner_files/figure-html/Figure2-8-1.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-8-2.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" />
@@ -662,24 +664,24 @@ for (b in (1:B)){
 <p>Instead of printing the counter, we want to use the loop to repeatedly compute our test statistic across B random permutations of the observations. The <code>shuffle</code> function performs permutations ofthe group labels relative to responses and the <code>diffmean</code> difference in the two group means in the permuted data set. For a single permutation, the combination of shuffling <code>Attr</code> and finding the difference in themeans, storing it in a variable called <code>Ts</code> is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Ts &lt;-<span class="st"> </span><span class="kw">diffmean</span>(Years ~<span class="st"> </span><span class="kw">shuffle</span>(Attr), <span class="dt">data=</span>MockJury2)
 Ts</code></pre></div>
-<pre><code>##   diffmean 
-## -0.4032717</code></pre>
+<pre><code>##  diffmean 
+## -0.616643</code></pre>
 <p>And putting this inside the <code>print</code> function allows us to find the test statistic under 5 different permutations easily:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B &lt;-<span class="st"> </span><span class="dv">5</span>
 for (b in (<span class="dv">1</span>:B)){
   Ts &lt;-<span class="st"> </span><span class="kw">diffmean</span>(Years ~<span class="st"> </span><span class="kw">shuffle</span>(Attr), <span class="dt">data=</span>MockJury2)
   <span class="kw">print</span>(Ts)
 }</code></pre></div>
-<pre><code>##  diffmean 
-## -1.576814 
+<pre><code>##   diffmean 
+## -0.8300142 
+##   diffmean 
+## -0.1365576 
+##    diffmean 
+## -0.08321479 
 ##  diffmean 
-## -0.883357 
-##  diffmean 
-## -1.363442 
-##  diffmean 
-## -1.256757 
-##  diffmean 
-## 0.8769559</code></pre>
+## 0.5035562 
+## diffmean 
+## 1.677098</code></pre>
 <p>Finally, we would like to store the values of the test statistic instead of just printing them out on each pass through the loop. To do this, we need to create a variable to store the results, let’s call it <code>Tstar</code>. We know that we need to store <code>B</code> results so will create a vector of length B, which contains B elements, full of missing values (NA) using the <code>matrix</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span>B)
 Tstar</code></pre></div>
@@ -694,12 +696,12 @@ Tstar</code></pre></div>
   Tstar[b] &lt;-<span class="st"> </span><span class="kw">diffmean</span>(Years ~<span class="st"> </span><span class="kw">shuffle</span>(Attr), <span class="dt">data=</span>MockJury2)
 }
 Tstar</code></pre></div>
-<pre><code>##            [,1]
-## [1,]  0.8769559
-## [2,]  0.6635846
-## [3,] -1.4701280
-## [4,]  0.3435277
-## [5,] -1.0433855</code></pre>
+<pre><code>##             [,1]
+## [1,] -0.08321479
+## [2,]  0.23684211
+## [3,] -0.24324324
+## [4,] -0.61664296
+## [5,]  0.66358464</code></pre>
 <p>Five permutations are still not enough to assess whether our <span class="math inline">\(T_{obs}\)</span> of 1.84 is unusual and we need to do many permutations to get an accurate assessment of the possibilities under the null hypothesis. It is common practice to consider something like 1,000 permutations. The <code>Tstar</code> vector when we set <em>B</em> the permutation distribution for the selected test statistic under<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a> the null hypothesis – what is called the <strong><em>null distribution</em></strong> of the statistic. The null distribution is the distribution of possible values of a statistic under the null hypothesis. We want to visualize this distribution and use it to assess how unusual our <span class="math inline">\(T_{obs}\)</span> result of 1.84 years was relative to all the possibilities under permutations (under the null hypothesis). So we repeat the loop, now with <span class="math inline">\(B=1000\)</span> and generate a histogram, density curve and summary statistics of the results:</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">B &lt;-<span class="st"> </span><span class="dv">1000</span>
@@ -716,11 +718,11 @@ Figure 2.9: Histogram (left, with counts in bars) and density curve (right) of v
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(Tstar)</code></pre></div>
-<pre><code>##        min        Q1      median       Q3      max        mean        sd
-##  -2.803698 -0.616643 -0.02987198 0.556899 2.317212 -0.02203058 0.8704621
+<pre><code>##        min         Q1     median        Q3      max       mean        sd
+##  -2.910384 -0.5099573 0.07681366 0.6102418 2.530583 0.04694168 0.8497364
 ##     n missing
 ##  1000       0</code></pre>
-<p>Figure <a href="re-introduction-to-statistics.html#fig:Figure2-9">2.9</a> contains visualizations of <span class="math inline">\(T^*\)</span> and the <code>favstats</code> summary provides the related numerical summaries. Our observed <span class="math inline">\(T_{obs}\)</span> of 1.84 seems fairly unusual relative to these results with only 18 <span class="math inline">\(T^*\)</span> values over 2 based on the histogram. We need to make more specific comparisons of the permuted results versus our observed result to be able to clearly decide whether our observed result is really unusual.</p>
+<p>Figure <a href="re-introduction-to-statistics.html#fig:Figure2-9">2.9</a> contains visualizations of <span class="math inline">\(T^*\)</span> and the <code>favstats</code> summary provides the related numerical summaries. Our observed <span class="math inline">\(T_{obs}\)</span> of 1.84 seems fairly unusual relative to these results with only 20 <span class="math inline">\(T^*\)</span> values over 2 based on the histogram. We need to make more specific comparisons of the permuted results versus our observed result to be able to clearly decide whether our observed result is really unusual.</p>
 <p>To make the comparisons more concrete, first we can enhance the previous graphs by adding the value of the test statistic from the real data set, as shown in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-10">2.10</a>, using the <code>abline</code> function.</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tobs &lt;-<span class="st"> </span><span class="fl">1.837</span>
@@ -736,12 +738,12 @@ Figure 2.10: Histogram (left) and density curve (right) of values of test statis
 </div>
 <p>Second, we can calculate the exact number of permuted results that were larger than what we observed. To calculate the proportion of the 1,000 values that were larger than what we observed, we will use the <code>pdata</code> function. To use this function, we need to provide the distribution of values to compare to the cut-off (<code>Tstar</code>), the cut-off point (<code>Tobs</code>), and whether we want calculate the proportion that are below (left of) or above (right of) the cut-off (<code>lower.tail=F</code> option provides the proportion of values above the cutoff of interest).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdata</span>(Tstar, Tobs, <span class="dt">lower.tail=</span>F)</code></pre></div>
-<pre><code>## [1] 0.018</code></pre>
-<p>The proportion of 0.018 tells us that 18 of the 1,000 permuted results (1.8%) were larger than what we observed. This type of work is how we can generate <strong><em>p-values</em></strong> using permutation distributions. P-values, as you should remember, are the probability of getting a result as extreme as or more extreme than what we observed, <u>given that the null is true</u>. Finding only 18 permutations of 1,000 that were larger than our observed result suggests that it is hard to find a result like what we observed if there really were no difference, although it is not impossible.</p>
+<pre><code>## [1] 0.02</code></pre>
+<p>The proportion of 0.02 tells us that 20 of the 1,000 permuted results (2%) were larger than what we observed. This type of work is how we can generate <strong><em>p-values</em></strong> using permutation distributions. P-values, as you should remember, are the probability of getting a result as extreme as or more extreme than what we observed, <u>given that the null is true</u>. Finding only 20 permutations of 1,000 that were larger than our observed result suggests that it is hard to find a result like what we observed if there really were no difference, although it is not impossible.</p>
 <p>When testing hypotheses for two groups, there are two types of alternative hypotheses, one-sided or two-sided. <strong><em>One-sided tests</em></strong> involve only considering differences in one-direction (like <span class="math inline">\(\mu_1 &gt; \mu_2\)</span>) and are performed when researchers can decide <strong><em>a priori</em></strong><a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a> which group should have a larger mean if there is going to be any sort of difference. In this situation, we did not know enough about the potential impacts of the pictures to know which group should be larger than the other so should do a two-sided test. It is important to remember that you can’t look at the responses to decide on the hypotheses. It is often safer and more <strong><em>conservative</em></strong><a href="#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a> to start with a <strong><em>two-sided alternative</em></strong> (<span class="math inline">\(\mathbf{H_A: \mu_1 \ne \mu_2}\)</span>). To do a 2-sided test, find the area larger than what we observed as above. We also need to add the area in the other tail (here the left tail) similar to what we observed in the right tail. Some people suggest doubling the area in one tail but we will collect information on the number that were more extreme than the same value in the other tail. In other words, we count the proportion over 1.84 and below -1.84. So we need to also find how many of the permuted results were smaller than -1.84years to add to our previous proportion. Using <code>pdata</code> <code>-Tobs</code> as the cut-off and <code>lower.tail=T</code> provides this result:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdata</span>(Tstar, -Tobs, <span class="dt">lower.tail=</span>T)</code></pre></div>
-<pre><code>## [1] 0.019</code></pre>
-<p>So the p-value to test our null hypothesis of no difference in the true means between the groups is 0.018 + 0.019, providing a p-value of 0.037. Figure <a href="re-introduction-to-statistics.html#fig:Figure2-11">2.11</a> shows both cut-offs on the histogram and density curve.</p>
+<pre><code>## [1] 0.014</code></pre>
+<p>So the p-value to test our null hypothesis of no difference in the true means between the groups is 0.02 + 0.014, providing a p-value of 0.034. Figure <a href="re-introduction-to-statistics.html#fig:Figure2-11">2.11</a> shows both cut-offs on the histogram and density curve.</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T)
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(-<span class="dv">1</span>,<span class="dv">1</span>)*Tobs, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
@@ -755,7 +757,7 @@ Figure 2.11: Histogram and density curve of values of test statistic for 1,000 p
 </div>
 <p>In general, the <strong><em>one-sided test p-value</em></strong> is the proportion of the permuted results that are more extreme than observed in the direction of the <em>alternative</em> hypothesis (lower or upper tail, remembering that this also depends on the direction of the difference taken). For the 2-sided test, the p-value is the proportion of the permuted results that are <em>less than the negative version of the observed statistic and greater than the positive version of the observed statistic</em>. Using absolute values (| |), we can simplify this: the <strong><em>two-sided p-value</em></strong> is the <em>proportion of the |permuted statistics| that are larger than |observed statistic|</em>. This will always work and finds areas in both tails regardless of whether the observed statistic is positive or negative. In R, the <code>abs</code> function provides the <strong><em>absolute value</em></strong> and we can again use <code>pdata</code> to find our p-value in one line of code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdata</span>(<span class="kw">abs</span>(Tstar), <span class="kw">abs</span>(Tobs), <span class="dt">lower.tail=</span>F)</code></pre></div>
-<pre><code>## [1] 0.037</code></pre>
+<pre><code>## [1] 0.034</code></pre>
 <p>We will discuss the choice of <strong><em>significance level</em></strong> below, but for the moment, assume that <span class="math inline">\(\alpha\)</span> is chosen to be our standard value of 0.05. Since the p-value is smaller than <span class="math inline">\(\alpha\)</span>, this suggests that we can <strong><em>reject the null hypothesis</em></strong> and conclude that there is evidence of some difference in the true mean sentences given between the two types of pictures.</p>
 <p>Before we move on, let’s note some interesting features of the permutation distribution of the difference in the sample means shown in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-11">2.11</a>.</p>
 <ol style="list-style-type: decimal">
@@ -890,7 +892,7 @@ for (b in (<span class="dv">1</span>:B)){
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(-<span class="dv">1</span>,<span class="dv">1</span>)*Tobs, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
 <span class="kw">pdata</span>(<span class="kw">abs</span>(Tstar),<span class="kw">abs</span>(Tobs),<span class="dt">lower.tail=</span>F)</code></pre></div>
 <pre><code>##     t 
-## 0.035</code></pre>
+## 0.031</code></pre>
 <div class="figure"><span id="fig:Figure2-12"></span>
 <img src="GreenwoodBanner_files/figure-html/Figure2-12-1.png" alt="Permutation distribution of the \(t\)-statistic" width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-12-2.png" alt="Permutation distribution of the \(t\)-statistic" width="288" />
 <p class="caption">
@@ -1049,10 +1051,307 @@ Figure 2.16: Histogram and density curve of permutation distribution of test sta
 </div>
 <div id="section2-8" class="section level2">
 <h2><span class="header-section-number">2.8</span> Confidence intervals and bootstrapping</h2>
-<p>dadarae</p>
+<p>Randomly shuffling the treatments between the observations is like randomly sampling the treatments without replacement. In other words, we randomly sample one observation at a observations. This provides us with a technique for testing hypotheses because it provides new splits of the observations into groups that are as interesting as what we observed if the null hypothesis is assumed true. In most situations, we also want to estimate parameters of interest and provide <strong><em>confidence intervals</em></strong> for those parameters (an interval where we are __% <strong><em>confident</em></strong> that the true parameter lies). As before, there are two options we will consider – a parametric and a nonparametric approach. The nonparametric approach will be using what is called <strong><em>bootstrapping</em></strong> and draws its name from “pull yourself up by your bootstraps” where you improve your situation based on your own efforts. In statistics, we make our situation or inferences better by re-using the observations we have by assuming that the sample represents the population. Since each observation represents other similar observations in the population that we didn’t get to measure, if we <strong><em>sample with replacement</em></strong> to generate a new data set of size <em>n</em> from our data set (also of size <em>n</em>) it mimics the process of taking our population of interest. This process also ends up giving us useful sampling distributions of statistics even when our standard normality assumption is violated, similar to what we encountered in the permutation tests. Bootstrapping is especially useful in situations where we are interested in statistics other than the mean (say we want a confidence interval for a median or a standard deviation) or when we consider functions of more than one parameter and don’t want to derive the distribution of the statistic (say the difference in two medians). In this text, bootstrapping is used to provide more trustworthy inferences when some of our assumptions (especially normality) might be violated for our parametric procedure.</p>
+<p>To perform bootstrapping, we will use the <code>resample</code> function from the <code>mosaic</code> package. We can apply this function to a data set and get a new version of the data set by sampling new observations <em>with replacement</em> from the original one. The new, bootstrapped version of the data set (called <code>MockJury_BTS</code> below) contains a new variable called <code>orig. id</code> which is the number of the subject from the original data set. By summarizing how often each of these id’s occurred in a bootstrapped data set, we can see how the re-sampling works. The <code>table</code> function will count up how many times each observation was used in the bootstrap sample, providing a row with the id followed by a row with the count<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a>. In the first bootstrap sample shown, the 2<sup>nd</sup>, 7<sup>th</sup>, and 9<sup>th</sup> observations were sampled one time each, the 4<sup>th</sup> observation was sampled three times, and the 1<sup>st</sup>, 3<sup>rd</sup>, 5<sup>th</sup>, and many others were not sampled at all. Bootstrap sampling thus picks some observations multiple times and to do that it has to ignore some observations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury_BTS &lt;-<span class="st"> </span><span class="kw">resample</span>(MockJury2)
+<span class="kw">table</span>(<span class="kw">as.numeric</span>(MockJury_BTS$orig.id))</code></pre></div>
+<pre><code>## 
+##  1  2  3  4  5  6 10 11 12 14 15 17 18 19 20 22 24 26 29 30 32 35 36 37 39 
+##  1  2  2  1  3  2  1  2  1  1  3  1  2  1  2  1  2  1  2  2  2  2  1  2  2 
+## 40 42 43 44 45 46 47 48 49 55 58 59 60 61 69 70 71 72 74 75 
+##  2  1  1  4  2  2  1  2  1  2  1  1  2  2  2  2  2  1  1  1</code></pre>
+<p>Like in permutations, one randomization isn’t enough. A second bootstrap sample is also provided to help you get a sense of what it is doing to generate a data set. It did not select subject 7 but did select 2, 4, 6, and 8 two times. You can see other variations in the resulting re-sampling of subjects with the most sampled subject being the chance of selecting any observation for any slot in the new data set is <span class="math inline">\(1/75\)</span> and the expected or mean number of appearances we expect to see for an observation is the number of tries times the probably of selection on each so <span class="math inline">\(75*1/75=1\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MockJury_BTS2 &lt;-<span class="st"> </span><span class="kw">resample</span>(MockJury2)
+<span class="kw">table</span>(<span class="kw">as.numeric</span>(MockJury_BTS2$orig.id))</code></pre></div>
+<pre><code>## 
+##  1  2  3  5  6  8 11 12 13 14 15 18 19 20 21 23 24 26 27 28 29 31 32 34 36 
+##  1  1  1  1  4  1  1  1  1  3  1  1  1  1  3  2  2  1  1  1  2  1  2  1  2 
+## 37 38 40 42 46 48 50 51 52 56 58 59 61 62 63 66 67 68 69 72 73 74 75 
+##  1  2  1  1  1  2  4  1  1  1  3  2  1  1  1  1  1  1  2  3  1  4  2</code></pre>
+<p>We can use the two results to get an idea of distribution of results in terms of number of times observations might be re-sampled when sampling with replacement and the variation in those results, as shown in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-17">2.17</a>. We could also derive the expected counts for each number of times of re-sampling when we start with all observations having an equal chance and sampling with replacement but this isn’t important for using bootstrapping methods.</p>
+
+<div class="figure"><span id="fig:Figure2-17"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-17-1.png" alt="Counts of number of times of observation (or not observed for times re-sampled of 0) for two bootstrap samples." width="672" />
+<p class="caption">
+Figure 2.17: Counts of number of times of observation (or not observed for times re-sampled of 0) for two bootstrap samples.
+</p>
+</div>
+<p>The main point of this exploration was to see that each run of the <code>resample</code> function provides a new version of the data set. Repeating this <span class="math inline">\(B\)</span> times using another <code>for</code> loop, we will track our quantity of interest, say <span class="math inline">\(T\)</span>, in all these new “data sets” and call those results <span class="math inline">\(T^*\)</span>. The distribution of the bootstrapped <span class="math inline">\(T^*\)</span> statistics will tell us about the range of results to expect for the statistic and the middle __% of the <span class="math inline">\(T^*\)</span>’s provides a<br />
+<strong><em>bootstrap confidence interval</em></strong><a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a> for the true parameter – here the <em>difference in the two population means</em>.</p>
+<p>To make this concrete, we can revisit our previous examples, starting with the <code>MockJury2</code> data created before and our interest in comparing the mean sentences for the <em>Average</em>and <em>Unattractive</em> picture groups. The bootstrapping code is very similar to the permutation code except that we apply the <code>resample</code> function to the entire data set as opposed to the <code>shuffle</code> function being applied to the explanatory variable.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+Tobs &lt;-<span class="st"> </span><span class="kw">diffmean</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data=</span>MockJury2); Tobs
+B &lt;-<span class="st"> </span><span class="dv">1000</span>
+Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>B)
+for (b in (<span class="dv">1</span>:B)){
+  Tstar[b] &lt;-<span class="st"> </span><span class="kw">diffmean</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data=</span><span class="kw">resample</span>(MockJury2))
+  }
+<span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-18"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-18-1.png" alt="Histogram and density curve of bootstrap distributions of difference in sample mean Years with vertical line for the observed difference in the means of 1.84 years." width="672" />
+<p class="caption">
+Figure 2.18: Histogram and density curve of bootstrap distributions of difference in sample mean <code>Years</code> with vertical line for the observed difference in the means of 1.84 years.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(Tstar)</code></pre></div>
+<pre><code>## diffmean 
+## 1.837127 
+##         min       Q1   median       Q3      max     mean        sd    n
+##  -0.3627312 1.305773 1.833091 2.385281 4.988756 1.854428 0.8438987 1000
+##  missing
+##        0</code></pre>
+<p>In this situation, the observed difference in the mean sentences is 1.84 years (Unattractive-Average), which is the vertical line in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-18">2.18</a>. The bootstrap distribution shows the results for the difference in the sample means when fake data sets are re-constructed by sampling from the data set with replacement. The bootstrap distribution is approximately centered at the observed value (difference in the sample means) and is relatively symmetric.</p>
+<p>The permutation distribution in the same situation (Figure <a href="re-introduction-to-statistics.html#fig:Figure2-12">2.12</a>) had a similar shape but was centered at 0. Permutations create sampling distributions based on assuming the null hypothesis is true, which is useful for hypothesis testing. Bootstrapping creates distributions centered at the observed result, which is the sampling distribution “under the alternative” or when no null hypothesis is assumed; bootstrap distributions are useful for generating confidence intervals for the true parameter values.</p>
+<p>To create a 95% bootstrap confidence interval for the difference in the true mean sentences (<span class="math inline">\(\mu_{Unattr}-\mu_{Avg}\)</span>), select the middle 95% of results from the bootstrap distribution. Specifically, find the 2.5<sup>th</sup> percentile and the 97.5<sup>th</sup> percentile (values that put 2.5 and 97.5% of the results to the left) in the bootstrap distribution, which leaves 95% in the middle for the confidence interval. To find percentiles in a distribution in R, functions are of the form <code>q[Name of distribution]</code>, with the function <code>qt</code> extracting percentiles from a <span class="math inline">\(t\)</span>-distribution (examples below). From the bootstrap results, use the <code>qdata</code> function on the <code>Tstar</code> results that contain the bootstrap distribution of the statistic of interest.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qdata</span>(Tstar, <span class="fl">0.025</span>)</code></pre></div>
+<pre><code>##         p  quantile 
+## 0.0250000 0.2414232</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qdata</span>(Tstar, <span class="fl">0.975</span>)</code></pre></div>
+<pre><code>##        p quantile 
+## 0.975000 3.521528</code></pre>
+<p>These results tell us that the 2.5<sup>th</sup> percentile of the bootstrap distribution is at 0.26 years and the 97.5<sup>th</sup> percentile is at 3.50 years. We can combine these results to provide a 95% confidence for <span class="math inline">\(\mu_{Unattr}-\mu_{Avg}\)</span> that is between 0.26 and 3.50. We can interpret this as with any confidence interval, that we are 95% confident that the difference in the true mean suggested sentences (Unattractive minus Average group) is between 0.26 and 3.50 years. We can also obtain both percentiles in one line of code using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quantiles &lt;-<span class="st"> </span><span class="kw">qdata</span>(Tstar, <span class="kw">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))
+quantiles</code></pre></div>
+<pre><code>##        quantile     p
+## 2.5%  0.2414232 0.025
+## 97.5% 3.5215278 0.975</code></pre>
+<p>Figure <a href="re-introduction-to-statistics.html#fig:Figure2-19">2.19</a> displays those same percentiles on the bootstrap distribution residing in <code>Tstar</code>.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles$quantile, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles$quantile, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-19"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-19-1.png" alt="Histogram and density curve of bootstrap distribution with 95% bootstrap confidence intervals displayed (vertical lines)." width="672" />
+<p class="caption">
+Figure 2.19: Histogram and density curve of bootstrap distribution with 95% bootstrap confidence intervals displayed (vertical lines).
+</p>
+</div>
+<p>Although confidence intervals can exist without referencing hypotheses, we can revisit our previous <span class="math inline">\(H_0: \mu_{Unattr} = \mu_{Avg}\)</span>. This null hypothesis is equivalent to testing <span class="math inline">\(H_0: \mu_{Unattr} - \mu_{Avg} = 0\)</span>, that the difference in the true means is equal to 0 years. And the difference in the means was the scale for our confidence interval, which did not contain 0 years. We will call 0 an interesting <strong><em>reference value</em></strong> for the confidence interval, because here it is the value where the true means are equal to each other (have a difference of 0 years). In general, if our confidence interval does not contain 0, then it is saying that 0 is not one of our likely values for the difference in the true means. This implies that we should reject a claim that they are equal. This provides the same inferences for the hypotheses that we considered previously using both a parametric and permutation approach. The general summary is that we can use confidence intervals to test hypotheses by assessing whether the reference value under the null hypothesis is in the confidence interval (FTR <span class="math inline">\(H_0\)</span>) or outside the confidence interval (Reject <span class="math inline">\(H_0\)</span>). P-values are more informative about hypotheses but confidence intervals are more information about the size of differences, so both offer useful information and, as shown here, can provide consistent conclusions about hypotheses.</p>
+<p>As in the previous situation, we also want to consider the parametric approach for comparison purposes and to have that method available, especially to help us understand some methods where we will only consider parametric inferences in later chapters. The parametric confidence interval is called the <strong><em>equal variance, two-sample t confidence interval</em></strong> and assumes that the populations being sampled from are normally distributed and leads to using a <span class="math inline">\(t\)</span>-distribution to form the interval. The output from the <code>t.test</code> function provides the parametric 95% confidence interval calculated for you:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(Years ~<span class="st"> </span>Attr, <span class="dt">data=</span>MockJury2, <span class="dt">var.equal=</span>T)</code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  Years by Attr
+## t = -2.1702, df = 73, p-value = 0.03324
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.5242237 -0.1500295
+## sample estimates:
+##      mean in group Average mean in group Unattractive 
+##                   3.973684                   5.810811</code></pre>
+<p>The <code>t.test</code> function again switched the order of the groups and provides slightly different end-points than our bootstrap confidence interval (both are made at the 95% confidence level though), which was slightly narrower. Both intervals have the same interpretation, only the methods for calculating the intervals and the assumptions differ. Specifically, the bootstrap interval can tolerate different distribution shapes other than normal and still provide intervals that work well<a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a>. The other assumptions are all the same as for the hypothesis test, where we continue to assume that we have independent observations with equal variances for the two groups.</p>
+<p>The formula that <code>t.test</code> is using to calculate the parametric <strong><em>equal-variance two-sample t confidence interval</em></strong> is:</p>
+<p><span class="math display">\[\bar{x}_1 - \bar{x}_2 \mp t^*_{df}s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\]</span></p>
+<p>In this situation, the <em>df</em> is again <span class="math inline">\(n_1+n_2-2\)</span> and <span class="math inline">\(s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}\)</span>. The <span class="math inline">\(t^*_{df}\)</span> is a multiplier that comes from finding the percentile from the <span class="math inline">\(t\)</span>-distribution that puts <span class="math inline">\(C\)</span>% in the middle of the distribution with <span class="math inline">\(C\)</span> being the confidence level. It is important to note that this <span class="math inline">\(t^*\)</span> has nothing to do with the previous test statistic <span class="math inline">\(t\)</span>. It is confusing and many of you will, at some point, happily take the result from a test statistic calculation and use it for a multiplier in a <span class="math inline">\(t\)</span>-based confidence interval. Figure <a href="re-introduction-to-statistics.html#fig:Figure2-20">2.20</a> shows the <span class="math inline">\(t\)</span>-distribution with 73 degrees of freedom and the cut-offs that put 95% of the area in the middle.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
+x&lt;-<span class="kw">seq</span>(<span class="dt">from=</span>-<span class="dv">4</span>,<span class="dt">to=</span><span class="dv">4</span>,<span class="dt">length.out=</span><span class="dv">200</span>)
+<span class="kw">plot</span>(x,<span class="kw">dt</span>(x,<span class="dt">df=</span><span class="dv">73</span>),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;t-values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Density&quot;</span>,
+     <span class="dt">main=</span><span class="st">&quot;Plot of t(73) distribution&quot;</span> )
+<span class="kw">abline</span>(<span class="dt">v=</span>-<span class="fl">2.1702</span>,<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span><span class="fl">2.1702</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-20"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-20-1.png" alt="Plot of \(t(73)\) with cut-offs for putting 95% of distributions in the middle." width="672" />
+<p class="caption">
+Figure 2.20: Plot of <span class="math inline">\(t(73)\)</span> with cut-offs for putting 95% of distributions in the middle.
+</p>
+</div>
+<p>For 95% confidence intervals, the multiplier is going to be close to 2 and anything else is a sign of a mistake. We can use R to get the multipliers for confidence intervals using the <code>qt</code> function in a similar fashion to how <code>qdata</code> was used in the bootstrap results, except that this new value must be used in the previous confidence interval formula. This function produces values for requested percentiles, so if we want to put 95% in the middle, we place 2.5% in each tail of the distribution and need to request the 97.5<sup>th</sup> percentile. Because the <span class="math inline">\(t\)</span>-distribution is always symmetric around 0, we merely need to look up the value for the 97.5<sup>th</sup> percentile and know that the multiplier for the 2.5<sup>th</sup> percentile is just <span class="math inline">\(-t^*\)</span>. The <span class="math inline">\(t^*\)</span> multiplier to form the confidence interval is 1.993 for a 95% confidence interval when the <span class="math inline">\(df=73\)</span> based on the results from <code>qt</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df=</span><span class="dv">73</span>)</code></pre></div>
+<pre><code>## [1] 1.992997</code></pre>
+<p>Note that the 2.5<sup>th</sup> percentile is just the negative of this value due to symmetry and the real source of the minus in the minus/plus in the formula for the confidence interval.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df=</span><span class="dv">73</span>)</code></pre></div>
+<pre><code>## [1] -1.992997</code></pre>
+<p>We can also re-write the confidence interval formula into a slightly more general form as</p>
+<p><span class="math display">\[\bar{x}_1 - \bar{x}_2 \mp t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}\ \text{ OR }\ 
+\bar{x}_1 - \bar{x}_2 \mp ME\]</span></p>
+<p>where <span class="math inline">\(SE_{\bar{x}_1 - \bar{x}_2} = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\)</span> and <span class="math inline">\(ME = t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}\)</span>. In some situations, researchers will report the <strong><em>standard error</em></strong> (SE) or <strong><em>margin of error</em></strong> (ME) as a method of quantifying the uncertainty in a statistic. The SE is an estimate of the standard deviation of the statistic (here <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>) and the ME is an estimate of the precision of a statistic that can be used to directly form a confidence interval. The ME depends on the choice of confidence level although 95% is almost always selected.</p>
+<p>To finish this example, R can be used to help you do calculations much like a calculator except with much more power “under the hood”. You have to make sure you are careful with using <code>( )</code> to group items and remember that the asterisk (*) is used for multiplication in R. We need the pertinent information which is available from the <code>favstats</code> output. Two versions of this output are provided below, the first is how the output appears directly from R, the second is a formatted table has the relevant information bolded which is needed to calculate the confidence interval “by hand” using R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(Years~Attr, <span class="dt">data=</span>MockJury2)</code></pre></div>
+<pre><code>##           Attr min Q1 median Q3 max     mean       sd  n missing
+## 1      Average   1  2      3  5  12 3.973684 2.823519 38       0
+## 2 Unattractive   1  2      5 10  15 5.810811 4.364235 37       0</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="20%" />
+<col width="7%" />
+<col width="6%" />
+<col width="10%" />
+<col width="6%" />
+<col width="7%" />
+<col width="10%" />
+<col width="10%" />
+<col width="8%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Attr</th>
+<th align="center">min</th>
+<th align="center">Q1</th>
+<th align="center">median</th>
+<th align="center">Q3</th>
+<th align="center">max</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">n</th>
+<th align="center">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Average</strong></td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">12</td>
+<td align="center"><strong>3.97</strong></td>
+<td align="center"><strong>2.82</strong></td>
+<td align="center"><strong>38</strong></td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Unattractive</strong></td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">10</td>
+<td align="center">15</td>
+<td align="center"><strong>5.81</strong></td>
+<td align="center"><strong>4.36</strong></td>
+<td align="center"><strong>37</strong></td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<p>Start with typing the following command to calculate <span class="math inline">\(s_p\)</span> and store it in a variable named <code>sp</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">38-1</span>)*(<span class="fl">2.8235</span>^<span class="dv">2</span>)+(<span class="dv">37-1</span>)*(<span class="fl">4.364</span>^<span class="dv">2</span>))/(<span class="dv">38+37-2</span>))
+sp</code></pre></div>
+<pre><code>## [1] 3.665036</code></pre>
+<p>Then calculate the confidence interval that <code>t.test</code> provided using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">3.974-5.811</span>+<span class="kw">c</span>(-<span class="dv">1</span>,<span class="dv">1</span>)*<span class="kw">qt</span>(.<span class="dv">975</span>,<span class="dt">df=</span><span class="dv">73</span>)*sp*<span class="kw">sqrt</span>(<span class="dv">1</span>/<span class="dv">38+1</span>/<span class="dv">37</span>)</code></pre></div>
+<pre><code>## [1] -3.5240302 -0.1499698</code></pre>
+<p>The previous code uses <code>c(-1, 1)</code> times the margin of error to subtract and add the ME to the difference in the sample means (<span class="math inline">\(3.974-5.811\)</span>), which generates the lower and then upper bounds of the confidence interval. If desired, we can also use just the last portion of the previous calculation to find the margin of error, which is 1.69 here.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(.<span class="dv">975</span>,<span class="dt">df=</span><span class="dv">73</span>)*sp*<span class="kw">sqrt</span>(<span class="dv">1</span>/<span class="dv">38+1</span>/<span class="dv">37</span>)</code></pre></div>
+<pre><code>## [1] 1.68703</code></pre>
 </div>
 <div id="section2-9" class="section level2">
 <h2><span class="header-section-number">2.9</span> Bootstrap confidence intervals for difference in GPAs</h2>
+<p>We can now apply the new confidence interval methods on the STAT 217 grade data. This time we start with the parametric 95% confidence interval “by hand” in R and then use <code>t. test</code> to verify our result. The <code>favstats</code> output provides us with the required information to calculate the confidence interval:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(GPA~Sex,<span class="dt">data=</span>s217)</code></pre></div>
+<pre><code>##   Sex  min  Q1 median   Q3 max     mean        sd  n missing
+## 1   F 2.50 3.1  3.400 3.70   4 3.338378 0.4074549 37       0
+## 2   M 1.96 2.8  3.175 3.46   4 3.088571 0.4151789 42       0</code></pre>
+<p>The <span class="math inline">\(df\)</span> are <span class="math inline">\(37+42-2 = 77\)</span>. Using the SDs from the two groups and their sample sizes, we can calculate <span class="math inline">\(s_p\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(((<span class="dv">37-1</span>)*(<span class="fl">0.4075</span>^<span class="dv">2</span>)+(<span class="dv">42-1</span>)*(<span class="fl">0.41518</span>^<span class="dv">2</span>))/(<span class="dv">37+42-2</span>))
+sp</code></pre></div>
+<pre><code>## [1] 0.4116072</code></pre>
+<p>The margin of error is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(.<span class="dv">975</span>,<span class="dt">df=</span><span class="dv">77</span>)*sp*<span class="kw">sqrt</span>(<span class="dv">1</span>/<span class="dv">37+1</span>/<span class="dv">42</span>)</code></pre></div>
+<pre><code>## [1] 0.1847982</code></pre>
+<p>All together, the 95% confidence interval is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">3.338-3.0886</span>+<span class="kw">c</span>(-<span class="dv">1</span>,<span class="dv">1</span>)*<span class="kw">qt</span>(.<span class="dv">975</span>,<span class="dt">df=</span><span class="dv">77</span>)*sp*<span class="kw">sqrt</span>(<span class="dv">1</span>/<span class="dv">37+1</span>/<span class="dv">42</span>)</code></pre></div>
+<pre><code>## [1] 0.0646018 0.4341982</code></pre>
+<p>So we are 95% confident that the difference in the true mean GPAs between females and males (females minus males) is between 0. 065 and 0. 434 GPA points. We get a similar<a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a> result from the <code>t.test</code> output:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(GPA~Sex,<span class="dt">data=</span>s217,<span class="dt">var.equal=</span>T)</code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  GPA by Sex
+## t = 2.6919, df = 77, p-value = 0.008713
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.06501838 0.43459552
+## sample estimates:
+## mean in group F mean in group M 
+##        3.338378        3.088571</code></pre>
+<p>Note that we can easily switch to 90% or 99% confidence intervals by simply changing the percentile in <code>qt</code> or changing <code>conf. level</code> in the <code>t.test</code> function. In the following two lines of code, we added octothorpes<a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a>(#) and then some text after function calls to explain what is being calculated. In computer code, octothorpes provide a way of adding comments that tell the software (here R) to ignore any text after a “#” on a given line. In the color version of the text, comments are also clearly distinguished.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(.<span class="dv">95</span>,<span class="dt">df=</span><span class="dv">77</span>) <span class="co"># For 90% confidence and 77 df</span></code></pre></div>
+<pre><code>## [1] 1.664885</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(.<span class="dv">995</span>,<span class="dt">df=</span><span class="dv">77</span>) <span class="co">#For 99% confidence and 77 df</span></code></pre></div>
+<pre><code>## [1] 2.641198</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(GPA~Sex,<span class="dt">data=</span>s217,<span class="dt">var.equal=</span>T,<span class="dt">conf.level=</span><span class="fl">0.90</span>)</code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  GPA by Sex
+## t = 2.6919, df = 77, p-value = 0.008713
+## alternative hypothesis: true difference in means is not equal to 0
+## 90 percent confidence interval:
+##  0.09530553 0.40430837
+## sample estimates:
+## mean in group F mean in group M 
+##        3.338378        3.088571</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(GPA~Sex,<span class="dt">data=</span>s217,<span class="dt">var.equal=</span>T,<span class="dt">conf.level=</span><span class="fl">0.99</span>)</code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  GPA by Sex
+## t = 2.6919, df = 77, p-value = 0.008713
+## alternative hypothesis: true difference in means is not equal to 0
+## 99 percent confidence interval:
+##  0.004703598 0.494910301
+## sample estimates:
+## mean in group F mean in group M 
+##        3.338378        3.088571</code></pre>
+<p>As a review of some basic ideas with confidence intervals make sure you can answer the following questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>What is the impact of increasing the confidence level in this situation?</p></li>
+<li><p>What happens to the width of the confidence interval if the size of the SE increases or decreases?</p></li>
+<li><p>What about increasing the sample size – should that increase or decrease the width of the interval?</p></li>
+</ol>
+<p>All the general results you learned before about impacts to widths of CIs hold in this situation whether we are considering the parametric or bootstrap methods…</p>
+<p>To finish this example, we will generate the comparable bootstrap 90% confidence interval using the bootstrap distribution in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-21">2.21</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tobs &lt;-<span class="st"> </span><span class="kw">diffmean</span>(GPA ~<span class="st"> </span>Sex, <span class="dt">data=</span>s217); Tobs</code></pre></div>
+<pre><code>##   diffmean 
+## -0.2498069</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+B&lt;-<span class="st"> </span><span class="dv">1000</span>
+Tstar&lt;-<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>B)
+for (b in (<span class="dv">1</span>:B)){
+  Tstar[b]&lt;-<span class="kw">diffmean</span>(GPA ~<span class="st"> </span>Sex, <span class="dt">data=</span><span class="kw">resample</span>(s217))
+  }
+<span class="kw">qdata</span>(Tstar,.<span class="dv">05</span>)</code></pre></div>
+<pre><code>##          p   quantile 
+##  0.0500000 -0.4032273</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qdata</span>(Tstar,.<span class="dv">95</span>)</code></pre></div>
+<pre><code>##           p    quantile 
+##  0.95000000 -0.09521925</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quantiles&lt;-<span class="kw">qdata</span>(Tstar,<span class="kw">c</span>(.<span class="dv">05</span>,.<span class="dv">95</span>))
+quantiles</code></pre></div>
+<pre><code>##        quantile    p
+## 5%  -0.40322729 0.05
+## 95% -0.09521925 0.95</code></pre>
+<p>The output tells us that the 90% confidence interval is from -0.393 to -0.094 GPA points. The bootstrap distribution with the observed difference in the sample means and these cut-offs is displayed in Figure <a href="re-introduction-to-statistics.html#fig:Figure2-21">2.21</a> using this code:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar,<span class="dt">labels=</span>T)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles$quantile,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-21"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-21-1.png" alt="Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines)." width="672" />
+<p class="caption">
+Figure 2.21: Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines).
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(Tstar),<span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles$quantile,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure2-21"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure2-21-2.png" alt="Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines)." width="672" />
+<p class="caption">
+Figure 2.21: Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines).
+</p>
+</div>
+<p>In the previous output, the parametric 90% confidence interval is from 0.095 to 0.404, suggesting similar results again from the two approaches once you account for the two different orders of differencing of the groups. Based on the bootstrap CI, we can say that we are 90% confident that the difference in the true mean GPAs for STAT 217 students is between -0.393 to -0.094 GPA points (male minus females). Because sex cannot be assigned to the subjects, we cannot infer that sex is causing this difference and because this was a voluntary response sample of STAT 217 students in a given semester, we cannot infer that a difference of this size would apply to all STAT 217 students or even students in another semester.</p>
+<p>Throughout the semester, pay attention to the distinctions between parameters and statistics, focusing on the differences between estimates based on the sample and inferences for the population of interest in the form of the parameters of interest. Remember that statistics are summaries of the sample information and parameters are characteristics of populations (which we rarely know). And that our inferences are limited to the population that we randomly sampled from, if we randomly sampled.</p>
 </div>
 <div id="section2-10" class="section level2">
 <h2><span class="header-section-number">2.10</span> Chapter summary</h2>
@@ -1065,6 +1364,11 @@ Figure 2.16: Histogram and density curve of permutation distribution of test sta
 
 </div>
 </div>
+
+
+
+
+
 
 
 
@@ -1115,6 +1419,11 @@ Figure 2.16: Histogram and density curve of permutation distribution of test sta
 <li id="fn23"><p>We’ll leave the discussion of the CLT to your previous stat coursework or an internet search. Remember that it has something to do with distributions looking more normal as the sample size increases.<a href="re-introduction-to-statistics.html#fnref23">↩</a></p></li>
 <li id="fn24"><p>On exams, you will be asked to describe the area of interest, sketch a picture of the area of interest, and/or note the distribution you would use.<a href="re-introduction-to-statistics.html#fnref24">↩</a></p></li>
 <li id="fn25"><p>In some studies, the same subject might be measured in both conditions and this violates the assumptions of this procedure.<a href="re-introduction-to-statistics.html#fnref25">↩</a></p></li>
+<li id="fn26"><p>The <code>as.numeric</code> function is also used here. It really isn’t important but makes sure the output of <code>table</code> is sorted by observation number by first converting the <em>orig.id</em> variable into a numeric vector.<a href="re-introduction-to-statistics.html#fnref26">↩</a></p></li>
+<li id="fn27"><p>There are actually many ways to use this information to make a confidence interval. We are using the simplest method that is called the “percentile” method.<a href="re-introduction-to-statistics.html#fnref27">↩</a></p></li>
+<li id="fn28"><p>When hypothesis tests “work well” they have high power to detect differences while having Type I error rates that are close to what we choose a priori. When confidence intervals “work well”, they contain the true parameter value in repeated random samples at around the selected confidence level<a href="re-introduction-to-statistics.html#fnref28">↩</a></p></li>
+<li id="fn29"><p>We rounded the means a little and that causd the small difference in results.<a href="re-introduction-to-statistics.html#fnref29">↩</a></p></li>
+<li id="fn30"><p>You can correctly call octothorpes <em>number</em> symbols or, in the twitter verse, <em>hashtags</em>. For more on this symbol, see “<a href="http://blog.dictionary.com/octothorpe/" class="uri">http://blog.dictionary.com/octothorpe/</a>”. I usually call them number symbols too.<a href="re-introduction-to-statistics.html#fnref30">↩</a></p></li>
 </ol>
 </div>
             </section>

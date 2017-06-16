@@ -5,10 +5,12 @@ output:
   html_document: default
 ---
 
-#(R)e-Introduction to statistics 
+#(R)e-Introduction to statistics {#chapter2}
 
 ```{r echo=F}
-set.seed(201706)
+set.seed(3234)
+library(pander)
+require(mosaic)
 ```
 
 The previous material served to get us started in R and to get a quick review of same basic
@@ -677,6 +679,9 @@ about right now.]. Just one time, we can explore what a permutation of the
 treatment labels could look like in the ``PermutedAttr`` variable below. Note 
 that the ``Years`` are held in the same place the group labels are shuffled. 
 
+```{r}
+set.seed(1234)
+```
 
 ```{r}
 Perm1 <- with(MockJury2,data.frame(Years,Attr,PermutedAttr=shuffle(Attr)))
@@ -1696,15 +1701,525 @@ Here is a full write-up of the results using all 6+ hypothesis testing steps, us
     the STAT 217 students that responded to the survey in that semester. 
 
 ## Confidence intervals and bootstrapping {#section2-8}
-dadarae
+
+Randomly shuffling the treatments between the observations is like randomly 
+sampling the treatments without replacement. In other words, we randomly 
+sample one observation at a observations. This provides us with a technique 
+for testing hypotheses because it provides new splits of the observations 
+into groups that are as interesting as what we observed if the null hypothesis 
+is assumed true. In most situations, we also want to estimate parameters of 
+interest and provide ***confidence intervals*** for those parameters (an 
+interval where we are __%  ***confident*** that the true parameter lies). As 
+before, there are two options we will consider -- a parametric and a 
+nonparametric approach. The nonparametric approach will be using what is 
+called  ***bootstrapping***  and draws its name from "pull yourself up by 
+your bootstraps" where you improve your situation based on your own efforts.
+In statistics, we make our situation or inferences better by re-using the 
+observations we have by assuming that the sample represents the population.
+Since each observation represents other similar observations in the 
+population that we didn't get to measure, if we ***sample with replacement***
+to generate a new data set of size *n* from our data set (also of size *n*) 
+it mimics the process of taking our population of interest. This process also 
+ends up giving us useful sampling distributions of statistics even when our 
+standard normality assumption is violated, similar to what we encountered 
+in the permutation tests. Bootstrapping is especially useful in situations 
+where we are interested in statistics other than the mean (say we want a 
+confidence interval for a median or a standard deviation) or when we consider
+functions of more than one parameter and don't want to derive the distribution 
+of the statistic (say the difference in two medians). In this text, 
+bootstrapping is used to provide more trustworthy inferences when some of our
+assumptions (especially normality) might be violated for our parametric procedure. 
+
+To perform bootstrapping, we will use the ``resample`` function from the ``mosaic``
+package. We can apply this function to a data set and get a new version of the 
+data set by sampling new observations *with replacement* from the original one.
+The new, bootstrapped version of the data set (called ``MockJury_BTS`` below) 
+contains a new variable called ``orig. id`` which is the number of the subject 
+from the original data set. By summarizing how often each of these id's
+occurred in a bootstrapped data set, we can see how the re-sampling works.
+The ``table`` function will count up how many times each observation was used in 
+the bootstrap sample, providing a row with the id followed by a row with the 
+count^[The ``as.numeric`` function is also used here. It really isn't important
+but makes sure the output of ``table`` is sorted by observation number by first
+converting the *orig.id* variable into a numeric vector.]. In the first bootstrap
+sample shown, the 2<sup>nd</sup>, 7<sup>th</sup>, and 9<sup>th</sup> observations 
+were sampled one time each, the 4<sup>th</sup> observation was sampled three 
+times, and the 1<sup>st</sup>, 3<sup>rd</sup>, 5<sup>th</sup>, and many others 
+were not sampled at all. Bootstrap sampling thus picks some observations 
+multiple times and to do that it has to ignore some observations. 
+
+```{r}
+MockJury_BTS <- resample(MockJury2)
+table(as.numeric(MockJury_BTS$orig.id))
+```
+
+Like in permutations, one randomization isn't enough. A second bootstrap sample 
+is also provided to help you get a sense of what it is doing to generate a 
+data set. It did not select subject 7 but did select 2, 4, 6, and 8 two times.
+You can see other variations in the resulting re-sampling of subjects with the 
+most sampled subject being the chance of selecting any observation for any slot 
+in the new data set is $1/75$ and the expected or mean number of appearances we 
+expect to see for an observation is the number of tries times the probably of selection on each so $75*1/75=1$. 
+
+```{r}
+MockJury_BTS2 <- resample(MockJury2)
+table(as.numeric(MockJury_BTS2$orig.id))
+```
+
+We can use the two results to get an idea of distribution of results in terms 
+of number of times observations might be re-sampled when sampling with 
+replacement and the variation in those results, as shown in 
+Figure \@ref(fig:Figure2-17). We could also derive the expected counts for
+each number of times of re-sampling when we start with all observations having
+an equal chance and sampling with replacement but this isn't important for
+using bootstrapping methods. 
+
+(ref:fig2-17) Counts of number of times of observation (or not observed for 
+times re-sampled of 0) for two bootstrap samples. 
+
+```{r Figure2-17, fig.cap="(ref:fig2-17)",echo=F}
+cs1<-table(as.vector(table(as.numeric(MockJury_BTS$orig.id))))
+n0s<-75-sum(cs1)
+
+cs1_final<-table(c(rep(0,n0s),as.vector(table(as.numeric(MockJury_BTS$orig.id)))))
+
+cs2<-table(as.vector(table(as.numeric(MockJury_BTS2$orig.id))))
+n0s<-75-sum(cs2)
+
+cs2_final<-table(c(rep(0,n0s),as.vector(table(as.numeric(MockJury_BTS2$orig.id)))))
+
+par(mfrow=c(1,2))
+plot(cs1_final,ylab="Counts of number of times of re-sampling",
+     main="Bootstrap sample 1",xlab="Times re-sampled")
+plot(cs2_final,ylab="Counts of number of times of re-sampling", 
+     main="Bootstrap sample 2",xlab="Times re-sampled")
+```
+
+The main point of this exploration was to see that each run of the ``resample``
+function provides a new version of the data set. Repeating this $B$ times using
+another ``for`` loop, we will track our quantity of interest, say $T$, in all 
+these new "data sets" and call those results $T^*$. The distribution of the
+bootstrapped $T^*$ statistics will tell us about the range of results to expect 
+for the statistic and the middle __% of the $T^*$'s provides a  
+***bootstrap confidence interval***^[There are actually many ways to use this
+information to make a confidence interval. We are using the simplest method
+that is called the "percentile" method.] for the true parameter -- here the *difference in the two population means*. 
+
+To make this concrete, we can revisit our previous examples, starting with the 
+``MockJury2`` data created before and our interest in comparing the mean 
+sentences for the *Average*and *Unattractive* picture groups. The bootstrapping 
+code is very similar to the permutation code except that we apply the 
+``resample`` function to the entire data set as opposed to the ``shuffle``
+function being applied to the explanatory variable. 
+
+(ref:fig2-18) Histogram and density curve of bootstrap distributions of 
+difference in sample mean ``Years`` with vertical line for the observed 
+difference in the means of 1.84 years.
+
+```{r Figure2-18, fig.cap="(ref:fig2-18)",results='hold'}
+par(mfrow=c(1,2))
+Tobs <- diffmean(Years ~ Attr, data=MockJury2); Tobs
+B <- 1000
+Tstar <- matrix(NA,nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- diffmean(Years ~ Attr, data=resample(MockJury2))
+  }
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=2)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=2)
+favstats(Tstar)
+```
+
+In this situation, the observed difference in the mean sentences is 1.84 years
+(Unattractive-Average), which is the vertical line in Figure \@ref(fig:Figure2-18).
+The bootstrap distribution shows the results for the difference in the sample 
+means when fake data sets are re-constructed by sampling from the data set with
+replacement. The bootstrap distribution is approximately centered at the observed
+value (difference in the sample means) and is relatively symmetric. 
+
+The permutation distribution in the same situation (Figure \@ref(fig:Figure2-12))
+had a similar shape but was centered at 0. Permutations create sampling 
+distributions based on assuming the null hypothesis is true, which is useful for
+hypothesis testing. Bootstrapping creates distributions centered at the observed
+result, which is the sampling distribution "under the alternative" or when no null
+hypothesis is assumed; bootstrap distributions are useful for generating 
+confidence intervals for the true parameter values. 
+
+To create a 95% bootstrap confidence interval for the difference in the true 
+mean sentences ($\mu_{Unattr}-\mu_{Avg}$), select the middle 95% of results from 
+the bootstrap distribution. Specifically, find the 2.5<sup>th</sup> 
+percentile and the 97.5<sup>th</sup> percentile (values that put 2.5 and 97.5%
+of the results to the left) in the bootstrap distribution, which leaves 95% in
+the middle for the confidence interval. To find percentiles in a distribution
+in R, functions are of the form ``q[Name of distribution]``, with the function
+``qt`` extracting percentiles from a $t$-distribution (examples below). From the
+bootstrap results, use the ``qdata`` function on the ``Tstar`` results that 
+contain the bootstrap distribution of the statistic of interest. 
+
+```{r}
+qdata(Tstar, 0.025)
+qdata(Tstar, 0.975)
+```
+
+These results tell us that the 2.5<sup>th</sup> percentile of the bootstrap
+distribution is at 0.26 years and the 97.5<sup>th</sup> percentile is at 3.50 
+years. We can combine these results to provide a 95% confidence for 
+$\mu_{Unattr}-\mu_{Avg}$ that is between 0.26 and 3.50. We can interpret this 
+as with any confidence interval, that we are 95% confident that the difference 
+in the true mean suggested sentences (Unattractive minus Average group) is 
+between 0.26 and 3.50 years. We can also obtain both percentiles in one line 
+of code using:
+
+```{r}
+quantiles <- qdata(Tstar, c(0.025,0.975))
+quantiles
+```
+
+Figure \@ref(fig:Figure2-19) displays those same percentiles on the bootstrap
+distribution residing in ``Tstar``. 
+
+(ref:fig2-19) Histogram and density curve of bootstrap distribution with 
+95% bootstrap confidence intervals displayed (vertical lines).
+
+```{r Figure2-19, fig.cap="(ref:fig2-19)"}
+par(mfrow=c(1,2))
+hist(Tstar, labels=T)
+abline(v=quantiles$quantile, col="blue", lwd=3)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=quantiles$quantile, col="blue", lwd=3)
+```
+
+Although confidence intervals can exist without referencing hypotheses, we can 
+revisit our previous $H_0: \mu_{Unattr} = \mu_{Avg}$. This null hypothesis is
+equivalent to testing $H_0: \mu_{Unattr} - \mu_{Avg} = 0$, that the difference 
+in the true means is equal to 0 years. And the difference in the means was the 
+scale for our confidence interval, which did not contain 0 years. We will call 
+0 an interesting ***reference value***  for the confidence interval, because 
+here it is the value where the true means are equal to each other (have a
+difference of 0 years). In general, if our confidence interval does not contain 
+0, then it is saying that 0 is not one of our likely values for the difference 
+in the true means. This implies that we should reject a claim that they are 
+equal. This provides the same inferences for the hypotheses that we considered
+previously using both a parametric and permutation approach. The general summary
+is that we can use confidence intervals to test hypotheses by assessing whether 
+the reference value under the null hypothesis is in the confidence interval
+(FTR $H_0$) or outside the confidence interval (Reject $H_0$). P-values are more
+informative about hypotheses but confidence intervals are more information
+about the size of differences, so both offer useful information and, as shown
+here, can provide consistent conclusions about hypotheses. 
+
+As in the previous situation, we also want to consider the parametric approach 
+for comparison purposes and to have that method available, especially to help 
+us understand some methods where we will only consider parametric inferences 
+in later chapters. The parametric confidence interval is called the  ***equal variance, two-sample t confidence interval*** and assumes that the populations 
+being sampled from are normally distributed and leads to using a $t$-distribution
+to form the interval. The output from the ``t.test`` function provides the 
+parametric 95% confidence interval calculated for you:
+
+```{r}
+t.test(Years ~ Attr, data=MockJury2, var.equal=T)
+```
+
+
+
+The ``t.test`` function again switched the order of the groups and provides 
+slightly different end-points than our bootstrap confidence interval (both are 
+made at the 95% confidence level though), which was slightly narrower. Both 
+intervals have the same interpretation, only the methods for calculating the 
+intervals and the assumptions differ. Specifically, the bootstrap interval can
+tolerate different distribution shapes other than normal and still provide 
+intervals that work well^[When hypothesis tests "work well" they have high
+power to detect differences while having Type I error rates that are close
+to what we choose a priori. When confidence intervals "work well", they contain
+the true parameter value in repeated random samples at around the selected
+confidence level]. The other assumptions are all the same as for the hypothesis 
+test, where we continue to assume that we have independent observations with 
+equal variances for the two groups. 
+
+The formula that ``t.test`` is using to calculate the parametric 
+***equal-variance two-sample t confidence interval*** is:
+
+$$\bar{x}_1 - \bar{x}_2 \mp t^*_{df}s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$$
+
+In this situation, the *df* is again $n_1+n_2-2$ and 
+$s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$. The $t^*_{df}$ is
+a multiplier that comes from finding the percentile from the $t$-distribution 
+that puts $C$% in the middle of the distribution with $C$ being the confidence 
+level. It is important to note that this $t^*$ has nothing to do with the previous
+test statistic $t$. It is confusing and many of you will, at some point, happily 
+take the result from a test statistic calculation and use it for a multiplier
+in a $t$-based confidence interval. Figure \@ref(fig:Figure2-20) shows the
+$t$-distribution with 73 degrees of freedom and the cut-offs that put 95% of the 
+area in the middle. 
+
+(ref:fig2-20) Plot of $t(73)$ with cut-offs for putting 95% of distributions in 
+the middle. 
+
+```{r Figure2-20,fig.cap="(ref:fig2-20)"}
+par(mfrow=c(1,1))
+x<-seq(from=-4,to=4,length.out=200)
+plot(x,dt(x,df=73),col="red",lty=2,lwd=3,type="l",xlab="t-values",ylab="Density",
+     main="Plot of t(73) distribution" )
+abline(v=-2.1702,lwd=3)
+abline(v=2.1702,lwd=3)
+```
+
+For 95% confidence intervals, the multiplier is going to be close to 2 and 
+anything else is a sign of a mistake. We can use R to get the multipliers for
+confidence intervals using the ``qt`` function in a similar fashion to how 
+``qdata`` was used in the bootstrap results, except that this new value must be 
+used in the previous confidence interval formula. This function produces values 
+for requested percentiles, so if we want to put 95% in the middle, we place 
+2.5% in each tail of the distribution and need to request the 97.5<sup>th</sup>
+percentile. Because the $t$-distribution is always symmetric around 0, we merely 
+need to look up the value for the 97.5<sup>th</sup> percentile and know that the
+multiplier for the 2.5<sup>th</sup> percentile is just $-t^*$. The $t^*$
+multiplier to form the confidence interval is 1.993 for a 95% confidence interval 
+when the $df=73$ based on the results from ``qt``:
+
+```{r}
+qt(0.975, df=73)
+```
+
+Note that the 2.5<sup>th</sup> percentile is just the negative of this value due 
+to symmetry and the real source of the minus in the minus/plus in the formula 
+for the confidence interval. 
+
+```{r}
+qt(0.025, df=73)
+```
+
+We can also re-write the confidence interval formula into a slightly more 
+general form as
+
+$$\bar{x}_1 - \bar{x}_2 \mp t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}\ \text{ OR }\ 
+\bar{x}_1 - \bar{x}_2 \mp ME$$
+
+where $SE_{\bar{x}_1 - \bar{x}_2} = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$ and 
+$ME = t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}$. In some situations, researchers will
+report the  ***standard error***  (SE) or  ***margin of error***  (ME) as a method 
+of quantifying the uncertainty in a statistic. The SE is an estimate of the
+standard deviation of the statistic (here $\bar{x}_1 - \bar{x}_2$) and the ME 
+is an estimate of the precision of a statistic that can be used to directly 
+form a confidence interval. The ME depends on the choice of confidence level 
+although 95% is almost always selected. 
+
+To finish this example, R can be used to help you do calculations much like a
+calculator except with much more power "under the hood". You have to make sure 
+you are careful with using ``( )``  to group items and remember that the 
+asterisk (*) is used for multiplication in R. We need the pertinent information
+which is available from the ``favstats`` output. Two versions of this output are
+provided below, the first is how the output appears directly from R, the second
+is a formatted table has the relevant information bolded which is needed to 
+calculate the confidence interval "by hand" using R. 
+
+```{r}
+favstats(Years~Attr, data=MockJury2)
+```
+
+```{r echo=F}
+t <- favstats(Years~Attr, data=MockJury2)
+pander(t, digits=3,emphasize.strong.cols=c(1,7,8,9))
+```
+
+Start with typing the following command to calculate $s_p$ and store it in a 
+variable named ``sp``:
+
+```{r}
+sp <- sqrt(((38-1)*(2.8235^2)+(37-1)*(4.364^2))/(38+37-2))
+sp
+```
+
+Then calculate the confidence interval that ``t.test`` provided using:
+
+```{r}
+3.974-5.811+c(-1,1)*qt(.975,df=73)*sp*sqrt(1/38+1/37)
+```
+
+The previous code uses ``c(-1, 1)`` times the margin of error to subtract and add 
+the ME to the difference in the sample means ($3.974-5.811$), which generates the
+lower and then upper bounds of the confidence interval. If desired, we can also 
+use just the last portion of the previous calculation to find the margin of error,
+which is 1.69 here. 
+
+```{r}
+qt(.975,df=73)*sp*sqrt(1/38+1/37)
+```
 
 ## Bootstrap confidence intervals for difference in GPAs {#section2-9}
+
+We can now apply the new confidence interval methods on the STAT 217 grade data. 
+This time we start with the parametric 95% confidence interval "by hand" in R
+and then use ``t. test`` to verify our result. The ``favstats`` output provides 
+us with the required information to calculate the confidence interval:
+
+```{r}
+favstats(GPA~Sex,data=s217)
+```
+
+The $df$ are $37+42-2 = 77$. Using the SDs from the two groups and their sample 
+sizes, we can calculate $s_p$:
+
+```{r}
+sp <- sqrt(((37-1)*(0.4075^2)+(42-1)*(0.41518^2))/(37+42-2))
+sp
+```
+
+The margin of error is:
+
+```{r}
+qt(.975,df=77)*sp*sqrt(1/37+1/42)
+```
+
+All together, the 95% confidence interval is:
+
+```{r}
+3.338-3.0886+c(-1,1)*qt(.975,df=77)*sp*sqrt(1/37+1/42)
+```
+
+So we are 95% confident that the difference in the true mean GPAs between 
+females and males (females minus males) is between 0. 065 and 0. 434 GPA points. 
+We get a similar^[We rounded the means a little and that causd the small
+difference in results.] result from the ``t.test`` output:
+
+```{r}
+t.test(GPA~Sex,data=s217,var.equal=T)
+```
+
+Note that we can easily switch to 90% or 99% confidence intervals by simply 
+changing the percentile in ``qt`` or changing ``conf. level`` in the ``t.test``
+function. In the following two lines of code, we added octothorpes^[You can 
+correctly call octothorpes *number* symbols or, in the twitter verse, 
+*hashtags*. For more on this symbol, see "http://blog.dictionary.com/octothorpe/". 
+I usually call them number symbols too.](#) and then some text after function
+calls to explain what is being calculated. In computer code, octothorpes
+provide a way of adding comments that tell the software (here R) to ignore any
+text after a "#" on a given line. In the color version of the text, comments are 
+also clearly distinguished. 
+
+```{r}
+qt(.95,df=77) # For 90% confidence and 77 df
+qt(.995,df=77) #For 99% confidence and 77 df
+t.test(GPA~Sex,data=s217,var.equal=T,conf.level=0.90)
+t.test(GPA~Sex,data=s217,var.equal=T,conf.level=0.99)
+```
+
+As a review of some basic ideas with confidence intervals make sure you can 
+answer the following questions:
+
+1. What is the impact of increasing the confidence level in this situation? 
+
+2. What happens to the width of the confidence interval if the size of the 
+SE increases or decreases? 
+
+3. What about increasing the sample size -- should that increase or decrease 
+the width of the interval? 
+
+All the general results you learned before about impacts to widths of CIs hold 
+in this situation whether we are considering the parametric or bootstrap methods...
+
+To finish this example, we will generate the comparable bootstrap 90% confidence
+interval using the bootstrap distribution in Figure \@ref(fig:Figure2-21). 
+
+```{r}
+Tobs <- diffmean(GPA ~ Sex, data=s217); Tobs
+par(mfrow=c(1,2))
+B<- 1000
+Tstar<-matrix(NA,nrow=B)
+for (b in (1:B)){
+  Tstar[b]<-diffmean(GPA ~ Sex, data=resample(s217))
+  }
+qdata(Tstar,.05)
+qdata(Tstar,.95)
+quantiles<-qdata(Tstar,c(.05,.95))
+quantiles
+```
+
+The output tells us that the 90% confidence interval is from -0.393 to -0.094 GPA
+points. The bootstrap distribution with the observed difference in the sample 
+means and these cut-offs is displayed in Figure \@ref(fig:Figure2-21) using 
+this code:
+
+(ref:fig2-21) Histogram and density curve of bootstrap distribution of 
+difference in sample mean GPAs (male minus female) with observed difference 
+(solid vertical line) and quantiles that delineate the 90% confidence intervals
+(dashed vertical lines). 
+
+```{r Figure2-21,fig.cap="(ref:fig2-21)"}
+par(mfrow=c(1,2))
+hist(Tstar,labels=T)
+abline(v=Tobs,col="red",lwd=2)
+abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
+plot(density(Tstar),main="Density curve of Tstar")
+abline(v=Tobs,col="red",lwd=2)
+abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
+```
+
+
+In the previous output, the parametric 90% confidence interval is from 
+0.095 to 0.404, suggesting similar results again from the two approaches once 
+you account for the two different orders of differencing of the groups. Based on 
+the bootstrap CI, we can say that we are 90% confident that the difference in 
+the true mean GPAs for STAT 217 students is between -0.393 to -0.094 GPA points 
+(male minus females). Because sex cannot be assigned to the subjects, we cannot 
+infer that sex is causing this difference and because this was a voluntary 
+response sample of STAT 217 students in a given semester, we cannot infer that 
+a difference of this size would apply to all STAT 217 students or even students 
+in another semester. 
+
+Throughout the semester, pay attention to the distinctions between parameters 
+and statistics, focusing on the differences between estimates based on the sample 
+and inferences for the population of interest in the form of the parameters of
+interest. Remember that statistics are summaries of the sample information and
+parameters are characteristics of populations (which we rarely know). And that 
+our inferences are limited to the population that we randomly sampled from, if 
+we randomly sampled. 
 
 
 ## Chapter summary {#section2-10}
 
+In this chapter, we reviewed basic statistical inference methods in the context 
+of a two-sample mean problem. You were introduced to using R to do permutation 
+testing and generate bootstrap confidence intervals as well as obtaining 
+parametric $t$-test and confidence intervals in this same situation. You should 
+have learned how to use a ``for`` loop for doing the nonparametric inferences
+and the ``t. test`` function for generating parametric inferences. In the two
+examples considered, the parametric and nonparametric methods provided similar
+results, suggesting that the assumptions were at least close to being met for
+the parametric procedures. When parametric and nonparametric approaches
+disagree, the nonparametric methods are likely to be more trustworthy since
+they have less restrictive assumptions but can still have problems. 
+
+When the noted conditions are not met in a hypothesis testing situation, the 
+Type I error rates can be inflated, meaning that we reject the null hypothesis 
+more often than we have allowed to occur by chance. Specifically, we could have 
+a situation where our assumed 5% significance level test might actually reject 
+the null when it is true 20% of the time. If this is occurring, we call a 
+procedure ***liberal*** (it rejects too easily) and if the procedure is liberal,
+how could we trust a small p-value to be a "real" result and not just an 
+artifact of violating the assumptions of the procedure? Likewise, for 
+confidence intervals we hope that our 95% confidence level procedure, when 
+repeated, will contain the true parameter 95% of the time. If our assumptions 
+are violated, we might actually have an 80% confidence level procedure and it 
+makes it hard to trust the reported results for our observed data set. 
+Statistical inference relies on a belief in the methods underlying our 
+inferences. If we don't trust our assumptions, we shouldn't trust the 
+conclusions to perform the way we want them to. As sample sizes increase 
+and/or violations of conditions lessen, then the procedures will perform better. 
+In Chapter \@ref(chapter3), we'll learn some new tools for
+doing diagnostics to help us assess how much those conditions are violated. 
 
 ## Summary of important R code {#section2-11}
+
+The main components of R code used in this chapter follow with components to 
+modify in red, remembering that any R packages mentioned need to be installed 
+and loaded for this code to have a chance of working:
+
+* ``summary``($\textcolor{red}{DATASETNAME}$)
+
+* ``summary``(<span style='color:red'>``DATASETNAME``</span>)
+
 
 
 ## Practice problems {#section2-12}
