@@ -1,0 +1,60 @@
+---
+output:
+  pdf_document: 
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{color}
+---
+
+# Chi-square tests {#chapter5}
+
+```{r echo=F,warning=F,message=F}
+set.seed(3234)
+library(pander)
+require(mosaic)
+```
+
+
+```{r echo=F}
+#Color Format
+colFmt = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+```
+
+## Situation, contingency tables, and plots	{#section5-1}
+
+## Homogeneity Test Hypotheses	{#section5-2}
+
+## Independence Test Hypotheses	{#section5-3}
+
+## Models for R by C tables	{#section5-4}
+
+## Permutation tests for the X2 statistic	{#section5-5}
+
+## Chi-square distribution for the X2 statistic	{#section5-6}
+
+## Examining residuals for the source of differences	{#section5-7}
+
+## General Protocol for X2 tests	{#section5-8}
+
+## Political Party and Voting results: Complete Analysis	{#section5-9}
+
+## Is cheating and lying related in students?	{#section5-10}
+
+## Analyzing a stratified random sample of California schools	{#section5-11}
+
+## Chapter summary	{#section5-12}
+
+## Review of Important R commands	{#section5-13}
+
+## Practice problems	{#section5-14}
+

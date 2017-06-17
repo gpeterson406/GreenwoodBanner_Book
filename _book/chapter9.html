@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="chapter2.html">
-<link rel="next" href="chapter4.html">
+<link rel="prev" href="chapter8.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -233,75 +233,69 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chapter3" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> One-Way ANOVA</h1>
-<p>In Chapter <a href="chapter2.html#chapter2">2</a>, tools for comparing the means of two groups were considered. More generally, these methods are used for a quantitative response and a categorical explanatory variable (group) which had two and only two levels. The full prisoner rating data set actually contained three groups (Figure <a href="chapter3.html#fig:Figure3-1">3.1</a> with <em>Beautiful</em>, <em>Average</em>, and <em>Unattractive</em> rated pictures randomly assigned to the subjects for sentence ratings. In a situation with more than two groups, we have two choices. First, we could rely on our two group comparisons, performing tests for every possible pair (<em>Beautiful</em> vs<em>Average</em>, <em>Beautiful</em> vs <em>Unattractive</em>, and <em>Average</em> vs <em>Unattractive</em>). We spent Chapter <a href="chapter2.html#chapter2">2</a> doing inferences for differences between <em>Average</em> and <em>Unattractive</em>. The other two comparisons would lead us to initially end up with three p-values and no direct answer about our initial question of interest – is there some overall difference in the average sentences provided across the groups? In this chapter, we will learn a new method, called <strong><em>Analysis of Variance</em></strong>, or <strong><em>One-Way ANOVA</em></strong> since there is just one<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a> grouping variable. After we perform our One-Way ANOVA test for overall evidence of a difference, we will revisit the comparisons similar to those considered in Chapter <a href="chapter2.html#chapter2">2</a> to get more details on specific differences among <em>all</em> the pairs of groups – what we call <strong><em>pair-wise comparisons</em></strong>. An issue is created when you perform many tests simultaneously and we will augment our previous methods with an adjusted method for pairwise comparisons to make our results valid called <strong><em>Tukey’s Honest Significant Difference</em></strong>.</p>
-<p>To make this more concrete, we return to the original MockJury data, making side-by-side boxplots and beanplots (Figure <a href="chapter3.html#fig:Figure3-1">3.1</a> as well summarizing the sentences for the three groups using <code>favstats</code>.</p>
-
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(heplots)
-<span class="kw">require</span>(mosaic)
-<span class="kw">data</span>(MockJury)
-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
-<span class="kw">boxplot</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury)
-<span class="kw">require</span>(beanplot)
-<span class="kw">beanplot</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury,<span class="dt">log=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;bisque&quot;</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
-<div class="figure"><span id="fig:Figure3-1"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure3-1-1.png" alt="Boxplot and beanplot of the sentences (years) for the three treatment groups." width="672" />
-<p class="caption">
-Figure 3.1: Boxplot and beanplot of the sentences (years) for the three treatment groups.
-</p>
+<div id="chapter9" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Case studies</h1>
+<div id="section9-1" class="section level2">
+<h2><span class="header-section-number">9.1</span> Overview of material covered</h2>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury)</code></pre></div>
-<pre><code>##           Attr min Q1 median   Q3 max     mean       sd  n missing
-## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
-## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
-## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0</code></pre>
-<p>There are slight differences in the sample sizes in the three groups with 37 <em>Unattractive</em>, 38 <em>Average</em> and 39 <em>Beautiful</em> group responses, providing a data set has a total sample size of <span class="math inline">\(N=114\)</span>. The <em>Beautiful</em> and <em>Average</em> groups do not appear to be very different with means of 4.33 and 3.97 years. In Chapter <a href="chapter2.html#chapter2">2</a>, we found moderate evidence regarding the difference in <em>Average</em>and <em>Unattractive</em>. It is less clear whether we might find evidence of a difference between <em>Beautiful</em> and <em>Unattractive</em> groups since we are comparing means of 5.81 and 4.33 years. All the distributions appear to be right skewed with relatively similar shapes. The variability in <em>Average</em> and <em>Unattractive</em> groups seems like it could be slightly different leading to an overall concern of whether the variability is the same in all the groups.</p>
-<div id="section3-1" class="section level2">
-<h2><span class="header-section-number">3.1</span> Situation</h2>
+<div id="section9-2" class="section level2">
+<h2><span class="header-section-number">9.2</span> The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations</h2>
 </div>
-<div id="section3-2" class="section level2">
-<h2><span class="header-section-number">3.2</span> Linear model for One-Way ANOVA (cell-means and reference-coding)</h2>
+<div id="section9-3" class="section level2">
+<h2><span class="header-section-number">9.3</span> Ants learn to rely on more informative attributes during decision-making</h2>
 </div>
-<div id="section3-3" class="section level2">
-<h2><span class="header-section-number">3.3</span> One-Way ANOVA Sums of Squares, Mean Squares, and F-test</h2>
+<div id="section9-4" class="section level2">
+<h2><span class="header-section-number">9.4</span> Multi-variate models are essential for understanding vertebrate diversification in deep time</h2>
 </div>
-<div id="section3-4" class="section level2">
-<h2><span class="header-section-number">3.4</span> ANOVA model diagnostics including QQ-plots</h2>
-</div>
-<div id="section3-5" class="section level2">
-<h2><span class="header-section-number">3.5</span> Guinea pig tooth growth One-Way ANOVA example</h2>
-</div>
-<div id="section3-6" class="section level2">
-<h2><span class="header-section-number">3.6</span> Multiple (pair-wise) comparisons using Tukey’s HSD and the compact letter display</h2>
-</div>
-<div id="section3-7" class="section level2">
-<h2><span class="header-section-number">3.7</span> Pair-wise comparisons for Prisoner Rating data</h2>
-</div>
-<div id="section3-8" class="section level2">
-<h2><span class="header-section-number">3.8</span> Chapter Summary</h2>
-</div>
-<div id="section3-9" class="section level2">
-<h2><span class="header-section-number">3.9</span> Summary of important R code</h2>
-</div>
-<div id="section3-10" class="section level2">
-<h2><span class="header-section-number">3.10</span> Practice problems</h2>
+<div id="section9-5" class="section level2">
+<h2><span class="header-section-number">9.5</span> General summary</h2>
 
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="31">
-<li id="fn31"><p>In Chapter <a href="chapter4.html#chapter4">4</a>, methods are discussed for when there are two categorical explanatory variables that is called the Two-Way ANOVA and related ANOVA tests are used in Chapter <a href="chapter8.html#chapter8">8</a> for working with extensions of these models.<a href="chapter3.html#fnref31">↩</a></p></li>
-</ol>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="chapter2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter4.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="chapter8.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

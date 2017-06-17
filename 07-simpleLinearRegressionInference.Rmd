@@ -1,0 +1,53 @@
+---
+output:
+  pdf_document: 
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{color}
+---
+
+# Simple linear regression inference {#chapter7}
+
+```{r echo=F,warning=F,message=F}
+set.seed(3234)
+library(pander)
+require(mosaic)
+```
+
+
+```{r echo=F}
+#Color Format
+colFmt = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+```
+
+
+## Model	{#section7-1}
+
+## Confidence Interval and Hypothesis tests for the slope and intercept	{#section7-2}
+
+## Bozeman temperature trend	{#section7-3}
+
+## Randomizing inferences for the slope coefficient	{#section7-4}
+
+## Transformations part I: Linearizing relationships	{#section7-5}
+
+## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
+
+## Confidence Interval for the mean and prediction Intervals for a new observation	270
+
+## Chapter summary	{#section7-7}
+
+## Important R code {#section7-8}
+
+## Practice problems	{#section7-9}
+

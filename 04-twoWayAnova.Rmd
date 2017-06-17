@@ -1,0 +1,49 @@
+---
+output:
+  pdf_document: 
+    keep_tex: yes
+  html_document: default
+header-includes:
+- \usepackage{amsmath}
+- \usepackage{color}
+---
+
+# Two-Way ANOVA {#chapter4}
+
+```{r echo=F,warning=F,message=F}
+set.seed(3234)
+library(pander)
+require(mosaic)
+```
+
+
+```{r echo=F}
+#Color Format
+colFmt = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{",x,"}",sep="")
+  else if(outputFormat == 'html')
+    paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+```
+
+## Situation {#section4-1}
+
+## Designing a two-way experiment and visualizing results	{#section4-2}
+
+## Two-Way ANOVA models and hypothesis tests	{#section4-3}
+
+## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
+
+## Observational study example: The Psychology of Debt	{#section4-5}
+
+## Pushing Two-Way ANOVA to the limit: Un-replicated designs	{#section4-6}
+
+## Chapter summary	{#section4-7}
+
+## Important R code	{#section4-8}
+
+## Practice problems	{#section4-9}
