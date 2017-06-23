@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  16 JUN 2017 16:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  23 JUN 2017 11:48
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -973,51 +973,55 @@ G,.JBIG2,.JB2,.eps]
 
 {C:/Users/greta/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
-] (GreenwoodBanner.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
-File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 3.
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-))
+] (GreenwoodBanner.toc)
 \tf@toc=\write5
 \openout5 = `GreenwoodBanner.toc'.
 
 [3] [4
 
-] [5] [6
+]
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 187.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 187.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 187
+.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 187
+.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 187.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 187.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 187.
+LaTeX Font Info:    Try loading font information for U+msa on input line 187.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 187.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [5] [6
 
 ]
 Chapter 1.
-[7] <chapter0_files/image001.png, id=151, 481.8pt x 271.0125pt>
+[7] <chapter0_files/image001.png, id=137, 481.8pt x 271.0125pt>
 File: chapter0_files/image001.png Graphic file (type png)
 <use chapter0_files/image001.png>
 Package pdftex.def Info: chapter0_files/image001.png used on input line 279.
@@ -1032,7 +1036,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 339.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 339.
-[9] [10] <chapter0_files/image003.png, id=187, 797.98125pt x 450.18187pt>
+[9] [10] <chapter0_files/image003.png, id=174, 797.98125pt x 450.18187pt>
 File: chapter0_files/image003.png Graphic file (type png)
 <use chapter0_files/image003.png>
 Package pdftex.def Info: chapter0_files/image003.png used on input line 526.
@@ -1050,7 +1054,7 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 536.
 [11] [12 <./chapter0_files/image003.png>] [13] <chapter0_files/image005.png, id
-=213, 797.98125pt x 450.18187pt>
+=200, 797.98125pt x 450.18187pt>
 File: chapter0_files/image005.png Graphic file (type png)
 <use chapter0_files/image005.png>
 Package pdftex.def Info: chapter0_files/image005.png used on input line 800.
@@ -1060,7 +1064,7 @@ Overfull \hbox (328.26079pt too wide) in paragraph at lines 800--800
 [][] 
  []
 
-[14] [15 <./chapter0_files/image005.png>] <chapter0_files/image006.png, id=227,
+[14] [15 <./chapter0_files/image005.png>] <chapter0_files/image006.png, id=214,
  1927.2pt x 1084.05pt>
 File: chapter0_files/image006.png Graphic file (type png)
 <use chapter0_files/image006.png>
@@ -1075,14 +1079,14 @@ Overfull \hbox (686.60333pt too wide) in paragraph at lines 930--930
 LaTeX Warning: Float too large for page by 23.96599pt on input line 931.
 
 [16] [17 <./chapter0_files/image006.png>]
-<GreenwoodBanner_files/figure-latex/Figure5-1.pdf, id=241, 469.755pt x 325.215p
+<GreenwoodBanner_files/figure-latex/Figure5-1.pdf, id=228, 469.755pt x 325.215p
 t>
 File: GreenwoodBanner_files/figure-latex/Figure5-1.pdf Graphic file (type pdf)
 <use GreenwoodBanner_files/figure-latex/Figure5-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure5-1.pdf used 
 on input line 1048.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<chapter0_files/image010.png, id=243, 1927.2pt x 1084.05pt>
+<chapter0_files/image010.png, id=230, 1927.2pt x 1084.05pt>
 File: chapter0_files/image010.png Graphic file (type png)
 <use chapter0_files/image010.png>
 Package pdftex.def Info: chapter0_files/image010.png used on input line 1063.
@@ -1097,7 +1101,7 @@ LaTeX Warning: Float too large for page by 23.96599pt on input line 1064.
 
 [18] [19 <./GreenwoodBanner_files/figure-latex/Figure5-1.pdf>] [20 <./chapter0_
 files/image010.png>]
-<GreenwoodBanner_files/figure-latex/Figure7-1.pdf, id=266, 469.755pt x 325.215p
+<GreenwoodBanner_files/figure-latex/Figure7-1.pdf, id=253, 469.755pt x 325.215p
 t>
 File: GreenwoodBanner_files/figure-latex/Figure7-1.pdf Graphic file (type pdf)
 <use GreenwoodBanner_files/figure-latex/Figure7-1.pdf>
@@ -1105,7 +1109,7 @@ Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure7-1.pdf used
 on input line 1090.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [21 <./GreenwoodBanner_files/figure-latex/Figure7-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure8-1.pdf, id=285, 469.755pt x 325.215p
+<GreenwoodBanner_files/figure-latex/Figure8-1.pdf, id=272, 469.755pt x 325.215p
 t>
 File: GreenwoodBanner_files/figure-latex/Figure8-1.pdf Graphic file (type pdf)
 <use GreenwoodBanner_files/figure-latex/Figure8-1.pdf>
@@ -1113,7 +1117,7 @@ Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure8-1.pdf used
 on input line 1159.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [22 <./GreenwoodBanner_files/figure-latex/Figure8-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure9-1.pdf, id=297, 469.755pt x 325.215p
+<GreenwoodBanner_files/figure-latex/Figure9-1.pdf, id=284, 469.755pt x 325.215p
 t>
 File: GreenwoodBanner_files/figure-latex/Figure9-1.pdf Graphic file (type pdf)
 <use GreenwoodBanner_files/figure-latex/Figure9-1.pdf>
@@ -1129,106 +1133,105 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ]
 Chapter 2.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 140
-3.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [27] [28] [29] [30]
+[27] [28] [29] [30]
 
 LaTeX Warning: Reference `fig:Figure2-1' on page 31 undefined on input line 191
-8.
+4.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf, id=349, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf, id=335, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf use
-d on input line 1932.
+d on input line 1928.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf, id=350, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf, id=336, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-1-2.pdf use
-d on input line 1933.
+d on input line 1929.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 [31 <./GreenwoodBanner_files/figure-latex/Figure2-1-1.pdf> <./GreenwoodBanner_f
 iles/figure-latex/Figure2-1-2.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf, id=370, 469.755pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf, id=356, 469.755pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf use
-d on input line 1998.
+d on input line 1994.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf, id=373, 469.755pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf, id=359, 469.755pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-3-1.pdf use
-d on input line 2044.
+d on input line 2040.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [32] [33 <./GreenwoodBanner_files/figure-latex/Figure2-2-1.pdf>] [34 <./Greenwo
 odBanner_files/figure-latex/Figure2-3-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf, id=404, 469.755pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf, id=390, 469.755pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf use
-d on input line 2077.
+d on input line 2073.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \vbox (badness 3049) has occurred while \output is active []
+
 [35 <./GreenwoodBanner_files/figure-latex/Figure2-4-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf, id=421, 469.755pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf, id=407, 469.755pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf use
-d on input line 2145.
+d on input line 2141.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [36 <./GreenwoodBanner_files/figure-latex/Figure2-5-1.pdf>] [37] [38]
 
 LaTeX Warning: Reference `fig:Figure2-6' on page 39 undefined on input line 240
-9.
+5.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf, id=443, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf, id=429, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf use
-d on input line 2421.
+d on input line 2417.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf, id=444, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf, id=430, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-6-2.pdf use
-d on input line 2422.
+d on input line 2418.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [39] [40 <./GreenwoodBanner_files/figure-latex/Figure2-6-1.pdf> <./GreenwoodBan
-ner_files/figure-latex/Figure2-6-2.pdf>] <chapter1_files/image015.png, id=467, 
+ner_files/figure-latex/Figure2-6-2.pdf>] <chapter1_files/image015.png, id=453, 
 722.7pt x 505.89pt>
 File: chapter1_files/image015.png Graphic file (type png)
 <use chapter1_files/image015.png>
-Package pdftex.def Info: chapter1_files/image015.png used on input line 2539.
+Package pdftex.def Info: chapter1_files/image015.png used on input line 2535.
 (pdftex.def)             Requested size: 722.70924pt x 505.89645pt.
 
-Overfull \hbox (252.95422pt too wide) in paragraph at lines 2539--2541
+Overfull \hbox (252.95422pt too wide) in paragraph at lines 2535--2537
 [][] 
  []
 
@@ -1238,99 +1241,99 @@ Underfull \vbox (badness 5711) has occurred while \output is active []
 [43]
 
 LaTeX Warning: Reference `fig:Figure2-8' on page 44 undefined on input line 269
-9.
+5.
 
 [44]
-<GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf, id=494, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf, id=480, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf use
-d on input line 2732.
+d on input line 2728.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf, id=495, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf, id=481, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-8-2.pdf use
-d on input line 2733.
+d on input line 2729.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [45 <./GreenwoodBanner_files/figure-latex/Figure2-8-1.pdf> <./GreenwoodBanner_f
 iles/figure-latex/Figure2-8-2.pdf>] [46] [47]
-<GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf, id=525, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf, id=511, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf use
-d on input line 2962.
+d on input line 2958.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-9-2.pdf, id=526, 216.81pt x 325.215
+<GreenwoodBanner_files/figure-latex/Figure2-9-2.pdf, id=512, 216.81pt x 325.215
 pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-9-2.pdf Graphic file (type pdf
 )
 <use GreenwoodBanner_files/figure-latex/Figure2-9-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-9-2.pdf use
-d on input line 2963.
+d on input line 2959.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 [48 <./GreenwoodBanner_files/figure-latex/Figure2-9-1.pdf> <./GreenwoodBanner_f
 iles/figure-latex/Figure2-9-2.pdf>]
 
 LaTeX Warning: Reference `fig:Figure2-9' on page 49 undefined on input line 297
-8.
+4.
 
 
 LaTeX Warning: Reference `fig:Figure2-10' on page 49 undefined on input line 29
-88.
+84.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf, id=544, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf, id=530, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf us
-ed on input line 3005.
+ed on input line 3001.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-10-2.pdf, id=545, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-10-2.pdf, id=531, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-10-2.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-10-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-10-2.pdf us
-ed on input line 3006.
+ed on input line 3002.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 [49 <./GreenwoodBanner_files/figure-latex/Figure2-10-1.pdf> <./GreenwoodBanner_
 files/figure-latex/Figure2-10-2.pdf>]
 
 LaTeX Warning: Reference `fig:Figure2-11' on page 50 undefined on input line 30
-77.
+73.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf, id=565, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf, id=551, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf us
-ed on input line 3093.
+ed on input line 3089.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-11-2.pdf, id=566, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-11-2.pdf, id=552, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-11-2.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-11-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-11-2.pdf us
-ed on input line 3094.
+ed on input line 3090.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1338,16 +1341,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [50]
 
 LaTeX Warning: Reference `fig:Figure2-11' on page 51 undefined on input line 31
-31.
+27.
 
 [51 <./GreenwoodBanner_files/figure-latex/Figure2-11-1.pdf> <./GreenwoodBanner_
 files/figure-latex/Figure2-11-2.pdf>] [52]
-Overfull \hbox (2407.2787pt too wide) in paragraph at lines 3272--3281
+Overfull \hbox (2407.2787pt too wide) in paragraph at lines 3268--3277
  [][] 
  []
 
 [53] [54]
-Underfull \vbox (badness 10000) detected at line 3474
+Underfull \vbox (badness 10000) detected at line 3470
  []
 
 
@@ -1356,189 +1359,176 @@ Underfull \vbox (badness 1466) has occurred while \output is active []
 [55]
 
 LaTeX Warning: Reference `fig:Figure2-12' on page 56 undefined on input line 35
-32.
+28.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf, id=621, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf, id=607, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf us
-ed on input line 3578.
+ed on input line 3574.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
-<GreenwoodBanner_files/figure-latex/Figure2-12-2.pdf, id=622, 216.81pt x 325.21
+<GreenwoodBanner_files/figure-latex/Figure2-12-2.pdf, id=608, 216.81pt x 325.21
 5pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-12-2.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-12-2.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-12-2.pdf us
-ed on input line 3579.
+ed on input line 3575.
 (pdftex.def)             Requested size: 216.81938pt x 325.22908pt.
 
 Underfull \vbox (badness 5022) has occurred while \output is active []
 
-[56] <chapter1_files/image045.png, id=630, 722.7pt x 505.89pt>
+[56] <chapter1_files/image045.png, id=616, 722.7pt x 505.89pt>
 File: chapter1_files/image045.png Graphic file (type png)
 <use chapter1_files/image045.png>
-Package pdftex.def Info: chapter1_files/image045.png used on input line 3614.
+Package pdftex.def Info: chapter1_files/image045.png used on input line 3610.
 (pdftex.def)             Requested size: 722.70924pt x 505.89645pt.
 
-Overfull \hbox (252.95422pt too wide) in paragraph at lines 3614--3614
+Overfull \hbox (252.95422pt too wide) in paragraph at lines 3610--3610
 [][] 
  []
 
 [57 <./GreenwoodBanner_files/figure-latex/Figure2-12-1.pdf> <./GreenwoodBanner_
 files/figure-latex/Figure2-12-2.pdf>] [58 <./chapter1_files/image045.png>] <cha
-pter1_files/image047.png, id=654, 722.7pt x 505.89pt>
+pter1_files/image047.png, id=640, 722.7pt x 505.89pt>
 File: chapter1_files/image047.png Graphic file (type png)
 <use chapter1_files/image047.png>
-Package pdftex.def Info: chapter1_files/image047.png used on input line 3663.
+Package pdftex.def Info: chapter1_files/image047.png used on input line 3659.
 (pdftex.def)             Requested size: 722.70924pt x 505.89645pt.
 
-Overfull \hbox (252.95422pt too wide) in paragraph at lines 3663--3663
+Overfull \hbox (252.95422pt too wide) in paragraph at lines 3659--3659
 [][] 
  []
 
 [59] [60 <./chapter1_files/image047.png>]
 
 LaTeX Warning: Reference `fig:Figure2-6' on page 61 undefined on input line 377
-9.
+5.
 
 
-<GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf, id=671, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf, id=657, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf us
-ed on input line 3822.
+ed on input line 3818.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [61] [62 <./GreenwoodBanner_files/figure-latex/Figure2-15-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf, id=690, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf, id=676, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf us
-ed on input line 3925.
+ed on input line 3921.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [63] [64 <./GreenwoodBanner_files/figure-latex/Figure2-16-1.pdf>] [65]
-<GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf, id=719, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf, id=705, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf us
-ed on input line 4151.
+ed on input line 4147.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [66] [67 <./GreenwoodBanner_files/figure-latex/Figure2-17-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf, id=739, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf, id=725, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf us
-ed on input line 4200.
+ed on input line 4196.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
 LaTeX Warning: Reference `fig:Figure2-12' on page 68 undefined on input line 42
-30.
+26.
 
 [68] [69 <./GreenwoodBanner_files/figure-latex/Figure2-18-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf, id=758, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf, id=744, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf us
-ed on input line 4313.
+ed on input line 4309.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [70] [71 <./GreenwoodBanner_files/figure-latex/Figure2-19-1.pdf>]
-<GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf, id=776, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf, id=762, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf us
-ed on input line 4419.
+ed on input line 4415.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [72] [73 <./GreenwoodBanner_files/figure-latex/Figure2-20-1.pdf>] [74] [75] [76
 ]
-<GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf, id=818, 469.755pt x 325.2
+<GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf, id=804, 469.755pt x 325.2
 15pt>
 File: GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf Graphic file (type pd
 f)
 <use GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf>
 Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf us
-ed on input line 4874.
+ed on input line 4870.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[77 <./GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf>]
+[77 <./GreenwoodBanner_files/figure-latex/Figure2-21-1.pdf>] [78] [79] [80]
+Chapter 3.
 
-LaTeX Warning: Reference `chapter3' on page 78 undefined on input line 4936.
+LaTeX Warning: Reference `chapter4' on page 81 undefined on input line 5160.
 
-[78] (GreenwoodBanner.bbl [79] [80
 
-]
+LaTeX Warning: Reference `chapter8' on page 81 undefined on input line 5160.
 
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
+<GreenwoodBanner_files/figure-latex/Figure3-1-1.pdf, id=835, 469.755pt x 325.21
+5pt>
+File: GreenwoodBanner_files/figure-latex/Figure3-1-1.pdf Graphic file (type pdf
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5092.
-[81]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5092.
-(GreenwoodBanner.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5092.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5092.
+<use GreenwoodBanner_files/figure-latex/Figure3-1-1.pdf>
+Package pdftex.def Info: GreenwoodBanner_files/figure-latex/Figure3-1-1.pdf use
+d on input line 5193.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[81
 
-Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
-(rerunfilecheck)             Checksum: B4FCB71D8D76D18D66BBB70A32F1F602;4548.
+] [82 <./GreenwoodBanner_files/figure-latex/Figure3-1-1.pdf>]
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Reference `chapter4' on page 83 undefined on input line 5244.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5092.
- ) 
+
+LaTeX Warning: Reference `chapter6' on page 83 undefined on input line 5245.
+
+
+LaTeX Warning: Reference `chapter7' on page 83 undefined on input line 5245.
+
+
+LaTeX Warning: Reference `chapter8' on page 83 undefined on input line 5245.
+
+[83]
+
+LaTeX Warning: Reference `chapter4' on page 84 undefined on input line 5322.
+
+
+! LaTeX Error: Undefined color `purple'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5324 ...{purple}{\textbf{reference-coded model}}
+                                                   since it writes out 
 Here is how much of TeX's memory you used:
- 14016 strings out of 493366
- 206852 string characters out of 3137241
- 319112 words of memory out of 3000000
- 16920 multiletter control sequences out of 15000+200000
- 119577 words of font info for 180 fonts, out of 3000000 for 9000
+ 13997 strings out of 493366
+ 206685 string characters out of 3137241
+ 318292 words of memory out of 3000000
+ 16898 multiletter control sequences out of 15000+200000
+ 119521 words of font info for 182 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
  32i,8n,38p,625b,507s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKT
-eX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)/MiKTeX 2.9/font
-s/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips
-/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.
-enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi6
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/lm/lmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/lm/lmri8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
-sy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt
-i10.pfb>
-Output written on GreenwoodBanner.pdf (81 pages, 1803461 bytes).
-PDF statistics:
- 984 PDF objects out of 1000 (max. 8388607)
- 182 named destinations out of 1000 (max. 500000)
- 18786 words of extra memory for PDF output out of 20736 (max. 10000000)
 
+!  ==> Fatal error occurred, no output PDF file produced!

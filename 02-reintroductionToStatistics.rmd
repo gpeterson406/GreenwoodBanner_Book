@@ -1268,14 +1268,14 @@ remember all the possibilities.
 testing situation. But we never know the truth in a real situation. 
 
 ```{r Table2-2, echo=F}
-columnHeaders <- c("","**H<sub>0</sub> True**","**H<sub>0</sub> False**")
-cell21 <- '**FTR H<sub>0</sub>**'
+columnHeaders <- c("","$\\mathbf{H_0}$ **True**","$\\mathbf{H_0}$ **False**")
+cell21 <- '**FTR** $\\mathbf{H_0}$'
 cell22 <- 'Correct decision'
 cell23 <- 'Type II error'
-cell31 <- '**Reject H<sub>0</sub>** '
+cell31 <- '**Reject** $\\mathbf{H_0}$'
 cell32 <- 'Type I error'
 cell33 <- 'Correct decision'
-x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),nrow=,ncol=3,byrow=TRUE)
+x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),ncol=3,byrow=TRUE)
 library(knitr)
 kable(x,col.names=columnHeaders,caption='(ref:tab2-2)')
 ```
