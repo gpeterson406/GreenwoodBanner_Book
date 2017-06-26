@@ -1268,16 +1268,17 @@ remember all the possibilities.
 testing situation. But we never know the truth in a real situation. 
 
 ```{r Table2-2, echo=F}
-columnHeaders <- c("","$\\mathbf{H_0}$ **True**","$\\mathbf{H_0}$ **False**")
-cell21 <- '**FTR** $\\mathbf{H_0}$'
+columnHeaders <- c("$\\mathbf{H_0}$ **True**","$\\mathbf{H_0}$ **False**")
+cell21 <- "$\\textbf{FTR }\\mathbf{H_0}$"
 cell22 <- 'Correct decision'
 cell23 <- 'Type II error'
-cell31 <- '**Reject** $\\mathbf{H_0}$'
+cell31 <- "$\\textbf{Reject }\\mathbf{H_0}$"
 cell32 <- 'Type I error'
 cell33 <- 'Correct decision'
-x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),ncol=3,byrow=TRUE)
+x <- matrix(c(cell22,cell23,cell32,cell33),
+            dimnames = list(c(cell21,cell31),columnHeaders),ncol=2,byrow=TRUE)
 library(knitr)
-kable(x,col.names=columnHeaders,caption='(ref:tab2-2)')
+kable(x,caption="(ref:tab2-2)")
 ```
 
 In comparing different procedures, there is an interest in studying the rate or

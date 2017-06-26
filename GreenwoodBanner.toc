@@ -1,0 +1,10 @@
+\contentsline {chapter}{Acknowledgments}{5}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Placeholder}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Placeholder}{9}{chapter.2}
+\contentsline {chapter}{\numberline {3}Placeholder}{11}{chapter.3}
+\contentsline {chapter}{\numberline {4}Two-Way ANOVA}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Chi-square tests}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Correlation and Simple Linear Regression}{17}{chapter.6}
+\contentsline {chapter}{\numberline {7}Simple linear regression inference}{19}{chapter.7}
+\contentsline {chapter}{\numberline {8}Multiple linear regression}{21}{chapter.8}
+\contentsline {chapter}{\numberline {9}Case studies}{23}{chapter.9}
