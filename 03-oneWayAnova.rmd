@@ -1716,8 +1716,108 @@ problem are also possible, but will not be considered here.
 
 ## Pair-wise comparisons for Prisoner Rating data {#section3-7}
 
+In our previous work with the prisoner rating data, the overall ANOVA test
+provided only marginal evidence of some difference in the true means across the
+three groups with a p-value=`r orig_anova[1,6]`. Tukey's HSD does not require you 
+to find a small from your overall $F$-test to employ the methods but if you apply 
+it to situations with p-values larger than your *a priori* significance level,
+you are unlikely to find any pairs that are detected as being different. Some
+statisticians suggest that you shouldn't employ follow-up tests such as Tukey's
+HSD when there is not sufficient evidence to reject the overall null hypothesis
+and would be able to reasonably criticize the following results. But for the
+sake of completeness, we can find the pair-wise comparison results at our
+typical 95% family-wise confidence level in this situation, with the three
+confidence intervals displayed in Figure \@ref(fig:Figure3-21). 
+
+(ref:fig3-21) Tukey's HSD confidence interval results at the 95% family-wise confidence level.
+
+```{r Figure3-21,fig.cap="(ref:fig3-21)",message=F,warning=F}
+lm2<-lm(Years~Attr, data=MockJury)
+require(multcomp)
+Tm2 <- glht(lm2, linfct = mcp(Attr = "Tukey"))
+confint(Tm2)
+cld(Tm2)
+old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+plot(Tm2)
+```
+
+At the family-wise 5% significance level, there are no pairs that are detectably different 
+-- they all get the same letter of "a". Now we will produce results for the reader that
+thought a 10% significance was suitable for this application before seeing any
+of the results. We just need to change the confidence level or significance
+level that the CIs or tests are produced with inside the functions. For the ``confint``
+function, the ``level`` option is the confidence level and for the ``cld``, it is the 
+family-wise significance level. Note that 90% confidence corresponds to a 10% 
+significance level. 
+
+(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
+
+```{r Figure3-22, fig.cap="(ref:fig3-22)"}
+confint(Tm2,level=0.9)
+cld(Tm2,level=0.1)
+old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+plot(confint(Tm2,level=.9))
+```
+
+With family-wise 10% significance and 90% confidence levels, the *Unattractive* and 
+*Average* picture groups are detected as being different but the *Average* group is not 
+detected as different from *Beautiful* and *Beautiful* is not detected to be different 
+from *Unattractive*. This leaves the "overlap" of groups across the sets of groups that 
+was noted earlier. The *Beautiful* level is not detected as being dissimilar from levels 
+in two different sets and so gets two different letters. 
+
+The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons for this 
+set of results. The detection of a difference between *Average* and *Unattractive* just 
+barely occurs and the mean for *Beautiful* is between the other two so it ends up not 
+being detectably different from either one. This sort of overlap is actually a fairly 
+common occurrence in these sorts of situations so be prepared a mixed set of letters 
+for some levels. 
+
+(ref:fig3-23) Beanplot of sentences with compact letter display results from 10%
+family-wise significance level Tukey's HSD. *Average* and *Unattractive* picture
+groups are detected as being different and are displayed as belonging to
+different groups. *Beautiful* picture responses are not detected as different
+from the other two groups.
+
+```{r Figure3-23, fig.cap="(ref:fig3-23)"}
+beanplot(Years~Attr,data=MockJury,log="",col="white",method="jitter")
+text(c(1),c(5),"ab",col="blue",cex=2)
+text(c(2),c(4.8),"a",col="green",cex=2)
+text(c(3),c(6.5),"b",col="red",cex=2)
+```
+
 ## Chapter Summary {#section3-8}
 
+In this chapter, we explored methods for comparing a quantitative response across 
+$J$ groups ($J \ge 2$), with what is called the One-Way ANOVA procedure. The initial 
+test is based on assessing evidence against a null hypothesis of no
+groups. There are two different methods for estimating these One-Way ANOVA models: 
+the cell-means model and the reference-coded versions of the model. 
+There are times when either model will be preferred, but for the rest of the text, 
+the reference coding is used (sorry!). The ANOVA $F$-statistic, often presented with 
+underlying information in the ANOVA table, provides a method of assessing evidence 
+against the null hypothesis either using permutations or via the $F$-distribution. 
+Pair-wise comparisons using Tukey's HSD provide a method for comparing all the groups 
+and are a nice complement to the overall ANOVA results. A compact letter display was 
+shown that enhanced the interpretation of Tukey's HSD result. 
+
+In the guinea pig example, we are left with some lingering questions based on these 
+results. It appears that the effect of *dosage* changes as a function of the 
+*delivery method* (OJ, VC) because the size of the differences between OJ and VC
+change for different dosages. These methods can't directly assess the question
+of whether the effect of delivery method is the same or not across the
+different dosages. In chapter \@ref(chapter4), the two variables, *Dosage* and 
+*Delivery method* are modeled as two separate variables so we can consider their 
+effects both separately and together. This allows more refined hypotheses, such as 
+*Is the effect of delivery method the same for all dosages?*, to be tested. This 
+will introduce new models and methods for analyzing data where there are two 
+factors as explanatory variables in a model for a quantitative response variable 
+in what is called the Two-Way ANOVA. 
+
 ## Summary of important R code {#section3-9}
+
+The main components of R code used in this chapter follow with components to modify 
+in red, remembering that any R packages mentioned need to be installed and loaded 
+for this code to have a chance of working:
 
 ## Practice problems {#section3-10}
