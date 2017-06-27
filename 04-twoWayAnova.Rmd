@@ -1,8 +1,9 @@
 ---
 output:
-  pdf_document: 
-    keep_tex: yes
+  bookdown::gitbook: default
   html_document: default
+  pdf_document:
+    keep_tex: yes
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
@@ -580,8 +581,278 @@ library(knitr)
 kable(x,caption="(ref:tab4-1)",col.names=columnHeaders)
 ```
 
+(ref:tab4-2) Additive Model ANOVA Table. 
+
+```{r echo=F}
+columnHeaders <- c("Source","DF","SS","MS","F-statistics")
+row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
+          "$\\text{MS}_A/\\text{MS}_E$")
+row2 <- c("B","$K-1$","$\\text{SS}_B$","$\\text{MS}_B=\\text{SS}_B/\\text{df}_B$",
+          "$\\text{MS}_B/\\text{MS}_E$")
+row4 <- c("Error","$N-J-K+1$","$\\text{SS}_E$","$\\text{MS}_E=\\text{SS}_E/\\text{df}_E$",
+          "")
+row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
+          "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
+x <- matrix(c(row1,row2,row4,row5),ncol=5,byrow=TRUE)
+library(knitr)
+kable(x,caption="(ref:tab4-2)",col.names=columnHeaders)
+```
+
+The mean squares are formed by taking the sums of squares (we'll let R find those
+for us) and dividing by the $df$ in the row. The $F$-ratios are found by taking
+the mean squares from the row and dividing by the mean squared error ($\text{MS}_E$). 
+They follow $F$-distributions with numerator degrees
+of freedom from the row and denominator degrees of freedom from the Error row
+(in R output this the ``Residuals`` row). It is possible to develop permutation 
+tests for these methods but some
+technical issues arise in doing permutation tests for interaction model components
+so we will not use them here. This means we will have to place even more
+emphasis on meeting the assumptions since we only have the parametric method
+available.
+
+With some basic expectations about the ANOVA tables and $F$-statistic construction 
+in mind, we can get to actually estimating the models and exploring the results. 
+The first example involves the fake paper towel data
+displayed in Figure \@ref(fig:Figure4-1) and \@ref(fig:Figure4-2). It appeared 
+that Scenario 5 was the correct
+story since the lines were not parallel, but we need to know whether there is
+evidence to suggest that the interaction is "real" and we get that through the 
+interaction hypothesis test. To fit the interaction model using ``lm``, 
+the general formulation is ``lm(y ~ x1*x2, data=...)``. The
+order of the variables doesn't matter and the most important part of the model,
+to start with, relates to the interaction of the variables. The ANOVA table output
+shows the results for the interaction model obtained by running the ``anova``
+function on the model called ``m1``. Specifically, the test that 
+$H_0: \text{ All } \omega_{jk}\text{'s} = 0$ has a
+test statistic of $F(2,24)=1.92$ (in bold in the output from the row with 
+brands:drops) and a p-value of 0.17. So there is insufficient evidence to 
+reject the null hypothesis of no interaction, with a 17% chance we would 
+observe a difference in the $\omega_{jk}\text{'s}$ like we did or more
+extreme if the $\omega_{jk}\text{'s}$ really were all 0. For the interaction 
+model components, R presents them with a colon, ``:``, between the variable 
+names.
+
+```{r}
+m1<-lm(responses ~ brand*drops, data=pt)
+anova(m1)
+```
+
+```{r echo=F}
+require(pander)
+t <- anova(m1)
+emphasize.strong.rows(3)
+pander(anova(m1),add.significance.stars=F,caption="Interaction ANOVA table with interaction
+       row in bold.")
+```
+
+It is useful to display the estimates from this model and we can utilize
+``plot(allEffects(modelname))`` to visualize the results for the terms 
+in our models. If we turn on the options for ``grid=T``, ``multiline=T``, 
+and ``ci. style="bars"`` we will get a more useful version of the basic 
+"effect plot" for Two-Way ANOVA
+models with interaction. The results of the estimated interaction model are
+displayed in Figure \@ref(fig:Figure4-6), which looks very similar to our 
+previous interaction plot. The only difference is that this comes from model 
+that assumes equal variance and these plots show 95% confidence intervals 
+for the means instead of the 1 standard error used above. 
+
+(ref:fig4-6) Plot of estimated results of interaction model. 
+
+```{r Figure4-6,fig.cap="(ref:fig4-6)",warning=F,message=F}
+require(effects)
+plot(allEffects(m1), grid=T, multiline=T, ci.style="bars")
+```
+
+In the absence of evidence to include the
+interaction, the model should be simplified to the additive model and the interpretation
+focused on each main effect, conditional on having the other variable in the
+model. To fit an additive model and not include an interaction, the model
+formula involves a "+" instead of a "*" between the explanatory variables. 
+
+```{r}
+m2<-lm(responses ~ brand + drops, data=pt)
+anova(m2)
+```
+
+The p-values for the main effects of ``brand`` and ``drops`` change slightly from the
+results in the interaction model due to changes in the $\text{MS}_E$ from
+0.4118 to 0.4409 (more variability is left over in the simpler model) and the
+$\text{DF}_{\text{error}}$ that increases from 24 to 26. In both models, the 
+$\text{SS}_{\text{Total}}$ is the same (20.6544). In the interaction model, 
+
+$$\begin{array}{rl}
+\text{SS}_{\text{Total}} & = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
++ \text{SS}_{\text{brand:drops}} + \text{SS}_{\text{E}}\\
+& = 4.3322 + 4.8581 + 1.5801 + 9.8840\\
+& = 20.6544\\
+\end{array}$$
+
+In the additive model, the variability that was attributed to the interaction term
+in the interaction model ($\text{SS}_{\text{brand:drops}} = 1.5801$) is pushed into the
+$\text{SS}_{\text{E}}$, which increases from 9.884 to 11.4641. The sums of squares
+decomposition in the additive model is 
+
+$$\begin{array}{rl}
+\text{SS}_{\text{Total}} & = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
+ + \text{SS}_{\text{E}} \\
+& = 4.3322 + 4.8581 + 11.4641 \\
+& = 20.6544 \\
+\end{array}$$
+
+This shows that the sums of squares decomposition applies in these more complicated
+models as it did in the One-Way ANOVA. It also shows that if the interaction is
+removed from the model, that variability is lumped in with the other
+unexplained variability that goes in the $\text{SS}_{\text{E}}$ in any model.
+
+The fact that the sums of squares decomposition can be applied here is 
+useful, except that there is a small issue
+with the main effect tests in the ANOVA table results that follow this
+decomposition when the design is not balanced. It ends up that the tests in a
+typical ANOVA table are only conditional on the tests higher up in the table. For
+example, in the additive model ANOVA table, the ``Brand`` test is not 
+conditional on the ``Drops`` effect, but the ``Drops`` effect is conditional on the 
+``Brand`` effect. To fix this issue, we have to use another type of sums of 
+squares, called ***Type II sums of squares***. They will no longer always 
+follow the rules of the sums of squares decomposition but they
+will test the desired hypotheses. Specifically, they provide each test
+conditional on any other terms at the same level of the model and match the
+hypotheses written out earlier in this section. To get the "correct" ANOVA
+results, the ``car`` (Fox and Weisberg, 2011) package is required. We use the 
+``Anova`` function on our linear models from here forward to get the "right" 
+tests in our ANOVA tables. Note how the case-sensitive nature of R code shows 
+up in the use of the capital-A ``Anova`` function instead of the ``anova`` 
+function used previously. In this case, because the design was balanced, the
+results are the same using either function. Observational studies rarely
+generate balanced designs (some designed studies can result in unbalanced
+designs) so we will generally just use the Type II version of the sums of
+squares. The ``Anova`` results using the Type II sums of
+squares are slightly more conservative than the results from ``anova``, 
+which are called Type I sums of squares. The sums of squares decomposition no
+longer can be applied, but it is a small sacrifice to get each test after
+adjusting for all other variables^[Actually, the tests are only conditional 
+on other main effects if Type II Sums of Squares are used for an interaction 
+model.].
+
+```{r, warning=F,message=F}
+require(car)
+Anova(m2)
+```
+
+The new output switches the columns around and doesn't show you the mean squares, 
+but gives the most critical parts of the output. Here, there is no change in
+results because it is balanced design with equal counts of responses in each
+combination of the two explanatory variables. 
+
+The additive model, when appropriate, provides simpler interpretations for 
+each explanatory variable compared to models
+with interactions because the effect of one variable is the same regardless of
+the levels of the other variable and vice versa. There are two tools to aid in
+understanding the impacts of the two variables in the additive model. First, 
+the model summary provides estimated coefficients with interpretations like
+those seen in Chapter \@ref(chapter3) (deviation of group $j$ or $k$ from 
+the baseline group's mean), except with the additional wording of 
+"controlling for" the other variable
+added to any of the discussion. Second, the term-plots now show each main
+effect and how the groups differ with one panel for each of the two explanatory
+variables in the model. These term-plots are created by holding the other
+variable constant at one of its levels. 
+
+```{r}
+summary(m2)
+```
+
+In the model summary, the baseline combination estimated in the ``(Intercept)``
+row is for ``Brand`` *B1* and ``Drops`` 10 and estimates the mean failure 
+time as 1.85 seconds for this combination. As
+before, the group labels that do not show up are the baseline but there are two
+variables' baselines to identify. Now the "simple" aspects of the additive
+model show up. The interpretation of the ``Brands`` *B2* coefficient is as 
+a deviation from the baseline but it applies regardless of the level of 
+``Drops``. Any difference between *B1* and *B2* involves a shift up of 0.76 seconds
+in the estimated mean failure time. Similarly, going from 10 (baseline) to 20
+drops results in a drop in the estimated failure mean of 0.47 seconds and going
+from 10 to 30 drops results in a drop of almost 1 second in the average time to
+failure, both estimated changes are the same regardless of the brand of paper
+towel being considered. Sometimes, especially in observational studies, we use
+the terminology "controlled for" to remind the reader that the other variable
+was present in the model^[In Multiple Linear Regression models in 
+Chapter \@ref(chapter8), the reasons for this wording will (hopefully) 
+become clearer.] and also explained some of the variability in the 
+responses. The term-plots for
+the additive model (Figure \@ref(fig:Figure4-7)) help us visualize the 
+impacts of changes brand and changing water levels, holding the other 
+variable constant. The differences in heights in each panel correspond 
+to the coefficients just discussed. 
+
+(ref:fig4-7) Term-plots of additive model for paper towel data. Left panel displays
+results for two brands and right panel for number of drops of water, each after
+controlling for the other.
+
+```{r Figure4-7, fig.cap="(ref:fig4-7)",warning=F,message=F}
+require(effects)
+plot(allEffects(m2))
+```
+
 
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
+
+The effects of dosage and delivery method of ascorbic acid on Guinea Pig 
+odontoblast growth was analyzed as a One-Way ANOVA in Section \@ref(section3-4)
+by assessing evidence of any difference in the
+means of any combinations of dosage method (Vit C capsule vs Orange Juice) and
+three dosage amounts (0.5, 1, and 2 mg/day). Now we will consider the dosage
+and delivery methods as two separate variables and explore their potential
+interaction. A beanplot and interaction plot are provided in 
+Figure \@ref(fig:Figure4-8).
+
+(ref:fig4-8) Beanplot and interaction plot of the tooth growth data set.
+
+```{r Figure4-8,fig.cap="(ref:fig4-8)",message=FALSE,warning=FALSE}
+data(ToothGrowth)
+par(mfrow=c(1,2))
+beanplot(len ~ supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
+         main="Beanplot", col=list("white","orange"), xlab="Dosage",
+         ylab="Tooth Growth")
+legend("topright", bty="n", c("VC","OJ"), fill=c("white","orange"))
+intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), 
+        main="Interaction Plot", ylim=c(-5,40))
+```
+
+It appears that the effect of method changes based on the dosage as the
+interaction plot seems to show some evidence of non-parallel lines. Actually, 
+it appears that the effect of delivery method is parallel for doses 0.5 and 1.0
+mg/day but that the effect of delivery method changes for 2 mg/day. 
+
+We can use the ANOVA $F$-test for an interaction to assess whether the 
+interaction is "real" relative to the variability in the responses. 
+That is, is it larger than we would expect due to natural variation in the
+data? If yes, then it is a real effect and we should account for it. The
+following results fit the interaction model and provide an ANOVA table. 
+
+```{r}
+TG1 <- lm(len~supp*dose,data=ToothGrowth)
+Anova(TG1)
+```
+
+The R output is reporting an interaction test result of $F(1,56)=5.3$ with
+a p-value of 0.025. But this should raise a red flag since the numerator 
+degrees of freedom are not what we should expect of $(K-1)*(J-1) = (2-1)*(3-1)=2$.
+This brings up an issue in R when working
+with categorical variables. If the levels of a categorical variable are entered
+numerically, R will treat them as quantitative variables and not split out the
+different levels of the categorical variable. To make sure that R treats
+categorical variables the correct way, we should use the ``factor``
+function on any variables that are categorical but are coded numerically in the
+data set. The following code creates a new variable called ``dosef``
+using the function that will help us obtain correct results from the linear 
+model. The re-run of the ANOVA table provides the correct analysis and the 
+expected $df$ for the two rows of output involving ``dosef``:
+
+```{r}
+ToothGrowth$dosef<-factor(ToothGrowth$dose)
+TG2 <- lm(len ~ supp*dosef, data=ToothGrowth)
+Anova(TG2)
+```
 
 ## Observational study example: The Psychology of Debt	{#section4-5}
 

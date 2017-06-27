@@ -7,6 +7,8 @@ output:
 
 ```{r include=F}
 require(mosaic)
+knitr::opts_chunk$set(echo = TRUE)
+options(show.signif.stars = FALSE)
 ```
 
 This book is designed primarily for use in a second semester 

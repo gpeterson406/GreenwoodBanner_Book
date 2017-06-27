@@ -431,9 +431,237 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 </tr>
 </tbody>
 </table>
+
+<table>
+<caption><span id="tab:unnamed-chunk-106">Table 4.2: </span>Additive Model ANOVA Table.</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">DF</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+<th align="left">F-statistics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left"><span class="math inline">\(J-1\)</span></td>
+<td align="left"><span class="math inline">\(\text{SS}_A\)</span></td>
+<td align="left"><span class="math inline">\(\text{MS}_A=\text{SS}_A/\text{df}_A\)</span></td>
+<td align="left"><span class="math inline">\(\text{MS}_A/\text{MS}_E\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="left"><span class="math inline">\(K-1\)</span></td>
+<td align="left"><span class="math inline">\(\text{SS}_B\)</span></td>
+<td align="left"><span class="math inline">\(\text{MS}_B=\text{SS}_B/\text{df}_B\)</span></td>
+<td align="left"><span class="math inline">\(\text{MS}_B/\text{MS}_E\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Error</td>
+<td align="left"><span class="math inline">\(N-J-K+1\)</span></td>
+<td align="left"><span class="math inline">\(\text{SS}_E\)</span></td>
+<td align="left"><span class="math inline">\(\text{MS}_E=\text{SS}_E/\text{df}_E\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><b><font color='red'>Total</font></b></td>
+<td align="left"><span class="math inline">\(\color{red}{\mathbf{N-1}}\)</span></td>
+<td align="left"><span class="math inline">\(\color{red}{\textbf{SS}_{\textbf{Total}}}\)</span></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>The mean squares are formed by taking the sums of squares (we’ll let R find those for us) and dividing by the <span class="math inline">\(df\)</span> in the row. The <span class="math inline">\(F\)</span>-ratios are found by taking the mean squares from the row and dividing by the mean squared error (<span class="math inline">\(\text{MS}_E\)</span>). They follow <span class="math inline">\(F\)</span>-distributions with numerator degrees of freedom from the row and denominator degrees of freedom from the Error row (in R output this the <code>Residuals</code> row). It is possible to develop permutation tests for these methods but some technical issues arise in doing permutation tests for interaction model components so we will not use them here. This means we will have to place even more emphasis on meeting the assumptions since we only have the parametric method available.</p>
+<p>With some basic expectations about the ANOVA tables and <span class="math inline">\(F\)</span>-statistic construction in mind, we can get to actually estimating the models and exploring the results. The first example involves the fake paper towel data displayed in Figure <a href="chapter4.html#fig:Figure4-1">4.1</a> and <a href="chapter4.html#fig:Figure4-2">4.2</a>. It appeared that Scenario 5 was the correct story since the lines were not parallel, but we need to know whether there is evidence to suggest that the interaction is “real” and we get that through the interaction hypothesis test. To fit the interaction model using <code>lm</code>, the general formulation is <code>lm(y ~ x1*x2, data=...)</code>. The order of the variables doesn’t matter and the most important part of the model, to start with, relates to the interaction of the variables. The ANOVA table output shows the results for the interaction model obtained by running the <code>anova</code> function on the model called <code>m1</code>. Specifically, the test that <span class="math inline">\(H_0: \text{ All } \omega_{jk}\text{&#39;s} = 0\)</span> has a test statistic of <span class="math inline">\(F(2,24)=1.92\)</span> (in bold in the output from the row with brands:drops) and a p-value of 0.17. So there is insufficient evidence to reject the null hypothesis of no interaction, with a 17% chance we would observe a difference in the <span class="math inline">\(\omega_{jk}\text{&#39;s}\)</span> like we did or more extreme if the <span class="math inline">\(\omega_{jk}\text{&#39;s}\)</span> really were all 0. For the interaction model components, R presents them with a colon, <code>:</code>, between the variable names.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1&lt;-<span class="kw">lm</span>(responses <span class="op">~</span><span class="st"> </span>brand<span class="op">*</span>drops, <span class="dt">data=</span>pt)
+<span class="kw">anova</span>(m1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: responses
+##             Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## brand        1 4.3322  4.3322 10.5192 0.003458 **
+## drops        2 4.8581  2.4290  5.8981 0.008251 **
+## brand:drops  2 1.5801  0.7901  1.9184 0.168695   
+## Residuals   24 9.8840  0.4118                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<table style="width:89%;">
+<caption>Interaction ANOVA table with interaction row in bold.</caption>
+<colgroup>
+<col width="25%" />
+<col width="8%" />
+<col width="12%" />
+<col width="15%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Df</th>
+<th align="center">Sum Sq</th>
+<th align="center">Mean Sq</th>
+<th align="center">F value</th>
+<th align="center">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>brand</strong></td>
+<td align="center">1</td>
+<td align="center">4.332</td>
+<td align="center">4.332</td>
+<td align="center">10.52</td>
+<td align="center">0.003458</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>drops</strong></td>
+<td align="center">2</td>
+<td align="center">4.858</td>
+<td align="center">2.429</td>
+<td align="center">5.898</td>
+<td align="center">0.008251</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>brand:drops</strong></td>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>1.58</strong></td>
+<td align="center"><strong>0.7901</strong></td>
+<td align="center"><strong>1.918</strong></td>
+<td align="center"><strong>0.1687</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Residuals</strong></td>
+<td align="center">24</td>
+<td align="center">9.884</td>
+<td align="center">0.4118</td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<p>It is useful to display the estimates from this model and we can utilize <code>plot(allEffects(modelname))</code> to visualize the results for the terms in our models. If we turn on the options for <code>grid=T</code>, <code>multiline=T</code>, and <code>ci. style=&quot;bars&quot;</code> we will get a more useful version of the basic “effect plot” for Two-Way ANOVA models with interaction. The results of the estimated interaction model are displayed in Figure <a href="chapter4.html#fig:Figure4-6">4.6</a>, which looks very similar to our previous interaction plot. The only difference is that this comes from model that assumes equal variance and these plots show 95% confidence intervals for the means instead of the 1 standard error used above.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
+<span class="kw">plot</span>(<span class="kw">allEffects</span>(m1), <span class="dt">grid=</span>T, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure4-6"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure4-6-1.png" alt="Plot of estimated results of interaction model." width="672" />
+<p class="caption">
+Figure 4.6: Plot of estimated results of interaction model.
+</p>
+</div>
+<p>In the absence of evidence to include the interaction, the model should be simplified to the additive model and the interpretation focused on each main effect, conditional on having the other variable in the model. To fit an additive model and not include an interaction, the model formula involves a “+” instead of a “*&quot; between the explanatory variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2&lt;-<span class="kw">lm</span>(responses <span class="op">~</span><span class="st"> </span>brand <span class="op">+</span><span class="st"> </span>drops, <span class="dt">data=</span>pt)
+<span class="kw">anova</span>(m2)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: responses
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)
+## brand      1  4.3322  4.3322  9.8251 0.004236
+## drops      2  4.8581  2.4290  5.5089 0.010123
+## Residuals 26 11.4641  0.4409</code></pre>
+<p>The p-values for the main effects of <code>brand</code> and <code>drops</code> change slightly from the results in the interaction model due to changes in the <span class="math inline">\(\text{MS}_E\)</span> from 0.4118 to 0.4409 (more variability is left over in the simpler model) and the <span class="math inline">\(\text{DF}_{\text{error}}\)</span> that increases from 24 to 26. In both models, the <span class="math inline">\(\text{SS}_{\text{Total}}\)</span> is the same (20.6544). In the interaction model,</p>
+<p><span class="math display">\[\begin{array}{rl}
+\text{SS}_{\text{Total}} &amp; = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
++ \text{SS}_{\text{brand:drops}} + \text{SS}_{\text{E}}\\
+&amp; = 4.3322 + 4.8581 + 1.5801 + 9.8840\\
+&amp; = 20.6544\\
+\end{array}\]</span></p>
+<p>In the additive model, the variability that was attributed to the interaction term in the interaction model (<span class="math inline">\(\text{SS}_{\text{brand:drops}} = 1.5801\)</span>) is pushed into the <span class="math inline">\(\text{SS}_{\text{E}}\)</span>, which increases from 9.884 to 11.4641. The sums of squares decomposition in the additive model is</p>
+<p><span class="math display">\[\begin{array}{rl}
+\text{SS}_{\text{Total}} &amp; = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
+ + \text{SS}_{\text{E}} \\
+&amp; = 4.3322 + 4.8581 + 11.4641 \\
+&amp; = 20.6544 \\
+\end{array}\]</span></p>
+<p>This shows that the sums of squares decomposition applies in these more complicated models as it did in the One-Way ANOVA. It also shows that if the interaction is removed from the model, that variability is lumped in with the other unexplained variability that goes in the <span class="math inline">\(\text{SS}_{\text{E}}\)</span> in any model.</p>
+<p>The fact that the sums of squares decomposition can be applied here is useful, except that there is a small issue with the main effect tests in the ANOVA table results that follow this decomposition when the design is not balanced. It ends up that the tests in a typical ANOVA table are only conditional on the tests higher up in the table. For example, in the additive model ANOVA table, the <code>Brand</code> test is not conditional on the <code>Drops</code> effect, but the <code>Drops</code> effect is conditional on the <code>Brand</code> effect. To fix this issue, we have to use another type of sums of squares, called <strong><em>Type II sums of squares</em></strong>. They will no longer always follow the rules of the sums of squares decomposition but they will test the desired hypotheses. Specifically, they provide each test conditional on any other terms at the same level of the model and match the hypotheses written out earlier in this section. To get the “correct” ANOVA results, the <code>car</code> (Fox and Weisberg, 2011) package is required. We use the <code>Anova</code> function on our linear models from here forward to get the “right” tests in our ANOVA tables. Note how the case-sensitive nature of R code shows up in the use of the capital-A <code>Anova</code> function instead of the <code>anova</code> function used previously. In this case, because the design was balanced, the results are the same using either function. Observational studies rarely generate balanced designs (some designed studies can result in unbalanced designs) so we will generally just use the Type II version of the sums of squares. The <code>Anova</code> results using the Type II sums of squares are slightly more conservative than the results from <code>anova</code>, which are called Type I sums of squares. The sums of squares decomposition no longer can be applied, but it is a small sacrifice to get each test after adjusting for all other variables<a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(car)
+<span class="kw">Anova</span>(m2)</code></pre></div>
+<pre><code>## Anova Table (Type II tests)
+## 
+## Response: responses
+##            Sum Sq Df F value   Pr(&gt;F)
+## brand      4.3322  1  9.8251 0.004236
+## drops      4.8581  2  5.5089 0.010123
+## Residuals 11.4641 26</code></pre>
+<p>The new output switches the columns around and doesn’t show you the mean squares, but gives the most critical parts of the output. Here, there is no change in results because it is balanced design with equal counts of responses in each combination of the two explanatory variables.</p>
+<p>The additive model, when appropriate, provides simpler interpretations for each explanatory variable compared to models with interactions because the effect of one variable is the same regardless of the levels of the other variable and vice versa. There are two tools to aid in understanding the impacts of the two variables in the additive model. First, the model summary provides estimated coefficients with interpretations like those seen in Chapter <a href="chapter3.html#chapter3">3</a> (deviation of group <span class="math inline">\(j\)</span> or <span class="math inline">\(k\)</span> from the baseline group’s mean), except with the additional wording of “controlling for” the other variable added to any of the discussion. Second, the term-plots now show each main effect and how the groups differ with one panel for each of the two explanatory variables in the model. These term-plots are created by holding the other variable constant at one of its levels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = responses ~ brand + drops, data = pt)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.4561 -0.4587  0.1297  0.4434  0.9695 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   1.8454     0.2425   7.611 4.45e-08
+## brandB2       0.7600     0.2425   3.134  0.00424
+## drops20      -0.4680     0.2970  -1.576  0.12715
+## drops30      -0.9853     0.2970  -3.318  0.00269
+## 
+## Residual standard error: 0.664 on 26 degrees of freedom
+## Multiple R-squared:  0.445,  Adjusted R-squared:  0.3809 
+## F-statistic: 6.948 on 3 and 26 DF,  p-value: 0.001381</code></pre>
+<p>In the model summary, the baseline combination estimated in the <code>(Intercept)</code> row is for <code>Brand</code> <em>B1</em> and <code>Drops</code> 10 and estimates the mean failure time as 1.85 seconds for this combination. As before, the group labels that do not show up are the baseline but there are two variables’ baselines to identify. Now the “simple” aspects of the additive model show up. The interpretation of the <code>Brands</code> <em>B2</em> coefficient is as a deviation from the baseline but it applies regardless of the level of <code>Drops</code>. Any difference between <em>B1</em> and <em>B2</em> involves a shift up of 0.76 seconds in the estimated mean failure time. Similarly, going from 10 (baseline) to 20 drops results in a drop in the estimated failure mean of 0.47 seconds and going from 10 to 30 drops results in a drop of almost 1 second in the average time to failure, both estimated changes are the same regardless of the brand of paper towel being considered. Sometimes, especially in observational studies, we use the terminology “controlled for” to remind the reader that the other variable was present in the model<a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a> and also explained some of the variability in the responses. The term-plots for the additive model (Figure <a href="chapter4.html#fig:Figure4-7">4.7</a>) help us visualize the impacts of changes brand and changing water levels, holding the other variable constant. The differences in heights in each panel correspond to the coefficients just discussed.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
+<span class="kw">plot</span>(<span class="kw">allEffects</span>(m2))</code></pre></div>
+<div class="figure"><span id="fig:Figure4-7"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure4-7-1.png" alt="Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other." width="672" />
+<p class="caption">
+Figure 4.7: Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other.
+</p>
+</div>
 </div>
 <div id="section4-4" class="section level2">
 <h2><span class="header-section-number">4.4</span> Guinea pig tooth growth analysis with Two-Way ANOVA</h2>
+<p>The effects of dosage and delivery method of ascorbic acid on Guinea Pig odontoblast growth was analyzed as a One-Way ANOVA in Section <a href="chapter3.html#section3-4">3.4</a> by assessing evidence of any difference in the means of any combinations of dosage method (Vit C capsule vs Orange Juice) and three dosage amounts (0.5, 1, and 2 mg/day). Now we will consider the dosage and delivery methods as two separate variables and explore their potential interaction. A beanplot and interaction plot are provided in Figure <a href="chapter4.html#fig:Figure4-8">4.8</a>.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(ToothGrowth)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">beanplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">side=</span><span class="st">&quot;b&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">40</span>),
+         <span class="dt">main=</span><span class="st">&quot;Beanplot&quot;</span>, <span class="dt">col=</span><span class="kw">list</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;orange&quot;</span>), <span class="dt">xlab=</span><span class="st">&quot;Dosage&quot;</span>,
+         <span class="dt">ylab=</span><span class="st">&quot;Tooth Growth&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;VC&quot;</span>,<span class="st">&quot;OJ&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;orange&quot;</span>))
+<span class="kw">intplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), 
+        <span class="dt">main=</span><span class="st">&quot;Interaction Plot&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">40</span>))</code></pre></div>
+<div class="figure"><span id="fig:Figure4-8"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure4-8-1.png" alt="(fig:Figure4-8)" width="672" />
+<p class="caption">
+Figure 4.8: (fig:Figure4-8)
+</p>
+</div>
+<p>It appears that the effect of method changes based on the dosage as the interaction plot seems to show some evidence of non-parallel lines. Actually, it appears that the effect of delivery method is parallel for doses 0.5 and 1.0 mg/day but that the effect of delivery method changes for 2 mg/day.</p>
+<p>We can use the ANOVA <span class="math inline">\(F\)</span>-test for an interaction to assess whether the interaction is “real” relative to the variability in the responses. That is, is it larger than we would expect due to natural variation in the data? If yes, then it is a real effect and we should account for it. The following results fit the interaction model and provide an ANOVA table.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TG1 &lt;-<span class="st"> </span><span class="kw">lm</span>(len<span class="op">~</span>supp<span class="op">*</span>dose,<span class="dt">data=</span>ToothGrowth)
+<span class="kw">Anova</span>(TG1)</code></pre></div>
+<pre><code>## Anova Table (Type II tests)
+## 
+## Response: len
+##            Sum Sq Df  F value    Pr(&gt;F)
+## supp       205.35  1  12.3170 0.0008936
+## dose      2224.30  1 133.4151 &lt; 2.2e-16
+## supp:dose   88.92  1   5.3335 0.0246314
+## Residuals  933.63 56</code></pre>
+<p>The R output is reporting an interaction test result of <span class="math inline">\(F(1,56)=5.3\)</span> with a p-value of 0.025. But this should raise a red flag since the numerator degrees of freedom are not what we should expect of <span class="math inline">\((K-1)*(J-1) = (2-1)*(3-1)=2\)</span>. This brings up an issue in R when working with categorical variables. If the levels of a categorical variable are entered numerically, R will treat them as quantitative variables and not split out the different levels of the categorical variable. To make sure that R treats categorical variables the correct way, we should use the <code>factor</code> function on any variables that are categorical but are coded numerically in the data set. The following code creates a new variable called <code>dosef</code> using the function that will help us obtain correct results from the linear model. The re-run of the ANOVA table provides the correct analysis and the expected <span class="math inline">\(df\)</span> for the two rows of output involving <code>dosef</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ToothGrowth<span class="op">$</span>dosef&lt;-<span class="kw">factor</span>(ToothGrowth<span class="op">$</span>dose)
+TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dosef, <span class="dt">data=</span>ToothGrowth)
+<span class="kw">Anova</span>(TG2)</code></pre></div>
+<pre><code>## Anova Table (Type II tests)
+## 
+## Response: len
+##             Sum Sq Df F value    Pr(&gt;F)
+## supp        205.35  1  15.572 0.0002312
+## dosef      2426.43  2  92.000 &lt; 2.2e-16
+## supp:dosef  108.32  2   4.107 0.0218603
+## Residuals   712.11 54</code></pre>
 </div>
 <div id="section4-5" class="section level2">
 <h2><span class="header-section-number">4.5</span> Observational study example: The Psychology of Debt</h2>
@@ -457,6 +685,8 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <ol start="43">
 <li id="fn43"><p>We will use “main effects” to refer to the two explanatory variables in the additive model even if they are not randomly assigned to contrast with having those variables interacting in the model. It is the one place where we use “effects” without worrying about random assignment.<a href="chapter4.html#fnref43">↩</a></p></li>
 <li id="fn44"><p>In the standard ANOVA table, <span class="math inline">\(\text{SS}_A + \text{SS}_B + \text{SS}_{AB} + \text{SS}_E = \text{SS}_{\text{Total}}\)</span>. However, to get the tests we really desire when our designs are not balanced, a slight modification of the SS is used, using what are called Type II sums of squares and this result doesn’t hold in the output you will see for additive models. This is discussed further below.<a href="chapter4.html#fnref44">↩</a></p></li>
+<li id="fn45"><p>Actually, the tests are only conditional on other main effects if Type II Sums of Squares are used for an interaction model.<a href="chapter4.html#fnref45">↩</a></p></li>
+<li id="fn46"><p>In Multiple Linear Regression models in Chapter <a href="chapter8.html#chapter8">8</a>, the reasons for this wording will (hopefully) become clearer.<a href="chapter4.html#fnref46">↩</a></p></li>
 </ol>
 </div>
             </section>
