@@ -852,25 +852,25 @@ the F-statistic with bold, vertical line for observed value of the test
 statistic of `r round(orig_anova[1,4],2)`. 
 
 ```{r Figure3-7,fig.cap="(ref:fig3-7)",warning=F,message=F}
-Tobs <- anova(lm(Years~Attr,data=MockJury))[1,4]; Tobs
+Tobs <- anova(lm(Years ~ Attr, data=MockJury))[1,4]; Tobs
 
 par(mfrow=c(1,2))
 B<- 1000
 Tstar<-matrix(NA,nrow=B)
 for (b in (1:B)){
-  Tstar[b]<-anova(lm(Years~shuffle(Attr),data=MockJury))[1,4]
+  Tstar[b]<-anova(lm(Years~shuffle(Attr), data=MockJury))[1,4]
 }
 
-pdata(Tstar,Tobs,lower.tail=F)
+pdata(Tstar, Tobs, lower.tail=F)
 
-hist(Tstar,labels=T)
-abline(v=Tobs,col="red",lwd=3)
-plot(density(Tstar),main="Density curve of Tstar")
-abline(v=Tobs,col="red",lwd=3)
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=3)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=3)
 ```
 
 ```{r echo=F}
-perm_pval <- pdata(Tstar,Tobs,lower.tail=F)
+perm_pval <- pdata(Tstar, Tobs, lower.tail=F)
 ```
 
 The permutation-based p-value is `r perm_pval` which, again, matches the other 
@@ -1718,7 +1718,7 @@ problem are also possible, but will not be considered here.
 
 In our previous work with the prisoner rating data, the overall ANOVA test
 provided only marginal evidence of some difference in the true means across the
-three groups with a p-value=`r orig_anova[1,6]`. Tukey's HSD does not require you 
+three groups with a p-value=0.067. Tukey's HSD does not require you 
 to find a small from your overall $F$-test to employ the methods but if you apply 
 it to situations with p-values larger than your *a priori* significance level,
 you are unlikely to find any pairs that are detected as being different. Some
@@ -1820,4 +1820,91 @@ The main components of R code used in this chapter follow with components to mod
 in red, remembering that any R packages mentioned need to be installed and loaded 
 for this code to have a chance of working:
 
+* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`,
+data=`r colFmt("DATASETNAME","red")`)
+
+    * Probably the most frequently used command in R. 
+    
+    * Here it is used to fit the reference-coded One-Way ANOVA model with Y as the 
+    response variable and X as the grouping variable, storing the estimated model 
+    object in MODELNAME. 
+
+* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`-1,
+data=`r colFmt("DATASETNAME","red")`)
+
+    * Fits the cell means version of the One-Way ANOVA model. 
+
+* summary(`r colFmt("MODELNAME","red")`)
+
+    * Generates model summary information including the estimated model coefficients, 
+    SEs, t-tests, and p-values. 
+
+* anova(`r colFmt("MODELNAME","red")`)
+
+    * Generatesthe ANOVA table but  **must only be run on the reference-coded version of
+    the model**.
+    
+    * Results are incorrect if run on the cell-means model since the reduced model 
+    under the null is that the mean of all the observations is 0!
+
+* pf(`r colFmt("FSTATISTIC","red")`,df1=`r colFmt("NUMDF","red")`,df2=`r colFmt("DENOMDF","red")`,
+lower.tail=F)
+
+    * Finds the p-value for an observed $F$-statistic with NUMDF and DENOMDF degrees 
+    of freedom. 
+
+* par(mfrow=c(2,2)); plot(`r colFmt("MODELNAME","red")`)
+
+    * Generates four diagnostic plots including the Residuals vs Fitted and 
+    Normal Q-Q plot. 
+    
+* plot(allEffects(`r colFmt("MODELNAME","red")`))
+
+    * Plots the estimated model component.
+    
+    * Requires the ``effects`` package be loaded. 
+    
+* Tm2 <- glht(`r colFmt("MODELNAME","red")`, linfct=mcp(`r colFmt("X","red")`="Tukey"));
+confint(Tm2); plot(Tm2); cld(Tm2)
+
+    * Requires the ``multcomp`` package to be installed and loaded.
+    
+    * Can only be run on the reference-coded version of the model. 
+    
+    * Generates the text output and plot for Tukey's HSD as well as the compact 
+    letter display. 
+
 ## Practice problems {#section3-10}
+
+For these practice problems, you will work with the cholesterol data set from the ``multcomp``
+package that was used to generate the Tukey's HSD results. To load the data set and 
+learn more about the study, use the following code:
+
+```
+require(multcomp)
+data(cholesterol)
+help(cholesterol)
+```
+
+3.1. Graphically explore the differences in the changes in Cholesterol levels for
+the five levels using boxplots and beanplots. 
+
+3.2. Is the design balanced? 
+
+3.3. Complete all 6+ steps of the hypothesis test using the parametric $F$-test, 
+reporting the ANOVA table and the distribution of the test statistic under the null. 
+
+3.4. Discuss the scope of inference using the information that the treatment levels
+were randomly assigned to volunteers in the study. 
+
+3.5. Generate the permutation distribution and find the p-value. Compare the parametric
+p-value to the permutation test results. 
+
+3.6. Perform Tukey's HSD on the data set. Discuss the results -- which pairs were
+detected as different and which were not? Bigger reductions in cholesterol are
+good, so are there any levels you would recommend or that might provide similar
+reductions?
+
+3.7. Find and interpret the CLD and compare that to your interpretation of results 
+from 3.6.
+

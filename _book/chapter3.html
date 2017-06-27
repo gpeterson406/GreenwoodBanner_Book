@@ -26,7 +26,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-26">
+<meta name="date" content="2017-06-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -629,21 +629,21 @@ Figure 3.6: Density curves of four different <span class="math inline">\(F\)</sp
 <pre><code>## [1] 0.06699803</code></pre>
 <p>The result from the <span class="math inline">\(F\)</span>-distribution using this parametric procedure is similar to the p-value obtained using permutations with the test statistic of the <span class="math inline">\(\text{SS}_A\)</span>, which was 70.9. The <span class="math inline">\(F\)</span>-statistic obviously is another potential test statistic to use as a test statistic in a permutation approach, now that we know about it. We should check that we get similar results from it with permutations as we did from using <span class="math inline">\(\text{SS}_A\)</span> as a permutation test test statistic. The following code generates the permutation distribution for the <span class="math inline">\(F\)</span>-statistic (Figure <a href="chapter3.html#fig:Figure3-7">3.7</a>) and assesses how unusual the observed <span class="math inline">\(F\)</span>-statistic of 2.77 was in this permutation distribution. The only change in the code involves moving from extracting <span class="math inline">\(\text{SS}_A\)</span> to extracting the <span class="math inline">\(F\)</span>-ratio which is in the 4<sup>th</sup> column of the <code>anova</code> output:</p>
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tobs &lt;-<span class="st"> </span><span class="kw">anova</span>(<span class="kw">lm</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury))[<span class="dv">1</span>,<span class="dv">4</span>]; Tobs</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tobs &lt;-<span class="st"> </span><span class="kw">anova</span>(<span class="kw">lm</span>(Years <span class="op">~</span><span class="st"> </span>Attr, <span class="dt">data=</span>MockJury))[<span class="dv">1</span>,<span class="dv">4</span>]; Tobs</code></pre></div>
 <pre><code>## [1] 2.770024</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 B&lt;-<span class="st"> </span><span class="dv">1000</span>
 Tstar&lt;-<span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>B)
 <span class="cf">for</span> (b <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span>B)){
-  Tstar[b]&lt;-<span class="kw">anova</span>(<span class="kw">lm</span>(Years<span class="op">~</span><span class="kw">shuffle</span>(Attr),<span class="dt">data=</span>MockJury))[<span class="dv">1</span>,<span class="dv">4</span>]
+  Tstar[b]&lt;-<span class="kw">anova</span>(<span class="kw">lm</span>(Years<span class="op">~</span><span class="kw">shuffle</span>(Attr), <span class="dt">data=</span>MockJury))[<span class="dv">1</span>,<span class="dv">4</span>]
 }
 
-<span class="kw">pdata</span>(Tstar,Tobs,<span class="dt">lower.tail=</span>F)</code></pre></div>
+<span class="kw">pdata</span>(Tstar, Tobs, <span class="dt">lower.tail=</span>F)</code></pre></div>
 <pre><code>## [1] 0.064</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar,<span class="dt">labels=</span>T)
-<span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)
-<span class="kw">plot</span>(<span class="kw">density</span>(Tstar),<span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure3-7"></span>
 <img src="GreenwoodBanner_files/figure-html/Figure3-7-1.png" alt="Histogram and density curve of the permutation distribution of the F-statistic with bold, vertical line for observed value of the test statistic of 2.77." width="672" />
 <p class="caption">
@@ -1033,7 +1033,7 @@ Figure 3.20: Beanplot of tooth growth by group with Tukey?s HSD compact letter d
 </div>
 <div id="section3-7" class="section level2">
 <h2><span class="header-section-number">3.7</span> Pair-wise comparisons for Prisoner Rating data</h2>
-<p>In our previous work with the prisoner rating data, the overall ANOVA test provided only marginal evidence of some difference in the true means across the three groups with a p-value=. Tukey’s HSD does not require you to find a small from your overall <span class="math inline">\(F\)</span>-test to employ the methods but if you apply it to situations with p-values larger than your <em>a priori</em> significance level, you are unlikely to find any pairs that are detected as being different. Some statisticians suggest that you shouldn’t employ follow-up tests such as Tukey’s HSD when there is not sufficient evidence to reject the overall null hypothesis and would be able to reasonably criticize the following results. But for the sake of completeness, we can find the pair-wise comparison results at our typical 95% family-wise confidence level in this situation, with the three confidence intervals displayed in Figure <a href="chapter3.html#fig:Figure3-21">3.21</a>.</p>
+<p>In our previous work with the prisoner rating data, the overall ANOVA test provided only marginal evidence of some difference in the true means across the three groups with a p-value=0.067. Tukey’s HSD does not require you to find a small from your overall <span class="math inline">\(F\)</span>-test to employ the methods but if you apply it to situations with p-values larger than your <em>a priori</em> significance level, you are unlikely to find any pairs that are detected as being different. Some statisticians suggest that you shouldn’t employ follow-up tests such as Tukey’s HSD when there is not sufficient evidence to reject the overall null hypothesis and would be able to reasonably criticize the following results. But for the sake of completeness, we can find the pair-wise comparison results at our typical 95% family-wise confidence level in this situation, with the three confidence intervals displayed in Figure <a href="chapter3.html#fig:Figure3-21">3.21</a>.</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm2&lt;-<span class="kw">lm</span>(Years<span class="op">~</span>Attr, <span class="dt">data=</span>MockJury)
 <span class="kw">require</span>(multcomp)
@@ -1120,9 +1120,59 @@ Figure 3.23: Beanplot of sentences with compact letter display results from 10% 
 <div id="section3-9" class="section level2">
 <h2><span class="header-section-number">3.9</span> Summary of important R code</h2>
 <p>The main components of R code used in this chapter follow with components to modify in red, remembering that any R packages mentioned need to be installed and loaded for this code to have a chance of working:</p>
+<ul>
+<li><p><font color='red'>MODELNAME</font> &lt;- lm(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>)</p>
+<ul>
+<li><p>Probably the most frequently used command in R.</p></li>
+<li><p>Here it is used to fit the reference-coded One-Way ANOVA model with Y as the response variable and X as the grouping variable, storing the estimated model object in MODELNAME.</p></li>
+</ul></li>
+<li><p><font color='red'>MODELNAME</font> &lt;- lm(<font color='red'>Y</font>~<font color='red'>X</font>-1, data=<font color='red'>DATASETNAME</font>)</p>
+<ul>
+<li>Fits the cell means version of the One-Way ANOVA model.</li>
+</ul></li>
+<li><p>summary(<font color='red'>MODELNAME</font>)</p>
+<ul>
+<li>Generates model summary information including the estimated model coefficients, SEs, t-tests, and p-values.</li>
+</ul></li>
+<li><p>anova(<font color='red'>MODELNAME</font>)</p>
+<ul>
+<li><p>Generatesthe ANOVA table but <strong>must only be run on the reference-coded version of the model</strong>.</p></li>
+<li><p>Results are incorrect if run on the cell-means model since the reduced model under the null is that the mean of all the observations is 0!</p></li>
+</ul></li>
+<li><p>pf(<font color='red'>FSTATISTIC</font>,df1=<font color='red'>NUMDF</font>,df2=<font color='red'>DENOMDF</font>, lower.tail=F)</p>
+<ul>
+<li>Finds the p-value for an observed <span class="math inline">\(F\)</span>-statistic with NUMDF and DENOMDF degrees of freedom.</li>
+</ul></li>
+<li><p>par(mfrow=c(2,2)); plot(<font color='red'>MODELNAME</font>)</p>
+<ul>
+<li>Generates four diagnostic plots including the Residuals vs Fitted and Normal Q-Q plot.</li>
+</ul></li>
+<li><p>plot(allEffects(<font color='red'>MODELNAME</font>))</p>
+<ul>
+<li><p>Plots the estimated model component.</p></li>
+<li><p>Requires the <code>effects</code> package be loaded.</p></li>
+</ul></li>
+<li><p>Tm2 &lt;- glht(<font color='red'>MODELNAME</font>, linfct=mcp(<font color='red'>X</font>=“Tukey”)); confint(Tm2); plot(Tm2); cld(Tm2)</p>
+<ul>
+<li><p>Requires the <code>multcomp</code> package to be installed and loaded.</p></li>
+<li><p>Can only be run on the reference-coded version of the model.</p></li>
+<li><p>Generates the text output and plot for Tukey’s HSD as well as the compact letter display.</p></li>
+</ul></li>
+</ul>
 </div>
 <div id="section3-10" class="section level2">
 <h2><span class="header-section-number">3.10</span> Practice problems</h2>
+<p>For these practice problems, you will work with the cholesterol data set from the <code>multcomp</code> package that was used to generate the Tukey’s HSD results. To load the data set and learn more about the study, use the following code:</p>
+<pre><code>require(multcomp)
+data(cholesterol)
+help(cholesterol)</code></pre>
+<p>3.1. Graphically explore the differences in the changes in Cholesterol levels for the five levels using boxplots and beanplots.</p>
+<p>3.2. Is the design balanced?</p>
+<p>3.3. Complete all 6+ steps of the hypothesis test using the parametric <span class="math inline">\(F\)</span>-test, reporting the ANOVA table and the distribution of the test statistic under the null.</p>
+<p>3.4. Discuss the scope of inference using the information that the treatment levels were randomly assigned to volunteers in the study.</p>
+<p>3.5. Generate the permutation distribution and find the p-value. Compare the parametric p-value to the permutation test results.</p>
+<p>3.6. Perform Tukey’s HSD on the data set. Discuss the results – which pairs were detected as different and which were not? Bigger reductions in cholesterol are good, so are there any levels you would recommend or that might provide similar reductions?</p>
+<p>3.7. Find and interpret the CLD and compare that to your interpretation of results from 3.6.</p>
 
 </div>
 </div>

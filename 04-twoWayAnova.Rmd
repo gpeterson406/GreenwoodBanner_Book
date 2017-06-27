@@ -32,9 +32,554 @@ colFmt = function(x, color){
 
 ## Situation {#section4-1}
 
+In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory
+variables in a method that is generally called the  ***Two-Way ANOVA*** . This 
+allows researchers to simultaneously study more than one variable that might
+explain variability in the responses and explore whether the impacts of one
+variable change depending on the other variable. In some situations, each
+observation is so expensive that researchers want to use a single study to
+explore two different sets of research questions in the same round of data
+collection. For example, a company might want to study factors that affect the
+number of defective products per day and are interested in the impacts of two
+different types of training programs and three different levels of production
+quotas. These methods would allow engineers to compare the training programs, 
+production quotas, and see if the training programs work differently for
+different production quotas. In a clinical trials context, it is well known
+that certain factors can change the performance of certain drugs. For example, 
+different dosages of a drug might have different benefits or side-effects on
+men, versus women or children.  **When the impact of one factor changes on the
+level of another factor**, we say that they ***interact***. It is also possible 
+for both factors to be related to differences in the mean responses and not 
+interact. For example, suppose there is a difference in the
+response means between men and women and a difference among various dosages, 
+but the effect of increasing the dosage is the same for the male and female
+subjects. This is an example of what is called an  ***additive*** type of model. 
+In general, the world is more complicated than the single factor models we
+considered in Chapter \@ref(chapter3) can account for, especially in 
+observational studies, so these models allow us to start to handle more 
+realistic situations. 
+
+Consider the following "experiment" where we want to compare the strength of 
+different brands of paper towels when they are wet. The response variable 
+will be the time to failure in seconds (a continuous response variable) when 
+a weight is placed on the towel held at the four corners. We are interested 
+in studying the differences between brands and the impact of different amounts 
+of water applied to the towels. 
+
+* Predictors (Explanatory Variables):  **A** : ``Brand`` (2 brands of interest, 
+named *B1* and *B2*) and  **B** : Number of ``Drops`` of water (10, 20, 30 drops).
+
+* Response: *Time* to failure (in seconds) of a towel ($y$) with a weight 
+sitting in the middle of the towel. 
+
 ## Designing a two-way experiment and visualizing results	{#section4-2}
 
+Ideally, we want to randomly assign the levels of each factor so that we can 
+attribute causality to any detected effects and to reduce the chances of 
+*confounding*. Because there are two factors, we would need to design a random 
+assignment scheme to select the levels of both variables. For example, we could 
+randomly select a brand and then randomly select the number of drops to apply 
+from the levels chosen for each measurement. Or we could decide on how many 
+observations we want at each combination of the two factors (ideally having 
+them all equal so the design is ***balanced***) and then randomize the order 
+of applying the different combinations of levels. 
+
+Why might it be important to randomly apply the brand and number of drops in 
+an experiment? There are situations where the order of observations can be 
+related to changes in the responses and we want to be able to eliminate 
+the order of observations from being related to the levels of the factors. 
+For example, suppose that the area where the experiment is being performed 
+becomes wet over time and the later measurements have extra water that gets 
+onto the paper towels and they tend to fail more quickly. If all the observations 
+for the second brand were done later in the study, then the *order of observations*
+impacts could make the second brand look worse. If the order of observations is 
+randomized, then even if there is some drift in the responses over the order 
+of observations it should still be possible to see the differences in the 
+randomly assigned effects. If the study incorporates repeated measurements on 
+human subjects, randomizing the order of treatments they are exposed to can 
+alleviate impacts of them "learning" through the study, something that we 
+would not have to worry about with paper towels. 
+
+In observational studies, we do not have the luxury of random assignment, that 
+is, we cannot randomly assign levels of the treatment variables to our 
+subjects, so we cannot guarantee that the only difference between the groups 
+are the explanatory variables. As discussed before, because we can't control 
+which level of the variables are assigned to the subjects, we cannot make 
+causal inferences and have to worry about other variables being the real 
+drivers of the results. Although we can never establish causal inference 
+with observational studies, we can generalize our results to a larger 
+population if we have a representative sample from our population of interest. 
+
+It is also possible that we might have studies where some of the variables are 
+randomly assigned and others are not randomly assignable. The most common 
+versions of this are what we sometimes call subject "demographics", such as 
+sex, income, race, etc. We might be performing a study where we can randomly 
+assign treatments to these subjects but might also want to account for 
+differences based on income level, which we can't assign. In these cases, the 
+scope of inference gets complicated -- differences seen on randomized variables 
+can be causally interpreted but you have to be careful to not say that the 
+demographics caused differences. Suppose that a randomly assigned drug dosage 
+is found to show differences in male patients but not in female patients. We 
+could say that the dosage causes differences in males but does not in females. 
+We are not saying that sex caused the differences but that the causal 
+differences were modified by the sex of the subjects. 
+
+Even when we do have random assignment of treatments it is important to think 
+about who/what is included in the sample. To get back to the paper towel 
+example, we are probably interested in more than the sheets of the rolls 
+we have to work with so if we could randomly select the studied paper towels 
+from all paper towels made by each brand, our conclusions could be extended 
+to those populations. That probably would not be practical, but trying to 
+make sure that the towels are representative of all made by each brand by 
+checking for defects and maybe picking towels from a few different rolls 
+would be a good start to being able to extend inferences beyond the tested 
+towels. 
+
+Once random assignment and random sampling is settled, the final aspect of 
+study design involves deciding on the number of observations that should be 
+made. The short (glib) answer is to take as many as you can afford. With more 
+observations comes higher power to detect differences if they exist, which 
+is a desired attribute of all studies. It is also important to make sure that 
+you obtain multiple observations at each combination of the treatment levels, 
+which are called ***replicates***. Having replicate measurements allows 
+estimation of the mean for each combination of the treatment levels as well 
+as estimation and testing for an interaction. And we always prefer having 
+balanced designs because they provide resistance to violation of some 
+assumptions as noted in Chapter \@ref(chapter3). A ***balanced design***
+in a Two-Way ANOVA setting involves having the same sample size for every
+combination of the levels of the treatments. 
+
+With two categorical explanatory variables, there are now five possible 
+scenarios for the truth. Different situations are created depending on 
+whether there is an interaction between the two variables, 
+whether both variables are important but do not interact, or whether either of the
+variables matter at all. Basically, there are five different possible outcomes
+in a randomized Two-Way ANOVA study, listed in order of increasing model
+complexity:
+
+1. Neither A or B has an effect on the responses (nothing causes differences 
+in responses). 
+
+2. A has an effect, B does not (only A causes differences in responses). 
+
+3. B has an effect, A does not (only B causes differences in responses). 
+
+4. Both A and B have effects on response but no interaction (A and B both 
+cause differences in responses but the impacts are additive). 
+
+5. Effect of A differs based on the levels of B, the opposite is also true 
+(means for levels of A are different for different levels of B, or, simply, 
+A and B interact). 
+
+To illustrate these five potential outcomes, we will consider a fake version of
+the paper towel example. It ended up being really messy and complicated to
+actually perform the experiment as we described it so these data were simulated
+to help us understand the Two-Way ANOVA possibilities in as simple a situation
+as possible. The first step is to understand what has been observed (number
+observations at each combination of factors) and look at some summary
+statistics across all the "groups". The data set is available from the course
+website using:
+
+```{r}
+pt<-read.csv("http://www.math.montana.edu/courses/s217/documents/pt.csv")
+pt$drops<-factor(pt$drops)
+```
+
+The data set contains five observations per combination of treatment levels as
+provided by the ``tally`` function. To get counts for combinations of the 
+variables, use the general formula of ``tally(x1~x2, data=...)`` although the 
+order of ``x1`` and ``x2`` doesn't matter:
+
+```{r message=F,warning=F}
+require(mosaic)
+tally(brand ~ drops, data=pt)
+```
+
+The sample sizes in each of the six treatment level combinations of ``Brand`` 
+and ``Drops`` [(*B1*, 10), (*B1*, 20), (*B1*, 30), (*B2*, 10), (*B2*, 20), 
+(*B2*, 30)] are $n_{jk} = 5$ for $j^{th}$ level of ``Brand`` ($j=1, 2$) and 
+$k^{th}$ level of ``Drops`` ($k=1, 2, 3$). The ``tally`` function gives us a  
+***contingency table*** with $R = 2$ rows (*B1*, *B2*) and $C = 3$ columns 
+(10, 20, and 30). We'll have more fun with this sort of summary of $R$ by $C$
+tables in Chapter \@ref(chapter5) -- here it helps us see the sample size in 
+each combination of factor levels. The ``favstats`` function also helps us 
+dig into the results for all combinations of factor levels. The notation 
+involves putting both variables after the "~" with a "``+``" between them. 
+In the output, the first row contains summary information for the
+5 observations for ``Brand`` *B1* and ``Drops`` amount 10. It also contains the 
+sample size in the ``n`` column, although here it rolled into a new set of 
+rows with the standard deviations. 
+
+```{r}
+favstats(responses ~ brand + drops, data=pt)
+```
+
+The next step is to visually explore the results across the combinations of 
+the two explanatory variables. The beanplot can be extended to handle these 
+sorts of two-way situations only if one of the two variables is a two-level 
+variable. This is a pretty serious constraint on this display, so we will 
+show you the plot (Figure \@ref(fig:Figure4-1)) but not focus on the code. 
+The reason beanplots can only handle $2 \times K$ designs is that the
+beans are split along a vertical line for the $K$ levels of the other variable. 
+In Figure \@ref(fig:Figure4-1), the ``Brand`` B1 density curves are shaded and the 
+B2 curves are not. In reading these plots, look for differences in each level 
+and whether those differences change across the levels of the other variable. 
+Specifically, start with comparing the two brands for different amounts of water. 
+Do the brands seem different? Certainly for 10 drops of water the two look 
+different but not for 30 drops. We can also look for combinations of factors 
+that produce the highest or lower responses in this display. It appears that 
+the time to failure is highest in the low water drop groups but as the water 
+levels increase, the time to failure falls and the differences in the two 
+brands seem to decrease. The fake data seem to have relatively similar 
+amounts of variability and distribution shapes -- remembering that there are 
+only 5 observations available for describing the shape of responses for each 
+combination. These data were simulated using a normal distribution and 
+constant variance if that gives you some extra confidence in assessing these 
+model assumptions. 
+
+(ref:fig4-1) Beanplot of paper towel data by ``Drops`` (x-axis) and ``Brand`` 
+(side of bean, shaded area for ``Brand`` *B1*. 
+
+```{r Figure4-1,fig.cap="(ref:fig4-1)", message=F,warning=F}
+require(beanplot)
+beanplot(responses ~ brand*drops, data=pt, side="b", col=list("lightblue","white"),
+         xlab="Drops", ylab="Time", method="jitter",log="")
+legend("topright", bty="n", c("B1","B2"), fill=c("lightblue","white"))
+```
+
+The beanplots can't handle situations where both variables have more than two 
+levels -- we need a simpler display that just focuses on the means at the 
+combinations of the two explanatory variables. The means for each combination 
+of levels that you can find in the ``favstats`` output are more usefully used 
+in what is called an ***interaction plot***. Interaction plots display the mean 
+responses (y-axis) versus levels of one predictor variable on the x-axis, 
+adding points and lines for each level of the other predictor variable. Because 
+we don't like any of the available functions in R, we wrote our own function, 
+called ``intplot`` that you can download using:
+
+```{r}
+source("http://www.math.montana.edu/courses/s217/documents/intplot.R")
+```
+
+The function allows a formula interface like ``Y~X1*X2`` and provides the 
+means $\pm$ 1 SE (vertical bars) and adds a legend to help make
+everything clear. 
+
+(ref:fig4-2) Interaction plot of the paper towel data with ``Drops`` on the x-axis. 
+
+```{r Figure4-2,fig.cap="(ref:fig4-2)",message=F,warning=F}
+intplot(responses ~ brand*drops, data=pt)
+```
+
+Interaction plots can always be made two different ways by switching the order 
+of the variables. Figure \@ref(fig:Figure4-2) contains ``Drops`` on the x-axis 
+and Figure \@ref(fig:Figure4-3) has ``Brand`` on the x-axis. Typically putting 
+the variable with more levels on the x-axis will make interpretation easier, 
+but not always. Try both and decide on the one that you like best. 
+
+(ref:fig4-3) Interaction plot of paper towel data with ``Brand`` on the x-axis. 
+
+```{r Figure4-3, fig.cap="(ref:fig4-3)",message=F,warning=F}
+intplot(responses ~ drops*brand, data=pt)
+```
+
+The formula in this function builds on our previous notation and now we include
+both predictor variables with an "*" between them. Using an asterisk between 
+explanatory variables is one way of telling R to include an interaction between 
+the variables. While the interaction may or may not be present, the interaction 
+plot helps us to explore those potential differences. 
+
+There are a variety of aspects of the interaction plots to pay attention to. 
+Initially, the question to answer is whether it appears that there is an 
+interaction between the predictor variables. When there is an interaction, you 
+will see ***non-parallel lines*** in the interaction plot. You want to look from 
+left to right in the plot and assess whether the lines are close to parallel, 
+relative to the amount of variability in the means. If it seems that there is 
+clear visual evidence of non-parallel lines, then the interaction is likely 
+worth considering (we will typically use a hypothesis test to formally assess 
+this -- see discussion below). If the lines look to be close to parallel, then 
+there probably isn't an interaction between
+the variables. Without an interaction present, that means that the differences
+across levels of one variable doesn't change based on the levels of the other
+variable and vice-versa. This means that we can consider the ***main effects***
+of each variable on their own^[We will use "main effects" to refer to the two 
+explanatory variables in the additive model even if they are not randomly 
+assigned to contrast with having those variables interacting in the model. 
+It is the one place where we use "effects" without worrying about random 
+assignment.]. Main effects are much like the results we found in 
+Chapter \@ref(chapter3) where we can compare
+means across levels of a single variable except that there are results for two
+variables to extract from the model. With the presence of an interaction, it is
+complicated to summarize how each variable is affecting the response variable
+because their impacts change depending on the level of the other factor. And
+plots like the interaction plot provide us much useful information. 
+
+If the lines are not parallel, then
+focus in on comparing the levels of one variable as the other variable changes. 
+Remember that the definition of an interaction is that the differences among
+levels of one variable depends on the level of the other variable being
+considered. "Visually" this means comparing the size of the differences in the
+lines from left to right. In Figures \@ref(fig:Figure4-2) and \@ref(fig:Figure4-3),
+the effect of amount of water
+changes based on the brand being considered. In Figure \@ref(fig:Figure4-3), 
+the three lines
+represent the three water levels. The difference between the brands (left to
+right, *B1* to *B2*) is different depending on how much water was present. It
+appears that ``Brand`` *B2* lasted longer at the lower water levels but that the 
+difference between the two brands dropped as the water levels increased. The 
+same story appears in Figure \@ref(fig:Figure4-2). As the
+water levels increase (left to right, 10 to 20 to 30 drops), the differences
+between the two brands decrease. Of the two versions, Figure \@ref(fig:Figure4-2)
+is probably easier to read here. The interaction plots also are useful for 
+identifying the best and worst mean responses for combinations of the treatment 
+levels. For example, 10 ``Drops`` and ``Brand`` *B2* lasts longest, on average, and 
+30 ``Drops`` with ``Brand`` *B1* fails fastest, on average. In this situation, the 
+lines do not appear to be parallel suggesting that further exploration of the 
+interaction appears to be warranted. 
+
+Before we get to the hypothesis tests
+to formally make this assessment (you knew some sort of p-value was coming, right?), 
+we can visualize the 5 different scenarios that could characterize the sorts of
+results you could observe in a Two-Way ANOVA situation. Figure \@ref(fig:Figure4-4)
+shows 4 of the 5 scenarios. In panel (a), when there are no differences from either
+variable (Scenario 1), it provides relatively parallel lines and basically no
+differences either across ``Drops`` levels (x-axis) or ``Brand`` (lines). This would 
+result in no evidence related to a difference in brands, water
+levels, or any interaction between them. 
+
+(ref:fig4-4) Interaction plots of four possible scenarios in the paper towel study.
+
+```{r Figure4-4, fig.cap="(ref:fig4-4)",echo=F,message=F,warning=F}
+lm1<-lm(responses~brand*dropsf,data=pt)
+res1<-residuals(lm1)
+
+par(mfrow=c(2,2))
+#Scenario 1: No effects
+m1<-lm(responses~1,data=pt)
+pt$r1<-fitted(m1)+res1
+intplot(r1~brand*drops,ylim=c(0,3.2),data=pt,main="(a) Scenario 1: No effects",col=c(1,2),lwd=2)
+#Scenario 2: A effect only
+m2<-lm(responses~brand,data=pt)
+pt$r2<-fitted(m2)+res1
+intplot(r2~brand*drops,ylim=c(0,3.2),data=pt,main="(b) Scenario 2: A only",col=c(1,2),lwd=2)
+
+#Scenario 3: B effect only
+m3<-lm(responses~drops,data=pt)
+pt$r3<-fitted(m3)+res1
+intplot(r3~brand*drops,ylim=c(0,3.2),data=pt,main="(c) Scenario 3: B only",col=c(1,2),lwd=2)
+
+#Scenario 4: A and B additive
+m4<-lm(responses~brand+drops,data=pt)
+pt$r4<-fitted(m4)+res1
+intplot(r4~brand*drops,ylim=c(0,3.2),data=pt,main="(d) Scenario 4: A and B additive",col=c(1,2),lwd=2)
+```
+
+Scenario 2 (Figure \@ref(fig:Figure4-4) panel (b))
+incorporates differences based on factor A (here that is ``Brand``) but no real 
+difference based on the ``Drops`` or any interaction. This results in a clear shift 
+between the little to no changes in the level of those lines across water levels. 
+These lines are relatively parallel. We can see that ``Brand`` *B2* is better than 
+``Brand`` *B1* but that is all we can show with these sorts of results. 
+
+Scenario 3 (Figure \@ref(fig:Figure4-4) panel (c)) flips the important variable
+to B (``Drops``)
+and shows decreasing average times as the water levels increase. Again, the 
+interaction panels show near parallel-ness in the lines and really just show differences
+among the levels of the water. In both Scenarios 2 and 3, we could use a single
+variable and drop the other from the model, getting back to a One-Way ANOVA
+model, without losing any important information. 
+
+Scenario 4 (Figure \@ref(fig:Figure4-4) panel (d)) incorporates
+effects of A and B, but they are ***additive***. That means that the effect
+of one variable is the same across the levels of the other variable. In this 
+experiment, that would mean that ``Drops`` has the same impact on performance 
+regardless of brand and that the brands differ but each type of difference is 
+the same regardless of levels of the other variable. 
+The interaction plot lines are more or less parallel but now the brands are
+clearly different from each other. The plot shows the decrease in performance
+based on increasing water levels and that ``Brand`` *B2* is better than 
+``Brand`` *B1*. Additive effects show the same difference in lines from left to 
+right in the interaction plots. 
+
+Finally, Scenario 5 (Figure \@ref(fig:Figure4-5)) involves
+an interaction between the two variables (``Drops`` and ``Brand``). There are many ways
+that interactions can present but the main thing is to look for clearly
+non-parallel lines. As noted in the previous discussion, the ``Drops`` effect 
+appears to change depending on which level of ``Brand`` is being considered. 
+Note that the plot here described as Scenario 5 is the same as the initial plot 
+of the results in Figure \@ref(fig:Figure4-2). 
+
+(ref:fig4-5) Interaction plot of Scenario 5 where it appears that an 
+interaction is present. 
+
+```{r Figure4-5, fig.cap="(ref:fig4-5)",echo=F,message=F,warning=F}
+m5<-lm(responses~brand*drops,data=pt)
+pt$r5<-fitted(m5)+res1
+par(mfrow=c(1,1))
+intplot(r5~brand*drops,ylim=c(0,3.2),data=pt,main="Scenario 5: Interaction between A and B",col=c(1,2),lwd=2)
+```
+
+The typical modeling protocol is to start with assuming that Scenario 5 is a possible
+description of the results, related to fitting what is called the 
+***interaction model***, and then attempt to simplify the model (to the 
+***additive model***) if warranted. We need a hypothesis test to help decide if 
+the interaction is "real" -- if there
+is sufficient evidence to prove that there is an interaction. We need a test
+because the lines will never be exactly parallel and, just like in the One-Way
+ANOVA situation, the amount of variation around the lines impacts the ability
+of the model to detect differences, in this case of an interaction. 
+
 ## Two-Way ANOVA models and hypothesis tests	{#section4-3}
+
+To assess interactions with two
+variables, we need to fully describe models for the additive and interaction
+scenarios and then develop a method for assessing evidence of the need for
+different aspects of the models. First, we need to define the notation for
+these models:
+
+* $y_{ijk}$ is the $i^{th}$ response from the group for level $j$ of factor A
+and level $k$ of factor B
+
+    * $j=1,\ldots,J$ &nbsp;&nbsp;&nbsp; $J$ is the number of levels of A
+    
+    * $k=1,\ldots,K$ &nbsp;&nbsp;&nbsp; $K$ is the number of levels of B
+    
+    * $i=1,\ldots,n_{jk}$ &nbsp;&nbsp;&nbsp; $n_{jk}$ is the sample size for level
+    $j$ of factor A and level $k$ of factor B
+    
+    * $N=\Sigma\Sigma n_{jk}$ is the total sample size (sum of the number of 
+    observations across all $JK$ groups)
+
+We need to extend our previous discussion of reference-coded models to develop a
+Two-Way ANOVA model. We start with the ***Two-Way ANOVA interaction model***:
+
+$$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk},$$
+
+where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
+$\tau_j$ is the deviation for the ***main effect*** of A from the baseline
+for levels $2,\ldots,J$, $\gamma_k$ (gamma $k$) is the deviation for the main 
+effect of B from the baseline for levels $2,\ldots,K$, and $\omega_{jk}$ 
+(omega $jk$) is the adjustment for the ***interaction effect*** for level 
+$j$ of factor A and level $k$ of factor B for $j=1,\ldots,J$ and $k=1,\ldots,K$.
+In this model, $\tau_1$, $\gamma_1$, and $\omega_{11}$ are all fixed at 0. 
+As in Chapter \@ref(chapter3), R will choose the baseline categories
+alphabetically but now it is choosing a baseline for both variables and so our
+detective work will be doubled to sort this out. 
+
+If the interaction term is not important, based on the interaction test 
+presented below, the $\omega_{jk}\text{'s}$ can be dropped from the model 
+and we get a model that corresponds to Scenario 4
+above. Scenario 4 is where there are two main effects but no interaction
+between them. The ***additive Two-Way model*** is
+
+$$y_{ijk} = \alpha + \tau_j + \gamma_k + \epsilon_{ijk},$$
+
+where each component is defined as in the interaction model. The difference between
+the interaction and additive models is setting all the $\omega_{jk}\text{'s}$
+to 0 that are present in the interaction model. When we set parameters to 0 in
+models it removes them from the model. Setting parameters to 0 is how we will develop
+our hypotheses to test for an interaction, by testing whether there is evidence
+enough to reject that all $\omega_{jk}\text{'s}=0$.
+
+The interaction test hypotheses are 
+
+* $H_0$: No interaction between A and B in population $\Leftrightarrow$ All
+$\omega_{jk}\text{'s}=0$.
+
+* $H_A$: Interaction between A and B in population $\Leftrightarrow$ At least
+one $\omega_{jk}\ne 0$
+
+To perform this test, a new ANOVA $F$-test is required (presented below) but 
+there are also hypotheses relating to the main effects of A ($\tau_j\text{'s}$)
+and B ($\gamma_k\text{'s}$). If evidence is found to reject the null hypothesis 
+that no interaction is
+present, then it is dangerous to ignore it and test for the main effects
+because important main effects can be masked by interactions (examples later). 
+It is important to note that, by definition,  **both variables matter if an
+interaction is found to be important** so the main effect tests may not be 
+very interesting. If the interaction is found
+to be important based on the test and retained in the model, you should focus
+on the interaction model (also called the ***full model***) in order to 
+understand and describe the form of the interaction among the variables. 
+
+If the interaction test does not return
+a small p-value, then we have no evidence to suggest that it is needed and it
+can be dropped from the model. In this situation, we would re-fit the model and
+focus on the results provided by the additive model -- performing tests for the
+two additive main effects. For the first, but not last time, we encounter a
+model with more than one variable and test of potential interest. In models
+with multiple variables at similar levels (here both are main effects), we are
+interested in the results for each variable given that the other variable is in
+the model. In many situations, including more than one variable in a model
+changes the results for the other variable even if those variables do not
+interact. The reason for this is more clear in Chapter \@ref(chapter8) and really only
+matters here if we have unbalanced designs, but we need to start adding a short
+modifier to our discussions of main effects -- they are the results 
+*conditional on* or *adjusting for* or, simply, *given*, the other variable(s) 
+in the model. Specifically, the hypotheses for the two main effects are: 
+
+* Main effect test for A:
+
+    * $H_0$: No differences in means across levels of A in population, 
+    given B in the model $\Leftrightarrow$ All $\tau_j\text{'s} = 0$
+    in additive model. 
+    
+    * $H_A$: Some difference in means across levels A in population, 
+    given B in the model $\Leftrightarrow$ At least one $\tau_j \ne 0$,
+    in additive model. 
+
+* Main effect test for B:
+
+    * $H_0$: No differences in means across levels of B in population, 
+    given A in the model $\Leftrightarrow$ All $\gamma_k\text{'s} = 0$
+    in additive model. 
+    
+    * $H_A$: Some difference in means across levels B in population, 
+    given A in the model $\Leftrightarrow$ At least one $\gamma_k \ne 0$,
+    in additive model. 
+    
+In order to test these effects (interaction in the interaction model and 
+main effects in the additive model), $F$-tests are developed using Sums of
+Squares, Mean Squares, and degrees of freedom similar to those in 
+Chapter \@ref(chapter3). We
+won't worry about the details of the sums of squares formulas but you should
+remember the sums of squares decomposition, which still applies^[In the standard 
+ANOVA table, 
+$\text{SS}_A + \text{SS}_B + \text{SS}_{AB} + \text{SS}_E = \text{SS}_{\text{Total}}$. 
+However, to get the tests we really desire when our designs are not balanced, a
+slight modification of the SS is used, using what are called Type II sums of
+squares and this result doesn't hold in the output you will see for additive
+models. This is discussed further below.]. Table \@ref(tab:Table4-1) 
+summarizes the ANOVA results you will obtain for the interaction
+model and Table \@ref(tab:Table4-2) provides the similar general results for the additive
+model. As we saw in Chapter \@ref(chapter3), the degrees of freedom are the amount of
+information that is free to vary at a particular level and that rule generally holds
+here. For example, for factor A with $J$ levels, there are $J-1$ parameters that
+are free since the baseline is fixed. The residual degrees of freedom for both
+models are not as easily explained but have simple formula. Note that the sum
+of the degrees of freedom from the main effects, (interaction if present), and
+error need to equal $N-1$, just like in the One-Way ANOVA table. 
+
+(ref:tab4-1) Interaction Model ANOVA Table. 
+
+```{r echo=F}
+columnHeaders <- c("Source","DF","SS","MS","F-statistics")
+row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
+          "$\\text{MS}_A/\\text{MS}_E$")
+row2 <- c("B","$K-1$","$\\text{SS}_B$","$\\text{MS}_B=\\text{SS}_B/\\text{df}_B$",
+          "$\\text{MS}_B/\\text{MS}_E$")
+row3 <- c("A:B (interaction)","$(J-1)(K-1)$","$\\text{SS}_{AB}$",
+          "$\\text{MS}_{AB}=\\text{SS}_{AB}/\\text{df}_{AB}$",
+          "$\\text{MS}_{AB}/\\text{MS}_E$")
+row4 <- c("Error","$N-J-K+1$","$\\text{SS}_E$","$\\text{MS}_E=\\text{SS}_E/\\text{df}_E$",
+          "")
+row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
+          "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
+x <- matrix(c(row1,row2,row3,row4,row5),ncol=5,byrow=TRUE)
+library(knitr)
+kable(x,caption="(ref:tab4-1)",col.names=columnHeaders)
+```
+
 
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
 
