@@ -1859,10 +1859,10 @@ lower.tail=F)
     Normal Q-Q plot. 
     
 * plot(allEffects(`r colFmt("MODELNAME","red")`))
-
-    * Plots the estimated model component.
     
     * Requires the ``effects`` package be loaded. 
+
+    * Plots the estimated model component.
     
 * Tm2 <- glht(`r colFmt("MODELNAME","red")`, linfct=mcp(`r colFmt("X","red")`="Tukey"));
 confint(Tm2); plot(Tm2); cld(Tm2)

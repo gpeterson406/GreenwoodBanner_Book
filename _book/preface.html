@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>A Second Semester Statistics Course with R</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A Second Semester Statistics Course with R">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="A Second Semester Statistics Course with R" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-27">
+<meta name="date" content="2017-06-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="index.html">
 <link rel="next" href="chapter2.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -92,6 +90,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -243,7 +242,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Figure <a href="preface.html#fig:Figure1">1.1</a> frames the topics we will discuss. Taking a broad vision of the methods we will consider, there are basically two scenarios – one when the response is quantitative and one when the response is categorical. Examples of quantitative responses we will see later involve <em>suggested jail sentence</em> (in years) and <em>body fat</em> (percentage). Examples of categorical variables include <em>improvement</em> (none, some, or marked) in a clinical trial or whether a student has turned in copied work (never, exam or paper, or both). There are going to be some more nuanced aspects to all these analyses as the complexity of both sides of Figure <a href="preface.html#fig:Figure1">1.1</a> suggest, but note that near the bottom, each tree converges on a single procedure, using a <strong><em>linear model</em></strong> for a quantitative response variable or using a <strong><em>Chi-square test</em></strong> for a categorical response. After selecting the appropriate procedure and completing the necessary technical steps to get results for a given data set, the final step involves assessing the scope of inference and types of conclusions that are appropriate based on the design of the study.</p>
 
 <div class="figure"><span id="fig:Figure1"></span>
-<img src="chapter0_files/image001.png" alt="Flow chart of methods" width="320" />
+<img src="chapter0_files/image001.png" alt="Flow chart of methods"  />
 <p class="caption">
 Figure 1.1: Flow chart of methods
 </p>
@@ -265,7 +264,7 @@ Figure 1.1: Flow chart of methods
 <p>To get started, we can complete some basic tasks in R using the RStudio interface. When you open RStudio, you will see a screen like Figure 2. The added annotation in this and the following screen-grabs is there to help you get initially oriented to the software interface. R is command-line software – meaning that most of the time you have to create code and then enter and execute it at a command prompt to get any results. RStudio makes the management and execution of that code more efficient than the basic version of R. In RStudio, the lower left panel is called the “console” window and is where you can type R code directly into R or where you will see the code you run and (most importantly!) where the results of your executed commands will show up. The most basic interaction with R is available once you get the cursor active at the command prompt “&gt;” by clicking in that panel (look for a blinking vertical line). The upper left panel is for writing, saving, and running your R code. Once you have code available in this window, the “Run” button will execute the code for the line that your cursor is on or for any text that you have highlighted with your mouse. The “data management” or environment panel is in the upper right, providing information on what data sets have been loaded. It also contains the “Import Dataset” button that provides the easiest way for you to read a data set into R so you can analyze it. The lower right panel contains information on the “Packages” (additional code we will download and install to add functionality to R) that are available and is where you will see plots that you make and requests for “Help” on specific functions.</p>
 
 <div class="figure"><span id="fig:Figure2"></span>
-<img src="chapter0_files/image003.png" alt="Initial RStudio layout" width="530" />
+<img src="chapter0_files/image003.png" alt="Initial RStudio layout"  />
 <p class="caption">
 Figure 1.2: Initial RStudio layout
 </p>
@@ -376,7 +375,7 @@ Figure 1.2: Initial RStudio layout
 <p>What is put inside the <code>&quot; &quot;</code> will depend on the location and name of your saved .csv file. A version of the data set in what looks like a spreadsheet will appear in the upper left window due to the second line of code (<code>View(treadmill</code>)).</p>
 
 <div class="figure"><span id="fig:Figure3"></span>
-<img src="chapter0_files/image005.png" alt="RStudio with initial data set loaded" width="530" />
+<img src="chapter0_files/image005.png" alt="RStudio with initial data set loaded"  />
 <p class="caption">
 Figure 1.3: RStudio with initial data set loaded
 </p>
@@ -421,7 +420,7 @@ Figure 1.3: RStudio with initial data set loaded
 <p>Figure <a href="preface.html#fig:Figure4">1.4</a> shows the screen with the code used in this section in the upper left panel, saved in file called Ch0.R, with the results of highlighting and executing the first section of code using the “Run” button.</p>
 
 <div class="figure"><span id="fig:Figure4"></span>
-<img src="chapter0_files/image006.png" alt="RStudio with highlighted code run" width="960" />
+<img src="chapter0_files/image006.png" alt="RStudio with highlighted code run"  />
 <p class="caption">
 Figure 1.4: RStudio with highlighted code run
 </p>
@@ -457,7 +456,7 @@ Figure 1.5: Histogram of Run Times #(minutes) of n=31 subjects in Treadmill stud
 <p>I used the <strong>Export</strong> button found above the plot, followed by <strong>Copy to Clipboard</strong> and clicking on the <strong>Copy Plot</strong> button. Then if you open your favorite word-processing program, you should be able to paste it into a document for writing reports that include the figures. You can see the first parts of this process in the screen grab in Figure <a href="preface.html#fig:Figure6">1.6</a>.</p>
 
 <div class="figure"><span id="fig:Figure6"></span>
-<img src="chapter0_files/image010.png" alt="RStudio while in the process of copying the histogram" width="960" />
+<img src="chapter0_files/image010.png" alt="RStudio while in the process of copying the histogram"  />
 <p class="caption">
 Figure 1.6: RStudio while in the process of copying the histogram
 </p>
@@ -584,8 +583,9 @@ data.frame called </em>BWlb* using this code:</p>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter2.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="chapter2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -628,7 +628,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

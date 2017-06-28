@@ -11,3 +11,4 @@ output:
   bookdown::pdf_book:
     includes:
       in_header: preamble.tex
+tables: true

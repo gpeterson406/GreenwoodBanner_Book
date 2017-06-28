@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>A Second Semester Statistics Course with R</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="A Second Semester Statistics Course with R">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="A Second Semester Statistics Course with R" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-27">
+<meta name="date" content="2017-06-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="preface.html">
 <link rel="next" href="chapter3.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -92,6 +90,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -625,7 +624,7 @@ Figure 2.6: Boxplot and beanplot of the Years responses on the reduced data set.
 <p>It can be helpful to think about the null and alternative models graphically. By assuming the null hypothesis is true (means are equal) and that the random errors around the mean follow a normal distribution, we assume that the truth is as displayed in the left panel of Figure <a href="chapter2.html#fig:Figure2-7">2.7</a> – two normal distributions with the same mean and variability. The alternative model allows the two groups to potentially have different means, such as those displayed in the right panel of Figure <a href="chapter2.html#fig:Figure2-7">2.7</a> where the second group has a larger mean. Note that in this scenario, we assume that the observations all came from the same distribution except that they had different means. Depending on the statistical procedure we are using, we basically are going to assume that the observations (<span class="math inline">\(y_{ij}\)</span>) either were generated as samples from the null or alternative model. You can imagine drawing observations at random from the pictured distributions. For hypothesis testing, the null model is assumed to be true and then the unusualness of the actual result is assessed relative to that assumption. In hypothesis testing, we have to decide if we have enough evidence to reject the assumption that the null model (or hypothesis) is true. If we reject the null hypothesis, then we would conclude that the other model considered (the alternative model) is more reasonable. The researchers obviously would have hoped to encounter some sort of noticeable difference in the sentences provided for the different pictures and been able to find enough evidence to reject the null model where the groups “look the same”.</p>
 
 <div class="figure"><span id="fig:Figure2-7"></span>
-<img src="chapter1_files/image015.png" alt="Illustration of the assumed situations under the null (left) and a single possibility that could occur if the alternative were true (right) and the true means were different." width="480" />
+<img src="chapter1_files/image015.png" alt="Illustration of the assumed situations under the null (left) and a single possibility that could occur if the alternative were true (right) and the true means were different."  />
 <p class="caption">
 Figure 2.7: Illustration of the assumed situations under the null (left) and a single possibility that could occur if the alternative were true (right) and the true means were different.
 </p>
@@ -995,7 +994,7 @@ Figure 2.12: Permutation distribution of the <span class="math inline">\(t\)</sp
 <p>If the assumptions for the equal variance <span class="math inline">\(t\)</span>-test are met and the null hypothesis is true, then the sampling distribution of the test statistic should follow a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n_1+n_2-2\)</span> degrees of freedom. The <strong><em>t-distribution</em></strong> is a bell-shaped curve that is more spread out for smaller values of degrees of freedom as shown in Figure <a href="chapter2.html#fig:Figure2-13">2.13</a>. The <span class="math inline">\(t\)</span>-distribution looks more and more like a <strong><em>standard normal distribution</em></strong> (<span class="math inline">\(N(0,1)\)</span>) as the degrees of freedom increase.</p>
 
 <div class="figure"><span id="fig:Figure2-13"></span>
-<img src="chapter1_files/image045.png" alt="Plots of \(t\) and normal distributions" width="480" />
+<img src="chapter1_files/image045.png" alt="Plots of \(t\) and normal distributions"  />
 <p class="caption">
 Figure 2.13: Plots of <span class="math inline">\(t\)</span> and normal distributions
 </p>
@@ -1016,7 +1015,7 @@ Figure 2.13: Plots of <span class="math inline">\(t\)</span> and normal distribu
 <p>So the parametric <span class="math inline">\(t\)</span>-test gives a p-value of 0.033 from a test statistic of -2.1702. The negative sign on the test statistic occurred because the function took <em>Average</em> - <em>Unattractive</em> which is the opposite direction as <code>diffmean</code>. The p-value is very similar to the two permutation results found before. The reason for this similarity is that the permutation distribution with 73 degrees of freedom. Figure <a href="chapter2.html#fig:Figure2-14">2.14</a> shows how similar the two distributions happened to be here.</p>
 
 <div class="figure"><span id="fig:Figure2-14"></span>
-<img src="chapter1_files/image047.png" alt="Plot of permutation and \(t\) distribution with \(df=73\)." width="480" />
+<img src="chapter1_files/image047.png" alt="Plot of permutation and \(t\) distribution with \(df=73\)."  />
 <p class="caption">
 Figure 2.14: Plot of permutation and <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(df=73\)</span>.
 </p>
@@ -1561,8 +1560,9 @@ favstats(daysanysub~sex, data=HELPrct3)</code></pre>
         </div>
       </div>
 <a href="preface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chapter3.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="chapter3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -1605,7 +1605,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
