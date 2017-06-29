@@ -563,7 +563,7 @@ error need to equal $N-1$, just like in the One-Way ANOVA table.
 
 (ref:tab4-1) Interaction Model ANOVA Table. 
 
-```{r echo=F}
+```{r Table4-1,echo=F}
 columnHeaders <- c("Source","DF","SS","MS","F-statistics")
 row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
           "$\\text{MS}_A/\\text{MS}_E$")
@@ -583,7 +583,7 @@ kable(x,caption="(ref:tab4-1)",col.names=columnHeaders)
 
 (ref:tab4-2) Additive Model ANOVA Table. 
 
-```{r echo=F}
+```{r Table4-2,echo=F}
 columnHeaders <- c("Source","DF","SS","MS","F-statistics")
 row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
           "$\\text{MS}_A/\\text{MS}_E$")

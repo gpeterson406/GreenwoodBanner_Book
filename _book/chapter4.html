@@ -379,10 +379,10 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <li><p><span class="math inline">\(H_A\)</span>: Some difference in means across levels B in population, given A in the model <span class="math inline">\(\Leftrightarrow\)</span> At least one <span class="math inline">\(\gamma_k \ne 0\)</span>, in additive model.</p></li>
 </ul></li>
 </ul>
-<p>In order to test these effects (interaction in the interaction model and main effects in the additive model), <span class="math inline">\(F\)</span>-tests are developed using Sums of Squares, Mean Squares, and degrees of freedom similar to those in Chapter <a href="chapter3.html#chapter3">3</a>. We won’t worry about the details of the sums of squares formulas but you should remember the sums of squares decomposition, which still applies<a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a>. Table <a href="#tab:Table4-1"><strong>??</strong></a> summarizes the ANOVA results you will obtain for the interaction model and Table <a href="#tab:Table4-2"><strong>??</strong></a> provides the similar general results for the additive model. As we saw in Chapter <a href="chapter3.html#chapter3">3</a>, the degrees of freedom are the amount of information that is free to vary at a particular level and that rule generally holds here. For example, for factor A with <span class="math inline">\(J\)</span> levels, there are <span class="math inline">\(J-1\)</span> parameters that are free since the baseline is fixed. The residual degrees of freedom for both models are not as easily explained but have simple formula. Note that the sum of the degrees of freedom from the main effects, (interaction if present), and error need to equal <span class="math inline">\(N-1\)</span>, just like in the One-Way ANOVA table.</p>
+<p>In order to test these effects (interaction in the interaction model and main effects in the additive model), <span class="math inline">\(F\)</span>-tests are developed using Sums of Squares, Mean Squares, and degrees of freedom similar to those in Chapter <a href="chapter3.html#chapter3">3</a>. We won’t worry about the details of the sums of squares formulas but you should remember the sums of squares decomposition, which still applies<a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a>. Table <a href="chapter4.html#tab:Table4-1">4.1</a> summarizes the ANOVA results you will obtain for the interaction model and Table <a href="chapter4.html#tab:Table4-2">4.2</a> provides the similar general results for the additive model. As we saw in Chapter <a href="chapter3.html#chapter3">3</a>, the degrees of freedom are the amount of information that is free to vary at a particular level and that rule generally holds here. For example, for factor A with <span class="math inline">\(J\)</span> levels, there are <span class="math inline">\(J-1\)</span> parameters that are free since the baseline is fixed. The residual degrees of freedom for both models are not as easily explained but have simple formula. Note that the sum of the degrees of freedom from the main effects, (interaction if present), and error need to equal <span class="math inline">\(N-1\)</span>, just like in the One-Way ANOVA table.</p>
 
 <table>
-<caption><span id="tab:unnamed-chunk-105">Table 4.1: </span>Interaction Model ANOVA Table.</caption>
+<caption><span id="tab:Table4-1">Table 4.1: </span>Interaction Model ANOVA Table.</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -432,7 +432,7 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 </table>
 
 <table>
-<caption><span id="tab:unnamed-chunk-106">Table 4.2: </span>Additive Model ANOVA Table.</caption>
+<caption><span id="tab:Table4-2">Table 4.2: </span>Additive Model ANOVA Table.</caption>
 <thead>
 <tr class="header">
 <th align="left">Source</th>
@@ -480,13 +480,11 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: responses
-##             Df Sum Sq Mean Sq F value   Pr(&gt;F)   
-## brand        1 4.3322  4.3322 10.5192 0.003458 **
-## drops        2 4.8581  2.4290  5.8981 0.008251 **
-## brand:drops  2 1.5801  0.7901  1.9184 0.168695   
-## Residuals   24 9.8840  0.4118                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##             Df Sum Sq Mean Sq F value   Pr(&gt;F)
+## brand        1 4.3322  4.3322 10.5192 0.003458
+## drops        2 4.8581  2.4290  5.8981 0.008251
+## brand:drops  2 1.5801  0.7901  1.9184 0.168695
+## Residuals   24 9.8840  0.4118</code></pre>
 <table style="width:89%;">
 <caption>Interaction ANOVA table with interaction row in bold.</caption>
 <colgroup>
@@ -969,9 +967,9 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 <p>One final plot of the fitted values from this additive model in Figure <a href="chapter4.html#fig:Figure4-16">4.16</a> hopefully crystallizes the implications of an additive model and reinforces that this model creates and assumes that the differences across levels of one variable are the same regardless of the level of the other variable and that this creates parallel lines. The difference between <code>cigbuy</code> levels across all income groups is a drop in -0.106 points. The income groups have the same differences regardless of cigarette buying or not, with income group 5 much higher than the other four groups.</p>
 
 <div class="figure"><span id="fig:Figure4-16"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table ?? showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
+<img src="GreenwoodBanner_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table 4.2 showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
 <p class="caption">
-Figure 4.16: Illustration of the results from Table <a href="#tab:Table4-2"><strong>??</strong></a> showing the combined impacts of the components of the additive model for <code>prodebt</code>. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis.
+Figure 4.16: Illustration of the results from Table <a href="chapter4.html#tab:Table4-2">4.2</a> showing the combined impacts of the components of the additive model for <code>prodebt</code>. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis.
 </p>
 </div>
 <p><strong>In general, we proceed through the following steps in any 2-WAY ANOVA situation:</strong></p>

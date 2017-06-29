@@ -451,11 +451,11 @@ expect for that person, here that they are likely affiliated with the Democratic
 Party. When there is no relationship (the null hypothesis here), knowing the
 level of one variable is not informative about the level of the other variable. 
 
-```{r warning=F,message=F}
+```{r warning=F,message=F,cache=F}
 require(poLCA)
 data(election) #2000 Survey 
-#Subset variables and remove missing values
-election2 <- na.omit(election[,c("PARTY","VOTE3")]) 
+# Subset variables and remove missing values
+election2 <- na.omit(election[,c("PARTY","VOTE3")])
 election2$VOTEF <- factor(election2$VOTE3)
 levels(election2$VOTEF) <- c("Gore","Bush","Other")
 levels(election2$VOTEF)
