@@ -1298,7 +1298,6 @@ six combinations can be found in Table \@ref(tab:Table4-3).
 of variables for the ``prodebt`` additive model.
 
 ```{r Table4-3,echo=F}
-require(pander)
 columnHeaders <- c("$\\color{red}{\\text{Cig}\\\\\\text{Buy}}$",
                    "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 1}}$",
                    "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 2}}$",
