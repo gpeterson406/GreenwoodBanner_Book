@@ -903,9 +903,9 @@ Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(debt1r))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-15"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income gropu and the right panel for buying cigarettes or not (1 for yes)." width="672" />
+<img src="GreenwoodBanner_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes)." width="672" />
 <p class="caption">
-Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left panel for income gropu and the right panel for buying cigarettes or not (1 for yes).
+Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes).
 </p>
 </div>
 <p>The estimated coefficients can also be interesting to interpret for the additive model. Here is the model summary:</p>
@@ -933,7 +933,7 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 <p>In the model, the baseline group is for non-cigarette buyers (<code>cigbuy=0</code>) and income group 1 with <span class="math inline">\(\hat{\alpha}= 3.055\)</span> points. Regardless of the <code>cigbuy</code> level, the difference between income groups 2 and 1 is estimated to be <span class="math inline">\(\hat{\tau}_2=0.016\)</span>, an increase in the mean score of 0.016 points. Similarly, the difference between income groups 3 and 1 is <span class="math inline">\(\hat{\tau}_3=0.175\)</span> points, regardless of cigarette smoking status. The estimated difference between cigarette buyers and non-buyers was estimated as <span class="math inline">\(\hat{\gamma}_2=-0.106\)</span> points for any income group, remember that this variable had a moderately large p-value in this model. The additive model-based estimates for all six combinations can be found in Table <a href="chapter4.html#tab:Table4-3">4.3</a>.</p>
 
 <table>
-<caption><span id="tab:Table4-3">Table 4.3: </span>Calculations to construct the estimates for all combinations of variables for the Prodebt additive model.</caption>
+<caption><span id="tab:Table4-3">Table 4.3: </span>Calculations to construct the estimates for all combinations of variables for the <code>prodebt</code> additive model.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -966,7 +966,7 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 </tr>
 </tbody>
 </table>
-<p>One final plot of the fitted values from this additive model in Figure <a href="chapter4.html#fig:Figure4-16">4.16</a> hopefully crystalizes the implications of an additive model and reinforces that this model creates and assumes that the differences across levels of one variable are the same regardless of the level of the other variable and that this creates parallel lines. The difference between <code>cigbuy</code> levels across all income groups is a drop in -0.106 points. The income groups have the same differences regardless of cigarette buying or not, with income group 5 much higher than the other four groups.</p>
+<p>One final plot of the fitted values from this additive model in Figure <a href="chapter4.html#fig:Figure4-16">4.16</a> hopefully crystallizes the implications of an additive model and reinforces that this model creates and assumes that the differences across levels of one variable are the same regardless of the level of the other variable and that this creates parallel lines. The difference between <code>cigbuy</code> levels across all income groups is a drop in -0.106 points. The income groups have the same differences regardless of cigarette buying or not, with income group 5 much higher than the other four groups.</p>
 
 <div class="figure"><span id="fig:Figure4-16"></span>
 <img src="GreenwoodBanner_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table ?? showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
@@ -1030,7 +1030,7 @@ Warning message:
 In anova.lm(lm(responses ~ dropsf * brand, data = ptR)) :
   ANOVA F-tests on an essentially perfect fit are unreliable</code></pre>
 <p>Warning messages in R output show up in red after you run functions that contain problems and are generally not a good thing, but can sometimes be ignored. In this case, the warning message is not needed – there are no <span class="math inline">\(F\)</span>-statistics or p-values in the results so we know there are some issues with the results. The bolded line is key here squares of 0. Without replication, there are no degrees of freedom left to estimate the residual error. My (Greenwood’s) first statistics professor, Gordon Bril at Luther College, used to refer to this as “shooting your load” by fitting too many terms in the model given the number of observations available. Maybe this is a bit graphic but hopefully will help you remember the need for replication if you want to estimate interactions – it did for me. Without replication of observations, we run out of information to estimate and test all the desired model components.</p>
-<p>So what can we do if we can’?’t afford replication? We can <em>assume</em> that the interaction does not exist and use those degrees of freedom and variability as the error variability. When we drop the interaction from Two-Way models, the interaction variability is added into the <span class="math inline">\(\text{SS}_E\)</span> so this is interaction between the variables. We are not able to test for an interaction so must rely on the interaction plot to assess whether an interaction might be present. Figure <a href="chapter4.html#fig:Figure4-17">4.17</a> suggests there might be an interaction in these data (the two brands lines cross noticeably suggesting non-parallel lines). So in this case, assuming no interaction is present is hard to justify. But if we proceed under this dangerous assumption, tests for the main effects can be developed.</p>
+<p>So what can we do if we can’t afford replication? We can <em>assume</em> that the interaction does not exist and use those degrees of freedom and variability as the error variability. When we drop the interaction from Two-Way models, the interaction variability is added into the <span class="math inline">\(\text{SS}_E\)</span> so this is interaction between the variables. We are not able to test for an interaction so must rely on the interaction plot to assess whether an interaction might be present. Figure <a href="chapter4.html#fig:Figure4-17">4.17</a> suggests there might be an interaction in these data (the two brands lines cross noticeably suggesting non-parallel lines). So in this case, assuming no interaction is present is hard to justify. But if we proceed under this dangerous assumption, tests for the main effects can be developed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">norep1&lt;-<span class="kw">lm</span>(responses<span class="op">~</span>dropsf<span class="op">+</span>brand,<span class="dt">data=</span>ptR)
 <span class="kw">Anova</span>(norep1)</code></pre></div>
 <pre><code>## Anova Table (Type II tests)

@@ -236,9 +236,208 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 5</span> Chi-square tests</h1>
 <div id="section5-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Situation, contingency tables, and plots</h2>
+<p>In this chapter, the focus shifts briefly from analyzing quantitative response variables to methods for handling categorical response variables. This is important because in some situations it is not possible to measure the response variable quantitatively. For example, we will analyze the results from a clinical trial where the results for the subjects were measured as one of three categories: <em>no improvement</em>, <em>some improvement</em>, and <em>marked improvement</em>. While that type of response could be treated as numerical, coded possibly as 1, 2, and 3, it would be difficult to assume that the responses such as those follow a normal distribution since they are <strong><em>discrete</em></strong> (not continuous, measured at whole number values only) and, more importantly, the difference between <em>no improvement</em> and <em>some improvement</em> is not necessarily the same as the difference between <em>some</em> and <em>marked improvement</em>. If it is treated numerically, then the differences are assumed to be the same unless a different coding scheme is used (say 1, 2, and 5). It is better to treat these types of responses as being in one of the three categories and use statistical methods that don’t make unreasonable assumptions about what the numerical coding might mean. The study being performed here involved subjects randomly assigned to either a treatment or a placebo (control) group and we want to address research questions similar to those considered in Chapters <a href="chapter2.html#chapter2">2</a> and <a href="chapter3.html#chapter3">3</a> – assessing differences among two or more groups. With quantitative responses, the differences in the distributions are parameterized via the means of the groups and we used 2-sample mean or ANOVA hypotheses and tests. With categorical responses, the focus is on the probabilities of getting responses in each category and whether they differ among the groups.</p>
+<p>We start with some useful summary techniques, both numerical and graphical, applied to some examples of studies these methods can be used to analyze. Graphical techniques provide opportunities for assessing specific patterns in variables, relationships between variables, and for generally understanding the responses obtained. There are many different types of plots and each can enhance certain features of data. We will start with a “fun” display, called a tableplot, to help us understand some aspects of the results from a double-blind randomized clinical trial investigating a treatment for rheumatoid arthritis that has the categorical response variable introduced previously. These data are available in the <code>Arthritis</code> data set available in the <code>vcd</code> package (Meyer, Zeileis, and Hornik, 2015). There were <span class="math inline">\(n=84\)</span> subjects, with some demographic information recorded along with the <code>Treatment</code> status (<em>Treated</em>, <em>Placebo</em>) and whether the patients’ arthritis symptoms <code>Improved</code> (with levels of <em>None</em>, <em>Some</em>, and <em>Marked</em>).</p>
+<p>The <code>tableplot</code> function from the <code>tabplot</code> package (Tennekes and de Jonge, 2016) displays bars for each response in a row<a href="#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a> based on the category of responses or as a bar with the height corresponding the value of quantitative variables. It also plots a red cell if the observations were missing on a particular variable. The plot can be obtained simply as <code>tableplot(DATASETNAME)</code>. But when using <code>tableplot</code>, we may not want to display everything in the data.frame and often just select some of the variables. We use <code>Treatment</code>, <code>Improved</code>, <code>Sex</code>, and <code>Age</code> in the <code>select=...</code> option with a <code>c()</code> and commas between the names of the variables we want to display. The first one in the list is also the one that the data are sorted based on.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(vcd)
+<span class="kw">data</span>(Arthritis) <span class="co">#Double-blind clinical trial with treatment and control groups</span>
+<span class="co">#Homogeneity example</span>
+<span class="kw">require</span>(tabplot)
+<span class="kw">tableplot</span>(Arthritis,<span class="dt">select=</span><span class="kw">c</span>(Treatment,Improved,Sex,Age))</code></pre></div>
+<div class="figure"><span id="fig:Figure5-1"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure5-1-1.png" alt="Table plot of the arthritis data set." width="672" />
+<p class="caption">
+Figure 5.1: Table plot of the arthritis data set.
+</p>
+</div>
+<p>The first thing we can gather from Figure <a href="chapter5.html#fig:Figure5-1">5.1</a> is that there are no red cells so there were no missing observations in the data set. Missing observations regularly arise in real studies when observations are not obtained for many different reasons and it is always good to check for missing data issues – this plot provides a quick visual method for doing that check. Primarily we are interested in whether the treatment led to a different pattern (or rates) of improvement responses. There seems to be more purple (<em>Marked</em>) improvement responses in the treatment group and more blue (<em>None</em>) responses in the placebo group. This sort of plot also helps us to simultaneously consider the role of other variables in the observed responses. You can see the sex of each subject in the vertical panel for <code>Sex</code> and it seems that there is a relatively reasonable mix of males and females in the treatment/placebo groups. Quantitative variables are also displayed with horizontal bars corresponding to the responses. From the panel for <code>Age</code>, we can see that the ages of subjects ranged from the 20s to 70s and that there is no clear difference in the ages between the treated and placebo groups. If, for example, all the male subjects had ended up being randomized into the treatment group, then we might have worried about whether sex and treatment were confounded and whether any differences in the responses might be due to sex instead of the treatment. The random assignment of treatment/placebo to the subjects appears to have been successful here with the ages and sexes appearing to be well-mixed among the two treatment groups. The main benefit of this sort of plot is the ability to visualize more than two categorical variables simultaneously. But now we want to focus more directly on the researchers’ main question – does the treatment lead to different improvement outcomes than the placebo?</p>
+<p>To directly assess the effects of the treatment, we want to display just the two variables of interest. <strong><em>Stacked bar charts</em></strong> provide a method of displaying the response patterns (in <code>Improved</code>) across the levels of a predictor variable(<code>Treatment</code>) by displaying a bar for each predictor variable level and the proportions of responses in each category of the response in each of those groups. If the placebo is as effective as the treatment, then we would expect similar proportions of responses in each improvement category. A difference in the effectiveness would manifest in different proportions in the different improvement categories between <em>Treated</em> and <em>Placebo</em>. To get information in this direction, we start with obtaining the counts in each combination of categories using the <code>tally</code> function to generate contingency tables. <strong><em>Contingency tables</em></strong> with <strong><em>R</em></strong> rows and <strong><em>C</em></strong> columns (called <strong><em>R by C tables</em></strong>) summarize the counts of observations in each combination of the explanatory and response variables. In these data, there are <span class="math inline">\(R=2\)</span> rows and <span class="math inline">\(C=3\)</span> columns making a <span class="math inline">\(2\times 3\)</span> table – note that you do not count the row and column for the “Totals” in defining the size of the table. In the table, there seems to be many more <em>Marked</em> improvement responses (21 vs 7) and fewer <em>None</em> responses (13 vs 29) in the treated group compared to the placebo group.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(mosaic)
+<span class="kw">tally</span>(<span class="op">~</span>Treatment<span class="op">+</span>Improved, <span class="dt">data=</span>Arthritis, <span class="dt">margins=</span>T)</code></pre></div>
+<pre><code>##          Improved
+## Treatment None Some Marked Total
+##   Placebo   29    7      7    43
+##   Treated   13    7     21    41
+##   Total     42   14     28    84</code></pre>
+<p>Using the <code>tally</code> function with <code>~x+y</code> provides a contingency table with the <code>x</code> variable on the rows and the <code>y</code> variable on the columns, with <code>margins=T</code> as an option so we can obtain the totals along the rows, columns, and table total of <span class="math inline">\(N=84\)</span>. In general, contingency tables contain the counts <span class="math inline">\(n_{rc}\)</span> in the <span class="math inline">\(r^{th}\)</span> row and <span class="math inline">\(c^{th}\)</span> column where <span class="math inline">\(r=1,\ldots,R\)</span> and <span class="math inline">\(c=1,\ldots,C\)</span>. We can also define the <strong><em>row totals</em></strong> as the sum across row <span class="math inline">\(r\)</span> as</p>
+<p><span class="math display">\[\mathbf{n_{r\bullet}}=\Sigma^C_{c=1}n_{rc},\]</span> the <strong><em>column totals</em></strong> as the sum across column <span class="math inline">\(c\)</span> as</p>
+<p><span class="math display">\[\mathbf{n_{\bullet c}}=\Sigma^R_{r=1}n_{rc},\]</span></p>
+<p>and the <strong><em>table total</em></strong> as</p>
+<p><span class="math display">\[\mathbf{N}=\Sigma^R_{r=1}\mathbf{n_{r\bullet}} = \Sigma^C_{c=1}\mathbf{n_{\bullet c}}
+= \Sigma^R_{r=1}\Sigma^C_{c=1}\mathbf{n_{rc}}.\]</span></p>
+<p>We’ll need these quantities to do some calculations in a bit. A generic contingency table with added row, column, and table totals just like the previous result from the <code>tally</code> function is provided in Table <a href="chapter5.html#tab:Table5-1">5.1</a>.</p>
+
+<table>
+<caption><span id="tab:Table5-1">Table 5.1: </span>General notation for counts in an R by C contingency table.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }1\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }2\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }3\)</span></th>
+<th align="left"><span class="math inline">\(\mathbf{\ldots}\\\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }C\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Totals}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Group 1</strong></td>
+<td align="left"><span class="math inline">\(n_{11}\)</span></td>
+<td align="left"><span class="math inline">\(n_{12}\)</span></td>
+<td align="left"><span class="math inline">\(n_{13}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(n_{1C}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{1\bullet}}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Group 2</strong></td>
+<td align="left"><span class="math inline">\(n_{21}\)</span></td>
+<td align="left"><span class="math inline">\(n_{22}\)</span></td>
+<td align="left"><span class="math inline">\(n_{23}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(n_{2C}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{2\bullet}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{\ldots}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{\ldots}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Group R</strong></td>
+<td align="left"><span class="math inline">\(n_{R1}\)</span></td>
+<td align="left"><span class="math inline">\(n_{R2}\)</span></td>
+<td align="left"><span class="math inline">\(n_{R3}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(n_{RC}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{R\bullet}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Totals</strong></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{\bullet 1}}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{\bullet 2}}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{\bullet 3}}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{\ldots}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{n_{\bullet C}}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{N}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Comparing counts from the contingency table is useful, but comparing proportions in each category is better, especially when the sample sizes in the levels of the explanatory variable differ. Switching the formula used in the <code>tally</code> function formula to <code>~ y | x</code> and adding the <code>format=&quot;proportion&quot;</code> option provides the proportions in the response categories conditional on the category of the predictor (these are called <strong><em>conditional proportions</em></strong> or the <strong><em>conditional distribution</em></strong> of, here, <em>Improved</em> on <em>Treatment</em>)<a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a>. Note that they sum to 1.0 in each level of x, <em>placebo</em> or <em>treated</em>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tally</span>(<span class="op">~</span>Improved<span class="op">|</span>Treatment, <span class="dt">data=</span>Arthritis, <span class="dt">format=</span><span class="st">&quot;proportion&quot;</span>, <span class="dt">margins=</span>T)</code></pre></div>
+<pre><code>##         Treatment
+## Improved   Placebo   Treated
+##   None   0.6744186 0.3170732
+##   Some   0.1627907 0.1707317
+##   Marked 0.1627907 0.5121951
+##   Total  1.0000000 1.0000000</code></pre>
+<p>Note that it switches the variables between the rows and columns from the first summary of the data but the single “Total” row makes it clear to read the proportions down the columns in this version of the table. In this application, it shows how the proportions seem to between the placebo and treatment groups. This matches the previous thoughts on this data set, but now a difference of marked improvement of 16% vs 51% is more clearly a big difference. We can also display this result using a <strong><em>stacked bar-chart</em></strong> that displays the same information, using the <code>plot</code> function with a <code>y~x</code> formula:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Improved<span class="op">~</span>Treatment, <span class="dt">data=</span>Arthritis,
+     <span class="dt">main=</span><span class="st">&quot;Stacked Bar Chart of Arthritis Data&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure5-2"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure5-2-1.png" alt="Stacked bar chart of Arthritis data. The left bar is for the Placebo group and the right bar is for the Treated group. The width of the bars is based on relative size of each group and the portion of the total height of each shaded area is the proportion of that group in each category. The darkest shading is for “none”, medium shading for “some”, and the lightest shading for “marked”, as labeled on the y-axis." width="672" />
+<p class="caption">
+Figure 5.2: Stacked bar chart of Arthritis data. The left bar is for the Placebo group and the right bar is for the Treated group. The width of the bars is based on relative size of each group and the portion of the total height of each shaded area is the proportion of that group in each category. The darkest shading is for “none”, medium shading for “some”, and the lightest shading for “marked”, as labeled on the y-axis.
+</p>
+</div>
+<p>The stacked bar-chart in Figure <a href="chapter5.html#fig:Figure5-2">5.2</a> displays the previous conditional proportions for the groups, with the same relatively clear difference between the groups persisting. If you run the <code>plot</code> function with variables that are coded numerically, it will make a very different looking graph (R is smart!) so again be careful that you are instructing R to treat your variables as categorical if they really are categorical. R is powerful but can’t read your mind!</p>
+<p>In this chapter, we analyze data collected in two different fashions and modify the hypotheses to reflect the differences in the data collection processes, choosing either between what are called Homogeneity and Independence tests. The previous situation where levels of a treatment are randomly assigned to the subjects in a study describes the situation for what is called a <strong><em>Homogeneity Test</em></strong>. Homogeneity also applies when random samples are taken from each population of interest to generate the observations in each group of the explanatory variable. These sorts of situations resemble many of the examples from Chapter <a href="chapter3.html#chapter3">3</a> where treatments were assigned to subjects. The other situation considered is where a single sample is collected to represent a population and then a contingency table is formed based on responses on two categorical variables. When one sample is collected and analyzed using a contingency table, the appropriate analysis is called an <strong><em>Independence</em></strong> or <strong><em>Association test</em></strong>. In this situation, it is not necesssary to have variables that are clearly classified as explanatory or response although it is certainly possible. Data that often align with Independence testing are collected using surveys of subjects randomly selected from a single, large population. An example, analyzed below, involves a survey of voters and whether their party affiliation is related to who they voted for – the republican, democrat, or other candidate. There is clearly an explanatory variable of the <em>Party affiliation</em> but a single large sample was taken from the population of all likely voters so the Independence test needs to be applied. Another example where Independence is appropriate involves a study of student cheating behavior. Again, a single sample was taken from the population of students at a university and this determines that it will be an Independence test. Students responded to questions about lying to get out of turning in a paper and/or taking an exam (<em>none</em>, <em>either</em>, or <em>both</em>) and copying on an exam and/or turning in a paper written by someone else (<em>neither</em>, <em>either</em>, or <em>both</em>). In this situation, it is not clear which variable is the response or explanatory (which should explain the other) and it does not matter with the Independence testing framework. Figure <a href="chapter5.html#fig:Figure5-3">5.3</a> contains a diagram of the data collection processes and can help you to identify the appropriate analysis situation.</p>
+
+<div class="figure"><span id="fig:Figure5-3"></span>
+<img src="chapter4_files/image027.png" alt="Diagram of the scenarios involved in Homogeneity and Independence tests. Homogeneity testing involves R random samples or subjects assigned to R groups. Independence testing involves a single random sample and measurements on two categorical variables."  />
+<p class="caption">
+Figure 5.3: Diagram of the scenarios involved in Homogeneity and Independence tests. Homogeneity testing involves R random samples or subjects assigned to R groups. Independence testing involves a single random sample and measurements on two categorical variables.
+</p>
+</div>
+<p>You will discover that the test statistics are the same for both methods, which can create some desire to assume that the differences in the data collection doesn’t matter. In Homogeneity designs, the sample size in each group <span class="math inline">\((\mathbf{n_{1\bullet}},\mathbf{n_{2\bullet},\ldots,\mathbf{n_{R\bullet}}})\)</span> is fixed. In Independence situations, the total sample size <span class="math inline">\(\mathbf{N}\)</span> is fixed but all the <span class="math inline">\(\mathbf{n_{r\bullet}}\text{&#39;s}\)</span> are random. These differences impact the graphs, hypotheses, and conclusions used even though the test statistics and p-values are calculated the same way – so we only need to learn one test statistic to handle the two situations, but we need to make sure we know which we’re doing!</p>
 </div>
 <div id="section5-2" class="section level2">
 <h2><span class="header-section-number">5.2</span> Homogeneity Test Hypotheses</h2>
+<p>If we define some additional notation, we can then define hypotheses that allow us to assess evidence related to whether the treatment “matters” in Homogeneity situations. This situation is similar to what we did in the One-Way ANOVA situation with quantitative responses in Chapter <a href="chapter3.html#chapter3">3</a> but the parameters now relate to proportions in the response variable categories across the groups. First we can define the conditional population proportions in level <span class="math inline">\(c\)</span> (column <span class="math inline">\(c=1,\ldots,C\)</span>) of group <span class="math inline">\(r\)</span> (row <span class="math inline">\(r=1,\ldots,R\)</span>) as <span class="math inline">\(p_{rc}\)</span>. Table <a href="chapter5.html#tab:Table5-2">5.2</a> shows the proportions, noting that the proportions in each row sum to 1 since they are conditional on the group of interest. A <strong><em>transposed</em></strong> (rows and columns flipped) version of this table is produced by the <code>tally</code> function if you use the formula <code>~y|x</code>.</p>
+
+<table>
+<caption><span id="tab:Table5-2">Table 5.2: </span>Table of conditional proportions in the Homogeneity testing scenario.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }1\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }2\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }3\)</span></th>
+<th align="left"><span class="math inline">\(\mathbf{\ldots}\\\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Response}\\\textbf{Level }C\)</span></th>
+<th align="left"><span class="math inline">\(\textbf{Totals}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Group 1</strong></td>
+<td align="left"><span class="math inline">\(p_{11}\)</span></td>
+<td align="left"><span class="math inline">\(p_{12}\)</span></td>
+<td align="left"><span class="math inline">\(p_{13}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(p_{1C}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{1.0}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Group 2</strong></td>
+<td align="left"><span class="math inline">\(p_{21}\)</span></td>
+<td align="left"><span class="math inline">\(p_{22}\)</span></td>
+<td align="left"><span class="math inline">\(p_{23}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(p_{2C}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{1.0}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{\ldots}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{\ldots}\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Group R</strong></td>
+<td align="left"><span class="math inline">\(p_{R1}\)</span></td>
+<td align="left"><span class="math inline">\(p_{R2}\)</span></td>
+<td align="left"><span class="math inline">\(p_{R3}\)</span></td>
+<td align="left"><span class="math inline">\(\ldots\)</span></td>
+<td align="left"><span class="math inline">\(p_{RC}\)</span></td>
+<td align="left"><span class="math inline">\(\mathbf{1.0}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the Homogeneity situation, the null hypothesis is that the distributions are the same in all the <span class="math inline">\(R\)</span> populations. This means that the null hypothesis is:</p>
+<p><span class="math display">\[\begin{align}
+\mathbf{H_0:}\  &amp; \mathbf{p_{11}=p_{21}=\ldots=p_{R1}} \textbf{ and } \mathbf{p_{12}=p_{22}=\ldots=p_{R2}}  \textbf{ and } \mathbf{p_{13}=p_{23}=\ldots=p_{R3}} \\ 
+&amp; \textbf{ and } \mathbf{\ldots} \textbf{ and }\mathbf{p_{1C}=p_{2C}=\ldots=p_{RC}}. \\
+\end{align}\]</span></p>
+<p>If all the groups are the same, then they all have the same conditional proportions and we can more simply write the null hypothesis as:</p>
+<p><span class="math display">\[\mathbf{H_0:(p_{r1},p_{r2},\ldots,p_{rC})=(p_1,p_2,\ldots,p_C)} \textbf{ for all } \mathbf{r}.\]</span></p>
+<p>In other words, the pattern of proportions across the columns are <strong>the same for all the</strong> <span class="math inline">\(\mathbf{R}\)</span> <strong>groups</strong>. The alternative is that there is some difference in the proportions of at least one response category for at least one group. In slightly more gentle and easier to reproduce words, equivalently, we can say:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{H_0:}\)</span> <strong>The population distributions of the responses for variable</strong> <span class="math inline">\(\mathbf{y}\)</span> <strong>are the same across the</strong> <span class="math inline">\(\mathbf{R}\)</span> <strong>groups</strong>.</li>
+</ul>
+<p>The alternative hypothesis is then:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{H_A:}\)</span> <strong>The population distributions of the responses for variable</strong> <span class="math inline">\(\mathbf{y}\)</span> <strong>are NOT ALL the same across the</strong> <span class="math inline">\(\mathbf{R}\)</span> <strong>groups</strong>.</li>
+</ul>
+<p>To make this concrete, consider what the proportions could look like if they satisfied the null hypothesis for the <em>Arthritis</em> example, as displayed in Figure <a href="chapter5.html#fig:Figure5-4">5.4</a>.</p>
+
+<div class="figure"><span id="fig:Figure5-4"></span>
+<img src="GreenwoodBanner_files/figure-html/Figure5-4-1.png" alt="Plot of what the Arthritis proportions would look like if the null hypothesis had been true." width="672" />
+<p class="caption">
+Figure 5.4: Plot of what the Arthritis proportions would look like if the null hypothesis had been true.
+</p>
+</div>
+<p>Note that the proportions in the different response categories do not need to be the same just that the distribution needs to be the same across the groups. To make this clear, the null hypothesis does <em>not</em> require that all three response categories (<em>none</em>, <em>some</em>, <em>marked</em>) be equally likely. It assumes that whatever the distribution of proportions is across these three levels that there is no difference in that distribution between the explanatory variable (here treated/placebo) groups. Figure <a href="chapter5.html#fig:Figure5-4">5.4</a> shows an example of a situation where the null hypothesis is true and the distributions of responses across the groups look the same but the proportions for <em>none</em>, <em>some</em> and <em>marked</em> are not all equally likely. That situation satisfies the null hypothesis. Compare this plot to the one for the real data set in Figure <a href="chapter5.html#fig:Figure5-2">5.2</a>. It looks like there might be some differences in the responses between the treated and placebo groups as that plot looks much different from this one, but we will need a test statistic and a p-value to fully address the evidence relative to the previous null hypothesis.</p>
 </div>
 <div id="section5-3" class="section level2">
 <h2><span class="header-section-number">5.3</span> Independence Test Hypotheses</h2>
@@ -277,6 +476,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">5.14</span> Practice problems</h2>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="48">
+<li id="fn48"><p>In larger data sets, multiple subjects are displayed in each row as proportions of the rows in each category.<a href="chapter5.html#fnref48">↩</a></p></li>
+<li id="fn49"><p>The vertical line, “<code>|</code>”, in <code>~ y|x</code> is available on most keyboards on the same key as “&quot;. It is the mathematical symbol that means”conditional on&quot; whatever follows.<a href="chapter5.html#fnref49">↩</a></p></li>
+</ol>
 </div>
             </section>
 

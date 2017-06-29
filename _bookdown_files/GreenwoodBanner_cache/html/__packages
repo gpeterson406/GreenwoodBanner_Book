@@ -18,3 +18,8 @@ MASS
 TH.data
 multcomp
 faraway
+vcd
+bit
+ff
+ffbase
+tabplot
