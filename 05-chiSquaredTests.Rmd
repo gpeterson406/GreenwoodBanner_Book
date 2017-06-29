@@ -265,7 +265,7 @@ single sample is collected to represent a population and then a contingency
 table is formed based on responses on two categorical variables. When one
 sample is collected and analyzed using a contingency table, the appropriate
 analysis is called an ***Independence*** or ***Association test***. In this
-situation, it is not necesssary to have variables that are clearly classified
+situation, it is not necessary to have variables that are clearly classified
 as explanatory or response although it is certainly possible. Data that often 
 align with Independence testing are collected using surveys of
 subjects randomly selected from a single, large population. An example, 
@@ -770,7 +770,7 @@ The most common error made in calculating the $X^2$ statistic by hand
 involves having observed less than expected
 and then failing to make the $X^2$ contribution positive for all cells
 (remember you are  **squaring the entire quantity** in the parentheses
-and so the sign has to go positive!). In R, wecan add up the cells using 
+and so the sign has to go positive!). In R, we can add up the cells using 
 the ``sum`` function over the entire table of numbers:
 
 ```{r}
@@ -1400,7 +1400,7 @@ Figure \@ref(fig:Figure5-17) shows up for much higher than expected
 results and the brighter red for results in the other direction, 
 where observed counts were
 much lower than expected. When there are many large standardized residuals, it
-is ok to focus on the largest results but remember that some of the
+is OK to focus on the largest results but remember that some of the
 intermediate deviations, or lack thereof, could also be interesting. For
 example, the Gore voters from ``PARTY`` = 3 had a standardized residual 
 of 3.75 but the ``PARTY`` = 5 voters for Bush had a standardized residual
@@ -1413,11 +1413,710 @@ residuals.
 
 ## Is cheating and lying related in students?	{#section5-10}
 
+A study of student behavior was performed at a university with a survey of 
+$N=319$ undergraduate students (``cheating`` data set from the ``poLCA``
+package originally published by Dayton (1998)). They were asked to answer
+four questions about their various
+academic frauds that involved cheating and lying. Specifically, they were 
+asked if they had ever lied to avoid taking an exam (``LIEEXAM`` with 1 
+for no and 2 for yes), if they had lied to avoid handing in a term paper
+on time (``LIEPAPER`` with 2 for yes), if they had purchased a term paper
+to hand in as their own or obtained a copy of an exam prior to taking the
+exam (``FRAUD`` with 2 for yes), and if they had copied answers during an
+exam from someone near them (``COPYEXAM`` with 2 for yes). Additionally, 
+their ``GPA``s were obtained and put into categories: (<2.99, 3.0 to 3.25,
+3.26 to 3.50, 3.51 to 3.75, and 3.76 to 4.0). These categories were coded 
+from 1 to 5, respectively. Again, the code starts with making sure the 
+variables are treated categorically by applying the ``factor`` function. 
+
+(ref:fig5-18) Tableplot of initial cheating and lying data set.
+
+```{r Figure5-18,fig.cap="(ref:fig5-18)",warning=FALSE,message=F}
+data(cheating) #Survey of students
+cheating$LIEEXAM <- factor(cheating$LIEEXAM)
+cheating$LIEPAPER <- factor(cheating$LIEPAPER)
+cheating$FRAUD <- factor(cheating$FRAUD)
+cheating$COPYEXAM <- factor(cheating$COPYEXAM)
+cheating$GPA <- factor(cheating$GPA)
+par(mfrow=c(1,1))
+require(tabplot)
+tableplot(cheating, sort=GPA)
+```
+
+We can explore some interesting questions about the relationships between 
+these variables. The
+tableplot in Figure \@ref(fig:Figure5-18) again helps us to get a general 
+idea of the data set
+and to assess some complicated aspects of the relationships between variables. 
+For example, the rates of different unethical behaviors seem to decrease with
+higher GPA students (but do not completely disappear!). This data set also has
+a few missing GPAs that we would want to carefully consider -- which sorts of
+students might not be willing to reveal their GPAs? It ends up that these
+students did not *admit* to any of the unethical behaviors... Note that we 
+used the ``sort=GPA`` option in the ``tableplot`` function to sort the 
+responses based on ``GPA`` to see how ``GPA`` might explain patterns of 
+unethical behavior. 
+
+While the relationship between GPA and presence/absence of the different 
+behaviors is of interest, we want to explore the types of behaviors.
+It is possible to group
+the lying behaviors as being a different type of unethical behavior than
+obtaining an exam prior to taking it, buying a paper, or copying someone else's
+answers. We want to explore whether there is some sort of relationship between
+the lying and copying behaviors -- are those that engage in one type of behavior
+more likely to do the other? Or are they independent of each other? This is a
+hard story to elicit from the previous plot because there are so many variables
+involved. 
+
+To simplify the results, combining the two groups of variables
+into the four possible combinations on
+each has the potential to simplify the results -- or at least allow exploration
+of additional research questions. In the table plot in 
+Figure \@ref(fig:Figure5-19), you can see
+the four categories for each, starting with no bad behavior of either type
+(which is fortunately the most popular response on both variables!). For each
+variable, there are students who admitted to one of the two violations and some
+that did both. The ``liar`` variable has categories of *None*, *ExamLie*,
+*PaperLie*, and *LieBoth*. The ``copier`` variable has categories of *None*,
+*PaperCheat*, *ExamCheat*, and *PaperExamCheat* (for doing both). The last 
+category for ``copier`` (plotted as a peach(?) color) seems to mostly occur at
+the top of the plot which is where the students who had lied to get out of things
+reside, so maybe there is a relationship between those two types of behaviors?
+On the other hand, for the students who have never lied, quite a few had
+cheated on exams. The contingency table can help us dig further into the
+hypotheses related to the Chi-square test of Independence that is appropriate
+in this situation.
+
+(ref:fig5-19) Tableplot of new variables liar and copier that allow 
+exploration of relationships between different types of lying and 
+cheating behaviors.
+
+```{r Figure5-19,fig.cap="(ref:fig5-19)",message=F,warning=F}
+cheating$liar <- interaction(cheating$LIEEXAM, cheating$LIEPAPER)
+levels(cheating$liar) <-c ("None","ExamLie","PaperLie","LieBoth")
+
+cheating$copier <- interaction(cheating$FRAUD, cheating$COPYEXAM)
+levels(cheating$copier) <- c("None","PaperCheat","ExamCheat","PaperExamCheat")
+
+cheatlietable <- tally(~liar+copier, data=cheating)
+cheatlietable
+tableplot(cheating, sort=liar, select=c(liar,copier))
+```
+
+Unfortunately, there were very few responses in some combinations of 
+categories even with $N=319$. For example, there was only one response
+each in the combinations for students that copied on papers and lied
+to get out of exams, papers, and both. Some other categories were pretty small
+as well in the groups that only had one behavior present. To get a higher
+number of counts in the combinations, we combined the single behavior only levels
+into "*either*" categories and left the *none* and *both* categories for each
+variable. This creates two new variables called ``liar2`` and ``copier2``
+(tableplot in Figure \@ref(fig:Figure5-20)). The code to create these 
+variables and make the plot is below.
+
+(ref:fig5-20) Tableplot of lying and copying variables after combining 
+categories. 
+
+```{r Figure5-20,fig.cap="(ref:fig5-20)",warning=F,message=F}
+#Collapse the middle categories of each variable
+cheating$liar2 <- cheating$liar
+levels(cheating$liar2) <- c("None","ExamorPaper","ExamorPaper","LieBoth")
+cheating$copier2 <- cheating$copier
+levels(cheating$copier2) <- c("None","ExamorPaper","ExamorPaper","CopyBoth")
+tableplot(cheating, sort=liar2, select=c(liar2,copier2))
+cheatlietable <- tally(~liar2+copier2, data=cheating)
+cheatlietable
+```
+
+This $3\times 3$ table is more manageable and has few really small 
+cells so we will proceed with the 6+ steps of hypothesis
+testing applied to these data using the Independence testing methods (again a
+single sample was taken from the population):
+
+1. **Hypotheses:**
+
+    * $H_0$: Lying and copying behavior are independent in the population
+    of students at this university. 
+    
+    * $H_A$: Lying and copying behavior are dependent in the population
+    of students at this university. 
+
+2. **Validity conditions:**
+
+    * Independence:
+    
+        * This assumption is presumed to be met since each subject
+        is measured only once in the table. No other information 
+        suggests a potential issue but we don't have much 
+        information on how these subjects were obtained.
+        
+    * All expected cell counts larger than 5 (required to use
+    $\chi^2$-distribution to find p-values):
+    
+        * We need to generate a table of expected cell counts to 
+        check this condition:
+
+        ```{r message=F,warning=F}
+        chisq.test(cheatlietable)$expected
+        ```
+    
+        * When we request the expected cell counts, there is a 
+        warning message (not shown).
+        
+        * There are three expected cell counts (in bold) below 5, 
+        so the condition is violated and a permutation approach 
+        should be used to obtain more trustworthy p-values.
+        
+        ```{r message=F,warning=F,echo=F}
+        require(pander)
+        x <- chisq.test(cheatlietable)$expected
+        emphasize.strong.cells(which(x <=5, arr.ind=T))
+        pander(x)
+        ```
+
+3. **Calculate the test statistic:**
+
+    * Use ``chisq. test`` although this table is small enough to do 
+    by hand if you want the practice -- see if you can find a similar answer
+    to what the function provides:
+
+    ```{r message=F,warning=F}
+    chisq.test(cheatlietable)
+    ```
+
+    * The $X^2$ statistic is 13.24.
+    
+4. **Find the p-value:**
+
+    * The parametric p-value is 0.0102 from the R output. This was based
+    on a $\chi^2$-distribution with $(3-1)*(3-1) = 4$ degrees of freedom 
+    that is displayed in Figure \@ref(fig:Figure5-21). Remember that this 
+    isn't quite the right distribution for the test statistic since our 
+    expected cell count condition was violated.
+    
+    (ref:fig5-21) Plot of $\boldsymbol{\chi^2}$-distribution with 4 
+    degrees of freedom. 
+    
+    ```{r Figure5-21,fig.cap="(ref:fig5-21)",echo=F,warning=F,message=F}
+    Xsq<-seq(from=0,to=30,length.out=100)
+    plot(Xsq,dchisq(Xsq,df=4),ylab="Density",
+         main="Plot of Chi-sq(4) distribution",type="l",col="blue",lwd=2)
+    abline(v=13.24,col="magenta")
+    ```
+
+    * If you want to repeat the p-value calculation directly:
+    
+    ```{r}
+    pchisq(13.2384, df=4, lower.tail=F)
+    ```
+    
+    * But since the expected cell condition is violated again, we 
+    should use permutations as implemented in the following 
+    code with the number of permutations increased to 10,000 to help 
+    get a better estimate of the p-value since it is 
+    possibly close to 0.05:
+    
+    (ref:fig5-22) Plot of permutation distributions for cheat/lie 
+    results with observed value of 13.24 (bold, vertical line).
+
+    ```{r Figure5-22,fig.cap="(ref:fig5-22)", warning=F,message=F}
+    Tobs <- chisq.test(tally(~liar2+copier2, data=cheating))$statistic
+    Tobs
+    par(mfrow=c(1,2))
+    B <- 10000 # Now performing 10,000 permutations
+    Tstar <- matrix(NA,nrow=B)
+    for (b in (1:B)){
+      Tstar[b] <- chisq.test(tally(~shuffle(liar2)+copier2,
+                                   data=cheating))$statistic
+    }
+    pdata(Tstar, Tobs, lower.tail=F)
+    hist(Tstar)
+    abline(v=Tobs, col="red", lwd=3)
+    plot(density(Tstar), main="Density curve of Tstar", lwd=2)
+    abline(v=Tobs, col="red", lwd=3)
+    ```
+
+    ```{r echo=F}
+    pval <- pdata(Tstar, Tobs, lower.tail=F)
+    ```
+    
+    * There were `r pval*10000` of $B$=10,000 permuted data 
+    sets that produced larger
+    $X^{2*}\text{'s}$ than the observed as displayed in 
+    Figure \@ref(fig:Figure5-22), so we report that the p-value was 
+    `r pval` using the permutation approach, which was slightly larger than the 
+    result provided by the parametric method. 
+
+5. **Make a decision:**
+
+    * With a p-value of `r pval`, we can say that there is a 
+    `r pval*100`% chance of observing a configuration like ours or more
+    extreme if the null hypothesis is true. So we should probably 
+    reject the null hypothesis although your standards for evidence 
+    might differ -- this is moderate to strong but not very strong 
+    evidence against the null hypothesis. 
+
+6. **Write a conclusion:**
+
+    * If we reject the null hypothesis, 
+    there is enough evidence to conclude that there is a 
+    relationship between lying and copying behavior in the population 
+    of students. There is no causal inference possible here since 
+    neither variable was randomly assigned (really neither is 
+    explanatory or response here either) but we can extend the
+    inferences to the population of students that these were selected 
+    from that would be willing to reveal their GPA (see initial 
+    discussion related to some differences in students that wouldn't
+    answer that question). 
+
+The standardized residuals can help us more fully understand this result 
+-- the mosaic plot only had one cell shaded and so wasn't needed here. 
+
+```{r eval=F}
+chisq.test(cheatlietable)$residuals
+```
+
+```{r echo=F,warning=F,message=F}
+require(pander)
+x <- chisq.test(cheatlietable)$residuals
+y <- round(x,4)
+emphasize.strong.cells(which(abs(y)>=2,arr.ind = TRUE))
+pander(y)
+```
+
+There is really one large standardized residual for the *ExamorPaper*
+liars and the *CopyBoth* copiers, with a much larger observed value than
+expected of 2.48. The only other medium-sized standardized residuals came
+from the *CopyBoth* copiers column with fewer than expected students in the 
+*None* category and more than expected in the *LieBoth* type of lying 
+category. So we are seeing more than expected that lied somehow and copied 
+-- we can say this suggests that the people who lie tend to copy too!
+
 ## Analyzing a stratified random sample of California schools	{#section5-11}
+
+In recent decades, there has been a push for quantification of school performance
+and tying financial punishment and rewards to growth in these metrics. One
+example is the API (Academic Performance Index) in California that is based
+mainly on student scores on standardized tests. It ranges between 200 and 1000
+and year to year changes are of interest to assess "performance" of schools --
+calculated as one year minus the previous year (negative "growth" is also
+possible!). Suppose that a researcher is interested in whether the growth
+metric might differ between different levels of schools. Maybe it is easier or
+harder for elementary, middle, or high schools to attain growth. The researcher
+has a list of most of the schools in the state of each level that are using a
+data-base that the researcher has access to. In order to assess this question, 
+the researcher takes a stratified random sample^[A stratified random sample
+involves taking a simpler random sample from each group or strata of the
+population. It is useful to make sure that each group is represented at a 
+chosen level (for example the sample proportion of the total
+size). If a simple random sample of all schools had been taken, it is possible
+that a level could have no schools selected.], selecting 
+$n_{\text{elementary}}=100$ schools from the population of 4421 elementary 
+schools, $n_{\text{middle}}=50$ from the population of 1018 middle schools,
+and $n_{\text{high}}=50$ from the population of 755 high
+schools. These data are available in the ``survey`` package (Lumley, 2014)
+and the ``api`` and ``apistrat`` data sets. The ``growth`` (change!) in 
+API scores for the schools between 1999 and
+2000 (taken as the year 2000 score minus 1999 score) is used as the response
+variable. The boxplot and beanplot of the growth scores are displayed in Figure
+\@ref(fig:Figure5-23). They suggest some differences in the growth 
+rates among the different
+levels. There are also a few schools flagged as being possible outliers. 
+
+(ref:fig5-23) Boxplot and beanplot of the API growth scores by level 
+of school (E for elementary, M for Middle, and H for High school).
+
+```{r Figure5-23,fig.cap="(ref:fig5-23)",message=F,warning=F}
+require(survey)
+data(api)
+tally(~stype, data=apipop) #Population counts
+tally(~stype, data=apistrat) #Sample counts
+par(mfrow=c(1,2))
+boxplot(growth~stype, data=apistrat, ylab="Growth", ylim=c(-55,160))
+beanplot(growth~stype, data=apistrat, log="", col="beige",
+         method="jitter", ylim=c(-55,160))
+```
+
+The One-Way ANOVA $F$-test, provided below, suggests
+evidence of some difference in the true mean growth scores among the different
+types of schools ($F(2,197)=23.56,\text{ p-value}<0.0001$). But the 
+residuals from this model displayed in the QQ-Plot in 
+Figure \@ref(fig:Figure5-24) contain a slightly long right tail, 
+suggesting a right skewed
+distribution for the residuals. In a high-stakes situation such as this, 
+reporting results with violations of the assumptions probably would not be
+desirable, so another approach is needed. The permutation methods would be
+justified here but there is another "simpler" option available using our
+Chi-square analysis methods. 
+
+```{r echo=F}
+par(mfrow=c(1,1))
+```
+
+(ref:fig5-24) QQ-plot of standardized residuals from the One-Way ANOVA
+linear model.
+
+```{r Figure5-24,fig.cap="(ref:fig5-24)",warning=F,message=F}
+m1<-lm(growth~stype, data=apistrat)
+require(car)
+Anova(m1)
+plot(m1, which=2)
+```
+
+One way to get around the normality assumption is to use a method 
+that does not assume the responses
+follow a normal distribution. If we ***bin*** or cut the quantitative response
+variable into a set of ordered categories and apply a Chi-square test, we can
+proceed without concern about the lack of normality in the residuals of the
+ANOVA model. To create these bins, a simple idea would be to use the quartiles
+to generate the response variable categories, binning the quantitative
+responses into groups for the lowest 25%, second 25%, third 25%, and highest
+25% by splitting the data at $Q_1$, the Median, and $Q_3$. In R, the 
+``cut`` function is available to turn a
+quantitative variable into a categorical variable. First, we can use the
+information from ``favstats`` to find the cut-points:
+
+```{r}
+favstats(~growth, data=apistrat)
+```
+
+The ``cut`` function can provide the binned variable if it is provided
+with the end-points of the desired intervals to
+create new categories with those names in a new variable called 
+``growthcut``. 
+
+```{r}
+apistrat$growthcut <- cut(apistrat$growth, breaks=c(-47,6.75,25,48,133),
+                          include.lowest=T)
+tally(~growthcut, data=apistrat)
+```
+
+Now that we have a categorical response variable, we need to decide which 
+sort of Chi-squared
+analysis to perform. The sampling design determines the correct analysis as
+always in these situations. The stratified random sample involved samples from
+each of the three populations so a Homogeneity test should be employed. In
+these situations, the stacked bar chart provides the appropriate summary of the
+data. It also shows us the labels of the categories that the ``cut`` function
+created in the new ``growthcut`` variable:
+
+(ref:fig5-25) Stacked bar chart of the growth category responses
+by level of school.
+
+```{r Figure5-25,fig.cap="(ref:fig5-25)",message=F,warning=F}
+plot(growthcut~stype, data=apistrat)
+```
+
+
+Figure \@ref(fig:Figure5-25) suggests that the distributions of growth
+scores may not be the same across the levels of the
+schools with many more high growth *Elementary* schools than in either 
+the *Middle* or *High* school groups (the "high" growth category
+is labeled as (48, 133] providing the interval of growth scores placed in this
+category). Similarly, the proportion of the low or negative growth (category of
+(-47.6, 6.75] for "growth" between -47.6 and 6.75) is lowest in *Elementary*
+schools and highest in the *High* schools. Statisticians often work
+across many disciplines and so may not always have the subject area knowledge
+to know why these differences exist (just like you might not), but an education
+researcher could take this sort of information -- because it is a useful summary
+of interesting school-level data -- and generate further insights into why
+growth in the API metric may or may not be a good or fair measure of school
+performance. 
+
+Of course, we want to consider whether these results can extend to the 
+population of all California schools. The homogeneity hypotheses for 
+assessing the growth rate categories across the types of schools would be:
+
+* $H_0$: There is no difference in the distribution of growth categories 
+across the three levels of schools in the population of California schools.
+
+* $H_A$: There is some difference in the distribution of growth categories 
+across the three levels of schools in the population of California schools. 
+
+There might be an issue with the independence assumption in that schools 
+within the same district might
+be more similar to one another and different between one another. Sometimes
+districts are accounted for in education research to account for differences in
+policies and demographics among the districts. We could explore this issue by
+finding district-level average growth rates and exploring whether those vary
+systematically but this is beyond the scope of the current exploration. 
+
+Checking the expected cell counts gives insight into the assumption for 
+using the $\boldsymbol{\chi^2}$-distribution to find the p-value:
+
+```{r warning=F,message=F}
+growthtable <- tally(~stype+growthcut, data=apistrat)
+growthtable
+chisq.test(growthtable)$expected 
+```
+
+The smallest expected count is 12.25, occurring in four different cells,
+so the assumptions for using the parametric approach are met. 
+
+```{r}
+chisq.test(growthtable) 
+```
+
+The observed test statistic is $X^2=38.67$ and, based on a 
+$\boldsymbol{\chi^2}(6)$ distribution, the p-value is 0.0000008. This p-value
+suggests that we should reject the null hypothesis. Then we can conclude
+that there is strong evidence
+of some difference in the distribution of API growth of schools among
+*Elementary*, *Middle* and *High School* in the population of schools in 
+California between 1999 and 2000. We can conclude that there is evidence 
+of some difference in the population (California
+schools) because the schools were randomly selected from all the California
+schools but because the level of schools, obviously, cannot be randomly
+assigned, we cannot say that level of school causes these differences. 
+
+The standardized residuals can enhance this interpretation, displayed in 
+Figure \@ref(fig:Figure5-26):
+
+(ref:fig5-26) Mosaic plot of the API Growth rate categories versus 
+level of the school with shading for size of standardized residuals. 
+
+```{r Figure5-26,fig.cap="(ref:fig5-26)"}
+chisq.test(growthtable)$residuals
+mosaicplot(growthcut~stype,data=apistrat,shade=T)    
+```
+
+The *Elementary* schools have fewer low/negative growth schools and more
+high growth schools than expected under the null hypothesis. The *High* 
+schools have more low growth and fewer higher growth (over 25) schools 
+than expected if there were no difference in patterns of response across 
+the school levels. The *Middle* school results were closer to the results 
+expected if there were no differences. 
+
+The binning of quantitative variables is not a first step in analyses --
+the quantitative
+version is almost always preferable. However, this analysis avoided the
+violation of the normality assumption that was somewhat problematic for the
+ANOVA and still provided useful inferences to the differences in the types of
+schools. When one goes from a quantitative to categorical version of a
+variable, one loses information (the specific details of the quantitative
+responses within each level created) and this almost always will result in a
+loss of statistical power of the procedure. In this situation, the p-value from
+the ANOVA was of the order $10^{-10}$ while the Chi-square test had a
+p-value of order $10^{-7}$. This larger p-value is typical of the loss of
+power in going to a categorical response when more information was available. 
+In many cases, there are no options but to use contingency table analyses. This
+example shows that there might be some situations where "going categorical"
+could be an acceptable method for handing situations where an assumption is
+violated. 
 
 ## Chapter summary	{#section5-12}
 
+Chi-square tests can be generally used to perform two types of tests,
+the Independence and Homogeneity
+tests. The appropriate analysis is determined based on the data collection
+methodology. The parametric Chi-squared distribution for which these tests are
+named is appropriate when the expected cell counts are large enough (related to
+having a large enough overall sample). When this condition is violated, the
+permutation approach can provide valuable inferences in these situations in
+most situations. 
+
+Data displays of the stacked barchart (Homogeneity) and mosaic plots 
+(Independence) provide a visual
+summary of the results that can also be found in contingency tables. You should
+have learned how to calculate the $X^2$ (X-squared) test statistic
+based on first finding the expected cell counts. Under certain assumptions, it
+will follow a Chi-Squared distribution with $(R-1)(C-1)$ degrees of freedom. When
+those assumptions are not met, it is better to use a permutation approach to
+find p-values. Either way, the same statistic is used to test either kind of
+hypothesis, independence or homogeneity. If there is evidence to reject the
+null hypothesis, then it is interesting to see which cells in the table
+contributed to the deviations from the null hypothesis. The standardized
+residuals provide that information. Graphing them in a mosaic plot makes for a
+fun display to identify the large residuals and often allows you to better
+understand the results. This should tie back into the original data display and
+contingency table where you identified initial patterns. 
+
 ## Review of Important R commands	{#section5-13}
+
+The main components of R code used in this chapter follow with components
+to modify in red where $y$ is a response variable and $x$ is a predictor 
+are easily identified:
+
+* `r colFmt("TABLENAME","red")` <- tally(~`r colFmt("x","red")` +
+`r colFmt("y","red")`, data=`r colFmt("DATASETNAME","red")`, margins=F)
+    
+    * This function requires that the ``mosaic `` package has been loaded.
+
+    * This provides a table of the counts in the variable called 
+    ``TABLENAME``.
+    
+    * ``margins=T`` is used if want to display row, column, and 
+    table totals. 
+
+* plot(`r colFmt("y","red")`~
+`r colFmt("x","red")`, data=`r colFmt("DATASETNAME","red")`)
+
+    * Makes a stacked bar chart useful for homogeneity test situations.
+    
+* mosaicplot(`r colFmt("TABLENAME","red")`)
+
+    * Makes a mosaic plot useful for finding patterns in the table 
+    in independence test situations.
+    
+* chisq.test(`r colFmt("TABLENAME","red")`)
+
+    * Provides $X^2$ and p-values based on the 
+    $\boldsymbol{\chi^2}$-distribution with $(R-1)(C-1)$ degrees of 
+    freedom.
+    
+* chisq.test(`r colFmt("TABLENAME","red")`)$expected
+
+    * Provides expected cell counts. 
+
+* pchisq(`r colFmt("X-SQUARED","red")`, 
+df=(`r colFmt("R","red")`- 1)*(`r colFmt("C","red")`- 1), lower.tail=F)
+
+    * Provides p-value from $\boldsymbol{\chi^2}$-distribution with 
+    $(R-1)(C-1)$ degrees of freedom for observed test statistic.
+    
+    * See Section \@ref(section5-5) for code related to finding a 
+    permutation-based p-value. 
+    
+* chisq.test(`r colFmt("TABLENAME","red")`)$residuals^2
+
+    * Provides $X^2$ contributions from each cell in table.
+    
+* chisq.test(`r colFmt("TABLENAME","red")`)$residuals
+
+    * Provides standardized residuals.
+    
+* mosaicplot(`r colFmt("TABLENAME","red")`, shade=T)
+
+    * Provides a mosaic plot with shading based on standardized residuals.
 
 ## Practice problems	{#section5-14}
 
+Determine which type of test is appropriate in each situation --
+***Independence***  or  ***Homogeneity***?
+
+5.1. Concerns over diseases being transmitted between birds and humans 
+have led to many areas developing
+monitoring plans for the birds that are in their regions. The duck pond on
+campus at MSU-Bozeman is a bit like a night club for the birds that pass
+through Bozeman. 
+
+i) Suppose that a researcher randomly
+samples 20 ducks at the duck pond on campus on 4 different 
+occasions and records the number ducks that are healthy and number 
+that are sick on each day. The variables in this study are the day of
+measurement and sick/healthy. 
+
+ii) In another monitoring study, a researcher goes to a wetland area
+and collects a random sample from all birds
+present on a single day, classifies them by type of bird (ducks, 
+swans, etc.) and then assesses whether each is sick or healthy. 
+The variables in this study are type of bird and sick/healthy. 
+
+5.2. Psychologists performed an experiment on 48 male bank supervisors 
+attending a management institute to investigate biases against women 
+in personnel decisions. The supervisors were
+asked to make a decision on whether to promote a hypothetical applicant based
+on a personnel file. For half of them, the application file described 
+a female candidate; for the others it described a male. 
+
+5.3. Researchers collected data on death
+penalty sentencing in Georgia. For 243 crimes, they categorized the crime by
+severity from 1 to 6 with Category 1 comprising barroom brawls, liquor-induced
+arguments, lovers' quarrels, and similar crimes and Category 6 including the
+most vicious, cruel, cold-blooded, unprovoked crimes. They also recorded the
+perpetrator's race. They wanted to know if there was a relationship between
+race and type of crime. 
+
+5.4. Epidemiologists want to see if
+Vitamin C helped people with colds. They would like to give some patients
+Vitamin C and some a placebo then compare the two groups. However, they are
+worried that the placebo might not be working. Since vitamin C has such a
+distinct taste, they are worried the participants will know which group they are
+in. To test if the placebo was working, they collected 200 subjects and
+randomly assigned half to take a placebo and the other half to take Vitamin C. 
+30 minutes later, they asked the subjects which supplement they received
+(hoping that the patients would not know which group they were assigned to). 
+
+5.5. Is zodiac sign related to GPA?
+300 randomly selected students from MSU were asked their birthday and their
+current GPA. GPA was then categorized as < 1.50 = F, 1.51-2.50 = D, 
+2.51 - 3.25 = C, 3.26-3.75 = B, 3.76-4.0 = A and their birthday was used 
+to find their zodiac sign. 
+
+5.6. In 1935, the statistician R. A. 
+Fisher famously had a colleague claim that she could distinguish whether milk
+or tea was added to a cup first. Fisher presented her, in a random order, 4
+cups that were filled with milk first and 4 cups that were filled with tea first. 
+
+5.7. Researchers wanted to see if
+people from Rural and Urban areas aged differently. They contacted 200 people
+from Rural areas and 200 people from Urban areas and asked the participants
+their age (<40, 41-50, 51-60, >60). 
+
+The [FiveThirtyEight Blog](https://fivethirtyeight.com/)
+often shows up with interesting data summaries
+that have general public appeal. Their staff includes a bunch of quants with
+various backgrounds. When starting their blog, they had to decide on the data
+is/are question that we introduced in Section \@ref(section2-1). To help them 
+think about this, they collected a nationally representative sample 
+that contained three questions about this. Based on their survey, they 
+concluded that 
+
+> Relevant to the 
+ [interests of FiveThirtyEight](http://fivethirtyeight.com/datalab/data-is-vs-data-are/) in particular, we also asked whether people preferred using "data" as a
+ singular or plural noun. To those who prefer the plural, I'll put this in
+ your terms: The data are pretty conclusive that the vast majority of 
+ respondents think we should say "data is. " The singular crowd won by a 58
+ percentage-point margin, with 79 percent of respondents liking "data is" to 21
+ percent preferring "data are. " But only half of respondents had put any
+ thought to the usage prior to our survey, so it seems that it's not a 
+ pressing issue for most. 
+>
+
+This came from a survey that contained questions about *which is the 
+correct usage*, (``isare``), *have you thought about this issue* 
+(``thoughtabout``) with levels Yes/No, and *do you care about this issue*
+(``careabout``) with four levels from *Not at all* to *A lot*. The following
+code loads their data set after missing responses were removed, does a
+little re-ordering of factor levels to help make the results easier to 
+understand, and makes a tableplot to get a general sense of the results 
+including information on the respondents' gender, age, income, and education
+(or just look at the cover of the book). 
+
+```
+csd<- read.csv("http://www.math.montana.edu/courses/s217/documents/csd.csv")
+require(tabplot)
+csd$careabout <- factor(csd$careabout,
+                    levels=levels(csd$careabout)[c(1,4,3,2)])
+csd$Education <- factor(csd$Education,
+                    levels=levels(csd$Education)[c(4,3,5,1,2)])
+csd$Household.Income <- factor(csd$Household.Income,
+                    levels=levels(csd$Household.Income)[c(1,4,5,6,2,3)])
+tableplot(csd[,c("isare","careabout","thoughtabout","Gender",
+                 "Age","Household.Income","Education")])
+```
+
+5.8. If we are interested in the variables ``isare`` and ``careabout``,
+what sort of test should we perform?
+
+5.9. Make the appropriate plot of the results for the table relating 
+those two variables relative to your answer to 5.8. 
+
+5.10. Generate the contingency table
+and find the expected cell counts, first "by hand" and then check them using
+the output. Is the parametric procedure appropriate here? Why or why not?
+
+5.11. Report the value of the test
+statistic, its distribution under the null, the parametric p-value, and write a
+decision and conclusion, making sure to address scope of inference. 
+
+5.12. Make a mosaic plot with the
+standardized residuals and discuss the results. Specifically, in what way do
+the is/are preferences move away from the null hypothesis for people that care
+more about this?
+
+
+> We might be fighting a losing battle on this particular word usage, but since we
+  are in the group that cares a lot about this, we are going
+  to keep trying...
+>
