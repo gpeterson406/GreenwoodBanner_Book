@@ -12,3 +12,4 @@ output:
     includes:
       in_header: preamble.tex
 tables: true
+new_session: TRUE

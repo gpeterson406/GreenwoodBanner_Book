@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-29">
+<meta name="date" content="2017-06-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -293,7 +293,7 @@ pt<span class="op">$</span>drops&lt;-<span class="kw">factor</span>(pt<span clas
          <span class="dt">xlab=</span><span class="st">&quot;Drops&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,<span class="dt">log=</span><span class="st">&quot;&quot;</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>,<span class="st">&quot;white&quot;</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-1"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-1-1.png" alt="Beanplot of paper towel data by Drops (x-axis) and Brand (side of bean, shaded area for Brand B1." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-1-1.png" alt="Beanplot of paper towel data by Drops (x-axis) and Brand (side of bean, shaded area for Brand B1." width="672" />
 <p class="caption">
 Figure 4.1: Beanplot of paper towel data by <code>Drops</code> (x-axis) and <code>Brand</code> (side of bean, shaded area for <code>Brand</code> <em>B1</em>.
 </p>
@@ -304,7 +304,7 @@ Figure 4.1: Beanplot of paper towel data by <code>Drops</code> (x-axis) and <cod
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(responses <span class="op">~</span><span class="st"> </span>brand<span class="op">*</span>drops, <span class="dt">data=</span>pt)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-2"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-2-1.png" alt="Interaction plot of the paper towel data with Drops on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-2-1.png" alt="Interaction plot of the paper towel data with Drops on the x-axis." width="672" />
 <p class="caption">
 Figure 4.2: Interaction plot of the paper towel data with <code>Drops</code> on the x-axis.
 </p>
@@ -313,7 +313,7 @@ Figure 4.2: Interaction plot of the paper towel data with <code>Drops</code> on 
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(responses <span class="op">~</span><span class="st"> </span>drops<span class="op">*</span>brand, <span class="dt">data=</span>pt)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-3"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-3-1.png" alt="Interaction plot of paper towel data with Brand on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-3-1.png" alt="Interaction plot of paper towel data with Brand on the x-axis." width="672" />
 <p class="caption">
 Figure 4.3: Interaction plot of paper towel data with <code>Brand</code> on the x-axis.
 </p>
@@ -324,7 +324,7 @@ Figure 4.3: Interaction plot of paper towel data with <code>Brand</code> on the 
 <p>Before we get to the hypothesis tests to formally make this assessment (you knew some sort of p-value was coming, right?), we can visualize the 5 different scenarios that could characterize the sorts of results you could observe in a Two-Way ANOVA situation. Figure <a href="chapter4.html#fig:Figure4-4">4.4</a> shows 4 of the 5 scenarios. In panel (a), when there are no differences from either variable (Scenario 1), it provides relatively parallel lines and basically no differences either across <code>Drops</code> levels (x-axis) or <code>Brand</code> (lines). This would result in no evidence related to a difference in brands, water levels, or any interaction between them.</p>
 
 <div class="figure"><span id="fig:Figure4-4"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-4-1.png" alt="Interaction plots of four possible scenarios in the paper towel study." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-4-1.png" alt="Interaction plots of four possible scenarios in the paper towel study." width="672" />
 <p class="caption">
 Figure 4.4: Interaction plots of four possible scenarios in the paper towel study.
 </p>
@@ -335,7 +335,7 @@ Figure 4.4: Interaction plots of four possible scenarios in the paper towel stud
 <p>Finally, Scenario 5 (Figure <a href="chapter4.html#fig:Figure4-5">4.5</a>) involves an interaction between the two variables (<code>Drops</code> and <code>Brand</code>). There are many ways that interactions can present but the main thing is to look for clearly non-parallel lines. As noted in the previous discussion, the <code>Drops</code> effect appears to change depending on which level of <code>Brand</code> is being considered. Note that the plot here described as Scenario 5 is the same as the initial plot of the results in Figure <a href="chapter4.html#fig:Figure4-2">4.2</a>.</p>
 
 <div class="figure"><span id="fig:Figure4-5"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-5-1.png" alt="Interaction plot of Scenario 5 where it appears that an interaction is present." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-5-1.png" alt="Interaction plot of Scenario 5 where it appears that an interaction is present." width="672" />
 <p class="caption">
 Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction is present.
 </p>
@@ -480,11 +480,13 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: responses
-##             Df Sum Sq Mean Sq F value   Pr(&gt;F)
-## brand        1 4.3322  4.3322 10.5192 0.003458
-## drops        2 4.8581  2.4290  5.8981 0.008251
-## brand:drops  2 1.5801  0.7901  1.9184 0.168695
-## Residuals   24 9.8840  0.4118</code></pre>
+##             Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## brand        1 4.3322  4.3322 10.5192 0.003458 **
+## drops        2 4.8581  2.4290  5.8981 0.008251 **
+## brand:drops  2 1.5801  0.7901  1.9184 0.168695   
+## Residuals   24 9.8840  0.4118                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <table style="width:89%;">
 <caption>Interaction ANOVA table with interaction row in bold.</caption>
 <colgroup>
@@ -545,7 +547,7 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(m1), <span class="dt">grid=</span>T, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-6"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-6-1.png" alt="Plot of estimated results of interaction model." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-6-1.png" alt="Plot of estimated results of interaction model." width="672" />
 <p class="caption">
 Figure 4.6: Plot of estimated results of interaction model.
 </p>
@@ -556,10 +558,12 @@ Figure 4.6: Plot of estimated results of interaction model.
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: responses
-##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)
-## brand      1  4.3322  4.3322  9.8251 0.004236
-## drops      2  4.8581  2.4290  5.5089 0.010123
-## Residuals 26 11.4641  0.4409</code></pre>
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## brand      1  4.3322  4.3322  9.8251 0.004236 **
+## drops      2  4.8581  2.4290  5.5089 0.010123 * 
+## Residuals 26 11.4641  0.4409                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The p-values for the main effects of <code>brand</code> and <code>drops</code> change slightly from the results in the interaction model due to changes in the <span class="math inline">\(\text{MS}_E\)</span> from 0.4118 to 0.4409 (more variability is left over in the simpler model) and the <span class="math inline">\(\text{DF}_{\text{error}}\)</span> that increases from 24 to 26. In both models, the <span class="math inline">\(\text{SS}_{\text{Total}}\)</span> is the same (20.6544). In the interaction model,</p>
 <p><span class="math display">\[\begin{array}{rl}
 \text{SS}_{\text{Total}} &amp; = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
@@ -581,10 +585,12 @@ Figure 4.6: Plot of estimated results of interaction model.
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: responses
-##            Sum Sq Df F value   Pr(&gt;F)
-## brand      4.3322  1  9.8251 0.004236
-## drops      4.8581  2  5.5089 0.010123
-## Residuals 11.4641 26</code></pre>
+##            Sum Sq Df F value   Pr(&gt;F)   
+## brand      4.3322  1  9.8251 0.004236 **
+## drops      4.8581  2  5.5089 0.010123 * 
+## Residuals 11.4641 26                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The new output switches the columns around and doesn’t show you the mean squares, but gives the most critical parts of the output. Here, there is no change in results because it is balanced design with equal counts of responses in each combination of the two explanatory variables.</p>
 <p>The additive model, when appropriate, provides simpler interpretations for each explanatory variable compared to models with interactions because the effect of one variable is the same regardless of the levels of the other variable and vice versa. There are two tools to aid in understanding the impacts of the two variables in the additive model. First, the model summary provides estimated coefficients with interpretations like those seen in Chapter <a href="chapter3.html#chapter3">3</a> (deviation of group <span class="math inline">\(j\)</span> or <span class="math inline">\(k\)</span> from the baseline group’s mean), except with the additional wording of “controlling for” the other variable added to any of the discussion. Second, the term-plots now show each main effect and how the groups differ with one panel for each of the two explanatory variables in the model. These term-plots are created by holding the other variable constant at one of its levels.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m2)</code></pre></div>
@@ -597,11 +603,13 @@ Figure 4.6: Plot of estimated results of interaction model.
 ## -1.4561 -0.4587  0.1297  0.4434  0.9695 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)   1.8454     0.2425   7.611 4.45e-08
-## brandB2       0.7600     0.2425   3.134  0.00424
-## drops20      -0.4680     0.2970  -1.576  0.12715
-## drops30      -0.9853     0.2970  -3.318  0.00269
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   1.8454     0.2425   7.611 4.45e-08 ***
+## brandB2       0.7600     0.2425   3.134  0.00424 ** 
+## drops20      -0.4680     0.2970  -1.576  0.12715    
+## drops30      -0.9853     0.2970  -3.318  0.00269 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 0.664 on 26 degrees of freedom
 ## Multiple R-squared:  0.445,  Adjusted R-squared:  0.3809 
@@ -611,7 +619,7 @@ Figure 4.6: Plot of estimated results of interaction model.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(m2))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-7"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-7-1.png" alt="Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-7-1.png" alt="Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other." width="672" />
 <p class="caption">
 Figure 4.7: Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other.
 </p>
@@ -630,7 +638,7 @@ Figure 4.7: Term-plots of additive model for paper towel data. Left panel displa
 <span class="kw">intplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), 
         <span class="dt">main=</span><span class="st">&quot;Interaction Plot&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">40</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-8"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-8-1.png" alt="Beanplot and interaction plot of the tooth growth data set." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-8-1.png" alt="Beanplot and interaction plot of the tooth growth data set." width="672" />
 <p class="caption">
 Figure 4.8: Beanplot and interaction plot of the tooth growth data set.
 </p>
@@ -642,11 +650,13 @@ Figure 4.8: Beanplot and interaction plot of the tooth growth data set.
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##            Sum Sq Df  F value    Pr(&gt;F)
-## supp       205.35  1  12.3170 0.0008936
-## dose      2224.30  1 133.4151 &lt; 2.2e-16
-## supp:dose   88.92  1   5.3335 0.0246314
-## Residuals  933.63 56</code></pre>
+##            Sum Sq Df  F value    Pr(&gt;F)    
+## supp       205.35  1  12.3170 0.0008936 ***
+## dose      2224.30  1 133.4151 &lt; 2.2e-16 ***
+## supp:dose   88.92  1   5.3335 0.0246314 *  
+## Residuals  933.63 56                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The R output is reporting an interaction test result of <span class="math inline">\(F(1,56)=5.3\)</span> with a p-value of 0.025. But this should raise a red flag since the numerator degrees of freedom are not what we should expect of <span class="math inline">\((K-1)*(J-1) = (2-1)*(3-1)=2\)</span>. This brings up an issue in R when working with categorical variables. If the levels of a categorical variable are entered numerically, R will treat them as quantitative variables and not split out the different levels of the categorical variable. To make sure that R treats categorical variables the correct way, we should use the <code>factor</code> function on any variables that are categorical but are coded numerically in the data set. The following code creates a new variable called <code>dosef</code> using the function that will help us obtain correct results from the linear model. The re-run of the ANOVA table provides the correct analysis and the expected <span class="math inline">\(df\)</span> for the two rows of output involving <code>dosef</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ToothGrowth<span class="op">$</span>dosef&lt;-<span class="kw">factor</span>(ToothGrowth<span class="op">$</span>dose)
 TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dosef, <span class="dt">data=</span>ToothGrowth)
@@ -654,11 +664,13 @@ TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##             Sum Sq Df F value    Pr(&gt;F)
-## supp        205.35  1  15.572 0.0002312
-## dosef      2426.43  2  92.000 &lt; 2.2e-16
-## supp:dosef  108.32  2   4.107 0.0218603
-## Residuals   712.11 54</code></pre>
+##             Sum Sq Df F value    Pr(&gt;F)    
+## supp        205.35  1  15.572 0.0002312 ***
+## dosef      2426.43  2  92.000 &lt; 2.2e-16 ***
+## supp:dosef  108.32  2   4.107 0.0218603 *  
+## Residuals   712.11 54                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The ANOVA <span class="math inline">\(F\)</span>-test for an interaction between supplement type and dosage level is <span class="math inline">\(F(2,54)= 4.107\)</span> with a p-value of 0.022. So there appears to be enough evidence to reject the null hypothesis of no interaction between <em>Dosage</em> and <em>Delivery method</em>, supporting a changing effect on tooth growth of dosage based on the delivery method in the Guinea Pigs that were assigned.</p>
 <p>Any similarities between this correct result and the previous WRONG result are coincidence. I (Greenwood) once attended a Master’s defense where the results from a similar model were not as expected (small p-values in places they didn’t expect and large p-values in places where they thought differences existed). During the presentation, the student showed some ANOVA tables and the four level categorical variable had 1 numerator <span class="math inline">\(df\)</span> in the ANOVA table. The student passed with major revisions but had to re-run <strong>all</strong> the results and re-write <strong>all</strong> of the conclusions… So be careful to check the ANOVA results (<span class="math inline">\(df\)</span> and for the right number of expected model coefficients) to make sure they match your expectations. This is one reason why you will be learning to fill in ANOVA tables based on information about the study so that you can be prepared to detect when your code has let you down<a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a>. It is also a great reason to explore term-plots and coefficient interpretations as that can also help diagnose errors in model construction.</p>
 <p>Getting back to the previous results, we now have enough background information to more formally write up a focused interpretation of these results. The 6+ hypothesis testing steps in this situation would be focused on first identifying that the best analysis here is as a Two-Way ANOVA situation (these data were analyzed in Chapter <a href="chapter3.html#chapter3">3</a> as a One-Way ANOVA but this version is better because it can explore whether there is an interaction between delivery method and dosage). We will use a 5% significance level and start with assessing the evidence for an interaction. If the interaction had not been dropped, we would have reported the test for the interaction, re-fit the additive model and used it to explore the main effect tests and estimates for <em>Dose</em> and <em>Delivery method</em>.</p>
@@ -687,7 +699,7 @@ TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(TG2, <span class="dt">pch=</span><span class="dv">16</span>) </code></pre></div>
 <div class="figure"><span id="fig:Figure4-9"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-9-1.png" alt="Diagnostic plots for the interaction model for Tooth Growth." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-9-1.png" alt="Diagnostic plots for the interaction model for Tooth Growth." width="672" />
 <p class="caption">
 Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 </p>
@@ -703,11 +715,13 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##             Sum Sq Df F value    Pr(&gt;F)
-## supp        205.35  1  15.572 0.0002312
-## dosef      2426.43  2  92.000 &lt; 2.2e-16
-## supp:dosef  108.32  2   4.107 0.0218603
-## Residuals   712.11 54</code></pre>
+##             Sum Sq Df F value    Pr(&gt;F)    
+## supp        205.35  1  15.572 0.0002312 ***
+## dosef      2426.43  2  92.000 &lt; 2.2e-16 ***
+## supp:dosef  108.32  2   4.107 0.0218603 *  
+## Residuals   712.11 54                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <ul>
 <li>The test statistic is <span class="math inline">\(F(2,54)=4.107\)</span>.</li>
 </ul></li>
@@ -738,13 +752,15 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 ##  -8.20  -2.72  -0.27   2.65   8.27 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)     13.230      1.148  11.521 3.60e-16
-## suppVC          -5.250      1.624  -3.233  0.00209
-## dosef1           9.470      1.624   5.831 3.18e-07
-## dosef2          12.830      1.624   7.900 1.43e-10
-## suppVC:dosef1   -0.680      2.297  -0.296  0.76831
-## suppVC:dosef2    5.330      2.297   2.321  0.02411
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     13.230      1.148  11.521 3.60e-16 ***
+## suppVC          -5.250      1.624  -3.233  0.00209 ** 
+## dosef1           9.470      1.624   5.831 3.18e-07 ***
+## dosef2          12.830      1.624   7.900 1.43e-10 ***
+## suppVC:dosef1   -0.680      2.297  -0.296  0.76831    
+## suppVC:dosef2    5.330      2.297   2.321  0.02411 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 3.631 on 54 degrees of freedom
 ## Multiple R-squared:  0.7937, Adjusted R-squared:  0.7746 
@@ -753,7 +769,7 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(TG2), <span class="dt">grid=</span>T, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-10"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-10-1.png" alt="Term-plot for the estimated interaction for the Tooth Growth data." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-10-1.png" alt="Term-plot for the estimated interaction for the Tooth Growth data." width="672" />
 <p class="caption">
 Figure 4.10: Term-plot for the estimated interaction for the Tooth Growth data.
 </p>
@@ -763,7 +779,7 @@ Figure 4.10: Term-plot for the estimated interaction for the Tooth Growth data.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">cldshift=</span><span class="dv">1</span>,
         <span class="dt">cld=</span>T, <span class="dt">main=</span><span class="st">&quot;Interaction Plot with CLD&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-11"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-11-1.png" alt="Interaction plot with added CLD from Tukey’s HSD." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-11-1.png" alt="Interaction plot with added CLD from Tukey’s HSD." width="672" />
 <p class="caption">
 Figure 4.11: Interaction plot with added CLD from Tukey’s HSD.
 </p>
@@ -783,7 +799,7 @@ debt<span class="op">$</span>cigbuy &lt;-<span class="st"> </span><span class="k
 debtc &lt;-<span class="st"> </span><span class="kw">na.omit</span>(debt)
 <span class="kw">intplot</span>(prodebt <span class="op">~</span><span class="st"> </span>cigbuy<span class="op">*</span>incomegp, <span class="dt">data=</span>debtc, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-12"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-12-1.png" alt="Interaction plot of prodebt by income group and buy cigarettes (0=no, 1=yes)." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-12-1.png" alt="Interaction plot of prodebt by income group and buy cigarettes (0=no, 1=yes)." width="672" />
 <p class="caption">
 Figure 4.12: Interaction plot of <code>prodebt</code> by income group and buy cigarettes (0=no, 1=yes).
 </p>
@@ -801,17 +817,19 @@ debt1 &lt;-<span class="st"> </span><span class="kw">lm</span>(prodebt <span cla
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: prodebt
-##                  Sum Sq  Df F value   Pr(&gt;F)
-## incomegp          9.018   4  4.5766 0.001339
-## cigbuy            0.703   1  1.4270 0.233222
-## incomegp:cigbuy   1.971   4  1.0003 0.407656
-## Residuals       144.835 294</code></pre>
+##                  Sum Sq  Df F value   Pr(&gt;F)   
+## incomegp          9.018   4  4.5766 0.001339 **
+## cigbuy            0.703   1  1.4270 0.233222   
+## incomegp:cigbuy   1.971   4  1.0003 0.407656   
+## Residuals       144.835 294                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The diagnostic plots (Figure <a href="chapter4.html#fig:Figure4-13">4.13</a>) seem to be pretty well-behaved with no apparent violations of the normality assumption and no clear evidence of a violation of the constant variance assumption. The observations would seem to be independent because there is no indication of structure to the measurements of the survey respondents that might create dependencies. In observational studies, violations of the independence assumption might come from repeated measures of the same person or multiple measurements within the same family/household or samples that are clustered geographically. The random sampling from a population should allow inferences to a larger population except for that issue of removing partially missing responses. We also don’t have much information on the population sampled, so will just leave this vague here but know that there is a population these conclusions apply to since it was random sample. All of this suggests proceeding to fitting and exploring the additive model is reasonable here. No causal inferences are possible because this is an observational study.</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(debt1)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-13"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-13-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not interaction model." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-13-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not interaction model." width="672" />
 <p class="caption">
 Figure 4.13: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not interaction model.
 </p>
@@ -839,25 +857,25 @@ Figure 4.13: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">debt1r&lt;-<span class="kw">lm</span>(prodebt<span class="op">~</span>incomegp<span class="op">+</span>cigbuy,<span class="dt">data=</span>debtc)
 <span class="kw">plot</span>(debt1r)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-14-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-14-2.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-2.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-14-3.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-3.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-14-4.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-4.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
@@ -877,10 +895,12 @@ Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: prodebt
-##            Sum Sq  Df F value   Pr(&gt;F)
-## incomegp    9.018   4  4.5766 0.001335
-## cigbuy      0.703   1  1.4270 0.233210
-## Residuals 146.806 298</code></pre>
+##            Sum Sq  Df F value   Pr(&gt;F)   
+## incomegp    9.018   4  4.5766 0.001335 **
+## cigbuy      0.703   1  1.4270 0.233210   
+## Residuals 146.806 298                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <ul>
 <li>The test statistics are <span class="math inline">\(F(4,298)=4.577\)</span> and <span class="math inline">\(F(1,298)=1.427\)</span>.</li>
 </ul></li>
@@ -901,7 +921,7 @@ Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(debt1r))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-15"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes)." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes)." width="672" />
 <p class="caption">
 Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes).
 </p>
@@ -917,13 +937,15 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 ## -1.72124 -0.41788 -0.00676  0.46157  2.24616 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)  3.05484    0.11127  27.454  &lt; 2e-16
-## incomegp2    0.01641    0.13289   0.123 0.901826
-## incomegp3    0.17477    0.13649   1.280 0.201385
-## incomegp4    0.16901    0.14275   1.184 0.237381
-## incomegp5    0.46833    0.13378   3.501 0.000535
-## cigbuy1     -0.10640    0.08907  -1.195 0.233210
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.05484    0.11127  27.454  &lt; 2e-16 ***
+## incomegp2    0.01641    0.13289   0.123 0.901826    
+## incomegp3    0.17477    0.13649   1.280 0.201385    
+## incomegp4    0.16901    0.14275   1.184 0.237381    
+## incomegp5    0.46833    0.13378   3.501 0.000535 ***
+## cigbuy1     -0.10640    0.08907  -1.195 0.233210    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 0.7019 on 298 degrees of freedom
 ## Multiple R-squared:  0.06778,    Adjusted R-squared:  0.05214 
@@ -967,7 +989,7 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 <p>One final plot of the fitted values from this additive model in Figure <a href="chapter4.html#fig:Figure4-16">4.16</a> hopefully crystallizes the implications of an additive model and reinforces that this model creates and assumes that the differences across levels of one variable are the same regardless of the level of the other variable and that this creates parallel lines. The difference between <code>cigbuy</code> levels across all income groups is a drop in -0.106 points. The income groups have the same differences regardless of cigarette buying or not, with income group 5 much higher than the other four groups.</p>
 
 <div class="figure"><span id="fig:Figure4-16"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table 4.2 showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table 4.2 showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
 <p class="caption">
 Figure 4.16: Illustration of the results from Table <a href="chapter4.html#tab:Table4-2">4.2</a> showing the combined impacts of the components of the additive model for <code>prodebt</code>. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis.
 </p>
@@ -1009,7 +1031,7 @@ ptR</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
 <span class="kw">intplot</span>(responses<span class="op">~</span>brand<span class="op">*</span>dropsf,<span class="dt">data=</span>ptR,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-17"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-17-1.png" alt="Interaction plot in paper towel data set with no replication." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-17-1.png" alt="Interaction plot in paper towel data set with no replication." width="672" />
 <p class="caption">
 Figure 4.17: Interaction plot in paper towel data set with no replication.
 </p>
@@ -1042,7 +1064,7 @@ In anova.lm(lm(responses ~ dropsf * brand, data = ptR)) :
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(norep1))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-18"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure4-18-1.png" alt="Term-plots for the additive model in paper towel data set with no replication." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-18-1.png" alt="Term-plots for the additive model in paper towel data set with no replication." width="672" />
 <p class="caption">
 Figure 4.18: Term-plots for the additive model in paper towel data set with no replication.
 </p>
@@ -1185,7 +1207,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["GreenwoodBanner.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

@@ -1,13 +1,13 @@
 ---
-output:
-  pdf_document: 
-    keep_tex: yes
-  html_document: default
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
 - \usepackage{sistyle}
 - \SIthousandsep{,}
+output:
+  html_document: default
+  pdf_document:
+    keep_tex: yes
 ---
 
 # Chi-square tests {#chapter5}
@@ -16,6 +16,9 @@ header-includes:
 set.seed(3234)
 library(pander)
 require(mosaic)
+library(knitr)
+require(beanplot)
+require(psych)
 ```
 
 
@@ -377,7 +380,7 @@ hypothesis had been true.
 
 ```{r Figure5-4,fig.cap="(ref:fig5-4)",echo=F,warning=F,message=F}
 ArthritisFAKE <- rbind(Arthritis,Arthritis) # Just to make the following plot!
-ArthritisFAKE$Treat<-factor(c(rep("Placebo",84),rep("Treated",84))) #Just to make the following plot
+ArthritisFAKE$Treat <- factor(c(rep("Placebo",84),rep("Treated",84))) #Just to make the following plot
 plot(Improved~Treat,data=ArthritisFAKE,main="Homogeneity Null Hypothesis True")
 ```
 
@@ -451,9 +454,9 @@ expect for that person, here that they are likely affiliated with the Democratic
 Party. When there is no relationship (the null hypothesis here), knowing the
 level of one variable is not informative about the level of the other variable. 
 
-```{r warning=F,message=F,cache=F}
+```{r warning=F,message=F}
 require(poLCA)
-data(election) #2000 Survey 
+data(election) #2000 Survey
 # Subset variables and remove missing values
 election2 <- na.omit(election[,c("PARTY","VOTE3")])
 election2$VOTEF <- factor(election2$VOTE3)

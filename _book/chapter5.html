@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-29">
+<meta name="date" content="2017-06-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -246,7 +246,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">require</span>(tabplot)
 <span class="kw">tableplot</span>(Arthritis,<span class="dt">select=</span><span class="kw">c</span>(Treatment,Improved,Sex,Age))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-1"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-1-1.png" alt="Table plot of the arthritis data set." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-1-1.png" alt="Table plot of the arthritis data set." width="672" />
 <p class="caption">
 Figure 5.1: Table plot of the arthritis data set.
 </p>
@@ -342,7 +342,7 @@ Figure 5.1: Table plot of the arthritis data set.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Improved<span class="op">~</span>Treatment, <span class="dt">data=</span>Arthritis,
      <span class="dt">main=</span><span class="st">&quot;Stacked Bar Chart of Arthritis Data&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-2"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-2-1.png" alt="Stacked bar chart of Arthritis data. The left bar is for the Placebo group and the right bar is for the Treated group. The width of the bars is based on relative size of each group and the portion of the total height of each shaded area is the proportion of that group in each category. The darkest shading is for “none”, medium shading for “some”, and the lightest shading for “marked”, as labeled on the y-axis." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-2-1.png" alt="Stacked bar chart of Arthritis data. The left bar is for the Placebo group and the right bar is for the Treated group. The width of the bars is based on relative size of each group and the portion of the total height of each shaded area is the proportion of that group in each category. The darkest shading is for “none”, medium shading for “some”, and the lightest shading for “marked”, as labeled on the y-axis." width="672" />
 <p class="caption">
 Figure 5.2: Stacked bar chart of Arthritis data. The left bar is for the Placebo group and the right bar is for the Treated group. The width of the bars is based on relative size of each group and the portion of the total height of each shaded area is the proportion of that group in each category. The darkest shading is for “none”, medium shading for “some”, and the lightest shading for “marked”, as labeled on the y-axis.
 </p>
@@ -432,7 +432,7 @@ Figure 5.3: Diagram of the scenarios involved in Homogeneity and Independence te
 <p>To make this concrete, consider what the proportions could look like if they satisfied the null hypothesis for the <em>Arthritis</em> example, as displayed in Figure <a href="chapter5.html#fig:Figure5-4">5.4</a>.</p>
 
 <div class="figure"><span id="fig:Figure5-4"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-4-1.png" alt="Plot of what the Arthritis proportions would look like if the null hypothesis had been true." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-4-1.png" alt="Plot of what the Arthritis proportions would look like if the null hypothesis had been true." width="672" />
 <p class="caption">
 Figure 5.4: Plot of what the Arthritis proportions would look like if the null hypothesis had been true.
 </p>
@@ -454,7 +454,7 @@ Figure 5.4: Plot of what the Arthritis proportions would look like if the null h
 </ul>
 <p>To illustrate a test of independence, consider an example involving data from a national random sample taken prior to the 2000 US elections from the data set <code>election</code> from the package <code>poLCA</code> (Linzer and Lewis, 2011). Each respondent’s democratic-republican partisan identification was collected, provided in the <code>PARTY</code> variable for measurements on a seven-point scale from (1) <em>Strong Democrat</em>, (2) <em>Weak Democrat</em>, (3) <em>Independent-Democrat</em>, (4) <em>Independent-Independent</em>, (5) <em>Independent-Republican</em>, (6) <em>Weak Republican</em>, to (7) <em>Strong Republican</em>. The <code>VOTEF</code> variable that is created below will contain the candidate that the participants voted for (the data set was originally coded with 1, 2, and 3 for the candidates and we replaced those levels with the candidate names). The contingency table shows some expected results, that individuals with strong party affiliations tend to vote for the party nominee with strong support for Gore in the democrats (<code>PARTY</code> = 1 and 2) and strong support for Bush in the republicans (<code>PARTY</code> = 6 and 7). As always, we want to support our explorations with statistical inferences, here with the potential to extend inferences to the overall population of voters. The inferences in an independence test are related to whether there is a relationship between the two variables in the population. A <strong><em>relationship</em></strong> between variables occurs when knowing the level of one variable for a person, say that they voted for Gore, informs the types of responses that you would expect for that person, here that they are likely affiliated with the Democratic Party. When there is no relationship (the null hypothesis here), knowing the level of one variable is not informative about the level of the other variable.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(poLCA)
-<span class="kw">data</span>(election) <span class="co">#2000 Survey </span>
+<span class="kw">data</span>(election) <span class="co">#2000 Survey</span>
 <span class="co"># Subset variables and remove missing values</span>
 election2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(election[,<span class="kw">c</span>(<span class="st">&quot;PARTY&quot;</span>,<span class="st">&quot;VOTE3&quot;</span>)])
 election2<span class="op">$</span>VOTEF &lt;-<span class="st"> </span><span class="kw">factor</span>(election2<span class="op">$</span>VOTE3)
@@ -491,7 +491,7 @@ electable</code></pre></div>
 <span class="co"># the total in the table</span>
 <span class="kw">mosaicplot</span>(electable) </code></pre></div>
 <div class="figure"><span id="fig:Figure5-5"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-5-1.png" alt="Mosaic plot of the 2000 election data comparing party affiliation and voting results." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-5-1.png" alt="Mosaic plot of the 2000 election data comparing party affiliation and voting results." width="672" />
 <p class="caption">
 Figure 5.5: Mosaic plot of the 2000 election data comparing party affiliation and voting results.
 </p>
@@ -499,7 +499,7 @@ Figure 5.5: Mosaic plot of the 2000 election data comparing party affiliation an
 <p>In general, the results here are not too surprising as the respondents became more heavily republican, they voted for Bush and the same pattern occurs as you look at more democratic respondents. As the voters leaned towards being independent, the proportion voting for “Other” increased. So it certainly seems that there is some sort of relationship between party affiliation and voting status. As always, it is good to compare the observed results to what we would expect if the null hypothesis is true. Figure <a href="chapter5.html#fig:Figure5-6">5.6</a> assumes that the null hypothesis is true and shows the variation in the proportions in each category in the columns and variation in the proportions across the rows, but displays no relationship between <code>PARTY</code> and <code>VOTEF</code>. Essentially, the pattern down a column is the same for all the columns or vice-versa for the rows. The way to think of “no relationship” here would involve considering whether knowing the party level could help you predict the voting response and that is not the case in Figure <a href="chapter5.html#fig:Figure5-6">5.6</a> but was in certain places in Figure <a href="chapter5.html#fig:Figure5-5">5.5</a>.</p>
 
 <div class="figure"><span id="fig:Figure5-6"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-6-1.png" alt="Mosaic plot of what the 2000 election data would look like if the null hypothesis of no relationship were true." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-6-1.png" alt="Mosaic plot of what the 2000 election data would look like if the null hypothesis of no relationship were true." width="672" />
 <p class="caption">
 Figure 5.6: Mosaic plot of what the 2000 election data would look like if the null hypothesis of no relationship were true.
 </p>
@@ -522,7 +522,7 @@ Figure 5.6: Mosaic plot of what the 2000 election data would look like if the nu
 <p>Table <a href="chapter5.html#tab:Table5-3">5.3</a> demonstrates the calculations of the expected cell counts using this formula for all 6 cells in the <span class="math inline">\(2\times 3\)</span> table.</p>
 
 <div class="figure"><span id="fig:Figure5-7"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-7-1.png" alt="Stacked bar chart that could occur if the null hypothesis were true." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-7-1.png" alt="Stacked bar chart that could occur if the null hypothesis were true." width="672" />
 <p class="caption">
 Figure 5.7: Stacked bar chart that could occur if the null hypothesis were true.
 </p>
@@ -677,7 +677,7 @@ Arthpermtable&lt;-<span class="kw">tally</span>(<span class="op">~</span>PermTre
 ## X-squared = 2.3823, df = 2, p-value = 0.3039</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Improved<span class="op">~</span>PermTreatment,<span class="dt">data=</span>Arthperm,<span class="dt">main=</span><span class="kw">expression</span>(<span class="kw">paste</span>(<span class="st">&quot;X&quot;</span><span class="op">^</span><span class="st">&quot;2&quot;</span>,<span class="st">&quot;=&quot;</span>,<span class="fl">2.38</span>)))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-8"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-8-1.png" alt="Stacked bar charts of four permuted Arthritis data sets that produced \(X^2\) between 0.62 and 2.38." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-8-1.png" alt="Stacked bar charts of four permuted Arthritis data sets that produced \(X^2\) between 0.62 and 2.38." width="672" />
 <p class="caption">
 Figure 5.8: Stacked bar charts of four permuted Arthritis data sets that produced <span class="math inline">\(X^2\)</span> between 0.62 and 2.38.
 </p>
@@ -689,7 +689,7 @@ Figure 5.8: Stacked bar charts of four permuted Arthritis data sets that produce
 <pre><code>## X-squared 
 ##     0.004</code></pre>
 <div class="figure"><span id="fig:Figure5-9"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-9-1.png" alt="Permutation distribution for the \(X^2\) statistic for the Arthritis data with an observed \(X^2\) of 13.1 (bold, vertical line)." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-9-1.png" alt="Permutation distribution for the \(X^2\) statistic for the Arthritis data with an observed \(X^2\) of 13.1 (bold, vertical line)." width="672" />
 <p class="caption">
 Figure 5.9: Permutation distribution for the <span class="math inline">\(X^2\)</span> statistic for the Arthritis data with an observed <span class="math inline">\(X^2\)</span> of 13.1 (bold, vertical line).
 </p>
@@ -721,7 +721,7 @@ Figure 5.9: Permutation distribution for the <span class="math inline">\(X^2\)</
 <p>We’ll see more examples of the <span class="math inline">\(\boldsymbol{\chi^2}\)</span>-distributions in each of the examples that follow.</p>
 
 <div class="figure"><span id="fig:Figure5-10"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-10-1.png" alt="\(\boldsymbol{\chi^2}\)-distribution with two degrees of freedom with 13.1 indicated with a vertical line." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-10-1.png" alt="\(\boldsymbol{\chi^2}\)-distribution with two degrees of freedom with 13.1 indicated with a vertical line." width="672" />
 <p class="caption">
 Figure 5.10: <span class="math inline">\(\boldsymbol{\chi^2}\)</span>-distribution with two degrees of freedom with 13.1 indicated with a vertical line.
 </p>
@@ -730,7 +730,7 @@ Figure 5.10: <span class="math inline">\(\boldsymbol{\chi^2}\)</span>-distributi
 <p>If we revisit our observed results, re-plotted in Figure <a href="chapter5.html#fig:Figure5-11">5.11</a> since Figure <a href="chapter5.html#fig:Figure5-2">5.2</a> is many pages earlier, knowing that we have strong evidence against the null hypothesis of no difference between <em>Placebo</em> and <em>Treated</em> groups, what can we say about the effectiveness of the arthritis medication?</p>
 
 <div class="figure"><span id="fig:Figure5-11"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-11-1.png" alt="Stacked bar chart of the Arthritis data comparing Treated and Placebo." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-11-1.png" alt="Stacked bar chart of the Arthritis data comparing Treated and Placebo." width="672" />
 <p class="caption">
 Figure 5.11: Stacked bar chart of the Arthritis data comparing <em>Treated</em> and <em>Placebo</em>.
 </p>
@@ -752,7 +752,7 @@ Figure 5.11: Stacked bar chart of the Arthritis data comparing <em>Treated</em> 
 ##   Treated -1.65647289  0.06375767  1.98367320</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mosaicplot</span>(Arthtable,<span class="dt">shade=</span>T)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-12"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-12-1.png" alt="Mosaic plot of the Arthritis data with large standardized residuals indicated (actually, there were none that were indicated because all were less than 2)." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-12-1.png" alt="Mosaic plot of the Arthritis data with large standardized residuals indicated (actually, there were none that were indicated because all were less than 2)." width="672" />
 <p class="caption">
 Figure 5.12: Mosaic plot of the Arthritis data with large standardized residuals indicated (actually, there were none that were indicated because all were less than 2).
 </p>
@@ -800,7 +800,7 @@ election<span class="op">$</span>SEX &lt;-<span class="st"> </span><span class="
 <span class="kw">levels</span>(election<span class="op">$</span>VOTEF) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Gore&quot;</span>,<span class="st">&quot;Bush&quot;</span>,<span class="st">&quot;Other&quot;</span>)
 <span class="kw">tableplot</span>(election, <span class="dt">select=</span><span class="kw">c</span>(VOTEF,PARTY,EDUC,SEX))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-13"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-13-1.png" alt="Tableplot of vote, party affiliation, education, and sex from election survey data. Note that missing observations are present in three of four variables. Education is coded from 1 to 7 with higher values related to higher educational attainment. Sex code 1 is for male and 2 is for female." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-13-1.png" alt="Tableplot of vote, party affiliation, education, and sex from election survey data. Note that missing observations are present in three of four variables. Education is coded from 1 to 7 with higher values related to higher educational attainment. Sex code 1 is for male and 2 is for female." width="672" />
 <p class="caption">
 Figure 5.13: Tableplot of vote, party affiliation, education, and sex from election survey data. Note that missing observations are present in three of four variables. Education is coded from 1 to 7 with higher values related to higher educational attainment. Sex code 1 is for male and 2 is for female.
 </p>
@@ -810,7 +810,7 @@ Figure 5.13: Tableplot of vote, party affiliation, education, and sex from elect
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">election2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(election[,<span class="kw">c</span>(<span class="st">&quot;VOTEF&quot;</span>,<span class="st">&quot;PARTY&quot;</span>,<span class="st">&quot;EDUC&quot;</span>,<span class="st">&quot;SEX&quot;</span>)])
 <span class="kw">tableplot</span>(election2, <span class="dt">select=</span><span class="kw">c</span>(VOTEF,PARTY,EDUC,SEX), <span class="dt">sort=</span><span class="dv">1</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-14"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-14-1.png" alt="Plot of election data with subjects without any missing responses" width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-14-1.png" alt="Plot of election data with subjects without any missing responses" width="672" />
 <p class="caption">
 Figure 5.14: Plot of election data with subjects without any missing responses
 </p>
@@ -881,7 +881,7 @@ electable</code></pre></div>
 </ul>
 
 <div class="figure"><span id="fig:Figure5-15"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-15-1.png" alt="Plot of \(\boldsymbol{\chi^2}\)-distribution with 12 degrees of freedom." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-15-1.png" alt="Plot of \(\boldsymbol{\chi^2}\)-distribution with 12 degrees of freedom." width="672" />
 <p class="caption">
 Figure 5.15: Plot of <span class="math inline">\(\boldsymbol{\chi^2}\)</span>-distribution with 12 degrees of freedom.
 </p>
@@ -913,7 +913,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-16"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-16-1.png" alt="Permutation distribution of \(X^2\) for the election data. Observed value of 763 not displayed." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-16-1.png" alt="Permutation distribution of \(X^2\) for the election data. Observed value of 763 not displayed." width="672" />
 <p class="caption">
 Figure 5.16: Permutation distribution of <span class="math inline">\(X^2\)</span> for the election data. Observed value of 763 not displayed.
 </p>
@@ -946,7 +946,7 @@ Figure 5.16: Permutation distribution of <span class="math inline">\(X^2\)</span
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Adds information on the size of the residuals</span>
 <span class="kw">mosaicplot</span>(electable, <span class="dt">shade=</span>T) </code></pre></div>
 <div class="figure"><span id="fig:Figure5-17"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-17-1.png" alt="Mosaic plot with shading based on standardized residuals for the election" width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-17-1.png" alt="Mosaic plot with shading based on standardized residuals for the election" width="672" />
 <p class="caption">
 Figure 5.17: Mosaic plot with shading based on standardized residuals for the election
 </p>
@@ -967,7 +967,7 @@ cheating<span class="op">$</span>GPA &lt;-<span class="st"> </span><span class="
 <span class="kw">require</span>(tabplot)
 <span class="kw">tableplot</span>(cheating, <span class="dt">sort=</span>GPA)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-18"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-18-1.png" alt="Tableplot of initial cheating and lying data set." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-18-1.png" alt="Tableplot of initial cheating and lying data set." width="672" />
 <p class="caption">
 Figure 5.18: Tableplot of initial cheating and lying data set.
 </p>
@@ -992,7 +992,7 @@ cheatlietable</code></pre></div>
 ##   LieBoth    11          1         4              2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tableplot</span>(cheating, <span class="dt">sort=</span>liar, <span class="dt">select=</span><span class="kw">c</span>(liar,copier))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-19"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-19-1.png" alt="Tableplot of new variables liar and copier that allow exploration of relationships between different types of lying and cheating behaviors." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-19-1.png" alt="Tableplot of new variables liar and copier that allow exploration of relationships between different types of lying and cheating behaviors." width="672" />
 <p class="caption">
 Figure 5.19: Tableplot of new variables liar and copier that allow exploration of relationships between different types of lying and cheating behaviors.
 </p>
@@ -1006,7 +1006,7 @@ cheating<span class="op">$</span>copier2 &lt;-<span class="st"> </span>cheating<
 <span class="kw">levels</span>(cheating<span class="op">$</span>copier2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;None&quot;</span>,<span class="st">&quot;ExamorPaper&quot;</span>,<span class="st">&quot;ExamorPaper&quot;</span>,<span class="st">&quot;CopyBoth&quot;</span>)
 <span class="kw">tableplot</span>(cheating, <span class="dt">sort=</span>liar2, <span class="dt">select=</span><span class="kw">c</span>(liar2,copier2))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-20"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-20-1.png" alt="Tableplot of lying and copying variables after combining categories." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-20-1.png" alt="Tableplot of lying and copying variables after combining categories." width="672" />
 <p class="caption">
 Figure 5.20: Tableplot of lying and copying variables after combining categories.
 </p>
@@ -1101,7 +1101,7 @@ cheatlietable</code></pre></div>
 </ul>
 
 <div class="figure"><span id="fig:Figure5-21"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-21-1.png" alt="Plot of \(\boldsymbol{\chi^2}\)-distribution with 4 degrees of freedom." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-21-1.png" alt="Plot of \(\boldsymbol{\chi^2}\)-distribution with 4 degrees of freedom." width="672" />
 <p class="caption">
 Figure 5.21: Plot of <span class="math inline">\(\boldsymbol{\chi^2}\)</span>-distribution with 4 degrees of freedom.
 </p>
@@ -1134,7 +1134,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-22"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-22-1.png" alt="Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line)." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-22-1.png" alt="Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line)." width="672" />
 <p class="caption">
 Figure 5.22: Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line).
 </p>
@@ -1210,7 +1210,7 @@ Figure 5.22: Plot of permutation distributions for cheat/lie results with observ
 <span class="kw">beanplot</span>(growth<span class="op">~</span>stype, <span class="dt">data=</span>apistrat, <span class="dt">log=</span><span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;beige&quot;</span>,
          <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">55</span>,<span class="dv">160</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure5-23"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-23-1.png" alt="Boxplot and beanplot of the API growth scores by level of school (E for elementary, M for Middle, and H for High school)." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-23-1.png" alt="Boxplot and beanplot of the API growth scores by level of school (E for elementary, M for Middle, and H for High school)." width="672" />
 <p class="caption">
 Figure 5.23: Boxplot and beanplot of the API growth scores by level of school (E for elementary, M for Middle, and H for High school).
 </p>
@@ -1223,12 +1223,14 @@ Figure 5.23: Boxplot and beanplot of the API growth scores by level of school (E
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: growth
-##           Sum Sq  Df F value    Pr(&gt;F)
-## stype      30370   2  23.563 6.685e-10
-## Residuals 126957 197</code></pre>
+##           Sum Sq  Df F value    Pr(&gt;F)    
+## stype      30370   2  23.563 6.685e-10 ***
+## Residuals 126957 197                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(m1, <span class="dt">which=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-24"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-24-1.png" alt="QQ-plot of standardized residuals from the One-Way ANOVA linear model." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-24-1.png" alt="QQ-plot of standardized residuals from the One-Way ANOVA linear model." width="672" />
 <p class="caption">
 Figure 5.24: QQ-plot of standardized residuals from the One-Way ANOVA linear model.
 </p>
@@ -1248,7 +1250,7 @@ Figure 5.24: QQ-plot of standardized residuals from the One-Way ANOVA linear mod
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(growthcut<span class="op">~</span>stype, <span class="dt">data=</span>apistrat)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-25"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-25-1.png" alt="Stacked bar chart of the growth category responses by level of school." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-25-1.png" alt="Stacked bar chart of the growth category responses by level of school." width="672" />
 <p class="caption">
 Figure 5.25: Stacked bar chart of the growth category responses by level of school.
 </p>
@@ -1292,7 +1294,7 @@ growthtable</code></pre></div>
 ##     M -0.1414214 -0.2773501  1.3571429 -0.9285714</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mosaicplot</span>(growthcut<span class="op">~</span>stype,<span class="dt">data=</span>apistrat,<span class="dt">shade=</span>T)    </code></pre></div>
 <div class="figure"><span id="fig:Figure5-26"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure5-26-1.png" alt="Mosaic plot of the API Growth rate categories versus level of the school with shading for size of standardized residuals." width="672" />
+<img src="05-chiSquaredTests_files/figure-html/Figure5-26-1.png" alt="Mosaic plot of the API Growth rate categories versus level of the school with shading for size of standardized residuals." width="672" />
 <p class="caption">
 Figure 5.26: Mosaic plot of the API Growth rate categories versus level of the school with shading for size of standardized residuals.
 </p>
@@ -1439,7 +1441,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["GreenwoodBanner.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

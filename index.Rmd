@@ -43,4 +43,5 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-NoDer
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
+knitr::opts_chunk$set(fig.height=5,fig.width=8)
 ```

@@ -28,6 +28,15 @@ colFmt = function(x, color){
   else
     x
 }
+colFmtBold = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{\\textbf{",x,"}}",sep="")
+  else if(outputFormat == 'html')
+    paste("<b><font color='",color,"'>",x,"</font></b>",sep="")
+  else
+    x
+}
 ```
 
 The previous material served to get us started in R and to get a quick review of same basic

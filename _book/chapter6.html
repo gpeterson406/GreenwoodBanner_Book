@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-29">
+<meta name="date" content="2017-06-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -243,7 +243,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BB &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/beersbac.csv&quot;</span>)
 <span class="kw">plot</span>(BAC<span class="op">~</span>Beers, <span class="dt">data=</span>BB)</code></pre></div>
 <div class="figure"><span id="fig:Figure6-1"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure6-1-1.png" alt="Scatterplot of beers consumed versus BAC." width="672" />
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-1-1.png" alt="Scatterplot of beers consumed versus BAC." width="672" />
 <p class="caption">
 Figure 6.1: Scatterplot of beers consumed versus BAC.
 </p>
@@ -262,6 +262,129 @@ Figure 6.1: Scatterplot of beers consumed versus BAC.
 </div>
 <div id="section6-2" class="section level2">
 <h2><span class="header-section-number">6.2</span> Estimating the correlation coefficient</h2>
+<p>In terms of quantifying relationships between variables, we start with the correlation coefficient, a measure that is the same regardless of your choice of which variable is considered explanatory or response. We measure the strength and direction of linear relationships between two quantitative variables using <strong><em>Pearson’?’s r</em></strong> or <strong><em>Pearson’?’s Product Moment Correlation Coefficient</em></strong>. For those who really like acronyms, Wikipedia even suggests calling it the PPMCC. However, its use is so ubiquitous that the lower case <strong><em>r</em></strong> or just “correlation coefficient” are often sufficient to identify that you have used the PPMCC. Some of the extra distinctions arise because there are other ways of measuring correlations in other situations (for example between two categorical variables), but we will not consider them here.</p>
+<p>The correlation coefficient, <strong><em>r</em></strong>, is calculated as</p>
+<p><span class="math display">\[r=\frac{1}{n-1}\Sigma^n_{i=1}\left(\frac{x_i-\bar{x}}{s_x}\right)
+\left(\frac{y_i-\bar{y}}{s_y}\right),\]</span></p>
+<p>where <span class="math inline">\(s_x\)</span> and <span class="math inline">\(s_y\)</span> are the standard deviations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. This formula can also be written as</p>
+<p><span class="math display">\[r=\frac{1}{n-1}\sum^n_{i=1}z_{x_i}z_{y_i}\]</span></p>
+<p>where <span class="math inline">\(z_{x_i}\)</span> is the z-score (observation minus mean divided by standard deviation) for the <span class="math inline">\(i^{th}\)</span> observation on <span class="math inline">\(x\)</span> and <span class="math inline">\(z_{y_i}\)</span> is the z-score for the <span class="math inline">\(i^{th}\)</span> observation on <span class="math inline">\(y\)</span>. We won’t directly use this formula, but its contents inform the behavior of <strong><em>r</em></strong>. First, because it is a sum divided by (<span class="math inline">\(n-1\)</span>) it is a bit like an average – it combines information across all observations and, like the mean, is sensitive to outliers. Second, it is a dimension-less measure, meaning that it has no units attached to it. It is based on z-scores which have units of standard deviations of <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> so the original units of measurement are cancelled out going into this calculation. This also means that changing the original units of measurement, say from Fahrenheit to Celsius or from miles to km for one or the other variable will have no impact on the correlation. Less obviously, the formula guarantees that <strong><em>r</em></strong> is between -1 and 1. It will attain -1 for a perfect negative linear relationship, 1 for a perfect positive linear relationship, and 0 for no linear relationship. We are being careful here to say <strong><em>linear relationship</em></strong> because you can have a strong nonlinear relationship with a correlation of 0. For example, consider Figure <a href="chapter6.html#fig:Figure6-2">6.2</a>.</p>
+
+<div class="figure"><span id="fig:Figure6-2"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-2-1.png" alt="Scatterplot of an amusing relationship that has \(r=0\)." width="672" />
+<p class="caption">
+Figure 6.2: Scatterplot of an amusing relationship that has <span class="math inline">\(r=0\)</span>.
+</p>
+</div>
+<p>There are some conditions for trusting the results that the correlation coefficient provides:</p>
+<ol style="list-style-type: decimal">
+<li><p>Two quantitative variables measured.</p>
+<ul>
+<li>This might seem silly, but categorical variables can be coded numerically and a meaningless correlation can be estimated if you are not careful what you correlate.</li>
+</ul></li>
+<li><p>The relationship between the variables is relatively linear.</p>
+<ul>
+<li>If the relationship is nonlinear, the correlation is meaningless and can be misleading.</li>
+</ul></li>
+<li><p>There should be no outliers.</p>
+<ul>
+<li><p>The correlation is very sensitive (technically <strong><em>not resistant</em></strong>) to the impacts of certain types of outliers and you should generally avoid reporting the correlation when they are present.</p></li>
+<li><p>One option in the presence of outliers is to report the correlation with and without outliers to see how they influence the estimated correlation.</p></li>
+</ul></li>
+</ol>
+<p>The correlation coefficient is dimensionless but larger magnitude values (closer to -1 OR 1) mean stronger linear relationships. A rough interpretation scale based on experiences working with correlations follows, but this varies between fields and types of research and variables measured. It depends on the levels of correlation researchers become used to obtaining, so can even vary within fields. Use this scale until you develop your own experience:</p>
+<ul>
+<li><p><span class="math inline">\(\left|\mathbf{r}\right|&lt;0.3\)</span>: weak linear relationship,</p></li>
+<li><p><span class="math inline">\(0.3 &lt; \left|\mathbf{r}\right|&lt;0.7\)</span>: moderate linear relationship,</p></li>
+<li><p><span class="math inline">\(0.7 &lt; \left|\mathbf{r}\right|&lt;0.7\)</span>: strong linear relationship, and</p></li>
+<li><p><span class="math inline">\(0.9 &lt; \left|\mathbf{r}\right|&lt;1.0\)</span>: very strong linear relationship.</p></li>
+</ul>
+<p>And again note that this scale only relates to the <strong>linear</strong> aspect of the relationship between the variables.</p>
+<p>When we have linear relationships between two quantitative variables, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we can obtain estimated correlations from the <code>cor</code> function either using <code>y~x</code> or by running the <code>cor</code> function<a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a> on the entire data set. When you run the <code>cor</code> function on a data set it produces a <strong><em>correlation matrix</em></strong> which contains a matrix of correlations where you can triangulate the variables being correlated by the row and column names, noting that the correlation between a variable and itself is 1. A matrix of correlations is useful for comparing more than two variables, discussed below.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(mosaic)
+<span class="kw">cor</span>(BAC<span class="op">~</span>Beers, <span class="dt">data=</span>BB)</code></pre></div>
+<pre><code>## [1] 0.8943381</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(BB)</code></pre></div>
+<pre><code>##           Beers       BAC
+## Beers 1.0000000 0.8943381
+## BAC   0.8943381 1.0000000</code></pre>
+<p>Based on either version of using the function, we find that the correlation between <code>Beers</code> and <code>BAC</code> is estimated to be 0.89. This suggests a strong linear relationship between the two variables. Examples are about the only way to build up enough experience to become skillful in using the correlation coefficient. Some additional complications arise in more complicated studies as the next example demonstrates.</p>
+<p>Gude, Cookson, Greenwood, and Haggerty (2009) explored the relationship between average summer temperature (degrees F) and area burned (natural log of hectares<a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a> = log(hectares)) by wildfires in Montana from 1985 to 2007. The <strong><em>log-transformation</em></strong> is often used to reduce the impacts of really large observations on non-negative (strictly greater than 0) responses with really large observations (more on <strong><em>transformations</em></strong> and their impacts on regression models in Chapter <a href="chapter7.html#chapter7">7</a>). Based on your experiences and before analyzing the data, I’m sure you would assume that summer temperature explains the area burned by wildfires. But could it be that more fires are related to having warmer summers? That second direction is unlikely on a state-wide scale but could apply at a particular weather station that is near a fire. There is another option – some other variable is affecting both variables. For example, drier summers might be the real explanatory variable that is related to having both warm summers and lots of fires. These variables are also being measured over time making them examples of <strong><em>time series</em></strong>. In statistics, time series data is generally reserved for evenly spaced measurements over time, like monthly or yearly measurements. In this situation, if there are changes over time, they might be attributed to climate change. So there are really three relationships to explore with the variables measured here (remembering that the full story might require measuring even more!): log-area burned versus temperature, temperature versus year, and log-area burned versus year.</p>
+<p>With more than two variables, we can use the <code>cor</code> function on all the variables and end up getting a matrix of correlations or, simply, the <strong><em>correlation matrix</em></strong>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtfires &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/climateR2.csv&quot;</span>)
+<span class="co"># natural log transformation of area burned</span>
+mtfires<span class="op">$</span>loghectacres &lt;-<span class="st"> </span><span class="kw">log</span>(mtfires<span class="op">$</span>hectacres) 
+
+<span class="co">#Cuts the original hectacres data so only log-scale version in data.frame</span>
+mtfiresR &lt;-<span class="st"> </span>mtfires[,<span class="op">-</span><span class="dv">3</span>] 
+<span class="kw">cor</span>(mtfiresR)</code></pre></div>
+<pre><code>##                    Year Temperature loghectacres
+## Year          1.0000000  -0.0037991    0.3617789
+## Temperature  -0.0037991   1.0000000    0.8135947
+## loghectacres  0.3617789   0.8135947    1.0000000</code></pre>
+<p>If you triangulate the row and column labels, that cell provides the correlation between that pair of variables. For example, in the first row (<code>Year</code>) and the last column (<code>loghectacres</code>), you can find that the correlation coefficient is <strong><em>r</em></strong>=0.362. Note the symmetry in the matrix around the diagonal of 1’?’s – this further illustrates that correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> does not depend on which variable is viewed as the “response”. The estimated correlation between <code>Temperature</code> and <code>Year</code> is -0.004 and the correlation between <code>loghectacres</code> (<em>log-hectares burned</em>) and <code>Temperature</code> is 0.81. So <code>Temperature</code> has almost no linear change over time. And there is a strong linear relationship between <code>loghectacres</code> and <code>Temperature</code>. So it appears that temperatures may be related to log-area burned but that the trend over time in both is less clear (at least the linear trends).</p>
+<p>The correlation matrix alone is misleading – we need to explore scatterplots to check for nonlinear relationships, outliers, and clustering of observations that may be distorting the numerical measure of the linear relationship. The <code>pairs.panels</code> function from the <code>psych</code> package (Revelle, 2016) combines the numerical correlation information and scatterplots in one display. There are some options to turn off for the moment but it is an easy function to use to get lots of information in one place. As in the correlation matrix, you triangulate the variables for the pairwise relationship. The upper right diagonal of Figure <a href="chapter6.html#fig:Figure6-3">6.3</a> displays a correlation of 0.36 for <code>Year</code> and <code>loghectares</code> and the lower left panel contains the scatterplot with <code>Year</code> on the x-axis and <code>loghectares</code> on the y-axis. The correlation between <code>Year</code> and <code>Temperature</code> is really small, both in magnitude and in display, but appears to be nonlinear (it goes down between 1985 and 1995 and then goes back up), so the correlation coefficient doesn’t mean much here since it just measures the overall linear relationship. We might say that this is a moderate strength (moderately “clear”) curvilinear relationship. In terms of the underlying climate process, it suggests a decrease in summer temperatures between 1985 and 1995 and then an increase in the second half of the data set.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(psych) 
+<span class="kw">pairs.panels</span>(mtfiresR, <span class="dt">ellipses=</span>F, <span class="dt">scale=</span>T, <span class="dt">smooth=</span>F, <span class="dt">col=</span><span class="dv">0</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure6-3"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-3-1.png" alt="Scatterplot matrix of Montana fires data." width="672" />
+<p class="caption">
+Figure 6.3: Scatterplot matrix of Montana fires data.
+</p>
+</div>
+<p>As one more example, the Australian Institute of Sport collected data on 102 male and 100 female athletes that are available in the <code>ais</code> data set from the <code>alr3</code> package (Weisberg, 2005). They measured a variety of variables including the athlete’?’s Hematocrit (<code>Hc</code>, units of percentage of red blood cells in the blood), Body Fat Percentage (<code>Bfat</code>, units of percentage of total bodyweight), and height (<code>Ht</code>, units of cm). Eventually we might be interested in predicting <code>Hc</code> based on the other variables, but for now the associations are of interest.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(alr3)
+<span class="kw">data</span>(ais)
+aisR &lt;-<span class="st"> </span>ais[,<span class="kw">c</span>(<span class="st">&quot;Ht&quot;</span>,<span class="st">&quot;Hc&quot;</span>,<span class="st">&quot;Bfat&quot;</span>)]
+<span class="kw">summary</span>(aisR)</code></pre></div>
+<pre><code>##        Ht              Hc             Bfat       
+##  Min.   :148.9   Min.   :35.90   Min.   : 5.630  
+##  1st Qu.:174.0   1st Qu.:40.60   1st Qu.: 8.545  
+##  Median :179.7   Median :43.50   Median :11.650  
+##  Mean   :180.1   Mean   :43.09   Mean   :13.507  
+##  3rd Qu.:186.2   3rd Qu.:45.58   3rd Qu.:18.080  
+##  Max.   :209.4   Max.   :59.70   Max.   :35.520</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(aisR)</code></pre></div>
+<pre><code>##              Ht         Hc       Bfat
+## Ht    1.0000000  0.3711915 -0.1880217
+## Hc    0.3711915  1.0000000 -0.5324491
+## Bfat -0.1880217 -0.5324491  1.0000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs.panels</span>(aisR,<span class="dt">scale=</span>T,<span class="dt">ellipse=</span>F,<span class="dt">smooth=</span>F,<span class="dt">col=</span><span class="dv">0</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure6-4"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-4-1.png" alt="Scatterplot matrix of athlete data." width="672" />
+<p class="caption">
+Figure 6.4: Scatterplot matrix of athlete data.
+</p>
+</div>
+<p><code>Ht</code> (<em>Height</em>) and <code>Hc</code> (<em>Hematocrit</em>) have a moderate positive relationship that may contain a slightly nonlinearity. It also contains one clear outlier for a middle height athlete (around 175 cm) with an <code>Hc</code> of close to 60% (a result that is extremely high). One might wonder about whether this athlete has been doping or if that measurement involved a recording error. We should consider removing that observation to see how our results might change without it impacting the results. For the relationship between <code>Bfat</code> (<em>bodyfat</em>) and <code>Hc</code> (<em>hematocrit</em>), that same high <code>Hc</code> value is a clear outlier. There is also a high <code>Bfat</code> (<em>body fat</em>) athlete (35%) with a somewhat low <code>Hc</code> value. This also might be influencing our impressions so we will remove both “unusual” values and remake the plot. The two offending observations were found for individuals numbered 56 and 166 in the data set:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aisR[<span class="kw">c</span>(<span class="dv">56</span>,<span class="dv">166</span>),]</code></pre></div>
+<pre><code>##        Ht   Hc  Bfat
+## 56  179.8 37.6 35.52
+## 166 174.9 59.7  9.56</code></pre>
+<p>We can create a reduced version of the data (<code>aisR2</code>) by removing those two rows using <code>[-c(56, 166),]</code> and then remake the plot:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aisR2 &lt;-<span class="st"> </span>aisR[<span class="op">-</span><span class="kw">c</span>(<span class="dv">56</span>,<span class="dv">166</span>),] <span class="co">#Removes observations in rows 56 and 166</span>
+<span class="kw">pairs.panels</span>(aisR2, <span class="dt">scale=</span>T, <span class="dt">ellipse=</span>F, <span class="dt">smooth=</span>F, <span class="dt">col=</span><span class="dv">0</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure6-5"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-5-1.png" alt="Scatterplot matrix of athlete data with two potential outliers removed." width="672" />
+<p class="caption">
+Figure 6.5: Scatterplot matrix of athlete data with two potential outliers removed.
+</p>
+</div>
+<p>After removing these two unusual observations, the relationships between the variables are more obvious (Figure <a href="chapter6.html#fig:Figure6-5">6.5</a>). There is a moderate strength, relatively linear relationship between <em>Height</em> and <em>Hematocrit</em>. There is almost no relationship between <em>Height</em> and <em>Body Fat %</em> (<strong><em>r</em></strong>=-0.20). There is a negative, moderate strength, somewhat curvilinear relationship between <em>Hematocrit</em> and <em>Body Fat %</em> (<strong><em>r</em></strong>=-0.54). As hematocrit increases initially, the body fat percentage decreases but at a certain level (around 45% for <code>Hc</code>), the body fat percentage seems to level off. Interestingly, it ended up that removing those two outliers had only minor impacts on the estimated correlations – this will not always be the case.</p>
+<p>Sometimes we want to just be able to focus on the correlations, assuming we trust that the correlation is a reasonable description of the results between the variables. To make it easier to see patterns of positive and negative correlations, we can employ a different version of the same display from the <code>corrplot</code> package (Wei and Simko, 2016). In this case (Figure <a href="chapter6.html#fig:Figure6-6">6.6</a>), it tells much the same story but also allows the viewer to easily distinguish both size and direction and read off the numerical correlations if desired.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(corrplot)</code></pre></div>
+<pre><code>## Loading required package: corrplot</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">corrplot.mixed</span>(<span class="kw">cor</span>(aisR2), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;orange&quot;</span>))</code></pre></div>
+<div class="figure"><span id="fig:Figure6-6"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-6-1.png" alt="Correlation plot of the athlete data with two potential outliers removed. Lighter (orange) circle for positive correlations and black for negative correlations." width="576" />
+<p class="caption">
+Figure 6.6: Correlation plot of the athlete data with two potential outliers removed. Lighter (orange) circle for positive correlations and black for negative correlations.
+</p>
+</div>
 </div>
 <div id="section6-3" class="section level2">
 <h2><span class="header-section-number">6.3</span> Relationships between variables by groups</h2>
@@ -306,6 +429,8 @@ Figure 6.1: Scatterplot of beers consumed versus BAC.
 <ol start="54">
 <li id="fn54"><p>There are measures of correlation between categorical variables but when statisticians say correlation they mean correlation of quantitative variables. If they are discussing correlations of other types, they will make that clear.<a href="chapter6.html#fnref54">↩</a></p></li>
 <li id="fn55"><p>Some of the details of this study have been lost, so we will assume that the subjects were randomly assigned and that a beer means a can of beer and that the beer was of regular strength. We don’t know if any of that is actually true. I have been asking the Dean of Students to repeat this study as an educational activity at MSU with no success yet.<a href="chapter6.html#fnref55">↩</a></p></li>
+<li id="fn56"><p>This interface with the <code>cor</code> function only works after you load the <code>mosaic</code> package.<a href="chapter6.html#fnref56">↩</a></p></li>
+<li id="fn57"><p>The natural log (<span class="math inline">\(\log_e\)</span> or <span class="math inline">\(\ln\)</span>) is used in statistics so much that the function in R <code>log</code> actually takes the natural log and if you want a <span class="math inline">\(\log_{10}\)</span> you have to use the function <code>log10</code>. When statisticians say log we mean natural log.<a href="chapter6.html#fnref57">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -346,7 +471,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["GreenwoodBanner.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

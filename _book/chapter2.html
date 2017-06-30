@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-29">
+<meta name="date" content="2017-06-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -470,7 +470,7 @@ and <code>Crime</code> mean for quantitative variables. If present, you would al
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(MockJury<span class="op">$</span>Years, <span class="dt">xlab=</span><span class="st">&quot;Years&quot;</span>, <span class="dt">labels=</span>T, <span class="dt">main=</span><span class="st">&quot;Histogram of Years&quot;</span>)
 <span class="kw">boxplot</span>(MockJury<span class="op">$</span>Years, <span class="dt">ylab=</span><span class="st">&quot;Years&quot;</span>, <span class="dt">main=</span><span class="st">&quot;Boxplot of Years&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-1"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-1-1.png" alt="Histogram and boxplot of suggested sentences in years." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-1-2.png" alt="Histogram and boxplot of suggested sentences in years." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-1-1.png" alt="Histogram and boxplot of suggested sentences in years." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-1-2.png" alt="Histogram and boxplot of suggested sentences in years." width="288" />
 <p class="caption">
 Figure 2.1: Histogram and boxplot of suggested sentences in years.
 </p>
@@ -482,7 +482,7 @@ Figure 2.1: Histogram and boxplot of suggested sentences in years.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(MockJury<span class="op">$</span>Years,<span class="dt">freq=</span>F,<span class="dt">xlab=</span><span class="st">&quot;Years&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Histogram of Years&quot;</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(MockJury<span class="op">$</span>Years),<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-2"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-2-1.png" alt="Histogram and density curve of Years data." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-2-1.png" alt="Histogram and density curve of Years data." width="672" />
 <p class="caption">
 Figure 2.2: Histogram and density curve of Years data.
 </p>
@@ -494,7 +494,7 @@ Figure 2.2: Histogram and density curve of Years data.
 <span class="kw">lines</span>(<span class="kw">density</span>(MockJury<span class="op">$</span>Years),<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
 <span class="kw">rug</span>(<span class="kw">jitter</span>(MockJury<span class="op">$</span>Years),<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-3"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-3-1.png" alt="Histogram with density curve and rug plot of the jittered responses." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-3-1.png" alt="Histogram with density curve and rug plot of the jittered responses." width="672" />
 <p class="caption">
 Figure 2.3: Histogram with density curve and rug plot of the jittered responses.
 </p>
@@ -503,7 +503,7 @@ Figure 2.3: Histogram with density curve and rug plot of the jittered responses.
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-4"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-4-1.png" alt="Side-by-side boxplot of Years based on picture groups." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-4-1.png" alt="Side-by-side boxplot of Years based on picture groups." width="672" />
 <p class="caption">
 Figure 2.4: Side-by-side boxplot of Years based on picture groups.
 </p>
@@ -521,7 +521,7 @@ Figure 2.4: Side-by-side boxplot of Years based on picture groups.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(beanplot)
 <span class="kw">beanplot</span>(Years<span class="op">~</span>Attr,<span class="dt">data=</span>MockJury,<span class="dt">log=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;bisque&quot;</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-5"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-5-1.png" alt="Beanplot of Years by picture group. Long, bold lines correspond to mean of each group." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-5-1.png" alt="Beanplot of Years by picture group. Long, bold lines correspond to mean of each group." width="672" />
 <p class="caption">
 Figure 2.5: Beanplot of Years by picture group. Long, bold lines correspond to mean of each group.
 </p>
@@ -600,7 +600,7 @@ MockJury<span class="op">$</span>NotBeautiful</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Years <span class="op">~</span><span class="st"> </span>Attr,<span class="dt">data=</span>MockJury2) 
 <span class="kw">beanplot</span>(Years <span class="op">~</span><span class="st"> </span>Attr,<span class="dt">data=</span>MockJury2,<span class="dt">log=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;bisque&quot;</span>,<span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-6"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-6-1.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-6-2.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-6-1.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-6-2.png" alt="Boxplot and beanplot of the Years responses on the reduced data set." width="288" />
 <p class="caption">
 Figure 2.6: Boxplot and beanplot of the Years responses on the reduced data set.
 </p>
@@ -721,7 +721,7 @@ that estimate the parameters for the true means of the two groups. In the permut
 ## -1.150071</code></pre>
 
 <div class="figure"><span id="fig:Figure2-8"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-8-1.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-8-2.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-8-1.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-8-2.png" alt="Boxplots of Years responses versus actual treatment groups and permuted groups." width="288" />
 <p class="caption">
 Figure 2.8: Boxplots of Years responses versus actual treatment groups and permuted groups.
 </p>
@@ -803,7 +803,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">hist</span>(Tstar, <span class="dt">label=</span>T)
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-9"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-9-1.png" alt="Histogram (left, with counts in bars) and density curve (right) of values of test statistic for 1,000 permutations." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-9-2.png" alt="Histogram (left, with counts in bars) and density curve (right) of values of test statistic for 1,000 permutations." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-9-1.png" alt="Histogram (left, with counts in bars) and density curve (right) of values of test statistic for 1,000 permutations." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-9-2.png" alt="Histogram (left, with counts in bars) and density curve (right) of values of test statistic for 1,000 permutations." width="288" />
 <p class="caption">
 Figure 2.9: Histogram (left, with counts in bars) and density curve (right) of values of test statistic for 1,000 permutations.
 </p>
@@ -822,7 +822,7 @@ Figure 2.9: Histogram (left, with counts in bars) and density curve (right) of v
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar),<span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-10"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-10-1.png" alt="Histogram (left) and density curve (right) of values of test statistic for 1,000 permutations with bold vertical line for value of observed test statistic." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-10-2.png" alt="Histogram (left) and density curve (right) of values of test statistic for 1,000 permutations with bold vertical line for value of observed test statistic." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-10-1.png" alt="Histogram (left) and density curve (right) of values of test statistic for 1,000 permutations with bold vertical line for value of observed test statistic." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-10-2.png" alt="Histogram (left) and density curve (right) of values of test statistic for 1,000 permutations with bold vertical line for value of observed test statistic." width="288" />
 <p class="caption">
 Figure 2.10: Histogram (left) and density curve (right) of values of test statistic for 1,000 permutations with bold vertical line for value of observed test statistic.
 </p>
@@ -841,7 +841,7 @@ Figure 2.10: Histogram (left) and density curve (right) of values of test statis
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar),<span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>Tobs, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-11"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-11-1.png" alt="Histogram and density curve of values of test statistic for 1,000 permutations with bold lines for value of observed test statistic and its opposite value required for performing two-sided test." width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-11-2.png" alt="Histogram and density curve of values of test statistic for 1,000 permutations with bold lines for value of observed test statistic and its opposite value required for performing two-sided test." width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-11-1.png" alt="Histogram and density curve of values of test statistic for 1,000 permutations with bold lines for value of observed test statistic and its opposite value required for performing two-sided test." width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-11-2.png" alt="Histogram and density curve of values of test statistic for 1,000 permutations with bold lines for value of observed test statistic and its opposite value required for performing two-sided test." width="288" />
 <p class="caption">
 Figure 2.11: Histogram and density curve of values of test statistic for 1,000 permutations with bold lines for value of observed test statistic and its opposite value required for performing two-sided test.
 </p>
@@ -985,7 +985,7 @@ Tobs</code></pre></div>
 <pre><code>##     t 
 ## 0.031</code></pre>
 <div class="figure"><span id="fig:Figure2-12"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-12-1.png" alt="Permutation distribution of the \(t\)-statistic" width="288" /><img src="GreenwoodBanner_files/figure-html/Figure2-12-2.png" alt="Permutation distribution of the \(t\)-statistic" width="288" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-12-1.png" alt="Permutation distribution of the \(t\)-statistic" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-12-2.png" alt="Permutation distribution of the \(t\)-statistic" width="288" />
 <p class="caption">
 Figure 2.12: Permutation distribution of the <span class="math inline">\(t\)</span>-statistic
 </p>
@@ -1053,7 +1053,7 @@ Figure 2.14: Plot of permutation and <span class="math inline">\(t\)</span> dist
 <span class="kw">require</span>(beanplot)
 <span class="kw">beanplot</span>(GPA<span class="op">~</span>Sex, <span class="dt">data=</span>s217, <span class="dt">log=</span><span class="st">&quot;&quot;</span>, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-15"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-15-1.png" alt="Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-15-1.png" alt="Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex." width="672" />
 <p class="caption">
 Figure 2.15: Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex.
 </p>
@@ -1095,7 +1095,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>Tobs, <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-16"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-16-1.png" alt="Histogram and density curve of permutation distribution of test statistic for STAT 217 GPAs." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-16-1.png" alt="Histogram and density curve of permutation distribution of test statistic for STAT 217 GPAs." width="672" />
 <p class="caption">
 Figure 2.16: Histogram and density curve of permutation distribution of test statistic for STAT 217 GPAs.
 </p>
@@ -1162,7 +1162,7 @@ Figure 2.16: Histogram and density curve of permutation distribution of test sta
 <p>We can use the two results to get an idea of distribution of results in terms of number of times observations might be re-sampled when sampling with replacement and the variation in those results, as shown in Figure <a href="chapter2.html#fig:Figure2-17">2.17</a>. We could also derive the expected counts for each number of times of re-sampling when we start with all observations having an equal chance and sampling with replacement but this isn’t important for using bootstrapping methods.</p>
 
 <div class="figure"><span id="fig:Figure2-17"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-17-1.png" alt="Counts of number of times of observation (or not observed for times re-sampled of 0) for two bootstrap samples." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-17-1.png" alt="Counts of number of times of observation (or not observed for times re-sampled of 0) for two bootstrap samples." width="672" />
 <p class="caption">
 Figure 2.17: Counts of number of times of observation (or not observed for times re-sampled of 0) for two bootstrap samples.
 </p>
@@ -1183,7 +1183,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-18"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-18-1.png" alt="Histogram and density curve of bootstrap distributions of difference in sample mean Years with vertical line for the observed difference in the means of 1.84 years." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-18-1.png" alt="Histogram and density curve of bootstrap distributions of difference in sample mean Years with vertical line for the observed difference in the means of 1.84 years." width="672" />
 <p class="caption">
 Figure 2.18: Histogram and density curve of bootstrap distributions of difference in sample mean <code>Years</code> with vertical line for the observed difference in the means of 1.84 years.
 </p>
@@ -1218,7 +1218,7 @@ quantiles</code></pre></div>
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>quantiles<span class="op">$</span>quantile, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-19"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-19-1.png" alt="Histogram and density curve of bootstrap distribution with 95% bootstrap confidence intervals displayed (vertical lines)." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-19-1.png" alt="Histogram and density curve of bootstrap distribution with 95% bootstrap confidence intervals displayed (vertical lines)." width="672" />
 <p class="caption">
 Figure 2.19: Histogram and density curve of bootstrap distribution with 95% bootstrap confidence intervals displayed (vertical lines).
 </p>
@@ -1249,7 +1249,7 @@ x&lt;-<span class="kw">seq</span>(<span class="dt">from=</span><span class="op">
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="op">-</span><span class="fl">2.1702</span>,<span class="dt">lwd=</span><span class="dv">3</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="fl">2.1702</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-20"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-20-1.png" alt="Plot of \(t(73)\) with cut-offs for putting 95% of distributions in the middle." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-20-1.png" alt="Plot of \(t(73)\) with cut-offs for putting 95% of distributions in the middle." width="672" />
 <p class="caption">
 Figure 2.20: Plot of <span class="math inline">\(t(73)\)</span> with cut-offs for putting 95% of distributions in the middle.
 </p>
@@ -1431,7 +1431,7 @@ quantiles</code></pre></div>
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>quantiles<span class="op">$</span>quantile,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure2-21"></span>
-<img src="GreenwoodBanner_files/figure-html/Figure2-21-1.png" alt="Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines)." width="672" />
+<img src="02-reintroductionToStatistics_files/figure-html/Figure2-21-1.png" alt="Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines)." width="672" />
 <p class="caption">
 Figure 2.21: Histogram and density curve of bootstrap distribution of difference in sample mean GPAs (male minus female) with observed difference (solid vertical line) and quantiles that delineate the 90% confidence intervals (dashed vertical lines).
 </p>
@@ -1592,7 +1592,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["GreenwoodBanner.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
