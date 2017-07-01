@@ -476,7 +476,267 @@ corrplot.mixed(cor(aisR2), col=c("black", "orange"))
 
 ## Relationships between variables by groups	{#section6-3}
 
+In assessing the relationship
+between variables, incorporating information from a third variable can often
+enhance the information gathered by either showing that the relationship
+between the first two variables is the same across levels of the other variable
+or showing that it differs. When the other variable is categorical (or just can
+be made categorical), it can be added to scatterplots, changing the symbols and
+colors for the points based on the different groups. These techniques are
+especially useful if the categorical variable corresponds to potentially
+distinct groups in the responses. In the previous example, the data set was
+built with male and female athletes. For some characteristics, the
+relationships might be the same for both sexes but for others, there are likely
+some physiological differences to consider. 
+
+We could continue to use the ``plot`` function here, but it would require 
+additional lines of code to add these extra features. The ``scatterplot``
+function from the ``car`` package (Fox and Weisberg, 2011) makes it easy 
+to incorporate information from an
+additional categorical variable. We'll add to our regular formula idea (``y~x``)
+the vertical line "|" followed by the categorical variable ``z``, such as 
+``y~x|z``. As noted earlier, in statistics, "|" means "to condition on" or, 
+here, consider the relationship between $y$ and $x$ by groups in $z$. The other
+options are mainly to make it easier to read the information in the plot...
+Using this enhanced notation, Figure \@ref(fig:Figure6-7) displays the 
+*Height* and *Hematocrit* relationship with information on the sex of the 
+athletes where sex was coded 0 for males and 1 for females. 
+
+(ref:fig6-7) Scatterplot of athlete's height and hematocrit by sex of athletes. 
+Males were coded as 0s and females as 1s.
+
+```{r Figure6-7,fig.cap="(ref:fig6-7)",message=F,warning=F}
+aisR2 <- ais[-c(56,166),c("Ht","Hc","Bfat","Sex")]
+require(car)
+scatterplot(Hc~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
+            boxplots="xy", main="Scatterplot of Height vs Hematocrit by Sex")
+```
+
+Adding the grouping information really changes the impressions of the relationship
+between *Height* and *Hematocrit* -- within each sex, there is little relationship 
+between the two variables. The overall relationship is of
+moderate strength and positive but the subgroup relationships are weak at best. 
+The overall relationship is created by inappropriately combining two groups
+that had different means in both the $x$ and $y$ directions. Men have higher
+mean heights and hematocrit values than women and putting them together in one
+large group creates the misleading overall relationship. 
+
+To get the correlation coefficients by groups, we can subset the data set using a
+logical inquiry on the ``Sex`` variable in the updated ``aisR2`` data set, using 
+``Sex==0`` to get the male subjects only and ``Sex==1`` for the female subjects, 
+then running the ``cor`` function on each version of the data set:
+
+```{r}
+cor(Hc~Ht, data=aisR2[aisR2$Sex==0,]) #Males only
+cor(Hc~Ht, data=aisR2[aisR2$Sex==1,]) #Females only
+```
+
+These results show that ***r***=-0.05 for *Height* and *Hematocrit* for *males* and
+***r***=0.03 for *females*. The first suggests a very weak negative linear
+relationship and the second suggests a very weak positive linear relationship. 
+The correlation when the two groups were combined (and group information
+conclusion here is that correlations on data sets that contain groups can be
+very misleading. It also emphasizes the importance of exploring for potential
+subgroups in the data set -- these two groups were not obvious in the initial
+plot, but with added information the real story became clear. 
+
+For the *Bodyfat* vs *Hematocrit* results in Figure \@ref(fig:Figure6-8), with
+an overall correlation of ***r***=-0.54, the subgroup correlations
+show weaker relationships that also appear to be in different directions 
+(***r***=0.13 for men and ***r***=-0.17 for women). This doubly reinforces the 
+dangers of aggregating different groups and
+ignoring the group information. 
+
+(ref:fig6-8) Scatterplot of athlete's bodyfat and hematocrit by sex of athletes. Males
+were coded as 0s and females as 1s. 
+
+```{r Figure6-8,fig.cap="(ref:fig6-8)",warning=F,message=F}
+cor(Hc~Bfat, data=aisR2[aisR2$Sex==0,]) #Males only
+cor(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Females only
+scatterplot(Hc~Bfat|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
+            boxplots="xy", main="Scatterplot of Bodyfat vs Hematocrit by Sex")
+```
+
+One final exploration for these data involves the *body fat *and *height* relationship 
+displayed in Figure \@ref(fig:Figure6-9). This relationship shows an even greater
+disparity between overall and subgroup results. The overall relationship is characterized
+as a weak negative relationship (***r***=-0.20) that is not clearly linear or nonlinear. 
+The subgroup relationships are both clearly positive with a stronger relationship for men
+that might also be nonlinear (for the linear relationships ***r*** =0.20 for women and
+***r*** =0.45 for men). Especially for male athletes, those that are taller seem to have 
+higher body fat
+percentages. This might be related to the types of sports they compete in --
+that would be another categorical variable we could incorporate... Both groups
+also seem to demonstrate slightly more variability in *Bodyfat* associated with taller 
+athletes (each sort of "fans out"). 
+
+(ref:fig6-9) Scatterplot of athlete's bodyfat and height by sex.
+
+```{r Figure6-9,fig.cap="(ref:fig6-9)",message=F,warning=F}
+cor(Bfat~Ht,  data=aisR2[aisR2$Sex==0,]) #Males only
+cor(Bfat~Ht,data=aisR2[aisR2$Sex==1,]) #Females only
+scatterplot(Bfat~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
+            boxplots="xy", main="Scatterplot of Height vs Bodyfat by Sex")
+```
+
+In each of these situations, the sex of the athletes has the potential to cause misleading
+conclusions if ignored. There are two ways that this could occur -- if we did
+not measure it then we would have no hope to account for it OR we could have
+measured it but not adjusted for it in our results, as I did initially. We
+distinguish between these two situations by defining the impacts of this
+additional variable as either a confounding or lurking variable:
+
+* ***Confounding variable:*** affects the response variable and is related to the 
+explanatory variable. The impacts of a confounding variable on the response 
+variable cannot be separated from the impacts of the explanatory variable.
+
+* ***Lurking variable:*** a potential confounding variable that is not measured 
+and is not considered in the interpretation of the study.
+
+Lurking variables show up in studies sometimes due to lack of knowledge of the 
+system being studied or a lack of
+resources to measure these variables. And sometimes the two variables cannot be
+separated even if they are measured... 
+
+To help think about confounding and lurking variables, consider the following 
+situation. On many
+highways, such as Highway 93 in Montana and north into Canada, recent
+construction efforts have been involved in creating safe passages for animals
+by adding fencing and animal crossing structures. These structures both can
+improve driver safety, save money from costs associated with animal-vehicle
+collisions, and increase connectivity of animal populations. Researchers
+involved in these projects are interested in which characteristics of
+underpasses lead to the most successful structures, mainly measured by rates of
+animal usage (number of times they cross under the road). Crossing structures
+are typically made using culverts and those tend to be cylindrical. Researchers
+are interested in studying the effect of height and width of crossing structures
+on animal usage. Unfortunately, all the tallest structures are also the widest
+structures. If animals prefer the tall and wide structures, then there is no
+way to know if it is due to the height or width of the structure since they are
+confounded. If the researcher had only measured width, then they might assume
+that it is the important characteristic of the structures but height could be a
+lurking variable that really was the factor related to animal usage of the
+structures. This is an example where it may not be possible to design a study
+that prevents confounding of the two variables *height* and *width*. If the
+researchers could control the height and width of the structures, then they
+could randomly assign both variables to make sure that some narrow structures
+are installed that are tall and some that are short. Additionally, they would
+also want to have some wide structures that are short and some are tall. 
+Careful design of studies can prevent confounding of variables if they are
+known in advance and it is possible to control them, but in observational
+studies the observed combinations of variables are uncontrollable. This is why
+we need to employ additional caution in interpreting results from observational
+studies. 
+
 ## Inference for the correlation coefficient (Optional Section)	{#section6-4}
+
+We used bootstrapping briefly in
+Chapter \@ref(chapter2) to generate nonparametric confidence intervals based 
+on the middle
+95% of the bootstrapped version of the statistic. Remember that bootstrapping
+involves sampling *with replacement*
+from the data set and creates a distribution centered near the statistic from
+the real data set. This also mimics sampling under the alternative as opposed
+to sampling under the null as in our permutation approaches. Bootstrapping is
+particularly useful for making confidence intervals where the distribution of
+the statistic may not follow a named distribution. This is the case for the
+correlation coefficient which we will see shortly. 
+
+The correlation is an interesting
+summary but it is also an estimator of a population parameter called $\rho$
+(the symbol rho), which is the ***population correlation coefficient***. When 
+$\rho = 1$, we have a perfect positive linear relationship in the population; 
+when $\rho=-1$, there is a perfect negative linear relationship in the 
+population; and when $\rho=0$, there is no linear relationship in the 
+population. Therefore, to test if there is a
+linear relationship between two quantitative variables, we use the null
+hypothesis $H_0: \rho=0$ (tests if the true correlation, $\rho$, is 0 -- no
+linear relationship). The alternative hypothesis is that there is some
+(positive or negative) relationship between the variables in the population, 
+$H_A: \rho \ne 0$. The distribution of the Pearson correlation coefficient 
+can be complicated in some situations, so we will use
+bootstrapping methods to generate confidence intervals for $\rho$ based on 
+repeated random samples with replacement from the original dataset. If the 
+confidence contains 0, then we would fail to reject the null
+hypothesis since 0 is in the interval of our likely values for $\rho$. If 
+the confidence interval does not contain 0, then we can reject the null 
+hypothesis. 
+
+The *beers* and *BAC* example seemed to provide a strong relationship with
+***r***=0.89. As correlations approach -1 or 1, the sampling becomes more 
+and more skewed. This certainly shows up in the bootstrap distribution that 
+the following code produces (Figure \@ref(fig:Figure6-10)). Remember that
+bootstrapping utilizes the ``resample`` function applied to the data set to 
+create new realizations of the data set by re-sampling
+with replacement from those observations. The bold vertical line in 
+Figure \@ref(fig:Figure6-10) corresponds to the estimated correlation
+***r***=0.89
+and the distribution contains a noticeable left skew with a few much smaller
+$T^*\text{'s}$ possible in bootstrap samples. The $C\%$ confidence interval is 
+found based
+on the middle $C\%$ of the distribution or by finding the values that put 
+$(100-C)/2$ into each tail of the distribution. 
+
+(ref:fig6-10) Histogram and density curve of the bootstrap distribution of the 
+correlation coefficient with
+bold vertical line for observed correlation and dashed lines for bounds for 95%
+bootstrap confidence interval.
+
+```{r Figure6-10,fig.cap="(ref:fig6-10)",message=F,warning=F}
+Tobs <- cor(BAC~Beers, data=BB); Tobs
+par(mfrow=c(1,2))
+B <- 1000
+Tstar<-matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- cor(BAC~Beers, data=resample(BB))
+}
+quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
+quantiles
+
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=3)
+abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
+
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=3)
+abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
+```
+
+These results tell us that the bootstrap 95% CI is from 0.75 to 0.96 -- we are 95%
+confident that the true correlation between *Beers* and *BAC* in all OSU students 
+like those that volunteered is between 0.75 and 0.96. Note that there are no units
+on the correlation coefficient. 
+
+We can also use this confidence interval to test for a linear relationship between
+these variables. 
+
+* $\boldsymbol{H_0:\rho=0:}$ **There is no linear relationship between** ***Beers**
+**and** ***BAC*** **in the population.**
+
+* $\boldsymbol{H_A: \rho \ne 0:}$ **There is a linear relationship between**
+***Beers*** **and** ***BAC*** **in the population.**
+
+
+The 95% confidence level corresponds to a 5% significance level test. The 95% CI is
+from 0.75 to 0.96, which does not contain 0, so we can reject the null
+hypothesis. We conclude that there is strong evidence to conclude that there is
+a linear relationship between *Beers* and *BAC* in OSU students. We'll revisit this
+example using the upcoming regression tools to explore the potential for more
+specific conclusions about this relationships. For these inferences to be
+accurate, we need to be able to trust that the sample correlation is reasonable
+for characterizing the relationship between these variables. 
+
+In this situation with randomly assigned levels of $x$ and a rejected null 
+hypothesis of no relationship, we can further conclude that changing beer 
+consumption **causes** changes in the *BAC*. This is a much stronger conclusion
+than we can typically make based on correlation coefficients. Correlations and
+scatterplots are enticing for infusing causal interpretations in non-causal
+situations. We often repeat the mantra that ***correlation is not causation***
+and that generally applies -- except when there is randomization involved in 
+the study. It is rarer for
+researchers either to assign, or even to be able to assign, levels of
+quantitative variables so correlations should be viewed as non-causal unless
+the details of the study suggest otherwise. 
 
 ## Are tree diameters related to tree heights?	{#section6-5}
 
