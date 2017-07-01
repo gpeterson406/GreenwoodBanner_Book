@@ -888,6 +888,167 @@ the details of the study suggest otherwise.
 
 ## Are tree diameters related to tree heights?	{#section6-5}
 
+In a study at the Upper Flat Creek
+study area in the University of Idaho Experimental Forest, a random sample of 
+$n=336$ trees was selected from the forest, with measurements recorded on Douglas 
+Fir, Grand Fir, Western Red
+Cedar, and Western Larch trees. The data set called ``ufc`` is available from the 
+``spuRs`` package (Jones, Maillardet, Robinson, Borovkova, and Carnie, 2014) and 
+contains ``dbh.cm`` (tree diameter at 1.37 m from the ground, measured in cm) and 
+``height.m`` (tree height in meters). The relationship displayed in 
+Figure \@ref(fig:Figure6-11) is positive, 
+moderately strong with some curvature and increasing variability as the
+diameter increases. There do not appear to be groups in the data set but since
+this contains four different types of trees, we would want to revisit this plot
+by group. 
+
+(ref:fig6-11) Scatterplot of tree heights (m) vs tree diameters (cm).
+
+
+```r
+require(spuRs) #install.packages("spuRs")
+data(ufc)
+scatterplot(height.m~dbh.cm, data=ufc, smooth=F, reg.line=F)
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-11-1.png" alt="(ref:fig6-11)" width="672" />
+<p class="caption">(\#fig:Figure6-11)(ref:fig6-11)</p>
+</div>
+
+Of particular interest is an observation with a diameter around 58 cm and a height
+of less than 5 m. Observing a tree with a diameter around 60 cm is not unusual
+in the data set, but none of the other trees with this diameter had heights
+under 15 m. It ends up that the likely outlier is in observation number 168 and
+because it is so unusual it likely corresponds to either a damaged tree or a
+recording error. 
+
+
+```r
+ufc[168,]
+```
+
+```
+##     plot tree species dbh.cm height.m
+## 168   67    6      WL   57.5      3.4
+```
+
+With the outlier in the data set, the correlation is 0.77 and without it, the
+correlation increases to 0.79. The removal does not create a big change because
+the data set is relatively large and the *diameter* value is close to the mean of the 
+$x\text{'s}$^[Observations at the edge of the $x\text{'s}$ will be called high 
+leverage points in Section \@ref(section6-9); this point is a low leverage point 
+because it is close to mean of the $x\text{'s}$.] but it has some impact on the 
+strength of the correlation. 
+
+
+```r
+cor(dbh.cm~height.m, data=ufc)
+```
+
+```
+## [1] 0.7699552
+```
+
+```r
+cor(dbh.cm~height.m, data=ufc[-168,])
+```
+
+```
+## [1] 0.7912053
+```
+
+$$\underline{\textbf{If you skipped Section 6.4, you can skip the rest of this section:}}$$ 
+
+With the outlier included, the bootstrap 95% confidence interval goes from 0.702 to
+0.820 -- we are 95% confident that the true correlation between *diameter* and *height*
+in the population of trees is between 0.702 and 0.820. When
+the outlier is dropped from the data set, the 95% bootstrap CI is 0.752 to 0.828, 
+which shifts the lower endpoint of the interval up, reducing the width of the
+interval from 0.108 to 0.076. In other words, the uncertainty regarding the
+value of the population correlation coefficient is reduced. The reason to
+remove the observation is that it is unusual based on the observed pattern, 
+which implies an error in data collection or sampling from a population other
+than the one used for the other observations and, if the removal is justified, 
+it helps us refine our inferences for the population parameter. But measuring
+the linear relationship in these data where there is a curve violates one of
+our assumptions of using these methods -- we'll see some other ways of detecting
+this issue in Section \@ref(section6-10) and we'll try to "fix" this example using
+transformations in the Chapter \@ref(chapter7). 
+
+(ref:fig6-12) Bootstrap distributions of the correlation coefficient for the 
+full data set (top) and without potential outlier included (bottom) with 
+observed correlation (bold line) and bounds for 95% confidence interval 
+(dashed lines).
+
+
+```r
+Tobs <- cor(dbh.cm~height.m, data=ufc); Tobs
+```
+
+```
+## [1] 0.7699552
+```
+
+```r
+par(mfrow=c(2,1))
+B <- 1000
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc))
+}
+quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
+quantiles
+```
+
+```
+##        quantile     p
+## 2.5%  0.7017769 0.025
+## 97.5% 0.8203489 0.975
+```
+
+```r
+hist(Tstar, labels=T, xlim=c(0.6,0.9),
+     main="Bootstrap distribution of correlation with all data")
+abline(v=Tobs, col="red", lwd=3)
+abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
+
+Tobs <- cor(dbh.cm~height.m, data=ufc[-168,]); Tobs
+```
+
+```
+## [1] 0.7912053
+```
+
+```r
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc[-168,]))
+}
+quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
+quantiles
+```
+
+```
+##       quantile     p
+## 2.5%  0.752252 0.025
+## 97.5% 0.827492 0.975
+```
+
+```r
+hist(Tstar, labels=T, xlim=c(0.6,0.9),
+     main= "Bootstrap distribution of correlation without outlier")
+abline(v=Tobs, col="red", lwd=3)
+abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-12-1.png" alt="(ref:fig6-12)" width="768" />
+<p class="caption">(\#fig:Figure6-12)(ref:fig6-12)</p>
+</div>
+
+
+
 ## Describing relationships with a regression model	{#section6-6}
 
 ## Least Squares Estimation	{#section6-7}

@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-06-30">
+<meta name="date" content="2017-07-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -487,6 +487,68 @@ Figure 6.10: Histogram and density curve of the bootstrap distribution of the co
 </div>
 <div id="section6-5" class="section level2">
 <h2><span class="header-section-number">6.5</span> Are tree diameters related to tree heights?</h2>
+<p>In a study at the Upper Flat Creek study area in the University of Idaho Experimental Forest, a random sample of <span class="math inline">\(n=336\)</span> trees was selected from the forest, with measurements recorded on Douglas Fir, Grand Fir, Western Red Cedar, and Western Larch trees. The data set called <code>ufc</code> is available from the <code>spuRs</code> package (Jones, Maillardet, Robinson, Borovkova, and Carnie, 2014) and contains <code>dbh.cm</code> (tree diameter at 1.37 m from the ground, measured in cm) and <code>height.m</code> (tree height in meters). The relationship displayed in Figure <a href="chapter6.html#fig:Figure6-11">6.11</a> is positive, moderately strong with some curvature and increasing variability as the diameter increases. There do not appear to be groups in the data set but since this contains four different types of trees, we would want to revisit this plot by group.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(spuRs) <span class="co">#install.packages(&quot;spuRs&quot;)</span>
+<span class="kw">data</span>(ufc)
+<span class="kw">scatterplot</span>(height.m<span class="op">~</span>dbh.cm, <span class="dt">data=</span>ufc, <span class="dt">smooth=</span>F, <span class="dt">reg.line=</span>F)</code></pre></div>
+<div class="figure"><span id="fig:Figure6-11"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-11-1.png" alt="Scatterplot of tree heights (m) vs tree diameters (cm)." width="672" />
+<p class="caption">
+Figure 6.11: Scatterplot of tree heights (m) vs tree diameters (cm).
+</p>
+</div>
+<p>Of particular interest is an observation with a diameter around 58 cm and a height of less than 5 m. Observing a tree with a diameter around 60 cm is not unusual in the data set, but none of the other trees with this diameter had heights under 15 m. It ends up that the likely outlier is in observation number 168 and because it is so unusual it likely corresponds to either a damaged tree or a recording error.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ufc[<span class="dv">168</span>,]</code></pre></div>
+<pre><code>##     plot tree species dbh.cm height.m
+## 168   67    6      WL   57.5      3.4</code></pre>
+<p>With the outlier in the data set, the correlation is 0.77 and without it, the correlation increases to 0.79. The removal does not create a big change because the data set is relatively large and the <em>diameter</em> value is close to the mean of the <span class="math inline">\(x\text{&#39;s}\)</span><a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a> but it has some impact on the strength of the correlation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span>ufc)</code></pre></div>
+<pre><code>## [1] 0.7699552</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span>ufc[<span class="op">-</span><span class="dv">168</span>,])</code></pre></div>
+<pre><code>## [1] 0.7912053</code></pre>
+<p><span class="math display">\[\underline{\textbf{If you skipped Section 6.4, you can skip the rest of this section:}}\]</span></p>
+<p>With the outlier included, the bootstrap 95% confidence interval goes from 0.702 to 0.820 – we are 95% confident that the true correlation between <em>diameter</em> and <em>height</em> in the population of trees is between 0.702 and 0.820. When the outlier is dropped from the data set, the 95% bootstrap CI is 0.752 to 0.828, which shifts the lower endpoint of the interval up, reducing the width of the interval from 0.108 to 0.076. In other words, the uncertainty regarding the value of the population correlation coefficient is reduced. The reason to remove the observation is that it is unusual based on the observed pattern, which implies an error in data collection or sampling from a population other than the one used for the other observations and, if the removal is justified, it helps us refine our inferences for the population parameter. But measuring the linear relationship in these data where there is a curve violates one of our assumptions of using these methods – we’ll see some other ways of detecting this issue in Section <a href="chapter6.html#section6-10">6.10</a> and we’ll try to “fix” this example using transformations in the Chapter <a href="chapter7.html#chapter7">7</a>.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tobs &lt;-<span class="st"> </span><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span>ufc); Tobs</code></pre></div>
+<pre><code>## [1] 0.7699552</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
+B &lt;-<span class="st"> </span><span class="dv">1000</span>
+Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span>B)
+<span class="cf">for</span> (b <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span>B)){
+  Tstar[b] &lt;-<span class="st"> </span><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span><span class="kw">resample</span>(ufc))
+}
+quantiles &lt;-<span class="st"> </span><span class="kw">qdata</span>(Tstar, <span class="kw">c</span>(.<span class="dv">025</span>,.<span class="dv">975</span>)) <span class="co">#95% Confidence Interval</span>
+quantiles</code></pre></div>
+<pre><code>##        quantile     p
+## 2.5%  0.7017769 0.025
+## 97.5% 0.8203489 0.975</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.9</span>),
+     <span class="dt">main=</span><span class="st">&quot;Bootstrap distribution of correlation with all data&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles<span class="op">$</span>quantile, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
+
+Tobs &lt;-<span class="st"> </span><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span>ufc[<span class="op">-</span><span class="dv">168</span>,]); Tobs</code></pre></div>
+<pre><code>## [1] 0.7912053</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span>B)
+<span class="cf">for</span> (b <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span>B)){
+  Tstar[b] &lt;-<span class="st"> </span><span class="kw">cor</span>(dbh.cm<span class="op">~</span>height.m, <span class="dt">data=</span><span class="kw">resample</span>(ufc[<span class="op">-</span><span class="dv">168</span>,]))
+}
+quantiles &lt;-<span class="st"> </span><span class="kw">qdata</span>(Tstar, <span class="kw">c</span>(.<span class="dv">025</span>,.<span class="dv">975</span>)) <span class="co">#95% Confidence Interval</span>
+quantiles</code></pre></div>
+<pre><code>##       quantile     p
+## 2.5%  0.752252 0.025
+## 97.5% 0.827492 0.975</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(Tstar, <span class="dt">labels=</span>T, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="fl">0.6</span>,<span class="fl">0.9</span>),
+     <span class="dt">main=</span> <span class="st">&quot;Bootstrap distribution of correlation without outlier&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>quantiles<span class="op">$</span>quantile, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure6-12"></span>
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-12-1.png" alt="Bootstrap distributions of the correlation coefficient for the full data set (top) and without potential outlier included (bottom) with observed correlation (bold line) and bounds for 95% confidence interval (dashed lines)." width="768" />
+<p class="caption">
+Figure 6.12: Bootstrap distributions of the correlation coefficient for the full data set (top) and without potential outlier included (bottom) with observed correlation (bold line) and bounds for 95% confidence interval (dashed lines).
+</p>
+</div>
 </div>
 <div id="section6-6" class="section level2">
 <h2><span class="header-section-number">6.6</span> Describing relationships with a regression model</h2>
@@ -524,6 +586,7 @@ Figure 6.10: Histogram and density curve of the bootstrap distribution of the co
 <li id="fn55"><p>Some of the details of this study have been lost, so we will assume that the subjects were randomly assigned and that a beer means a can of beer and that the beer was of regular strength. We don’t know if any of that is actually true. I have been asking the Dean of Students to repeat this study as an educational activity at MSU with no success yet.<a href="chapter6.html#fnref55">↩</a></p></li>
 <li id="fn56"><p>This interface with the <code>cor</code> function only works after you load the <code>mosaic</code> package.<a href="chapter6.html#fnref56">↩</a></p></li>
 <li id="fn57"><p>The natural log (<span class="math inline">\(\log_e\)</span> or <span class="math inline">\(\ln\)</span>) is used in statistics so much that the function in R <code>log</code> actually takes the natural log and if you want a <span class="math inline">\(\log_{10}\)</span> you have to use the function <code>log10</code>. When statisticians say log we mean natural log.<a href="chapter6.html#fnref57">↩</a></p></li>
+<li id="fn58"><p>Observations at the edge of the <span class="math inline">\(x\text{&#39;s}\)</span> will be called high leverage points in Section <a href="chapter6.html#section6-9">6.9</a>; this point is a low leverage point because it is close to mean of the <span class="math inline">\(x\text{&#39;s}\)</span>.<a href="chapter6.html#fnref58">↩</a></p></li>
 </ol>
 </div>
             </section>
