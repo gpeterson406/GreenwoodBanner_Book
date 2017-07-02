@@ -2084,11 +2084,9 @@ Anova(m1)
 ## Anova Table (Type II tests)
 ## 
 ## Response: growth
-##           Sum Sq  Df F value    Pr(>F)    
-## stype      30370   2  23.563 6.685e-10 ***
-## Residuals 126957 197                      
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##           Sum Sq  Df F value    Pr(>F)
+## stype      30370   2  23.563 6.685e-10
+## Residuals 126957 197
 ```
 
 ```r

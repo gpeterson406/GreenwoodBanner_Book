@@ -6,6 +6,7 @@ output:
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
+- \usepackage{cancel}
 ---
 
 # Correlation and Simple Linear Regression {#chapter6}
@@ -1207,15 +1208,23 @@ by a model ``summary``:
 summary(m1)
 ```
 
-
 ```
-## [1] "##Coefficients:"
-```
-
-```
-##                Estimate  Std. Error   t value     Pr(>|t|)
-## (Intercept) -0.01270060 0.012637502 -1.004993 3.319551e-01
-## Beers        0.01796376 0.002401703  7.479592 2.969480e-06
+## 
+## Call:
+## lm(formula = BAC ~ Beers, data = BB)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.027118 -0.017350  0.001773  0.008623  0.041027 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -0.012701   0.012638  -1.005    0.332
+## Beers        0.017964   0.002402   7.480 2.97e-06
+## 
+## Residual standard error: 0.02044 on 14 degrees of freedom
+## Multiple R-squared:  0.7998,	Adjusted R-squared:  0.7855 
+## F-statistic: 55.94 on 1 and 14 DF,  p-value: 2.969e-06
 ```
 
 From either version of the output, you can find the estimated y-intercept 
@@ -1314,11 +1323,9 @@ summary(m2)
 ## -5.2399 -2.2132 -0.1061  1.8917  6.6453 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 42.01378    0.93269  45.046   <2e-16 ***
-## Bfat        -0.08504    0.05067  -1.678   0.0965 .  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 42.01378    0.93269  45.046   <2e-16
+## Bfat        -0.08504    0.05067  -1.678   0.0965
 ## 
 ## Residual standard error: 2.598 on 97 degrees of freedom
 ## Multiple R-squared:  0.02822,	Adjusted R-squared:  0.0182 
@@ -1349,17 +1356,1094 @@ continue to follow a linear relationship.
 
 ## Least Squares Estimation	{#section6-7}
 
+The previous results used the ``lm`` function as a "black box" to generate
+the estimated coefficients. The lines produced probably look reasonable but you
+could imagine drawing other lines that might look equally plausible. Because we
+are interested in explaining variation in the response variable, we want a
+model that in some sense minimizes the residuals $(e_i=y_i-\hat{y}_i)$
+to find a model that explains the responses as well as possible -- has
+$y_i-\hat{y}_i$ as small as possible. We can't just add these up because 
+it would always be 0 (remember why we use the variance to measure
+spread from introductory statistics?). We use a similar technique in
+regression, we find the regression line that minimizes the squared residuals
+$e^2_i=(y_i-\hat{y}_i)^2$ over all the observations, minimizing the 
+***Sum of Squared Residuals***$\boldsymbol{=\Sigma e^2_i}$.
+Finding the estimated regression coefficients that minimize the sum of squared
+residuals is called the ***least squares estimation*** and provides us a 
+reasonable method for finding the "best" estimated regression line of all 
+the possible choices. 
+
+For the *Beers* vs *BAC* data, Figure \@ref(fig:Figure6-16) shows the 
+result of a search for the optimal slope coefficient between values of 0 and 
+0.03. The plot shows how the sum of
+the squared residuals was minimized for the value that ``lm`` returned at 
+0.018. The main point of this is that if any other slope coefficient was tried,
+it did not do as good **on the least squares criterion** as the least squares
+estimates. 
+
+(ref:fig6-16) Plot of sum of squared residuals vs possible slope coefficients 
+for *Beers* vs *BAC* data, with vertical line for the least squares estimate 
+that minimizes the sum of squared residuals. 
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-16-1.png" alt="(ref:fig6-16)" width="672" />
+<p class="caption">(\#fig:Figure6-16)(ref:fig6-16)</p>
+</div>
+
+Sometimes it is helpful to have a
+go at finding the estimates yourself. If you install and load the ``tigerstats``
+and ``manipulate`` packagesin R-studio and then run ``FindRegLine()``, you get
+a chance to try to find the optimal slope and intercept for a fake data set. 
+Click on the "sprocket" icon in the upper left of the plot and you will see
+something like Figure \@ref(fig:Figure6-17). This interaction can help you see 
+how the residuals
+are being measuring in the y-direction and appreciate that ``lm`` takes care of
+this for us. 
+
+
+```
+> require(tigerstats)
+> require(manipulate)
+> FindRegLine()
+
+Equation of the regression line is:
+y = 4.34 + -0.02x
+
+Your final score is 13143.99
+Thanks for playing!
+```
+
+(ref:fig6-17) Results of running ``FindRegLine()`` where the user (Greenwood) 
+didn't quite find the least squares line. The correct line is the bold (red) 
+line and produced a smaller sum of squared residuals than the guessed thinner
+(black) line.
+
+<div class="figure">
+<img src="chapter6_files/image063.png" alt="(ref:fig6-17)"  />
+<p class="caption">(\#fig:Figure6-17)(ref:fig6-17)</p>
+</div>
+
+It ends up that the least squares
+criterion does not require a search across coefficients or trial and error --
+there are some "simple" equations available for calculating the estimates of
+the y-intercept and slope:
+
+$$b_1 = \frac{\Sigma_i(x_i-\bar{x})(y_i-\bar{y})}{\Sigma_i(x_i-\bar{x})^2}
+=r\frac{s_y}{s_x} \text{ and } b_0 = \bar{y} - b_1\bar{x}.$$
+
+You will never
+need to use these equations but they do inform some properties of the
+regression line. The slope coefficient, $b_1$, is based on
+the variability in $x$ and $y$ and the correlation between them. If 
+***r***=0, then the slope coefficient will
+also be 0. The intercept is a function of the means of $x$ and $y$ and 
+what the estimated slope coefficient is **If the slope coefficient,**
+$\mathbf{b_1,}$ **is 0, then** $\mathbf{b_0=\bar{y}}$ (which is just the
+mean of the response variable for all observed values of $x$ -- this is 
+a very boring model!) The slope is 0 when the correlation is 0. So when
+there is no linear relationship between $x$ and $y$ ($r=0$), the least
+squares regression line is a horizontal line with height $\bar{y}$, and
+the line produces the same fitted values for all $x$ values. You can also
+think about this as when there is no relationship between $x$ and $y$, the
+best prediction of $y$ is the mean of the y-values and it doesn't change
+based on the values of $x$. It is less obvious in these equations, but they
+also imply that **the regression line ALWAYS goes through the point**
+$\mathbf{(\bar{x},\bar{y}).}$ It provides a sort of anchor point
+for all regression lines. 
+
+For one more example, we can
+revisit the Montana wildfire areas burned (log-hectares) and the average summer
+temperature (degrees F), which had ***r***=0.81. The interpretations of the
+different parts of the regression model follow the least squares estimation 
+provided by ``lm``:
+
+
+```r
+fire1<-lm(loghectacres~Temperature,data=mtfires)
+summary(fire1)
+```
+
+```
+## 
+## Call:
+## lm(formula = loghectacres ~ Temperature, data = mtfires)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.0822 -0.9549  0.1210  1.0007  2.4728 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -69.7845    12.3132  -5.667 1.26e-05
+## Temperature   1.3884     0.2165   6.412 2.35e-06
+## 
+## Residual standard error: 1.476 on 21 degrees of freedom
+## Multiple R-squared:  0.6619,	Adjusted R-squared:  0.6458 
+## F-statistic: 41.12 on 1 and 21 DF,  p-value: 2.347e-06
+```
+
+* Regression Equation (Completely Specified):
+
+    * $\widehat{\text{log(Ha)}} = -69.78 + 1.39 \text{Temp} \ \ \ \ \text{ OR}$
+    
+    * $\hat{y} = -69.78 + 1.39x$ with **Y:log(Ha) and X:Temperature**
+    
+* Response Variable: Yearly *log* Hectares burned by wildfires 
+
+* Explanatory Variable: Average Summer Temperature
+
+* Estimated y-Intercept ($b_0$): -69.78
+
+* Estimated slope ($b_1$): 1.39
+
+* Slope Interpretation: For a 1 degree Fahrenheit increase in
+Average Summer Temperature we would expect, **on average**, a 1.39 
+$\underline{change}$ in log(Hectares) burned. 
+
+* Y-intercept Interpretation: If temperature were 0 degrees F, we would 
+expect -69.78 log(Hectares) burned **on average**. 
+
+One other use of regression equations is for prediction. It is a trivial
+exercise (or maybe not -- we'll see when you try it!) to plug an x-value of
+interest into the regression equation and get an estimate for $y$ at that $x$.
+Basically, the regression lines displayed in the scatterplots show the 
+predictions from the regression line across the range of $x\text{'s}$.
+Formally, ***prediction*** involves estimating the response for a particular 
+value of $x$. We know that it won't be perfect but it is our best guess. 
+Suppose that we are interested in
+predicting the log-area burned for a summer that had an average temperature of
+$59^\circ\text{F}$. If we plug $59^\circ\text{F}$ into the regression
+equation, $\widehat{\text{log(Ha)}} = -69.78 + 1.39\bullet \text{Temp}$,
+we get
+
+$$\begin{align}
+\require{cancel}
+\widehat{\text{log(Ha)}} &= -69.78\text{ log-hectacres } + 
+1.39\text{ log-hectacres}/^\circ \text{F} \bullet 59^\circ\text{F} \\
+&= -69.78\text{ log-hectacres } + 
+1.39\text{ log-hectacres}/\cancel{^\circ \text{F}} \bullet 59\cancel{^\circ \text{F}} \\
+&= 12.23 \text{ log-hectares}
+\end{align}$$
+
+We did not observe any summers at exactly $x=59$ but did observe some 
+nearby and this result seems relatively reasonable. 
+
+Now suppose someone asks you to use this equation for predicting 
+$\text{Temperature} = 65^\circ F$. We can run that through the equation:
+$-69.78 + 1.39*65 = 20.57$ log-hectares but can we trust this prediction? We did
+not observe any summers over 60 degrees F so we are now predicting outside the
+scope of our observations -- performing extrapolation. Having a scatterplot in
+hand helps us to assess the range of values where we can reasonably use the
+equation -- between 54 and 60 degrees F. 
+
+(ref:fig6-18) Scatterplot of log-hectares burned versus temperature with 
+estimated regression line. 
+
+
+```r
+scatterplot(loghectacres~Temperature, data=mtfires, smoother=T,
+            main="Scatterplot with regression line for Area burned vs Temperature")
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-18-1.png" alt="(ref:fig6-18)" width="672" />
+<p class="caption">(\#fig:Figure6-18)(ref:fig6-18)</p>
+</div>
+
 ## Measuring the strength of regressions: R2	{#section6-8}
+
+At the beginning of the chapter, 
+we used the correlation coefficient to measure the strength and direction of
+the linear relationship. The regression line provides an even more detailed
+description of the direction of the linear relationship than the correlation
+provided; in regression we addressed the question of "for a unit change in $x$,
+what sort of change in $y$ do we expect, on average?" whereas the 
+correlation just addressed whether the relationship was positive or negative.
+However, the  **regression line tells us nothing about the strength of the
+relationship**. Consider the three scatterplots in Figure \@ref(fig:Figure6-19):
+the left panel is the original *BAC* data and the two right
+panels have fake data that generated the same estimated regression model with a
+weaker (middle panel) and then a stronger (right panel) linear relationship
+between ``Beers`` and ``BAC``. This suggests that the regression
+line is a useful but incomplete characterization of relationships between
+variables -- we need a measure of strength of the relationship to go with the
+equation. 
+
+We could use the correlation coefficient, ***r***, again to characterize
+strength but it is somewhat redundant to report a measure that contains 
+direction information. It also will not extend to multiple
+regression models where we have more than one predictor variable in the same
+model. 
+
+In regression models, we use the ***coefficient of determination*** 
+(symbol: $\mathbf{R^2}$) to accompany our regression line and describe
+the strength of the relationship. It can either be
+scaled between 0 and 1 or 0 to 100% and has "units" of the proportion or
+percentage of the variation in $y$ that is explained by the model that 
+includes $x$ (and later more than one $x$). For example, and $\mathbf{R^2}$
+of 0% corresponds to explaining 0% of the variation in the response with our
+model and $\mathbf{R^2} = 100\%$ means that all the variation in the
+response was explained by the model. In between, it provides a nice summary 
+of how much of the total variability in the response we can account for
+with our model
+including $x$ (and, in Chapter \@ref(chapter8), including multiple 
+predictor variables). 
+
+(ref:fig6-19) Three scatterplots with the same estimated regression line. 
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-19-1.png" alt="(ref:fig6-19)" width="672" />
+<p class="caption">(\#fig:Figure6-19)(ref:fig6-19)</p>
+</div>
+
+$\mathbf{R^2}$ is calculated using the sums of squares we encountered in the
+ANOVA methods. We once again have some total amount of variability that is
+attributed to the variation based on the model fit, here we call it 
+$\text{SS}_\text{regression}$, and the residual variability, still 
+$\text{SS}_\text{error}=\Sigma(y-\hat{y})^2$. The $\text{SS}_\text{regression}$
+is most easily calculated as 
+$\text{SS}_\text{regression} = \text{SS}_\text{Total} - \text{SS}_\text{error}$,
+the difference between the total
+variability and the variability not explained by the model under consideration. 
+Using these quantities, we calculate the portion of the total variability that
+the model explains as
+
+$$\mathbf{R^2}=\frac{\text{SS}_\text{regression}}{\text{SS}_\text{Total}}
+=1 - \frac{\text{SS}_\text{error}}{\text{SS}_\text{Total}}.$$ 
+
+It also ends up that the
+coefficient of determination for models with one predictor is the correlation
+coefficient (***r***) squared ($\mathbf{R^2} = \mathbf{r^2}$). So we can
+quickly find coefficients of determination if we know correlations in simple
+linear regression models. In the real *Beers* and *BAC* data, ***r***=0.8943.
+So $\mathbf{R^2} = 0.79998$ or approximately 0.80. So 80% of the variation in 
+*BAC* is explained by *Beer* consumption. That leaves 20% of the variation in 
+the responses to be unexplained by our model. In this case much of the 
+unexplained variation is likely attributable to
+differences in physical characteristics (that were not measured) but the
+statistical model places that unexplained variation into the category of
+"random errors". We don't actually have to find ***r*** to get coefficients of
+determination -- the result is part of the regular summary of a regression 
+model that we have not been reproducing. 
+The full ``lm`` model summary follows with "``Multiple R-squared``" 
+that is bolded below. It is reported as a proportion and it is your choice 
+whether you want to report
+and interpret it as a proportion or percentage, just make that clear in how you
+discuss it. 
+
+
+```r
+m1<-lm(BAC~Beers,data=BB)
+summary(m1)
+```
+
+```
+## 
+## Call:
+## lm(formula = BAC ~ Beers, data = BB)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.027118 -0.017350  0.001773  0.008623  0.041027 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -0.012701   0.012638  -1.005    0.332
+## Beers        0.017964   0.002402   7.480 2.97e-06
+## 
+## Residual standard error: 0.02044 on 14 degrees of freedom
+## Multiple R-squared:  0.7998,	Adjusted R-squared:  0.7855 
+## F-statistic: 55.94 on 1 and 14 DF,  p-value: 2.969e-06
+```
+
+In this output, be careful because there is another related quantity called
+***Adjusted*** **R-squared** that we will discuss later. This other quantity
+is not a measure of the strength of the
+relationship but will be useful. 
+
+We could also revisit the ANOVA
+table for this model to verify the source of the $\mathbf{R^2}$ of 0.80 
+based on $\text{SS}_\text{regression}= 0.02337$ and 
+$\text{SS}_\text{Total} = 0.02337+0.00585$. This provides 0.80 from 
+$0.02337/0.02922$. 
+
+
+```r
+anova(m1)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: BAC
+##           Df    Sum Sq   Mean Sq F value    Pr(>F)
+## Beers      1 0.0233753 0.0233753  55.944 2.969e-06
+## Residuals 14 0.0058497 0.0004178
+```
+
+```r
+SStotal <- 0.0233753 + 0.0058497
+SSregression <- 0.0233753
+SSregression/SStotal
+```
+
+```
+## [1] 0.7998392
+```
+
+In Figure \@ref(fig:Figure6-19), we saw three
+examples with the same regression model, but different strengths of
+relationships. In the real data set $\mathbf{R^2} = 80\%$. For the first
+fake data set (middle panel), the $\mathbf{R^2}$ drops to $13.8\%$ and for
+the second fake data set (right panel), $\mathbf{R^2}$ is $97.3\%$. As a
+summary, $\mathbf{R^2}$ provides a natural scale to understand "how good"
+each model is at explaining the responses. We can revisit some of our previous
+models to get a little more practice with using this summary of strength or quality
+of regression models. 
+
+For the Montana fire data, $\mathbf{R^2}=66.2\%$. So the proportion of
+variation of log-area burned that is explained by average summer temperature
+is 0.662. This is "good" but also
+leaves quite a bit of unexplained variation in the responses. There is a long
+list of reasons why this explanatory variable leaves a lot of variation in the
+response unexplained. Note that we were careful about using the scaling of the
+response variable (log(area burned)) in the interpretation -- this is because we
+would get a much different answer if area burned vs temperature was considered. 
+
+
+```r
+fire1 <- lm(loghectacres~Temperature, data=mtfires)
+summary(fire1)
+```
+
+```
+## 
+## Call:
+## lm(formula = loghectacres ~ Temperature, data = mtfires)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.0822 -0.9549  0.1210  1.0007  2.4728 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -69.7845    12.3132  -5.667 1.26e-05
+## Temperature   1.3884     0.2165   6.412 2.35e-06
+## 
+## Residual standard error: 1.476 on 21 degrees of freedom
+## Multiple R-squared:  0.6619,	Adjusted R-squared:  0.6458 
+## F-statistic: 41.12 on 1 and 21 DF,  p-value: 2.347e-06
+```
+
+For the model for female Australian athletes that used *Body fat* to 
+explain *Hematocrit*, the estimated regression model was
+$\widehat{\text{Hc}}_i = 42.014 - 0.085\text{Bodyfat}_i$ and
+$\mathbf{r} = -0.168$. The coefficent of determination is
+$\mathbf{R^2} = (-0.168)^2 = 0.0282$. So *body fat* explains 2.8% of
+the variation in *Hematocrit* in these women. That is not a very good 
+regression model with over 97% of the variation in *Hematocrit* unexplained
+by this model. The scatterplot showed a fairly weak relationship but this
+provides numerical and interpretable information that drives that point home. 
+
+
+```r
+m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Results for Females
+summary(m2)
+```
+
+```
+## 
+## Call:
+## lm(formula = Hc ~ Bfat, data = aisR2[aisR2$Sex == 1, ])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.2399 -2.2132 -0.1061  1.8917  6.6453 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 42.01378    0.93269  45.046   <2e-16
+## Bfat        -0.08504    0.05067  -1.678   0.0965
+## 
+## Residual standard error: 2.598 on 97 degrees of freedom
+## Multiple R-squared:  0.02822,	Adjusted R-squared:  0.0182 
+## F-statistic: 2.816 on 1 and 97 DF,  p-value: 0.09653
+```
 
 ## Outliers: leverage and influence	{#section6-9}
 
+In the review of correlation, we
+loosely considered the impacts of outliers on the correlation. We removed
+unusual points to see both the visual changes (in the scatterplot) as well as
+changes in the correlation coefficient in Figures \@ref(fig:Figure6-4)
+and \@ref(fig:Figure6-5). In this section, 
+we formalize these ideas in the context of impacts of unusual points on our
+regression equation. In regression, it is possible for a single point to have a
+big impact on the overall regression results but it is also possible to have a
+clear outlier that has little impact on the results. We call an observation
+***influential*** if its removal causes a "big" change in the regression line,
+specifically in terms of impacting the
+slope coefficient. Points that are on the edges of the $x\text{'s}$
+(far from the mean of the $x\text{'s}$) have the potential for more impact 
+on the line as we will see in some examples shortly. 
+
+You can think of the regression line being balanced at $\bar{x}$ and the
+further from that location a point is, the more a single point can move
+the line. We can measure the distance of
+points from $\bar{x}$ to quantify each observation's potential for impact 
+on the line using what is called the ***leverage*** of a point. Leverage
+is a positive numerical measure with larger values corresponding to more 
+leverage. The scale changes depending on the sample size ($n$) and the
+complexity of the model so all that matters is which observations have 
+more or less relative leverage in a particular data set. The observations 
+with x-values
+that provide higher leverage have increased potential to influence the
+estimated regression line. Along with measuring the leverage, we can also
+measure the influence that each point has on the regression line using
+***Cook's Distance*** or ***Cook's D***. It also is a positive
+measure with higher values suggesting more influence. The rule of thumb is that
+Cook's D values over 1.0 correspond to clearly influential points, values over
+0.5 have some influence and values lower than 0.5 indicate points that are not
+influential on the regression model slope coefficients. One part of the regular
+diagnostic plots we will use for regression models displays the leverages on
+the x-axis, the standardized residuals on the y-axis, and adds contour lines
+for Cook's Distances in a panel that is labeled "Residuals vs Leverage". This
+allows us to see the potential for impact of a point (leverage), how far it's
+observation was from the regression line (residual), and to see a measure of
+that point's influence (Cook's D). 
+
+To extract the level of Cook's D on the "Residuals vs Leverage" plot,
+look for contours
+to show up on the upper and lower right of the plot. They show increasing
+levels of influence going to the upper and lower right corners as you combine
+higher leverage (x-axis) and larger residuals (y-axis) -- the two ingredients
+required to be influential on the line. The contours are displayed for Cook's D
+values of 0.5 and 1.0 if there are points near or over those levels. The Cook's
+D values come from a topographical surface of values that is a sort of U-shaped
+valley in the middle of the plot centered at $y=0$ with the lowest contour
+corresponding to Cook's D values below 0.5 (no influence). As you move to the
+upper right or lower right corners, the influence increases and the edges of
+the valley get steeper. If you do not see any contours in the plot, then no
+points were even close to being influential based on Cook's D. 
+
+To illustrate these concepts, the original *Beers* and *BAC* data 
+are used again. In the scatter plot in Figure \@ref(fig:Figure6-20),
+two points are plotted with different characters. 
+The point for 1 *Beer* and *BAC* of 0.010 is displayed as a "$\diamond$"
+and the 9 *Beer* and *BAC* 0.19 observation is displayed with a "$\circ$".
+These two points are the furthest from the mean of the of the $x\text{'s}$
+$\overline{\text{Beers}}= 4.8$) but show two different levels of
+influence on the line. 
+
+(ref:fig6-20) Scatterplot and Residuals vs Leverage plot for the
+real BAC data.
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-20-1.png" alt="(ref:fig6-20)" width="672" />
+<p class="caption">(\#fig:Figure6-20)(ref:fig6-20)</p>
+</div>
+
+
+The "$\diamond$" point has a leverage of 0.27 and the 9 *Beer* observation
+("$\circ$") had a leverage of 0.30. The 1 *Beer* observation was close to
+the pattern defined by the other points, had a small residual, and a Cook's D
+value below 0.5 (it did not exceed the first of the contours). So even though
+it had high leverage, it was not an influential point. The 9 *Beer* observation
+had the highest leverage in the data set and was quite a bit above the pattern
+defined by the other points and ends up being an influential point with a
+Cook's D over 1. We might want to consider fitting this model without that
+observation to get a better estimate of the effects of beer consumption on BAC
+or revisit our assumption that the relationship is really linear here. 
+
+To further explore influence, we will add a point to the original data set and
+move it around so you can see how those changes impact the results. For each
+scatterplot in Figure \@ref(fig:Figure6-21), the Residuals vs Leverage 
+plot is displayed to its right. The original data are "$\color{gray}{\bullet}$"
+and the original regression line is the dashed line in 
+Figure \@ref(fig:Figure6-21). First, a fake observation at 11 *Beers* and
+0.1 *BAC* is added, 
+at (11, 0.1), in the top panels of the figure. This observation is clearly an
+outlier and heavily impacts the slope of the regression line (so is clearly
+influential). This added point drops the $\mathbf{R^2}$ from 0.80 in the
+original data to 0.24. The accompanying Residuals vs Leverage plot shows
+that this point has extremely high leverage and a Cook's D over 1 -- it 
+is a clearly influential point. However, **having high leverage does not
+always make points influential.**
+Consider the second row of plots with an added point of (11, 0.19). The
+regression line barely changes and $\mathbf{R^2}$ increases a little.
+This point has the same leverage as in the first example since it is the 
+same set of $x\text{'s}$ and the distance to the mean is unchanged. But 
+it is not influential
+since its Cook's D is less than 0.5. This occurred because it followed the
+overall pattern of observations even though it was "far away" from the other
+observations in the x-direction. The last two rows of plots show what happens
+when low leverage outliers are encountered. Placing observations near the
+center of the $x\text{'s}$ means that to be influential the points have 
+to be very far
+from the pattern of the other observations. The (5, 0.19) example almost
+attains a Cook's D of 0.5 but has little impact on the regression line, 
+especially the slope coefficient. It does impact the y-intercept and drops the
+R-squared value to 0.57. The same result occurs if the observation is
+noticeably lower than the other points. 
+
+When we are doing regressions, we get very worried about points "at the edges"
+having an undue influence on the results. When we start using multiple
+predictors, say if we had body weight data on these subjects as well as beer
+consumption, it becomes harder to "see" if the points are "far away" from the
+other observations and we will trust the Residuals vs Leverage plots to help us
+identify the influential points. These techniques work the same in the multiple
+regression models in Chapter \@ref(chapter8) as they do in these 
+simpler, single predictor
+regression models. 
+
+(ref:fig6-21) Plots exploring the impacts of moving a single 
+additional observation.
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-21-1.png" alt="(ref:fig6-21)" width="768" />
+<p class="caption">(\#fig:Figure6-21)(ref:fig6-21)</p>
+</div>
+
 ## Residual diagnostics – setting the stage for inference	{#section6-10}
+
+Influential points are not the
+only potential issue that can cause us to have concerns about our regression
+model. There are two levels to these considerations. The first is related to
+issues that directly impact the least squares regression line and cause
+concerns about whether a line is a reasonable representation of the
+relationship between the two variables. These issues for regression model
+estimation have been discussed previously (the same concerns in estimating
+correlation apply to regression models). The second level is whether the line
+we have will be useful for making inferences for the population that our data
+were collected from and whether the data follow our assumed model. Our window
+into problems of both types is the residuals $(e_i = y_i - \hat{y}_i)$.
+By exploring patterns in how the line "misses" the responses we can gain much
+information about the reasonableness of using the estimated regression line and
+sometimes information about how we might fix problems. The validity conditions
+for doing inference in a regression setting (Chapter \@ref(chapter7))
+involve two sets of considerations, 
+those that are assessed based on the data collection and measurement process
+and those that can be assessed using diagnostic plots. The first set is:
+
+* **Quantitative variables condition**
+
+    * We'll discuss using categorical predictor variables later -- to 
+    use simple linear regression both the explanatory and response 
+    variables need to quantitative. 
+
+* **Independence of observations**
+
+    * As in the ANOVA models, linear regression models assume that 
+    the observations are collected in a fashion that makes them 
+    independent. 
+    
+    * This will be based on the "story" of the data. Consult a 
+    statistician if your data violate this assumption as there 
+    are more advanced methods that adjust for dependency in 
+    observations but they are beyond the scope of this material.
+    
+The remaining assumptions for getting valid inferences from 
+regression models can be assessed using diagnostic plots. 
+
+* **Linearity of relationship**
+
+    * We should not report a linear regression model if the data 
+    show a curve (curvilinear relationship between $x$ and $y$).
+    
+    * Examine the Residuals vs Fitted plot:
+    
+        * If the model missed a curve in the relationship, the residuals 
+        often will highlight that missed pattern and a curve will show 
+        up in this plot.
+        
+        * Try to explain or understand the pattern in what is left over.
+        If we have a good model, there shouldn't be much left to 
+        "explain" in the residuals (i.e., no patterns left over after 
+        accounting for $x$).
+        
+* **Equal (constant) variance**
+
+    * We assume that the variation is the same for all the observations
+    and especially that the variability does not change in the responses 
+    as a function of our predictor variables or the fitted values.
+    
+    * There are two plots to help with this:
+    
+        * Examine the Residuals vs Fitted plot and look for evidence of 
+        changing spread in the residuals, being careful to try to 
+        separate curving patterns from non-constant variance (and look 
+        for situations where both are present as you can violate both 
+        conditions simultaneously).
+        
+        * Examine the "Scale-Location" plot and look for changing spread 
+        as a function of the fitted values.
+        
+            * The y-axis in this plot is the square-root of the absolute 
+            value of the standardized residual. This scale flips the 
+            negative residuals on top of the positive ones to help you 
+            better assess changing variability without being distracted 
+            by whether the residuals are above or below 0.
+            
+            * Because of the absolute value, curves in the Residuals vs 
+            Fitted plot can present as sort of looking like non-constant 
+            variance -- check for nonlinearity in the residuals vs fitted 
+            before using this plot. If nonlinearity is present, just use 
+            the Residuals vs Fitted for assessing constant variance around 
+            curving pattern.
+            
+    * If there are patterns of increasing or decreasing variation (often 
+    described as funnel or cone shapes), then it might be possible to use a
+    transformation to fix this problem (more later). It is possible to have
+    decreasing and then increasing variability in one plot and this also is
+    a violation of this condition. 
+
+* **Normality of residuals**
+
+    * Examine the Normal QQ plot for violations of the normality assumption
+    as in Chapters \@ref(chapter3) and \@ref(chapter4).
+    
+        * Specifically review the discussion of identifying skews in 
+        different directions and heavy vs light tailed distributions.
+        
+        * Skewed and heavy-tailed distributions are the main problems 
+        for our inferences, especially since both kinds of distributions 
+        can contain outliers that can wreak havoc on the estimated 
+        regression line. 
+        
+        * Light-tailed distributions cause us no real inference issues 
+        except that the results are conservative so you should note when 
+        you observe these situations but feel free to proceed with using
+        your model results.
+        
+        * Remember that clear outliers are an example of a violation of 
+        the normality assumption but some outliers may just influence 
+        the regression line and make it fit poorly for the results of the
+        observations and this issue will be more clearly observed in the 
+        residuals vs fitted. 
+
+* **No influential points**
+
+    * Examine the Residuals vs Leverage plot as discussed in the previous 
+    section.
+    
+    * Consider removing influential points and focusing on results without
+    that point in the data set. 
+
+To assess these later assumptions, we will use the four residual diagnostic 
+plots that R provides from ``lm`` fitted models. They are similar to the 
+results from ANOVA models but the Residuals vs Leverage plot is
+now interesting as was discussed in Section \@ref(section6-9). Now we can 
+fully assess the
+potential for trusting the estimated regression models in a couple of our
+examples:
+
+* **Beers vs BAC:**
+
+    * Quantitative variables condition:
+    
+        * Both variables are quantitative.
+        
+    * Independence of observations:
+    
+        * We can assume that all the subjects are independent of each 
+        other. There is only one measurement per student and it is 
+        unlikely that one subject's beer consumption would impact 
+        another's BAC. Unless the students were trading blood it is 
+        isn't possible for one person's beer consumption to change
+        someone else's BAC.
+        
+        (ref:fig6-22) Full suite of diagnostics plots for *Beer* vs 
+        *BAC* data.
+        
+        
+        ```r
+        m1 <- lm(BAC~Beers, data=BB)
+        par(mfrow=c(2,2))
+        plot(m1, add.smooth=F, main="Beers vs BAC")
+        ```
+        
+        <div class="figure">
+        <img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-22-1.png" alt="(ref:fig6-22)" width="768" />
+        <p class="caption">(\#fig:Figure6-22)(ref:fig6-22)</p>
+        </div>
+        
+    * Linearity, constant variance from Residuals vs Fitted:
+    
+        * We previously have identified a potentially influential 
+        outlier point in these data. Consulting the Residuals vs 
+        Fitted plot in Figure \@ref(fig:Figure6-22), if you trust
+        that influential point, shows some curvature with a pattern of
+        decreasing residuals and then an increase at the right. Or, if 
+        you do not trust that highest BAC observation, then there is 
+        a mostly linear relationship with an outlier identified. We 
+        would probably suggest that it is an outlier, should be removed
+        from the analysis, and inferences constrained to the region of 
+        beer consumption from 1 to 8 beers since we
+        don't know what might happen at higher values.
+        
+    * Constant variance from Scale-Location:
+    
+        * There is some evidence of increasing variability in this 
+        plot as the spread of the results increases from left to 
+        right, however this is just an artifact
+        of the pattern in the original residuals and not real evidence of
+        non-constant variance.
+        
+    * Normality from Normal QQ Plot:
+    
+        * The left tail is a little short and the right tail is a 
+        little long, suggesting a right
+        skewed distribution in the residuals. This corresponds to 
+        having a large positive outlying value.
+        
+    * Influential points from Residuals vs Leverage:
+    
+        * Previously discussed, this plot shows one influential point 
+        with a Cook's D value over 1 that is distorting the fitted model. 
+
+* **Tree height and tree diameter** (suspicious observation already removed):
+
+    * Quantitative variables: Met
+    
+    * Independence of observations:
+    
+        * There are multiple trees that were measured in each plot.
+        One problem might be that once a tree is established in an 
+        area, the other trees might not grow as tall. The other problem
+        is that some sites might have better soil conditions
+        than others. Then, all the trees in those rich soil areas might be
+        systematically taller than the trees in other areas. Again, there are
+        statistical methods to account for this sort of "clustering" of
+        measurements but this technically violates the assumption that all the
+        trees are independent of each other. So this assumption is violated, but
+        we will proceed with that caveat on our results -- the precision of our
+        inferences might be slightly over-stated due to some potential
+        dependency in the measurements. 
+
+    * Linearity, constant variance from Residuals vs Fitted in 
+    Figure \@ref(fig:Figure6-23).
+    
+        * There is evidence of a curve that was missed by the linear model.
+        
+        * There is also evidence of increasing variability AROUND the curve
+        in the residuals.
+        
+    * Constant variance from Scale-Location:
+    
+        * This plot actually shows relatively constant variance but 
+        this plot is misleading when curves are
+        present in the data set. **Focus on the Residuals vs Fitted to
+        diagnose non-constant variance in situations where a curve was
+        missed.**
+        
+    * Normality in Normal QQ plot:
+    
+        * There is no indication of any problem with the normality
+        assumption.
+        
+    * Influential points?
+    
+        * The Cook's D contours do not show up in this plot so none of 
+        the points are influential. 
+
+So the main issues with this model are the curving relationship and 
+non-constant variance. We'll revisit this example later to see if we can
+find a model on transformed variables that has better diagnostics. 
+
+Reporting the following regression model that has a decent $R^2$ of 62.6%
+would be misleading since it does not accurately represent the relationship
+between tree diameter and tree height. 
+
+(ref:fig6-23) Diagnostics plots for tree height and diameter simple 
+linear regression model. 
+
+
+```r
+tree1 <- lm(height.m~dbh.cm,data=ufc[-168,])
+summary(tree1)
+```
+
+```
+## 
+## Call:
+## lm(formula = height.m ~ dbh.cm, data = ufc[-168, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -12.1333  -3.1154   0.0711   2.7548  12.3076 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 11.98364    0.57422   20.87   <2e-16
+## dbh.cm       0.32939    0.01395   23.61   <2e-16
+## 
+## Residual standard error: 4.413 on 333 degrees of freedom
+## Multiple R-squared:  0.626,	Adjusted R-squared:  0.6249 
+## F-statistic: 557.4 on 1 and 333 DF,  p-value: < 2.2e-16
+```
+
+```r
+par(mfrow=c(2,2))
+plot(tree1, add.smooth=F)
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-23-1.png" alt="(ref:fig6-23)" width="672" />
+<p class="caption">(\#fig:Figure6-23)(ref:fig6-23)</p>
+</div>
 
 ## Old Faithful discharge and waiting times {#section6-11}
 
+A study in August 1985 considered
+time for Old Faithful and how that might relate to *waiting time* for the next eruption (Azzalini and Bowman, 1990). 
+This sort of research provides the park staff a way to show tourists a predicted
+time to next eruption so they can quickly see it and then get back in their
+cars. Both variables are measured in minutes and the scatterplot in 
+Figure \@ref(fig:Figure6-24)
+shows a moderate to strong positive and relatively linear relationship. We
+added a ***smoothing line*** (red) to this plot. Smoothing lines provide
+regression-like fits but are performed on local areas of the relationship 
+and so can highlight where the relationships
+change and can highlight curvilinear relationships. They can also return
+straight lines just like the regression line if that is reasonable. The
+technical details of regression smoothing are not covered here but they are a
+useful graphical addition to help visualize nonlinearity in relationships. 
+
+In these data, there appear to be two groups of eruptions (shorter length, shorter
+wait and longer length, longer wait) -- but we don't know enough about these
+data to assume that there are two groups. The smoothing line does help us to
+see if the relationship appears to change or stay the same across different
+values of the explanatory variable, ``Duration``. The smoothing line suggests
+that the upper group might have a less steep slope than the lower group as it
+sort of levels off for observations with ``Duration`` of over 4 minutes. It
+also indicates that there is one point for an eruption under 1 minute in 
+``Duration`` that might be causing some problems. The story of these data 
+involve some measurements during the night
+that were just noted as being short, medium, and long -- and they were re-coded
+as 2, 3, or 4 minute duration eruptions. We'll see if our diagnostics detect
+some of these issues when we fit a simple linear regression to try to explain
+waiting time based on duration of prior eruption.
+
+(ref:fig6-24) Scatterplot of Old Faithful waiting times to next eruption 
+(minutes) and duration of prior eruption (minutes) with smoothing line 
+(bold, red) and regression line (thin, green).
+
+
+```r
+require(MASS)
+data(geyser)
+G2 <- data.frame(Waiting=geyser$waiting[-1],
+                 Duration=geyser$duration[-299])
+scatterplot(Waiting~Duration, data=G2, spread=F)
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-24-1.png" alt="(ref:fig6-24)" width="768" />
+<p class="caption">(\#fig:Figure6-24)(ref:fig6-24)</p>
+</div>
+
+The first concern with these data
+is that the observations are likely not independent. Since they were taken
+consecutively, one waiting time might be related to the next waiting time --
+violating the independence assumption. As noted above, there might be two
+groups (types) of eruptions -- short ones and long ones.
+The Normal QQ-Plot in Figure \@ref(fig:Figure6-25)
+also suggests a few observations creating a slightly long right tail. 
+Those observations might warrant further exploration as they also show up as
+unusual in the Residuals vs Fitted plot. There are no highly influential points
+in the data set with all points having Cook's D smaller than 0.5, so these
+outliers are not necessarily moving the regression line around. There are two
+distinct groups of observations but the variability is not clearly changing so
+we do not have to worry about non-constant variance here. So these results might
+be relatively trustworthy if we assume that the same relationship holds for all
+levels of duration of eruptions. 
+
+(ref:fig6-25) Diagnostic plots for Old Faithful waiting time model.
+
+
+```r
+OF1 <- lm(Waiting~Duration, data=G2)
+summary(OF1)
+```
+
+```
+## 
+## Call:
+## lm(formula = Waiting ~ Duration, data = G2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.6940  -4.4954  -0.0966   3.9544  29.9544 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  34.9452     1.1807   29.60   <2e-16
+## Duration     10.7751     0.3235   33.31   <2e-16
+## 
+## Residual standard error: 6.392 on 296 degrees of freedom
+## Multiple R-squared:  0.7894,	Adjusted R-squared:  0.7887 
+## F-statistic:  1110 on 1 and 296 DF,  p-value: < 2.2e-16
+```
+
+```r
+par(mfrow=c(2,2))
+plot(OF1)
+```
+
+<div class="figure">
+<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-25-1.png" alt="(ref:fig6-25)" width="768" />
+<p class="caption">(\#fig:Figure6-25)(ref:fig6-25)</p>
+</div>
+
+The estimated regression equation is 
+$\widehat{\text{WaitingTime}}_i = 34.95 + 10.78\text{ Duration}_i$, 
+suggesting that for a 1 minute increase
+in eruption ``Duration`` we would expect, on average, a 10.78 minute 
+change in the ``WaitingTime``. This equation might provide a useful tool
+for the YNP staff to predict waiting times. The $\mathbf{R^2}$ is
+fairly large: 78.9% of the variation in *waiting time* is explained by the
+*duration* of the previous eruption. But maybe this is more about two
+types of eruptions/waiting
+times? We could consider the relationship within the shorter and longer
+eruptions but since there are observations residing between the two groups, it
+is difficult to know where to split the explanatory variable into two groups. 
+Maybe we really need to measure additional information that might explain why
+there are two groups in the responses...
+
 ## Chapter summary	{#section6-12}
+
+The Pearson's Product Moment Correlation Coefficient) measures the strength
+and direction of the linear relationship between two quantitative variables. 
+Regression models estimate the impacts of changes in $x$ on the mean of the
+response variable y. Direction of the assumed relationship (which variable
+explains or causes the other) matters for regression models but does not matter
+for correlation. Regression lines only describe the pattern of the
+relationship; in regression, we use the coefficient of determination to
+describe the strength of the relationship between the variables as a percentage
+of the response variable that is explained by the model. If we are choosing
+between models, we prefer them to have higher $R^2$ values for obvious
+reasons, but we will discover in Chapter \@ref(chapter8) that maximizing
+the coefficient of
+determination is not a good way to pick a model when we have multiple candidate
+options. 
+
+In this chapter, a wide variety of potential problems were explored when using
+regression models. This included a discussion of the conditions that will be
+required for using the models to perform trustworthy inferences in the next two
+chapters. It is important to remember that correlation and regression models
+only measure the **linear** association between variables and that can be
+misleading if a nonlinear relationship is present. Similarly,
+influential observations can completely distort the apparent relationship 
+between variables
+and should be checked for before trusting any regression output. It is also
+important to remember that regression lines should not be used outside the
+scope of the original observations -- extrapolation should be checked for and
+avoided whenever possible or at least acknowledged. 
+
+Regression models look like they
+estimate the changes in $y$ that are caused by changes in $x$. This is not true
+unless the levels of $x$ are randomly assigned and only then we can make causal
+inferences. Since this is not generally true, you should initially always
+assume that any regression equation describes the relationship -- if you observe
+two subjects that are 1 unit of $x$ apart, you can expect their mean to differ by
+$b_1$ -- you should not, however, say that changing $x$ causes a change in the
+mean of the responses. Despite all these cautions, 
+regression models are very popular statistical methods. They provide detailed
+descriptions of relationships between variables and can be extended to
+situations where we are interested in multiple predictor variables. They also
+share ties to the ANOVA models from earlier this semester. When you are running
+R code, you will note that all the ANOVAs and the regression models are all fit
+using ``lm``. The assumptions and diagnostic plots are quite similar. And in the
+next chapter, we will see that inference techniques
+look similar. People still like to distinguish among the different types of
+situations, but the underlying ***linear models*** are actually exactly the 
+same...
 
 ## Important R code	{#section6-13}
 
+The main components of the R code used in this chapter follow with the 
+components to modify in red where $y$ is a response variable, $x$ is an
+explanatory variable, and the data are in DATASETNAME.
+
+* pairs.panels(<font color='red'>DATASETNAME</font>, ellipses=F, scale=T,
+smooth=F, col=0)
+
+    * Requires the ``psych`` package.
+    
+    * Makes a scatterplot matrix that also displays the correlation 
+    coefficient. 
+
+* cor(<font color='red'>y</font>~<font color='red'>x</font>,
+data=<font color='red'>DATASETNAME</font>)
+
+    * Provides the estimated correlation coefficient between $x$ and $y$.
+    
+* plot(<font color='red'>y</font>~<font color='red'>x</font>,
+data=<font color='red'>DATASETNAME</font>)
+
+    * Provides a scatter plot.
+    
+* scatterplot(<font color='red'>y</font>~<font color='red'>x</font>,
+data=<font color='red'>DATASETNAME</font>, smooth=F)
+
+    * Requires the ``car`` package.
+    
+    * Provides a scatter plot with a regression line.
+    
+* <font color='red'>MODELNAME</font> <- lm(<font color='red'>y</font>~<font color='red'>x</font>,
+data=<font color='red'>DATASETNAME</font>)
+
+    * Estimates a regression model using least squares.
+    
+* summary(<font color='red'>MODELNAME</font>)
+
+    * Provides parameter estimates and R-squared (used heavily in 
+    Chapter \@ref(chapter7) and \@ref(chapter8) as well).
+    
+* par(mfrow=c(2, 2)); plot(<font color='red'>MODELNAME</font>)
+
+    * Provides four regression diagnostic plots in one plot. 
+
+
+
 ## Practice problems	{#section6-14}
 
+These questions revisit the treadmill data set from Chapter \@ref(chapter1).
+Researchers were
+interested in whether the run test variable could be used to replace the treadmill
+oxygen consumption variable that is expensive to measure. The following code loads
+the data set and provides a scatterplot matrix using ``pairs.panel``.
+
+```
+treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv")
+require(psych)
+pairs.panels(treadmill, ellipses=F, smooth=F, col=0)
+```
+
+6.1. First, 
+we should get a sense of the strength of the correlation between the variable
+of primary interest, ``TreadMillOx``, and the other variables and consider
+whether outliers or nonlinearity are going to be
+major issues here. Which variable is it most strongly correlated with? Which
+variables are next most strongly correlated with this variable?
+
+6.2. Fit
+the SLR using ``RunTime`` as explanatory variable for ``TreadMillOx``.
+Report the estimated model. 
+
+6.3. Predict the treadmill oxygen value for a subject with a run time 
+of 14 minutes. Repeat for a subject with a run time of 16 minutes. Is there
+something different about these two predictions?
+
+6.4. Interpret the slope coefficient from the estimated model, remembering 
+the units on the variables. 
+
+6.5. Report and interpret the y-intercept from the SLR. 
+
+6.6. Report the $R^2$ value from the output. Show how you can find this 
+value from the original correlation matrix result. 
+
+6.7. Produce the diagnostic plots and discuss any potential issues. What
+is the approximate leverage of the highest leverage observation and how large
+is its Cook's D? What does that tell you about its potential influence in this
+model?

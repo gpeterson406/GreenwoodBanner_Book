@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-01">
+<meta name="date" content="2017-07-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1223,11 +1223,9 @@ Figure 5.23: Boxplot and beanplot of the API growth scores by level of school (E
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: growth
-##           Sum Sq  Df F value    Pr(&gt;F)    
-## stype      30370   2  23.563 6.685e-10 ***
-## Residuals 126957 197                      
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##           Sum Sq  Df F value    Pr(&gt;F)
+## stype      30370   2  23.563 6.685e-10
+## Residuals 126957 197</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(m1, <span class="dt">which=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure5-24"></span>
 <img src="05-chiSquaredTests_files/figure-html/Figure5-24-1.png" alt="QQ-plot of standardized residuals from the One-Way ANOVA linear model." width="672" />

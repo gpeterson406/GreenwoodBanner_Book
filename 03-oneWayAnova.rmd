@@ -13,6 +13,7 @@ library(pander)
 require(mosaic)
 library(knitr)
 knitr::opts_chunk$set(cache = TRUE)
+options(show.signif.stars = FALSE)
 ```
 
 

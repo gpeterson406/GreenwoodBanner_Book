@@ -11,9 +11,12 @@ header-includes:
 # Simple linear regression inference {#chapter7}
 
 ```{r echo=F,warning=F,message=F}
-set.seed(3234)
+set.seed(5678)
 library(pander)
 require(mosaic)
+library(knitr)
+knitr::opts_chunk$set(cache = TRUE)
+options(show.signif.stars = FALSE)
 ```
 
 
