@@ -1348,8 +1348,8 @@ Power    Formula                        Usage
 $1/2$    $y^{0.5}=\sqrt{y}$             Counts and area responses                        
 0        $\log(y)$ natural log of $y$   Counts, normality, curves, non-constant variance 
 $-1/2$   $y^{-0.5}=1/\sqrt{y}$          Uncommon                                         
--1       $y^{-1}=1/y$                   for ratios                                       
--2       $y^{-2}=1/y^2$                 seldom used                                      
+$-1$     $y^{-1}=1/y$                   for ratios                                       
+$-2$     $y^{-2}=1/y^2$                 seldom used                                      
 
 There are even more transformations possible, for example $y^{0.33}$ is sometimes useful 
 for variables
@@ -1363,9 +1363,353 @@ on its use. It is so commonplace in some fields that some researchers
 log-transform their data prior to even plotting their results. In other
 situations, such as when measuring acidity (pH), noise (decibels), or
 earthquake size (Richter scale), the measurements are already on logarithmic
-scales. 
+scales.
+
+Actually, we have already analyzed data that benefited from a
+***log-transformation*** -- the *log-area burned* vs. *summer temperature*
+data for Montana. Figure \@ref(fig:Figure7-11) compares the
+relationship between these variables on the original hectares scale and the
+log-hectares scale. 
+
+(ref:fig7-11) Scatterplots of Hectares (a) and log-Hectares 
+(b) vs Temperature.
+
+
+```r
+par(mfrow=c(1,2))
+plot(hectacres~Temperature, data=mtfires, main="(a)",
+     ylab="Hectacres", pch=16)
+plot(loghectacres~Temperature, data=mtfires, main="(b)",
+     ylab="log-Hectacres", pch=16)
+```
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-11-1.png" alt="(ref:fig7-11)" width="672" />
+<p class="caption">(\#fig:Figure7-11)(ref:fig7-11)</p>
+</div>
+
+The left panel in Figure \@ref(fig:Figure7-11) displays a relationship
+that would be hard fit using SLR -- it has a curve and the
+variance is increasing with increasing temperatures. With a 
+log-transformation of *Hectacres*, the relationship appears to be relatively
+linear and have constant variance. We considered regression models for this
+situation previously. This shows at least one situation where a
+log-transformation of a response variable can linearize a relationship and
+reduce non-constant variance. 
+
+This transformation does not always work to "fix" curvilinear 
+relationships, in fact
+in some situations it can make the relationship more nonlinear. For example, 
+reconsider the relationship between tree diameter and tree height, which
+contained some curvature that we could not account for in an SLR. 
+Figure \@ref(fig:Figure7-12) shows
+the original version of the variables and Figure \@ref(fig:Figure7-13)
+shows the same
+information with the response variable (height) log-transformed. 
+
+
+```r
+require(spuRs) # install.packages("spuRs")
+data(ufc)
+require(car)
+scatterplot(height.m~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
+            main="Tree height vs tree diameter")
+scatterplot(log(height.m)~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
+            main="log-Tree height vs tree diameter")
+```
+
+(ref:fig7-12) Scatterplot of tree height versus tree diameter.
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-12-1.png" alt="(ref:fig7-12)" width="672" />
+<p class="caption">(\#fig:Figure7-12)(ref:fig7-12)</p>
+</div>
+
+Figure \@ref(fig:Figure7-13) with the log-transformed response seems 
+to show a more nonlinear relationship and may even have more
+issues with non-constant variance. This example shows that log-transforming
+the response variable cannot fix all problems, even though we've seen some
+researchers assume it can. It is OK to try a transformation but remember to
+always plot the results to make sure it actually helped and did not make the
+situation worse. 
+
+(ref:fig7-13) Scatterplot of log(tree height) versus tree diameter.
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-13-1.png" alt="(ref:fig7-13)" width="672" />
+<p class="caption">(\#fig:Figure7-13)(ref:fig7-13)</p>
+</div>
+
+All is not lost in this situation, we can consider two other potential 
+uses of the log-transformation
+and see if they can "fix" the relationship up a bit. One option is to apply the
+transformation to the explanatory variable (``y~log(x)``), displayed in 
+Figure \@ref(fig:Figure7-14). If the distribution of the explanatory 
+variable is right skewed (see the boxplot on
+the x-axis), then consider log-transforming the explanatory variable. This will
+often reduce the leverage of those most extreme observations which can be
+useful. 
+
+(ref:fig7-14) Scatterplot of tree height versus log(tree diameter).
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-14-1.png" alt="(ref:fig7-14)" width="672" />
+<p class="caption">(\#fig:Figure7-14)(ref:fig7-14)</p>
+</div>
+
+In this situation, it also seems to have been quite successful at 
+linearizing the relationship, leaving some minor
+non-constant variance, but providing a big improvement from the relationship on
+the original scale. 
+
+The other option, especially when everything else fails, is to apply the
+log-transformation to
+both the explanatory and response variables (``log(y)~log(x)``), as
+displayed in Figure \@ref(fig:Figure7-15). For this example, the 
+transformation seems to be better than the first two options
+(none and only $\log(y)$), but demonstrates some decreasing variability with
+larger $x$ and $y$ values. It has also created a new and different curve in the
+relationship. In the end, we might prefer to fit an SLR model to the
+tree *height* vs *log(diameter)* versions of the variables 
+(Figure \@ref(fig:Figure7-14)). 
+
+(ref:fig7-15) Scatterplot of log(tree height) versus log(tree diameter).
+
+
+```r
+scatterplot(log(height.m)~log(dbh.cm), data=ufc[-168,], smooth=T,
+            spread=F, main="log-Tree height vs log-tree diameter")
+```
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-15-1.png" alt="(ref:fig7-15)" width="672" />
+<p class="caption">(\#fig:Figure7-15)(ref:fig7-15)</p>
+</div>
+
+Economists also like to use $\log(y)\sim \log(x)$ transformations. The 
+log-log transformation
+tends to linearize certain relationships and has specific interpretations in
+terms of Economics theory. The log-log transformation shows up in many
+different disciplines as a way of obtaining a linear relationship on 
+the log-log scale, 
+but different fields discuss it differently. The following example shows a
+situation where transformations of both $x$ and $y$ are required and 
+this double transformation seems to be quite successful in what 
+looks like an initially hopeless situation for our linear modeling approach. 
+
+Data were collected in 1988 on the rates of infant mortality 
+(infant deaths per 1,000
+live births) and gross domestic product (GDP) per capita (in 1998 US dollars)
+from $n=207$ countries. These data are available from the ``car`` package 
+(Fox, 2003) in a data set called ``UN``. The four panels in 
+Figure \@ref(fig7-16) show the original relationship and the impacts of
+log-transforming one or both variables. 
+The only scatterplot that could potentially be modeled using SLR is the lower
+right panel (d) that shows the relationship between *log(infant mortality)*
+and *log(GDP)*. In the next section, we will fit models to some of these
+relationships and use our diagnostic plots to help us assess "success" of 
+the transformations. 
+
+(ref:fig7-16) Scatterplots of Infant Mortality vs GDP under four 
+different combinations of log-transformations. 
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-16-1.png" alt="(ref:fig7-16)" width="672" />
+<p class="caption">(\#fig:Figure7-16)(ref:fig7-16)</p>
+</div>
+
+Almost all nonlinear transformations assume that the variables are strictly
+greater than 0. For example, consider what happens when we apply the 
+``log``  function to 0 or a negative value in R:
+
+
+```r
+log(-1)
+```
+
+```
+## Warning in log(-1): NaNs produced
+```
+
+```
+## [1] NaN
+```
+
+```r
+log(0)
+```
+
+```
+## [1] -Inf
+```
+
+So be careful to think about the domain of the transformation function 
+before using transformations. For
+example, when using the log-transformation make sure that the data values are
+non-zero and positive or you will get some surprises when you go to fit your
+regression model to a data set with NaNs (not a number) and/or
+$-\infty\text{'s}$ in it. 
+
+Sometimes the log-transformations will not be entirely successful. If the
+relationship is ***monotonic*** (strictly positive or strictly negative
+but not both), then possibly another stop
+on the ladder of transformations in Table \@ref(tab:Table7-1) might work.
+If the relationship
+is not monotonic, then it may be better to consider a more complex regression
+model that can accommodate the shape in the relationship or to split the data
+set in two so you can use SLR on each part. 
+
+Finally, remember that ``log`` in statistics and especially in R means the 
+***natural log*** (*ln* or log base *e* as you might see it elsewhere). In 
+these situations, applying ``log10`` function (which provides log base 10)
+to the variables would lead to very similar results, but readers may assume
+you used $\ln$ if you don't state that you used $log_10$. The main thing
+to remember to do is to be clear when communicating the version you are
+using. As an example, I (Greenwood) was working with researchers on a study
+(Dieser, Greenwood, and Foreman, 2010) related to impacts of environmental
+stresses on bacterial survival. The response variable was log-transformed
+counts and involved smoothed regression lines fit on this scale. I was using
+natural logs to fit the models and then shared the fitted values from the
+models and my collaborators back-transformed the results assuming that I had
+used $log_10$. We quickly resolved our differences once we discovered them but
+this serves as a reminder at how important communication is in group projects 
+-- we both said we were working with log-transformations and didn't know we
+defaulted to different bases. Generally, in statistics, it's safe to assume
+that everything is log base *e* unless otherwise specified. 
 
 ## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
+
+The previous attempts to linearize relationships imply a desire to be 
+able to fit SLR models. The *log*-transformations, when successful, 
+provide the potential to apply our SLR model. There are then two options
+for interpretations: you can either interpret the model on the
+transformed scale or you can translate the SLR model on the transformed scale
+back to the original scale of the variables. It ends up that
+*log*-transformations have special interpretations on the original scales
+depending on whether the *log* was applied to the response variable, the
+explanatory variable, or both.
+
+**Scenario 1: log(y) vs x model:**
+
+First consider the $\log(y) \sim x$ situations where the estimated model
+is of the form $\widehat{\log(y)} = b_0 + b_1x$. When only the response is
+*log*-transformed, some people call this a ***semi-log model***. But many
+researchers will use this model without any special considerations, as
+long as it provides
+a situation where the SLR assumptions are reasonably well-satisfied. To
+understand the properties and eventually the interpretation of
+transformed-variables models, we need to try to "reverse" our transformation. 
+If we exponentiate^[Note ``exp(x)`` is the same as $e^{(x)}$ but easier
+to read in-line and ``exp()`` is the R function name to execute this calculation.] both sides of $\log(y)=b_0 + b_1x$, we get:
+
+* $y=\exp(b_0 + b_1x)$, *which can be re-written as*
+
+* $y=\exp(b_0)\exp(b_1x)$. *This is based on the rules for* ``exp()`` *where*
+$\exp(a+b)=\exp(a)\exp(b)$.
+
+* Now consider what happens if we increase $x$ 1 unit, going from $x$ 
+to $x+1$, providing a new predicted $y$ that we can call $y^*$:
+$y^*=\exp(b_0)\exp[b_1(x+1)]$
+
+* $y^*=\color{red}{\underline{\boldsymbol{\exp(b_0)\exp(b_1x)}}}\exp(b_1)$ 
+*Now note that the underlined, bold component was the y-value for* $x$.
+
+* $y^* = \color{red}{\mathbf{y}}\exp(b_1)$ *Replace*
+$\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}$ *with* $\color{red}{\mathbf{y}}$,
+*the value for* $x$.
+
+So the difference in fitted values between $x$ and $x+1$ is to multiply the
+result for $x$ (that was predicting $\color{red}{\mathbf{y}}$) by 
+$\exp(b_1)$ to get to the predicted result for $x+1$ (called $y^*$).
+We can then use this result to form our ***log(y)~x slope interpretation***:
+for a 1 unit increase in $x$, we observe a multiplicative change of
+$\mathbf{exp(b_1)}$ in the response. When we compute a mean on logged variables
+that are symmetrically distributed (this should occur if our transformation was
+successful) and then exponentiate the results, the proper interpretation is
+that the changes are happening in the **median** of the original responses.
+This is the only time in the course that we will switch our inferences to
+medians instead of means, and we don't do this because
+we want to, we do it because it is result of modeling on the $\log(y)$ scale 
+if successful. 
+
+When we are working with regression equations, slopes can either be positive or
+negative and our interpretations change based on this result to either result
+in growth ($b_1>0$) or decay ($b_1<0$) in the responses as the explanatory
+variable is increased. As an example, consider $b_1=0.4$ and 
+$\exp(b_1)=\exp(0.4)=1.492$. There are a couple of ways to interpret
+this on the original scale of the response variable $y$:
+
+For $\mathbf{b_1>0}$:
+
+1. For a 1 unit increase in $x$, the multiplicative change in the median 
+of $y$ is 1.492.
+
+2. We can convert this into a **percentage increase** by subtracting 1 
+from $\exp(0.4)$, $1.492-1.0=0.492$ and multiplying the result by 100, 
+$0.492*100=49.2\%$. This is interpreted as: For a 1 unit increase in $x$,
+the median of $y$ increases by 49.2%.
+
+
+```r
+exp(0.4)
+```
+
+```
+## [1] 1.491825
+```
+
+For $\mathbf{b_1<0}$, the change on the *log*-scale is negative and that 
+implies on the original scale that the curve decays to 0. For example, 
+consider $b_1=-0.3$ and $\exp(-0.3)=0.741$. Again, 
+there are two versions of the interpretation possible:
+
+1. For a 1 unit increase in $x$, the multiplicative change in the median
+of $y$ is 0.741.
+
+2. For negative slope coefficients, the percentage decrease is calculated
+as $(1-\exp(b_1))*100\%$. For $\exp(-0.3)=0.741$, this is 
+$(1-0.741)*100=25.9\%$. This is interpreted as: For a 1 unit increase
+in $x$, the median of $y$ decreases by 25.9%. 
+
+We suspect that you will typically prefer interpretation #1 for both 
+directions but it is important to be able
+think about the results in terms of ***% change of the medians*** to make
+the scale of change more understandable. Some examples will help us see how
+these ideas can be used in applications. 
+
+For the area burned data set, the estiated regression model is
+$\log(\widehat{\text{hectares}})=-69.8+1.39\text{ Temp}$. On the
+original scale, this implies that the model is 
+$\widehat{\text{hectares}}=\exp(-69.8)\exp(1.39\text{ Temp})$. 
+Figure \@ref(fig:Figure7-17) provides the $\log(y)$ scale version of 
+the model and the model transformed to the
+original scale of measurement. On the log-hectares scale, the interpretation of
+the slope is: For a 1$^\circ F$ increase in summer temperature, we 
+expect a 1.39 log-hectares/1$^\circ F$ change, on average, in the log-area
+burned. On the original scale: A 1$^\circ F$ increase in temperature is 
+related to multiplicative change in the median number of hectares burned of
+$\exp(1.39)=4.01$. That seems like a big rate of growth but the curve does
+grow rapidly as shown in panel (b), especially for values over
+58$^\circ F$ where the area burned is starting to be large. You can think
+of the multiplicative change here in the following way: the median
+number of hectares burned is 4 times higher at 58$^\circ F$ than at 
+57$^\circ F$ and the median area burned is 4 times larger at 59$^\circ F$
+than at 58$^\circ F$... This can also be interpreted on a % change scale:
+A 1$^\circ F$ increase in temperature is related
+to a $(4.01-1)*100 = 301\%$ increase in the median number of hectares burned. 
+
+(ref:fig7-17) Plot of the estimated SLR (a) and implied model for the
+median on the original Hectares scale (b) for the area burned vs 
+temperature data. 
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-17-1.png" alt="(ref:fig7-17)" width="672" />
+<p class="caption">(\#fig:Figure7-17)(ref:fig7-17)</p>
+</div>
+
+**Scenario 2: y vs log(x) model:**
+
+
 
 ## Confidence Interval for the mean and prediction Intervals for a new observation	270
 
