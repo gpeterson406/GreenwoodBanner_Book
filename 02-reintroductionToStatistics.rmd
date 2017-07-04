@@ -14,6 +14,9 @@ header-includes:
 set.seed(3234)
 library(pander)
 require(mosaic)
+library(knitr)
+knitr::opts_chunk$set(cache = TRUE)
+options(show.signif.stars = FALSE)
 ```
 
 
