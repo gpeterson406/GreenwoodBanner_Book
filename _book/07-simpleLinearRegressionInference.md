@@ -1614,7 +1614,7 @@ $y^*=\exp(b_0)\exp[b_1(x+1)]$
 * $y^*=\color{red}{\underline{\boldsymbol{\exp(b_0)\exp(b_1x)}}}\exp(b_1)$ 
 *Now note that the underlined, bold component was the y-value for* $x$.
 
-* $y^* = \color{red}{\mathbf{y}}\exp(b_1)$ *Replace*
+* $y^* = \color{red}{\boldsymbol{y}}\exp(b_1)$ *Replace*
 $\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}$ *with* $\color{red}{\mathbf{y}}$,
 *the value for* $x$.
 
@@ -1709,13 +1709,195 @@ temperature data.
 
 **Scenario 2: y vs log(x) model:**
 
+When only the explanatory variable is log-transformed, it has a 
+different sort of
+impact on the regression model interpretation. Effectively we move the
+percentage change onto the x-scale and modify the first part of our slope
+interpretation when we consider the results on the original scale. Once again, 
+we will consider the mathematics underlying the changes in the model and then
+work on applying it to real situations. When the explanatory variable is
+logged, the estimated regression model is 
+$\color{red}{\boldsymbol{y=b_0+b_1\log(x)}}$. This models the relationship
+between $y$ and $x$ in terms of multiplicative changes in $x$ having an
+effect on the average $y$. To develop an interpretation on the x-scale 
+(not $\log(x)$), consider the impact of doubling $x$. This change will 
+take us from the point ($x,\color{red}{\boldsymbol{y=b_0+b_1\log(x)}}$)
+to the point $(2x,\boldsymbol{y^*=b_0+b_1\log(2x)})$. Now the impact of
+doubling $x$ can
+be simplified using the rules for logs to be:
+
+* $\boldsymbol{y^*=b_0+b_1\log(2x)}$
+
+* $\boldsymbol{y^*}=\color{red}{\underline{\boldsymbol{b_0+b_1\log(x)}}} + b_1\log(2)$ &nbsp; *Based on the rules for logs:* $log(2x)=log(x)+log(2)$.
+
+* $y^* = \color{red}{\boldsymbol{y}}+b_1\log(2)$
+
+* So if we double $x$, we change the **mean** of $y$ by $b_1\log(2)$.
+
+As before, there are couple of ways to interpret these sorts of results, 
+
+1. ***log-scale interpretation of log(x) only model***: for a 1 log-unit
+increase in $x$, we expect a $b_1$ unit change in the mean of $y$ or 
+
+2. ***original scale interpretation of log(x) only model***: for a 
+doubling of $x$, we expect a $b_1\log(2)$ change in the mean of $y$. 
+Note that both interpretations are for the mean of the $y\text{'s}$
+since we haven't changed the $y\sim$ part of the model. 
+
+(ref:fig7-18) Plot of the observations and estimated SLR model 
+(mortality~ log(GDP)) (top) and implied model (bottom) for the 
+infant mortality data.
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-18-1.png" alt="(ref:fig7-18)" width="672" />
+<p class="caption">(\#fig:Figure7-18)(ref:fig7-18)</p>
+</div>
+
+While it is not a perfect model (no model is), let's consider the model
+for *infant mortality* $\sim$ *log(GDP)* in order to practice the 
+interpretation using this type of model. This model was estimated to be
+$\widehat{\text{infantmortality}}=168.648-16.6\log(\text{GDP})$. The first
+(simplest) interpretation of the slope coefficient is: For a 1 log-dollar
+increase in GDP per capita, we expect infant
+mortality to change, on average, by -16.6 deaths/1000 births per log-dollar. The
+second interpretation is on the original GDP scale: For a doubling of GDP, we
+expect infant mortality to change, on average, by $-16.6\log(2) = -11.51$
+deaths/1000 live births. Or, the mean infant mortality is reduced by 
+11.51 deaths per 1000 live births for each doubling of
+GDP. Both versions of the model are displayed in Figure \@ref(fig:Figure7-18)
+-- one on the scale
+the SLR model was fit (panel a) and the other on the original x-scale (panel b)
+that matches these last interpretations. 
 
 
-## Confidence Interval for the mean and prediction Intervals for a new observation	270
+```r
+require(UN)
+ID1 <- lm(infant.mortality~log(gdp), data=UN)
+summary(ID1)
+```
 
-## Chapter summary	{#section7-7}
+```
+## 
+## Call:
+## lm(formula = infant.mortality ~ log(gdp), data = UN)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -62.668 -16.798  -0.452  11.064 117.374 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  168.648      9.084   18.57   <2e-16
+## log(gdp)     -16.597      1.180  -14.07   <2e-16
+## 
+## Residual standard error: 27.09 on 191 degrees of freedom
+##   (14 observations deleted due to missingness)
+## Multiple R-squared:  0.5089,	Adjusted R-squared:  0.5063 
+## F-statistic: 197.9 on 1 and 191 DF,  p-value: < 2.2e-16
+```
 
-## Important R code {#section7-8}
+```r
+-16.6*log(2)
+```
 
-## Practice problems	{#section7-9}
+```
+## [1] -11.50624
+```
+
+It appears that our model does not fit too well and that there might be
+some non-constant variance so we
+should check the diagnostic plots (available in Figure \@ref(fig:Figure7-19))
+before we trust
+any of those previous interpretations. 
+
+(ref:fig7-19) Diagnostics plots of the infant mortality model with 
+log(GDP). 
+
+
+```r
+par(mfrow=c(2,2))
+plot(ID1)
+```
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-19-1.png" alt="(ref:fig7-19)" width="672" />
+<p class="caption">(\#fig:Figure7-19)(ref:fig7-19)</p>
+</div>
+
+There appear to be issues with outliers and a long right tail violating
+the normality assumption. There is
+curvature and non-constant variance in the results as well. There are no
+influential points, but we are far from happy with this model and will be
+revisiting this example with the responses also transformed. Remember that the
+log-transformation of the response can potentially fix non-constant variance, 
+normality, and curvature issues. 
+
+**Scenario 3: log(y)~log(x) model**
+
+A final model combines log-transformations of both $x$ and $y$, combining the interpretations used in the previous two situations. This model is called the
+***log-log model*** and in some areas is also called the ***power law model***.
+The power-law model is usually written as $y = \beta_0x^{\beta_1}+\epsilon$,
+where $y$ is thought to be proportional to $x$ raised to an estimated power
+of $\beta_1$ (linear if $\beta_1=1$ and quadratic if $\beta_1=2$). It is 
+one of the models that has been used in Geomorphology to model the shape of
+glaciated valley elevation profiles
+(that classic U-shape that comes with glacier eroded mountain valleys). If you
+ignore the error term, it is possible to estimate the power-law model using our
+SLR approach. Consider the log-transformation of both sides of this equation
+starting with the power-law version:
+
+* $\log(y) = \log(\beta_0x^{\beta_1})$
+
+* $\log(y) = \log(\beta_0) + \log(x^{\beta_1})$ &nbsp; *Based on the rules
+for logs:* $\log(ab) = \log(a) + \log(b)$
+
+* $\log(y) = \log(\beta_0) + \beta_1\log(x)$ &nbsp; *Based on the rules
+for logs:* $\log(x^b) = b\log(x)$
+
+So other than $\log(\beta_0)$ in the model, this looks just like our 
+regular SLR model with $x$
+and $y$ both log-transformed. The slope coefficient for $\log(x)$ is the 
+power coefficient in the original power law model and determines whether
+the relationship between the original $x$ and $y$ in $y=\beta_0x^{\beta_1}$
+is linear $(y=\beta_0x^1)$ or quadratic $(y=\beta_0x^2)$ or even quartic
+$(y=\beta_0x^4)$ in some really heavily glacier carved
+U-shaped valleys. There are some issues with "ignoring the errors" in using SLR
+to estimate these models (Greenwood and Humphrey, 2002) but it is still a
+pretty powerful result to be able to estimate the coefficients in
+$(y=\beta_0x^{\beta_1})$ using SLR.
+
+We don't typically use
+the previous ideas to interpret the typical log-log regression model, instead
+we combine our two previous interpretation techniques to generate our
+interpretation. We need to work out the mathematics of doubling $x$ and the
+changes in $y$ starting with the ***log(y)~log(x)*** ***model*** that we 
+would get out of fitting the SLR with both variables log-transformed:
+
+* $\log(y) = b_0 + b_1\log(x)$
+
+* $y = \exp(b_0 + b_1\log(x))$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Exponentiate
+both sides*.
+
+* $y = \exp(b_0)\exp(b_1\log(x))=\exp(b_0)x^{b_1}$ &nbsp; *Rules for
+exponents and logs, simplifying.*
+
+Now we can consider the impacts of doubling $x$ on $y$, going from 
+$(x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})$ to $(2x,y^*)$ with
+
+* $y^* = \exp(b_0)(2x)^{b_1}$
+
+* $y^* = \exp(b_0)2^{b_1}x^{b_1} = 2^{b_1}\color{red}{\boldsymbol{\exp(b_0)x^{b_1}}}=2^{b_1}\color{red}{\boldsymbol{y}}$
+
+So doubling $x$ leads to a multiplicative change in the median of $y$
+of $2^{b_1}$.
+
+
+
+## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
+
+## Chapter summary {#section7-8}
+
+## Important R code {#section7-9}
+
+## Practice problems	{#section7-10}
 

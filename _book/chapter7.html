@@ -184,10 +184,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4" data-path="chapter7.html"><a href="chapter7.html#section7-4"><i class="fa fa-check"></i><b>7.4</b> Randomizing inferences for the slope coefficient</a></li>
 <li class="chapter" data-level="7.5" data-path="chapter7.html"><a href="chapter7.html#section7-5"><i class="fa fa-check"></i><b>7.5</b> Transformations part I: Linearizing relationships</a></li>
 <li class="chapter" data-level="7.6" data-path="chapter7.html"><a href="chapter7.html#section7-6"><i class="fa fa-check"></i><b>7.6</b> Transformations part II: Impacts on SLR interpretations: log(y), log(x), &amp; both log(y) &amp; log(x)</a></li>
-<li class="chapter" data-level="7.7" data-path="chapter7.html"><a href="chapter7.html#confidence-interval-for-the-mean-and-prediction-intervals-for-a-new-observation-270"><i class="fa fa-check"></i><b>7.7</b> Confidence Interval for the mean and prediction Intervals for a new observation 270</a></li>
-<li class="chapter" data-level="7.8" data-path="chapter7.html"><a href="chapter7.html#section7-7"><i class="fa fa-check"></i><b>7.8</b> Chapter summary</a></li>
-<li class="chapter" data-level="7.9" data-path="chapter7.html"><a href="chapter7.html#section7-8"><i class="fa fa-check"></i><b>7.9</b> Important R code</a></li>
-<li class="chapter" data-level="7.10" data-path="chapter7.html"><a href="chapter7.html#section7-9"><i class="fa fa-check"></i><b>7.10</b> Practice problems</a></li>
+<li class="chapter" data-level="7.7" data-path="chapter7.html"><a href="chapter7.html#section7-7"><i class="fa fa-check"></i><b>7.7</b> Confidence Interval for the mean and prediction Intervals for a new observation</a></li>
+<li class="chapter" data-level="7.8" data-path="chapter7.html"><a href="chapter7.html#section7-8"><i class="fa fa-check"></i><b>7.8</b> Chapter summary</a></li>
+<li class="chapter" data-level="7.9" data-path="chapter7.html"><a href="chapter7.html#section7-9"><i class="fa fa-check"></i><b>7.9</b> Important R code</a></li>
+<li class="chapter" data-level="7.10" data-path="chapter7.html"><a href="chapter7.html#section7-10"><i class="fa fa-check"></i><b>7.10</b> Practice problems</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="chapter8.html"><a href="chapter8.html"><i class="fa fa-check"></i><b>8</b> Multiple linear regression</a><ul>
 <li class="chapter" data-level="8.1" data-path="chapter8.html"><a href="chapter8.html#section8-1"><i class="fa fa-check"></i><b>8.1</b> Going from SLR to MLR</a></li>
@@ -295,7 +295,7 @@ Figure 7.4: Sketch of the role of the CI for slope in terms of determining where
 <blockquote>
 <p>For an <strong><em>x</em></strong> of 0 <strong><em>[units of X]</em></strong>, we are 95% confident that the true mean of <strong><em>Y</em></strong> will be between <strong>LL</strong> and <strong>UL</strong> <strong><em>[units of Y]</em></strong>.</p>
 </blockquote>
-<p>This is really only interesting if we’ll see a method for generating CIs for the true mean at potentially more interesting values of <span class="math inline">\(x\)</span> in Section <a href="chapter7.html#section7-7">7.8</a>. To trust the results from these confidence intervals, all the regression validity conditions need to be met (or at least close to met).</p>
+<p>This is really only interesting if we’ll see a method for generating CIs for the true mean at potentially more interesting values of <span class="math inline">\(x\)</span> in Section <a href="chapter7.html#section7-7">7.7</a>. To trust the results from these confidence intervals, all the regression validity conditions need to be met (or at least close to met).</p>
 <p>The only hypothesis test of interest in this situation is for the slope coefficient. To develop the hypotheses of interest in SLR, note the effect of having <span class="math inline">\(\beta_1=0\)</span> in the mean of the regression equation, <span class="math inline">\(\mu_{y_i} = \beta_0 + \beta_1x_i = \beta_0 + 0x_i = \beta_0\)</span>. This is the “intercept-only” or “mean-only” model that suggests that the mean of <span class="math inline">\(y\)</span> does not vary with different values of <span class="math inline">\(x\)</span> as it is always <span class="math inline">\(\beta_0\)</span>. We saw this model in the ANOVA material as the reduced model when the null hypothesis of no difference in the true means across the groups was true. Here, this is the same as saying that there is no linear relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, or that <span class="math inline">\(x\)</span> is of no use in predicting <span class="math inline">\(y\)</span>, or that we make the same prediction for <span class="math inline">\(y\)</span> for every value of <span class="math inline">\(x\)</span>. Thus</p>
 <p><span class="math display">\[\boldsymbol{H_0: \beta_1=0}\]</span></p>
 <p>is a test for <strong>no linear relationship between</strong> <span class="math inline">\(\mathbf{x}\)</span> <strong>and</strong> <span class="math inline">\(\mathbf{y}\)</span> <strong>in the population</strong>. The alternative of <span class="math inline">\(\boldsymbol{H_A: \beta_1\ne 0}\)</span> that there is <strong>some</strong> linear relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in the population, is our main test of interest in these situations. It is also possible to test greater than or less than alternatives in certain situations.</p>
@@ -857,7 +857,7 @@ Figure 7.17: Scatterplots of Infant Mortality vs GDP under four different combin
 <li><p><span class="math inline">\(y=\exp(b_0)\exp(b_1x)\)</span>. <em>This is based on the rules for</em> <code>exp()</code> <em>where</em> <span class="math inline">\(\exp(a+b)=\exp(a)\exp(b)\)</span>.</p></li>
 <li><p>Now consider what happens if we increase <span class="math inline">\(x\)</span> 1 unit, going from <span class="math inline">\(x\)</span> to <span class="math inline">\(x+1\)</span>, providing a new predicted <span class="math inline">\(y\)</span> that we can call <span class="math inline">\(y^*\)</span>: <span class="math inline">\(y^*=\exp(b_0)\exp[b_1(x+1)]\)</span></p></li>
 <li><p><span class="math inline">\(y^*=\color{red}{\underline{\boldsymbol{\exp(b_0)\exp(b_1x)}}}\exp(b_1)\)</span> <em>Now note that the underlined, bold component was the y-value for</em> <span class="math inline">\(x\)</span>.</p></li>
-<li><p><span class="math inline">\(y^* = \color{red}{\mathbf{y}}\exp(b_1)\)</span> <em>Replace</em> <span class="math inline">\(\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}\)</span> <em>with</em> <span class="math inline">\(\color{red}{\mathbf{y}}\)</span>, <em>the value for</em> <span class="math inline">\(x\)</span>.</p></li>
+<li><p><span class="math inline">\(y^* = \color{red}{\boldsymbol{y}}\exp(b_1)\)</span> <em>Replace</em> <span class="math inline">\(\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}\)</span> <em>with</em> <span class="math inline">\(\color{red}{\mathbf{y}}\)</span>, <em>the value for</em> <span class="math inline">\(x\)</span>.</p></li>
 </ul>
 <p>So the difference in fitted values between <span class="math inline">\(x\)</span> and <span class="math inline">\(x+1\)</span> is to multiply the result for <span class="math inline">\(x\)</span> (that was predicting <span class="math inline">\(\color{red}{\mathbf{y}}\)</span>) by <span class="math inline">\(\exp(b_1)\)</span> to get to the predicted result for <span class="math inline">\(x+1\)</span> (called <span class="math inline">\(y^*\)</span>). We can then use this result to form our <strong><em>log(y)~x slope interpretation</em></strong>: for a 1 unit increase in <span class="math inline">\(x\)</span>, we observe a multiplicative change of <span class="math inline">\(\mathbf{exp(b_1)}\)</span> in the response. When we compute a mean on logged variables that are symmetrically distributed (this should occur if our transformation was successful) and then exponentiate the results, the proper interpretation is that the changes are happening in the <strong>median</strong> of the original responses. This is the only time in the course that we will switch our inferences to medians instead of means, and we don’t do this because we want to, we do it because it is result of modeling on the <span class="math inline">\(\log(y)\)</span> scale if successful.</p>
 <p>When we are working with regression equations, slopes can either be positive or negative and our interpretations change based on this result to either result in growth (<span class="math inline">\(b_1&gt;0\)</span>) or decay (<span class="math inline">\(b_1&lt;0\)</span>) in the responses as the explanatory variable is increased. As an example, consider <span class="math inline">\(b_1=0.4\)</span> and <span class="math inline">\(\exp(b_1)=\exp(0.4)=1.492\)</span>. There are a couple of ways to interpret this on the original scale of the response variable <span class="math inline">\(y\)</span>:</p>
@@ -883,17 +883,90 @@ Figure 7.18: Plot of the estimated SLR (a) and implied model for the median on t
 </p>
 </div>
 <p><strong>Scenario 2: y vs log(x) model:</strong></p>
+<p>When only the explanatory variable is log-transformed, it has a different sort of impact on the regression model interpretation. Effectively we move the percentage change onto the x-scale and modify the first part of our slope interpretation when we consider the results on the original scale. Once again, we will consider the mathematics underlying the changes in the model and then work on applying it to real situations. When the explanatory variable is logged, the estimated regression model is <span class="math inline">\(\color{red}{\boldsymbol{y=b_0+b_1\log(x)}}\)</span>. This models the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> in terms of multiplicative changes in <span class="math inline">\(x\)</span> having an effect on the average <span class="math inline">\(y\)</span>. To develop an interpretation on the x-scale (not <span class="math inline">\(\log(x)\)</span>), consider the impact of doubling <span class="math inline">\(x\)</span>. This change will take us from the point (<span class="math inline">\(x,\color{red}{\boldsymbol{y=b_0+b_1\log(x)}}\)</span>) to the point <span class="math inline">\((2x,\boldsymbol{y^*=b_0+b_1\log(2x)})\)</span>. Now the impact of doubling <span class="math inline">\(x\)</span> can be simplified using the rules for logs to be:</p>
+<ul>
+<li><p><span class="math inline">\(\boldsymbol{y^*=b_0+b_1\log(2x)}\)</span></p></li>
+<li><p><span class="math inline">\(\boldsymbol{y^*}=\color{red}{\underline{\boldsymbol{b_0+b_1\log(x)}}} + b_1\log(2)\)</span>   <em>Based on the rules for logs:</em> <span class="math inline">\(log(2x)=log(x)+log(2)\)</span>.</p></li>
+<li><p><span class="math inline">\(y^* = \color{red}{\boldsymbol{y}}+b_1\log(2)\)</span></p></li>
+<li><p>So if we double <span class="math inline">\(x\)</span>, we change the <strong>mean</strong> of <span class="math inline">\(y\)</span> by <span class="math inline">\(b_1\log(2)\)</span>.</p></li>
+</ul>
+<p>As before, there are couple of ways to interpret these sorts of results,</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><em>log-scale interpretation of log(x) only model</em></strong>: for a 1 log-unit increase in <span class="math inline">\(x\)</span>, we expect a <span class="math inline">\(b_1\)</span> unit change in the mean of <span class="math inline">\(y\)</span> or</p></li>
+<li><p><strong><em>original scale interpretation of log(x) only model</em></strong>: for a doubling of <span class="math inline">\(x\)</span>, we expect a <span class="math inline">\(b_1\log(2)\)</span> change in the mean of <span class="math inline">\(y\)</span>. Note that both interpretations are for the mean of the <span class="math inline">\(y\text{&#39;s}\)</span> since we haven’t changed the <span class="math inline">\(y\sim\)</span> part of the model.</p></li>
+</ol>
+
+<div class="figure"><span id="fig:Figure7-18"></span>
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-18-1.png" alt="Plot of the observations and estimated SLR model (mortality~ log(GDP)) (top) and implied model (bottom) for the infant mortality data." width="672" />
+<p class="caption">
+Figure 7.19: Plot of the observations and estimated SLR model (mortality~ log(GDP)) (top) and implied model (bottom) for the infant mortality data.
+</p>
 </div>
-<div id="confidence-interval-for-the-mean-and-prediction-intervals-for-a-new-observation-270" class="section level2">
-<h2><span class="header-section-number">7.7</span> Confidence Interval for the mean and prediction Intervals for a new observation 270</h2>
+<p>While it is not a perfect model (no model is), let’s consider the model for <em>infant mortality</em> <span class="math inline">\(\sim\)</span> <em>log(GDP)</em> in order to practice the interpretation using this type of model. This model was estimated to be <span class="math inline">\(\widehat{\text{infantmortality}}=168.648-16.6\log(\text{GDP})\)</span>. The first (simplest) interpretation of the slope coefficient is: For a 1 log-dollar increase in GDP per capita, we expect infant mortality to change, on average, by -16.6 deaths/1000 births per log-dollar. The second interpretation is on the original GDP scale: For a doubling of GDP, we expect infant mortality to change, on average, by <span class="math inline">\(-16.6\log(2) = -11.51\)</span> deaths/1000 live births. Or, the mean infant mortality is reduced by 11.51 deaths per 1000 live births for each doubling of GDP. Both versions of the model are displayed in Figure <a href="chapter7.html#fig:Figure7-18">7.19</a> – one on the scale the SLR model was fit (panel a) and the other on the original x-scale (panel b) that matches these last interpretations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(UN)
+ID1 &lt;-<span class="st"> </span><span class="kw">lm</span>(infant.mortality<span class="op">~</span><span class="kw">log</span>(gdp), <span class="dt">data=</span>UN)
+<span class="kw">summary</span>(ID1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = infant.mortality ~ log(gdp), data = UN)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -62.668 -16.798  -0.452  11.064 117.374 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  168.648      9.084   18.57   &lt;2e-16
+## log(gdp)     -16.597      1.180  -14.07   &lt;2e-16
+## 
+## Residual standard error: 27.09 on 191 degrees of freedom
+##   (14 observations deleted due to missingness)
+## Multiple R-squared:  0.5089, Adjusted R-squared:  0.5063 
+## F-statistic: 197.9 on 1 and 191 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="fl">16.6</span><span class="op">*</span><span class="kw">log</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] -11.50624</code></pre>
+<p>It appears that our model does not fit too well and that there might be some non-constant variance so we should check the diagnostic plots (available in Figure <a href="chapter7.html#fig:Figure7-19">7.20</a>) before we trust any of those previous interpretations.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="kw">plot</span>(ID1)</code></pre></div>
+<div class="figure"><span id="fig:Figure7-19"></span>
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-19-1.png" alt="Diagnostics plots of the infant mortality model with log(GDP)." width="672" />
+<p class="caption">
+Figure 7.20: Diagnostics plots of the infant mortality model with log(GDP).
+</p>
+</div>
+<p>There appear to be issues with outliers and a long right tail violating the normality assumption. There is curvature and non-constant variance in the results as well. There are no influential points, but we are far from happy with this model and will be revisiting this example with the responses also transformed. Remember that the log-transformation of the response can potentially fix non-constant variance, normality, and curvature issues.</p>
+<p><strong>Scenario 3: log(y)~log(x) model</strong></p>
+<p>A final model combines log-transformations of both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, combining the interpretations used in the previous two situations. This model is called the <strong><em>log-log model</em></strong> and in some areas is also called the <strong><em>power law model</em></strong>. The power-law model is usually written as <span class="math inline">\(y = \beta_0x^{\beta_1}+\epsilon\)</span>, where <span class="math inline">\(y\)</span> is thought to be proportional to <span class="math inline">\(x\)</span> raised to an estimated power of <span class="math inline">\(\beta_1\)</span> (linear if <span class="math inline">\(\beta_1=1\)</span> and quadratic if <span class="math inline">\(\beta_1=2\)</span>). It is one of the models that has been used in Geomorphology to model the shape of glaciated valley elevation profiles (that classic U-shape that comes with glacier eroded mountain valleys). If you ignore the error term, it is possible to estimate the power-law model using our SLR approach. Consider the log-transformation of both sides of this equation starting with the power-law version:</p>
+<ul>
+<li><p><span class="math inline">\(\log(y) = \log(\beta_0x^{\beta_1})\)</span></p></li>
+<li><p><span class="math inline">\(\log(y) = \log(\beta_0) + \log(x^{\beta_1})\)</span>   <em>Based on the rules for logs:</em> <span class="math inline">\(\log(ab) = \log(a) + \log(b)\)</span></p></li>
+<li><p><span class="math inline">\(\log(y) = \log(\beta_0) + \beta_1\log(x)\)</span>   <em>Based on the rules for logs:</em> <span class="math inline">\(\log(x^b) = b\log(x)\)</span></p></li>
+</ul>
+<p>So other than <span class="math inline">\(\log(\beta_0)\)</span> in the model, this looks just like our regular SLR model with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> both log-transformed. The slope coefficient for <span class="math inline">\(\log(x)\)</span> is the power coefficient in the original power law model and determines whether the relationship between the original <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in <span class="math inline">\(y=\beta_0x^{\beta_1}\)</span> is linear <span class="math inline">\((y=\beta_0x^1)\)</span> or quadratic <span class="math inline">\((y=\beta_0x^2)\)</span> or even quartic <span class="math inline">\((y=\beta_0x^4)\)</span> in some really heavily glacier carved U-shaped valleys. There are some issues with “ignoring the errors” in using SLR to estimate these models (Greenwood and Humphrey, 2002) but it is still a pretty powerful result to be able to estimate the coefficients in <span class="math inline">\((y=\beta_0x^{\beta_1})\)</span> using SLR.</p>
+<p>We don’t typically use the previous ideas to interpret the typical log-log regression model, instead we combine our two previous interpretation techniques to generate our interpretation. We need to work out the mathematics of doubling <span class="math inline">\(x\)</span> and the changes in <span class="math inline">\(y\)</span> starting with the <strong><em>log(y)~log(x)</em></strong> <strong><em>model</em></strong> that we would get out of fitting the SLR with both variables log-transformed:</p>
+<ul>
+<li><p><span class="math inline">\(\log(y) = b_0 + b_1\log(x)\)</span></p></li>
+<li><p><span class="math inline">\(y = \exp(b_0 + b_1\log(x))\)</span>            <em>Exponentiate both sides</em>.</p></li>
+<li><p><span class="math inline">\(y = \exp(b_0)\exp(b_1\log(x))=\exp(b_0)x^{b_1}\)</span>   <em>Rules for exponents and logs, simplifying.</em></p></li>
+</ul>
+<p>Now we can consider the impacts of doubling <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>, going from <span class="math inline">\((x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})\)</span> to <span class="math inline">\((2x,y^*)\)</span> with</p>
+<ul>
+<li><p><span class="math inline">\(y^* = \exp(b_0)(2x)^{b_1}\)</span></p></li>
+<li><p><span class="math inline">\(y^* = \exp(b_0)2^{b_1}x^{b_1} = 2^{b_1}\color{red}{\boldsymbol{\exp(b_0)x^{b_1}}}=2^{b_1}\color{red}{\boldsymbol{y}}\)</span></p></li>
+</ul>
+<p>So doubling <span class="math inline">\(x\)</span> leads to a multiplicative change in the median of <span class="math inline">\(y\)</span> of <span class="math inline">\(2^{b_1}\)</span>.</p>
 </div>
 <div id="section7-7" class="section level2">
-<h2><span class="header-section-number">7.8</span> Chapter summary</h2>
+<h2><span class="header-section-number">7.7</span> Confidence Interval for the mean and prediction Intervals for a new observation</h2>
 </div>
 <div id="section7-8" class="section level2">
-<h2><span class="header-section-number">7.9</span> Important R code</h2>
+<h2><span class="header-section-number">7.8</span> Chapter summary</h2>
 </div>
 <div id="section7-9" class="section level2">
+<h2><span class="header-section-number">7.9</span> Important R code</h2>
+</div>
+<div id="section7-10" class="section level2">
 <h2><span class="header-section-number">7.10</span> Practice problems</h2>
 
 </div>
