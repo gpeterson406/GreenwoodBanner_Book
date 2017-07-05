@@ -175,20 +175,14 @@ $\beta_1$, that is $\mathbf{b_1 \mp t^*_{n-2}}\textbf{SE}_{\mathbf{b_1}}$.
 The slope confidence interval is used to do two
 things: (1) inference for the amount of change in the mean of $y$ for a unit
 change in $x$ in the population and (2) to potentially do hypothesis testing by
-checking whether 0 is in the CI or not. The sketch in Figure \@ref(fig:Figure7-3b)
+checking whether 0 is in the CI or not. The sketch below
 illustrates the roles of the
 CI for the slope in terms of determining where the population slope coefficient
 might be -- centered at the sample slope coefficient -- our best guess for the
 true slope. This sketch informs an ***interpretation of the slope coefficient
 confidence interval***: 
 
-(ref:fig7-3b) Sketch of the role of the CI for slope in terms of determining
-where the population slope coefficient might be.
-
-<div class="figure" style="text-align: center">
-<img src="chapter7_files/image045.png" alt="(ref:fig7-3b)"  />
-<p class="caption">(\#fig:Figure7-3b)(ref:fig7-3b)</p>
-</div>
+<img src="chapter7_files/image045.png" style="display: block; margin: auto;" />
 
 > For a 1 ***[units of X]*** increase in **X**, we are ___ % confident 
   that the **true change in the mean of** ***Y*** will be between **LL**
@@ -1875,7 +1869,7 @@ would get out of fitting the SLR with both variables log-transformed:
 
 * $\log(y) = b_0 + b_1\log(x)$
 
-* $y = \exp(b_0 + b_1\log(x))$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Exponentiate
+* $y = \exp(b_0 + b_1\log(x))$ &nbsp; *Exponentiate
 both sides*.
 
 * $y = \exp(b_0)\exp(b_1\log(x))=\exp(b_0)x^{b_1}$ &nbsp; *Rules for
@@ -1891,7 +1885,81 @@ $(x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})$ to $(2x,y^*)$ with
 So doubling $x$ leads to a multiplicative change in the median of $y$
 of $2^{b_1}$.
 
+Let's apply this idea
+to the GDP and infant mortality data where a $\log(x) \sim \log(y)$ transformation
+actually made the resulting relationship look like it might meet the SLR
+assumptions. The regression line in Figure \@ref(fig:Figure7-20) actually looks 
+pretty good on both
+the estimated log-log scale (panel a) and on the original scale (panel b) as it
+captures the severe nonlinearity in the relationship between the two variables.
 
+
+```r
+ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
+summary(ID2)
+```
+
+```
+## 
+## Call:
+## lm(formula = log(infant.mortality) ~ log(gdp), data = UN)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.25334 -0.39580 -0.05258  0.35598  2.11187 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  7.04520    0.19914   35.38   <2e-16
+## log(gdp)    -0.49320    0.02586  -19.07   <2e-16
+## 
+## Residual standard error: 0.5938 on 191 degrees of freedom
+##   (14 observations deleted due to missingness)
+## Multiple R-squared:  0.6556,	Adjusted R-squared:  0.6538 
+## F-statistic: 363.7 on 1 and 191 DF,  p-value: < 2.2e-16
+```
+
+(ref:fig7-20) Plot of the observations and estimated SLR model 
+log(mortality) $\sim$ log(GDP) (left) and implied model (right) for the infant
+mortality data.
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-20-1.png" alt="(ref:fig7-20)" width="672" />
+<p class="caption">(\#fig:Figure7-20)(ref:fig7-20)</p>
+</div>
+
+The estimated regression model is
+$\log(\widehat{\text{infantmortality}})=7.0452-0.493\log(\text{GDP})$.
+The slope coefficient can be interpreted two ways.
+
+1. ***On the log-log scale:*** For a 1 log-dollar increase in *GDP*, we expect, on average,
+a change of $-0.493$ log(deaths/1000 live births) in *infant mortality*.
+
+2. ***On the original scale:*** For a doubling of *GDP*, we expect a 
+$2^{b_1} = 2^{-0.493} = 0.7105$ multiplicative change in the median *infant mortality*. 
+That is a 28.95%
+decrease in the median *infant mortality* for each doubling of *GDP*. 
+
+The diagnostics of the log-log SLR model (Figure \@ref(fig:Figure7-21))
+show that the assumptions are fairly reasonably met although the tails of
+the residuals are a little heavy (more spread out than a normal distribution)
+and there might still be a little pattern remaining in the residuals vs fitted. 
+There are no influential points to be concerned about in this situation.
+
+(ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-21-1.png" alt="(ref:fig7-21)" width="672" />
+<p class="caption">(\#fig:Figure7-21)(ref:fig7-21)</p>
+</div>
+
+While we will not revisit this at all except in the case-studies in Chapter \@ref(chapter9),
+log-transformations can be applied to the response variable in ONE and TWO-WAY
+ANOVA models when we are concerned about non-constant variance and
+non-normality issues. The remaining methods in this chapter return to SLR and assuming
+that the model assumptions have been met. In fact, the methods in Section \@ref(section7-7)
+are some of the most sensitive results to violations of the assumptions that we
+will explore.
 
 ## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
 

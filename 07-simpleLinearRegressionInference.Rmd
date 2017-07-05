@@ -209,17 +209,14 @@ $\beta_1$, that is $\mathbf{b_1 \mp t^*_{n-2}}\textbf{SE}_{\mathbf{b_1}}$.
 The slope confidence interval is used to do two
 things: (1) inference for the amount of change in the mean of $y$ for a unit
 change in $x$ in the population and (2) to potentially do hypothesis testing by
-checking whether 0 is in the CI or not. The sketch in Figure \@ref(fig:Figure7-3b)
+checking whether 0 is in the CI or not. The sketch below
 illustrates the roles of the
 CI for the slope in terms of determining where the population slope coefficient
 might be -- centered at the sample slope coefficient -- our best guess for the
 true slope. This sketch informs an ***interpretation of the slope coefficient
 confidence interval***: 
 
-(ref:fig7-3b) Sketch of the role of the CI for slope in terms of determining
-where the population slope coefficient might be.
-
-```{r Figure7-3b,fig.cap="(ref:fig7-3b)",echo=F,message=F,warning=F,fig.align="center"}
+```{r echo=F,message=F,warning=F,fig.align="center"}
 knitr::include_graphics("chapter7_files/image045.png")
 ```
 
@@ -1609,7 +1606,67 @@ $(x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})$ to $(2x,y^*)$ with
 So doubling $x$ leads to a multiplicative change in the median of $y$
 of $2^{b_1}$.
 
+Let's apply this idea
+to the GDP and infant mortality data where a $\log(x) \sim \log(y)$ transformation
+actually made the resulting relationship look like it might meet the SLR
+assumptions. The regression line in Figure \@ref(fig:Figure7-20) actually looks 
+pretty good on both
+the estimated log-log scale (panel a) and on the original scale (panel b) as it
+captures the severe nonlinearity in the relationship between the two variables.
 
+```{r}
+ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
+summary(ID2)
+```
+
+(ref:fig7-20) Plot of the observations and estimated SLR model 
+log(mortality) $\sim$ log(GDP) (left) and implied model (right) for the infant
+mortality data.
+
+```{r Figure7-20,fig.cap='(ref:fig7-20)',warning=F,message=F,echo=F}
+par(mfrow=c(1,2))
+
+plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(a) log-Infant Mort. vs log-GDP")
+abline(ID2$coef,lwd=2,col="slateblue3")
+
+plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
+
+gdp1<-seq(from=30,to=42416,length.out=100)
+lines(exp(ID2$coef[1]+ID2$coef[2]*log(gdp1))~gdp1,lwd=2,col="slateblue3")
+```
+
+The estimated regression model is
+$\log(\widehat{\text{infantmortality}})=7.0452-0.493\log(\text{GDP})$.
+The slope coefficient can be interpreted two ways.
+
+1. ***On the log-log scale:*** For a 1 log-dollar increase in *GDP*, we expect, on average,
+a change of $-0.493$ log(deaths/1000 live births) in *infant mortality*.
+
+2. ***On the original scale:*** For a doubling of *GDP*, we expect a 
+$2^{b_1} = 2^{-0.493} = 0.7105$ multiplicative change in the median *infant mortality*. 
+That is a 28.95%
+decrease in the median *infant mortality* for each doubling of *GDP*. 
+
+The diagnostics of the log-log SLR model (Figure \@ref(fig:Figure7-21))
+show that the assumptions are fairly reasonably met although the tails of
+the residuals are a little heavy (more spread out than a normal distribution)
+and there might still be a little pattern remaining in the residuals vs fitted. 
+There are no influential points to be concerned about in this situation.
+
+(ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
+
+```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,message=F,warning=F}
+par(mfrow=c(2,2))
+plot(ID2)
+```
+
+While we will not revisit this at all except in the case-studies in Chapter \@ref(chapter9),
+log-transformations can be applied to the response variable in ONE and TWO-WAY
+ANOVA models when we are concerned about non-constant variance and
+non-normality issues. The remaining methods in this chapter return to SLR and assuming
+that the model assumptions have been met. In fact, the methods in Section \@ref(section7-7)
+are some of the most sensitive results to violations of the assumptions that we
+will explore.
 
 ## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
 
