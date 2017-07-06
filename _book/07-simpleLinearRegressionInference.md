@@ -421,7 +421,7 @@ the true slope is 0. In fact the p-value is 0.0965 which is larger than 0.05
 which provides a consistent conclusion with using the 95% confidence interval
 to perform a hypothesis test. Either way, we would conclude that there is not
 enough evidence at the 5% significance level to conclude that there is some linear
-relationship between bodyfat and Hematocrit in the population of female
+relationship between body fat and Hematocrit in the population of female
 Australian athletes. If your standards were different, say if you had elected
 to test at the 10% significance level, you might have a different opinion about
 the evidence against the null hypothesis here. For this reason, we sometimes
@@ -668,7 +668,7 @@ amazing that there are hundreds of locations with nearly complete daily
 records for over 100 years.]. 
 These are time series data and in time series analysis we assume that the
 population of interest for inference is all possible realizations from the
-underlying process over this timeframe even though we only ever get to observe
+underlying process over this time frame even though we only ever get to observe
 one realization. In terms of climate change research, we would want to (a)
 assess evidence for a trend over time (hopefully assessing whether any observed
 trend is clearly different from a result that could have been observed by
@@ -1238,7 +1238,7 @@ of this and the next section), or
 3. Consider more advanced statistical models that can account for these issues 
 (the focus of additional statistics courses). 
 
-***Transformations*** involve applying a function to oneor both variables. After 
+***Transformations*** involve applying a function to one or both variables. After 
 applying this transformation, one hopes to have
 alleviated whatever issues encouraged its consideration. ***Linear transformation 
 functions***, of the form $z_{\text{new}}=a*x+b$, will never help us to fix
@@ -1352,7 +1352,7 @@ applying any of these transformations to the explanatory variable, and consider
 using them on both the response and explanatory variables at the same time. The
 most common application of these ideas is to transform the response variable using
 the log-transformation, at least as a starting point. In fact, the
-log-transformation is so commonly used (and mis-used), that we will just focus
+log-transformation is so commonly used (and miss-used), that we will just focus
 on its use. It is so commonplace in some fields that some researchers
 log-transform their data prior to even plotting their results. In other
 situations, such as when measuring acidity (pH), noise (decibels), or
@@ -1671,7 +1671,7 @@ think about the results in terms of ***% change of the medians*** to make
 the scale of change more understandable. Some examples will help us see how
 these ideas can be used in applications. 
 
-For the area burned data set, the estiated regression model is
+For the area burned data set, the estimated regression model is
 $\log(\widehat{\text{hectares}})=-69.8+1.39\text{ Temp}$. On the
 original scale, this implies that the model is 
 $\widehat{\text{hectares}}=\exp(-69.8)\exp(1.39\text{ Temp})$. 
@@ -1963,9 +1963,562 @@ will explore.
 
 ## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
 
+Figure \@ref(fig:Figure7-6) provided a term-plot of the estimated 
+regression line and a shaded area surrounding
+the estimated regression equation. Those shaded areas are based on connecting
+the dots on 95% confidence intervals constructed for the true mean $y$ value
+across all the x-values. To formalize this idea, consider a specific value 
+of $x$, and call it $\boldsymbol{x_{\nu}}$ (pronounced **x-new**^[This silly
+nomenclature was adopted from De Veaux, Velleman, and Bock's *Stats: Data and
+Models* text. If you find this too cheesy, you can just call it x-vee.]). 
+Then the true mean response for this  ***subpopulation*** (a subpopulation
+is all observations we could obtain at $\boldsymbol{x=x_{\nu}}$) is given by
+$\boldsymbol{E(Y)=\mu_\nu=\beta_0+\beta_1x_{\nu}}$. To estimate the mean 
+response at $\boldsymbol{x_{\nu}}$, we plug $\boldsymbol{x_{\nu}}$ into the
+estimated regression equation:
+
+$$\hat{\mu}_{\nu} = b_0 + b_1x_{\nu}.$$
+
+To form the confidence interval, we appeal to our standard formula of 
+$\textbf{estimate} \boldsymbol{\mp t^*}\textbf{SE}_{\textbf{estimate}}$. The
+***standard error for the estimated mean at any x-value***, denoted 
+$\text{SE}_{\hat{\mu}_{\nu}}$, can be calculated as
+
+$$\text{SE}_{\hat{\mu}_{\nu}} 
+= \sqrt{\text{SE}^2_{b_1}(x_{\nu}-\bar{x})^2 + \frac{\hat{\sigma}^2}{n}}$$
+
+where $\hat{\sigma}^2$ is the squared residual standard error. This formula
+combines the variability in the slope estimate, $\text{SE}_{b_1}$, scaled
+based on the distance of $x_{\nu}$ from $\bar{x}$ and the variability
+around the regression line, $\hat{\sigma}^2$. Fortunately, we'll use R's
+``predict`` function to provide these results for us
+and avoid doing this calculation by hand most of the time. The
+***confidence interval for*** $\boldsymbol{\mu_{\nu}}$, the population
+mean response at $x_{\nu}$, is
+
+$$\boldsymbol{\hat{\mu}_{\nu} \mp
+t^*_{n-2}}\textbf{SE}_{\boldsymbol{\hat{\mu}_{\nu}}}.$$
+
+In application, these intervals get wider
+the further we go from the mean of the $x\text{'s}$. These have 
+interpretations that are exactly like those for the y-intercept: 
+
+* For an x-value of $\boldsymbol{x_{\nu}}$, we are __% confident that
+the true mean of **y** is between **LL**  and **UL** ***[units of y]***. 
+
+It is also useful to remember that this
+interpretation applies individually to every $x$ displayed in term-plots.
+
+* A second type of interval in this situation takes on a more challenging
+task -- to place an interval on where we think a new observation will fall,
+called a ***prediction interval*** (PI). This PI will need to be much wider
+than the CI for the mean since we need to account for both the uncertainty
+in the mean and the
+randomness in sampling a new observation from the normal distribution centered
+at the true mean for $x_{\nu}$. The interval is centered at the estimated
+regression line (where else could we center it?) with the estimate denoted
+as $\hat{y}_{\nu}$ to help us see that this interval is for a **new** $y$
+at this x-value. The $\text{SE}_{\hat{y}_{\nu}}$ incorporates the core of the
+previous SE calculation and adds in the variability of a new observation in
+$\boldsymbol{\hat{\sigma}^2}$:
+
+$$\text{SE}_{\hat{y}_{\nu}} 
+= \sqrt{\text{SE}^2_{b_1}(x_{\nu}-\bar{x})^2 + \dfrac{\hat{\sigma}^2}{n} 
++ \boldsymbol{\hat{\sigma}^2}}
+= \sqrt{\text{SE}_{\hat{\mu}_{\nu}}^2 + \boldsymbol{\hat{\sigma}^2}}$$
+
+The __% PI is calculated as
+
+$$\boldsymbol{\hat{y}_{\nu} \mp t^*_{n-2}}\textbf{SE}_{\boldsymbol{\hat{y}_{\nu}}}$$
+
+and interpreted as:
+
+* We are __% sure that a new observation at $\boldsymbol{x_{\nu}}$ will be between
+**LL** and **UL** ***[units of y]***. Since 
+$\text{SE}_{\hat{y}_{\nu}} > \text{SE}_{\hat{\mu}_{\nu}}$, the **PI will always
+be wider than the CI**. Additionally, if either the SE for the slope or the 
+residual variance increases, both intervals would get
+wider. 
+
+As in confidence
+intervals, we assume that a 95% PI "succeeds" -- contains the new observation --
+in 95% of applications of the methods and fails the other 5% of the time. 
+Remember that for any interval estimate, the true value is either in the
+interval or it is not and our confidence level essentially sets our failure
+rate! Because PIs push into the tails of the assumed distribution of the
+responses these methods are very sensitive to violations of assumptions so we
+need to be especially certain that we have met the assumptions to trust these
+results will work as advertised (at the ***nominal*** (specified) level).
+
+There are two ways to explore CIs for the mean and PIs for a new observation.
+The first is to focus on a specific x-value of interest. The second is to 
+plot the results for all $x\text{'s}$. To do both of these, but especially
+to make plots, we want to learn to use the ``predict`` function. It can 
+either produce the estimate for a particular $x_{\nu}$ and the 
+$\text{SE}_{\hat{\mu}_{\nu}}$ or we can get it to directly calculate 
+the CI and PI. The first way to use it is ``predict(modelname, se.fit=T)``
+which will provide fitted values and $\text{SE}_{\hat{\mu}_{\nu}}$
+for all observed $x\text{'s}$. We can then use the 
+$\text{SE}_{\hat{\mu}_{\nu}}$ to calculate $\text{SE}_{\hat{y}_{\nu}}$
+and form our own PIs. If you want CIs, run 
+``predict(modelname, interval= "confidence")``; if you want PIs, run 
+``predict(modelname, interval="prediction")``. If you want to do 
+prediction at an x-value that was not in the original
+observations, add the option ``newdata=data.frame(XVARIABLENAME_FROM_ORIGINAL_MODEL=Xnu)``
+to the ``predict`` function call.
+
+Some examples of using the predict function follow^[I have suppressed 
+some of the plotting code in this and the last chapter to make
+"pretty" pictures - which you probably are happy to not see it until you want
+to make a pretty plot on your own. All the code used is available upon
+request.]. For example, it might be interesting to use the regression 
+model to find a 95%
+CI and PI for the *Beers* vs *BAC* study for a student who would
+consume 8 beers. Four different applications of the predict function follow. 
+Note that ``lwr`` and ``upr`` in the output depend on what we
+requested. The first use of ``predict`` just returns the estimated mean 
+for 8 beers:
+
+
+```r
+m1 <- lm(BAC~Beers, data=BB)
+predict(m1, newdata=data.frame(Beers=8))
+```
+
+```
+##         1 
+## 0.1310095
+```
+
+By turning on the ``se.fit=T`` option, we also get the SE for the 
+confidence interval and degrees of freedom. Note that elements returned 
+are labelled as ``$fit``, ``$se.fit``, etc. 
+
+
+```r
+predict(m1, newdata=data.frame(Beers=8), se.fit=T)
+```
+
+```
+## $fit
+##         1 
+## 0.1310095 
+## 
+## $se.fit
+## [1] 0.009204354
+## 
+## $df
+## [1] 14
+## 
+## $residual.scale
+## [1] 0.02044095
+```
+
+Instead of using the components of the intervals to
+make them, we can also directly request the CI or PI using the 
+``interval=...`` option, as in the following two lines of code. 
+
+
+```r
+predict(m1, newdata=data.frame(Beers=8), interval="confidence")
+```
+
+```
+##         fit       lwr       upr
+## 1 0.1310095 0.1112681 0.1507509
+```
+
+```r
+predict(m1, newdata=data.frame(Beers=8), interval="prediction")
+```
+
+```
+##         fit        lwr       upr
+## 1 0.1310095 0.08292834 0.1790906
+```
+
+Based on these results, we are 95% confident that the true mean *BAC*
+for 8 beers consumed is between 0.111 and 0.15 grams of alcohol per dL of
+blood. For a new student drinking 8 beers, we are 95% sure that the observed
+BAC will be between 0.083 and 0.179 g/dL. You can see from these results that
+the PI is much wider than the CI -- it has to capture a new individual's results
+95% of the time which is much harder than trying to capture the mean. For
+completeness, we should do these same calculations by hand. The 
+``predict(..., se.fit=T)`` output provides almost all of the pieces we need 
+to calculate the CI and PI. The ``$fit`` is the 
+$\text{estimate} = \hat{\mu}_{\nu}=0.131$, the ``$se.fit`` is the SE 
+for the estimate of the $\text{mean} = \text{SE}_{\hat{\mu}_{\nu}}=0.0092$
+, ``$df`` is $n-2 = 16-2=14$, and ``$residual.scale`` is
+$\hat{\sigma}=0.02044$. So we just need the $t^*$ multiplier for 95% 
+confidence and 14 *df*:
+
+
+```r
+qt(.975, df=14) # t* multiplier for 95% CI or 95% PI
+```
+
+```
+## [1] 2.144787
+```
+
+The 95% CI for the true mean at $\boldsymbol{x_{\nu}=8}$ is then:
+
+
+```r
+0.131 + c(-1,1)*2.1448*0.0092
+```
+
+```
+## [1] 0.1112678 0.1507322
+```
+
+Which matches the previous output quite well. 
+
+The 95% PI requires the calculation of 
+$\sqrt{\text{SE}_{\hat{\mu}_{\nu}}^2 + \boldsymbol{\hat{\sigma}^2}} = \sqrt{(0.0092)^2+(0.02044)^2}=0.0224$. 
+
+
+```r
+sqrt(0.0092^2 + 0.02044^2)
+```
+
+```
+## [1] 0.02241503
+```
+
+
+The 95% PI at $\boldsymbol{x_{\nu}=8}$ is
+
+
+```r
+0.131 + c(-1,1)*2.1448*0.0224
+```
+
+```
+## [1] 0.08295648 0.17904352
+```
+
+These calculations are "fun" and informative but displaying these results
+for all x-values is a bit more
+informative about the performance of the two types of intervals and for results
+we might expect in this application. The calculations we just performed provide
+endpoints of both intervals at ``Beers``= 8. To make this plot, we need to
+create a sequence of *Beers* values to get other results for, say from 0 to 10,
+using the ``seq`` function. The ``from`` and ``to`` define the endpoints and
+the ``length.out`` defines the resolution of the grid of equally spaced points
+to create. Here, 30 points is more than enough to make
+the confidence and prediction intervals from 0 to 10 *Beers*. 
+
+
+```r
+beerf <- seq(from=0, to=10, length.out=30)
+```
+
+Now we can call the ``predict`` function at all these values stored in
+``beerf`` to get the CIs for all these *Beers* values:
+
+
+```r
+BBCI <- data.frame(predict(m1, newdata=data.frame(Beers=beerf),
+                           interval="confidence"))
+head(BBCI)
+```
+
+```
+##             fit          lwr        upr
+## 1 -0.0127006040 -0.039805351 0.01440414
+## 2 -0.0065062033 -0.031996517 0.01898411
+## 3 -0.0003118027 -0.024210653 0.02358705
+## 4  0.0058825980 -0.016452670 0.02821787
+## 5  0.0120769986 -0.008728854 0.03288285
+## 6  0.0182713992 -0.001047321 0.03759012
+```
+
+And the PIs:
+
+
+```r
+BBPI <- data.frame(predict(m1, newdata=data.frame(Beers=beerf),
+                           interval="prediction"))
+head(BBPI)
+```
+
+```
+##             fit         lwr        upr
+## 1 -0.0127006040 -0.06424420 0.03884300
+## 2 -0.0065062033 -0.05721943 0.04420702
+## 3 -0.0003118027 -0.05024406 0.04962046
+## 4  0.0058825980 -0.04332045 0.05508564
+## 5  0.0120769986 -0.03645092 0.06060492
+## 6  0.0182713992 -0.02963777 0.06618057
+```
+
+The rest of the code is just making a scatterplot and adding the five lines
+with a legend. 
+
+(ref:fig7-22) Estimated SLR for BAC data with 95% confidence (dashed lines)
+and 95% prediction (lighter, dotted lines) intervals. 
+
+
+```r
+par(mfrow=c(1,1))
+plot(BAC~Beers, data=BB, xlab="Beers", ylab="BAC", pch=20, col="gold4",
+     main="Scatterplot of estimated regression line with 95% CI and PI")
+lines(beerf, BBCI$fit, col="blue", lwd=3)
+lines(beerf, BBCI$lwr, col="red", lty=2, lwd=3)
+lines(beerf, BBCI$upr, col="red", lty=2, lwd=3)
+lines(beerf, BBPI$lwr, col="grey", lty=3, lwd=3)
+lines(beerf, BBPI$upr, col="grey", lty=3, lwd=3)
+legend("topleft", c("Estimate","CI","PI"), lwd=3, lty=c(1,2,3),
+       col = c("blue","red","grey"))
+```
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-22-1.png" alt="(ref:fig7-22)" width="672" />
+<p class="caption">(\#fig:Figure7-22)(ref:fig7-22)</p>
+</div>
+
+More importantly, note that the CI in Figure \@ref(fig:Figure7-22) clearly 
+shows widening as we move further away from the mean of the
+$x\text{'s}$ to the edges of the observed x-values. This reflects a decrease
+in knowledge of the true mean as we move away from the mean of the 
+$x\text{'s}$. The PI
+also is widening slightly but not as clearly in this situation. The difference
+in widths in the two types of intervals becomes extremely clear when they are
+displayed together. 
+
+Similarly, the 95% CI and PIs for the Bozeman yearly average maximum
+temperatures in Figure \@ref(fig:Figure7-23) provide
+interesting information on the uncertainty in the estimated mean temperature
+over time. It is also interesting to explore how many of the observations fall
+within the 95% prediction intervals. The PIs are for new observations, but you
+can see how the PIs that were constructed to contain almost all the
+observations in the original data set but not all of them. In fact, only 2 of
+the 109 observations (1.8%) fall outside the 95% PIs. Since the PI needs to be
+concerned with unobserved new observations it makes sense that it might contain
+more than 95% of the observations used to make it. 
+
+(ref:fig7-23) Estimated SLR for Bozeman temperature data with 95% confidence
+(dashed lines) and 95% prediction (lighter, dotted lines) intervals. 
+
+<div class="figure">
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-23-1.png" alt="(ref:fig7-23)" width="672" />
+<p class="caption">(\#fig:Figure7-23)(ref:fig7-23)</p>
+</div>
+
+We can also use these same methods to do a prediction for the year after the
+data set ended, 2015 and in 2050:
+
+
+```r
+predict(temp1, newdata=data.frame(Year=2015), interval="confidence")
+```
+
+```
+##        fit     lwr      upr
+## 1 58.31967 57.7019 58.93744
+```
+
+```r
+predict(temp1, newdata=data.frame(Year=2015), interval="prediction")
+```
+
+```
+##        fit      lwr      upr
+## 1 58.31967 55.04146 61.59787
+```
+
+```r
+predict(temp1, newdata=data.frame(Year=2050), interval="confidence")
+```
+
+```
+##        fit      lwr      upr
+## 1 60.15514 59.23631 61.07397
+```
+
+```r
+predict(temp1, newdata=data.frame(Year=2050), interval="prediction")
+```
+
+```
+##        fit      lwr      upr
+## 1 60.15514 56.80712 63.50316
+```
+
+These results tell us that we are 95% confident that the true mean yearly
+average maximum temperature in 2015 is (or was?) between 
+55.04$^\circ F$ and 61.6$^\circ F$. And we are 95% sure that the observed
+yearly average maximum temperature in 2015 will be (or would have been?)
+between 59.2$^\circ F$ and 61.1$^\circ F$. Obviously, 2015 has occurred, but
+since the data were not published when the data set was downloaded in July
+2016, we can probably best treat 2015 as a potential "future" observation. The
+results for 2050 are clearly for the future mean and a new observation in 2050. 
+Note that up to 2014, no values of this response had been observed above 60$^\circ F$ and the predicted mean in 2050 is over 60$^\circ F$ if the trend
+persists. It is also
+easy to criticize the use of this model for 2050 because of its extreme amount
+of extrapolation. 
+
 ## Chapter summary {#section7-8}
+
+In this chapter, we raised our SLR modeling to a new level, considering
+inference techniques for relationships between two variables. The next 
+chapter will build on these same techniques but add in additional explanatory
+variables for what we call ***multiple linear regression*** (MLR). For example,
+in the *Beers* vs *BAC* study, it would have been useful to control for the
+weight of the subjects since people of different sizes metabolize alcohol at
+different rates and body size might explain some of the variability. We still
+would want to study the effects of beer consumption but also control for the
+differences in subject's weights. Or if they had studied both male and female
+students, we might need to change the slope or intercept for each sex, allowing
+the relationship between *Beers* and *BAC* to change between these groups.
+That will also be handled using MLR techniques but result in two simple linear
+regression equations -- one for females and one for males. And in this chapter
+you learned how to interpret SLR models. The next chapter will feel like it is
+completely new initially but it actually contains very little new material,
+just more complicated models that use the same concepts. There will be a
+couple of new issues to consider for MLR and we'll need to learn how to work
+with categorical variables in a regression setting -- but we actually fit
+linear models with categorical variables in Chapters \@ref(chapter3) and 
+\@ref(chapter4) so that isn't actually completely new either. 
+
+SLR is a simple (thus its name) tool for analyzing the relationship between two
+quantitative variables. It contains assumptions about the estimated regression
+line being reasonable and about the distribution of the responses around that
+line to do inferences for the population regression line. Our diagnostic plots
+help us to carefully assess those assumptions. If we cannot trust the
+assumptions, then the estimated line and any inferences for the population are
+un-trustworthy. Transformations can fix things so that we can use SLR to fit
+regression models. Transformations can complicate the interpretations on the
+original, untransformed scale but have minimal impact on the interpretations on
+the transformed scale. It is important to be careful with the units of the
+variables, especially when dealing with transformations, as this can lead to
+big changes in the results depending on which scale (original or transformed)
+the results are being interpreted on. 
 
 ## Important R code {#section7-9}
 
+The main components of the R code used in this chapter follow with the
+components to modify in red where $y$ is a response variable, $x$ is an
+explanatory variable, and the data are in DATASETNAME. 
+
+* scatterplot(<font color='red'>y</font>~<font color='red'>x</font>,
+data=<font color='red'>DATASETNAME</font>, smooth=F)
+
+    * Requires the ``car`` package.
+    
+    * Provides a scatter plot with a regression line.
+
+    * Turn on ``smooth=T`` to add a smoothing line to help detect 
+    nonlinear relationships.
+    
+* <font color='red'>MODELNAME</font> <- lm(<font color='red'>y</font>~
+<font color='red'>x</font>, data=<font color='red'>DATASETNAME</font>)
+
+    * Estimates a regression model using least squares.
+    
+* summary(<font color='red'>MODELNAME</font>)
+
+    * Provides parameter estimates and R-squared (used heavily in 
+    Chapter \@ref(chapter8) as well).
+    
+* par(mfrow=c(2, 2)); plot(<font color='red'>MODELNAME</font>)
+
+    * Provides four regression diagnostic plots in one plot.
+    
+* confint(<font color='red'>MODELNAME</font>, level=0.95)
+
+    * Provides 95% confidence intervals for the regression model coefficients.
+    
+    * Change ``level`` if you want other confidence levels.
+    
+* plot(allEffects(<font color='red'>MODELNAME</font>))
+    
+    * Requires the ``effects`` package. 
+
+    * Provides a term-plot of the estimated regression line with 95% confidence
+    interval for the mean.
+    
+* <font color='red'>DATASETNAME\$logy</font> <- log(<font color='red'>DATASETNAME\$y</font>)
+
+    * Creates a transformed variable called logy -- change this to be more
+    specific to your "$y$" or "$x$".
+    
+* predict(<font color='red'>MODELNAME</font>, se.fit=T)
+
+    * Provides fitted values for all observed $x\text{'s}$ with SEs for the 
+    mean.
+
+* predict(<font color='red'>MODELNAME</font>, 
+newdata=data.frame(<font color='red'>x</font> = <font color='red'>XNEW</font>),
+interval="confidence")
+
+    * Provides fitted value for a specific $x$ (XNEW) with CI for the mean.
+    Replace ``x`` with name of  explanatory variable. 
+
+* predict(<font color='red'>MODELNAME</font>, 
+newdata=data.frame(<font color='red'>x</font> = <font color='red'>XNEW</font>),
+interval="prediction")
+
+    * Provides fitted value for a specific $x$ (XNEW) with PI for a new
+    observation. Replace ``x`` with name of explanatory variable.
+    
+* qt(0.975, df=<font color='red'>n</font> - 2)
+
+    * Gets the $t^*$ multiplier for making a 95% interval with $n-2$ replaced
+    by the sample size -- 2.
+   
 ## Practice problems	{#section7-10}
 
+We will continue with the treadmill data set introduced in Chapter 
+\@ref(chapter1) and the SLR fit in the practice problems in
+Chapter \@ref(chapter6). The following code will get you back to where we 
+stopped at the end of Chapter \@ref(chapter6):
+
+```
+treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
+                      header=T)
+plot(TreadMillOx~RunTime, data=treadmill)
+tm <- lm(TreadMillOx~RunTime, data=treadmill)
+summary(tm1)
+```
+
+7.1. Use the output to test for a
+linear relationship between treadmill oxygen and run time, writing out all 6+
+steps of the hypothesis test. Make sure to address scope of inference and
+interpret the p-value. 
+
+7.2. Form and interpret a 95%
+confidence interval for the slope coefficient "by hand" using the provided
+multiplier:
+
+
+```r
+qt(0.975, df=29)
+```
+
+```
+## [1] 2.04523
+```
+
+7.3. Use the ``confint`` function to find a similar confidence interval,
+checking your previous calculation. 
+
+7.4. Use the predict function to find fitted values, 95% confidence and 95%
+prediction intervals for run times of 11 and 16 minutes. 
+
+7.5. Interpret the CI and PI for the 11 minute run time. 
+
+7.6. Compare the width of either set of CIs and PIs -- why are they different?
+For the two different predictions, why are the intervals wider for 16 minutes
+than for 11 minutes?
+
+7.7. The Residuals vs Fitted plot considered in Chapter \@ref(chapter6) should
+have suggested slight non-constant variance and maybe a little missed
+nonlinearity. Perform a log-transformation of the treadmill oxygen response
+variable and re-fit the SLR model. Remake the diagnostic plots and discuss
+whether the transformation changed any of them. 
+
+7.8 Summarize the $\log(y) \sim x$ model and interpret the slope coefficient on
+the transformed and original scales, regardless of the answer to the previous
+question.

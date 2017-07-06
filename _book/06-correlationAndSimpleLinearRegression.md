@@ -181,7 +181,7 @@ the correlation coefficient, a
 measure that is the same regardless of your choice of which variable is
 considered explanatory or response. We measure the strength and direction of
 linear relationships between two quantitative variables using 
-***Pearson'?'s r*** or ***Pearson'?'s Product Moment Correlation Coefficient***.
+***Pearson's r*** or ***Pearson's Product Moment Correlation Coefficient***.
 For those who really like acronyms, Wikipedia even suggests calling it 
 the PPMCC. However, 
 its use is so ubiquitous that the lower case ***r*** or just "correlation
@@ -362,7 +362,7 @@ If you triangulate the row and column labels, that cell provides the correlation
 between that pair of variables. For example, in the first row (``Year``) 
 and the last column (``loghectacres``), you can find that the correlation
 coefficient is ***r***=0.362. Note the symmetry in the matrix around the 
-diagonal of 1'?'s -- this further illustrates that correlation between 
+diagonal of 1's -- this further illustrates that correlation between 
 $x$ and $y$ does not depend on which variable is viewed as the "response".
 The estimated correlation
 between ``Temperature`` and ``Year`` is -0.004 and the correlation between
@@ -410,9 +410,9 @@ pairs.panels(mtfiresR, ellipses=F, scale=T, smooth=F, col=0)
 As one more example, the Australian Institute of Sport collected data 
 on 102 male and 100 female athletes that are available in the ``ais``
 data set from the ``alr3`` package (Weisberg, 2005). They measured a 
-variety of variables including the athlete'?'s Hematocrit (``Hc``, 
+variety of variables including the athlete's Hematocrit (``Hc``, 
 units of percentage of red blood cells in the blood), Body Fat Percentage 
-(``Bfat``, units of percentage of total bodyweight), and height (``Ht``,
+(``Bfat``, units of percentage of total body weight), and height (``Ht``,
 units of cm). Eventually we might be interested in predicting ``Hc`` 
 based on the other variables, but for now the associations are of interest. 
 
@@ -463,7 +463,7 @@ of close to 60% (a result that is extremely high). One might wonder about
 whether this athlete has been doping or
 if that measurement involved a recording error. We should consider removing
 that observation to see how our results might change without it impacting the
-results. For the relationship between ``Bfat`` (*bodyfat*) and ``Hc`` 
+results. For the relationship between ``Bfat`` (*body fat*) and ``Hc`` 
 (*hematocrit*), that same high ``Hc`` value is a clear outlier. There is
 also a high ``Bfat`` (*body fat*) athlete (35%) with a somewhat low 
 ``Hc`` value. This also might be influencing our impressions so we will 
@@ -628,14 +628,14 @@ very misleading. It also emphasizes the importance of exploring for potential
 subgroups in the data set -- these two groups were not obvious in the initial
 plot, but with added information the real story became clear. 
 
-For the *Bodyfat* vs *Hematocrit* results in Figure \@ref(fig:Figure6-8), with
+For the *Body Fat* vs *Hematocrit* results in Figure \@ref(fig:Figure6-8), with
 an overall correlation of ***r***=-0.54, the subgroup correlations
 show weaker relationships that also appear to be in different directions 
 (***r***=0.13 for men and ***r***=-0.17 for women). This doubly reinforces the 
 dangers of aggregating different groups and
 ignoring the group information. 
 
-(ref:fig6-8) Scatterplot of athlete's bodyfat and hematocrit by sex of athletes. Males
+(ref:fig6-8) Scatterplot of athlete's body fat and hematocrit by sex of athletes. Males
 were coded as 0s and females as 1s. 
 
 
@@ -657,7 +657,7 @@ cor(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Females only
 
 ```r
 scatterplot(Hc~Bfat|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
-            boxplots="xy", main="Scatterplot of Bodyfat vs Hematocrit by Sex")
+            boxplots="xy", main="Scatterplot of Body Fat vs Hematocrit by Sex")
 ```
 
 <div class="figure">
@@ -675,10 +675,10 @@ that might also be nonlinear (for the linear relationships ***r*** =0.20 for wom
 higher body fat
 percentages. This might be related to the types of sports they compete in --
 that would be another categorical variable we could incorporate... Both groups
-also seem to demonstrate slightly more variability in *Bodyfat* associated with taller 
+also seem to demonstrate slightly more variability in *Body Fat* associated with taller 
 athletes (each sort of "fans out"). 
 
-(ref:fig6-9) Scatterplot of athlete's bodyfat and height by sex.
+(ref:fig6-9) Scatterplot of athlete's body fat and height by sex.
 
 
 ```r
@@ -699,7 +699,7 @@ cor(Bfat~Ht,data=aisR2[aisR2$Sex==1,]) #Females only
 
 ```r
 scatterplot(Bfat~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
-            boxplots="xy", main="Scatterplot of Height vs Bodyfat by Sex")
+            boxplots="xy", main="Scatterplot of Height vs Body Fat by Sex")
 ```
 
 <div class="figure">
@@ -784,7 +784,7 @@ linear relationship). The alternative hypothesis is that there is some
 $H_A: \rho \ne 0$. The distribution of the Pearson correlation coefficient 
 can be complicated in some situations, so we will use
 bootstrapping methods to generate confidence intervals for $\rho$ based on 
-repeated random samples with replacement from the original dataset. If the 
+repeated random samples with replacement from the original data set. If the 
 confidence contains 0, then we would fail to reject the null
 hypothesis since 0 is in the interval of our likely values for $\rho$. If 
 the confidence interval does not contain 0, then we can reject the null 
@@ -1297,7 +1297,7 @@ explanatory variable. Another example is useful for practicing how to do these
 interpretations. 
 
 In the Australian Athlete data, we
-saw a weak negative relationship between *BodyFat* (% body weight that 
+saw a weak negative relationship between *Body Fat* (% body weight that 
 is fat) and *Hematocrit* (% red blood cells in the blood). The scatterplot 
 in Figure \@ref(fig:Figure6-15) shows just the
 results for the female athletes along with the regression line which has a
@@ -1334,7 +1334,7 @@ summary(m2)
 
 ```r
 scatterplot(Hc~Bfat, data=aisR2[aisR2$Sex==1,], smooth=F,
-            main="Scatterplot of BodyFat vs Hematocrit for Female Athletes",
+            main="Scatterplot of Body Fat vs Hematocrit for Female Athletes",
             ylab="Hc (% blood)", xlab="Body fat (% weight)")
 ```
 
@@ -1344,7 +1344,7 @@ scatterplot(Hc~Bfat, data=aisR2[aisR2$Sex==1,], smooth=F,
 </div>
 
 Based on these results, the estimated regression equation is
-$\widehat{\text{Hc}}_i = 42.014 - 0.085\text{Bodyfat}_i$ with $b_0 = 42.014$
+$\widehat{\text{Hc}}_i = 42.014 - 0.085\text{BodyFat}_i$ with $b_0 = 42.014$
 and $b_1 = 0.085$. The slope coefficient interpretation is: For a one 
 percent increase in body fat, we expect, on average a -0.085% (blood) change
 in Hematocrit for Australian female athletes. For the y-intercept, the
@@ -1392,7 +1392,7 @@ that minimizes the sum of squared residuals.
 
 Sometimes it is helpful to have a
 go at finding the estimates yourself. If you install and load the ``tigerstats``
-and ``manipulate`` packagesin R-studio and then run ``FindRegLine()``, you get
+and ``manipulate`` packages in R-studio and then run ``FindRegLine()``, you get
 a chance to try to find the optimal slope and intercept for a fake data set. 
 Click on the "sprocket" icon in the upper left of the plot and you will see
 something like Figure \@ref(fig:Figure6-17). This interaction can help you see 
@@ -1737,8 +1737,8 @@ summary(fire1)
 
 For the model for female Australian athletes that used *Body fat* to 
 explain *Hematocrit*, the estimated regression model was
-$\widehat{\text{Hc}}_i = 42.014 - 0.085\text{Bodyfat}_i$ and
-$\mathbf{r} = -0.168$. The coefficent of determination is
+$\widehat{\text{Hc}}_i = 42.014 - 0.085\text{BodyFat}_i$ and
+$\mathbf{r} = -0.168$. The coefficient of determination is
 $\mathbf{R^2} = (-0.168)^2 = 0.0282$. So *body fat* explains 2.8% of
 the variation in *Hematocrit* in these women. That is not a very good 
 regression model with over 97% of the variation in *Hematocrit* unexplained
