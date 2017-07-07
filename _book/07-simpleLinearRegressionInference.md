@@ -26,7 +26,7 @@ how to check for problems in regression situations. In this chapter, that work
 provides the basis of performing statistical inference that mainly focuses on
 the population slope coefficient based on the sample slope coefficient. As a
 reminder, the estimated regression model is $\hat{y}_i = b_0 + b_1x_i$. the
-population regression equation is $y_i = \beta_0 + \beta_1x_i + \epsilon_i$.
+population regression equation is $y_i = \beta_0 + \beta_1x_i + \varepsilon_i$.
 Where $\beta_0$ is the ***population*** (or true) ***y-intercept*** and
 $\beta_1$ is the ***population*** (or true) ***slope coefficient***. 
 These are population parameters (fixed but typically unknown). This model can
@@ -53,8 +53,8 @@ $$y_i \sim N(\mu_{y_i},\sigma^2), \text{ with }
 which can be read as "y follows a normal distribution
 with mean mu-y and variance sigma-squared". This also implies that the random
 variability around the true mean, the errors, follow a normal distribution with
-mean 0 and that same variance, $\epsilon_i \sim N(0,\sigma^2)$. The true 
-deviations ($\epsilon_i$) are once again estimated by the
+mean 0 and that same variance, $\varepsilon_i \sim N(0,\sigma^2)$. The true 
+deviations ($\varepsilon_i$) are once again estimated by the
 residuals, $e_i = y_i - \hat{y}_i$ = observed response -- predicted
 response. We can use the residuals to estimate $\sigma$, which is also
 called the ***residual standard error***, 
@@ -1830,7 +1830,7 @@ normality, and curvature issues.
 
 A final model combines log-transformations of both $x$ and $y$, combining the interpretations used in the previous two situations. This model is called the
 ***log-log model*** and in some areas is also called the ***power law model***.
-The power-law model is usually written as $y = \beta_0x^{\beta_1}+\epsilon$,
+The power-law model is usually written as $y = \beta_0x^{\beta_1}+\varepsilon$,
 where $y$ is thought to be proportional to $x$ raised to an estimated power
 of $\beta_1$ (linear if $\beta_1=1$ and quadratic if $\beta_1=2$). It is 
 one of the models that has been used in Geomorphology to model the shape of

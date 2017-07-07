@@ -1145,7 +1145,7 @@ have to modify interpretations of the coefficients to reflect this.
 We also tie this estimated model to a theoretical or ***population 
 regression model***: 
 
-$$y_i = \beta_0 + \beta_1x_i+\epsilon_i$$
+$$y_i = \beta_0 + \beta_1x_i+\varepsilon_i$$
 
 where:
 
@@ -1160,9 +1160,9 @@ $i^{th}$ observation,
 
 * $\beta_1$ is the true (or population) slope coefficient, and
 
-* the deviations, $\epsilon_i$, are assumed to be independent and 
+* the deviations, $\varepsilon_i$, are assumed to be independent and 
 normally distributed with mean 0 and standard deviation $\sigma$ or,
-more compactly, $\epsilon_i \sim N(0,\sigma^2)$. 
+more compactly, $\varepsilon_i \sim N(0,\sigma^2)$. 
 
 This presents another version of the linear model from Chapters \@ref(chapter3)
 and \@ref(chapter4), now with a

@@ -626,25 +626,25 @@ $\mu_1$ is the parameter for the true mean of the first group and $\mu_2$
 is the parameter for the true mean of the second group. The alternative
 hypothesis involves assuming a statistical model for the $i^{th} (i=1,\ldots,n_j)$
 response from the $j^{th} (j=1,2)$ group, $\boldsymbol{y}_{ij}$, that 
-involves modeling it as $y_{ij} = \mu_j + \epsilon_{ij}$, 
-where we assume that $\epsilon_{ij} \sim N(0,\sigma^2)$. For the moment, 
+involves modeling it as $y_{ij} = \mu_j + \varepsilon_{ij}$, 
+where we assume that $\varepsilon_{ij} \sim N(0,\sigma^2)$. For the moment, 
 focus on the models that either assume the means are the same (null) or 
 different (alternative), which imply:
 
-* Null Model: $y_{ij} = \mu + \epsilon_{ij}$ There is **no**
+* Null Model: $y_{ij} = \mu + \varepsilon_{ij}$ There is **no**
 difference in **true** means for the two groups.
 
-* Alternative Model: $y_{ij} = \mu_j + \epsilon_{ij}$ There is **a**
+* Alternative Model: $y_{ij} = \mu_j + \varepsilon_{ij}$ There is **a**
 difference in **true** means for the two groups.
 
 
 Suppose we are considering the alternative model for the 4<sup>th</sup>
 observation ($i=4$) from the second group ($j=2$), then the model for 
-this observation is $y_{42} = \mu_2 +\epsilon_{42}$, that defines the 
+this observation is $y_{42} = \mu_2 +\varepsilon_{42}$, that defines the 
 response as coming from the true mean for the second group plus a 
-random error term for that observation, $\epsilon_{42}$. For, say, the 
+random error term for that observation, $\varepsilon_{42}$. For, say, the 
 5<sup>th</sup> observation from the first group ($j=1$), the model is 
-$y_{51} = \mu_1 +\epsilon_{51}$. If we were working with the null model, 
+$y_{51} = \mu_1 +\varepsilon_{51}$. If we were working with the null model, 
 the mean is always the same ($\mu$) - the group specified does not change 
 the mean we use for that observation. 
 

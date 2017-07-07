@@ -463,7 +463,7 @@ and level $k$ of factor B
 We need to extend our previous discussion of reference-coded models to develop a
 Two-Way ANOVA model. We start with the ***Two-Way ANOVA interaction model***:
 
-$$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \epsilon_{ijk},$$
+$$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},$$
 
 where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
 $\tau_j$ is the deviation for the ***main effect*** of A from the baseline
@@ -482,7 +482,7 @@ and we get a model that corresponds to Scenario 4
 above. Scenario 4 is where there are two main effects but no interaction
 between them. The ***additive Two-Way model*** is
 
-$$y_{ijk} = \alpha + \tau_j + \gamma_k + \epsilon_{ijk},$$
+$$y_{ijk} = \alpha + \tau_j + \gamma_k + \varepsilon_{ijk},$$
 
 where each component is defined as in the interaction model. The difference between
 the interaction and additive models is setting all the $\omega_{jk}\text{'s}$

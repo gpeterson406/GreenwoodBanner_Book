@@ -14,6 +14,8 @@ header-includes:
 set.seed(3234)
 library(pander)
 require(mosaic)
+knitr::opts_chunk$set(cache = TRUE)
+options(show.signif.stars = FALSE)
 ```
 
 
@@ -31,6 +33,279 @@ colFmt = function(x, color){
 ```
 
 ## Going from SLR to MLR {#section8-1}
+
+In many situations, especially in observational studies, it is unlikely that
+the system is simple enough to be characterized
+by a single predictor variable. In experiments, if we randomly assign levels of
+a predictor variable we can assume that the impacts of other variables cancel
+out as a direct result of the random assignment. But it is possible even in
+these experimental situations that we can "improve" our model for the response
+variable by adding additional predictor variables that explain additional
+variation in the responses, reducing the amount of unexplained variation. This
+can allow more precise inferences to be generated from the model. As mentioned
+previously, it might be useful to know the sex or weight of the subjects in the
+Beers vs BAC study to account for more of the variation in the responses -- this
+idea motivates our final topic: ***multiple linear regression*** (**MLR**)
+models. In observational studies, 
+we can think of a suite of characteristics of observations that might be
+related to a response variable. For example, consider a study of yearly
+salaries and variables that might explain the amount people get paid. We might
+be most interested in seeing how incomes change based on age, but it would be
+hard to ignore potential differences based on sex and education level. Trying
+to explain incomes would likely require more than one predictor variable and we
+wouldn't be able to explain all the variability in the responses just based on
+gender and education level, but a model using those variables might still
+provide some useful information about each component and about age impacts on
+income after we adjust (control for) sex and education. The extension to MLR
+allows us to incorporate multiple predictors into a regression model.
+Geometrically, this is a way of relating many different dimensions (number of
+$x\text{'s}$) to what happened in a single response variable (one dimension). 
+
+We start with the same model as in SLR except now we allow $K$ different
+$x\text{'s}$:
+
+$$y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i}+ \ldots + \beta_Kx_{Ki}
++ \varepsilon_i$$
+
+Note that if $K=1$, we are back to SLR. In the MLR model, there are $K$
+predictors and we still have a
+y-intercept. The MLR model carries the same assumptions as an SLR model with a
+couple of slight tweaks specific to MLR (see Section \@ref(section8-2)
+for the details on the changes to the validity conditions). 
+
+We are able to use the
+least squares criterion for estimating the regression coefficients in MLR, but
+the mathematics are beyond the scope of this course. The ``lm`` function takes
+care of finding the least squares coefficients using a very sophisticated
+algorithm^[If you take advanced applied mathematics courses, you can learn
+more about the algorithms being used by ``lm``. Everyone else only cares 
+about the algorithms when they don't work -- which is usually due to the
+user's inputs in these models not the algorithm itself.]. The estimated 
+regression equation it returns is:
+
+$$\hat{y}_i = b_0 + b_1x_{1i} +b_2x_{2i}+\ldots+b_Kx_{Ki}$$
+
+where each $b_k$ estimates its corresponding parameter $\beta_k$.
+
+An example of snow depths at some high elevation locations on a day in 
+April provides a nice motivation for these methods. A random sample of 
+$n=25$ MT locations (from the population of $N=85$ at the time) were obtained 
+from the Natural Resources Conversation Service's website 
+(http://www.wcc.nrcs.usda.gov/snotel/Montana/montana.html) a few years ago.
+Information on the snow depth (``Snow.Depth``) in inches, daily Minimum and
+Maximum Temperatures (``Min.Temp`` and ``Max.Temp``) in $^\circ F$ and 
+elevation of the site (``Elevation``) in feet. A snow science researcher (or
+spring back-country skier) might be interested in understanding *Snow depth* 
+as a function of *Minimum Temperature*, *Maximum Temperature*, and *Elevation*.
+One might assume that colder
+and higher places will have more snow, but using just one of the predictor
+variables might leave out some important predictive information. The following
+code loads the data set and makes the scatterplot matrix 
+(Figure \@ref(fig:Figure8-1)) to allow
+some preliminary assessment of the pairwise relationships. 
+
+(ref:fig8-1) Scatterplot matrix of the SNOTEL data.
+
+```{r Figure8-1,fig.cap="(ref:fig8-1)",warning=F,message=F}
+snotel_s <- read.csv("http://www.math.montana.edu/courses/s217/documents/snotel_s.csv")
+snotel2 <- snotel_s[,c(1:2,4:6,3)] #Reorders columns for nicer pairs.panel display
+require(psych)
+pairs.panels(snotel2[,-c(1:2)], ellipse=F,
+             main="Scatterplot matrix of SNOTEL Data")
+```
+
+It appears that there are many strong linear relationships between the variables,
+with *Elevation* and *Snow Depth* having the largest magnitude, ***r*** = 0.80.
+Higher temperatures seem to be associated with less snow - not a big surprise so
+far! There might be an outlier at an elevation of 7400 feet and a snow depth
+below 10 inches that we should explore further. 
+
+A new issue arises in attempting to build MLR models called  ***multicollinearity***. Again, it is a not surprise that temperature and
+elevation are correlated but that creates a
+problem if we try to put them both into a model to explain snow depth. Is it
+the elevation, temperature, or the combination of both that matters for getting
+and retaining more snow? **Correlation between predictor variables** is called
+multicollinearity and **makes estimation and interpretation of MLR models more
+complicated than in SLR**. Section \@ref(section8-5) deals with this issue
+directly and discusses methods
+for detecting its presence. For now, remember that in MLR this issue sometimes
+makes it difficult to disentangle the impacts of different predictor variables
+on the response when the predictors share information -- when they are
+correlated. 
+
+To get familiar with this example, we can start with fitting some potential SLR
+models and plotting the estimated models. Figure \@ref(fig:Figure8-2) contains
+the result for the SLR using *Elevation* and results for two temperature based
+models are in Figure \@ref(fig:Figure8-3). *Snow Depth* is selected as the
+obvious response variable both due to skier interest and potential scientific
+causation (snow can't change elevation but elevation could be the driver of
+snow deposition and retention). 
+
+(ref:fig8-2) Plot of estimated
+SLR model for Snow Depth with Elevation as the predictor.
+
+```{r Figure8-2,fig.cap="(ref:fig8-2)",echo=F,warning=F,message=F}
+require(effects)
+m1 <- lm(Snow.Depth~Elevation,data=snotel2)
+plot(allEffects(m1,xlevels=list(Elevation=snotel2$Elevation)),
+     main="SLR: Effect of Elevation")
+```
+
+Based on the model summaries provided below, the three estimated SLR models 
+are:
+
+$$\begin{array}{rl}
+\widehat{\text{SnowDepth}}_i &= -72.006 + 0.0163\text{ Elevation}_i, \\
+\widehat{\text{SnowDepth}}_i &= 174.096 - 4.884\text{ MinTemp}_i,\text{ and} \\
+\widehat{\text{SnowDepth}}_i &= 122.672 - 2.284\text{ MaxTemp}_i.
+\end{array}$$
+
+The plots of the estimated models reinforce
+our expected results, showing a positive change in *Snow Depth* for higher
+*Elevations* and negative impacts for increasing temperatures on *Snow Depth*.
+These plots are made across the observed range^[Sometimes the effects plots 
+ignores the edge explanatory observations with the
+default display. Always check the original variable summaries when considering
+the range of observed values. The code modifications used to make these plots
+are a little annoying and can be avoided if you remember to check the original
+summary statistics or scatterplots for variable extrema.] of the predictor 
+variable and help us to get a sense of the total impacts of
+predictors. For example, for elevation in Figure \@ref(fig:Figure8-2), the 
+smallest observed
+value was 4925 feet and the largest was 8300 feet. The regression line goes
+from estimating a mean snow depth of 8 inches to 63 inches. That gives you some
+practical idea of the size of the estimated *Snow Depth* change for the changes in
+*Elevation* observed in the data. Putting this together, we can say that
+there was around a
+55 inch change in predicted snow depths for a close to 3400 foot increase in
+elevation. This helps make the slope coefficient of 0.0163 in the model more 
+easily understood. Remember that in SLR, the range of $x$ matters just as much 
+as the units of $x$ in determining the practical importance and size of the slope
+coefficient. A value of 0.0163 looks small but is actually at the heart of a
+pretty good model for predicting snow depth. A one foot change of elevation is
+"tiny" here relative to changes in the response so the slope coefficient can be
+small and still amount to big changes in the predicted response across the range
+of values of $x$. If the *Elevation* had been recorded in thousands of feet,
+then the slope would have been $0.0163*1000=16.3$ inches in change in mean
+*Snow Depth* for a 1000 foot increase in elevation. 
+
+The plots of the two estimated temperature models in 
+Figure \@ref(fig:Figure8-3) suggest a similar change in the responses over
+the range of observed temperatures. Those predictors range from 22$^\circ F$
+to 34$^\circ F$ (minimum temperature) and from 26$^\circ F$ to 50$^\circ F$
+(maximum temperature). This tells us a 1$^\circ F$ increase in either 
+temperature is a
+greater proportion of the observed range of each predictor than a 1 unit (foot)
+increase in elevation, so these two variables will generate larger apparent
+magnitudes of slope coefficients. But having large slope coefficients is no
+guarantee of a good model -- in fact, the elevation model has the highest 
+$R^2$ value of these three models even though its slope coefficient looks tiny
+compared to the other models.
+
+(ref:fig8-3) Plots of two estimated SLR models using Min Temp (top panel)
+and Max Temp (bottom panel) as predictors. Note that each of these results 
+are from models with a single predictor variable.
+
+```{r Figure8-3,fig.cap="(ref:fig8-3)",echo=F,warning=F,message=F,fig.show="hold"}
+par(mfrow=c(2,1))
+m2 <- lm(Snow.Depth~Min.Temp, data=snotel2)
+m3 <- lm(Snow.Depth~Max.Temp, data=snotel2)
+plot(allEffects(m2, xlevels=list(Min.temp=snotel2$Min.Temp)),
+     main="SLR: Effect of Min Temp")
+plot(allEffects(m3, xlevels=list(Max.Temp=snotel2$Max.Temp)),
+     main="SLR: Effect of Max Temp")
+```
+
+```{r eval=F}
+m1 <- lm(Snow.Depth~Elevation, data=snotel2)
+m2 <- lm(Snow.Depth~Min.Temp, data=snotel2)
+m3 <- lm(Snow.Depth~Max.Temp, data=snotel2)
+require(effects)
+plot(allEffects(m1, xlevels=list(Elevation=snotel2$Elevation)),
+     main="SLR: Effect of Elevation")
+plot(allEffects(m2, xlevels=list(Min.temp=snotel2$Min.Temp)),
+     main="SLR: Effect of Min Temp")
+plot(allEffects(m3, xlevels=list(Max.Temp=snotel2$Max.Temp)),
+     main="SLR: Effect of Max Temp")
+```
+
+```{r}
+summary(m1)
+summary(m2)
+summary(m3)
+```
+ 
+Since all three variables look like they are potentially useful in predicting
+snow depth, we want to consider if an MLR model might explain more of the
+variability in *Snow Depth*. To fit an MLR model, we use the same general format
+as in other topics but with adding "``+``" between any additional 
+predictors^[We used this same notation in the fitting the additive Two-Way 
+ANOVA and this is also additive in terms of these variables. Interaction 
+models are discussed later in the chapter.] we want to add to the model, 
+``y~x1+x2+...+xk``:
+
+(ref:fig8-4) Term-plots for the MLR for Snow Depth based on Elevation, 
+Min Temp and Max Temp. Note that the x-axis ranges are different than those 
+used in Figures \@ref(fig:Figure8-2) and \@ref(fig:Figure8-3) for the
+comparably SLR models. 
+
+```{r Figure8-4,fig.cap="(ref:fig8-4)",warning=F,message=F,fig.width=8}
+m4 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2)
+summary(m4)
+plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
+```
+
+Based on the output, the estimated MLR model is
+
+$$\widehat{\text{SnowDepth}}_i = -10.51 + 0.0123\text{ Elevation}_i
+-0.505\text{ MinTemp}_i - 0.562\text{ MaxTemp}_i.$$
+
+The direction of the estimated slope coefficients were similar but they 
+all changed in magnitude as compared to the respective SLRs, as seen in the
+estimated term-plots from the MLR model in Figure \@ref(fig:Figure8-4). 
+
+There are two ways to think about the changes from individual SLR slope
+coefficients to the similar MLR results. 
+
+1. Each term in the MLR is the result for estimating each
+slope after controlling for the other two variables (and we will always
+use this interpretation any time we interpret MLR effects). For example, 
+"corrected for" or "adjusted for" the variability that is explained by the
+temperature variables. 
+
+2. Because of multicollinearity in the predictors, the
+variables might share information that is useful for explaining the
+variability in the response variable, so the slope coefficients of each
+predictor get perturbed because the model cannot separate their effects on
+the response. This issue disappears when the predictors are uncorrelated
+or even just minimally correlated. 
+
+There are some ramifications of multicollinearity in MLR:
+
+1. Adding variables to a model might lead to almost no improvement in the
+overall variability explained by the model. 
+
+2. Adding variables to a model can cause slope coefficients to change signs
+as well as magnitudes. 
+
+3. Adding variables to a model can lead to inflated standard errors for some
+or all of the coefficients (this is less obvious
+but is related to the shared information in predictors making it less
+clear what slope coefficient to use for each variable). 
+
+4. In extreme cases of multicollinearity, it may even be impossible to obtain
+any coefficient estimates. 
+
+These seem like pretty serious issues and they are but there are many, many
+situations where we proceed with MLR even
+in the presence of potentially correlated predictors. It is likely that you
+have heard or read about inferences from models that are dealing with this
+issue -- for example, medical studies often report the increased risk of death
+from some behavior or trait after controlling for sex, age, etc. In many
+research articles, it is becoming common practice to report the slope for a
+variable most of interest with it in the model alone (SLR) and in models after
+adjusting for the other variables that are expected to matter. These types of
+results are built with MLR or related multiple-predictor models like MLR. 
 
 ## Validity conditions in MLR	{#section8-2}
 

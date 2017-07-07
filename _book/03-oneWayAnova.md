@@ -88,7 +88,7 @@ whether the variability is the same in all the groups.
 
 ## Linear model for One-Way ANOVA (cell-means and reference-coding) {#section3-2}
 
-We introduced the statistical model $y_{ij} = \mu_j+\epsilon_j$ in 
+We introduced the statistical model $y_{ij} = \mu_j+\varepsilon_j$ in 
 Chapter \@ref(chapter2) for the situation with $j = 1 \text{ or } 2$ to denote 
 a situation where there were two groups and, for the model that is consistent 
 with the alternative hypothesis, the means differed. Now we have three groups 
@@ -114,7 +114,7 @@ $$H_0:\mu_1 = \ldots \mu_J.$$
 
 This defines a model where all the groups have the same mean so it can be 
 defined in terms of a single mean, $\mu$, for the $i^{th}$ observation from 
-the $j^{th}$ group as $y_{ij} = \mu+\epsilon_{ij}$. This is not the model 
+the $j^{th}$ group as $y_{ij} = \mu+\varepsilon_{ij}$. This is not the model 
 that most researchers want to be the final description of their study as it 
 implies no difference in the groups. There is more caution required to specify 
 the alternative hypothesis with more than two groups. The 
@@ -133,14 +133,14 @@ alternative but we do not put this strict a requirement in place to reject the
 null hypothesis. The alternative model allows all the true group means to 
 differ but does require that they differ with
 
-$${\color{red}{\mu_j}}+\epsilon_{ij}.$$
+$${\color{red}{\mu_j}}+\varepsilon_{ij}.$$
 
 This linear model states that the response for the $i^{th}$ observation in 
 the $j^{th}$ group, $\mathbf{y_{ij}}$, is modeled with a group $j$ 
 ($j=1, \ldots, J$) population mean, $\mu_j$, and a random error for each subject
-in each group $\epsilon_{ij}$, that we assume follows a normal distribution and 
+in each group $\varepsilon_{ij}$, that we assume follows a normal distribution and 
 that all the random errors have the same variance, $\sigma^2$. We can write the assumption about the random errors, often called the  ***normality assumption***, 
-as $\epsilon_{ij} \sim N(0,\sigma^2)$. There is a second way to write out this 
+as $\varepsilon_{ij} \sim N(0,\sigma^2)$. There is a second way to write out this 
 model that allows extension to more complex models discussed below, so we
 need a name for this version of the model. The model written in terms of the
 ${\color{red}{\mu_j}}\text{'s}$ is called the 
@@ -178,7 +178,7 @@ model is called the <b><font color='purple'>reference-coded model</font></b> sin
 writes out the model in terms of a  
 ***baseline group*** and deviations from that baseline or reference level. The
 reference-coded model for the $i^{th}$ subject in the $j^{th}$ group is 
-$y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\epsilon_{ij}$ where 
+$y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$ where 
 $\color{purple}{\boldsymbol{\alpha}}$ (alpha) is the true mean for the
 baseline group (first alphabetically) and the $\color{purple}{\boldsymbol{\tau_j}}$
 (tau $j$) are the deviations from the baseline group for group $j$. The deviation 
@@ -219,12 +219,12 @@ new ideas:
 
 * Null hypothesis in words: No difference in the true means between the groups. 
 
-* Null model $y_{ij} = \mu_j+\epsilon_{ij}$
+* Null model $y_{ij} = \mu_j+\varepsilon_{ij}$
 
 * Alternative hypothesis in words: At least one of the true means differs between 
 the groups. 
 
-* Alternative model: $y_{ij} = \color{red}{\mu_j}+\epsilon_{ij}.$
+* Alternative model: $y_{ij} = \color{red}{\mu_j}+\varepsilon_{ij}.$
 
 <b><font color='purple'>Reference-coded Version</font></b>
 
@@ -235,13 +235,13 @@ $H_A: \color{purple}{\text{ Not all } \tau_j \text{ equal}}$
 * Null hypothesis in words: No deviation of the true mean for any groups from the
 baseline group. 
 
-* Null model: $y_{ij} =\boldsymbol{\alpha} + \tau_j+\epsilon_{ij}$
+* Null model: $y_{ij} =\boldsymbol{\alpha} + \tau_j+\varepsilon_{ij}$
 
 * Alternative hypothesis in words: At least one of the true deviations is 
 different from 0 or that at least one group has a different true mean than the
 baseline group. 
 
-* Alternative model:  $y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\epsilon_{ij}$
+* Alternative model:  $y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$
 
 In order to estimate the models discussed above, the ``lm`` function is used.
 If you look closely in the code for the rest of the book, any model for a 
@@ -414,12 +414,12 @@ plot(allEffects(lm2))
 In order to assess evidence for having different means for the groups, we will 
 compare either of the previous models (cell-means or reference-coded) to a null 
 model based on the null hypothesis ($H_0: \mu_1 = \ldots = \mu_J$) which implies a
-model of $\color{red}{y_{ij} = \mu_j}+\epsilon_{ij}$ in the cell-means version 
+model of $\color{red}{y_{ij} = \mu_j}+\varepsilon_{ij}$ in the cell-means version 
 where ${\color{red}{\mu}}$ is a common mean for all the observations. We will call 
 this the <b><font color='red'>mean-only</font></b> model since it only has a single mean 
 in it. In the reference-coding version of the model, we have a null hypothesis that
 $H_0: \tau_2 = \ldots = \tau_J = 0$, so the "mean-only" model is 
-$\color{purple}{y_{ij} =\boldsymbol{\alpha}+\epsilon_{ij}}$ with 
+$\color{purple}{y_{ij} =\boldsymbol{\alpha}+\varepsilon_{ij}}$ with 
 $\color{purple}{\boldsymbol{\alpha}}$ having the same definition as 
 $\color{red}{\mu}$ for the cell means model -- it forces a common value for the 
 mean for all the groups. Moving from the *reference-coded* model to the *mean-only*
@@ -1013,7 +1013,7 @@ clear evidence that the assumption is violated!
 <p class="caption">(\#fig:Figure3-9)(ref:fig3-9)</p>
 </div>
 
-The linear model assumes that all the random errors ($\epsilon_{ij}$) follow a 
+The linear model assumes that all the random errors ($\varepsilon_{ij}$) follow a 
 normal distribution. To gain insight into the validity of this assumption, we 
 can explore the original observations as displayed in the beanplots, mentally
 subtracting off the differences in the means and focusing on the shapes of the
