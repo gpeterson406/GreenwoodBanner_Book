@@ -14,6 +14,7 @@ header-includes:
 set.seed(3234)
 library(pander)
 require(mosaic)
+library(knitr)
 knitr::opts_chunk$set(cache = TRUE)
 options(show.signif.stars = FALSE)
 ```
@@ -27,6 +28,15 @@ colFmt = function(x, color){
     paste("\\textcolor{",color,"}{",x,"}",sep="")
   else if(outputFormat == 'html')
     paste("<font color='",color,"'>",x,"</font>",sep="")
+  else
+    x
+}
+colFmtBold = function(x, color){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\textcolor{",color,"}{\\textbf{",x,"}}",sep="")
+  else if(outputFormat == 'html')
+    paste("<b><font color='",color,"'>",x,"</font></b>",sep="")
   else
     x
 }
@@ -309,7 +319,588 @@ results are built with MLR or related multiple-predictor models like MLR.
 
 ## Validity conditions in MLR	{#section8-2}
 
+But before we get to oexcited about any results, we should always assess our
+validity conditions. For MLR, they are similar to those for SLR:
+
+* **Quantitative variables condition:**
+
+    * The response and all predictors need to be quantitative variables. 
+    This condition is relaxed to allow a categorical predictor in two ways 
+    in Sections \@ref(section8-9) and \@ref(section8-11). 
+
+* **Independence of observations:**
+
+    * This assumption is about the responses -- we must assume that they were
+    collected in a fashion so that they can be assumed to be independent. This
+    implies that we also have independent random errors.
+    
+    * This is not an assumption about the predictor variables!
+    
+* **Linearity of relationship (**`r colFmtBold("NEW VERSION FOR MLR!","red")`**):**
+
+    * Linearity is assumed between the response variable and **each**
+    explanatory variable ($y$ and each $x$).
+    
+    * We can check this two ways:
+    
+        1. Make plots of the response versus each explanatory variable:
+        
+            * Only visual evidence of a curving relationship is a problem here.
+            Transformations of individual explanatory variables or the
+            response are possible.
+            
+        2. Examine the Residuals vs Fitted plot:
+        
+            * When using MLR, curves in the residuals vs. fitted values
+            suggest a missed curving relationship with at least one predictor
+            variable, but it will not be specific as to which one is non-linear.
+            Revisit the scatterplots to identify the source of the issue.
+            
+* **Multicollinearity effects checked for:**
+
+    * Issues here do not mean we cannot proceed with a given model, but it can
+    impact our ability to trust and interpret the estimated terms.
+    
+    * Check a scatterplot or correlation matrix to assess the potential for 
+    shared information in different predictor variables.
+    
+    * Use the diagnostic measure called a ***variance inflation factor***
+    (***VIF***) discussed in Section \@ref(section8-5) (we need to develop
+    some ideas first to understand this measure).
+    
+* **Equal (constant) variance:**
+
+    * Same as before since it pertains to the residuals.
+    
+* **Normality of residuals:**
+
+    * Same as before since it pertains to the residuals.
+    
+* **No influential points:**
+
+    * Leverage is now determined by how unusual a point is for multiple
+    explanatory variables.
+    
+    * The ***leverage*** values in the Residuals vs Leverage plot are
+    scaled to add up to the *degrees of freedom (df) used for the model*
+    which is the number of explanatory variables ($K$) plus 1, so $K+1$.
+    
+    * The scale of leverages depends on the complexity of the model through
+    the *df* and the sample size.
+    
+    * The interpretation is still that the larger the leverage value, the 
+    more leverage the point has.
+    
+    * The mean leverage is always *(model used df)/n = (K+1)/n* -- so focus
+    on the values with above average leverage.
+    
+        * For example, with $K=3$ and $n=20$, the average leverage is
+        $4/20=1/5$.
+    
+    * High leverage points whose response does not follow the pattern defined
+    by the other observations (now based on patterns for multiple $x\text{'s}$
+    with the response) will be influential.
+    
+    * Use the Residual's vs Leverage plot to identify problematic points.
+    Explore further with Cook's D continuing to provide a measure of the 
+    influence of each observation.
+    
+        * The rules and interpretations for Cook's D are the same as in SLR
+        (over 0.5 is possibly influential and over is definitely influential).
+
+While not a condition for use of the methods, a note about RA and RS is useful
+here in considering the scope of inference of any results. To make inferences
+about a population, we need to have a representative sample. If we have 
+randomly assigned levels of treatment variables(s), then we can make causal
+inferences to subjects like those that we could have observed. And if we both
+have a representative sample and randomization, we can make causal inferences
+for the population. It is possible to randomly assign levels of variable(s) to
+subjects and still collect additional information from other explanatory
+(sometimes called ***control***) variables. The causal interpretations would
+only be associated with the explanatory variables that were randomly assigned
+even though the model might
+contain other variables. Their interpretation still involves noting all the
+variables included in the model, as demonstrated below. It is even possible to
+include interactions between randomly assigned variables and other variables --
+like drug dosage and sex of the subjects. In these cases, causal inference
+could apply to the treatment levels but noting that the impacts differ based on
+the non-randomly assigned variable. 
+
+For the *Snow Depth* data, the conditions can be assessed as:
+
+* **Quantitative variables condition:**
+
+    * These are all met.
+
+* **Independence of observations:**
+
+    * The observations are based on a random sample of sites from the 
+    population and the sites are spread around the mountains in Montana. Many
+    people would find it to be reasonable to assume that the sites are 
+    independent of one another but others would be worried that sites closer
+    together in space might be more similar than they are to far-away 
+    observations (this is called ***spatial correlation***). I (Greenwood) have
+    been in a heated discussion with statistics colleagues about whether
+    spatial dependency should be considered or if it is valid to ignore it in
+    this sort of situation. It is certainly possible to be concerned about
+    independence of observations here but it takes more advanced statistical
+    methods to actually assess whether there is spatial dependency in these data
+    and even in those models, the first task would be to fit this sort of model
+    and then explore the results. 
+    
+We need our diagnostic plots to assess the remaining assumptions. The same code
+as before will provide diagnostic plots. There is some extra code 
+(``par(...)``) added to allow us to add labels to the plots to know which model
+is being displayed since we have so many to discuss here.
+
+(ref:fig8-5) Diagnostic plots for model m4: 
+$\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}$
+
+```{r Figure8-5,fig.cap="(ref:fig8-5)",warning=F,message=F}
+par(mfrow=c(2,2), oma=c(0,0,2,0))
+plot(m4, sub.caption="Diagnostics for m4")
+```
+
+* **Linearity of relationship (**`r colFmtBold("NEW VERSION FOR MLR!","red")`**):**
+
+    * Make plots of the response versus each explanatory variable:
+    
+        * In Figure \@ref(fig:Figure8-1), the plots of each variable versus 
+        snow depth do not clearly show any nonlinearity except for a little 
+        dip around 7000 feet in the plot vs *Elevation*. 
+    
+    * Examine the Residuals vs Fitted plot in Figure \@ref(fig:Figure8-5):
+        
+        * Generally, there is no clear curvature in the Residuals vs Fitted
+        panel and that would be an acceptable answer. However, there is some
+        pattern in the smoothing line that could suggest a more complicated
+        relationship between at least one predictor and the response. This also
+        resembles the pattern in the *Elevation* vs. *Snow depth* panel in 
+        Figure \@ref(fig:Figure8-1) so that might be the source of this 
+        "problem". This suggests that there is the potential to do a little 
+        bit better but that it is not unreasonable to proceed on with the MLR,
+        ignoring this little wiggle in the diagnostic plot.
+
+* **Multicollinearity effects checked for:**
+
+    * The predictors certainly share information in this application 
+    (correlations between -0.67 and -0.91) and multicollinearity looks to be 
+    a major concern in being able to understand/separate the impacts of
+    temperatures and elevations on snow depths.
+    
+    * See Section \@ref(section8-5) for more on this issue in these data. 
+    
+* **Equal (constant) variance:**
+
+    * While there is a little bit more variability in the middle of the fitted
+    values, this is more an artifact of having a smaller data set with a couple
+    of moderate outliers that fell in the same range of fitted values and maybe
+    a little bit of missed curvature. So there is not too much of an issue with
+    this condition. 
+    
+* **Normality of residuals:**
+
+    * The residuals are quite good in the QQ-plot, showing only a little 
+    deviation for observation 9 from a normal distribution and that deviation 
+    is extremely minor. Certainly no evidence of a violation of the normality
+    assumption here. 
+    
+* **No influential points:**
+
+    * With $K=3$ predictors and $n=25$ observations, the average
+    leverage is $4/25=0.16$. This gives us a scale to interpret the leverage
+    values on the x-axis of the lower right panel of our diagnostic plots.
+    
+    * There are three higher leverage points (leverages over 0.3) with only
+    one being influential (point 9) with Cook's D close to 1.
+    
+        * Note that point 10 had the same leverage but was not influential with
+        Cook's D less than 0.5.
+        
+    * We can explore both of these points to see how two observations can have
+    the same leverage and different amounts of influence. 
+
+The two flagged points, observations 9 and 10 in the data set, are for the
+sites "Northeast Entrance" (to Yellowstone) and "Combination". We can use the 
+MLR equation to do some prediction for each observation and calculate residuals
+to see how far the model's predictions are from the actual observed values for
+these sites. For the Northeast Entrance, the *Max.Temp* was 45, the *Min.Temp*
+was 28, and the *Elevation* was 7350 as you can see in
+this printout of just the two rows of the data set available by referencing
+rows 9 and 10 in the bracket from ``snotel2``:
+
+```{r}
+snotel2[c(9,10),]
+```
+
+The estimated *Snow Depth* for the *Northeast Entrance* site (observation 9)
+is found using the estimated model with
+
+$$\begin{array}{rl}
+\widehat{\text{SnowDepth}}_9 &= -10.51 + 0.0123\text{Elevation}_9 -
+0.505\text{MinTemp}_9 - 0.562\text{MaxTemp}_9 \\
+& = -10.51 + 0.0123*\boldsymbol{7350} -0.505*\boldsymbol{28} - 
+0.562*\boldsymbol{45} \\
+& = 40.465 \text{ inches,}
+\end{array}$$
+
+but the observed snow depth was actually $y_9=11.2$ inches. The observed  ***residual*** is then
+
+$$e_9=y_9-\hat{y}_9 = 11.2-40.465 = -29.265 \text{ inches.}$$
+
+So the model "misses" the snow depth by over 29 inches with the model suggesting
+over 40 inches of snow but only 11 inches actually being present^[Imagine
+showing up to a ski area expecting a 40 inch base and there only being
+11 inches. I'm sure ski areas are always more accurate than this model in their
+reporting of amounts of snow on the ground...]. 
+
+```{r}
+-10.51 + 0.0123*7350 - 0.505*28 - 0.562*45
+11.2 - 40.465
+```
+
+This point is being rated as influential (Cook's D $\approx$ 1) with a leverage
+of nearly 0.35 and a standardized residual (y-axis of Residuals vs. Leverage
+plot) of nearly -3. This suggests that even
+with this observation impacting/distorting the slope coefficients (that is what
+***influence*** means), the model is still doing really poorly at fitting this
+observation. We'll drop it and re-fit the model in a second to see how the slopes
+change. First, let's compare that result to what happened for data point 10
+("Combination") which was just as high leverage but not identified as
+influential. 
+
+The estimated snow depth for "Combination" is </span>
+
+$$\begin{array}{rl}
+\widehat{\text{SnowDepth}}_{10} &= -10.51 + 0.0123\text{Elevation}_{10} -
+0.505\text{MinTemp}_{10} - 0.562\text{MaxTemp}_{10} \\
+& = -10.51 + 0.0123*\boldsymbol{5600} -0.505*\boldsymbol{28} - 
+0.562*\boldsymbol{36} \\
+& = 23.998 \text{ inches,}
+\end{array}$$
+
+The observed snow depth here was $y_{10} = 14.0$ inches so the observed
+residual is then
+
+$$e_{10}=y_{10}-\hat{y}_{10} = 14.0-23.998 = -9.998 \text{ inches.}$$
+
+This results in a standardized residual of around -1. This is still a "miss"
+but not as glaring as the previous result and also is not having a major impact
+on the model's estimated slope coefficients based on the small Cook's D value.
+
+```{r}
+-10.51 + 0.0123*5600 - 0.505*28 - 0.562*36
+14 - 23.998
+```
+
+Note that any predictions using this model presume that it is trustworthy, but
+the large Cook's D on one observation suggests we should consider the model
+after removing that observation. We can re-run the model without the 
+9<sup>th</sup> observation using the data set ``snotel2[-9,]``. 
+
+(ref:fig8-6) Term-plots for the MLR for Snow Depth based on Elevation, 
+Min Temp, and Max Temp with Northeast entrance observation removed from 
+data set (n=24).
+
+```{r Figure8-6,fig.cap="(ref:fig8-6)",warning=F,message=F, fig.width=8}
+m5 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-9,])
+summary(m5)
+plot(allEffects(m5), main="MLR model with NE Ent. Removed")
+```
+
+The estimated MLR model with $n=24$ after removing the influential 
+"NE Entrance" observation is
+
+$$\widehat{\text{SnowDepth}}_i = -142.4 + 0.0214\text{ Elevation}_i
++0.672\text{ MinTemp}_i +0.508\text{ MaxTemp}_i.$$
+
+Something unusual has happened here: there is a positive slope for both
+temperature terms in Figure \@ref(fig:Figure8-6) that both
+contradicts reasonable expectations (warmer temperatures are related to higher
+snow levels?) and our original SLR results. So what happened? First, removing
+the influential point has drastically changed the slope coefficients (remember
+that was the definition of an influential point). Second, when there are
+predictors that share information, the results can be somewhat unexpected for
+some or all the predictors when they are all in the model together. Note that
+the *Elevation* term looks like what we might expect and seems to have a big
+impact on the predicted *Snow Depths*. So when the temperature variables
+are included in the model they might be functioning to explain some differences
+in sites that the *Elevation* term could not explain. This is where our
+"adjusting for" terminology comes into play. The unusual-looking slopes for
+the temperature effects can be explained
+by interpreting them as the estimated change in the response for changes in
+temperature **after we control for the impacts of elevation**. Suppose that
+*Elevation* explains most of the variation in *Snow Depth* except for a few
+sites where the elevation cannot explain all the variability and the site
+characteristics happen to show higher temperatures and more snow (or lower
+temperatures and less snow). This could be because warmer areas might have been
+hit by a recent snow storm while colder areas might have been missed (this is
+just one day and subject to spatial and temporal fluctuations in precipitation
+patterns). Or maybe there is another factor related to having marginally warmer
+temperatures that are accompanied by more snow (maybe the lower snow sites for
+each elevation were so steep that they couldn't hold much snow but were also
+relatively colder?). Thinking about it this way, the temperature model
+components could provide useful corrections to what *Elevation* is providing in
+an overall model and explain more variability than any of the variables could
+alone. It is also possible that the
+temperature variables are not needed in a model with *Elevation* in it, are just
+"explaining noise", and should be removed from the model. Each of the next
+sections take on various aspects of these
+issues and eventually lead to a general set of modeling and model selection
+recommendations to help you work in situations as complicated as this. 
+Exploring the results for this model assumes we trust it and, once again, we
+need to check diagnostics before getting too focused on any particular results
+from it. 
+
+The Residuals vs. Leverage diagnostic plot in Figure \@ref(fig:Figure8-7) for
+the model fit to the data set without NE Entrance (now $n=24$) reveals a new 
+point that is somewhat influential (point 22 in the data set has Cook's D 
+$\approx$ 0.5). It is for a location called "Bloody
+$\require{color}\colorbox{black}{Redact.}$"^[The site name is redacted to protect
+the innocence of the reader. More information on this site, located in
+Beaverhead County, is available at
+http://www.wcc.nrcs.usda.gov/nwcc/site?sitenum=355&amp;state=mt.] which has a
+leverage of nearly 0.2 and a standardized residual of nearly -3. 
+This point did not show up as influential in the original version of the data
+set with the same model but it is now. It also shows up as a potential outlier. 
+As we did before, we can explore it a bit by comparing the model predicted snow
+depth to the observed snow depth. The predicted snow depth for this site is
+
+$$\widehat{\text{SnowDepth}}_{22} = -142.4 + 0.0214*\boldsymbol{7550}
++0.672*\boldsymbol{26} +0.508*\boldsymbol{39} = 56.45 \text{ inches.}$$
+
+The observed snow depth was 27.2 inches, so the estimated residual is -39.25
+inches. Again, this point is potentially influential and an outlier.
+Additionally, our model contains results that are not what we would have
+expected *a priori*, so it is not unreasonable to consider removing this
+observation to be able to work towards a model that fully trustworthy. 
+
+```{r echo=F}
+snotel2$Station <- as.character(snotel2$Station)
+snotel2$Station[snotel2$Station=="Bloody Dick "] <- "Bloody [Redact.] "
+snotel2$Station <- as.factor(snotel2$Station)
+```
+
+(ref:fig8-7) Diagnostic plots for MLR for Snow Depth based on Elevation, 
+Min Temp and Max Temp with Northeast entrance observation removed from
+data set.
+
+```{r Figure8-7,fig.cap="(ref:fig8-7)",warning=F,message=F}
+par(mfrow=c(2,2), oma=c(0,0,2,0))
+plot(m5, sub.caption="Diagnostics for m5")
+```
+
+
+This worry-some observation is located in the 22<sup>nd</sup> row of the
+original data set:
+
+```{r}
+snotel2[22,]
+```
+
+With the removal of both the "Northeast Entrance" and "Bloody
+$\require{color}\colorbox{black}{Redact.}$" sites, there are $n=23$ observations
+remaining. This model (``m6``) seems to contain residual diagnostics (Figure
+\@ref(fig:Figure8-8)) that are finally generally reasonable. 
+
+(ref:fig8-8) Diagnostic plots for MLR for Snow Depth based on Elevation, 
+Min Temp and Max Temp with two observations removed ($n=23$). 
+
+```{r Figure8-8,fig.cap="(ref:fig8-8)",warning=F,message=F}
+m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
+summary(m6)
+par(mfrow=c(2,2), oma=c(0,0,2,0))
+plot(m6, sub.caption="Diagnostics for m6")
+```
+
+It is hard to suggest that there any curvature issues and the slight variation
+in the Scale-Location plot is mostly
+due to few observations with fitted values around 30 happening to be well
+approximated by the model. The normality assumption is generally reasonable and
+no points seem to be overly influential on this model (finally!). 
+
+The term-plots (Figure \@ref(fig:Figure8-9)) show that the temperature slopes
+are both positive although in this model *Max.Temp* seems to be more
+"important" than *Min.Temp*. We have ruled out individual
+influential points as the source of un-expected directions in slope coefficients
+and the more likely issue is multicollinearity -- in a model that
+includes *Elevation*, the temperature
+effects may be positive, again acting with the *Elevation* term to generate
+the best possible predictions of the
+observed responses. Throughout this discussion, we have mainly focused on the
+slope coefficients and diagnostics. We have other tools in MLR to more
+quantitatively assess and compare different regression models that are considered
+in the next sections. 
+
+(ref:fig8-9) Term-plots for the MLR for Snow Depth based on Elevation,
+Min Temp and Max Temp with two observations removed.
+
+```{r Figure8-9,fig.cap="(ref:fig8-9)",warning=F,message=F}
+plot(allEffects(m6), main="MLR model with n=23")
+```
+
 ## Interpretation of MLR terms	{#section8-3}
+
+Since these results (finally) do not contain any highly influential points,
+we can formally discuss
+interpretations of the slope coefficients and how the term-plots 
+(Figure \@ref(fig:Figure8-9)) aid
+our interpretations. Term-plots in MLR are constructed by holding all the other
+variables at their mean and generating predictions and 95% CIs for the mean
+response across the levels of observed values for each predictor variable. This
+idea also helps us to work towards interpretations of each term in an MLR
+model. For example, for *Elevation*, 
+the term-plot starts at an elevation around 5000 feet and ends at an elevation
+around 8000 feet. To generate that line and CIs for the mean snow depth at
+different elevations, the MLR model of
+
+$$\widehat{\text{SnowDepth}}_i = -213.3 + 0.0269\text{ Elevation}_i
++0.984\text{ MinTemp}_i +1.243\text{ MaxTemp}_i$$
+
+is used, but we need to have "something" to put in for the two temperature
+variables to predict *Snow Depth* for different *Elevations*. The typical
+convention is to hold the "other" variables at their means to
+generate these plots. This tactic also provides a way of interpreting each
+slope coefficient. Specifically, we can interpret the *Elevation* slope as:
+For a 1 foot increase in *Elevation*, we expect the mean *Snow Depth* to
+increase by 0.0269 inches, holding the minimum and maximum temperatures
+constant. More generally, the ***slope interpretation in an MLR*** is:
+
+* For a 1 ***[units of $\boldsymbol{x_k}$]*** increase in 
+$\boldsymbol{x_k}$, we expect the mean of $\boldsymbol{y}$ to change by
+$\boldsymbol{b_k}$ ***[units of y]***, after controlling for
+**[list of other explanatory variables in model]**. 
+
+To make this more concrete, we can recreate some points in the Elevation
+term-plot. To do this, we first need the mean of the "other" predictors, 
+*Min.Temp* and *Max.Temp*. 
+
+```{r}
+mean(snotel2[-c(9,22),]$Min.Temp)
+mean(snotel2[-c(9,22),]$Max.Temp)
+```
+
+We can put these values into the MLR equation and simplify the equation, to
+an equation that is just in terms of
+just *Elevation* given that we are holding *Min.Temp* and *Max.Temp* at their
+means:
+
+$$\begin{array}{rl}
+\widehat{\text{SnowDepth}}_i &= -213.3 + 0.0269\text{ Elevation}_i
++0.984*\boldsymbol{27.826} +1.243*\boldsymbol{36.391} \\
+&= -213.3 + 0.0269\text{ Elevation}_i + 27.38 + 45.23 \\
+&= \boldsymbol{-140.69 + 0.0269}\textbf{ Elevation}_\boldsymbol{i}.
+\end{array}$$
+
+So at the means on the two temperature variables, 
+the model looks like an SLR with an estimated y-intercept of -140.69 (mean 
+*Snow Depth* for *Elevation* of 0 if temperatures are at their means) 
+and an estimated
+slope of 0.0269. Then we can plot the predicted changes in $y$ across all the
+values of the predictor variable (*Elevation*) while holding the other
+variables constant. To generate the needed values to define a line, we can plug
+various *Elevation* values into the simplified equation:
+
+* For an elevation of 5000 at the average temperatures, we predict a mean snow
+depth of $-140.69 + 0.0269*5000 = -6.19$ inches.
+
+* For an elevation of 6000 at the average temperatures, we predict a mean snow
+depth of $-140.69 + 0.0269*6000 = 20.71$ inches.
+
+* For an elevation of 8000 at the average temperatures, we predict a mean snow
+depth of $-140.69 + 0.0269*8000 = 74.51$ inches.
+
+We can plot this information (Figure \@ref(fig:Figure8-10)) using the ``plot``
+function to show the points we calculated and the ``lines`` function to add 
+a line that connects the dots. In the ``plot`` function, we used the
+``ylim=...`` option to make the scaling on the y-axis match the previous
+term-plot's scaling.
+
+(ref:fig8-10) Term-plot for Elevation "by-hand", holding temperature 
+variables constant at their means. 
+
+```{r Figure8-10,fig.cap="(ref:fig8-10)",warning=F,message=F}
+par(mfrow=c(1,1))
+#Making own effect plot:
+elevs <- c(5000,6000,8000)
+snowdepths <- c(-6.19,20.71,74.51)
+plot(snowdepths~elevs, ylim=c(-20,90), cex=2, col="blue", pch=16,
+     main="Effect plot of elevation by hand")
+lines(snowdepths~elevs, col="red", lwd=2)
+```
+
+Note that we only needed 2 points to
+define the line but need a denser grid of elevations if we want to add the 95%
+CIs for the true mean snow depth across the different elevations since they
+vary as a function of the distance from the mean of the explanatory variables. 
+
+To get the associated 95% CIs, we could return to using the ``predict``
+function for the MLR, again holding the temperatures at their
+mean values. The ``predict`` function is sensitive and needs the same variable
+names as used in the original model fitting to work. First we create a "new"
+data set using the ``seq`` function to generate the desired grid of
+elevations and the ``rep`` function^[The ``seq`` function has syntax of
+``seq(from=startingpoint, to=endingpoint,
+length.out=#ofvalues_between_start_and_end)`` and the ``rep`` function has
+syntax of ``rep(numbertorepeat, #oftimes).``] to repeat the means of the
+temperatures for each of elevation values we need to make the plot. The code
+creates a specific version of the predictor variables to force the ``predict``
+function to provide fitted values and CIs across different elevations with
+temperatures held constant that is stored in ``newdata1``. 
+
+```{r}
+elevs <- seq(from=5000, to=8000, length.out=30)
+newdata1 <- data.frame(Elevation=elevs, Min.Temp=rep(27.826,30),
+                       Max.Temp=rep(36.3913,30))
+newdata1
+```
+
+The predicted snow depths along with 95% confidence intervals for the mean,
+holding temperatures at their means, are:
+
+```{r}
+predict(m6, newdata=newdata1, interval="confidence")
+```
+
+So we could do this with any model **for each predictor** variable to create
+term-plots, or we can just use the ``allEffects`` function to do this for us.
+This exercise is useful to complete once to understand what is being displayed
+in term-plots but using the ``allEffects`` function makes getting these plots
+much easier. 
+
+There are two other model components of possible interest in this model. The 
+slope of 0.984 for *Min.Temp* suggests that for a 1$^\circ F$ increase in 
+*Minimum Temperature*, we expect a 0.984 inch change in the mean *Snow Depth*,
+after controlling for *Elevation* and *Max.Temp* at the sites. Similarly, the
+slope of 1.243 for the *Max.Temp* suggests that for a 1$^\circ F$ increase in
+*Maximum Temperature*, we expect a 1.243 inch change in the mean *Snow Depth*,
+holding *Elevation* and *Min.Temp*constant. Note that there are a variety of ways
+to note that each term in an
+MLR is only a particular value given the other variables in the model. We can
+use words such as "holding the other variables constant" or "after adjusting
+for the other variables" or "controlling for the other variables". The main
+point is to find words that reflect that this single slope coefficient might be
+different if we had a different overall model and the only way to interpret it
+is conditional on the other model components. 
+
+Term-plots have a few general uses to enhance our regular slope interpretations.
+They can help us the model predicts over the range of each observed $x$. This can
+help you to get a sense of the "practical" importance of each term. 
+Additionally, the term-plots show 95% confidence intervals for the mean response
+across the range of each variable, 
+holding the other variables at their means. These intervals can be useful for
+assessing the precision in the estimated mean at different values of each
+predictor. However, note that you should not use these plots for deciding
+whether the term should be retained in the model -- we have other tools for
+making that assessment. And one last note about term-plots -- they do not mean
+that the relationships are really linear between the predictor and response
+variable being displayed. The model **forces** the relationship to be linear
+even if that is not the real functional form. **Term-plots are not diagnostics
+for the model, they are summaries of the model you assumed was correct!**
+Any time we do linear regression, all of our inferences are contingent upon the
+model we chose. We know our model is not
+perfect, but we hope that it helps us learn something about our research
+question(s). 
 
 ## Comparing multiple regression models	{#section8-4}
 
