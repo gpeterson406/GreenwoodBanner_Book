@@ -1172,15 +1172,1534 @@ question(s).
 
 ## Comparing multiple regression models	{#section8-4}
 
+With more than one variable, we now have many potential models that we could
+consider. We could include only one of the predictors, all of them, or
+combinations of sets of the
+variables. For example, maybe the model that includes *Elevation* does not "need"
+both *Min.Temp*and *Max.Temp*? Or maybe the model isn't improved over an SLR
+with just *Elevation* as a predictor. Or maybe none of the predictors are
+"useful"? In this section, 
+we discuss some general model comparison issues and a metric that can be used
+to pick among a suite of different models (often called a set of ***candidate
+models*** to reflect that they are all potentially interesting and we need to
+compare them and possibly pick one). 
+
+It is certainly possible the researchers may have an *a priori*
+reason to only consider a single model. For example, in a designed experiment
+where combinations of, say, three different predictors are randomly assigned, 
+the initial model with all three predictors may be sufficient to address all the
+research questions of interest. One advantage in these situations is that the
+variable combinations can be created to prevent multicollinearity among the
+predictors and avoid that complication in interpretations. However, this is
+more the exception than the rule. Usually, there are competing predictors or
+questions about whether some predictors matter more than others. This type of
+research always introduces the potential for multicollinearity to complicate the
+interpretation of each predictor in the presence of others. Because of this, 
+multiple models are often considered, where "unimportant" variables are dropped
+from the model. The assessment of "importance" using p-values will be discussed
+in Section \@ref(section8-6), but for now we will consider other reasons to pick
+one model over another. 
+
+There are some general reasons to choose a particular model:
+
+1. Diagnostics are better with one model compared to others.
+
+2. One model predicts/explains the responses better than the others 
+($\boldsymbol{R}^2$)).
+
+3. *a priori* reasons to "use" a particular model, for example in a designed
+experiment or it includes variable(s) whose slopes need to be estimated to find
+interesting results (even if the variables are not "important" in the model).
+
+4. Model selection "criteria" suggest one model is better than the others^[Also
+see Section \@ref(section8-13) for another method of picking among different
+models.]. 
+
+It is OK to consider multiple reasons to select a model but it is dangerous to
+"shop" for a model across many possible models -- a practice which is sometimes
+called ***data-dredging*** and leads to a high chance of spurious results from a
+single model that is usually reported based on this type of exploration. Just
+like in other discussions of
+multiple testing issues previously, if you explore many versions of a model, 
+maybe only keeping the best ones, this is very different from picking one model
+(and tests) *a priori* and just exploring that result. 
+
+As in SLR, we can use the $\boldsymbol{R}^2$ (the ***coefficient of
+determination***) to measure the percentage of the variation in the
+response variable that the model explains. In MLR, it is important to remember
+that $\boldsymbol{R}^2$ is now an overall
+measure for the model and not specific to a single variable. It is comparable to
+other models including those fit with only a single predictor (SLR). So to
+meet criterion (2), we could simply find the model with the largest
+$\boldsymbol{R}^2$ value, finding the model that explains the most variation in
+the responses. 
+Unfortunately for this idea, when you add more "stuff" to a regression model
+(even "unimportant" predictors), the $\boldsymbol{R}^2$ will always go up. This
+can be seen by considering 
+
+$$R^2 = \frac{\text{SS}_{\text{regression}}}{\text{SS}_{\text{total}}}\ 
+\text{ where }\  \text{SS}_{\text{regression}} = \text{SS}_{\text{total}}
+- \text{SS}_{\text{error}}\ 
+\text{ and }\  \text{SS}_{\text{error}} = \Sigma(y-\hat{y})^2.$$
+
+Because adding extra variables to a linear model will only make the fitted
+values better, not worse, the $\text{SS}_{\text{error}}$ will always go down
+if more predictors are added to the model. If $\text{SS}_{\text{error}}$
+goes down and $\text{SS}_{\text{total}}$ is fixed, then adding extra variables
+will always increase $\text{SS}_{\text{regression}}$ and, thus, increase 
+$\boldsymbol{R}^2$. This means that $\boldsymbol{R}^2$ is only useful for
+selecting models when you are picking between two models of the same size
+(same number of predictors). So we mainly use it as a summary of model quality
+once we pick a model, not a method of picking among a set of candidate models.
+Remember that $\boldsymbol{R}^2$ continues to have the property of being between
+0 and 1 (or 0% and 100%) and that value refers to the **proportion (percentage)
+of variation in the response explained by the model**, whether we are using it
+for SLR or MLR. 
+
+However, there is an adjustment to the $\boldsymbol{R}^2$ measure that makes it
+useful for selecting among models. The measure is called the ***adjusted***
+$\boldsymbol{R}^2$. The $\boldsymbol{R}^2_{\text{adjusted}}$ measure adds a
+penalty for adding more variables to the model, providing the potential for this
+measure to decrease if the extra variables do not really benefit the model. The
+measure is calculated as
+
+$$R^2_{\text{adjusted}} = 1 - 
+\frac{\text{SS}_{\text{error}}/df_{\text{error}}}{\text{SS}_{\text{total}}/(N-1)}
+= 1 - \frac{\text{MS}_{\text{error}}}{\text{MS}_{\text{total}}},$$
+
+which incorporates the *degrees of freedom* for the model via the error 
+*degrees of freedom* which go
+down as the model complexity increases. This adjustment means that just
+adding extra useless variables (variables that do not explain very much extra
+variation) do not increase this measure. That makes this measure useful for
+model selection since it can help us to stop adding unimportant variables and
+find a "good" model among a set of candidates. Like the regular
+$\boldsymbol{R}^2$, larger values are better. The downside to
+$\boldsymbol{R}^2_{\text{adjusted}}$ is that it **is no longer a percentage
+of variation in the response that is explained by the model**; it can be less
+than 0 and so has no interpretable scale. It is just "larger is better". It
+provides
+one method for building a model (different from using p-values to drop
+unimportant variables as discussed below), by fitting a set of candidate models
+containing different variables and then **picking the model with the largest**
+$\boldsymbol{R}^2_{\text{adjusted}}$. You will want to interpret this new
+measure on a percentage scale, but do not do that. It is a just a measure to
+help you pick a model and that is all it is! 
+
+One other caveat in
+model comparison is worth mentioning: make sure you are comparing models for
+the same responses. That may sound trivial and usually it is. But when there
+are missing values in the data set, especially on some explanatory variables
+and not others, it is important to be careful that the $y\text{'s}$ do not
+change between models you are comparing. This relates to our *Snow Depth*
+modeling because responses were being removed due to their influential nature.
+We can't compare $\boldsymbol{R}^2$ or $\boldsymbol{R}^2_{\text{adjusted}}$
+for $n=25$ to a model when $n=23$ -- it isn't a fair comparison on
+either measure since they based on the total variability which is changing as
+the responses used change. 
+
+In the MLR (or SLR) model summaries, both the $\boldsymbol{R}^2$ and
+$\boldsymbol{R}^2_{\text{adjusted}}$
+are available. Make sure you are able to pick out the correct one. For the
+reduced data set ($n=23$) *Snow Depth* models, the pertinent part of the model
+summary for the model with all three predictors is:
+
+
+```r
+m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
+summary(m6)
+```
+
+```
+## 
+## Call:
+## lm(formula = Snow.Depth ~ Elevation + Min.Temp + Max.Temp, data = snotel2[-c(9, 
+##     22), ])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -14.878  -4.486   0.024   3.996  20.728 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -2.133e+02  7.458e+01  -2.859   0.0100
+## Elevation    2.686e-02  4.997e-03   5.374 3.47e-05
+## Min.Temp     9.843e-01  1.359e+00   0.724   0.4776
+## Max.Temp     1.243e+00  5.452e-01   2.280   0.0343
+## 
+## Residual standard error: 8.832 on 19 degrees of freedom
+## Multiple R-squared:  0.8535,	Adjusted R-squared:  0.8304 
+## F-statistic:  36.9 on 3 and 19 DF,  p-value: 4.003e-08
+```
+
+There is a value for $\large{\textbf{Multiple R-Squared}} \text{ of } 0.8535$,
+this is the $\boldsymbol{R}^2$ value and suggests that the model with
+*Elevation*, *Min* and *Max* temperatures explains 85.4% of the variation in 
+*Snow Depth*. The $\boldsymbol{R}^2_{\text{adjusted}}$ is 0.8304 and is
+available further to the right labeled as 
+$\color{red}{\large{\textbf{Adjusted R-Squared}}}$. We repeated this for a 
+suite of different models for this same $n=23$ data set and found the following
+results in Table \@ref(tab:Table8-1). The top $\boldsymbol{R}^2_{\text{adjusted}}$
+model is the model with *Elevation* and *Max.Temp*, which beats out the model with
+all three variables on $\boldsymbol{R}^2_{\text{adjusted}}$. Note that the top
+$R^2$ model is the model with three predictors, but the most complicated model
+will always have that characteristic. 
+
+(ref:tab8-1) Model comparisons for Snow Depth data, sorted by model complexity.
+
+
+Table: (\#tab:Table8-1)(ref:tab8-1)
+
+Model                                        $\boldsymbol{K}$    $\boldsymbol{R^2}$   $\boldsymbol{R^2_{\text{adjusted}}}$   $\boldsymbol{R^2_{\text{adjusted}}}$ Rank 
+------------------------------------------  ------------------  -------------------  -------------------------------------  -------------------------------------------
+SD $\sim$ Elevation                                 1                        0.8087                                 0.7996                       3                     
+SD $\sim$ Min.Temp                                  1                        0.6283                                 0.6106                       5                     
+SD $\sim$ Max.Temp                                  1                        0.4131                                 0.3852                       7                     
+SD $\sim$ Elevation + Min.Temp                      2                        0.8134                                 0.7948                       4                     
+SD $\sim$ Elevation + Max.Temp                      2                        0.8495                                 0.8344                       1                     
+SD $\sim$ Min.Temp + Max.Temp                       2                        0.6308                                 0.5939                       6                     
+SD $\sim$ Elevation + Min.Temp + Max.Temp           3                        0.8535                                 0.8304                       2                     
+
+The top model with *Elevation* and *Max.Temp* has an $\boldsymbol{R}^2$ of
+0.8495, so we can say that the model with
+*Elevation* and *Maximum Temperature* explains 84.95% percent of the variation
+in *Snow Depth* and also that this model was selected based on the
+$\boldsymbol{R}^2_{\text{adjusted}}$. One of the important features of 
+$\boldsymbol{R}^2_{\text{adjusted}}$ available in this example -- adding
+variables often does not always increase its value even though 
+$\boldsymbol{R}^2$ does increase with **any** addition. In 
+Section \@ref(section8-13) we consider a competitor for this model selection
+criterion that may "work" a bit better and be extendable into more complicated
+modeling situations; that measure is called the ***AIC***. 
+
 ## General recommendations for MLR interpretations and VIFs	{#section8-5}
+
+There are some important issues to remember^[This section was inspired by a
+similar section from De Veaux, Velleman, and Bock (2011).] when interpreting
+regression models that can result in common mistakes. 
+
+* **Don't claim to "hold everything constant" for a single individual**:
+
+    Mathematically this is a correct interpretation of the MLR model but it is 
+    rarely the case that we could have this occur in real applications. Is it
+    possible to increase the *Elevation* while holding the *Max.Temp* constant?
+    We discussed making term-plots doing exactly this -- holding the other
+    variables constant at their means. If we
+    interpret each slope coefficient in an MLR conditionally then we can craft
+    interpretations such as: For locations that have a *Max.Temp * of, say,
+    $45^\circ F$ and *Min.Temp* of, say, $30^\circ F$, a 1 foot increase in 
+    *Elevation* tends to be associated with a 0.0268 inch increase in *Snow Depth*
+    on average. This does not try to imply that we can actually make that sort
+    of change but that given those other variables, the change for that variable
+    is a certain magnitude. 
+
+* **Don't interpret the regression results causally (or casually?)...**
+
+    Unless you are analyzing the results of a designed experiment (where the
+    levels
+    of the explanatory variable(s) were randomly assigned) you cannot state that a
+    change in that $x$ **causes** a change in $y$, especially for a given
+    individual. The multicollinearity in predictors makes it especially difficult
+    to
+    put too much emphasis on a single slope coefficient because it may
+    be corrupted/modified by the other variables being in the model. In
+    observational studies, there are also all the potential lurking variables that
+    we did not measure or even confounding variables that we did measure but can't
+    disentangle from the variable used in a particular model. While we do have a
+    complicated mathematical model relating various $x\text{'s}$ to the response,
+    do not lose that fundamental focus on causal vs non-causal inferences based on
+    the design of the study. 
+
+* **Be cautious about doing prediction in MLR -- you might be doing  extrapolation!**
+
+    It is harder to know if you are doing extrapolation in MLR since you could be
+    in a region of the $x\text{'s}$ that no observations were obtained. Suppose we
+    want to predict the *Snow Depth* for an *Elevation* of 6000 and *Max.Temp* 
+    of 30. Is this extrapolation based on Figure \@ref(fig:Figure8-11)? In other
+    words, can you find any observations "nearby" in the plot of the two 
+    variables together? What about an *Elevation* of 6000 and a *Max.Temp* of 
+    40? The first prediction is in a different proximity to observations than 
+    the second one... In situations with more than two explanatory variables it
+    becomes even more challenging to know whether you are doing extrapolation 
+    and the problem grows as the number of dimensions to search increases... In
+    fact, in complicated MLR models we typically do not know whether there are
+    observations "nearby" if we are doing predictions for unobserved
+    combinations of our predictors. Note that Figure
+    \@ref(fig:Figure8-11) also reinforces our potential collinearity problem
+    between *Elevation* and *Max.Temp* with higher elevations being strongly
+    associated with lower temperatures. 
+    
+    (ref:fig8-11) Scatterplot of observed Elevations and Maximum Temperatures for
+    SNOTEL data.
+    
+    <div class="figure">
+    <img src="08-multipleLinearRegression_files/figure-html/Figure8-11-1.png" alt="(ref:fig8-11)" width="672" />
+    <p class="caption">(\#fig:Figure8-11)(ref:fig8-11)</p>
+    </div>
+
+* **Don't think that the sign of a coefficient is special...**
+
+    Adding other variables into the MLR models can cause a switch in the 
+    coefficients or change their magnitude or make them go from "important" to
+    "unimportant" without changing the slope too much. This is related to the
+    conditionality of the relationships being estimated in MLR and the potential
+    for sharing of information in the predictors when it is present. 
+
+* **Multicollinearity in MLR models:**
+
+    When explanatory variables are not independent (related) to one another, then
+    including one variable will have an impact on the other variable. Consider the
+    correlations among the predictors in the SNOTEL data set or visually displayed
+    in Figure \@ref(fig:Figure8-12):
+    
+    (ref:fig8-12) Plot of correlation matrix in the snow depth data set with
+    influential points removed
+    
+    
+    ```r
+    require(corrplot)
+    par(mfrow=c(1,1), oma=c(0,0,1,0))
+    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
+    ```
+    
+    <img src="08-multipleLinearRegression_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+    
+    ```r
+    round(cor(snotel2[-c(9,22),3:6]),2)
+    ```
+    
+    ```
+    ##            Max.Temp Min.Temp Elevation Snow.Depth
+    ## Max.Temp       1.00     0.77     -0.84      -0.64
+    ## Min.Temp       0.77     1.00     -0.91      -0.79
+    ## Elevation     -0.84    -0.91      1.00       0.90
+    ## Snow.Depth    -0.64    -0.79      0.90       1.00
+    ```
+    
+    The predictors all share at least moderately strong linear relationships. For
+    example, the $\boldsymbol{r}=-0.91$ between *Min.Temp* and *Elevation*
+    suggests
+    that they contain very similar information and that extends to other pairs of
+    variables as well. When variables share information, their addition to models
+    may not improve the performance of the model and actually can make the
+    estimated
+    coefficients ***unstable***, creating uncertainty in the correct coefficients
+    because of the shared information. It seems that *Elevation* is related to
+    *Snow Depth* but maybe it is because it has lower *Minimum Temperatures*? So
+    you might wonder how we can find the "correct" slopes when they are sharing
+    information in the response variable. The short answer is that we can't. But
+    we
+    do use ***Least Squares*** to find coefficient estimates as we did before -- 
+    except that we have to remember that these **estimates are conditional on
+    other
+    variables in the model** for our interpretation since they impact one another
+    within the model. It ends up that the uncertainty
+    of pinning those variables down in the presence of shared information leads to
+    larger SEs for all the slopes. And that we can actually measure **how much
+    each of the SEs are inflated** because of multicollinearity with other
+    variables
+    in the model using what are called ***Variance Inflation Factors*** (or 
+    ***VIFs***). 
+
+**VIFs** provide a way to assess the multicollinearity in the MLR model that
+is caused by including specific variables. The amount of information that is
+shared between a single explanatory variable and the others can be found by
+regressing that variable on the others and calculating $\boldsymbol{R}^2$
+for that model. The code for this regression is something like:
+``lm(X1~X2+X3+?+XK)``, which regresses *X1*on *X2* through *XK*. The 
+$1-\boldsymbol{R}^2$ from this regression is the amount of independent 
+information in *X1* that is not explained by the other variables in the model.
+The VIF for each variable is defined using this quantity as
+$\textbf{VIF}_{\boldsymbol{k}}\boldsymbol{=1/(1-R^2_k)}$ for variable $k$.
+If there is no shared information $(\boldsymbol{R}^2=0)$, then the VIF will be
+1. But if the information is completely shared with other variables
+$(\boldsymbol{R}^2=1)$, then the VIF goes to infinity (1/0). Basically, large
+VIFs are bad, with the rule of thumb that values over 5 or 10 are considered
+"large" values indicating high multicollinearity in the model for that particular
+variable. We use this scale to determine if multicollinearity is a problem for a
+variable of interest. Additionally, the $\boldsymbol{\sqrt{\textbf{VIF}_k}}$ is
+also very interesting as it is the number of times larger than the SE for the
+slope for variable $k$ is due to collinearity with other variables in the model.
+This is the most useful scale to understand VIFs even though the rules of thumb
+are on the original scale. An example will show how to easily get these results
+and where the results come from. 
+
+In general, the easy way to obtain VIFs is using the ``vif`` function from the
+``car`` package (Fox, 2003). It has the advantage of also providing a reasonable
+result when we include categorical variables in models 
+(Sections \@ref(section8-9) and \@ref(section8-11)). We apply the ``vif``
+function directly to a model of interest and it generates values for each explanatory variable. 
+
+
+```r
+require(car)
+vif(m6)
+```
+
+```
+## Elevation  Min.Temp  Max.Temp 
+##  8.164201  5.995301  3.350914
+```
+
+Not surprisingly, there is an indication of problems with multicollinearity in
+two of the three variables in the model with the largest issues identified for
+*Elevation* and *Min.Temp*. Both of their VIFs exceed 5 indicating large
+multicollinearity problems. On the square-root scale, the VIFs show more
+interpretation utility. 
+
+
+```r
+sqrt(vif(m6))
+```
+
+```
+## Elevation  Min.Temp  Max.Temp 
+##  2.857307  2.448530  1.830550
+```
+
+The result for *Elevation* of 2.86 suggests that the SE for *Elevation* is 2.86
+times larger than it should be because of multicollinearity with other variables
+in the model. Similarly, the *Min.Temp* SE is 2.45 times larger and the
+*Max.Temp* SE is 1.83 times larger. All of this generally suggests issues with
+multicollinearity in the model and that we need to be cautious in interpreting
+any slope coefficients from this model. 
+
+In order to see how the VIF is calculated for *Elevation*, we need to regress
+*Elevation* on *Min.Temp* and *Max.Temp*. Note that this model is only fit to
+find the percentage of variation in elevation explained by the temperature
+variables. It ends up being 0.8775 -- so a high percentage of *Elevation* can be
+explained by the linear model using min and max temperatures. 
+
+
+```r
+#VIF calc:
+elev1<-lm(Elevation~Min.Temp+Max.Temp,data=snotel2[-c(9,22),])
+summary(elev1)
+```
+
+```
+## 
+## Call:
+## lm(formula = Elevation ~ Min.Temp + Max.Temp, data = snotel2[-c(9, 
+##     22), ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1120.05  -142.99    14.45   186.73   624.61 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 14593.21     699.77  20.854 4.85e-15
+## Min.Temp     -208.82      38.94  -5.363 3.00e-05
+## Max.Temp      -56.28      20.90  -2.693    0.014
+## 
+## Residual standard error: 395.2 on 20 degrees of freedom
+## Multiple R-squared:  0.8775,	Adjusted R-squared:  0.8653 
+## F-statistic: 71.64 on 2 and 20 DF,  p-value: 7.601e-10
+```
+
+Using this result, we can calculate
+
+$$\text{VIF}_{\text{elevation}} = \dfrac{1}{1-R^2_{\text{elevation}}} = \dfrac{1}{1-0.8775} = \dfrac{1}{0.1225} = 8.16$$
+
+
+```r
+1 - 0.8775
+```
+
+```
+## [1] 0.1225
+```
+
+```r
+1/0.1225
+```
+
+```
+## [1] 8.163265
+```
+
+Note that when we observe small VIFs, that provides us with confidence that
+multicollinearity is not causing problems under the surface of
+a particular MLR model. And that we can't use the VIFs to do anything about
+multicollinearity in the models -- it is just a diagnostic to understand the
+magnitude of the problem. 
 
 ## MLR Inference: Parameter inferences using the t-distribution	{#section8-6}
 
+We have been deliberately vague about what an important variable is up to this
+point, and chose to focus on some bigger modeling issues. We now turn our
+attention to one
+of the most common tasks in any basic statistical model -- assessing whether a
+particular result is more unusual than we would expect by chance. All the
+previous discussions of estimation in MLR models informs our interpretations of
+of the tests. The $t$-tests for slope coefficients are based on our standard
+recipe -- take the estimate, divide it by its standard error and then, assuming
+the statistic follows a $t$-distribution under the null hypothesis, find a
+p-value. This tests whether each true slope coefficent, $\beta_k$, is 0 or not,
+in a model that contains all the other variables. Again, sometimes we say
+"after adjusting for" the other $x\text{'s}$ or
+"conditional on" the other $x\text{'s}$ in the model or "after allowing for"...
+as in the slope coefficient interpretations above. The main point is that 
+**you should not interpret anything related to slope coefficients in MLR without
+referencing the other variables that are in the model!** The tests for the
+slope coefficients assess $\boldsymbol{H_0:\beta_k=0}$, which in words is
+a test that there is no linear relationship between explanatory variable $k$
+and the response variable, $y$, in the population, given the other variables in
+model. The typical alternative hypothesis is $\boldsymbol{H_0:\beta_k\ne 0}$.
+In words, the alternative hypothesis is that there is some linear relationship
+between explanatory variable $k$ and the response variable, $y$, in population,
+given the other variables in the model. It is also possible to test for positive
+or negative slopes in the alternative, but this is rarely the first concern,
+especially when MLR slopes can occasionally come out in unexpected directions. 
+
+The test statistic forthese hypotheses is 
+$\boldsymbol{t=\dfrac{b_k}{\textbf{SE}_k}}$ and, if our assumptions are met,
+follows a $t$-distribution with $n-K-1$ *df* where $K$ is the number of
+predictor variables in the model. We perform the test for each slope
+coefficient, but the test is conditional on all
+the other variables in the model -- the order the variables are fit in does
+**not** change $t$-test results. For the *Snow Depth* example with **Elevation**
+and *Maximum Temperature* as predictors, the pertinent output is in the four
+columns of the ***Coefficient table*** that is the first part of the model
+summary we've been working with. You can find the estimated slope 
+(``Estimate`` column), the SE of the slopes (``Std. Error`` column), the
+$t$-statistics (``t value`` column), and the p-values (``Pr(>|t|)`` column).
+The degrees of freedom for the $t$-distributions show up below the coefficients
+and the $df=20$ here. This is because $n=23$ and $K=2$, so $df=23-2-1=20$. 
+
+
+```r
+m5 <- lm(Snow.Depth~Elevation+Max.Temp, data=snotel2[-c(9,22),])
+summary(m5)
+```
+
+```
+## 
+## Call:
+## lm(formula = Snow.Depth ~ Elevation + Max.Temp, data = snotel2[-c(9, 
+##     22), ])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -14.652  -4.645   0.518   3.744  20.550 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -1.675e+02  3.924e+01  -4.269 0.000375
+## Elevation    2.407e-02  3.162e-03   7.613 2.48e-07
+## Max.Temp     1.253e+00  5.385e-01   2.327 0.030556
+## 
+## Residual standard error: 8.726 on 20 degrees of freedom
+## Multiple R-squared:  0.8495,	Adjusted R-squared:  0.8344 
+## F-statistic: 56.43 on 2 and 20 DF,  p-value: 5.979e-09
+```
+
+The hypotheses for the *Maximum Temperature* term (*Max.Temp*) are:
+
+* $\boldsymbol{H_0: \beta_{\textbf{Max.Temp}}=0}$ **given that** ***Elevation***
+**is in the model vs**
+
+* $\boldsymbol{H_A: \beta_{\textbf{Max.Temp}}\ne 0}$ **given that**
+***Elevation*** **is in the model.**
+
+The test statistic is $t=2.327$ with $df = 20$ (so under the null hypothesis
+the test statistic follows a $t_{20}$-distribution). 
+
+The output provides a p-value of $0.0306$ for this test. We can also find this
+using ``pt``:
+
+
+```r
+2*pt(2.327, df=20, lower.tail=F)
+```
+
+```
+## [1] 0.03058319
+```
+
+The decision here would probably be to reject $H_0$. The chance of observing a
+slope for *Max.Temp* as extreme or more extreme thanassuming there really is no
+linear relationship between *Max.Temp* and *Snow Depth* (in a model with
+*Elevation*), is about 3%. 
+
+Conclusion: There is sufficient evidence to suggest that there is a linear
+relationship between *Max.Temp* and *Snow Depth*, once we account for
+*Elevation*, in the population of snotel sites in Montana on this day. Because
+we cannot randomly assign the temperatures to sites, we cannot conclude that
+temperature causes changes in the snow depth -- in fact it might even be
+possible for a location to have different temperatures because of different
+snow depths. 
+
+Similarly, we can test for *Elevation* after controlling for the *Maximum Temperature*:
+$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0}$, given that *Max.Temp* is in the model.
+
+$t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
+
+Decision: Reject $H_0$ and conclude that there is sufficient evidence to
+suggest that there is a linear relationship between *Elevation* and 
+*Snow Depth*, once we adjust for *Max.Temp* in the population of SNOTEL
+sites in Montana on this day. 
+
+There is one last test that is of dubious interest in almost every situation
+-- to test that the y-intercept $(\boldsymbol{\beta_0})$ in an MLR is 0.
+This tests if the
+true mean response is 0 when all the predictor variables are set to 0. I see
+researchers reporting this p-value frequently and it is possibly the most
+useless piece of information in the regression model summary. Sometimes less
+educated statistics users even think this result is proof of something interesting
+or are disappointed when the p-value is not small. Unless you want to do some
+prediction and are interested in whether the mean response when all the
+predictors are set to 0 is different from 0, this test should not be reported
+or, if reported, is certainly not very interesting^[There are some social
+science models where the model is fit with the mean subtracted from each 
+predictor so all have mean 0 and the precision of the y-intercept is 
+interesting. But even in these models, the test the y-intercept being 0 is 
+rarely of interest.]. But we should at least go through the motions on this 
+test once so you don't make the same mistakes. 
+
+$\boldsymbol{H_0: \beta_0=0 \textbf{ vs } H_A: \beta_0\ne 0}$ in a model with
+*Elevation* and *Maximum Temperature*
+
+$t=-4.269$, with an assumption that the test statistic follows a 
+$t_{20}$-distribution under the null hypothesis, and the p-value $= 0.000375$. 
+
+Decision: Reject $H_0$
+
+
+Conclusion: There is sufficient evidence to suggest that the true mean 
+*Snow Depth* is different from 0 when the *Maximum Temperature* is 0 and the
+*Elevation* is 0 in the population of SNOTEL sites. To reinforce the general
+uselessness of this test, think about the combination of $x\text{'s}$ -- is that
+even physically possible in Montana (or the continental US) in April? 
+
+Remember when testing slope coefficients in MLR, that if we fail to reject the
+null hypothesis, it does not mean that there is no relationship or even no linear
+relationship between the variables, but that there is no evidence of a linear
+relationship **once we account for the other variables in the model**. If you do
+not find a small p-value for a variable, you should
+either be cautious when interpreting the coefficient, or not interpret it. Some
+model building strategies would lead to dropping the term from the model but
+sometimes we will have models to interpret that contain terms with larger
+p-values. Sometimes they are still of interest but the weight on the
+interpretation isn't as heavy as if the term had a small p-value -- you should
+remember that you can't prove that coefficient is different from 0 in that
+model. It also may mean that you don't know too much about its specific value. 
+Confidence intervals will help us pin down where we think the true slope
+coefficient might be located, given the other variables in the model. 
+
+Confidence intervals provide the dual uses of inferences for the location of
+the true slope and whether the true slope seems to be different from 0. The
+confidence intervals here have our regular format of estimate $\mp$ margin
+of error. Like the previous tests, 
+we work with $t$-distributions with $n-K-1$ degrees of freedom. Specifically
+the 95% confidence interval for slope coefficient $k$ is
+
+$$\boldsymbol{b_k \mp t^*_{n-K-1}\textbf{SE}_{b_k}}.$$
+
+The interpretation is the same as in SLR with the additional tag of "after
+controlling for the other variables in the model" for all the reasons
+discussed before. The general slope CI interpretation for predictor 
+$\boldsymbol{x_k}$ in an MLR is:
+
+* For a 1 **[unit of $\boldsymbol{x_k}$]** increase in $\boldsymbol{x_k}$, we
+are 95% confident that the true mean of $\boldsymbol{y}$ changes by between
+**LL** and **UL** **[units of $\boldsymbol{Y}$]** in the population, after
+adjusting for the other $x\text{'s}$ **[list them!]**.
+
+We can either calculate these intervals as we have many times before or we can
+rely on the ``confint`` function to do this:
+
+
+```r
+confint(m5)
+```
+
+```
+##                     2.5 %      97.5 %
+## (Intercept) -3.345105e+02 49.70984942
+## Elevation    8.679311e-03  0.03413171
+## Min.Temp    -2.942363e+00  4.28674848
+## Max.Temp    -8.450797e-01  1.86064343
+```
+
+So for a $1^\circ F$ increase in *Maximum Temperature*, we are 95% confident
+that the true mean *Snow Depth* will change by between 0.13 and 2.38 inches
+in the population, after adjusting for the *Elevation* of the sites. Similarly,
+for a 1 foot increase in *Elevation*, we are 95% confident that the true mean
+*Snow Depth* will change by between 0.0175 and 0.0307 inches in the population,
+after adjusting for the *Maximum Temperature* of the sites. 
+
 ## Overall F-test in Multiple Linear Regression	{#section8-7}
+
+In the MLR summary, reported at the bottom of the output. For the model with
+*Elevation* and *Maximum Temperature*, the last row of the model summary is:
+
+```
+## F-statistic: 56.43 on 2 and 20 DF,  p-value: 5.979e-09
+```
+This test is called the ***overall F-test*** in MLR and is very similar to
+the $F$-test in a reference-coded One-Way ANOVA model. It tests the null
+hypothesis that involves setting every coefficient except the y-intercept to
+0 (so all the slope coefficients equal 0). We saw this reduced model in the
+One-Way material when we considered setting all the deviations from the
+baseline group to 0 under the null hypothesis. We can frame this as a
+comparison between a full and reduced model as follows:
+
+* ***Full Model:*** &nbsp; $y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i}+\cdots + \beta_Kx_{Ki}+\varepsilon_i$
+
+* ***Reduced Model:*** &nbsp; $y_i = \beta_0 + 0x_{1i} + 0x_{2i}+\cdots + 0x_{Ki}+\varepsilon_i$
+
+The reduced model estimates the same values for all $y\text{'s}$, 
+$\hat{y}_i=\bar{y}=b_0$ and corresponds to the null hypothesis of: 
+
+$\boldsymbol{H_0:}$ **No explanatory variables should be included in the model:** $\beta_1=\beta=2=\cdots=\beta_K=0$. 
+
+The full model corresponds to the alternative:
+
+$\boldsymbol{H_A:}$ **At least one explanatory variable should be included in the model: Not all** $\beta_k\text{'s}=0$ for $(k=1,\ldots,K)$.
+
+Note that $\beta_0$ is not set to 0 in the reduced model (under the null
+hypothesis) -- it becomes the true mean of $y$ for all values of the 
+$x\text{'s}$ since all the predictors are multiplied by coefficients of 0. 
+
+The test statistic to assess these hypotheses is 
+$F = \text{MS}_{\text{model}}/\text{MS}_E$, which is assumed to follow an
+$F$-distribution with $K$ numerator *df* and $n-K-1$ denominator *df* under the
+null hypothesis. The output provides us with $F(2, 20)=56.43$ and a p-value 
+of $5.979*10^{-9}$ (p-value $<0.00001$)
+and enough evidence to reject the null hypothesis. Thus, there is evidence that
+at least one of the two slope coefficients (*Max.Temp*'s or *Elevation*'s) is
+different from 0 in the population of SNOTEL sites in Montana on this date.
+While this test is a little bit interesting and a good indicator of something
+interesting in the model, the moment you see this result, you want to know more
+about each predictor variable. If neither predictor variable is important, we
+will discover that in the $t$-tests for each coefficient and so our general recommendation is to start there. 
+
+The overall F-test, then, is really about testing whether there is something
+good in the model somewhere. And that certainly is important but it is also not
+too informative.  There is one situation where this test is really interesting,
+when there is only one predictor variable in the model (SLR). In that situation,
+this test provides exactly the same p-value as the $t$-test. $F$-tests will be
+important when we are mixing categorical and quantitative predictor variables
+in our MLR models (Section \@ref(section8-12)), but the overall $F$-test is of
+very limited utility. 
 
 ## Case Study: First year college GPA and SATs	{#section8-8}
 
+Many universities require students to have certain test scores in order to be
+admitted into their institutions. They
+obviously must think that those scores are useful predictors of student success
+to use them in this way. Quality assessments of recruiting classes are also
+based on their test scores. The Educational Testing Service (the company behind
+such fun exams as the SAT and GRE) collected a data set to validate their SAT
+on $n=1000$ students from an unnamed Midwestern university; the data set is
+available in the ``openintro`` package (Diez, Barr, and Cetinkaya-Rundel, 2012)
+in the ``satGPA`` data set. It is unclear from the documentation whether a
+random sample was collected, in fact it looks like it certainly wasn't a random
+sample of all incoming students at a large university (more later). What
+potential issues would arise if a company was providing a data set to show the
+performance of their test and it was not based on a random sample? 
+
+We will proceed assuming they used good methods in developing their test 
+(there are sophisticated
+statistical models underlying the development of the SAT and GRE) and in
+obtaining a data set for testing out the performance of their tests that is at
+least representative of the students (or some types of students) at this
+university. They provided information on the *Sex* (``sex``) of the students
+(coded 1 and 2 with possibly 1 for males and 2 for females -- but should this 
+even be displayed in a plot with correlations?), *SAT Verbal* (``SATV``)
+and *Math* (``SATM``) percentiles (these are not the scores but the ranking
+percentile that each score translated to in a particular year),
+*High School GPA* (``HSGPA``), and *First Year* (of college) *GPA* ``FYGPA``
+Our interests here are in whether the two SAT percentiles are (together?)
+related to the first year college GPA, describing the size of their impacts
+and assessing the predictive potential of SAT-based measures for first year in
+college GPA. There are certainly other possible research questions that can be
+addressed with these data but this will keep us focused. 
+
+(ref:fig8-13) Scatterplot matrix of SAT and GPA data set.
+
+
+```r
+require(openintro)
+data(satGPA)
+require(psych)
+pairs.panels(satGPA[,-4], ellipse=F, col="red", lwd=2)
+```
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-13-1.png" alt="(ref:fig8-13)" width="672" />
+<p class="caption">(\#fig:Figure8-13)(ref:fig8-13)</p>
+</div>
+
+There are positive relationships in Figure \@ref(fig:Figure8-13) among all the
+pre-college measures and the *college GPA* but none are above the moderate
+strength level. The *HSGPA* has a highest correlation with
+first year of college results but its correlation is not that strong. Maybe
+together in a model the SAT percentiles can also be useful... Also note that
+plot shows an odd *HSGPA* of 4.5 that probably should be removed^[Either
+someone had a weighted GPA with bonus points, or more likely here, there
+was a coding error in the data set since only one observations was over 4.0 in
+the GPA data. Either way, we could remove it and note that our inferences for
+HSGPA do not extend above 4.0.] if that variable is going to be used (*HSGPA*
+was not used in the following models so the observation remains in the data). 
+
+In MLR, the modeling process is a bit more complex and often involves more than
+one model, so we will often avoid the 6+ steps in testing initially and try to
+generate a model we can use in that more specific process. In this case, the
+first model of interest using the two SAT percentiles,
+
+$$\text{FYGPA}_i = \beta_0 + \beta_{\text{SATV}}\text{SATV}_i 
++ \beta_{\text{SATM}}\text{SATM}_i +\varepsilon_i,$$
+
+looks like it might be worth interrogating further so we can jump straight
+into considering the 6+ steps involved in hypothesis testing for the two slope
+coefficients. We will be using a 5% significance level and $t$-based
+inferences, assuming that we can trust the assumptions. 
+
+Note that this is not a randomized experiment but we can assume that it is
+representative of the students at that
+single university. We would not want to extend these inferences to other
+universities (who might be more or less selective) or to students who did not
+get into this university and, especially, not to students that failed to complete
+the first year. The second and third constraints point to a severe limitation
+in this research -- only students who were accepted, went to, and survived one
+year at this university could be studied. Lower SAT percentile students might
+not have been allowed in or may not have survived the first year and higher SAT
+students might have been attracted to other more prestigious institutions. So
+the scope of inference is just limited to students that were invited and chose
+to attend this institution and successfully completed one year of courses. It
+is hard to know if the SAT "works" when the inferences are so restricted in who
+they might apply to...
+
+The following code fits the model of interest, provides a model summary, and 
+the diagnostic plots, allowing us to consider the tests of interest:
+
+(ref:fig8-14) Diagnostic plots for the 
+$\text{FYGPA}\sim\text{ SATV }+\text{ SATM}$ model.
+
+
+```r
+gpa1 <- lm(FYGPA~SATV+SATM, data=satGPA)
+summary(gpa1)
+```
+
+```
+## 
+## Call:
+## lm(formula = FYGPA ~ SATV + SATM, data = satGPA)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.19647 -0.44777  0.02895  0.45717  1.60940 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 0.007372   0.152292   0.048    0.961
+## SATV        0.025390   0.002859   8.879  < 2e-16
+## SATM        0.022395   0.002786   8.037 2.58e-15
+## 
+## Residual standard error: 0.6582 on 997 degrees of freedom
+## Multiple R-squared:  0.2122,	Adjusted R-squared:  0.2106 
+## F-statistic: 134.2 on 2 and 997 DF,  p-value: < 2.2e-16
+```
+
+```r
+par(mfrow=c(2,2), oma=c(0,0,2,0))
+plot(gpa1, sub.caption="Diagnostics for GPA model with SATV and SATM")
+```
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-14-1.png" alt="(ref:fig8-14)" width="672" />
+<p class="caption">(\#fig:Figure8-14)(ref:fig8-14)</p>
+</div>
+
+1. Hypotheses of interest:
+
+    * $H_0: \beta_{SATV}=0$ given *SATM* in the model vs $H_0: \beta_{SATV}\ne 0$
+    given *SATM* in the model.
+    
+    * $H_0: \beta_{SATM}=0$ given *SATV* in the model vs $H_0: \beta_{SATM}\ne 0$
+    given *SATV* in the model.
+
+2. Validity conditions:
+
+    * **Quantitative variables condition:**
+    
+        * The variables used here are all quantitative. Note that the *sex* was
+        plotted in the previous scatterplot matrix and is not quantitative --
+        we will explore its use later.
+        
+    * **Independence of observations:**
+    
+        * With a sample from a single university from (we are assuming) a 
+        single year of students, there is no particular reason to assume a
+        violation of the independence assumption.
+        
+    * **Linearity of relationships:**
+    
+        * The initial scatterplots (Figure \@ref(fig:Figure8-13)) do not show 
+        any clear nonlinearities with each predictor used in this model.
+        
+        * The Residuals vs Fitted and Scale-Location plots (Figure 
+        \@ref(fig:Figure8-14) do not show much more than a football shape,
+        which is our desired result.
+        
+            * Together, we can feel relatively comfortable with the linearity
+            assumption.
+            
+    * **Multicollinearity checked for:**
+    
+        * The original scatterplots suggest that there is some collinearity
+        between the two SAT percentiles with a correlation of 0.47. That is
+        actually a bit lower than one might expect and suggests that each
+        score must be measuring some independent information about different
+        characteristics of the students.
+        
+        * VIFs also do not suggest a major issue with multicollinearity in the
+        model with the VIFs for both variables the same at 1.278^[When there
+        are just two predictors, the VIFs have to be the same since the
+        proportion of information shared is the same in both directions. With 
+        more than two predictors, each variable can have a different VIF
+        value.]. This suggests that both SEs are about 13% larger than they
+        otherwise would have been due to shared information between the two
+        predictor variables.
+        
+        
+        ```r
+        vif(gpa1)
+        ```
+        
+        ```
+        ##     SATV     SATM 
+        ## 1.278278 1.278278
+        ```
+        
+        ```r
+        sqrt(vif(gpa1))
+        ```
+        
+        ```
+        ##    SATV    SATM 
+        ## 1.13061 1.13061
+        ```
+    * **Equal (constant) variance:**
+    
+        * There is no clear change in variability as a function of fitted 
+        values.
+        
+    * **Normality of residuals:**
+    
+        * There is a minor deviation in the upper tail of the residual
+        distribution from normality. It is not pushing towards having larger
+        values than a normal distribution would generate so should not cause us
+        any real problems. Note that this upper limit is likely due to using 
+        GPA as a response variable and it has an upper limit. This is an
+        example of a potentially ***censored*** variable. For a continuous
+        variable it is possible that the range of a measurement scale doesn't
+        distinguish among subjects who differ once they pass a certain point.
+        For example, a 4.0 high school student is going to have a high first 
+        year college GPA, on average but there is no room for variability in
+        college GPA up, just down. For students more in the middle of the range,
+        they can vary up or down. So in some places you can get symmetric
+        distributions around the mean and in others you cannot. There are 
+        specific statistical models for these types of responses that are 
+        beyond our scope. In this situation, failing to account for the 
+        censoring may push some slopes toward 0 a little because we don't have
+        responses over 4.0 to work with.
+        
+    * **No influential points:**
+    
+        * There are no influential points. In large data sets, the influence
+        of any point is decreased and even high leverage and outlying points
+        can struggle to have any impacts at all on the results. 
+
+So we are fairly comfortable with all the assumptions being at least not clearly
+violated and so the inferences from our model should be relatively trustworthy. 
+
+3. Calculate the test statistics:
+
+    * For *SATV*: $t=\dfrac{0.02539}{0.002859}=8.88$ with $df=997$.
+    
+    * For *SATM*: $t=\dfrac{0.02240}{0.002786}=8.04$ with $df=997$.
+    
+4. Find the p-values:
+
+    * For *SATV*: p-value $<0.0001$
+    
+    * For *SATM*: p-value $<0.0001$
+    
+5. Decisions:
+
+    * For *SATV*: Reject $H_0$ because there is almost no chance of observing
+    a test statistic as extreme or more extreme than was observed if there
+    really were no linear relationship between *FYGPA* and *SATV*, in a model
+    that controls for *SATM*.
+    
+    * For *SATM*: Reject $H_0$ because there is almost no chance of observing 
+    a test statistic as extreme or more extreme than was observed if there 
+    really were no linear relationship between *FYGPA* and *SATM*, in a model 
+    that   controls for *SATV*.
+    
+6. Conclusions and Scope of Inference:
+
+    * For *SATV*: There is strong evidence to reject the null hypothesis of 
+    no linear relationship between *SATV* and *FYGPA* and conclude that, in 
+    fact, there is a linear relationship between *SATV* percentile and the 
+    first year of college *GPA*, after controlling for the *SATM* percentile, 
+    in the population of students that completed their first year at this
+    university.
+    
+    * For *SATM*: There is strong evidence to reject the null hypothesis of
+    no linear relationship between *SATM* and *FYGPA* and conclude that, in
+    fact, there is a linear relationship between *SATM* percentile and the
+    first year of college *GPA*, after controlling for the *SATV* percentile,
+    in the population of students that completed their first year at this
+    university.
+    
+    * Note that neither inference is causal because there was no random
+    assignment of SAT percentiles to the subjects. The inferences
+    are also limited to students who stayed in school long enough to get a 
+    *GPA* from their first year of college. 
+
+We could stop there, but just reporting the test results without quantifying
+the size of the effects is not fully satisfying. The estimated MLR model is
+
+$$\widehat{\text{FYGPA}}_i=0.00737+0.0254\text{SATV}_i
++0.0224\text{SATM}_i.$$
+
+So for a 1 percent increase in the *SATV* percentile, we expect, on average,
+to get a 0.0254 point change in *GPA*, after controlling for *SATM* percentile.
+Similarly, for a 1 percent increase in the *SATM* percentile, we expect, on
+average, to get a 0.0224 pointchange in *GPA*, after controlling for *SATV*
+percentile. While this is a correct interpretation of the slope coefficients,
+it is often easier to assess "practical" importance of the results by considering
+how much change this implies over the range of observed predictor values. 
+
+The term-plots (Figure \@ref(fig:Figure8-15)) provide a visualization of the
+"size" of the differences in the response variable explained by each predictor.
+The *SATV* term-plot shows that for the range of percentiles from around the
+30<sup>th</sup> percentile to the 70<sup>th</sup> percentile, the mean first 
+year *GPA* is predicted to go from approximately 1.9 to 3.0. That is a pretty
+wide range of differences in GPAs across the range of observed percentiles.
+This looks like a pretty interesting and important change in the mean first
+year GPA across that range of different SAT percentiles. Similarly, the *SATM*
+term-plot shows that the *SATM* percentiles were observed to range between
+around the 30<sup>th</sup> percentile and 70<sup>th</sup> percentile and
+predict mean GPAs between 1.95 and 2.8. It seems that the SAT Verbal 
+percentiles produce slightly more impacts
+in the model, holding the other variable constant, but that both are important
+variables. The 95% confidence intervals for the means in both plots suggest
+that the results are fairly precisely estimated -- there is little variability
+around the predicted means in each plot. This is mostly a function of the
+sample size as opposed to the model itself explain most of the variation in the
+responses. 
+
+
+```r
+require(effects)
+plot(allEffects(gpa1))
+```
+
+
+(ref:fig8-15) Term-plots for the $\text{FYGPA}\sim\text{SATV} + \text{SATM}$
+model.
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-15-1.png" alt="(ref:fig8-15)" width="672" />
+<p class="caption">(\#fig:Figure8-15)(ref:fig8-15)</p>
+</div>
+
+These plots also inform the types of students attending this university and
+successfully completing the first year of school. This seems like a good, but
+maybe not great, institution with few students scoring over the 75<sup>th</sup>
+percentile on either SAT Verbal or Math (at least that ended up in this data
+set). This result makes questions about their sampling mechanism re-occur as
+to who this data set might actually be representative of...
+
+The confidence intervals also help us pin down the uncertainty in each
+estimated slope coefficient. As always, the "easy" way to get 95% confidence
+intervals is using the ``confint`` function:
+
+
+```r
+confint(gpa1)
+```
+
+```
+##                   2.5 %     97.5 %
+## (Intercept) -0.29147825 0.30622148
+## SATV         0.01977864 0.03100106
+## SATM         0.01692690 0.02786220
+```
+
+So, for a 1 percent increase in the *SATV* percentile, we are 95% confident
+that the true mean *FYGPA* changes between 0.0198 and 0.031 points, in the
+population of students who completed this year at this institution, after
+controlling for *SATM*. The *SATM* result is similar with an interval from 
+0.0169 and 0.0279. Both of these intervals might benefit from re-scaling
+the interpretation to a 10 percentile increase in the predictor variable, with
+the change in the *FYGPA* for that level of increase of *SATV* providing an
+interval from 0.198 to 0.31 points and for *SATM* providing an interval from 
+0.169 to 0.279. So a boost of 10% in either exam percentile likely results in a
+noticeable but not huge average *FYGPA* increase. 
+
+One final use of these methods is to do prediction and generate prediction
+intervals, which could be quite informative for a student considering going to
+this university who has a particular set of SAT scores. For example, suppose
+that the student is interested in the average *FYGPA* to expect with *SATV*
+at the 30<sup>th</sup> percentile and *SATM* at the 60<sup>th</sup> percentile.
+The predicted mean value is
+
+$$\begin{array}{rl}
+\hat{\mu}_{\text{GPA}_i} &= 0.00737 + 0.0254\text{ SATV}_i 
++ 0.0224\text{ SATM}_i \\
+&= 0.00737 + 0.0254*30 + 0.0224*60 = 2.113
+\end{array}$$
+
+This result and the 95% confidence interval for the mean student *GPA* at these
+scores can be found using the ``predict`` function as:
+
+
+```r
+predict(gpa1,newdata=data.frame(SATV=30,SATM=60))
+```
+
+```
+##       1 
+## 2.11274
+```
+
+```r
+predict(gpa1,newdata=data.frame(SATV=30,SATM=60),interval="confidence")
+```
+
+```
+##       fit      lwr      upr
+## 1 2.11274 1.982612 2.242868
+```
+
+For students at the 30<sup>th</sup> percentile of *SATV* and 60<sup>th</sup>
+percentile of *SATM*, we are 95% confident that the true mean first year GPA
+is between 1.98 and 2.24 points. For an individual student, we would want the 
+95% prediction interval:
+
+
+```r
+predict(gpa1,newdata=data.frame(SATV=30,SATM=60),interval="prediction")
+```
+
+```
+##       fit       lwr      upr
+## 1 2.11274 0.8145859 3.410894
+```
+
+For a student with *SATV*=30 and *SATM*=60, we are 95% sure that their first
+year GPA will be between 0.81 and 3.4 points. You can see that while we are
+very certain about the mean in this situation, there is a lot of uncertainty
+in the predictions for individual students. The PI is so wide as to almost 
+not be useful. 
+
+To support this difficulty in getting a precise prediction for a new student,
+review the original scatterplots: there is quite a bit of vertical variability
+in first year *GPA*s for each level of any of the predictors. The residual
+SE, $\hat{\sigma}$, is also informative in this regard -- 
+remember that it is the standard deviation of the residuals around the
+regression line. It is 0.6582, so the SD of new observations around the line is
+0.66 GPA points and that is pretty large on a GPA scale if we assume we would
+see lots of observations within 2 or 3 SDs of the mean. 
+Figure \@ref(fig:Figure8-16) remakes
+both term-plots, holding the other predictor at its mean, and adds the 95%
+prediction intervals to show the difference in variability between estimating
+the mean and pinning down the value of a new observation. The R code is very messy
+and rarely needed, but hopefully this helps reinforce the differences in these
+two types of intervals -- to make them in MLR, you have to fix all but one of
+the predictor variables and we usually do that by fixing the other variables at
+their means. 
+
+(ref:fig8-16) Term-plots for the $\text{FYGPA}\sim\text{SATV} + \text{SATM}$
+model with 95% PIs. 
+
+
+```r
+#Remake effects plots with 95% PIs
+dv1 <- data.frame(SATV=seq(from=24,to=76,length.out=50), SATM=rep(54.4,50))
+dm1 <- data.frame(SATV=rep(48.93,50), SATM=seq(from=29,to=77,length.out=50))
+
+mv1 <- data.frame(predict(gpa1, newdata=dv1, interval="confidence"))
+pv1 <- data.frame(predict(gpa1, newdata=dv1, interval="prediction"))
+
+mm1 <- data.frame(predict(gpa1, newdata=dm1, interval="confidence"))
+pm1 <- data.frame(predict(gpa1, newdata=dm1, interval="prediction"))
+
+par(mfrow=c(1,2))
+
+plot(dv1$SATV, mv1$fit, lwd=2, ylim=c(pv1$lwr[1],pv1$upr[50]), type="l",
+     xlab="SATV Percentile", ylab="GPA", main="SATV Effect, CI and PI")
+lines(dv1$SATV ,mv1$lwr, col="red", lty=2, lwd=2)
+lines(dv1$SATV, mv1$upr, col="red", lty=2, lwd=2)
+lines(dv1$SATV, pv1$lwr, col="grey", lty=3, lwd=3)
+lines(dv1$SATV, pv1$upr, col="grey", lty=3, lwd=3)
+legend("topleft", c("Estimate", "CI","PI"), lwd=3, lty=c(1,2,3),
+       col = c("black", "red","grey"))
+
+plot(dm1$SATM, mm1$fit, lwd=2, ylim=c(pm1$lwr[1], pm1$upr[50]), type="l",
+     xlab="SATM Percentile", ylab="GPA", main="SATM Effect, CI and PI")
+lines(dm1$SATM, mm1$lwr, col="red", lty=2, lwd=2)
+lines(dm1$SATM, mm1$upr, col="red", lty=2, lwd=2)
+lines(dm1$SATM, pm1$lwr, col="grey", lty=3, lwd=3)
+lines(dm1$SATM, pm1$upr, col="grey", lty=3, lwd=3)
+```
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-16-1.png" alt="(ref:fig8-16)" width="672" />
+<p class="caption">(\#fig:Figure8-16)(ref:fig8-16)</p>
+</div>
+
+
 ## Different intercepts for different groups: MLR with Indicator variables	{#section8-9}
+
+One of the implicit assumptions up to this point was that the models were being
+applied to a single homogeneous population. In many cases, we take a sample
+from a population but that group is likely a combination of individuals from
+different sub-populations. For example, the SAT study was interested in all
+students at the university but that contains the obvious sub-populations based
+on the sex of the students. It is dangerous to fit MLR models across
+subpopulations but we can also use MLR models to address more sophisticated
+research questions by comparing groups. We will be able to compare the
+intercepts (mean levels) and the slopes to see if they differ between the
+groups. For example, does the relationship between the *SATV* and *FYGPA*
+differ for male and female students? We can add the grouping information to
+the scatterplot of *FYGPA* vs *SATV* (Figure \@ref(fig:Figure8-17)) and
+consider whether there is visual evidence of a difference in the slope and/or
+intercept between the two groups, with men coded as 1 and women coded as 2^[We 
+are actually making an educated guess about what these codes mean. Other
+similar data sets used 1 for males but the documentation on these data is a bit
+sparse. We can proceed with a small potential that all conclusions regarding
+differences in ``sex``  are in the wrong direction.]. 
+
+It appears that the slope for females might be larger (steeper) in this
+relationship than it is for
+males. So increases in SAT Verbal percentiles for females might have more of an
+impact on the average first year GPA. We'll handle this sort of situation in
+Section \@ref(section8-11), where we will formally consider how to change the
+slopes for different groups. In this section, we develop new methods needed to
+begin to handle these situations and explore creating models with the same
+slope coefficient for all groups but different y-intercepts. This material
+resembles what we did for the Two-Way ANOVA additive model. 
+
+These results contrastwith Figure \@ref(fig:Figure8-18) for the relationship
+between first year college *GPA* and *SATM*
+percentile by sex of the students. The lines for the two groups appear to be
+mostly parallel and just seem to have different y-intercepts. We can use our
+MLR techniques to fit a model to the entire data set that allows for different
+y-intercepts. The real power of this idea is that we can then also test whether
+the different groups have different y-intercepts -- whether the shift between
+the groups is "real". In this example, it appears to suggest that females
+generally have slightly higher GPAs than males, on average, but that an
+increase in SATM has the same impact for both groups. If this difference in
+y-intercepts is not "real", then there appears to be no difference between the
+sexes in their relationship between SATM and GPA and we can safely continue
+using a model that does not differentiate the two groups. We could also just
+subset the data set and do two analyses, but that approach will not allow us 
+to assess whether things are "really" different between the two groups. 
+
+
+```r
+scatterplot(FYGPA~SATV|sex, lwd=3, data=satGPA, spread=F,
+            smooth=F, main="Scatterplot of GPA vs SATV by Sex")
+scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
+            smooth=F, main="Scatterplot of GPA vs SATM by Sex")
+```
+
+(ref:fig8-17) Plot of FYGPA vs SATV by Sex of students.
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-17-1.png" alt="(ref:fig8-17)" width="672" />
+<p class="caption">(\#fig:Figure8-17)(ref:fig8-17)</p>
+</div>
+
+(ref:fig8-18) Plot of FYGPA vs SATM by Sex of students.
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-18-1.png" alt="(ref:fig8-18)" width="672" />
+<p class="caption">(\#fig:Figure8-18)(ref:fig8-18)</p>
+</div>
+
+To fit one model to a data set that contain multiple groups, we need a way of
+entering categorical variable information in an MLR model. Regression models
+require quantitative predictor variables for the $x\text{'s}$ so we can't 
+directly enter the sex of the
+students into the regression model since it contains categories. To be able to
+put in "numbers" as predictors, we create what are called
+***indicator variables***^[Some people also call them ***dummy variables***.]
+that are made up of 0s and 1s, with the 0 reflecting one category and 1 the
+other, changing depending on the category of the individual in the data set. The
+``lm`` function does this for whenever a
+categorical variable is used as an explanatory variable. It sets up the indicator
+variables using a baseline category (gets coded as a 0) and the deviation
+category for the other level of the variable. We can see how this works by
+exploring what happens when we put ``SEX`` into our ``lm``^[That may not read
+how we intended...] with SATM, after first making sure it is categorical using
+the ``factor`` function and making the group ``levels`` explicit instead of 1s
+and 2s. 
+
+
+```r
+satGPA$SEX <- factor(satGPA$sex)
+levels(satGPA$SEX) <- c("MALE", "FEMALE")
+SATSex1 <- lm(FYGPA~SATM+SEX, data=satGPA)
+summary(SATSex1)
+```
+
+```
+## 
+## Call:
+## lm(formula = FYGPA ~ SATM + SEX, data = satGPA)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.42124 -0.42363  0.01868  0.46540  1.66397 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  0.21589    0.14858   1.453    0.147
+## SATM         0.03861    0.00258  14.969  < 2e-16
+## SEXFEMALE    0.31322    0.04360   7.184 1.32e-12
+## 
+## Residual standard error: 0.6667 on 997 degrees of freedom
+## Multiple R-squared:  0.1917,	Adjusted R-squared:  0.1901 
+## F-statistic: 118.2 on 2 and 997 DF,  p-value: < 2.2e-16
+```
+
+The ``SEX `` row contains information that the linear model chose *MALE* as
+the baseline category and *FEMALE* as the deviation category since *MALE* does
+not show up in the output. To see what ``lm`` is doing for us when we give it a
+two-level categorical variable, we can create our own "numerical" predictor that
+is 0 for *males* and 1 for *females* that we called ``SEXINDICATOR``, displayed
+for the first 10 observations:
+
+
+```r
+satGPA$SEXINDICATOR <- as.numeric(satGPA$SEX=="FEMALE")
+head(data.frame(SEX=satGPA$SEX, SEXINDICATOR=satGPA$SEXINDICATOR), 10)
+```
+
+```
+##       SEX SEXINDICATOR
+## 1    MALE            0
+## 2  FEMALE            1
+## 3  FEMALE            1
+## 4    MALE            0
+## 5    MALE            0
+## 6  FEMALE            1
+## 7    MALE            0
+## 8    MALE            0
+## 9  FEMALE            1
+## 10   MALE            0
+```
+
+We can define the indicator variable more generally by calling it
+$\boldsymbol{I}_{\text{Female},i}$ to denote that it is an indicator 
+($\boldsymbol{I}$) that takes on a value of 1 for
+observations in the category *Female* and 0 otherwise (*Male*) -- changing based
+on the observation ($i$). Indicator variables, once created, 
+are quantitative variables that take on values of 0 or 1 and we can put them
+directly
+into linear models with other $x\text{'s}$ (quantitative or categorical). If we
+replace the categorical ``SEX`` variable with our quantitative ``SEXINDICATOR``
+and re-fit the model, we get:
+
+
+```r
+SATSex2 <- lm(FYGPA~SATM+SEXINDICATOR, data=satGPA)
+summary(SATSex2)
+```
+
+```
+## 
+## Call:
+## lm(formula = FYGPA ~ SATM + SEXINDICATOR, data = satGPA)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.42124 -0.42363  0.01868  0.46540  1.66397 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept)   0.21589    0.14858   1.453    0.147
+## SATM          0.03861    0.00258  14.969  < 2e-16
+## SEXINDICATOR  0.31322    0.04360   7.184 1.32e-12
+## 
+## Residual standard error: 0.6667 on 997 degrees of freedom
+## Multiple R-squared:  0.1917,	Adjusted R-squared:  0.1901 
+## F-statistic: 118.2 on 2 and 997 DF,  p-value: < 2.2e-16
+```
+
+This matches all the previous ``lm`` output except that we didn't get any
+information on the categories used since ``lm`` didn't know that SEXINDICATOR
+was anything different from other quantitative predictors. 
+
+Now we want to think about what this model means. We can write the estimated 
+model as
+
+$$\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i +
+0.313I_{\text{Female},i}.$$
+
+When we have a *male* observation, the indicator takes on a value of 0 so the 
+0.313 drops out of the model, leaving an SLR just in terms of *SATM*. For a
+*female* student, the indicator is 1 and we add 0.313 to the previous 
+y-intercept. The following
+works this out step-by-step, simplifying the MLR into two SLRs:
+
+* Simplified model for *Males* (plug in a 0 for $I_{\text{Female}}$):
+
+    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i +
+    0.313*0 = 0.216 + 0.0386\text{ SATM}_i$
+
+* Simplified model for *Females* (plug in a 1 for $I_{\text{Female}}$):
+    
+    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i + 0.313I*1$
+    
+    * $= 0.216 + 0.0386\text{ SATM}_i + 0.313$ (combine "like" terms to
+    simplify the equation)
+    
+    * $= 0.529 + 0.0386\text{ SATM}_i$
+    
+In this situation, we then end up with two SLR models that relate *SATM* to 
+*GPA*, one model for *males* 
+$(\widehat{\text{FYGPA}}_i= 0.216 + 0.0386\text{ SATM}_i)$ and one for *females*
+$(\widehat{\text{FYGPA}}_i= 0.529 + 0.0386\text{ SATM}_i)$. The only difference
+between these two models is in the y-intercept, with the *female* model's
+y-intercept shifted up from the *male* y-intercept by 0.313. And that is what
+adding indicator variables into models does in general^[This is true for 
+additive uses of indicator variables. In Section \@ref(section8-11), we
+consider interactions between quantitative and categorical variables which has
+the effect of changing slopes and intercepts. The simplification ideas to
+produce estimated equations for each group are used there but we have to account
+for changing slopes by group too.] -- it shifts the intercept up or down from 
+the baseline group (here selected as *males*) to get a new intercept for the
+deviation group (here *females*).
+
+To make this visually clearer, Figure \@ref(fig:Figure8-19) contains the
+regression lines that were estimated for each
+group. For any *SATM*, the differencein the groups is the 0.313 coefficient from
+the ``SEXFEMALE`` or ``SEXINDICATOR`` row of the model summaries. For example,
+at *SATM*=50, the difference in terms of predicted average first year GPAs
+between males and females is displayed as a difference between 2.15 and 2.46.
+This model assumes that the slope on *SATM* is the same for both groups except
+that they are allowed to have different y-intercepts, which is reasonable here
+because we saw approximately parallel relationships for the two groups in
+Figure \@ref(fig:Figure8-18). 
+
+(ref:fig8-19) Plot of estimated model for *FYGPA* vs *SATM* by *SEX* of 
+students (female line is red, bold).
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-19-1.png" alt="(ref:fig8-19)" width="672" />
+<p class="caption">(\#fig:Figure8-19)(ref:fig8-19)</p>
+</div>
+
+Remember that ``lm`` selects baseline categories typically based on the
+alphabetical order of the levels of the categorical variable. Here, the ``SEX``
+variable started with a coding of 1 and 2 and retained that
+order even with the recoding of levels that we created to give it more explicit
+names. Because we allow ``lm`` to create indicator variables for us, the main
+thing you need to do is explore the model summary and look for the hint at the
+baseline level that is not displayed after the name of the categorical variable. 
+
+We can also work out the impacts of adding an indicator variable to the model
+in general in the theoretical model with a single quantitative predictor $x_i$
+and indicator $I_i$. The model starts as
+
+$$y_i=\beta_0+\beta_1x_i + \beta_2I_i + \varepsilon_i.$$
+
+Again, there are two versions:
+
+* For any observation $i$ in the **baseline** category, $I_i=0$ and the model
+is $y_i=\beta_0+\beta_1x_i + \varepsilon_i$.
+
+* For any observation $i$ in the **non-baseline (deviation)** category, $I_i=1$
+and the model simplifies to $y_i=(\beta_0+\beta_2)+\beta_1x_i + \varepsilon_i$.
+
+    * This model has a y-intercept of $\beta_0+\beta_2$.
+
+The interpretation and inferences for $\beta_1$ resemble the work with any 
+MLR model, noting that these results are "controlled for", "adjusted for", or
+"allowing for differences based on" the categorical variable in the model. The
+interpretation of $\beta_2$ is as a shift up or down in the y-intercept for
+the model that includes $x_i$. When we make term-plot in a model with
+a quantitative and additive categorical variable, the two reported model
+components match with the previous discussion -- the same estimated term from
+the quantitative variable for all observations and a shift to reflect the
+different y-intercepts in the two groups. In Figure \@ref(fig:Figure8-20), the
+females are estimated to be that same 0.313 points higher on first year GPA.
+The males have a mean GPA slightly above 2.3 which is the predicted GPA for the
+average SATM percentile (remember that we have to hold the other variable at 
+its mean to make each term-plot)^[When making the SATM term-plot, the
+categorical variable is held at the most
+frequently occurring value in the data set. If you drop ``ci.style="lines"`` 
+from the effect plot options, it is best to copy the figures as Bitmaps or
+save them as an image or they may (for some reason) lose the shaded bands.]. 
+
+(ref:fig8-20) Term-plots for the estimated model for 
+$\text{FYGPA}\sim\text{SATM} + \text{SEX}$.
+
+
+```r
+require(effects)
+plot(allEffects(SATSex1))
+```
+
+<div class="figure">
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-20-1.png" alt="(ref:fig8-20)" width="672" />
+<p class="caption">(\#fig:Figure8-20)(ref:fig8-20)</p>
+</div>
+
+The model summary and confidence intervals provide some potential interesting
+inferences in these models. Again, these are just applications of MLR methods
+we have already seen except that the definition of one of the variables is
+"different" using the indicator coding idea. For the same model, the ``SEX``
+coefficient can be used to generate inferences for differences in the mean the
+groups, controlling for their *SATM* scores. 
+
+```
+## SEXFEMALE    0.31322    0.04360   7.184 1.32e-12
+```
+
+Testing the null hypothesis that $H_0: \beta_2=0$ vs $H_A: \beta_2\ne 0$ using
+our regular $t$-test provides the opportunity to test for a difference in
+intercepts between the groups. In this situation, the test
+statistic is $t=7.184$ and, based on a $t_{997}$-distribution
+if the null is true, the p-value is $<0.0001$. We can reject the null hypothesis
+because the chances of getting a difference in y-intercepts
+extreme or more extreme than what was observed is extremely small. Thus, we
+can conclude that there is evidence that there is a difference in the true
+y-intercept in a *SATM* model between *males* and *females*. The confidence
+interval is also informative:
+
+
+```r
+confint(SATSex1)
+```
+
+```
+##                   2.5 %     97.5 %
+## (Intercept) -0.07566665 0.50744709
+## SATM         0.03355273 0.04367726
+## SEXFEMALE    0.22766284 0.39877160
+```
+
+We are 95% confident that the true mean GPA for females is between 0.228 and
+0.399 points higher than for males, after adjusting for the *SATM* in the
+population of students. If we had subset the data set and fit two SLRs, we
+could have obtained the same simplified regression models but we never could
+have performed inferences for the differences between the two groups without
+putting all the observations together in one model and then assessing those
+differences with targeted coefficients. We also would not be able to get an
+estimate of their common slope for *SATM*, after adjusting for differences
+in the intercept for each group.
 
 ## Additive MLR with more than two groups: Headache example	{#section8-10}
 
