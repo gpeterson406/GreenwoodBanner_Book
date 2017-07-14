@@ -1,0 +1,9 @@
+base
+pander
+dplyr
+lattice
+ggplot2
+mosaicData
+Matrix
+mosaic
+knitr

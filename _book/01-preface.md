@@ -766,7 +766,8 @@ from your previous statistics experience(s).
 
 ##Important R Code
 
-To help you learn and use R, there is a section highlighting the most important R code used near the end of each
+To help you learn and use R, there is a section highlighting the most important 
+R code used near the end of each
 chapter. The dark text will never change but the lighter (red) text will need
 to be customized to your particular application. The sub-bullet for each
 function will discuss the use of the function and pertinent options or packages

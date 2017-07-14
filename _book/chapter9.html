@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-09">
+<meta name="date" content="2017-07-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -236,6 +236,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 9</span> Case studies</h1>
 <div id="section9-1" class="section level2">
 <h2><span class="header-section-number">9.1</span> Overview of material covered</h2>
+<p>At the beginning of the text, we provided a schematic of methods that you would learn about that was (probably) gibberish. Hopefully, revisiting that same diagram (Figure <a href="chapter9.html#fig:Figure9-1">9.1</a> will bring back memories of each of the chapters. Categorical variables create special challenges whether they are explanatory or response variables.</p>
+
+<div class="figure"><span id="fig:Figure9-1"></span>
+<img src="chapter9_files/image002.png" alt="Schematic of methods covered."  />
+<p class="caption">
+Figure 9.1: Schematic of methods covered.
+</p>
+</div>
+<p>Every scenario with a quantitative response variable was handled using linear models. The last material on multiple linear regression modeling tied back to the One and Two-Way ANOVA models as categorical variables were added to the models. As both a review and to emphasize the connections, let’s connect some of the different versions of the general linear model that we considered.</p>
+<p>If we start with the One-Way ANOVA, the referenced-coded model was written out as:</p>
+<p><span class="math display">\[y_{ij}=\alpha + \tau_j + \varepsilon_{ij}.\]</span></p>
+<p>We didn’t want to introduce indicator variables at that early stage of the material, but we can now write out the same model using our indicator variable approach from Chapter <a href="chapter8.html#chapter8">8</a> for a <span class="math inline">\(J\)</span>-level categorical explanatory variable using <span class="math inline">\(J-1\)</span> indicator variables as:</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
+\cdots + \beta_{J-1}I_{\text{Level }J,i} + \varepsilon_i.\]</span></p>
+<p>We now know how the indicator variables are either 0 or 1 for each observation and only one takes in the value 1 (is “turned on”) at a time for each response. We can then equate the general notation from Chapter <a href="chapter8.html#chapter8">8</a> with our specific One-Way ANOVA (Chapter <a href="chapter3.html#chapter3">3</a>) notation as follows:</p>
+<ul>
+<li><p><span class="math inline">\(\alpha = \beta_0\)</span>:</p>
+<ul>
+<li>The mean for the baseline category was modeled using <span class="math inline">\(\alpha\)</span> which is the intercept term in the output that we called <span class="math inline">\(\beta_0\)</span> in the regression models.</li>
+</ul></li>
+<li><p>For category <span class="math inline">\(j\)</span>:</p>
+<ul>
+<li><p>From the One-Way ANOVA model:</p>
+<ul>
+<li><span class="math inline">\(\alpha + \tau_j\)</span></li>
+</ul></li>
+<li><p>From the regression model where the only indicator variable that is 1 is <span class="math inline">\(I_{\text{Level }j,i}\)</span>:</p>
+<ul>
+<li><p><span class="math inline">\(\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} = \beta_0 + \beta_{j-1}*1\)</span></p></li>
+<li><p>= <em>0 + </em>{j-1}$</p></li>
+</ul></li>
+<li><p>So with intercepts being equal, <span class="math inline">\(\beta_{j-1}=\tau_j\)</span>.</p></li>
+</ul></li>
+</ul>
+<p>The ANOVA reference-coding notation was used to focus on the coefficients that were “turned on” and their interpretation without getting bogged down in the full power (and notation) of general linear models. The same equivalence is possible to equate our work in the Two-Way ANOVA interaction model,</p>
+<p><span class="math display">\[y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},\]</span></p>
+<p>with the regression notation from the MLR model with an interaction:</p>
+<p><span class="math display">\[\begin{array}{rc}
+y_i=&amp;\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level }3,i}
++\cdots+\beta_JI_{\text{Level }J,i} +\beta_{J+1}I_{\text{Level }2,i}\:x_i \\
+&amp;+\beta_{J+2}I_{\text{Level }3,i}\:x_i
++\cdots+\beta_{2J-1}I_{\text{Level }J,i}\:x_i +\varepsilon_i
+\end{array}\]</span></p>
+<p>If one of the categorical variables only had two levels, then we could simply replace <span class="math inline">\(x_i\)</span> with the pertinent indicator variable and be able to equate the two versions of the notation. That said, we won’t attempt that here. And if both variables have more than 2 levels, the number of coefficients to keep track of grows rapidly. The great increase in complexity of notation to fully writing out the indicator variables in the regression approach with interactions with two categorical variables is the other reason we explored the Two-Way ANOVA using a “simplified” notation system even though <code>lm</code> used the indicator approach to fit the model. The Two-Way ANOVA notation helped us distinguish which coefficients related to main effects and the interaction, something that the regression notation doesn’t make clear.</p>
+<p>In the following three sections, you will have one more chance to see applications of the methods considered here. The data sets are taken directly from published research articles, so you can see the potential utility of the methods we’ve been discussing for handling real problems. They are focused on biological applications because the particular journal (<em>Biology Letters</em>) that all of these were drawn from encourages authors to share their data sets, making our re-analyses possible. Use these sections to review or to re-inforce methods from earlier in the book.</p>
 </div>
 <div id="section9-2" class="section level2">
 <h2><span class="header-section-number">9.2</span> The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations</h2>
@@ -251,6 +296,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 </div>
 </div>
+
+
+
+
+
+
+
 
 
 

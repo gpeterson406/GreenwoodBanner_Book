@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-09">
+<meta name="date" content="2017-07-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -823,7 +823,7 @@ Figure 7.15: Scatterplot of log(tree height) versus log(tree diameter).
 </p>
 </div>
 <p>Economists also like to use <span class="math inline">\(\log(y)\sim \log(x)\)</span> transformations. The log-log transformation tends to linearize certain relationships and has specific interpretations in terms of Economics theory. The log-log transformation shows up in many different disciplines as a way of obtaining a linear relationship on the log-log scale, but different fields discuss it differently. The following example shows a situation where transformations of both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are required and this double transformation seems to be quite successful in what looks like an initially hopeless situation for our linear modeling approach.</p>
-<p>Data were collected in 1988 on the rates of infant mortality (infant deaths per 1,000 live births) and gross domestic product (GDP) per capita (in 1998 US dollars) from <span class="math inline">\(n=207\)</span> countries. These data are available from the <code>car</code> package (Fox, 2003) in a data set called <code>UN</code>. The four panels in Figure <a href="#fig7-16"><strong>??</strong></a> show the original relationship and the impacts of log-transforming one or both variables. The only scatterplot that could potentially be modeled using SLR is the lower right panel (d) that shows the relationship between <em>log(infant mortality)</em> and <em>log(GDP)</em>. In the next section, we will fit models to some of these relationships and use our diagnostic plots to help us assess “success” of the transformations.</p>
+<p>Data were collected in 1988 on the rates of infant mortality (infant deaths per 1,000 live births) and gross domestic product (GDP) per capita (in 1998 US dollars) from <span class="math inline">\(n=207\)</span> countries. These data are available from the <code>car</code> package (Fox, 2003) in a data set called <code>UN</code>. The four panels in Figure <a href="chapter7.html#fig:Figure7-16">7.16</a> show the original relationship and the impacts of log-transforming one or both variables. The only scatterplot that could potentially be modeled using SLR is the lower right panel (d) that shows the relationship between <em>log(infant mortality)</em> and <em>log(GDP)</em>. In the next section, we will fit models to some of these relationships and use our diagnostic plots to help us assess “success” of the transformations.</p>
 
 <div class="figure"><span id="fig:Figure7-16"></span>
 <img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-16-1.png" alt="Scatterplots of Infant Mortality vs GDP under four different combinations of log-transformations." width="672" />
@@ -1134,7 +1134,7 @@ Figure 7.23: Estimated SLR for Bozeman temperature data with 95% confidence (das
 </div>
 <div id="section7-9" class="section level2">
 <h2><span class="header-section-number">7.9</span> Important R code</h2>
-<p>The main components of the R code used in this chapter follow with the components to modify in red where <span class="math inline">\(y\)</span> is a response variable, <span class="math inline">\(x\)</span> is an explanatory variable, and the data are in DATASETNAME.</p>
+<p>The main components of the R code used in this chapter follow with the components to modify in red where <code>y</code> is a response variable, <code>x</code> is an explanatory variable, and the data are in <code>DATASETNAME</code>.</p>
 <ul>
 <li><p>scatterplot(<font color='red'>y</font>~<font color='red'>x</font>, data=<font color='red'>DATASETNAME</font>, smooth=F)</p>
 <ul>

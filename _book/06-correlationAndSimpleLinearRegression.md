@@ -2362,8 +2362,8 @@ same...
 ## Important R code	{#section6-13}
 
 The main components of the R code used in this chapter follow with the 
-components to modify in red where $y$ is a response variable, $x$ is an
-explanatory variable, and the data are in DATASETNAME.
+components to modify in red where ``y`` is a response variable, ``x`` is an
+explanatory variable, and the data are in ``DATASETNAME``.
 
 * pairs.panels(<font color='red'>DATASETNAME</font>, ellipses=F, scale=T,
 smooth=F, col=0)

@@ -1496,7 +1496,7 @@ Data were collected in 1988 on the rates of infant mortality
 live births) and gross domestic product (GDP) per capita (in 1998 US dollars)
 from $n=207$ countries. These data are available from the ``car`` package 
 (Fox, 2003) in a data set called ``UN``. The four panels in 
-Figure \@ref(fig7-16) show the original relationship and the impacts of
+Figure \@ref(fig:Figure7-16) show the original relationship and the impacts of
 log-transforming one or both variables. 
 The only scatterplot that could potentially be modeled using SLR is the lower
 right panel (d) that shows the relationship between *log(infant mortality)*
@@ -2399,8 +2399,8 @@ the results are being interpreted on.
 ## Important R code {#section7-9}
 
 The main components of the R code used in this chapter follow with the
-components to modify in red where $y$ is a response variable, $x$ is an
-explanatory variable, and the data are in DATASETNAME. 
+components to modify in red where ``y`` is a response variable, ``x`` is an
+explanatory variable, and the data are in ``DATASETNAME``. 
 
 * scatterplot(<font color='red'>y</font>~<font color='red'>x</font>,
 data=<font color='red'>DATASETNAME</font>, smooth=F)

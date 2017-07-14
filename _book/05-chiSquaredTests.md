@@ -2334,7 +2334,7 @@ contingency table where you identified initial patterns.
 ## Review of Important R commands	{#section5-13}
 
 The main components of R code used in this chapter follow with components
-to modify in red where $y$ is a response variable and $x$ is a predictor 
+to modify in red where ``y`` is a response variable and ``x`` is a predictor 
 are easily identified:
 
 * <font color='red'>TABLENAME</font> <- tally(~<font color='red'>x</font> +
