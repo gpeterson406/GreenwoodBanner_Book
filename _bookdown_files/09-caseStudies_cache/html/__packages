@@ -7,3 +7,13 @@ mosaicData
 Matrix
 mosaic
 knitr
+beanplot
+car
+effects
+mvtnorm
+survival
+MASS
+TH.data
+multcomp
+psych
+MuMIn

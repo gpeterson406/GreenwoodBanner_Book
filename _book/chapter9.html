@@ -265,7 +265,7 @@ Figure 9.1: Schematic of methods covered.
 <li><p>From the regression model where the only indicator variable that is 1 is <span class="math inline">\(I_{\text{Level }j,i}\)</span>:</p>
 <ul>
 <li><p><span class="math inline">\(\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} = \beta_0 + \beta_{j-1}*1\)</span></p></li>
-<li><p>= <em>0 + </em>{j-1}$</p></li>
+<li><p><span class="math inline">\(= \beta_0 + \beta_{j-1}\)</span></p></li>
 </ul></li>
 <li><p>So with intercepts being equal, <span class="math inline">\(\beta_{j-1}=\tau_j\)</span>.</p></li>
 </ul></li>
@@ -284,12 +284,448 @@ y_i=&amp;\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level
 </div>
 <div id="section9-2" class="section level2">
 <h2><span class="header-section-number">9.2</span> The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations</h2>
+<p>In a 16-year experiment, Gundale, Bach, and Nordin (2013) studied the impacts of Nitrogen (<code>N</code>) additions on the mass of two feather moss species (<em>Pleurozium schreberi </em>(<code>PS</code>) and <em>Hylocomium</em> (<code>HS</code>) in the Svartberget Experimental Forest in Sweden. They used a randomized block design: here this means that within each of 6 blocks (pre-specified areas that were divided into three experimental units or plots of area 0.1 hectacre), one of the three treatments were randomly applied. <strong><em>Randomized block designs</em></strong> involve randomization of levels within blocks or groups as opposed to <strong><em>completely randomized designs</em></strong> where each <strong><em>experimental unit</em></strong> (the subject or plot that will be measured) could be randomly assigned to any treatment. This is done in agricultural studies to control for systematic differences across the fields by making sure each treatment level is used in each area or <strong><em>block</em></strong> of the field.</p>
+<p>The three treatments involved different levels of N applied immediately after snow melt, <em>Control</em> (no additional N – just the naturally deposited amount), 12.5 kg N <span class="math inline">\(\text{ha}^{-1}\text{yr}^{-1}\)</span> (<em>N12.5</em>), and 50 kg N <span class="math inline">\(\text{ha}^{-1}\text{yr}^{-1}\)</span> (<em>N50</em>). The researchers were interested in whether the treatments would have differential impacts on the two species of moss growth. They measured a variety of other variables, but here we focus on the estimated <em>biomass</em> per hectare (mg/ha) of the <em>species</em> (<em>PS</em> or <em>HS</em>), both measured for each plot within each block, considering differences across the <em>treatments</em> (<em>Control</em>, <em>N12.5</em>, or <em>N50</em>). The beanplot in Figure <a href="chapter9.html#fig:Figure9-2">9.2</a> provides some initial information about the responses. Initially there seem to be some differences in the combinations of groups and some differences in variability in the different groups, especially with much more variability in the <em>control</em> treatment level and more variability in the <em>PS</em> responses than for the <em>HS</em> responses.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdn &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv&quot;</span>)
+<span class="kw">require</span>(beanplot)
+<span class="kw">beanplot</span>(Massperha<span class="op">~</span>Species<span class="op">+</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">side =</span> <span class="st">&quot;b&quot;</span>, 
+         <span class="dt">col=</span><span class="kw">list</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>), <span class="dt">xlab=</span><span class="st">&quot;Treatment&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Biomass&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;HS&quot;</span>, <span class="st">&quot;PS&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>))</code></pre></div>
+<div class="figure"><span id="fig:Figure9-2"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-2-1.png" alt="Beanplot of biomass responses by treatment and species." width="672" />
+<p class="caption">
+Figure 9.2: Beanplot of biomass responses by treatment and species.
+</p>
+</div>
+<p>The Two-WAY ANOVA model that contains a <em>species</em> by <em>treatment</em> interaction is of interest (so this has a quantitative response variable of <em>biomass</em> and two categorical predictors of <em>species</em> and <em>treatment</em>)<a href="#fn92" class="footnoteRef" id="fnref92"><sup>92</sup></a>. We can make an interaction plot to focus on the observed patterns of the means across the combinations of levels as provided in Figure <a href="chapter9.html#fig:Figure9-3">9.3</a>. The interaction plot suggests a relatively additive pattern of differences between <em>PS</em> and <em>HS</em> across the three treatment levels. However, the variability seems to be quite different based on this plot as well.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/intplot.R&quot;</span>)
+<span class="kw">intplot</span>(Massperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-3"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-3-1.png" alt="Interaction plot of biomass responses by treatment and species." width="672" />
+<p class="caption">
+Figure 9.3: Interaction plot of biomass responses by treatment and species.
+</p>
+</div>
+<p>Based on the initial plots, we are going to be concerned about the equal variance assumption initially. We can fit the interaction model and explore the diagnostic plots to verify that we have a problem.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(Massperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn)
+<span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Massperha ~ Species * Treatment, data = gdn)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -992.6 -252.2  -64.6  308.0 1252.9 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)               1694.80     211.86   8.000 6.27e-09
+## SpeciesPS                  859.88     299.62   2.870  0.00745
+## TreatmentN12.5            -588.26     299.62  -1.963  0.05893
+## TreatmentN50             -1182.91     299.62  -3.948  0.00044
+## SpeciesPS:TreatmentN12.5   199.42     423.72   0.471  0.64130
+## SpeciesPS:TreatmentN50      88.29     423.72   0.208  0.83636
+## 
+## Residual standard error: 519 on 30 degrees of freedom
+## Multiple R-squared:  0.6661, Adjusted R-squared:  0.6104 
+## F-statistic: 11.97 on 5 and 30 DF,  p-value: 2.009e-06</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
+<span class="kw">plot</span>(m1, <span class="dt">sub.caption=</span><span class="st">&quot;Initial Massperha 2-WAY model&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-4"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-4-1.png" alt="Diagnostic plots of treatment by species interaction model for Biomass." width="672" />
+<p class="caption">
+Figure 9.4: Diagnostic plots of treatment by species interaction model for Biomass.
+</p>
+</div>
+<p>There is a clear problem with non-constant variance showing up in a fanning shape<a href="#fn93" class="footnoteRef" id="fnref93"><sup>93</sup></a> in the Residuals versus Fitted and Scale-Location plots in Figure <a href="chapter9.html#fig:Figure9-4">9.4</a>. Interestingly, the normality assumption is not an issue so hopefully we will not worsen this result by using a transformation to try to address the non-constant variance issue. The independence assumption is violated in two ways for this model by this study design – the blocks create clusters or groups of observations and the block should be accounted for (they did this in their models by adding <em>block</em> as a categorical variable to their models). Using blocked designs and accounting for the blocks in the model will typically give more precise inferences for the effects of interest, the treatments randomized within the blocks. Additionally, <strong>there are two measurements on each plot</strong> within block, one for <em>SP</em> and one for <em>HS</em> and these might be related (for example, high <em>HS</em> biomass might beassociated with high <em>SP</em>) so putting both observations into a model <strong>violates the independence assumption</strong> at a second level. It takes more advanced statistical models (called linear mixed models) to see how to fully deal with this, for now it is important to recognize the issues. The more complicated models provide similar results here and include the <em>treatment</em> by <em>species</em> interaction we are going to explore, they just add to this basic model to account for these other issues.</p>
+<p>Remember that <strong>before using a <em>log</em>-transformation, you always must check that the responses are strictly greater than 0:</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(gdn<span class="op">$</span>Massperha)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   319.1  1015.1  1521.8  1582.3  2026.6  3807.6</code></pre>
+<p>The minimum is 319.1 so it is safe to apply the natural log-transformation to the response variable (<em>Biomass</em>) and repeat the previous plots:</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gdn<span class="op">$</span>logMassperha &lt;-<span class="st"> </span><span class="kw">log</span>(gdn<span class="op">$</span>Massperha)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">beanplot</span>(logMassperha<span class="op">~</span>Species<span class="op">+</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">side =</span> <span class="st">&quot;b&quot;</span>,
+         <span class="dt">col=</span> <span class="kw">list</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>), <span class="dt">xlab=</span><span class="st">&quot;Treatment&quot;</span>, 
+         <span class="dt">ylab=</span><span class="st">&quot;log-Biomass&quot;</span>, <span class="dt">main=</span><span class="st">&quot;(a)&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;HS&quot;</span>,<span class="st">&quot;PS&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>))
+<span class="kw">intplot</span>(logMassperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-5"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-5-1.png" alt="Beanplot and interaction plot of the log-Biomass responses by treatment and species." width="672" />
+<p class="caption">
+Figure 9.5: Beanplot and interaction plot of the log-Biomass responses by treatment and species.
+</p>
+</div>
+<p>The variability in the beanplot in Figure <a href="chapter9.html#fig:Figure9-5">9.5</a>(a) appears to be more consistent across the groups but the lines appear to be a little less parallel in the interaction plot Figure <a href="chapter9.html#fig:Figure9-5">9.5</a>(b) for the log-scale response. That is not problematic but suggests that we may now have an interaction present – it is hard to tell visually sometimes. Again, fitting the interaction model and exploring the diagnostics is the best way to assess the success of the transformation applied.</p>
+<p>The log(Mass per ha) version of the response variable has little issue with changing variability present in the residuals in Figure <a href="chapter9.html#fig:Figure9-6">9.6</a> with much more similar variation in the residuals across the fitted values.</p>
+<p>The normality assumption is leaning towards a slight violation with too little variability in the right tail and so maybe a little bit of a left skew. This is only a minor issue and fixes the other big issue (clear non-constant variance), so this model is at least closer to giving us trustworthy inferences than the original model. The model presents some evidence of a <em>Species</em> by <em>Treatment</em> interaction (<span class="math inline">\(F(2,30)=4.2\)</span>, p-value<span class="math inline">\(=0.026\)</span>). This suggests that the effects on the log-biomass of the treatments differ between the two species. The mean log-biomass is lower for <em>HS</em> than <em>PS</em> with the mean log-biomass to decrease more rapidly than for <em>PS</em>. In other words, increasing nitrogen has more of an impact on the resulting log-biomass for <em>HS</em> than for <em>PS</em>. The highest mean log-biomass rates were observed under the control conditions for both species making nitrogen appear to inhibit growth of these species.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logMassperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn)
+<span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = logMassperha ~ Species * Treatment, data = gdn)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.51138 -0.16821 -0.02663  0.23925  0.44190 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)                7.4108     0.1160  63.902  &lt; 2e-16
+## SpeciesPS                  0.3921     0.1640   2.391  0.02329
+## TreatmentN12.5            -0.4228     0.1640  -2.578  0.01510
+## TreatmentN50              -1.1999     0.1640  -7.316 3.79e-08
+## SpeciesPS:TreatmentN12.5   0.2413     0.2319   1.040  0.30645
+## SpeciesPS:TreatmentN50     0.6616     0.2319   2.853  0.00778
+## 
+## Residual standard error: 0.2841 on 30 degrees of freedom
+## Multiple R-squared:  0.7998, Adjusted R-squared:  0.7664 
+## F-statistic: 23.96 on 5 and 30 DF,  p-value: 1.204e-09</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(car)
+<span class="kw">Anova</span>(m2)</code></pre></div>
+<pre><code>## Anova Table (Type II tests)
+## 
+## Response: logMassperha
+##                   Sum Sq Df F value    Pr(&gt;F)
+## Species           4.3233  1  53.577 3.755e-08
+## Treatment         4.6725  2  28.952 9.923e-08
+## Species:Treatment 0.6727  2   4.168   0.02528
+## Residuals         2.4208 30</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
+<span class="kw">plot</span>(m2, <span class="dt">sub.caption=</span><span class="st">&quot;log-Massperha 2-WAY model&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-6"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-6-1.png" alt="Diagnostic plots of treatment by species interaction model for log-Biomass." width="672" />
+<p class="caption">
+Figure 9.6: Diagnostic plots of treatment by species interaction model for log-Biomass.
+</p>
+</div>
+<p>The researchers actually applied a <span class="math inline">\(\log(y+1)\)</span> transformation to all the variables. This was used because one of their many variables had a value of 0 and so they added 1 to avoid analyzing a <span class="math inline">\(-\infty\)</span> response. This was not needed for most of their variables because most did not attain the value of 0. Adding a small value to observations and then log-transforming is a common but completely arbitrary practice and the choice of the added value can impact the results. Sometimes considering a square-root transformation can accomplish similar benefits as the log-transform and be applied safely to responses that include 0s. Or more complicated statistical models can be used that allow 0s in responses and still account for the violations of the linear model assumptions – see a statistician or continue exploring more advanced statistical methods for ideas in this direction.</p>
+<p>The term-plot in Figure <a href="chapter9.html#fig:Figure9-7">9.7</a> provides another display of the results with some information on the results for each combination of the species and treatments. Finding evidence that the treatments caused different results for the different species is a good first start. And it appears that there are some clear differences among certain combinations such as the mean for <em>PS-Control</em> is clearly larger than for <em>HS</em>-<em>N50</em>. The researchers were probably really interested in whether the <em>N12.5</em> results differed from <em>Control</em> for <em>HS</em> and whether the <em>species</em> differed at <em>Control</em> sites. As part of performing all pair-wise comparisons, we can assess those sorts of detailed questions. This sort of follow-up could be considered in any Two-Way ANOVA model but will be most interesting in situations where there are important interactions.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
+<span class="kw">plot</span>(<span class="kw">allEffects</span>(m2), <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-7"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-7-1.png" alt="Term-plot of the interaction model for log-biomass." width="672" />
+<p class="caption">
+Figure 9.7: Term-plot of the interaction model for log-biomass.
+</p>
+</div>
+<p><strong>Follow-up Pairwise Comparisons:</strong></p>
+<p>Given strong evidence of an interaction, many researchers would like more details about the source of the differences. We can re-fit the model with a unique mean for each combination of the two predictor variables, fitting a One-Way ANOVA model (here with six levels) and using Tukey’s HSD to provide safe inferences for differences among pairs of the true means. There are six groups corresponding to all combinations of <em>Species</em> (<em>HS</em>, <em>PS</em>) and treatment levels (<em>Control</em>, <em>N12.5</em>, and <em>N50</em>) provided in the new variable <code>SpTrt</code> by the <code>interaction</code> function with new levels of <em>HS.Control</em>, <em>PS.Control</em>, <em>HS.N12.5</em>, <em>PS.N12.5</em>, <em>HS.N50</em>, and <em>PS.N50</em>. The One-Way ANOVA <span class="math inline">\(F\)</span>-test (<span class="math inline">\(F(5,30)=23.96\)</span>, p-value<span class="math inline">\(&lt;0.0001\)</span>) suggests that there is evidence of some difference in the true mean log-biomass among the six treatment combinations. Note that the One-Way ANOVA table contains the test for at least one of those means being different from the others; the interaction test above was testing a more refined hypothesis – does the effect of treatment differ between the two species? With a small p-value from the overall One-Way ANOVA test, the pair-wise comparisons should be of interest.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Create new variable:</span>
+gdn<span class="op">$</span>SpTrt &lt;-<span class="st"> </span><span class="kw">interaction</span>(gdn<span class="op">$</span>Species, gdn<span class="op">$</span>Treatment)
+<span class="kw">levels</span>(gdn<span class="op">$</span>SpTrt)</code></pre></div>
+<pre><code>## [1] &quot;HS.Control&quot; &quot;PS.Control&quot; &quot;HS.N12.5&quot;   &quot;PS.N12.5&quot;   &quot;HS.N50&quot;    
+## [6] &quot;PS.N50&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logMassperha<span class="op">~</span>SpTrt, <span class="dt">data=</span>gdn)
+<span class="kw">Anova</span>(newm2)</code></pre></div>
+<pre><code>## Anova Table (Type II tests)
+## 
+## Response: logMassperha
+##           Sum Sq Df F value    Pr(&gt;F)
+## SpTrt     9.6685  5  23.963 1.204e-09
+## Residuals 2.4208 30</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(multcomp)
+PWnewm2 &lt;-<span class="st"> </span><span class="kw">glht</span>(newm2, <span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">SpTrt=</span><span class="st">&quot;Tukey&quot;</span>))
+<span class="kw">confint</span>(PWnewm2)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = logMassperha ~ SpTrt, data = gdn)
+## 
+## Quantile = 3.043
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##                              Estimate lwr      upr     
+## PS.Control - HS.Control == 0  0.39210 -0.10698  0.89118
+## HS.N12.5 - HS.Control == 0   -0.42277 -0.92185  0.07630
+## PS.N12.5 - HS.Control == 0    0.21064 -0.28843  0.70972
+## HS.N50 - HS.Control == 0     -1.19994 -1.69901 -0.70086
+## PS.N50 - HS.Control == 0     -0.14620 -0.64528  0.35288
+## HS.N12.5 - PS.Control == 0   -0.81487 -1.31395 -0.31580
+## PS.N12.5 - PS.Control == 0   -0.18146 -0.68053  0.31762
+## HS.N50 - PS.Control == 0     -1.59204 -2.09112 -1.09296
+## PS.N50 - PS.Control == 0     -0.53830 -1.03738 -0.03923
+## PS.N12.5 - HS.N12.5 == 0      0.63342  0.13434  1.13249
+## HS.N50 - HS.N12.5 == 0       -0.77717 -1.27624 -0.27809
+## PS.N50 - HS.N12.5 == 0        0.27657 -0.22250  0.77565
+## HS.N50 - PS.N12.5 == 0       -1.41058 -1.90966 -0.91151
+## PS.N50 - PS.N12.5 == 0       -0.35685 -0.85592  0.14223
+## PS.N50 - HS.N50 == 0          1.05374  0.55466  1.55281</code></pre>
+<p>We can also generate the Compact Letter Display (CLD) to help us group up the results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cld</span>(PWnewm2)</code></pre></div>
+<pre><code>## HS.Control PS.Control   HS.N12.5   PS.N12.5     HS.N50     PS.N50 
+##       &quot;bd&quot;        &quot;d&quot;        &quot;b&quot;       &quot;cd&quot;        &quot;a&quot;       &quot;bc&quot;</code></pre>
+<p>We can also add it to an interaction plot to create Figure <a href="chapter9.html#fig:Figure9-8">9.8</a>. Researchers often use displays like this to simplify the presentation of pair-wise comparisons. Sometimes researchers add bars or stars to provide the same information about pairs that are or are not detectably different. The following code creates the plot of these results using our <code>intplot</code> function and the <code>cld=T</code> option.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(logMassperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">cld=</span>T, <span class="dt">cldshift=</span><span class="fl">0.15</span>,
+        <span class="dt">cldcol=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>), <span class="dt">data=</span>gdn, <span class="dt">lwd=</span><span class="dv">2</span>, 
+        <span class="dt">main=</span><span class="st">&quot;Interaction with CLD from Tukey&#39;s HSD on One-Way ANOVA&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-8"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-8-1.png" alt="Interaction plot for log-biomass with CLD from Tukey’s HSD for all pairwise comparisons." width="672" />
+<p class="caption">
+Figure 9.8: Interaction plot for log-biomass with CLD from Tukey’s HSD for all pairwise comparisons.
+</p>
+</div>
+<p>These results suggest that <em>HS-N50</em> is detectably different from all the other groups (letter “a”). The rest of the story is more complicated since many of the sets contain overlapping groups in terms of detectable differences. Some specific aspects of those results are most interesting. The mean log-biomasses were not detectably different between the (they share a “d”). In other words, without treatment, there is no evidence of a difference in how much of the two species are present in the sites. For <em>N12.5</em> and <em>N50</em> treatments, there are detectable differences between the <em>Species</em>. These comparisons are probably of the most interest initially and suggest that the treatments have a different impact on the two species, remembering that in the control treatments, the results for the two species were not detectably different. Further explorations of the sizes of the differences that can be extracted from selected confidence intervals in the Tukey’s HSD results printed above.</p>
 </div>
 <div id="section9-3" class="section level2">
 <h2><span class="header-section-number">9.3</span> Ants learn to rely on more informative attributes during decision-making</h2>
+<p>In Sasaki and Pratt (2013), a set of ant colonies were randomly assigned to one of two treatments to study whether the ants could be “trained” to have a preference for or against certain attributes for potential nest sites. The colonies were either randomly assigned to experience the repeated choice of two identical colony sites except for having an inferior light or entrance size attribute. Then the ants were allowed to choose between two nests, one that had a large entrance but was dark and the other that had a small entrance but was bright. 54 of the 60 colonies that were randomly assigned to one of the two treatments completed the experiment by making a choice between the two types of sites. The data set and some processing code follows.</p>
+<p>The first question of interest is what type of analysis is appropriate here. Once we recognize that there are two categorical variables being considered (<em>Treatment</em> group with two levels and <em>After</em> treatment choice with two levels <em>SmallBright</em> or <em>LargeDark</em>), then this is recognized as being within our Chi-square testing framework. The random assignment of colonies (the subjects here) to treatment levels tells us that the <strong><em>Chi-square Homogeneity test</em></strong> is appropriate here and that we can make causal statements if we find evidence of differences in the patterns of responses.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sasakipratt &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/sasakipratt.csv&quot;</span>)
+sasakipratt<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">factor</span>(sasakipratt<span class="op">$</span>group)
+<span class="kw">levels</span>(sasakipratt<span class="op">$</span>group) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Light&quot;</span>,<span class="st">&quot;Entrance&quot;</span>)
+sasakipratt<span class="op">$</span>after &lt;-<span class="st"> </span><span class="kw">factor</span>(sasakipratt<span class="op">$</span>after)
+<span class="kw">levels</span>(sasakipratt<span class="op">$</span>after) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SmallBright&quot;</span>,<span class="st">&quot;LargeDark&quot;</span>)
+sasakipratt<span class="op">$</span>before &lt;-<span class="st"> </span><span class="kw">factor</span>(sasakipratt<span class="op">$</span>before)
+<span class="kw">levels</span>(sasakipratt<span class="op">$</span>before) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SmallBright&quot;</span>,<span class="st">&quot;LargeDark&quot;</span>)
+<span class="kw">plot</span>(after<span class="op">~</span>group, <span class="dt">data=</span>sasakipratt)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-9"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-9-1.png" alt="Stacked bar chart for Ant Colony results." width="672" />
+<p class="caption">
+Figure 9.9: Stacked bar chart for Ant Colony results.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(mosaic)
+<span class="kw">tally</span>(<span class="op">~</span>group<span class="op">+</span>after, <span class="dt">data=</span>sasakipratt)</code></pre></div>
+<pre><code>##           after
+## group      SmallBright LargeDark
+##   Light             19         9
+##   Entrance           9        17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1 &lt;-<span class="st"> </span><span class="kw">tally</span>(<span class="op">~</span>group<span class="op">+</span>after, <span class="dt">data=</span>sasakipratt, <span class="dt">margins=</span>F)</code></pre></div>
+<p>The null hypothesis of interest here is that there is no difference in the distribution of responses on <em>After</em> – the rates of their choice of den types – between the two treatment <em>groups</em> in the population of all ant colonies like those studied. The alternative is that there is some difference in the distributions of <em>After</em> between the <em>groups</em> in the population.</p>
+<p>To use the Chi-square distribution to find a p-value for the <span class="math inline">\(X^2\)</span> statistic, we need all the expected cell counts to be larger than 5, so we should check that. Note that in the following, the <code>correct=F</code> option is used to keep the function from slightly modifying the statistic used that occurs when overall sample sizes are small.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(table1, <span class="dt">correct=</span>F)<span class="op">$</span>expected</code></pre></div>
+<pre><code>##           after
+## group      SmallBright LargeDark
+##   Light       14.51852  13.48148
+##   Entrance    13.48148  12.51852</code></pre>
+<p>Our expected cell count condition is met, so we can proceed to explore the results of the test:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(table1, <span class="dt">correct=</span>F)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  table1
+## X-squared = 5.9671, df = 1, p-value = 0.01458</code></pre>
+<p>The <span class="math inline">\(X^2\)</span> statistic is 5.97 which, if our assumptions are met, should approximately follow a Chi-squared distribution with <span class="math inline">\((R-1)*(C-1)=1\)</span> degrees of freedom under the null hypothesis. The p-value is 0.015, suggesting that there is good evidence against the null hypothesis. We can conclude that there is a difference in the distribution of the responses between the two treated groups in the population of all ant colonies that could have been treated. Because of the random assignment, we can say that the treatments caused differences in the colony choices. These results cannot be extended to ants beyond those being studied by these researchers because they were not randomly selected.</p>
+<p>Further exploration of the standardized residuals can provide more insights in some situations, although here they are similar for all the cells:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(table1,<span class="dt">correct=</span>F)<span class="op">$</span>residuals</code></pre></div>
+<pre><code>##           after
+## group      SmallBright LargeDark
+##   Light       1.176144 -1.220542
+##   Entrance   -1.220542  1.266616</code></pre>
+<p>When all the standardized residual contributions are similar, that suggests that there are differences in all the cells from what we would expect if the null hypothesis were true. Basically, that means that what we observed is a bit larger than expected for the <em>Light</em> treatment group in the <em>SmallBright</em> choice and lower than expected in <em>LargeDark</em> – those treated ants preferred the small and bright den. And for the <em>Entrance</em> treated group, they preferred the large entrance, dark den at a higher rate than expected if the null is true and lower than expected in the small entrance, bright location.</p>
+<p>The researchers extended this basic result a little further using a statistical model called <strong><em>logistic regression</em></strong>, which involves using something like a linear model but with a categorical response variable (well – it actually only works for a two-category response variable). They also had measured which of the two types of dens that each colony chose before treatment and controlled for that choice. So the actual model used in their paper contained two predictor variables – the randomized treatment received that we explored here and the prior choice of den type. The interpretation of their results related to the same treatment effect, but they were able to discuss it after adjusting for the colonies previous selection. Their conclusions were similar to those found with our simpler analysis. Logistic regression models are a special case of what are called generalized linear models and are a topic for the next level of statistics if you continue exploring.</p>
 </div>
 <div id="section9-4" class="section level2">
 <h2><span class="header-section-number">9.4</span> Multi-variate models are essential for understanding vertebrate diversification in deep time</h2>
+<p>Benson and Mannion (2012) published a paleontology study that considered modeling the diversity of <em>Sauropodomorphs</em> across <span class="math inline">\(n=26\)</span> “stage-level” time bins. Diversity is measured by the count of the number of different species that have been found in a particular level of fossils. Specifically, the counts in the <em>Sauropodomorphs</em> group were obtained fora stage between <em>Carnian</em> and <em>Maastrichtian</em>, with the first three stages in the <em>Triassic</em>, the next ten in the <em>Jurassic</em>, and the last eleven concerned about variation in sampling efforts and the ability of paleontologists to find fossils across different stages creating a false impression of the changes in biodiversity over time. They first wanted to see if the species counts were related to factors such as the count of dinosaur-bearing-formations (<em>DBF</em>) and the count of dinosaur-bearing-collections (<em>DBC</em>) that have been identified for each period. The thought is that if there are more formations or collections of fossils from certain stages, the diversity might be better counted (more found of those available to find) and those stages with less information available might be under-counted. They also measured the length of each stage (<em>Duration</em>) but did not consider it in their models since they want to reflect the diversity and longer stages would likely have higher diversity.</p>
+<p>Their main goal was to develop a model that would <strong>control for</strong> the effects of sampling efforts and allow them to perform inferences for whether the diversity was different between the <em>Triassic/Jurassic</em> (grouped together) and considered models that included two different versions of sampling effort variables and one for the comparisons of periods (an indicator variable <em>TJK</em>=0 if the observation is in <em>Triassic</em> or <em>Jurassic</em> or 1 if in <em>Cretaceous</em>). They <em>log-e</em> transformed all their quantitative variables because the untransformed variables created diagnostic issues including influential points. They explored a model just based on the <em>DBC</em> predictor<a href="#fn94" class="footnoteRef" id="fnref94"><sup>94</sup></a> and they analyzed the residuals from that model to see if the biodiversity was different in the <em>Cretaceous</em> or before, finding a “p-value <strong>&gt;=</strong> 0.0001” (I think they meant &lt;0.0001<a href="#fn95" class="footnoteRef" id="fnref95"><sup>95</sup></a>). They were comparing the MLR models you learned to some extended regression models that incorporated a correction for correlation in the responses over time, but we can proceed with fitting some of their MLR models and using an AIC comparison similar to what they used. There are some obvious flaws in their analysis and results that we will avoid<a href="#fn96" class="footnoteRef" id="fnref96"><sup>96</sup></a>.</p>
+<p>First, we start with a plot of the log-diversity vs the log-dinosaur bearing collections by period. We can see fairly strong positive relationships between the log amounts of collections and species found with potentially similar slopes for the two periods but what look like different intercepts. Especially for <em>TJK</em> level 1 (<em>Cretaceous</em> period) observations, we might need to worry about a curving relationship. Note that a similar plot can also be made using the formations version of the quantitative predictor variable and that the research questions involve whether <em>DBF</em> or <em>DBC</em> are better predictor variables.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bm &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv&quot;</span>)
+bm2 &lt;-<span class="st"> </span>bm[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">9</span><span class="op">:</span><span class="dv">10</span>)]
+<span class="kw">require</span>(psych)
+<span class="kw">pairs.panels</span>(bm2, <span class="dt">ellipses=</span>F)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-10"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-10-1.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="672" />
+<p class="caption">
+Figure 9.10: Scatterplot of log-biodiversity vs log-DBCs by TJK.
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bm<span class="op">$</span>logSpecies &lt;-<span class="st"> </span><span class="kw">log</span>(bm<span class="op">$</span>Species)
+bm<span class="op">$</span>logDBCs &lt;-<span class="st"> </span><span class="kw">log</span>(bm<span class="op">$</span>DBCs)
+bm<span class="op">$</span>logDBFs &lt;-<span class="st"> </span><span class="kw">log</span>(bm<span class="op">$</span>DBFs)
+bm<span class="op">$</span>TJK &lt;-<span class="st"> </span><span class="kw">factor</span>(bm<span class="op">$</span>TJK)
+<span class="kw">scatterplot</span>(logSpecies<span class="op">~</span>StageNumber, <span class="dt">data=</span>bm, <span class="dt">spread=</span>F)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-10"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-10-2.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="672" />
+<p class="caption">
+Figure 9.10: Scatterplot of log-biodiversity vs log-DBCs by TJK.
+</p>
+</div>
+<p>The following results will allow us to explore models similar to theirs. One “full” model they considered is:</p>
+<p><span class="math display">\[\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i 
++ \beta_2I_{\text{TJK},i} + \varepsilon_i\]</span></p>
+<p>which was compared to</p>
+<p><span class="math display">\[\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i 
++ \beta_2I_{\text{TJK},i} + \varepsilon_i\]</span></p>
+<p>as well as the simpler models that each suggests:</p>
+<p><span class="math display">\[\begin{array}{rl}
+\log{(\text{count})}_i &amp;=\beta_0 + \beta_1\log{(\text{DBC})}_i 
++ \varepsilon_i, \\
+\log{(\text{count})}_i &amp;=\beta_0 + \beta_1\log{(\text{DBF})}_i
++ \varepsilon_i, \\
+\log{(\text{count})}_i &amp;=\beta_0 + \beta_2I_{\text{TJK},i} 
++ \varepsilon_i, \text{ and} \\
+\log{(\text{count})}_i &amp;=\beta_0 + \varepsilon_i.  \\
+\end{array}\]</span></p>
+<p>Both versions of the models (based on <em>DBF</em> or <em>DBC</em>) start with an MLR model with a quantitative variable and two slopes. We can obtain some of the needed model selection results from the first full model using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bd1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logSpecies<span class="op">~</span>logDBCs<span class="op">+</span>TJK, <span class="dt">data=</span>bm)
+<span class="kw">require</span>(MuMIn)
+<span class="kw">options</span>(<span class="dt">na.action =</span> <span class="st">&quot;na.fail&quot;</span>)
+<span class="kw">dredge</span>(bd1, <span class="dt">rank=</span><span class="st">&quot;AIC&quot;</span>, 
+       <span class="dt">extra=</span><span class="kw">c</span>(<span class="st">&quot;R^2&quot;</span>, <span class="dt">adjRsq=</span><span class="cf">function</span>(x) <span class="kw">summary</span>(x)<span class="op">$</span>adj.r.squared))</code></pre></div>
+<pre><code>## Global model call: lm(formula = logSpecies ~ logDBCs + TJK, data = bm)
+## ---
+## Model selection table 
+##   (Intrc)  lgDBC TJK      R^2   adjRsq df  logLik  AIC delta weight
+## 4 -1.0890 0.7243   + 0.580900  0.54440  4 -12.652 33.3  0.00  0.987
+## 2  0.1988 0.4283     0.369100  0.34280  3 -17.969 41.9  8.63  0.013
+## 1  2.5690            0.000000  0.00000  2 -23.956 51.9 18.61  0.000
+## 3  2.5300          + 0.004823 -0.03664  3 -23.893 53.8 20.48  0.000
+## Models ranked by AIC(x)</code></pre>
+<p>And from the second model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bd2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logSpecies<span class="op">~</span>logDBFs<span class="op">+</span>TJK, <span class="dt">data=</span>bm)
+<span class="kw">dredge</span>(bd2, <span class="dt">rank=</span><span class="st">&quot;AIC&quot;</span>,
+       <span class="dt">extra=</span><span class="kw">c</span>(<span class="st">&quot;R^2&quot;</span>, <span class="dt">adjRsq=</span><span class="cf">function</span>(x) <span class="kw">summary</span>(x)<span class="op">$</span>adj.r.squared))</code></pre></div>
+<pre><code>## Global model call: lm(formula = logSpecies ~ logDBFs + TJK, data = bm)
+## ---
+## Model selection table 
+##   (Intrc)  lgDBF TJK      R^2   adjRsq df  logLik  AIC delta weight
+## 4 -2.4100 1.3710   + 0.519900  0.47810  4 -14.418 36.8  0.00  0.995
+## 2  0.5964 0.4882     0.209800  0.17690  3 -20.895 47.8 10.95  0.004
+## 1  2.5690            0.000000  0.00000  2 -23.956 51.9 15.08  0.001
+## 3  2.5300          + 0.004823 -0.03664  3 -23.893 53.8 16.95  0.000
+## Models ranked by AIC(x)</code></pre>
+<p>The top AIC model is <span class="math inline">\(\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i\)</span> with an AIC of 33.3. The next best model was <span class="math inline">\(\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i\)</span> with an AIC of 36.8, so 3.5 AIC units worse than the top model. We put these two runs of results together in Table <a href="chapter9.html#tab:Table9-1">9.1</a>, re-computing all the AICs based on the top model from the first full model considered.</p>
+
+<table>
+<caption><span id="tab:Table9-1">Table 9.1: </span>Model comparision table.</caption>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="left"><span class="math inline">\(\boldsymbol{R^2}\)</span></th>
+<th align="left">adj<span class="math inline">\(\boldsymbol{R^2}\)</span></th>
+<th align="left">df</th>
+<th align="left">logLik</th>
+<th align="left">AIC</th>
+<th align="left"><span class="math inline">\(\boldsymbol{\Delta}\)</span>AIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\small{\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i}\)</span></td>
+<td align="left">0.5809</td>
+<td align="left">0.5444</td>
+<td align="left">4</td>
+<td align="left">-12.652</td>
+<td align="left">33.3</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\small{\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i}\)</span></td>
+<td align="left">0.5199</td>
+<td align="left">0.4781</td>
+<td align="left">4</td>
+<td align="left">-14.418</td>
+<td align="left">36.8</td>
+<td align="left">3.5</td>
+</tr>
+<tr class="odd">
+<td align="left">$_i=_0 + _1_i</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">+ _i$ 0.3691 0.3428 3 -17.969 41.</td>
+<td align="left">9 8.6</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">$_i=_0 + _1_i</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">+ _i$ 0.2098 0.1769 3 -20.895 47.</td>
+<td align="left">8 14.5</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\log{(\text{count})}_i=\beta_0 + \varepsilon_i\)</span></td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">-23.956</td>
+<td align="left">51.9</td>
+<td align="left">18.6</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\log{(\text{count})}_i=\beta_0 + \beta_2I_{\text{TJK},i} + \varepsilon_i\)</span></td>
+<td align="left">0.0048</td>
+<td align="left">-0.03664</td>
+<td align="left">3</td>
+<td align="left">-23.893</td>
+<td align="left">53.8</td>
+<td align="left">20.5</td>
+</tr>
+</tbody>
+</table>
+<p>Table <a href="chapter9.html#tab:Table9-1">9.1</a> suggests some interesting leads to the worst performing model on the AIC measure, ranking below a model with nothing in it (mean-only) and 20.5 AIC units worse than the top model. But the two top models distinctly benefit from the inclusion of <em>TJK</em>. This suggests that after controlling for the sampling effort, either through <em>DBC</em> or <em>DBF</em>, the differences in the stages captured by <em>TJK</em> can be more clearly observed.</p>
+<p>So the top model in our (correct) results<a href="#fn97" class="footnoteRef" id="fnref97"><sup>97</sup></a> suggests an effect of <em>log(DBC)</em> and different intercepts for the two periods. We can interrogate this model further but probably should do something we should have done first, check the diagnostics (Figure <a href="chapter9.html#fig:Figure9-11">9.11</a>) and consider our model assumptions as AICs are not valid if model assumptions are not met.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
+<span class="kw">plot</span>(bd1)</code></pre></div>
+<div class="figure"><span id="fig:Figure9-11"></span>
+<img src="09-caseStudies_files/figure-html/Figure9-11-1.png" alt="Diagnostic plots for the top AIC model." width="672" />
+<p class="caption">
+Figure 9.11: Diagnostic plots for the top AIC model.
+</p>
+</div>
+<p>The constant variance and assessment of influence do not suggest any real problems. The normality assumption is possibly violated but shows lighter tails than expected from a normal distribution and so should cause few problems with inferences (we would be looking for an answer of “yes, there is a violation of the normality assumption but, for a bonus point, that problem is minor because the pattern is not the problematic type of violation because…”). The other assumption that <strong>is violated for all our models</strong> is that the observations are independent. Between neighboring stages in time, there would likely be some sort of relationship in the biodiversity so we should not assume that the observations are independent (this is a <strong><em>timeseries</em></strong> of observations). The authors acknowledged this issue but unskillfully attempted to deal with it. Because an interaction was not considered in any of the models, there also is an assumption that the results are parallel enough for the two groups. The scatterplot in Figure <a href="chapter9.html#fig:Figure9-10">9.10</a> suggests that using parallel lines for the two groups is probably reasonable but a full assessment really should also explore that fully to verify that there is no support for an interaction.</p>
+<p>Ignoring the violation of the independence assumption, we are otherwise ok to explore the model more and see what it tells us about biodiversity of <em>Sauropodomorphs</em>. The top model is estimated to be <span class="math inline">\(\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\log{(\text{DBC})}_i -0.75I_{\text{TJK},i}\)</span>. This suggests that for the early observations (<em>TJK</em>=0), the model is <span class="math inline">\(\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\log{(\text{DBC})}_i\)</span> and for the Cretaceous period (<em>TJK</em>=1), the model is <span class="math inline">\(\log{(\widehat{\text{count}})}_i=-1.089 + -0.75+0.724\log{(\text{DBC})}_i\)</span> which simplifies to <span class="math inline">\(\log{(\widehat{\text{count}})}_i=-1.84 + 0.724\log{(\text{DBC})}_i\)</span>. This suggests that the sampling efforts have the same effect on all observations and having an increase in <em>logDBCs</em> is associated with increases in the mean <em>log-biodiversity</em>. Specifically, for a 1 log-count increase in the <em>log-DBCs</em>, we expect, on average, to have a 0.724 log-count change in the mean log-biodiversity, after accounting for different intercepts for the two periods considered. We could also translate this to the original count scale but will leave it as is, because their real question of interest involves the differences between the periods. The change in the y-intercepts of -0.76 suggests that the Cretaceous has a lower average log-biodiversity by 0.75 log-count, after controlling for the log-sampling effort. This suggests that the <em>Cretaceous</em> had a lower corrected mean log-Sauropodomorph biodiversity <span class="math inline">\(\require{ulem}(t_{23}=-3.41;\text{\sout{p-value=0.0024}})\)</span> than the combined results for the Triassic and Jurassic. On the original count scale, this suggests <span class="math inline">\(\exp(-0.76)=0.47\)</span> times (53% drop in) the median biodiversity count per stage for Cretaceous versus the prior time period, after correcting for log-sampling effort in each stage.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(bd1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = logSpecies ~ logDBCs + TJK, data = bm)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.6721 -0.3955  0.1149  0.2999  0.6158 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  -1.0887     0.6533  -1.666   0.1092
+## logDBCs       0.7243     0.1288   5.622 1.01e-05
+## TJK1         -0.7598     0.2229  -3.409   0.0024
+## 
+## Residual standard error: 0.4185 on 23 degrees of freedom
+## Multiple R-squared:  0.5809, Adjusted R-squared:  0.5444 
+## F-statistic: 15.94 on 2 and 23 DF,  p-value: 4.54e-05</code></pre>
+<p>Their study shows some interesting contrasts between methods. They tried to use AIC-based model selection methods across all the models but then used p-values to really make their final conclusions. This presents a philosophical inconsistency that bothers some more than others but should bother everyone. One thought is whether they needed to use AICs at all since they wanted to use p-values? The one reason they might have preferred to use AICs is that it allows the direct comparison of</p>
+<p><span class="math display">\[\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i\]</span></p>
+<p>to <span class="math display">\[\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i,\]</span></p>
+<p>exploring whether <em>DBC</em> or <em>DBF</em> is the “better” with <em>TJK</em> in the model. There is no hypothesis test to compare these two models because one is not <strong><em>nested</em></strong> in the other – <strong>it is not possible to get from one model to the other by setting one or more slope coefficients to 0 so we can’t test our way from one model to the other one</strong>. The AICs suggest that the model with <em>DBC</em> and <em>TJK</em> is better than the model with <em>DBF</em> and <em>TJK</em>, so that helps us make that decision. After that step, we could rely on <span class="math inline">\(t\)</span>-tests or ANOVA <span class="math inline">\(F\)</span>-tests to decide whether further refinement is suggested/possible for the model with <em>DBC</em> and <em>TJK</em>. This would provide the direct inferences that they probably want and are trying to obtain from AICs along with p-values in their paper.</p>
+<p>Finally, their results would actually be more valid if they had used a set of statistical methods designed for modeling responses that are counts of events or things, especially those whose measurements change as a function of sampling effort; models called <strong><em>Poisson rate models</em></strong> would be ideal for their application. The other aspect of the biodiversity that they measured for each stage was the duration of the stage. They never incorporated that information and it makes sense given their interests in comparing biodiversity across stages, not understanding why more or less biodiversity might occur. But other researchers might want to estimate the biodiversity after also controlling for the length of time that the stage lasted and the sampling efforts involved in detecting the biodiversity of each stage, models that are only a few steps away from those considered here. In general, this study presents some of the pitfalls of attempting to use advanced statistical methods as well as hinting at the benefits. The statistical models are the only way to access the results of interest; inaccurate usage of statistical models can provide inaccurate conclusions. They seemed to mostly get the right answers despite a suite of errors in their work.</p>
 </div>
 <div id="section9-5" class="section level2">
 <h2><span class="header-section-number">9.5</span> General summary</h2>
@@ -393,6 +829,23 @@ y_i=&amp;\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level
 
 
 
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="92">
+<li id="fn92"><p>The researchers did not do this analysis so never directly addressed this research question although they did discuss it in general ways.<a href="chapter9.html#fnref92">↩</a></p></li>
+<li id="fn93"><p>Instructors in this class often get asked what a problem with non-constant variance actually looks like – this is it!<a href="chapter9.html#fnref93">↩</a></p></li>
+<li id="fn94"><p>This was not even close to their top AIC model so they made an odd choice.<a href="chapter9.html#fnref94">↩</a></p></li>
+<li id="fn95"><p>I had students read this paper in a class and one decided that this was a reasonable way to report small p-values – it is WRONG. We are interested in how small a p-value might be and saying it is over a value is never useful.<a href="chapter9.html#fnref95">↩</a></p></li>
+<li id="fn96"><p>All too often, I read journal articles that have under-utilized, under-reported, mis-applied, or mis-interpreted statistical methods and results. One of the reasons that I wanted to write this book is to help more people move from basic statistical knowledge to correct use of intermediate statistical methods and beginning to see the potential in more advanced statistical methods. It has taken me many years of being a statistician just to feel armed for battle when confronted with new applications and two stat courses are not enough to get you there, but you have to start somewhere. You are only a couple of hundred hours into your 10,000 hours required for mastery. This presentation is intended get you some solid fundamentals to build on or a few intermediate tools to use if this is your last statistics training experience.<a href="chapter9.html#fnref96">↩</a></p></li>
+<li id="fn97"><p>They also had an error in their AIC results that is difficult to explain here but was due to an un-careful usage of the results from the more advanced models that account for autocorrelation, which seems to provide the proper ranking of models (<em>that they ignored</em>) but did not provide the correct differences among models.<a href="chapter9.html#fnref97">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
