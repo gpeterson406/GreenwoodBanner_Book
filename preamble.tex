@@ -1,10 +1,9 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{color}
-
+\usepackage{amsbsy}
 \definecolor{purple}{RGB}{76,0,153}
-% declare overall beamer theme to use as baseline
-\usetheme{default}
+\usepackage[svgnames]{xcolor}
 
 % make code-output smaller
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
@@ -20,6 +19,6 @@
 
 \setlength{\OuterFrameSep}{-4pt}
 \makeatletter
-\preto{\@verbatim}{\topsep=-10pt \partopsep=-10pt }
+\def\preto{\@verbatim}{\topsep=-10pt \partopsep=-10pt }
 \makeatother
 

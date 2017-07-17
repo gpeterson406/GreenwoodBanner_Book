@@ -1,0 +1,17 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: GreenwoodBanner.aux
+The style file: apalike.bst
+Database file #1: packages.bib
+Database file #2: references.bib
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
+while executing---line 1098 of file apalike.bst
+(There were 6 error messages)

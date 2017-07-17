@@ -7,6 +7,8 @@ output:
 
 
 
+
+
 This book is designed primarily for use in a second semester 
 statistics course although it can also be
 useful for researchers needing a quick review or ideas for using R for the
@@ -30,14 +32,17 @@ This text covers a wide array of statistical tools that are connected through si
 or both. As we explore various techniques, look for the identifying characteristics
 of each method -- what type of research questions are being addressed
 (relationships or group differences, for example) and what type of variables
-are being analyzed (quantitative or categorical).  ***Quantitative variables*** are made up of numerical measurements that have meaningful units attached to
-them.  ***Categorical variables***  take on values that are categories or labels. Additionally, you will need to carefully identify the  ***response*** variables, where the study and variable characteristics should suggest which variables should be used as the explanatory variables that may explain
+are being analyzed (quantitative or categorical). ***Quantitative variables*** are made up of numerical measurements that have meaningful units attached to
+them. ***Categorical variables*** take on values that are categories or labels.
+Additionally, you will need to carefully identify the ***response*** variables, where
+the study and variable characteristics should suggest which variables should be used
+as the explanatory variables that may explain
 variation in the response variable. Because this is an intermediate statistics
 course, we will start to handle more complex situations (many explanatory
 variables) and will provide some tools for graphical explorations to complement
 the more sophisticated statistical models required to handle these situations. 
 
-##Overview of methods</a>
+##Overview of methods
 
 After you are introduced to basic statistical ideas, a wide array of statistical methods become
 available. The methods explored here focus on assessing (estimating and testing
@@ -64,78 +69,106 @@ in a clinical trial or whether a student has turned in copied work
 (never, exam or paper, or both). There are going to be some more
 nuanced aspects to all these analyses as the complexity of both sides of Figure
 \@ref(fig:Figure1) suggest, but note that near the bottom, each tree converges on a single
-procedure, using a  ***linear model***  for a quantitative response variable or using a  ***Chi-square test***  for a categorical response. After selecting the appropriate procedure and completing the necessary technical steps to get results for a
+procedure, using a ***linear model*** for a quantitative response variable or 
+using a ***Chi-square test*** for a categorical response. After selecting the
+appropriate procedure and completing the necessary technical steps to get results
+for a
 given data set, the final step involves assessing the scope of inference and
 types of conclusions that are appropriate based on the design of the study. 
 
 (ref:fig1) Flow chart of methods
 
-<div class="figure">
-<img src="chapter0_files/image001.png" alt="(ref:fig1)"  />
-<p class="caption">(\#fig:Figure1)(ref:fig1)</p>
-</div>
+![(\#fig:Figure1)(ref:fig1)](chapter0_files/image001.png) 
 
-We will be spending most of the semester working on methods for quantitative response variables (the
-left side of Figure \@ref(fig:Figure1)  covered in Chapters 1, 2, 3, 5, 6, and 7) and stepping
+We will be spending most of the semester working on methods for quantitative
+response variables (the
+left side of Figure \@ref(fig:Figure1) covered in Chapters \@ref(chapter2),
+\@ref(chapter3), \@ref(chapter4), \@ref(chapter6), \@ref(chapter7), and
+\@ref(chapter8)) and stepping
 over to handle the situation with a categorical response variable (right side
-of Figure \@ref(fig:Figure1)  that is discussed in Chapter 4). Chapter 8 contains case studies
+of Figure \@ref(fig:Figure1) that is discussed in Chapter \@ref(chapter5)). 
+Chapter \@ref(chapter9) contains case studies
 illustrating all the methods discussed previously, providing a final opportunity
 to explore additional examples that illustrate how finding your way through the
-paths in Figure \@ref(fig:Figure1)  leads to the appropriate analysis. 
+paths in Figure \@ref(fig:Figure1) leads to the appropriate analysis. 
 
 
-The first topics (Chapters 0 and 1) will be more familiar as we start with single and two group situations
+The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
+familiar as we start with single and two group situations
 with a quantitative response. In your previous statistics course, you should
 have seen methods for estimating and quantifying uncertainty for the mean of a
 single group and for differences in the means of two groups. Once we have briefly
 reviewed these methods and introduced the statistical software that we will use
 throughout the course, we will consider the first new statistical material in
-Chapter 2. It involves the situation with a quantitative response variable where
-there are more than 2 groups to compare -- this is what we call the  ***One-Way ANOVA***  situation. It generalizes the 2-independent sample hypothesis
+Chapter \@ref(chapter3). It involves the situation with a quantitative response
+variable where
+there are more than 2 groups to compare -- this is what we call the ***One-Way
+ANOVA*** situation. It generalizes the 2-independent sample hypothesis
 test to handle situations where more than 2 groups are being studied. When we
 learn this method, we will begin discussing model assumptions and methods for
 assessing those assumptions that will be present in every analysis involving a
-quantitative response. The  ***Two-Way ANOVA***  (Chapter 3) considers situations with two categorical explanatory variables and a quantitative response. To make
+quantitative response. The ***Two-Way ANOVA*** (Chapter \@ref(chapter3))
+considers situations with two categorical explanatory variables and a 
+quantitative response. To make
 this somewhat concrete, suppose we are interested in assessing differences in, 
 say, the *yield* of wheat from a field based on the amount of *fertilizer* applied(none, low, or high) and *variety* of wheat (two types). Here, *yield* is a quantitative response variable that might be measured in bushels per acre and
-there are two categorical explanatory variables, *fertilizer*, with 3 levels, and *variety*, with two levels. In this material, we introduce the idea of an  ***interaction*** between the two explanatory variables: the relationship between one categorical
+there are two categorical explanatory variables, *fertilizer*, with 3 levels, and *variety*, with two levels. In this material, we introduce the idea of an
+***interaction*** between the two explanatory variables: the relationship between one categorical
 variable and the mean of the response changes depending on the levels of the
 other categorical variable. For example, extra fertilizer might enhance the
-growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the  ***additive*** (no interaction) and the  ***interaction***  models. 
-
-
+growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
 
 Following the methods for two categorical variables and a quantitative response, we explore a method for
-analyzing data where the response is categorical, called the  ***Chi-square test***  in Chapter 4. This most closely matches the One-Way ANOVA
+analyzing data where the response is categorical, called the ***Chi-square test***
+in Chapter \@ref(chapter5). This most closely matches the One-Way ANOVA
 situation with a single categorical explanatory variable, except now the
 response variable is categorical. For example, we will assess whether taking a
-drug (vs taking a  ***placebo***^[A ***placebo*** is a treatment level designed to mimic the potentially efficacious level(s) but that can have no actual effect. The  ***placebo effect*** is the effect that thinking that an effective treatment was received has on subjects. There are other related issues in performing experiments like the ***Hawthorne*** or observer ***effect*** where subjects modify behavior because they are being observed.])
-has an  ***effect***^[We will reserve the term "effect" for situations where we could potentially infer causal impacts on the response of the explanatory variable which occurs in situations where the levels of the explanatory variable are randomly assigned to the subjects.] on the type of improvement the subjects demonstrate. There are two different scenarios
+drug (vs taking a ***placebo***^[A ***placebo*** is a treatment level designed to
+mimic the potentially efficacious level(s) but that can have no actual effect. The
+***placebo effect*** is the effect that thinking that an effective treatment was
+received has on subjects. There are other related issues in performing experiments
+like the ***Hawthorne*** or observer ***effect*** where subjects modify behavior
+because they are being observed.])
+has an ***effect***^[We will reserve the term "effect" for situations where we could
+potentially infer causal impacts on the response of the explanatory variable which
+occurs in situations where the levels of the explanatory variable are randomly
+assigned to the subjects.] on the type of improvement the subjects demonstrate. There
+are two different scenarios
 for study design that impact the analysis technique and hypotheses tested in
-Chapter 4. If the explanatory variable reflects the group that subjects were
+Chapter \@ref(chapter5). If the explanatory variable reflects the group that
+subjects were
 obtained from, either through randomization of the treatment level to the
-subjects or by taking samples from separate populations, this is called a  ***Chi-square Homogeneity Test***. It is also possible to obtain a single sample from a population and then obtain information on the levels of the explanatory variable for each
-subject. We will analyze these results using what is called a  ***Chi-square Independence Test***. They both use the same test statistic but we use slightly different graphics and are testing different hypotheses in these two related
-situations. Figure \@ref(fig:Figure1)  also shows that if we had a quantitative explanatory
+subjects or by taking samples from separate populations, this is called a
+***Chi-square Homogeneity Test***. It is also possible to obtain a single sample
+from a population and then obtain information on the levels of the explanatory
+variable for each
+subject. We will analyze these results using what is called a ***Chi-square Independence Test***. They both use the same test statistic but we use slightly different graphics and are testing different hypotheses in these two related
+situations. Figure \@ref(fig:Figure1) also shows that if we had a quantitative explanatory
 variable and a categorical response that we would need to "bin" or create
 categories of responses from the quantitative variable to use the Chi-square
 testing methods. 
 
-If the predictor and response variables are both quantitative, we start with scatterplots, correlation, 
-and  ***simple linear regression***  models (Chapters 5 and 6) -- things you should have seen, at least to some degree, previously. The biggest differences here will be
+If the predictor and response variables are both quantitative, we start with
+scatterplots, correlation, 
+and ***simple linear regression*** models (Chapters \@ref(chapter6) and
+\@ref(chapter7)) -- things you should have seen, at least to some degree,
+previously. The biggest differences here will be
 the depth of exploration of diagnostics and inferences for this model and
 discussions of transformations of variables. If there is more than one
-explanatory variable, then we say that we are doing  ***multiple linear regression*** (Chapter 7) -- the "multiple" part of the name reflects that there will be more
+explanatory variable, then we say that we are doing ***multiple linear regression***
+(Chapter \@ref(chapter8)) -- the "multiple" part of the name reflects that there will
+be more
 than one explanatory variable. We use the same name if we have a mix of
 categorical and quantitative predictor variables but there are some new issues
 in setting up the models and interpreting the coefficients that we need to
 consider. In the situation with one categorical predictor and one quantitative
 predictor, we revisit the idea of an interaction. It allows us to consider situations
-where the estimated relationship between a quantitative predictor and the mean response
+where the estimated relationship between a quantitative predictor and the 
+mean response
 varies among different levels of the categorical variable. 
 
-By the end of Chapter 8 you should be able to identify, perform using the statistical software R (R
-Core Team, 2016), and interpret the results from each of these methods. There
+By the end of Chapter \@ref(chapter9) you should be able to identify, perform 
+using the statistical software R [@R-base], and interpret the results from each of these methods. There
 is a lot to learn, but many of the tools for using R and interpreting results
 of the analyses accumulate and repeat during the semester. If you work hard to
 understand the initial methods, it will help you when the methods get more
@@ -147,10 +180,10 @@ want to go with learning the software.
 
 All the methods you will learn require you to carefully consider how the data were collected, how that
 pertains to the population of interest, and how that impacts the inferences
-that can be made. The  ***scope of inference***  from the bottom of Figure \@ref(fig:Figure1)  is our shorthand term for remembering to think about two aspects
-of the study --  ***random assignment***  and  ***random sampling*** . In a given
+that can be made. The ***scope of inference*** from the bottom of Figure \@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
+of the study -- ***random assignment*** and ***random sampling***. In a given
 situation, you need to use the description of the study to decide if the
-explanatory variable was randomly assigned to study units (this allows for  ***causal inferences***  if differences are detected) or not (so no causal statements
+explanatory variable was randomly assigned to study units (this allows for ***causal inferences*** if differences are detected) or not (so no causal statements
 are possible). As an example, think about two studies, one where students are
 randomly assigned to either get tutoring with their statistics course or not
 and another where the students are asked at the end of the semester whether
@@ -184,7 +217,7 @@ communicate interpretations for the methods discussed here.
 ##Getting started in R
 
 You will need to download the statistical software package called R and an enhanced interface to R called
-RStudio (RStudio, 2016). They are open source and free to download and use
+RStudio [@RStudio]. They are open source and free to download and use
 (and will always be that way). This means that the skills you learn now can
 follow you the rest of your life. R is becoming the primary language of
 statistics and is being adopted across academia, government, and businesses to
@@ -202,18 +235,24 @@ that learns R starts with copying other people's code and then making changes
 for specific applications -- so expect to go back to examples from the text and focus
 on learning how to modify that code to work for your particular data set. Only
 really experienced R users "know" functions without having to check other
-resources. After we complete this basic introduction, Chapter 1 begins doing
+resources. After we complete this basic introduction, Chapter \@ref(chapter2) begins doing
 more sophisticated things with R, allowing us to compare quantitative responses
 from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
 You will have two downloading activities to complete before you can do anything
-more than read this book^[I recorded a video that walks through the material on the following pages that is available here: https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html in the digital version of the book.]. First, you need to download R. It is the engine that will do all the computing
+more than read this book^[I recorded a video that walks through the material on the following pages 
+that is available here: https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html 
+in the digital version of the book.]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that
-corresponds to your operating system. On the next page, click on "**base**" and then it will take you to a screen to download the most current version of R that is compiled for your
-operating system, something like  "**Download R 3.3.1 for Windows**". Click on that link and then open the file you downloaded. You will need to select your preferred language (choose English so your instructor can help you), then hit "**Next**"
-until it starts to unpack and install the program (all the base settings will be fine). After you hit  "**Finish**"  you will not do anything further with R directly. 
+corresponds to your operating system. On the next page, click on "**base**" and then it will take you 
+to a screen to download the most current version of R that is compiled for your
+operating system, something like "**Download R 3.3.1 for Windows**". Click on that link and then open 
+the file you downloaded. You will need to select your preferred language (choose English so your 
+instructor can help you), then hit "**Next**"
+until it starts to unpack and install the program (all the base settings will be fine). After you hit 
+"**Finish**" you will not do anything further with R directly. 
 
 Second, you need to download RStudio. It is an enhanced interface that will make interacting with
 R less frustrating. To download RStudio, go to http://www.rstudio.com/products/rstudio/download/ and select the correct version under
@@ -252,10 +291,7 @@ plots that you make and requests for "Help" on specific functions.
 
 (ref:fig2) Initial RStudio layout
 
-<div class="figure">
-<img src="chapter0_files/image003.png" alt="(ref:fig2)"  />
-<p class="caption">(\#fig:Figure2)(ref:fig2)</p>
-</div>
+![(\#fig:Figure2)(ref:fig2)](chapter0_files/image003.png) 
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
 (``>``) in the lower left "console" panel, type 3+4, and then hit enter. It
@@ -287,7 +323,7 @@ statistics, but that will only work in very limited situations. To use the real
 power of R this semester, we need to work with data sets that store the
 Basically, we need to store observations in named vectors (one dimensional arrays) that contain a list of the observations. To create a vector containing
 the four numbers and assign it to a variable named *variable1*, we need to create a vector using the function 
-``c``  which means "combine the items" that follow, if they are inside parentheses and have commas separating the values, 
+``c`` which means "combine the items" that follow, if they are inside parentheses and have commas separating the values, 
 as follows:
 
 ```r
@@ -303,7 +339,7 @@ To get this vector stored in a variable called *variable1* we need to use the as
 
 In R, the assignment operator, ``<-``, is created by typing a "less than" symbol ``<`` followed by a "minus" sign (``-``)
 ever want to see what numbers are residing in an object in R, just type its name and hit *enter*. You can see how that variable contains the same information that was initially generated by 
-``c(-3, 5, 7, 8)``  but is easier to access since we just need the text for the variable name representing that vector. 
+``c(-3, 5, 7, 8)`` but is easier to access since we just need the text for the variable name representing that vector. 
 
 
 ```r
@@ -312,8 +348,8 @@ ever want to see what numbers are residing in an object in R, just type its name
 ```
 
 With the data stored in a variable, wean use functions such as
-``mean``  and
-``sd``  to find the mean and standard deviation of the observations contained in
+``mean`` and
+``sd`` to find the mean and standard deviation of the observations contained in
 ``variable1`` : 
 
 
@@ -339,15 +375,19 @@ be saved as a ".csv" file (stands for comma-separated values although Excel
 calls it "CSV (Comma Delimited)", which basically strips off some of the junk
 that Excel adds to the necessary information in the file. Excel will tell you that
 this is a bad idea, but it actually creates a more stable archival format and
-one that R can use directly^[There are ways to read ".xls" and ".xlsx" files directly into R but to handle multiple sheets they are more complicated and not as stable across operating systems as the simpler version we recommend.]. 
+one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
+directly into R but to handle multiple sheets they are more complicated and not 
+as stable across operating systems as the simpler version we recommend.]. 
 
 With data set converted to a CSV file, we need to read the data set into R. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
 the "Import Data Set" button in the upper right "Environment" panel as
 indicated in Figure \@ref(fig:Figure2)) or modifying the 
 
-``read.csv``  function to find the file of interest. To practice this, you can download an Excel (.xls) file from http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
-31 males that volunteered for a study on methods for measuring fitness(Westfall and Young, 1993). In the spreadsheet, you will find a data set that
+``read.csv`` function to find the file of interest. To practice this, you can 
+download an Excel (.xls) file from http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
+31 males that volunteered for a study on methods for measuring fitness [@Westfall1993]. 
+In the spreadsheet, you will find a data set that
 starts and ends with the following information (only results for Subjects 1, 2, 
 30, and 31 shown here):
 
@@ -375,10 +415,16 @@ during 1.5 mile run (*RunPulse*, in beats per minute), resting pulse rate
 (*RestPulse*, beats per minute), Body Weight (*BodyWeight*, in kg), and *Age* 
 (in years). Open the file in Excel or equivalent software and then save it as 
 a .csv file in a location you can find on your computer. Then go to RStudio 
-and click on  **File** , then  **Import Dataset** , then  **From CSV...**^[If you are having trouble getting the file converted and read into R, copy and run the following code: ``treadmill <-read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
-Find your file and check "**Import**". R will store the data set as an object named whatever the .csv file was named. You could use another name as well, but it is often easiest just to keep the data
+and click on **File** , then **Import Dataset** , then **From CSV...**^[If
+you are having trouble getting the file converted and read into R, copy and 
+run the following code: 
+``treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
+Find your file and check "**Import**". R will store the data set as an object named 
+whatever the .csv file was named. You could use another name as well, but it is 
+often easiest just to keep the data
 set name in R related to the original file name. You should see some text appear
-in the console (lower left panel) like in Figure \@ref(fig:Figure3). The text that is created
+in the console (lower left panel) like in Figure \@ref(fig:Figure3). The text 
+that is created
 will look something like the following -- if you had stored the file in a drive
 labeled D:, it would be:
 
@@ -390,27 +436,32 @@ treadmill <- read.csv("D:/treadmill.csv")
 ```
 
 What is put inside the 
-``" "``  will depend on the location and name of your saved .csv file. A version of the data set in what looks like a
-spreadsheet will appear in the upper left window due to the second line of code
-(``View(treadmill``)). 
+``" "`` will depend on the location and name of your saved .csv file. A 
+version of the data set in what looks like a
+spreadsheet will appear in the upper left window due to the second line of 
+code (``View(treadmill``)). 
 
 (ref:fig3) RStudio with initial data set loaded
 
-<div class="figure">
-<img src="chapter0_files/image005.png" alt="(ref:fig3)"  />
-<p class="caption">(\#fig:Figure3)(ref:fig3)</p>
-</div>
+![(\#fig:Figure3)(ref:fig3)](chapter0_files/image005.png) 
 
-Just directly typing (or using) a line of code like this is actually the other way that we can read in
+Just directly typing (or using) a line of code like this is actually the 
+other way that we can read in
 files. If you choose to use the text-only interface, then you need to tell R
-where to look in your computer to find the data file. ``read.csv``  is a function that takes a path as an argument. To use it, specify the path to your data file, put quotes around it, and put it as the input to ``read.csv(...)`` . For some examples later in the book, you will be able to copy a command like this from the text and read data sets and other
+where to look in your computer to find the data file. ``read.csv`` is a 
+function that takes a path as an argument. To use it, specify the path to 
+your data file, put quotes around it, and put it as the input to 
+``read.csv(...)``. For some examples later in the book, you will be able to 
+copy a command like this from the text and read data sets and other
 code directly from my the course folder, assuming you are connected to the
 internet. 
 
-To verify that you read the data set in correctly, it is always good to check its
-contents. We can view the first and last rows in the data set using the ``head``
-and ``tail``  functions on the data set, which show the following results for the
-``treadmill``  data. Note that you will sometimes need to resize the console window in RStudio to get all the columns to display
+To verify that you read the data set in correctly, it is always good to check 
+its contents. We can view the first and last rows in the data set using the 
+``head`` and ``tail`` functions on the data set, which show the following 
+results for the
+``treadmill`` data. Note that you will sometimes need to resize the console
+window in RStudio to get all the columns to display
 in a single row which can be performed by dragging the gray bars that separate
 the panels.
 
@@ -460,9 +511,17 @@ tail(treadmill)
 While not always required, for many of the analyses, we will tap into a large suite
 of additional functions available in R packages by "installing" (basically
 downloading) and then "loading" the packages. There are some packages that we
-will use frequently, starting with the ``mosaic``  package (Pruim, Kaplan, and Horton, tab in the lower right panel of RStudio. Click on the  **Install**  button and then type in the name of the package in the box (here type in ``mosaic``). RStudio will try to auto-complete the package name you are typing which should help you make sure you got it typed correctly. This will be the first of *many* times that we will mention that R is case sensitive -- in other words, ``Mosaic``  is different from ``mosaic``  in R syntax and this sort of thing applies to everything you do in R. You should only need to install each R
+will use frequently, starting with the ``mosaic`` package [@R-mosaic].
+To install an R package, go to the **Packages** tab in the lower right panel of
+RStudio. Click on the **Install** button and then type in the name of the package in
+the box (here type in ``mosaic``). RStudio will try to auto-complete the package name
+you are typing which should help you make sure you got it typed correctly. This will
+be the first of *many* times that we will mention that R is case sensitive -- in
+other words, ``Mosaic`` is different from ``mosaic`` in R syntax and this sort of
+thing applies to everything you do in R. You should only need to install each R
 package once on a given computer. If you ever see a message that R can't find a
-package, make sure it appears in the list in the  **Packages**  tab and if it doesn't, repeat the previous steps to install it. 
+package, make sure it appears in the list in the **Packages** tab and if it 
+doesn't, repeat the previous steps to install it. 
 
 After installing the package, we need to load it to make it active in a given work
 session. Go to the command prompt and type (or copy and paste) ``require(mosaic)`` :
@@ -472,20 +531,27 @@ session. Go to the command prompt and type (or copy and paste) ``require(mosaic)
 require(mosaic)
 ```
 
-You may see a warning message about versions of the package and versions of R -- this is *usually* something you can ignore. Other warning messages could be more ominous for proceeding but before getting too concerned, there are couple of
-basic things to check. First, double check that the package is installed (see
+You may see a warning message about versions of the package and versions of 
+R -- this is *usually* something you can ignore. Other warning messages could
+be more ominous for proceeding but before getting too concerned, there are 
+couple of basic things to check. First, double check that the package is 
+installed (see
 previous steps). Second, check for typographical errors in your code --
 especially for mis-spellings or unintended capitalization. If you are still
 having issues, try repeating the installation process. If that fails, find
 someone more used to using R to help you (for example in the Math Learning
-Center or by emailing your instructor)^[Most computer lab computers at Montana State University have RStudio installed and so provide another venue to try this where the software is already installed.]. 
+Center or by emailing your instructor)^[Most computer lab computers at 
+Montana State University have RStudio installed and so provide another venue 
+to try this where the software is already installed.]. 
 
 To help you go from basic to intermediate R usage and especially to help with more
 complicated problems, you will want to learn how to manage and save your R code. 
 The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
-start a new ".R"" file to store your code, click on  **File** , then  **New File**,
-then **R Script*. This will create a blank page to enter and edit code -- then save the file as MyFileName.R in your preferred location. Saving your code will mean that you can return to where you
+start a new ".R"" file to store your code, click on **File**, then 
+**New File**, then **R Script*. This will create a blank page to enter and 
+edit code -- then save the file as MyFileName.R in your preferred location. 
+Saving your code will mean that you can return to where you
 last were working by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
 of code and hit the "Run" button on the upper part of the panel. It will appear
@@ -499,20 +565,23 @@ section of code using the "Run" button.
 
 (ref:fig4) RStudio with highlighted code run
 
-<div class="figure">
-<img src="chapter0_files/image006.png" alt="(ref:fig4)"  />
-<p class="caption">(\#fig:Figure4)(ref:fig4)</p>
-</div>
+![(\#fig:Figure4)(ref:fig4)](chapter0_files/image006.png) 
 
 ##Basic summary statistics, histograms, and boxplots using R
 
 With RStudio running, the ``mosaic`` package loaded, a place to write and
-save code, and the ``treadmill``  data set loaded, we can (finally!) start to summarize the results of the study. The ``treadmill``  object is what R calls a  ***data.frame***^[Data frames in R are objects that can contain both categorical and quantitative variables on your n subjects with a name for each variable that is also the name of each column in a matrix. Each subject is a row of the data set.] and contains columns corresponding to each variable in the spreadsheet. Every
+save code, and the ``treadmill`` data set loaded, we can (finally!) start to
+summarize the results of the study. The ``treadmill`` object is what R calls a 
+***data.frame***^[Data frames in R are objects that can contain both 
+categorical and quantitative variables on your n subjects with a name for each
+variable that is also the name of each column in a matrix. Each subject is a 
+row of the data set.] and contains columns corresponding to each variable in 
+the spreadsheet. Every
 function in R will involve specifying the variable(s) of interest and how you
-want to use them. To access a particular variable (column) in a data. frame, you
-can use a $ between the data. frame name and the name of the variable of
+want to use them. To access a particular variable (column) in a data.frame, you
+can use a $ between the data.frame name and the name of the variable of
 interest, generically as ``dataframename$variablename``. To identify the 
-``RunTime``  variable here it would be ``treadmill$RunTime``. In the command line it would look like:
+``RunTime`` variable here it would be ``treadmill$RunTime``. In the command line it would look like:
 
 
 ```r
@@ -524,7 +593,7 @@ treadmill$RunTime
 ## [12]  9.40 11.50 10.50 10.60 10.25 10.00 11.17 10.47 11.95  9.63 10.07
 ## [23] 11.08 11.63 11.12 11.37 10.95 13.08 12.63 12.88 14.03
 ```
-Just as in the previous section, we can generate summary statistics using functions like ``mean``  and ``sd``  by running them on a specific variable:
+Just as in the previous section, we can generate summary statistics using functions like ``mean`` and ``sd`` by running them on a specific variable:
 
 
 ```r
@@ -543,12 +612,16 @@ sd(treadmill$RunTime)
 ## [1] 1.387414
 ```
 And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
-mean and SD are only appropriate summaries if the distribution is roughly  ***symmetric*** (both sides of the distribution are approximately the same). The 
-``mosaic``  package provides a useful function called ``favstats`` that provides the mean and SD as well as the  ***5 number summary*** : 
+mean and SD are only appropriate summaries if the distribution is roughly
+***symmetric*** (both sides of the distribution are approximately the same). The 
+``mosaic``  package provides a useful function called ``favstats`` that provides 
+the mean and SD as well as the ***5 number summary*** : 
 the minimum (``min``), the first quartile (``Q1``, the 25$^{th}$ percentile), 
 the median (50$^{th}$ percentile), the third quartile (``Q3`` , the 75$^{th}$
-percentile), and the maximum (``max``). It also provides the number of observations 
-(``n``) which was 31, as noted above, and a count of whether any missing values were encountered (``missing``), which was 0 here since all subjects had measurements available on this variable. 
+percentile), and the maximum (``max``). It also provides the number of 
+observations (``n``) which was 31, as noted above, and a count of whether any 
+missing values were encountered (``missing``), which was 0 here since all 
+subjects had measurements available on this variable. 
 
 
 ```r
@@ -570,10 +643,10 @@ subjects in the Practice Problems in Section 0.5, you will get even more
 information about how similar all the subjects in this study were. 
 
 A graphical display of these results will help us to assess the shape 
-of the distribution of run times -- including considering the potential for the presence of a  ***skew*** (whether the right or left tail of the distribution 
+of the distribution of run times -- including considering the potential for the presence of a ***skew*** (whether the right or left tail of the distribution 
 is noticeably more spread out with left skew meaning that the left tail 
-is more spread out than the right tail) and  ***outliers***  
-(unusual observations). A  ***histogram *** is a good place to start.
+is more spread out than the right tail) and ***outliers*** 
+(unusual observations). A ***histogram *** is a good place to start.
 Histograms display connected bars with counts of observations defining
 the height of bars based on a set of bins of values of the quantitative variable. 
 We will apply the ``hist`` function to the ``RunTime`` variable, which produces Figure \@ref(fig:Figure5). 
@@ -585,30 +658,29 @@ We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
 hist(treadmill$RunTime)
 ```
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure5-1.png" alt="(ref:fig5)" width="672" />
-<p class="caption">(\#fig:Figure5)(ref:fig5)</p>
-</div>
+![(\#fig:Figure5)(ref:fig5)](01-preface_files/figure-latex/Figure5-1.pdf) 
 
 
-I used the  **Export**  button found above the plot, followed by  **Copy to Clipboard**  and clicking on the  **Copy Plot**  button. Then if you open your
+I used the **Export** button found above the plot, followed by **Copy to 
+Clipboard** and clicking on the **Copy Plot** button. Then if you open your
 favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
 parts of this process in the screen grab in Figure \@ref(fig:Figure6). 
 
 (ref:fig6) RStudio while in the process of copying the histogram
 
-<div class="figure">
-<img src="chapter0_files/image010.png" alt="(ref:fig6)"  />
-<p class="caption">(\#fig:Figure6)(ref:fig6)</p>
-</div>
+![(\#fig:Figure6)(ref:fig6)](chapter0_files/image010.png) 
 
-You can also directly save the figures as separate files using  **Save as Image** or  **Save as PDF**and then insert them into your word processing documents. 
+You can also directly save the figures as separate files using 
+**Save as Image** or **Save as PDF**and then insert them into your word 
+processing documents. 
 
-The function ``hist`` defaults into providing a histogram on the  ***frequency***  (count) scale. In most R functions, there are the default options that will occur if we don't make any specific choices but we
+The function ``hist`` defaults into providing a histogram on the ***frequency***
+(count) scale. In most R functions, there are the default options that will 
+occur if we don't make any specific choices but we
 can override the default options if we desire. One option we can modify here is
 to add labels to the bars to be able to see exactly how many observations fell
-into each bar. Specifically, we can turn the ``labels`` option "on" by making it true ("T") by adding ``labels=T``  to the previous call to the ``hist`` function, separated by a comma: 
+into each bar. Specifically, we can turn the ``labels`` option "on" by making it true ("T") by adding ``labels=T`` to the previous call to the ``hist`` function, separated by a comma: 
 
 (ref:fig7) Histogram of #Run Times with counts in bars labeled.
 
@@ -617,24 +689,21 @@ into each bar. Specifically, we can turn the ``labels`` option "on" by making it
 hist(treadmill$RunTime, labels=T)
 ```
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure7-1.png" alt="(ref:fig7)" width="672" />
-<p class="caption">(\#fig:Figure7)(ref:fig7)</p>
-</div>
+![(\#fig:Figure7)(ref:fig7)](01-preface_files/figure-latex/Figure7-1.pdf) 
 
 
 Based on this histogram, it does not appear that there any outliers in the responses
 since there are no bars that are separated from the other observations. However, 
 the distribution does not look symmetric and there might be a skew to the
-distribution. Specifically, it appears to be  ***skewed right***  (the right tail is longer than the left). But histograms can sometimes mask features of
+distribution. Specifically, it appears to be ***skewed right*** (the right tail is longer than the left). But histograms can sometimes mask features of
 the data set by binning observations and it is hard to find the percentiles
 accurately from the plot. 
 
-When assessing outliers and skew, the  ***boxplot***  
+When assessing outliers and skew, the ***boxplot*** 
 (or *Box and Whiskers* plot) can also be helpful (Figure \@ref(fig:Figure8)) to describe the 
 shape of the distribution as it displays the 5-number summary and will also indicate
 observations that are "far" above the middle of the observations. R's 
-``boxplot`` function uses the standard rule to indicate an observation as a  ***potential outlier***  if it falls more than 1.5 times the  ***IQR*** 
+``boxplot`` function uses the standard rule to indicate an observation as a ***potential outlier*** if it falls more than 1.5 times the ***IQR*** 
 (Inter-Quartile Range, calculated as Q3-Q1) below Q1 or above Q3. The potential outliers are plotted with circles and the *Whiskers* (lines that extend from Q1 and Q3 typically to the minimum and maximum) are shortened to only go as far as
 observations that are within $1.5*$IQR of the upper and lower quartiles. The *box* part of the boxplot is a box that goes from Q1 to Q3 and the median is displayed as a line somewhere inside the box^[The median, quartiles and whiskers sometimes occur at the same values when there are many tied observations. If you can't see all the 
 components of the boxplot, produce the numerical summary to help you understand 
@@ -668,16 +737,13 @@ but worth noting.
 boxplot(treadmill$RunTime)
 ```
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure8-1.png" alt="(ref:fig8)" width="672" />
-<p class="caption">(\#fig:Figure8)(ref:fig8)</p>
-</div>
+![(\#fig:Figure8)(ref:fig8)](01-preface_files/figure-latex/Figure8-1.pdf) 
 
 While the default boxplot is fine, it fails to provide good graphical labels, 
 especially on the y-axis. Additionally, there is no title on the plot. The
-following code provides some enhancements to the plot by using the ``ylab``  and 
-``main``  options in the call to ``boxplot``, with the results displayed in Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
-be assigned into the options ``ylab``  (for y-axis) or ``main`` (for the title) here to put it into those locations. 
+following code provides some enhancements to the plot by using the ``ylab`` and 
+``main`` options in the call to ``boxplot``, with the results displayed in Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
+be assigned into the options ``ylab`` (for y-axis) or ``main`` (for the title) here to put it into those locations. 
 
 (ref:fig9) Boxplot of Run Times with improved labels.
 
@@ -687,10 +753,7 @@ boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)",
         main="Boxplot of the Run Times of n=31 participants")
 ```
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure9-1.png" alt="(ref:fig9)" width="672" />
-<p class="caption">(\#fig:Figure9)(ref:fig9)</p>
-</div>
+![(\#fig:Figure9)(ref:fig9)](01-preface_files/figure-latex/Figure9-1.pdf) 
 
 
 
@@ -725,7 +788,7 @@ favstats(treadmill$RunTime)
 ```
 
 Statisticians (and other scientists) are starting to use these methods because they provide what is called "Reproducible
-research" (Gandrud, 2015) where all the code and output it produced are
+research" [@Gandrud2015] where all the code and output it produced are
 available in a single place. This allows different researchers to run and verify
 results or the original researchers to revisit their earlier work at a later
 date and recreate all their results. Scientific publications are currently
@@ -736,7 +799,7 @@ want to consider exploring these alternative options.
 Finally, when you are done with your work and attempt to exit out of RStudio, it will
 ask you to save your workspace. You do not need to do this and would be better
 served not to do this. If you are in the practice of saving your workspace, you
-will end up with tons of data. frames that open each time you use it and it will
+will end up with tons of data.frames that open each time you use it and it will
 be harder to find and manage the ones you are currently working with. If you
 save your R code via the script window, you can re-create any results by simply
 re-running that code. If you find that you have lots of "stuff" in your
@@ -775,79 +838,85 @@ required. You can use this as a guide to finding the function names and some
 hints about options that will help you to get the code to work or you can
 revisit the worked examples using each of the functions. 
 
-* FILENAME ``<- read.csv("path to csv file/FILENAME.csv")``
+* \textcolor{red}{FILENAME}<- read.csv(\textcolor{red}{"path to csv file/FILENAME.csv"})
 
     * Can be generated using "Import Dataset" button or by modifying this text. 
 
-* DATASETNAME ``$``VARIABLENAME
+* \textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME}
 
-    * To access a particular variable in a data. frame called DATASETNAME, use 
+    * To access a particular variable in a data.frame called DATASETNAME, use 
     a $ and then the VARIABLENAME. 
 
-* ``head(``DATASETNAME``)``
+* head(\textcolor{red}{DATASETNAME})
 
     * Provides a list of the first few rows of the data set for all the 
     variables in it. 
 
-* ``mean(``DATASETNAME``$``VARIABLENAME``)``
+* mean(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
 
     * Calculates the mean of the observations in a variable. 
 
-* ``sd(``DATASETNAME``$``VARIABLENAME``)``
+* sd(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
 
     * Calculates the SD of the observations in a variable. 
 
-* ``favstats(``DATASETNAME``$``VARIABLENAME``)``
+* favstats(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME}) 
 
-    * Provides a suite of numerical summaries of the observations in a variable. 
+    * Requires the ``mosaic`` package to be loaded (``require(mosaic``) after
+    installing the package). 
 
-    * Requires the package to be loaded (``require(mosaic``) after installing 
-    the package). 
+    * Provides a suite of numerical summaries of the observations in a variable.
 
-* ``hist(``DATASETNAME``$``VARIABLENAME``)``
+* hist(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
 
     * Makes a histogram. 
     
-* ``boxplot(``DATASETNAME``$``VARIABLENAME``)``
+* boxplot(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
 
     * Makes a boxplot. 
 
 ##Practice problems
 
-In each chapter, the last section contains some questions for you to complete to make sure you understood the
+In each chapter, the last section contains some questions for you to complete
+to make sure you understood the
 material. You can download the code to answer questions 0.1 to 0.5 below at 
-http://www.math.montana.edu/courses/s217/documents/Ch0.Rmd. But to practice learning R, it would be most useful for you to try to accomplish the requested tasks 
+http://www.math.montana.edu/courses/s217/documents/Ch0.Rmd. But to practice 
+learning R, it would be most useful for you to try to accomplish the requested tasks 
 yourself and then only refer to the provided R code if/when you struggle. 
 These questions provide a great venue to check your learning, often to see the
 methods applied to another data set, and for something to discuss in study groups,
 with your instructor, and/or at the Math Learning Center. 
 
 1.1. Read in the treadmill data set
-discussed above and find the mean and SD of the Ages (*Age* variable) and Body Weights (*BodyWeight* variable). In studies involving human subjects, it is common to report a
+discussed above and find the mean and SD of the Ages (*Age* variable) and Body
+Weights (*BodyWeight* variable). In studies involving human subjects, it is 
+common to report a
 summary of characteristics of the subjects. Why does this matter? Think about
 how your interpretation of any study of the fitness of subjects would change if
 the mean age had been 20 years older or 35 years younger. 
 
 1.2. How does knowing about the
-distribution of results for *Age* and *BodyWeight* help you understand the results for the Run Times discussed above?
+distribution of results for *Age* and *BodyWeight* help you understand the 
+results for the Run Times discussed above?
 
 1.3. The mean and SD are most useful
 as summary statistics only if the distribution is relatively symmetric. Make a
-discuss the shape of the distribution (is it skewed right, skewed left, approximately symmetric?; are there outliers?). Approximately what range of
+discuss the shape of the distribution (is it skewed right, skewed left, 
+approximately symmetric?; are there outliers?). Approximately what range of
 ages does this study pertain to?
 
 1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
-lbs=2. 205*kgs. Create a new variable in the ``treadmill``  
+lbs=2. 205*kgs. Create a new variable in the ``treadmill``
 data.frame called *BWlb* using this code:
-
 
 ``treadmill$BWlb <- 2. 205*treadmill$BodyWeight`` 
  
 and find the mean and SD of the new variable (*BWlb*). 
 
 1.5. Make histograms and boxplots of
-the original *BodyWeight* and new *BWlb* variables. Discuss aspects of the distributions that changed and those that remained the same with the
+the original *BodyWeight* and new *BWlb* variables. Discuss aspects of the
+distributions that changed and those that remained the same with the
 transformation from kilograms to pounds. 
 
 

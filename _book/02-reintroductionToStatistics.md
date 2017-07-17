@@ -30,8 +30,8 @@ plot" to help us see the differences in the observations in the groups.
 
 Part of learning statistics is learning to correctly use the terminology, some of which is used colloquially
 differently than it is used in formal statistical settings. The most commonly
-"misused" term is  ***data***. In statistical parlance, we want to note the plurality of
-data. Specifically, ***datum***  is a single measurement, possibly on multiple random
+"misused" term is ***data***. In statistical parlance, we want to note the plurality of
+data. Specifically, ***datum*** is a single measurement, possibly on multiple random
 variables, and so it is appropriate to say that "**a datum is...**". 
 Once we move to discussing data, we are now referring to more than one 
 observation, again on one, or possibly more than one, random variable, and 
@@ -50,7 +50,7 @@ the term "data set" to refer to all our observations and this is a singular
 term to refer to the group of observations and this makes it really easy to
 make mistakes on the usage of this term. 
 
-It is also really important to note that  ***variables***  have to vary --
+It is also really important to note that ***variables*** have to vary --
 if you measure the sex of your subjects but are only measuring females, then you do
 not have a "variable". You may not know if you have real variability in a
 "variable" until you explore the results you obtained. 
@@ -66,7 +66,7 @@ those questions. There are no formulas to help us sort some of these things
 out, just critical thinking about the context of the measurements. 
 
 To make this concrete, consider the data collected from a study 
-(Plaster, 1989) to investigate whether
+[@Plaster1989] to investigate whether
 perceived physical attractiveness had an impact on the sentences or perceived
 seriousness of a crime that male jurors might give to female defendants. The
 researchers showed the participants in the study (men who volunteered from a
@@ -114,13 +114,13 @@ Subject   Attr        Crime       Years   Serious   independent   Sincere
 
 
 When working with data, we should always start with 
-summarizing the sample size. We will use  ***n*** for the 
+summarizing the sample size. We will use ***n*** for the 
 number of subjects in the sample and denote the population size (if
-available) with  ***N***. Here, the sample size is ***n=114***. In
+available) with ***N***. Here, the sample size is ***n=114***. In
 this situation, we do not have a random sample from a population 
 (these were volunteers from the population of prisoners at the
 particular prison) so we cannot make inferences to a larger group. 
-But we can assess whether there is a  ***causal effect***^[As noted previously, we reserve the term "effect" for situations where random assignment allows us to consider causality as the reason for the differences in the response variable among levels of the explanatory variable, but this is only the case if we find evidence against the null hypothesis of no difference
+But we can assess whether there is a ***causal effect***^[As noted previously, we reserve the term "effect" for situations where random assignment allows us to consider causality as the reason for the differences in the response variable among levels of the explanatory variable, but this is only the case if we find evidence against the null hypothesis of no difference
 in the groups.]: if sufficient evidence is found to conclude that there is some difference in
 the responses across the treated groups, we can attribute those differences to
 the treatments applied, since the groups should be same otherwise due to the
@@ -138,18 +138,22 @@ group of prisoners. If this had been an observational study (suppose that the
 prisoners could select one of the three pictures), then we would have to avoid
 any of the "causal" language that we can consider here because the pictures
 were not randomly assigned to the subjects. Without random assignment, the
-explanatory variable of picture choice could be  ***confounded***  with another characteristic of prisoners that was related to which picture they selected and
+explanatory variable of picture choice could be ***confounded*** with another characteristic of prisoners that was related to which picture they selected and
 the rating they provided. Confounding is not the only reason to avoid causal
 statements with non-random assignment but the inability to separate the effect
 of other variables (measured or unmeasured) from the differences we are
 observing means that our inferences in these situations need to be carefully
 stated. 
 
-Instead of loading this data set into R using the "Import Dataset" functionality, we can load an R
+Instead of loading this data set into R using the "Import Dataset" 
+functionality, we can load an R
 package that contains the data, making for easy access to this data set. The
-package called ``heplots`` contains a data set called MockJury that contains the results of the study. We also rely the R package called ``mosaic``  (Pruim, Kaplan, and Horton, 2016) that was introduced previously. First (but only once), you need to install both packages, which can
+package called ``heplots`` [@R-heplots] contains a data set called MockJury 
+that contains the results of the study. We also rely the R package called 
+``mosaic`` [@R-mosaic] that was introduced previously. First (but only once), 
+you need to install both packages, which can
 be done either using the Packages tab in the lower right panel of R-studio or
-using the ``install.packages``  function with quotes around the package name:
+using the ``install.packages`` function with quotes around the package name:
 
 ```r
 > install. packages("heplots")
@@ -245,7 +249,7 @@ The help function is also useful with functions in R to help you understand opti
 see examples of using the function. 
 
 With many variables in a data set, it is often useful to get some 
-quick information about all of them; the ``summary``  function provides 
+quick information about all of them; the ``summary`` function provides 
 useful information whether the variables are categorical or 
 quantitative and notes if any values were missing. 
 
@@ -295,10 +299,10 @@ summary(MockJury)
 If we take a few moments to explore the output we can discover some 
 useful aspects of the data set. The output is organized by variable, 
 providing summary information based on the type of
-variable, either counts by category for categorical variables ``Attr``  
+variable, either counts by category for categorical variables ``Attr`` 
 and ``Crime`` mean for quantitative variables. If present, you would 
 also get a count of missing values that are called "NAs" in R. For the 
-first variable, called ``Attr``  in the data.frame and that we might 
+first variable, called ``Attr`` in the data.frame and that we might 
 we find counts of the number of subjects shown each picture: 37/114 viewed the 
 "Unattractive" picture, 38 viewed "Average", and 39 viewed "Beautiful". 
 We can also see that suggested prison sentences (data.frame variable 
@@ -322,10 +326,7 @@ hist(MockJury$Years, xlab="Years", labels=T, main="Histogram of Years")
 boxplot(MockJury$Years, ylab="Years", main="Boxplot of Years")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-1-1.png" alt="(ref:fig2-1)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-1-2.png" alt="(ref:fig2-1)" width="288" />
-<p class="caption">(\#fig:Figure2-1)(ref:fig2-1)</p>
-</div>
+![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf) ![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-2.pdf) 
 
 The distribution appears to have a strong right skew with three 
 observations at 15 years flagged as potential
@@ -349,7 +350,7 @@ are the most interesting part of the data set.
 Often when statisticians think of distributions, we think of the smooth underlying
 shape that led to the data set that is being displayed in the histogram. 
 Instead of binning up observations and making bars in the histogram, we can
-estimate what is called a  ***density curve *** as a smooth curve 
+estimate what is called a ***density curve *** as a smooth curve 
 that represents the observed distribution of the responses. Density curves can
 sometimes help us see features of the data sets more clearly. 
 
@@ -365,10 +366,10 @@ scale which makes the bar heights required so that the proportion of the
 total data set in each bar is represented by the area in each bar 
 (remember that area is height times width). So the height depends on the 
 width of the bars and the total area across all the bars has to be 1. In the 
-``hist``  function, the ``freq=F`` to get density-scaled histogram bars. The 
+``hist`` function, the ``freq=F`` to get density-scaled histogram bars. The 
 density curve is added to the histogram using the R code of 
 ``lines(density())``, producing the result in Figure \@ref(fig:Figure2-2) with 
-added modifications of options for ``lwd``  (line width) and ``col`` (color)
+added modifications of options for ``lwd`` (line width) and ``col`` (color)
 to make the plot more interesting. You can see how the density curve 
 somewhat matches the histogram bars but deals with the bumps up and down 
 and edges a little differently. We can pick out the strong right skew using 
@@ -383,10 +384,7 @@ hist(MockJury$Years,freq=F,xlab="Years",main="Histogram of Years")
 lines(density(MockJury$Years),lwd=3,col="red")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-2-1.png" alt="(ref:fig2-2)" width="672" />
-<p class="caption">(\#fig:Figure2-2)(ref:fig2-2)</p>
-</div>
+![(\#fig:Figure2-2)(ref:fig2-2)](02-reintroductionToStatistics_files/figure-latex/Figure2-2-1.pdf) 
 
 Histograms can be sensitive to the choice of the number of bars and 
 even the cut-offs used to define the bins for a given number of bars.
@@ -395,14 +393,14 @@ noticeable impacts on the shapes observed but
 this does not impact density curves. We are not going to tinker with the
 default choices for bars in histogram as they are reasonably selected, but we
 can add information on the original observations being included in each bar to
-better understand the choices that ``hist``  is making. In the previous 
-display, we can add what is called a  ***rug***  to the plot, were a tick 
+better understand the choices that ``hist`` is making. In the previous 
+display, we can add what is called a ***rug*** to the plot, were a tick 
 mark is made on the x-axis for each observation. Because the responses 
 were provided as whole years (1, 2, 3, ..., 15), we need to use a graphical 
-technique called  ***jittering*** to add a little noise^[Jittering typically 
+technique called ***jittering*** to add a little noise^[Jittering typically 
 involves adding random variability to each observation that
 is uniformly distributed in a range determined based on the spacing of the
-function, the results will change. For more details, type ``help(jitter)``  
+function, the results will change. For more details, type ``help(jitter)`` 
 in R.] to each observation so all the observations at each year value do not 
 plot as a single line. In Figure \@ref(fig:Figure2-3), the added tick marks 
 on the x-axis show the approximate locations of the original observations. 
@@ -425,17 +423,14 @@ lines(density(MockJury$Years),lwd=3,col="red")
 rug(jitter(MockJury$Years),col="blue",lwd=2)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-3-1.png" alt="(ref:fig2-3)" width="672" />
-<p class="caption">(\#fig:Figure2-3)(ref:fig2-3)</p>
-</div>
+![(\#fig:Figure2-3)(ref:fig2-3)](02-reintroductionToStatistics_files/figure-latex/Figure2-3-1.pdf) 
  
 The graphical tools we've just discussed are going to help us move to comparing the
 distribution of responses across more than one group. We will have two displays
 that will help us make these comparisons. The simplest is 
 *the **side-by-side boxplot***, where a boxplot is displayed for each group 
-of interest using the same y-axis scaling. In R, we can use its  ***formula***  notation to see if the response (``Years``) differs based on the group 
-(``Attr``) by using something like ``Y~X``  or, here, ``Years~Attr``. 
+of interest using the same y-axis scaling. In R, we can use its ***formula*** notation to see if the response (``Years``) differs based on the group 
+(``Attr``) by using something like ``Y~X`` or, here, ``Years~Attr``. 
 We also need to tell R where to find the variables -- use the last option in the command, ``data=DATASETNAME`` , to inform R of the data.frame to look in 
 to find the variables. In this example, ``data=MockJury``. We will use 
 the formula and ``data=...`` options in almost every function we use
@@ -450,10 +445,7 @@ more variability for the *Unattractive* group along with some potential outliers
 boxplot(Years~Attr,data=MockJury)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-4-1.png" alt="(ref:fig2-4)" width="672" />
-<p class="caption">(\#fig:Figure2-4)(ref:fig2-4)</p>
-</div>
+![(\#fig:Figure2-4)(ref:fig2-4)](02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf) 
 
 The "~" (which is read as the *tilde* symbol, which you can find in the
 upper left corner of your keyboard) notation will be used in two ways this 
@@ -469,16 +461,16 @@ the ``Years`` variable seems like it may follow a normal distribution, in
 other words, is *Years*``~N(0,1)``? Since the responses are right
 skewed with some groups having outliers, it is not reasonable to assume that
 the *Years* variable for any of the three groups may follow a Normal 
-distribution (more later on the issues this creates!). Remember that  
-$\mu$  and $\sigma$  are parameters where  
-$\mu$ ("mu") is our standard symbol for the  ***population mean***
-and that $\sigma$ ("sigma") is the symbol of the  
+distribution (more later on the issues this creates!). Remember that 
+$\mu$ and $\sigma$ are parameters where 
+$\mu$ ("mu") is our standard symbol for the ***population mean***
+and that $\sigma$ ("sigma") is the symbol of the 
 ***population standard deviation***. 
 
 ##Beanplots {#section2-2}
 
 The other graphical display for comparing multiple groups we will use is a newer
-display called a  ***beanplot***  (Kampstra, 2008). Figure \@ref(fig:Figure2-5) 
+display called a ***beanplot*** [@Kampstra2008]. Figure \@ref(fig:Figure2-5) 
 shows an example of a beanplot that provides a side-by-side display that 
 contains the density curves, the original observations that generated the 
 density curve in a (jittered) rug-plot, the mean of each group, and the 
@@ -494,8 +486,9 @@ Our inferences typically focus on the means of the groups and this plot allows
 us to compare those across the groups while gaining information on the shapes
 of the distributions of responses in each group. 
 
-To use the ``beanplot``  function we need to install and load the ``beanplot`` 
-package. The function works like the boxplot used previously except that options 
+To use the ``beanplot`` function we need to install and load the ``beanplot`` 
+package [@R-beanplot]. The function works like the boxplot used previously
+except that options 
 for ``log``, ``col``, and ``method`` need to be specified. Use these^[Well, you 
 can use other colors (try "lightblue" for example), but I think bisque
 looks nice in these plots.] options for any beanplots you make: 
@@ -510,10 +503,7 @@ require(beanplot)
 beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-5-1.png" alt="(ref:fig2-5)" width="672" />
-<p class="caption">(\#fig:Figure2-5)(ref:fig2-5)</p>
-</div>
+![(\#fig:Figure2-5)(ref:fig2-5)](02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf) 
  
 Figure \@ref(fig:Figure2-5) reinforces the strong right skews that were also 
 detected in the boxplots previously. The three large sentences of 15 years 
@@ -535,7 +525,7 @@ groups have the same mean and conclude that there is evidence of a real
 difference. To start exploring whether there are differences in the means, we
 need to have numerical values to compare. We can get means and standard
 deviations by groups easily using the same formula notation with the ``mean``
-and ``sd``  functions if the ``mosaic`` package is loaded.
+and ``sd`` functions if the ``mosaic`` package is loaded.
 
 
 ```r
@@ -575,7 +565,7 @@ almost 2 years in the mean sentence between *Average* and *Unattractive* groups.
 wait until Chapter 3 and the One-Way ANOVA test to fully assess evidence 
 related to some difference among the three groups. For now, we are going to 
 focus on comparing the mean *Years* between *Average* and *Unattractive* groups
--- which is a  ***2 independent sample mean***  situation and something you 
+-- which is a ***2 independent sample mean*** situation and something you 
 should have seen before. Remember that the "independent" sample part of 
 this refers to observations that are independently observed for the two 
 groups as opposed to the paired sample situation that you may have 
@@ -586,17 +576,17 @@ or the famous "twin" studies with one twin assigned to each group).
 Here we are going to use the "simple" two independent group scenario to 
 review some basic statistical concepts and connect two different 
 frameworks for conducting statistical inference: randomization and 
-parametric inference techniques.  ***Parametric*** statistical methods 
+parametric inference techniques. ***Parametric*** statistical methods 
 involve making assumptions about the distribution of the
 responses and obtaining confidence intervals and/or p-values using a 
 *named* distribution (like the z or $t$-distributions). Typically these
 results are generated using formulas and looking up areas under curves or
-cutoffs using a table or a computer.  ***Randomization***-based statistical
+cutoffs using a table or a computer. ***Randomization***-based statistical
 methods use a computer to shuffle, sample, or simulate observations in ways
 that allow you to obtain distributions of possible results to find areas and
 cutoffs without resorting to using tables and named distributions. 
-Randomization methods are what are called  ***nonparametric*** methods 
-that often make fewer assumptions (they are  ***not free of assumptions***!)
+Randomization methods are what are called ***nonparametric*** methods 
+that often make fewer assumptions (they are ***not free of assumptions***!)
 and so can handle a larger set of problems more easily than parametric 
 methods. When the assumptions involved in the parametric procedures are 
 met by a data set, the randomization methods often provide very similar 
@@ -612,11 +602,11 @@ group observations in a spreadsheet program and read that new data set
 back into R, but it is actually pretty easy to use R to do data
 management once the data set is loaded. To remove the observations that came
 from the *Beautiful* group, we are going to generate a new variable 
-that we will call ``NotBeautiful``  that is true when observations came
+that we will call ``NotBeautiful`` that is true when observations came
 from another group (*Average* or *Unattractive*) and false for observations
-from the *Beautiful* group. To do this, we will apply the  ***not equal***
+from the *Beautiful* group. To do this, we will apply the ***not equal***
 logical function (``!=`` ) to the variable ``Attr``, inquiring whether it 
-was different from the ``"Beautiful"``  level. You can see the content of the 
+was different from the ``"Beautiful"`` level. You can see the content of the 
 new variable in the output:
 
 
@@ -672,11 +662,11 @@ tail(data.frame(MockJury$Attr, MockJury$NotBeautiful))
 ```
 
 To get rid of one of the groups, we need to learn a little bit about data 
-management in R.  ***Brackets***  ``([, ])`` are used to modify the rows or
+management in R. ***Brackets*** ``([, ])`` are used to modify the rows or
 columns in a data.frame with entries before the comma operating on rows and
 entries after the comma on the columns. For example, if you want to see the
 results for the 5$^{th}$ subject, you can reference the 5$^{th}$ row of the 
-data.frame using ``[5, ]``  after the data.frame name:
+data.frame using ``[5, ]`` after the data.frame name:
 
 
 ```r
@@ -693,7 +683,7 @@ MockJury[5,]
 ```
 We could just extract the *Years* response for the 5$^{th}$ 
 subject by incorporating information on the row and column of interest 
-(``Years``  is the 3$^{rd}$ column):
+(``Years`` is the 3$^{rd}$ column):
 
 
 ```r
@@ -717,8 +707,8 @@ MockJury2 <- MockJury[MockJury$NotBeautiful,]
 ```
 
 You will always want to check that the correct observations were dropped 
-either using ``View(MockJury2)``  or by doing a quick summary of the 
-``Attr``  variable in the new data.frame. 
+either using ``View(MockJury2)`` or by doing a quick summary of the 
+``Attr`` variable in the new data.frame. 
 
 
 ```r
@@ -733,7 +723,7 @@ summary(MockJury2$Attr)
 It ends up that R remembers the *Beautiful* category even though there are
 0 observations in it now and that can cause us some problems. When we remove a
 group of observations, we sometimes need to clean up categorical variables to
-just reflect the categories that are present. The ``factor``  function 
+just reflect the categories that are present. The ``factor`` function 
 creates categorical variables based on the levels of the variables that are 
 observed and is useful to run here to clean up ``Attr``. 
 
@@ -759,16 +749,13 @@ boxplot(Years ~ Attr,data=MockJury2)
 beanplot(Years ~ Attr,data=MockJury2,log="",col="bisque",method="jitter")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-6-1.png" alt="(ref:fig2-6)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-6-2.png" alt="(ref:fig2-6)" width="288" />
-<p class="caption">(\#fig:Figure2-6)(ref:fig2-6)</p>
-</div>
+![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf) ![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-2.pdf) 
 
 The two-sample mean techniques you learned in your previous course all 
 start with comparing the means the two groups. We can obtain the two 
-means using the ``mean``  function or directly obtain the difference 
-in the means using the ``diffmean``  function (both require the ``mosaic``
-package). The ``diffmean``  function provides 
+means using the ``mean`` function or directly obtain the difference 
+in the means using the ``diffmean`` function (both require the ``mosaic``
+package). The ``diffmean`` function provides 
 $\bar{x}_{Unattractive} - \bar{x}_{Average}$ where $\bar{x}$
 (read as "x-bar") is the sample mean of observations in the subscripted 
 group. Note that there are two directions that you could compare the
@@ -802,14 +789,14 @@ There appears to be some evidence that the *Unattractive* group is
 getting higher average lengths of sentences from the prisoner "jurors" than
 the *Average* group, but we want to make sure that the difference is 
 real -- that there is evidence to reject the assumption that the means 
-are the same "in the population". First, a  ***null hypothesis***^[The 
+are the same "in the population". First, a ***null hypothesis***^[The 
 hypothesis of no difference that is typically generated in the hopes of
 being rejected in favor of the alternative hypothesis which contains the sort
 of difference that is of interest in the application.] which 
-defines a  ***null model***^[The null model is the statistical model that 
+defines a ***null model***^[The null model is the statistical model that 
 is implied by the chosen null hypothesis. Here, a null hypothesis of no 
 difference translates to having a model with the same mean for both groups.] 
-needs to be determined in terms of  ***parameters***  (the true values in 
+needs to be determined in terms of ***parameters*** (the true values in 
 the population). The research question should help you determine the form of the
 hypotheses for the assumed population. In the 2 independent sample mean
 problem, the interest is in testing a null hypothesis of $H_0: \mu_1 = \mu_2$
@@ -867,10 +854,7 @@ model where the groups "look the same".
 and a single possibility that could occur if the alternative were true 
 (right) and the true means were different. 
 
-<div class="figure">
-<img src="chapter1_files/image015.png" alt="(ref:fig2-7)"  />
-<p class="caption">(\#fig:Figure2-7)(ref:fig2-7)</p>
-</div>
+![(\#fig:Figure2-7)(ref:fig2-7)](chapter1_files/image015.png) 
 
 
 In statistical inference, null hypotheses (and their implied models) are set 
@@ -883,7 +867,7 @@ different random assignment of the pictures to the subjects. So let's try this:
 assume that the null hypothesis is true and randomly re-assign the treatments
 (pictures) to the observations that were obtained. In other words, keep the 
 sentences (*Years*) the same and shuffle the group labels randomly. The
-technical term for this is doing a  ***permutation*** (a random shuffling of 
+technical term for this is doing a ***permutation*** (a random shuffling of 
 the treatments relative to the responses). If the null is true and the means 
 in the two groups are the same, then we should be able to re-shuffle the 
 groups to the observed sentences (*Years*) and get results similar to those we
@@ -894,9 +878,9 @@ more noticeable in the observed data set than in (most) of the shuffled data
 sets. It helps to see an example of a permutation of the labels to understand
 what this means here. 
 
-In the ``mosaic``  package, the ``shuffle`` function allows us to easily perform
+In the ``mosaic`` package, the ``shuffle`` function allows us to easily perform
 a permutation^[We'll see the ``shuffle`` function in a more common usage below; 
-while the code to generate ``Perm1``  is provided, it isn't something to worry 
+while the code to generate ``Perm1`` is provided, it isn't something to worry 
 about right now.]. Just one time, we can explore what a permutation of the 
 treatment labels could look like in the ``PermutedAttr`` variable below. Note 
 that the ``Years`` are held in the same place the group labels are shuffled. 
@@ -996,7 +980,7 @@ of times each label (Average, Unattractive) occurs, it is the same in both the
 ``Attr`` and ``PermutedAttr`` columns. Permutations involve randomly 
 re-ordering the values of a variable -- here the ``Attr`` group labels -- without
 changing the content of the variable. This result can also be generated using 
-what is called  ***sampling without replacement***: sequentially select $n$ labels 
+what is called ***sampling without replacement***: sequentially select $n$ labels 
 from the original variable, removing each used label and making sure that each 
 original ``Attr`` label is selected once and only once. The new, randomly 
 selected order of selected labels provides the permuted labels. Stepping
@@ -1006,13 +990,13 @@ selection, there would only be one label remaining to select. This makes sure
 that all original labels are re-used but that the order is random. Sampling
 without replacement is like picking names out of a hat, one-at-a-time, and not
 putting the names back in after they are selected. It is an exhaustive process
-for all the original observations.  ***Sampling with replacement*** , in contrast,
+for all the original observations. ***Sampling with replacement*** , in contrast,
 involves sampling from the specified list with each observation having an equal 
 chance of selection for each sampled observation -- in other words, observations 
 can be selected more than once. This is like picking $n$ names out of a hat that
 contains $n$ names, except that every time a name is selected, it goes back into 
 the hat -- we'll use this technique in Section \@ref(section2-8)
-to do what is called  ***bootstrapping***. Both sampling mechanisms can be 
+to do what is called ***bootstrapping***. Both sampling mechanisms can be 
 used to generate inferences but each has particular situations
 where they are most useful. For hypothesis testing, we will use permutations
 (sampling without replacement). 
@@ -1020,7 +1004,7 @@ where they are most useful. For hypothesis testing, we will use permutations
 The comparison of the beanplots for the real data set and permuted version of 
 the labels is what is really interesting (Figure \@ref(fig:Figure2-8)). The 
 original difference in the sample means of the two groups was 1.84 years 
-(Unattractive minus Average). The sample means are the  ***statistics***  
+(Unattractive minus Average). The sample means are the ***statistics*** 
 that estimate the parameters for the true means of the two groups. In the 
 permuted data set, the difference in the means is 1.15 years in the opposite 
 direction (Average had a higher mean than Unattractive in the permuted data). 
@@ -1048,10 +1032,7 @@ diffmean(Years ~ PermutedAttr, data=Perm1)
 permuted groups. 
 
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-8-1.png" alt="(ref:fig2-8)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-8-2.png" alt="(ref:fig2-8)" width="288" />
-<p class="caption">(\#fig:Figure2-8)(ref:fig2-8)</p>
-</div>
+![(\#fig:Figure2-8)(ref:fig2-8)](02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf) ![(\#fig:Figure2-8)(ref:fig2-8)](02-reintroductionToStatistics_files/figure-latex/Figure2-8-2.pdf) 
 
 These results suggest that the observed difference was larger than what we got 
 when we did a single permutation although it was only a little bit larger than 
@@ -1075,9 +1056,9 @@ the groups based on our observed data set.
 
 In any testing situation, you must define some function of the observations that
 gives us a single number that addresses our question of interest. This quantity
-is called a  ***test statistic***. These often take on complicated forms and 
+is called a ***test statistic***. These often take on complicated forms and 
 have names like $t$ or $z$ statistics that relate to their parametric (named)
-distributions so we know where to look up  ***p-values***^[P-values are the 
+distributions so we know where to look up ***p-values***^[P-values are the 
 probability of obtaining a result as extreme as or more extreme than we observed 
 given that the null hypothesis is true.]. In randomization settings, they can
 have simpler forms because we use the data set to find the distribution of the statistic and don't need to rely on a named distribution. We will label our test statistic ***T*** (for **T** statistic) unless the test statistic has a commonly
@@ -1087,7 +1068,7 @@ can define
 $$T=\bar{x}_{Unattractive}-\bar{x}_{Average},$$
 
 which coincidentally is what the``diffmean`` function provided us previously. 
-We label our  ***observed test statistic***  (the one from the original data 
+We label our ***observed test statistic*** (the one from the original data 
 set) as
 
 $$T_{obs}=\bar{x}_{Unattractive}-\bar{x}_{Average},$$
@@ -1105,7 +1086,7 @@ which corresponds to assuming the null hypothesis is true.
 We need to consider lots of permutations to do a permutation test. In contrast to
 your introductory statistics course where, if you did this, it was just a click
 away, we are going to learn what was going on under the hood. Specifically, we
-need a  ***for loop***  in R to be able to repeatedly generate the permuted data
+need a ***for loop*** in R to be able to repeatedly generate the permuted data
 sets and record $T^*$ for each one. Loops are a basic programming task that make
 randomization methods possible as well as potentially simplifying any repetitive
 computing task. To write a "for loop", we need to choose how many times we want 
@@ -1234,7 +1215,7 @@ assessment of the possibilities under the null hypothesis. It is common practice
 to consider something like 1,000 permutations. The ``Tstar`` vector when we set 
 *B* the permutation distribution for the selected test statistic under^[We often say
 "under" in statistics and we mean "given that the following is true".] the null
-hypothesis -- what is called the  ***null distribution***  of the statistic. The 
+hypothesis -- what is called the ***null distribution*** of the statistic. The 
 null distribution is the distribution of possible values of a statistic
 under the null hypothesis. We want to visualize this distribution and use it to
 assess how unusual our $T_{obs}$ result of 1.84 years was relative to all the
@@ -1256,10 +1237,7 @@ hist(Tstar, label=T)
 plot(density(Tstar), main="Density curve of Tstar")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-9-1.png" alt="(ref:fig2-9)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-9-2.png" alt="(ref:fig2-9)" width="288" />
-<p class="caption">(\#fig:Figure2-9)(ref:fig2-9)</p>
-</div>
+![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf) ![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-2.pdf) 
 
 
 ```r
@@ -1298,10 +1276,7 @@ plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs, lwd=2, col="red")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-10-1.png" alt="(ref:fig2-10)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-10-2.png" alt="(ref:fig2-10)" width="288" />
-<p class="caption">(\#fig:Figure2-10)(ref:fig2-10)</p>
-</div>
+![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf) ![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-2.pdf) 
 
 Second, we can calculate the exact number of permuted results that were larger 
 than what we observed. To calculate the proportion of the 1,000 values that were 
@@ -1325,7 +1300,7 @@ pdata(Tstar, Tobs, lower.tail=F)
 
 The proportion of 0.02 tells us that 20 of the 1,000 permuted results 
 (2%) were larger than what we observed. This type of work is how we can
-generate  ***p-values***  using permutation distributions. P-values, as you should
+generate ***p-values*** using permutation distributions. P-values, as you should
 remember, are the probability of getting a result as extreme as or more extreme than what we observed, <u>given that the null is true</u>. Finding only 20
 permutations of 1,000 that were larger than our observed result suggests that it 
 is hard to find a result like what we observed if there really were no difference,
@@ -1334,13 +1309,13 @@ although it is not impossible.
 When testing hypotheses for two groups, there are two types of alternative
 hypotheses, one-sided or two-sided. ***One-sided tests*** involve only considering
 differences in one-direction (like $\mu_1 > \mu_2$) and are performed when 
-researchers can decide  ***a priori***^[This is a fancy way of saying "in advance",
+researchers can decide ***a priori***^[This is a fancy way of saying "in advance",
 here in advance of seeing the observations.] which group should have a larger mean 
 if there is going to be any sort of difference. In this situation, we did not 
 know enough about the potential impacts of the pictures to know which group should 
 be larger than the other so should do a two-sided test. It is important to 
 remember that you can't look at the responses to decide on the hypotheses. It is
-often safer and more  ***conservative***^[Statistically, a conservative method is 
+often safer and more ***conservative***^[Statistically, a conservative method is 
 one that provides less chance of rejecting the null hypothesis in comparison to 
 some other method or less than some pre-defined standard.] to start with a
 ***two-sided alternative*** ($\mathbf{H_A: \mu_1 \ne \mu_2}$). To do a 2-sided 
@@ -1380,18 +1355,15 @@ plot(density(Tstar),main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-11-1.png" alt="(ref:fig2-11)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-11-2.png" alt="(ref:fig2-11)" width="288" />
-<p class="caption">(\#fig:Figure2-11)(ref:fig2-11)</p>
-</div>
+![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf) ![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-2.pdf) 
 
-In general, the  ***one-sided test p-value***  is the proportion of the permuted
+In general, the ***one-sided test p-value*** is the proportion of the permuted
 results that are more extreme than observed in the direction of the *alternative*
 hypothesis (lower or upper tail, remembering that this also depends on the direction 
 of the difference taken). For the 2-sided test, the p-value is the proportion of the
 permuted results that are *less than the negative version of the observed statistic
 and greater than the positive version of the observed statistic*. Using absolute 
-values (| |), we can simplify this: the  ***two-sided p-value***  is the 
+values (| |), we can simplify this: the ***two-sided p-value*** is the 
 *proportion of the |permuted statistics| that are larger than |observed statistic|*.
 This will always work and finds areas in both tails regardless of whether the 
 observed statistic is positive or negative. In R, the ``abs`` function provides the
@@ -1407,9 +1379,9 @@ pdata(abs(Tstar), abs(Tobs), lower.tail=F)
 ## [1] 0.034
 ```
 
-We will discuss the choice of  ***significance level*** below, but for the moment,
+We will discuss the choice of ***significance level*** below, but for the moment,
 assume that $\alpha$ is chosen to be our standard value of 0.05. Since the p-value 
-is smaller than $\alpha$, this suggests that we can  ***reject the null hypothesis***
+is smaller than $\alpha$, this suggests that we can ***reject the null hypothesis***
 and conclude that there is evidence of some difference in the true mean sentences 
 given between the two types of pictures. 
 
@@ -1422,10 +1394,10 @@ the null model is true, we are assuming that $\mu_1 = \mu_2$ which implies that
 $\mu_1 - \mu_2 = 0$. This also suggests that 0 should be the center of the 
 permutation distribution and it was. 
 
-2. It is approximately normally distributed. This is due to the  ***Central Limit Theorem***^[We'll leave the discussion of the CLT to your previous stat coursework 
+2. It is approximately normally distributed. This is due to the ***Central Limit Theorem***^[We'll leave the discussion of the CLT to your previous stat coursework 
 or an internet search. Remember that it has something to do with distributions
-looking more normal as the sample size increases.], where the  
-***sampling distribution***  (distribution of all possible results for samples 
+looking more normal as the sample size increases.], where the 
+***sampling distribution*** (distribution of all possible results for samples 
 of this size) of the difference in sample means ($\bar{x}_1 - \bar{x}_2$) becomes 
 more and normally distributed as the sample sizes increase. With 38 and 37 
 observations in the groups, we are likely to have a relatively normal looking
@@ -1437,7 +1409,7 @@ model if some assumptions are met, as we'll discuss below.
 result relative to the rest of these results but there are some permuted data 
 sets that produce more extreme differences in the sample means. When the 
 observed differences are really large, we may not see any permuted results 
-that are as extreme as what we observed. When ``pdata``  gives you 0, the p-value
+that are as extreme as what we observed. When ``pdata`` gives you 0, the p-value
 should be reported to be smaller than 0.0001 (**not 0!**) since it happened 
 in less than 1 in 1000 tries but does occur once -- in the actual data set. 
 
@@ -1521,7 +1493,7 @@ mean situation, the sample means are always at least a little different
 we have enough evidence to prove that the population or true means
 differ "beyond a reasonable doubt". 
 
-The scope of any inferences is constrained based on whether there is a  
+The scope of any inferences is constrained based on whether there is a 
 ***random sample*** (RS) and/or ***random assignment*** (RA).
 Table \@ref(tab:Table2-1) contains the four possible combinations of these 
 two characteristics of a given study. Random assignment allows for causal
@@ -1534,13 +1506,20 @@ limited to the sampled subjects.
 
 (ref:tab2-1) Scope of inference summary.
 
+\begin{table}
 
-Table: (\#tab:Table2-1)(ref:tab2-1)
-
-**Random Sampling/Random Assignment**                                                                                **Random Assignment (RA) -- Yes (controlled experiment)**                                                                                                                                                                                                                                         **Random Assignment (RA) -- No (observational study)**                                                                                                                                                                                             
--------------------------------------------------------------------------------------------------------------------  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)**   Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference.                                                                 Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).                                    
-**Random Sampling (RS) -- No (usually a convenience sample)**                                                        Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA 	&rarr; the inference from this type of study applies only to the sample.   Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment. 
+\caption{(\#tab:Table2-1)(ref:tab2-1)}
+\centering
+\begin{tabular}[t]{l|l|l}
+\hline
+**Random Sampling/Random Assignment** & **Random Assignment (RA) -- Yes (controlled experiment)** & **Random Assignment (RA) -- No (observational study)**\\
+\hline
+**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
+\hline
+**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA 	\&rarr; the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
+\hline
+\end{tabular}
+\end{table}
 
 A simple example helps to clarify how the scope of inference can change. Suppose
 we are interested in studying the GPA of students. If we had taken a random 
@@ -1581,30 +1560,30 @@ A quick summary of the terminology of hypothesis testing is useful at this
 point. The ***null hypothesis*** ($H_0$) states that there is no difference 
 or no relationship in the population. This is the statement of no effect or 
 no difference and the claim that we are trying to find evidence against. In 
-this chapter,  $H_0$: $\mu_1=\mu_2$. When doing two-group problems, you 
+this chapter, $H_0$: $\mu_1=\mu_2$. When doing two-group problems, you 
 always need to specify which group is 1 and which one is 2 because the order 
-does matter. The  ***alternative hypothesis*** ($H_1$ or $H_A$) states a 
+does matter. The ***alternative hypothesis*** ($H_1$ or $H_A$) states a 
 specific difference between parameters. This is the research hypothesis and 
 the claim about the population that we hope to demonstrate is more reasonable 
 to conclude than the null hypothesis. In the two-group situation, we can have
 ***one-sided alternatives*** $H_A$:$\mu_1 > \mu_2$ (greater than) or
-$H_A$:$\mu_1 < \mu_2$ (less than) or, the more common,  ***two-sided 
+$H_A$:$\mu_1 < \mu_2$ (less than) or, the more common, ***two-sided 
 alternative*** $H_A$:$\mu_1 \ne \mu_2$ (not equal to). We usually default to 
 using two-sided tests because we often do not know enough to know the 
 direction of a difference in advance, especially in more complicated 
-situations. The  ***sampling distribution under the null***  is the 
+situations. The ***sampling distribution under the null*** is the 
 distribution of all possible values of a statistic under $H_0$ is true. It 
-is used to calculate the  ***p-value*** , the probability of obtaining a 
+is used to calculate the ***p-value*** , the probability of obtaining a 
 result as extreme or more extreme than what we observed given that the null 
-hypothesis is true. We will find sampling distributions using  
-***nonparametric***  approaches (like the permutation approach used above) 
-and  ***parametric*** methods (using "named" distributions like the 
+hypothesis is true. We will find sampling distributions using 
+***nonparametric*** approaches (like the permutation approach used above) 
+and ***parametric*** methods (using "named" distributions like the 
 $t$, F, and $\chi^2$). 
 
 Small p-values are evidence against the null hypothesis because the observed
 result is unlikely due to chance if $H_0$ is true. Large p-values provide
 no evidence against $H_0$ but do not allow us to conclude that there is no 
-difference. The  ***level of significance*** is an *a priori* definition of
+difference. The ***level of significance*** is an *a priori* definition of
 how small the p-value needs to be to provide "enough" (sufficient) evidence
 against $H_0$. This is most useful to prevent sliding the standards after 
 the results are found. We compare the p-value to the level of significance to
@@ -1616,19 +1595,19 @@ The two options for *decisions* are to either *reject the null hypothesis*
 if the p-value $\le \alpha$ or *fail to reject the null hypothesis* if the 
 p-value $> \alpha$. When interpreting hypothesis testing results, remember 
 that the p-value is a measure of how unlikely the observed outcome was, 
-assuming that the null hypothesis is true. It is  **NOT** the probability of 
+assuming that the null hypothesis is true. It is **NOT** the probability of 
 the data or the probability of either hypothesis being true. The p-value, 
 simply, is a measure of evidence against the null hypothesis. 
 
 The specific definition of $\alpha$ is that it is the probability of rejecting
 $H_0$ when $H_0$ is true, the probability of what is called a
-***Type I error***. Type I errors are also called  ***false rejections***. 
+***Type I error***. Type I errors are also called ***false rejections***. 
 In the two-group mean situation, a Type I error would be concluding that there 
 is a difference in the true means between the groups when none really exists 
 in the population. In the courtroom setting, this is like falsely finding 
 someone guilty. We don't want to do this very often, so we use small values 
 of the significance level, allowing us to control the rate of Type I errors 
-at $\alpha$. We also have to worry about  **Type II errors**, which are failing
+at $\alpha$. We also have to worry about **Type II errors**, which are failing
 to reject the null hypothesis when it's false. In a courtroom, this is the same
 as failing to convict a truly guilty person. This most often occurs due to a 
 lack of evidence. You can use the Table \@ref(tab:Table2-2) to help you 
@@ -1637,17 +1616,24 @@ remember all the possibilities.
 (ref:tab2-2) Table of decisions and truth scenarios in a hypothesis 
 testing situation. But we never know the truth in a real situation. 
 
+\begin{table}
 
-Table: (\#tab:Table2-2)(ref:tab2-2)
-
-                                 $\mathbf{H_0}$ **True**   $\mathbf{H_0}$ **False** 
--------------------------------  ------------------------  -------------------------
-$\textbf{FTR }\mathbf{H_0}$      Correct decision          Type II error            
-$\textbf{Reject }\mathbf{H_0}$   Type I error              Correct decision         
+\caption{(\#tab:Table2-2)(ref:tab2-2)}
+\centering
+\begin{tabular}[t]{l|l|l}
+\hline
+  & \$\textbackslash{}mathbf\{H\_0\}\$ **True** & \$\textbackslash{}mathbf\{H\_0\}\$ **False**\\
+\hline
+\$\textbackslash{}textbf\{FTR \}\textbackslash{}mathbf\{H\_0\}\$ & Correct decision & Type II error\\
+\hline
+\$\textbackslash{}textbf\{Reject \}\textbackslash{}mathbf\{H\_0\}\$ & Type I error & Correct decision\\
+\hline
+\end{tabular}
+\end{table}
 
 In comparing different procedures, there is an interest in studying the rate or
 probability of Type I and II errors. The probability of a Type I error was 
-defined previously as $\alpha$, the significance level. The  ***power***  of a
+defined previously as $\alpha$, the significance level. The ***power*** of a
 procedure is the probability of rejecting the null hypothesis when it is false.
 Power is defined as
 
@@ -1673,7 +1659,7 @@ $\alpha$-level that the null hypothesis is wrong (and the results point in the
 direction of the alternative). If we fail to reject $H_0$ (FTR $H_0$), then we 
 can conclude that there was insufficient evidence at the $\alpha$-level to say 
 that the null hypothesis is wrong. We are **NOT** saying that the null is 
-correct and we  **NEVER** accept the null hypothesis. We just failed to find 
+correct and we **NEVER** accept the null hypothesis. We just failed to find 
 enough evidence to say it's wrong. If we find sufficient evidence to reject the 
 null, then we need to revisit the method of data collection and design of the 
 study to discuss scope of inference. Can we discuss causality (due to RA) and/or 
@@ -1725,7 +1711,7 @@ randomization for inferences on means to see the similarities with the more
 traditional parametric procedures. 
 
 In two-sample mean situations, instead of working just with the difference in 
-the means, we often calculate a test statistic that is called the  
+the means, we often calculate a test statistic that is called the 
 ***equal variance two-independent samples t-statistic***. The test statistic is
 
 $$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}},$$
@@ -1794,10 +1780,7 @@ pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ## 0.031
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-12-1.png" alt="(ref:fig2-12)" width="288" /><img src="02-reintroductionToStatistics_files/figure-html/Figure2-12-2.png" alt="(ref:fig2-12)" width="288" />
-<p class="caption">(\#fig:Figure2-12)(ref:fig2-12)</p>
-</div>
+![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf) ![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-2.pdf) 
 
 The parametric version of these results is based on using what is called the
 ***two-independent sample t-test***. There are actually two versions of this 
@@ -1809,7 +1792,7 @@ is less important if the sample sizes in the groups are approximately equal
 and more important if the groups contain different numbers of observations. In
 comparing the two potential test statistics, the procedure that assumes equal
 variances has a complicated denominator (see the formula above for $t$ 
-involving $s_p$) but a simple formula for  ***degrees of freedom*** (***df***)
+involving $s_p$) but a simple formula for ***degrees of freedom*** (***df***)
 for the $t$-distribution ($df=n_1+n_2-2$) that approximates the
 distribution of the test statistic, $t$, under the null hypothesis. The 
 procedure that assumes unequal variances has a simpler test statistic and a 
@@ -1820,23 +1803,20 @@ are readily available in the ``t.test`` function in R if needed.
 
 If the assumptions for the equal variance $t$-test are met and the null 
 hypothesis is true, then the sampling distribution of the test statistic should 
-follow a $t$-distribution with $n_1+n_2-2$ degrees of freedom. The  ***t-distribution*** is a bell-shaped curve that is more spread out for smaller 
+follow a $t$-distribution with $n_1+n_2-2$ degrees of freedom. The ***t-distribution*** is a bell-shaped curve that is more spread out for smaller 
 values of degrees of freedom as shown in Figure \@ref(fig:Figure2-13). The
-$t$-distribution looks more and more like a  ***standard normal distribution***
+$t$-distribution looks more and more like a ***standard normal distribution***
 ($N(0,1)$) as the degrees of freedom increase. 
 
 (ref:fig2-13) Plots of $t$ and normal distributions
 
-<div class="figure">
-<img src="chapter1_files/image045.png" alt="(ref:fig2-13)"  />
-<p class="caption">(\#fig:Figure2-13)(ref:fig2-13)</p>
-</div>
+![(\#fig:Figure2-13)(ref:fig2-13)](chapter1_files/image045.png) 
 
 To get the p-value for the parametric $t$-test, we need to calculate the test
 statistic and $df$, then look up the areas in the tails of the $t$-distribution
 relative to the observed $t$-statistic. We'll learn how to use R to do this 
 below, but for now we will allow the ``t.test`` function to take care of this 
-for us. The ``t.test``  function uses our formula notation (``Years ~ Attr``) 
+for us. The ``t.test`` function uses our formula notation (``Years ~ Attr``) 
 and then ``data=...`` as we saw before for making plots. To get the 
 equal-variance test result, the ``var.equal=T`` option needs to be turned on.
 Then ``t.test`` provides us with lots of useful output. The three results we've 
@@ -1872,10 +1852,7 @@ happened to be here.
 
 (ref:fig2-14) Plot of permutation and $t$ distribution with $df=73$. 
 
-<div class="figure">
-<img src="chapter1_files/image047.png" alt="(ref:fig2-14)"  />
-<p class="caption">(\#fig:Figure2-14)(ref:fig2-14)</p>
-</div>
+![(\#fig:Figure2-14)(ref:fig2-14)](chapter1_files/image047.png) 
 
 In your previous statistics course, you might have used an applet or a table to 
 find p-values such as what was provided in the previous R output. When not 
@@ -1944,7 +1921,7 @@ variability in the beanplots and see if they look noticeably different. Be
 particularly critical of this assessment if the sample sizes differ greatly 
 between groups. 
 
-3. **Normal distributions**  of the observations in each group. We'll learn more
+3. **Normal distributions** of the observations in each group. We'll learn more
 diagnostics later, but the boxplots and beanplots are a good place to start to 
 help you look for skews or outliers, which were both present here. If you find 
 skew and/or outliers, that would suggest a problem with the assumption of 
@@ -2005,10 +1982,7 @@ require(beanplot)
 beanplot(GPA~Sex, data=s217, log="", col="lightblue", method="jitter")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-15-1.png" alt="(ref:fig2-15)" width="672" />
-<p class="caption">(\#fig:Figure2-15)(ref:fig2-15)</p>
-</div>
+![(\#fig:Figure2-15)(ref:fig2-15)](02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf) 
 
 ```r
 mean(GPA~Sex, data=s217)
@@ -2098,10 +2072,7 @@ plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-16-1.png" alt="(ref:fig2-16)" width="672" />
-<p class="caption">(\#fig:Figure2-16)(ref:fig2-16)</p>
-</div>
+![(\#fig:Figure2-16)(ref:fig2-16)](02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf) 
 
 
 ```r
@@ -2190,10 +2161,10 @@ for testing hypotheses because it provides new splits of the observations
 into groups that are as interesting as what we observed if the null hypothesis 
 is assumed true. In most situations, we also want to estimate parameters of 
 interest and provide ***confidence intervals*** for those parameters (an 
-interval where we are __%  ***confident*** that the true parameter lies). As 
+interval where we are __% ***confident*** that the true parameter lies). As 
 before, there are two options we will consider -- a parametric and a 
 nonparametric approach. The nonparametric approach will be using what is 
-called  ***bootstrapping***  and draws its name from "pull yourself up by 
+called ***bootstrapping*** and draws its name from "pull yourself up by 
 your bootstraps" where you improve your situation based on your own efforts.
 In statistics, we make our situation or inferences better by re-using the 
 observations we have by assuming that the sample represents the population.
@@ -2276,17 +2247,14 @@ using bootstrapping methods.
 (ref:fig2-17) Counts of number of times of observation (or not observed for 
 times re-sampled of 0) for two bootstrap samples. 
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-17-1.png" alt="(ref:fig2-17)" width="672" />
-<p class="caption">(\#fig:Figure2-17)(ref:fig2-17)</p>
-</div>
+![(\#fig:Figure2-17)(ref:fig2-17)](02-reintroductionToStatistics_files/figure-latex/Figure2-17-1.pdf) 
 
 The main point of this exploration was to see that each run of the ``resample``
 function provides a new version of the data set. Repeating this $B$ times using
 another ``for`` loop, we will track our quantity of interest, say $T$, in all 
 these new "data sets" and call those results $T^*$. The distribution of the
 bootstrapped $T^*$ statistics will tell us about the range of results to expect 
-for the statistic and the middle __% of the $T^*$'s provides a  
+for the statistic and the middle __% of the $T^*$'s provides a 
 ***bootstrap confidence interval***^[There are actually many ways to use this
 information to make a confidence interval. We are using the simplest method
 that is called the "percentile" method.] for the true parameter -- here the *difference in the two population means*. 
@@ -2317,10 +2285,7 @@ plot(density(Tstar), main="Density curve of Tstar")
 abline(v=Tobs, col="red", lwd=2)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-18-1.png" alt="(ref:fig2-18)" width="672" />
-<p class="caption">(\#fig:Figure2-18)(ref:fig2-18)</p>
-</div>
+![(\#fig:Figure2-18)(ref:fig2-18)](02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf) 
 
 ```r
 favstats(Tstar)
@@ -2416,17 +2381,14 @@ plot(density(Tstar), main="Density curve of Tstar")
 abline(v=quantiles$quantile, col="blue", lwd=3)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-19-1.png" alt="(ref:fig2-19)" width="672" />
-<p class="caption">(\#fig:Figure2-19)(ref:fig2-19)</p>
-</div>
+![(\#fig:Figure2-19)(ref:fig2-19)](02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf) 
 
 Although confidence intervals can exist without referencing hypotheses, we can 
 revisit our previous $H_0: \mu_{Unattr} = \mu_{Avg}$. This null hypothesis is
 equivalent to testing $H_0: \mu_{Unattr} - \mu_{Avg} = 0$, that the difference 
 in the true means is equal to 0 years. And the difference in the means was the 
 scale for our confidence interval, which did not contain 0 years. We will call 
-0 an interesting ***reference value***  for the confidence interval, because 
+0 an interesting ***reference value*** for the confidence interval, because 
 here it is the value where the true means are equal to each other (have a
 difference of 0 years). In general, if our confidence interval does not contain 
 0, then it is saying that 0 is not one of our likely values for the difference 
@@ -2443,7 +2405,7 @@ here, can provide consistent conclusions about hypotheses.
 As in the previous situation, we also want to consider the parametric approach 
 for comparison purposes and to have that method available, especially to help 
 us understand some methods where we will only consider parametric inferences 
-in later chapters. The parametric confidence interval is called the  ***equal variance, two-sample t confidence interval*** and assumes that the populations 
+in later chapters. The parametric confidence interval is called the ***equal variance, two-sample t confidence interval*** and assumes that the populations 
 being sampled from are normally distributed and leads to using a $t$-distribution
 to form the interval. The output from the ``t.test`` function provides the 
 parametric 95% confidence interval calculated for you:
@@ -2512,10 +2474,7 @@ abline(v=-2.1702,lwd=3)
 abline(v=2.1702,lwd=3)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-20-1.png" alt="(ref:fig2-20)" width="672" />
-<p class="caption">(\#fig:Figure2-20)(ref:fig2-20)</p>
-</div>
+![(\#fig:Figure2-20)(ref:fig2-20)](02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf) 
 
 For 95% confidence intervals, the multiplier is going to be close to 2 and 
 anything else is a sign of a mistake. We can use R to get the multipliers for
@@ -2560,7 +2519,7 @@ $$\bar{x}_1 - \bar{x}_2 \mp t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}\ \text{ OR }\
 
 where $SE_{\bar{x}_1 - \bar{x}_2} = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$ and 
 $ME = t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}$. In some situations, researchers will
-report the  ***standard error***  (SE) or  ***margin of error***  (ME) as a method 
+report the ***standard error*** (SE) or ***margin of error*** (ME) as a method 
 of quantifying the uncertainty in a statistic. The SE is an estimate of the
 standard deviation of the statistic (here $\bar{x}_1 - \bar{x}_2$) and the ME 
 is an estimate of the precision of a statistic that can be used to directly 
@@ -2569,7 +2528,7 @@ although 95% is almost always selected.
 
 To finish this example, R can be used to help you do calculations much like a
 calculator except with much more power "under the hood". You have to make sure 
-you are careful with using ``( )``  to group items and remember that the 
+you are careful with using ``( )`` to group items and remember that the 
 asterisk (*) is used for multiplication in R. We need the pertinent information
 which is available from the ``favstats`` output. Two versions of this output are
 provided below, the first is how the output appears directly from R, the second
@@ -2859,10 +2818,7 @@ abline(v=Tobs,col="red",lwd=2)
 abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
 ```
 
-<div class="figure">
-<img src="02-reintroductionToStatistics_files/figure-html/Figure2-21-1.png" alt="(ref:fig2-21)" width="672" />
-<p class="caption">(\#fig:Figure2-21)(ref:fig2-21)</p>
-</div>
+![(\#fig:Figure2-21)(ref:fig2-21)](02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf) 
 
 
 In the previous output, the parametric 90% confidence interval is from 
@@ -2924,68 +2880,68 @@ The main components of R code used in this chapter follow with components to
 modify in red, remembering that any R packages mentioned need to be installed 
 and loaded for this code to have a chance of working:
 
-* summary(<font color='red'>DATASETNAME</font>)
+* summary(\textcolor{red}{DATASETNAME})
 
     * Provides numerical summaries of all variables in the data set. 
 
-* t.test(<font color='red'>Y</font> ~ <font color='red'>X</font>, 
-data=<font color='red'>DATASETNAME</font>, conf.level=0.95)
+* t.test(\textcolor{red}{Y} ~ \textcolor{red}{X}, 
+data=\textcolor{red}{DATASETNAME}, conf.level=0.95)
 
     * Provides two-sample t-test test statistic, df, p-value, and 95% 
     confidence interval. 
     
-* 2*pt(abs(<font color='red'>Tobs</font>), df=<font color='red'>DF</font>, lower.tail=F)
+* 2*pt(abs(\textcolor{red}{Tobs}), df=\textcolor{red}{DF}, lower.tail=F)
 
     * Finds the two-sided test p-value for an observed 2-sample t-test 
     statistic of ``Tobs``. 
 
-* hist(<font color='red'>DATASETNAME\$Y</font>)
+* hist(\textcolor{red}{DATASETNAME\$Y})
 
     * Makes a histogram of a variable named ``Y`` from the data set of 
     interest. 
     
-* boxplot(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>)
+* boxplot(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME})
 
     * Makes a boxplot of a variable named Y for groups in X from the data set. 
     
-* beanplot(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>)
+* beanplot(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME})
 
     * Makes a beanplot of a variable named Y for groups in X from the data set. 
     
     * Requires the ``beanplot`` package is loaded. 
 
-* mean(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>); sd(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>) 
+* mean(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}); sd(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}) 
 
     * Provides the mean and sd of responses of Y for each group described in X. 
     
     * This usage of ``mean`` and ``sd`` requires the ``mosaic`` package.
 
-* favstats(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>) 
+* favstats(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}) 
 
     * Provides numerical summaries of Y by groups described in X. 
 
-* Tobs ``<-`` t.test(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>, var.equal=T)\$statistic; Tobs  
+* Tobs ``<-`` t.test(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic; Tobs  
 B ``<-`` 1000  
 Tstar ``<-`` matrix(NA, nrow=B)  
 for (b in (1:B)){  
-    Tstar[b] ``<-`` t.test(<font color='red'>Y</font>~shuffle(<font color='red'>X</font>), data=<font color='red'>DATASETNAME</font>, var.equal=T)\$statistic  
+    Tstar[b] ``<-`` t.test(\textcolor{red}{Y}~shuffle(\textcolor{red}{X}), data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic  
 }
 
     * Code to run a ``for`` loop to generate 1000 permuted versions of the test
     statistic using the ``shuffle`` function and keep track of the results in 
     ``Tstar`` 
     
-* pdata(Tstar, abs(<font color='red'>Tobs</font>, lower.tail=F)
+* pdata(Tstar, abs(\textcolor{red}{Tobs}, lower.tail=F)
 
     * Finds the proportion of the permuted test statistics in Tstar that are 
     less than -|Tobs| or greater than |Tobs|, useful for finding the two-sided 
     test p-value. 
 
-* Tobs ``<-`` diffmean(<font color='red'>Y</font>~<font color='red'>X</font>, data=<font color='red'>DATASETNAME</font>, var.equal=T)\$statistic; Tobs  
+* Tobs ``<-`` diffmean(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic; Tobs  
 B ``<-`` 1000  
 Tstar ``<-`` matrix(NA, nrow=B)  
 for (b in (1:B)){  
-    Tstar[b] ``<-`` diffmean(<font color='red'>Y</font>~<font color='red'>X</font>, data=resample(<font color='red'>DATASETNAME</font>))  
+    Tstar[b] ``<-`` diffmean(\textcolor{red}{Y}~\textcolor{red}{X}, data=resample(\textcolor{red}{DATASETNAME}))  
 }
 
     * Code to run a ``for`` loop to generate 1000 bootstrapped versions of the 
@@ -3001,7 +2957,8 @@ for (b in (1:B)){
 
 ## Practice problems {#section2-12}
 
-Load the ``HELPrct`` data set from the ``mosaicData`` package (you need to 
+Load the ``HELPrct`` data set from the ``mosaicData`` package [@R-mosaicData] 
+(you need to 
 install the ``mosaicData`` package once to be able to load it). The HELP study 
 was a clinical trial for adult inpatients recruited from a
 detoxification unit. Patients with no primary care physician were randomly
@@ -3013,7 +2970,7 @@ post-detox. We are interested in the difference in mean number of days to first
 use of any substance post-detox between males and females. There are some 
 missing responses and the following code will produce ``favstats`` with the 
 missing values and then provide a data set that for complete observations by 
-applying the ``na.omit``  function that removes any observations with missing 
+applying the ``na.omit`` function that removes any observations with missing 
 values. 
 
 ```
@@ -3028,7 +2985,7 @@ favstats(daysanysub~sex, data=HELPrct3)
 2.1. Based on the results provided, how many observations were missing for males 
 and females? Missing values here likely mean that the subjects didn't use any
 substances post-detox in the time of the study but might have at a later 
-date -- the study just didn't run long enough. This is called  ***censoring***.
+date -- the study just didn't run long enough. This is called ***censoring***.
 What is the problem with the numerical summaries here if the missing responses 
 were all something larger than the largest observation?
 

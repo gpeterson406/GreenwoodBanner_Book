@@ -6,7 +6,7 @@ rmd_files: ["index.Rmd","01-preface.rmd","02-reintroductionToStatistics.rmd",
 "03-oneWayAnova.rmd","04-twoWayAnova.rmd","05-chiSquaredTests.rmd",
 "06-correlationAndSimpleLinearRegression.rmd",
 "07-simpleLinearRegressionInference.rmd","08-multipleLinearRegression.rmd",
-"09-caseStudies.rmd"]
+"09-caseStudies.rmd","10-references.rmd"]
 output:
   bookdown::pdf_book:
     includes:
@@ -15,4 +15,4 @@ output:
     css: [style.css, toc.css, font-awesome.min.css]
     split_by: section+number
 tables: true
-new_session: TRUE
+new_session: true

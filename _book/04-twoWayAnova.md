@@ -261,10 +261,7 @@ beanplot(responses ~ brand*drops, data=pt, side="b", col=list("lightblue","white
 legend("topright", bty="n", c("B1","B2"), fill=c("lightblue","white"))
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-1-1.png" alt="(ref:fig4-1)" width="672" />
-<p class="caption">(\#fig:Figure4-1)(ref:fig4-1)</p>
-</div>
+![(\#fig:Figure4-1)(ref:fig4-1)](04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf) 
 
 The beanplots can't handle situations where both variables have more than two 
 levels -- we need a simpler display that just focuses on the means at the 
@@ -292,10 +289,7 @@ everything clear.
 intplot(responses ~ brand*drops, data=pt)
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-2-1.png" alt="(ref:fig4-2)" width="672" />
-<p class="caption">(\#fig:Figure4-2)(ref:fig4-2)</p>
-</div>
+![(\#fig:Figure4-2)(ref:fig4-2)](04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf) 
 
 Interaction plots can always be made two different ways by switching the order 
 of the variables. Figure \@ref(fig:Figure4-2) contains ``Drops`` on the x-axis 
@@ -310,10 +304,7 @@ but not always. Try both and decide on the one that you like best.
 intplot(responses ~ drops*brand, data=pt)
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-3-1.png" alt="(ref:fig4-3)" width="672" />
-<p class="caption">(\#fig:Figure4-3)(ref:fig4-3)</p>
-</div>
+![(\#fig:Figure4-3)(ref:fig4-3)](04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf) 
 
 The formula in this function builds on our previous notation and now we include
 both predictor variables with an "*" between them. Using an asterisk between 
@@ -381,10 +372,7 @@ levels, or any interaction between them.
 
 (ref:fig4-4) Interaction plots of four possible scenarios in the paper towel study.
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-4-1.png" alt="(ref:fig4-4)" width="672" />
-<p class="caption">(\#fig:Figure4-4)(ref:fig4-4)</p>
-</div>
+![(\#fig:Figure4-4)(ref:fig4-4)](04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf) 
 
 Scenario 2 (Figure \@ref(fig:Figure4-4) panel (b))
 incorporates differences based on factor A (here that is ``Brand``) but no real 
@@ -424,10 +412,7 @@ of the results in Figure \@ref(fig:Figure4-2).
 (ref:fig4-5) Interaction plot of Scenario 5 where it appears that an 
 interaction is present. 
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-5-1.png" alt="(ref:fig4-5)" width="672" />
-<p class="caption">(\#fig:Figure4-5)(ref:fig4-5)</p>
-</div>
+![(\#fig:Figure4-5)(ref:fig4-5)](04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf) 
 
 The typical modeling protocol is to start with assuming that Scenario 5 is a possible
 description of the results, related to fitting what is called the 
@@ -572,28 +557,47 @@ error need to equal $N-1$, just like in the One-Way ANOVA table.
 
 (ref:tab4-1) Interaction Model ANOVA Table. 
 
+\begin{table}
 
-Table: (\#tab:Table4-1)(ref:tab4-1)
-
-Source                                  DF                            SS                                            MS                                               F-statistics                 
---------------------------------------  ----------------------------  --------------------------------------------  -----------------------------------------------  -----------------------------
-A                                       $J-1$                         $\text{SS}_A$                                 $\text{MS}_A=\text{SS}_A/\text{df}_A$            $\text{MS}_A/\text{MS}_E$    
-B                                       $K-1$                         $\text{SS}_B$                                 $\text{MS}_B=\text{SS}_B/\text{df}_B$            $\text{MS}_B/\text{MS}_E$    
-A:B (interaction)                       $(J-1)(K-1)$                  $\text{SS}_{AB}$                              $\text{MS}_{AB}=\text{SS}_{AB}/\text{df}_{AB}$   $\text{MS}_{AB}/\text{MS}_E$ 
-Error                                   $N-J-K+1$                     $\text{SS}_E$                                 $\text{MS}_E=\text{SS}_E/\text{df}_E$                                         
-<b><font color='red'>Total</font></b>   $\color{red}{\mathbf{N-1}}$   $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                                 
+\caption{(\#tab:Table4-1)(ref:tab4-1)}
+\centering
+\begin{tabular}[t]{l|l|l|l|l}
+\hline
+Source & DF & SS & MS & F-statistics\\
+\hline
+A & \$J-1\$ & \$\textbackslash{}text\{SS\}\_A\$ & \$\textbackslash{}text\{MS\}\_A=\textbackslash{}text\{SS\}\_A/\textbackslash{}text\{df\}\_A\$ & \$\textbackslash{}text\{MS\}\_A/\textbackslash{}text\{MS\}\_E\$\\
+\hline
+B & \$K-1\$ & \$\textbackslash{}text\{SS\}\_B\$ & \$\textbackslash{}text\{MS\}\_B=\textbackslash{}text\{SS\}\_B/\textbackslash{}text\{df\}\_B\$ & \$\textbackslash{}text\{MS\}\_B/\textbackslash{}text\{MS\}\_E\$\\
+\hline
+A:B (interaction) & \$(J-1)(K-1)\$ & \$\textbackslash{}text\{SS\}\_\{AB\}\$ & \$\textbackslash{}text\{MS\}\_\{AB\}=\textbackslash{}text\{SS\}\_\{AB\}/\textbackslash{}text\{df\}\_\{AB\}\$ & \$\textbackslash{}text\{MS\}\_\{AB\}/\textbackslash{}text\{MS\}\_E\$\\
+\hline
+Error & \$N-J-K+1\$ & \$\textbackslash{}text\{SS\}\_E\$ & \$\textbackslash{}text\{MS\}\_E=\textbackslash{}text\{SS\}\_E/\textbackslash{}text\{df\}\_E\$ & \\
+\hline
+\textbackslash{}textcolor\{red\}\{\textbackslash{}textbf\{Total\}\} & \$\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{N-1\}\}\$ & \$\textbackslash{}color\{red\}\{\textbackslash{}textbf\{SS\}\_\{\textbackslash{}textbf\{Total\}\}\}\$ &  & \\
+\hline
+\end{tabular}
+\end{table}
 
 (ref:tab4-2) Additive Model ANOVA Table. 
 
+\begin{table}
 
-Table: (\#tab:Table4-2)(ref:tab4-2)
-
-Source                                  DF                            SS                                            MS                                      F-statistics              
---------------------------------------  ----------------------------  --------------------------------------------  --------------------------------------  --------------------------
-A                                       $J-1$                         $\text{SS}_A$                                 $\text{MS}_A=\text{SS}_A/\text{df}_A$   $\text{MS}_A/\text{MS}_E$ 
-B                                       $K-1$                         $\text{SS}_B$                                 $\text{MS}_B=\text{SS}_B/\text{df}_B$   $\text{MS}_B/\text{MS}_E$ 
-Error                                   $N-J-K+1$                     $\text{SS}_E$                                 $\text{MS}_E=\text{SS}_E/\text{df}_E$                             
-<b><font color='red'>Total</font></b>   $\color{red}{\mathbf{N-1}}$   $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                     
+\caption{(\#tab:Table4-2)(ref:tab4-2)}
+\centering
+\begin{tabular}[t]{l|l|l|l|l}
+\hline
+Source & DF & SS & MS & F-statistics\\
+\hline
+A & \$J-1\$ & \$\textbackslash{}text\{SS\}\_A\$ & \$\textbackslash{}text\{MS\}\_A=\textbackslash{}text\{SS\}\_A/\textbackslash{}text\{df\}\_A\$ & \$\textbackslash{}text\{MS\}\_A/\textbackslash{}text\{MS\}\_E\$\\
+\hline
+B & \$K-1\$ & \$\textbackslash{}text\{SS\}\_B\$ & \$\textbackslash{}text\{MS\}\_B=\textbackslash{}text\{SS\}\_B/\textbackslash{}text\{df\}\_B\$ & \$\textbackslash{}text\{MS\}\_B/\textbackslash{}text\{MS\}\_E\$\\
+\hline
+Error & \$N-J-K+1\$ & \$\textbackslash{}text\{SS\}\_E\$ & \$\textbackslash{}text\{MS\}\_E=\textbackslash{}text\{SS\}\_E/\textbackslash{}text\{df\}\_E\$ & \\
+\hline
+\textbackslash{}textcolor\{red\}\{\textbackslash{}textbf\{Total\}\} & \$\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{N-1\}\}\$ & \$\textbackslash{}color\{red\}\{\textbackslash{}textbf\{SS\}\_\{\textbackslash{}textbf\{Total\}\}\}\$ &  & \\
+\hline
+\end{tabular}
+\end{table}
 
 The mean squares are formed by taking the sums of squares (we'll let R find those
 for us) and dividing by the $df$ in the row. The $F$-ratios are found by taking
@@ -639,13 +643,11 @@ anova(m1)
 ## Analysis of Variance Table
 ## 
 ## Response: responses
-##             Df Sum Sq Mean Sq F value   Pr(>F)   
-## brand        1 4.3322  4.3322 10.5192 0.003458 **
-## drops        2 4.8581  2.4290  5.8981 0.008251 **
-## brand:drops  2 1.5801  0.7901  1.9184 0.168695   
-## Residuals   24 9.8840  0.4118                    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Df Sum Sq Mean Sq F value   Pr(>F)
+## brand        1 4.3322  4.3322 10.5192 0.003458
+## drops        2 4.8581  2.4290  5.8981 0.008251
+## brand:drops  2 1.5801  0.7901  1.9184 0.168695
+## Residuals   24 9.8840  0.4118
 ```
 
 
@@ -683,10 +685,7 @@ require(effects)
 plot(allEffects(m1), grid=T, multiline=T, ci.style="bars")
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-6-1.png" alt="(ref:fig4-6)" width="672" />
-<p class="caption">(\#fig:Figure4-6)(ref:fig4-6)</p>
-</div>
+![(\#fig:Figure4-6)(ref:fig4-6)](04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf) 
 
 In the absence of evidence to include the
 interaction, the model should be simplified to the additive model and the interpretation
@@ -704,12 +703,10 @@ anova(m2)
 ## Analysis of Variance Table
 ## 
 ## Response: responses
-##           Df  Sum Sq Mean Sq F value   Pr(>F)   
-## brand      1  4.3322  4.3322  9.8251 0.004236 **
-## drops      2  4.8581  2.4290  5.5089 0.010123 * 
-## Residuals 26 11.4641  0.4409                    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##           Df  Sum Sq Mean Sq F value   Pr(>F)
+## brand      1  4.3322  4.3322  9.8251 0.004236
+## drops      2  4.8581  2.4290  5.5089 0.010123
+## Residuals 26 11.4641  0.4409
 ```
 
 The p-values for the main effects of ``brand`` and ``drops`` change slightly from the
@@ -755,7 +752,7 @@ follow the rules of the sums of squares decomposition but they
 will test the desired hypotheses. Specifically, they provide each test
 conditional on any other terms at the same level of the model and match the
 hypotheses written out earlier in this section. To get the "correct" ANOVA
-results, the ``car`` (Fox and Weisberg, 2011) package is required. We use the 
+results, the ``car`` (@R-car, @Fox2011) package is required. We use the 
 ``Anova`` function on our linear models from here forward to get the "right" 
 tests in our ANOVA tables. Note how the case-sensitive nature of R code shows 
 up in the use of the capital-A ``Anova`` function instead of the ``anova`` 
@@ -781,12 +778,10 @@ Anova(m2)
 ## Anova Table (Type II tests)
 ## 
 ## Response: responses
-##            Sum Sq Df F value   Pr(>F)   
-## brand      4.3322  1  9.8251 0.004236 **
-## drops      4.8581  2  5.5089 0.010123 * 
-## Residuals 11.4641 26                    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##            Sum Sq Df F value   Pr(>F)
+## brand      4.3322  1  9.8251 0.004236
+## drops      4.8581  2  5.5089 0.010123
+## Residuals 11.4641 26
 ```
 
 The new output switches the columns around and doesn't show you the mean squares, 
@@ -823,13 +818,11 @@ summary(m2)
 ## -1.4561 -0.4587  0.1297  0.4434  0.9695 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   1.8454     0.2425   7.611 4.45e-08 ***
-## brandB2       0.7600     0.2425   3.134  0.00424 ** 
-## drops20      -0.4680     0.2970  -1.576  0.12715    
-## drops30      -0.9853     0.2970  -3.318  0.00269 ** 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)   1.8454     0.2425   7.611 4.45e-08
+## brandB2       0.7600     0.2425   3.134  0.00424
+## drops20      -0.4680     0.2970  -1.576  0.12715
+## drops30      -0.9853     0.2970  -3.318  0.00269
 ## 
 ## Residual standard error: 0.664 on 26 degrees of freedom
 ## Multiple R-squared:  0.445,	Adjusted R-squared:  0.3809 
@@ -869,10 +862,7 @@ require(effects)
 plot(allEffects(m2))
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-7-1.png" alt="(ref:fig4-7)" width="672" />
-<p class="caption">(\#fig:Figure4-7)(ref:fig4-7)</p>
-</div>
+![(\#fig:Figure4-7)(ref:fig4-7)](04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf) 
 
 
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
@@ -900,10 +890,7 @@ intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2),
         main="Interaction Plot", ylim=c(-5,40))
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-8-1.png" alt="(ref:fig4-8)" width="672" />
-<p class="caption">(\#fig:Figure4-8)(ref:fig4-8)</p>
-</div>
+![(\#fig:Figure4-8)(ref:fig4-8)](04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf) 
 
 It appears that the effect of method changes based on the dosage as the
 interaction plot seems to show some evidence of non-parallel lines. Actually, 
@@ -926,13 +913,11 @@ Anova(TG1)
 ## Anova Table (Type II tests)
 ## 
 ## Response: len
-##            Sum Sq Df  F value    Pr(>F)    
-## supp       205.35  1  12.3170 0.0008936 ***
-## dose      2224.30  1 133.4151 < 2.2e-16 ***
-## supp:dose   88.92  1   5.3335 0.0246314 *  
-## Residuals  933.63 56                       
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##            Sum Sq Df  F value    Pr(>F)
+## supp       205.35  1  12.3170 0.0008936
+## dose      2224.30  1 133.4151 < 2.2e-16
+## supp:dose   88.92  1   5.3335 0.0246314
+## Residuals  933.63 56
 ```
 
 The R output is reporting an interaction test result of $F(1,56)=5.3$ with
@@ -960,13 +945,11 @@ Anova(TG2)
 ## Anova Table (Type II tests)
 ## 
 ## Response: len
-##             Sum Sq Df F value    Pr(>F)    
-## supp        205.35  1  15.572 0.0002312 ***
-## dosef      2426.43  2  92.000 < 2.2e-16 ***
-## supp:dosef  108.32  2   4.107 0.0218603 *  
-## Residuals   712.11 54                      
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Sum Sq Df F value    Pr(>F)
+## supp        205.35  1  15.572 0.0002312
+## dosef      2426.43  2  92.000 < 2.2e-16
+## supp:dosef  108.32  2   4.107 0.0218603
+## Residuals   712.11 54
 ```
 
 The ANOVA $F$-test for an interaction between supplement type and dosage level is 
@@ -1047,10 +1030,7 @@ tests and estimates for *Dose* and *Delivery method*.
         plot(TG2, pch=16) 
         ```
         
-        <div class="figure">
-        <img src="04-twoWayAnova_files/figure-html/Figure4-9-1.png" alt="(ref:fig4-9)" width="672" />
-        <p class="caption">(\#fig:Figure4-9)(ref:fig4-9)</p>
-        </div>
+        ![(\#fig:Figure4-9)(ref:fig4-9)](04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf) 
         
     * Normality of residuals:
     
@@ -1069,13 +1049,11 @@ tests and estimates for *Dose* and *Delivery method*.
     ## Anova Table (Type II tests)
     ## 
     ## Response: len
-    ##             Sum Sq Df F value    Pr(>F)    
-    ## supp        205.35  1  15.572 0.0002312 ***
-    ## dosef      2426.43  2  92.000 < 2.2e-16 ***
-    ## supp:dosef  108.32  2   4.107 0.0218603 *  
-    ## Residuals   712.11 54                      
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ##             Sum Sq Df F value    Pr(>F)
+    ## supp        205.35  1  15.572 0.0002312
+    ## dosef      2426.43  2  92.000 < 2.2e-16
+    ## supp:dosef  108.32  2   4.107 0.0218603
+    ## Residuals   712.11 54
     ```
 
     * The test statistic is $F(2,54)=4.107$.
@@ -1139,15 +1117,13 @@ summary(TG2)
 ##  -8.20  -2.72  -0.27   2.65   8.27 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)     13.230      1.148  11.521 3.60e-16 ***
-## suppVC          -5.250      1.624  -3.233  0.00209 ** 
-## dosef1           9.470      1.624   5.831 3.18e-07 ***
-## dosef2          12.830      1.624   7.900 1.43e-10 ***
-## suppVC:dosef1   -0.680      2.297  -0.296  0.76831    
-## suppVC:dosef2    5.330      2.297   2.321  0.02411 *  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##               Estimate Std. Error t value Pr(>|t|)
+## (Intercept)     13.230      1.148  11.521 3.60e-16
+## suppVC          -5.250      1.624  -3.233  0.00209
+## dosef1           9.470      1.624   5.831 3.18e-07
+## dosef2          12.830      1.624   7.900 1.43e-10
+## suppVC:dosef1   -0.680      2.297  -0.296  0.76831
+## suppVC:dosef2    5.330      2.297   2.321  0.02411
 ## 
 ## Residual standard error: 3.631 on 54 degrees of freedom
 ## Multiple R-squared:  0.7937,	Adjusted R-squared:  0.7746 
@@ -1189,10 +1165,7 @@ our results.
 plot(allEffects(TG2), grid=T, multiline=T, ci.style="bars")
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-10-1.png" alt="(ref:fig4-10)" width="672" />
-<p class="caption">(\#fig:Figure4-10)(ref:fig4-10)</p>
-</div>
+![(\#fig:Figure4-10)(ref:fig4-10)](04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf) 
 
 Given the presence of an important
 interaction, then the final step in the interpretation here is to interpret the
@@ -1214,10 +1187,7 @@ intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
         cld=T, main="Interaction Plot with CLD")
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-11-1.png" alt="(ref:fig4-11)" width="672" />
-<p class="caption">(\#fig:Figure4-11)(ref:fig4-11)</p>
-</div>
+![(\#fig:Figure4-11)(ref:fig4-11)](04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf) 
     
 The interpretation of the previous hypothesis test result can be concluded 
 with the following discussion. 
@@ -1230,9 +1200,9 @@ dosages, OJ is clearly better than VC by about 10 microns of growth on average.
 ## Observational study example: The Psychology of Debt	{#section4-5}
 
 In this section, the analysis of a survey of $N=464$ randomly sampled
-adults will be analyzed from a survey conducted by Lee, Webley, and Walker (1995)
+adults will be analyzed from a survey conducted by @Lea1995
 and available in the ``debt`` data set from the ``faraway`` package 
-(Faraway, 2016). The subjects responded to a variety of questions
+[@R-faraway]. The subjects responded to a variety of questions
 including whether they buy cigarettes (``cigbuy``: 0 if
 no, 1 if yes), their housing situation (``house``: 1 = rent, 2 = mortgage,
 and 3 = owned outright), their income group (``incomegp``: 1 =
@@ -1243,7 +1213,7 @@ question measured on an ***ordinal*** 1 to 5 scale, with higher values
 corresponding to more positive responses about **going into debt** of
 various kinds. The ordered scale on surveys that try to elicit your opinions on
 topics with scales from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called
-a ***Likert scale*** (Likert, 1932). It is not a quantitative scale and really 
+a ***Likert scale*** [@Likert1932]. It is not a quantitative scale and really 
 should be handled more carefully than taking an average of a set responses. That 
 said, it is extremely common practice in social science research to treat ordinal
 responses as if they are quantitative and take the average of many of them to
@@ -1297,10 +1267,7 @@ debtc <- na.omit(debt)
 intplot(prodebt ~ cigbuy*incomegp, data=debtc, col=c(1,3), lwd=2)
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-12-1.png" alt="(ref:fig4-12)" width="672" />
-<p class="caption">(\#fig:Figure4-12)(ref:fig4-12)</p>
-</div>
+![(\#fig:Figure4-12)(ref:fig4-12)](04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf) 
 
 As in other situations, and especially
 with observational studies where a single large sample is analyzed, it is
@@ -1348,13 +1315,11 @@ Anova(debt1)
 ## Anova Table (Type II tests)
 ## 
 ## Response: prodebt
-##                  Sum Sq  Df F value   Pr(>F)   
-## incomegp          9.018   4  4.5766 0.001339 **
-## cigbuy            0.703   1  1.4270 0.233222   
-## incomegp:cigbuy   1.971   4  1.0003 0.407656   
-## Residuals       144.835 294                    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##                  Sum Sq  Df F value   Pr(>F)
+## incomegp          9.018   4  4.5766 0.001339
+## cigbuy            0.703   1  1.4270 0.233222
+## incomegp:cigbuy   1.971   4  1.0003 0.407656
+## Residuals       144.835 294
 ```
 
 The diagnostic plots (Figure \@ref(fig:Figure4-13)) seem to be pretty 
@@ -1382,10 +1347,7 @@ par(mfrow=c(2,2))
 plot(debt1)
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-13-1.png" alt="(ref:fig4-13)" width="672" />
-<p class="caption">(\#fig:Figure4-13)(ref:fig4-13)</p>
-</div>
+![(\#fig:Figure4-13)(ref:fig4-13)](04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf) 
  
 1. **Hypotheses (Two sets apply when the additive model is the focus!):**
 
@@ -1420,19 +1382,7 @@ plot(debt1)
     plot(debt1r)
     ```
     
-    <div class="figure">
-    <img src="04-twoWayAnova_files/figure-html/Figure4-14-1.png" alt="(ref:fig4-14)" width="672" />
-    <p class="caption">(\#fig:Figure4-14)(ref:fig4-14)</p>
-    </div><div class="figure">
-    <img src="04-twoWayAnova_files/figure-html/Figure4-14-2.png" alt="(ref:fig4-14)" width="672" />
-    <p class="caption">(\#fig:Figure4-14)(ref:fig4-14)</p>
-    </div><div class="figure">
-    <img src="04-twoWayAnova_files/figure-html/Figure4-14-3.png" alt="(ref:fig4-14)" width="672" />
-    <p class="caption">(\#fig:Figure4-14)(ref:fig4-14)</p>
-    </div><div class="figure">
-    <img src="04-twoWayAnova_files/figure-html/Figure4-14-4.png" alt="(ref:fig4-14)" width="672" />
-    <p class="caption">(\#fig:Figure4-14)(ref:fig4-14)</p>
-    </div>
+    ![(\#fig:Figure4-14)(ref:fig4-14)](04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf) ![(\#fig:Figure4-14)(ref:fig4-14)](04-twoWayAnova_files/figure-latex/Figure4-14-2.pdf) ![(\#fig:Figure4-14)(ref:fig4-14)](04-twoWayAnova_files/figure-latex/Figure4-14-3.pdf) ![(\#fig:Figure4-14)(ref:fig4-14)](04-twoWayAnova_files/figure-latex/Figure4-14-4.pdf) 
 
     * Constant Variance:
     
@@ -1458,12 +1408,10 @@ plot(debt1)
     ## Anova Table (Type II tests)
     ## 
     ## Response: prodebt
-    ##            Sum Sq  Df F value   Pr(>F)   
-    ## incomegp    9.018   4  4.5766 0.001335 **
-    ## cigbuy      0.703   1  1.4270 0.233210   
-    ## Residuals 146.806 298                    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ##            Sum Sq  Df F value   Pr(>F)
+    ## incomegp    9.018   4  4.5766 0.001335
+    ## cigbuy      0.703   1  1.4270 0.233210
+    ## Residuals 146.806 298
     ```
 
     * The test statistics are $F(4,298)=4.577$ and $F(1,298)=1.427$. 
@@ -1516,10 +1464,7 @@ panel for income group and the right panel for buying cigarettes or not
 plot(allEffects(debt1r))
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-15-1.png" alt="(ref:fig4-15)" width="672" />
-<p class="caption">(\#fig:Figure4-15)(ref:fig4-15)</p>
-</div>
+![(\#fig:Figure4-15)(ref:fig4-15)](04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf) 
 
 The estimated coefficients can also be
 interesting to interpret for the additive model. Here is the model summary:
@@ -1539,15 +1484,13 @@ summary(debt1r)
 ## -1.72124 -0.41788 -0.00676  0.46157  2.24616 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  3.05484    0.11127  27.454  < 2e-16 ***
-## incomegp2    0.01641    0.13289   0.123 0.901826    
-## incomegp3    0.17477    0.13649   1.280 0.201385    
-## incomegp4    0.16901    0.14275   1.184 0.237381    
-## incomegp5    0.46833    0.13378   3.501 0.000535 ***
-## cigbuy1     -0.10640    0.08907  -1.195 0.233210    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  3.05484    0.11127  27.454  < 2e-16
+## incomegp2    0.01641    0.13289   0.123 0.901826
+## incomegp3    0.17477    0.13649   1.280 0.201385
+## incomegp4    0.16901    0.14275   1.184 0.237381
+## incomegp5    0.46833    0.13378   3.501 0.000535
+## cigbuy1     -0.10640    0.08907  -1.195 0.233210
 ## 
 ## Residual standard error: 0.7019 on 298 degrees of freedom
 ## Multiple R-squared:  0.06778,	Adjusted R-squared:  0.05214 
@@ -1569,13 +1512,20 @@ six combinations can be found in Table \@ref(tab:Table4-3).
 (ref:tab4-3) Calculations to construct the estimates for all combinations 
 of variables for the ``prodebt`` additive model.
 
+\begin{table}
 
-Table: (\#tab:Table4-3)(ref:tab4-3)
-
-     $\color{red}{\text{Cig}\\\text{Buy}}$   $\color{blue}{\textbf{Income}\\\textbf{Group 1}}$                               $\color{blue}{\textbf{Income}\\\textbf{Group 2}}$                                                  $\color{blue}{\textbf{Income}\\\textbf{Group 3}}$                                                  $\color{blue}{\textbf{Income}\\\textbf{Group 4}}$                                                  $\color{blue}{\textbf{Income}\\\textbf{Group 5}}$                                                
----  --------------------------------------  ------------------------------------------------------------------------------  -------------------------------------------------------------------------------------------------  -------------------------------------------------------------------------------------------------  -------------------------------------------------------------------------------------------------  -------------------------------------------------------------------------------------------------
-     $\color{red}{\text{0:}\\\text{No}}$     $\hat{\alpha} \\=\small{3.055}$                                                 $\hat{\alpha} + \hat{\tau}_2 \\=\small{3.055 + 0.016} \\= \small{3.071}$                           $\hat{\alpha} + \hat{\tau}_3 \\=\small{3.055 + 0.175} \\= \small{3.230}$                           $\hat{\alpha} + \hat{\tau}_4 \\=\small{3.055 + 0.169} \\= \small{3.224}$                           $\hat{\alpha} + \hat{\tau}_5 \\=\small{3.055 + 0.468} \\= \small{3.523}$                         
-     $\color{red}{\text{1:}\\\text{Yes}}$    $\hat{\alpha}+\hat{\gamma}_2\\=\small{3.055}\\\small{-0.106}\\=\small{2.949}$   $\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2\\=\small{3.055+0.016}\\\small{-0.106}\\=\small{2.965}$   $\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2\\=\small{3.055+0.175}\\\small{-0.106}\\=\small{3.124}$   $\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2\\=\small{3.055+0.169}\\\small{-0.106}\\=\small{3.118}$   $\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2\\=\small{3.055+0.468}\\\small{-0.106}\\=\small{3.417}$ 
+\caption{(\#tab:Table4-3)(ref:tab4-3)}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l|l}
+\hline
+  & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{Cig\}\textbackslash{}\textbackslash{}\textbackslash{}text\{Buy\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 1\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 2\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 3\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 4\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 5\}\}\$\\
+\hline
+ & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{0:\}\textbackslash{}\textbackslash{}\textbackslash{}text\{No\}\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_2 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.016\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.071\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_3 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.175\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.230\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_4 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.169\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.224\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_5 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.468\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.523\}\$\\
+\hline
+ & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{1:\}\textbackslash{}\textbackslash{}\textbackslash{}text\{Yes\}\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{2.949\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_2+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.016\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{2.965\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_3+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.175\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.124\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_4+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.169\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.118\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_5+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.468\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.417\}\$\\
+\hline
+\end{tabular}
+\end{table}
 
 One final plot of the fitted values
 from this additive model in Figure \@ref(fig:Figure4-16) hopefully crystallizes
@@ -1595,10 +1545,7 @@ groups on the x-axis and different lines for cigarette buyers (1) or not (0).
 Panel (b) displays the different income groups as lines with the cigarette
 buying status on the x-axis. 
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-16-1.png" alt="(ref:fig4-16)" width="672" />
-<p class="caption">(\#fig:Figure4-16)(ref:fig4-16)</p>
-</div>
+![(\#fig:Figure4-16)(ref:fig4-16)](04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf) 
 
 **In general, we proceed through the following steps in any 2-WAY ANOVA situation:**
 
@@ -1690,10 +1637,7 @@ par(mfrow=c(1,1))
 intplot(responses~brand*dropsf,data=ptR,lwd=2)
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-17-1.png" alt="(ref:fig4-17)" width="672" />
-<p class="caption">(\#fig:Figure4-17)(ref:fig4-17)</p>
-</div>
+![(\#fig:Figure4-17)(ref:fig4-17)](04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf) 
 
 The next step would be to assess the
 statistical evidence related to an interaction between ``Brand`` and 
@@ -1776,10 +1720,7 @@ replication.
 plot(allEffects(norep1))
 ```
 
-<div class="figure">
-<img src="04-twoWayAnova_files/figure-html/Figure4-18-1.png" alt="(ref:fig4-18)" width="672" />
-<p class="caption">(\#fig:Figure4-18)(ref:fig4-18)</p>
-</div>
+![(\#fig:Figure4-18)(ref:fig4-18)](04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf) 
 
 Hopefully by pushing the limits there
 are two conclusions available from this section. First, replication is
@@ -1862,8 +1803,8 @@ modify in red, remembering that any R
 packages mentioned need to be installed and loaded for this code to have a
 chance of working:
 
-* tally(<font color='red'>A</font>~<font color='red'>B</font>,
-data=<font color='red'>DATASETNAME</font>)
+* tally(\textcolor{red}{A}~\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Requires the ``mosaic`` package be loaded. 
     
@@ -1871,15 +1812,15 @@ data=<font color='red'>DATASETNAME</font>)
     predictor variables A and B, used to check for balance and understand sample 
     sizes in each combination. 
     
-* <font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font> <- 
-factor(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
+* \textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME} <- 
+factor(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
 
     * Use the ``factor`` function on any numerically coded
     explanatory variable where the numerical codes represent levels of a
     categorical variable. 
     
-* intplot(<font color='red'>Y</font>~<font color='red'>A</font>*<font color='red'>B</font>,
-data=<font color='red'>DATASETNAME</font>)
+* intplot(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Download and install using: 
     
@@ -1887,9 +1828,9 @@ data=<font color='red'>DATASETNAME</font>)
     
     * Provides interaction plot.
     
-* <font color='red'>INTERACTIONMODELNAME</font> <- 
-lm(<font color='red'>Y</font>~<font color='red'>A</font>*<font color='red'>B</font>,
-data=<font color='red'>DATASETNAME</font>)
+* \textcolor{red}{INTERACTIONMODELNAME} <- 
+lm(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Fits the interaction model with main effects for A and B and an 
     interaction between them.
@@ -1897,9 +1838,9 @@ data=<font color='red'>DATASETNAME</font>)
     * This is the first model that should be fit in Two-Way ANOVA 
     modeling situations.
     
-* <font color='red'>ADDITIVEMODELNAME</font> <- 
-lm(<font color='red'>Y</font>~<font color='red'>A</font>+<font color='red'>B</font>,
-data=<font color='red'>DATASETNAME</font>)
+* \textcolor{red}{ADDITIVEMODELNAME} <- 
+lm(\textcolor{red}{Y}~\textcolor{red}{A}+\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Fits the additive model with only main effects for A and B but no 
     interaction between them.
@@ -1907,12 +1848,12 @@ data=<font color='red'>DATASETNAME</font>)
     * Should only be used if the interaction has been decided to be 
     unimportant using a test for the interaction.
     
-* summary(<font color='red'>MODELNAME</font>)
+* summary(\textcolor{red}{MODELNAME})
 
     * Generates model summary information including the estimated model coefficients, 
     SEs, t-tests, and p-values. 
 
-* Anova(<font color='red'>MODELNAME</font>)
+* Anova(\textcolor{red}{MODELNAME})
 
     * Requires the ``car`` package to be loaded.
     
@@ -1921,12 +1862,12 @@ data=<font color='red'>DATASETNAME</font>)
     when working with the additive model as it provides inferences for 
     each term conditional on the other one. 
 
-* par(mfrow=c(2,2)); plot(<font color='red'>MODELNAME</font>)
+* par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})
 
     * Generates four diagnostic plots including the Residuals vs Fitted and 
     Normal Q-Q plot. 
     
-* plot(allEffects(<font color='red'>MODELNAME</font>))
+* plot(allEffects(\textcolor{red}{MODELNAME}))
     
     * Requires the ``effects`` package be loaded. 
 
@@ -1941,9 +1882,9 @@ mathematics course
 work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two
 Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning
 Calculus. These data were generated from summary statistics for one particular
-form of the test as reported by Doolittle (1989). The source of this version of
-the data set is Ramsey and Schafer (2002) and the ``Sleuth2`` package 
-(Ramsey and Schafer, 2012). 
+form of the test as reported by @Doolittle1989. The source of this version of
+the data set is @Ramsey2002 and the ``Sleuth2`` package 
+[@R-Sleuth2]. 
 First install and then load that package. 
 
 ```

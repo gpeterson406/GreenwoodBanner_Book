@@ -341,7 +341,8 @@ library(knitr)
 kable(x,col.names=columnHeaders,caption='(ref:tab3-1)')
 ```
 
-We can also visualize the results of our linear models using what are called  ***term-plots*** or  ***effect-plots***  (from the ``effects`` package; Fox, 2003)
+We can also visualize the results of our linear models using what are called  ***term-plots*** or  ***effect-plots***  (from the ``effects`` package; @Fox2003,
+[@R-effects])
 as displayed in Figure \@ref(fig:Figure3-2). We don't want to use the word 
 "effect" for these model components unless we have random assignment in the study
 design so we generically call these ***term-plots*** as they display terms or
@@ -1204,7 +1205,7 @@ set even in the presence of the skewed residual error distribution.
 
 A second example of the One-way ANOVA methods involves a study of length of
 odontoblasts (cells that are responsible for tooth growth) in 60 Guinea Pigs 
-(measured in microns) from Crampton (1947). $N=60$ Guinea Pigs were obtained 
+(measured in microns) from @Crampton1947. $N=60$ Guinea Pigs were obtained 
 from a local breeder and each received one of three dosages (0.5, 1, or 
 2 mg/day) of Vitamin C via one of two delivery methods, Orange Juice (*OJ*) or
 ascorbic acid (the stuff in vitamin C capsules, called $VC$ below) as the source 
@@ -1511,11 +1512,11 @@ probability calculation shows the magnitude of the problem. If we start with a
 errors made on one test) =0.95, by definition. This is our standard hypothesis
 testing situation. Now, suppose we have $m$ independent tests, then 
 
-$$\begin{align*}
+$$\begin{array}{ll}
 & \text{Pr(make at least 1 Type I error given all null hypotheses are true)} \\
 & = 1 - \text{Pr(no errors made)} \\
 & = 1 - 0.95^m.
-\end{align*}$$ 
+\end{array}$$
 
 Figure \ref(fig:Figure3-18) shows how the probability of having at least one false detection 
 grows rapidly with the number of tests. The plot stops at 100 tests since it is effectively 
@@ -1588,7 +1589,7 @@ to find the multiplier, $q^*$, for the confidence intervals is available in the
 regular $t^*$ from our two-sample $t$-based confidence interval discussed in
 Chapter \@ref(chapter2). We will use the ``confint``, ``cld``, and ``plot`` functions 
 applied to output from the ``glht`` function (all from the ``multcomp`` package; 
-Hothorn, Bretz and Westfall, 2008) to easily get the required comparisons from our 
+@Hothorn2008, [@R-multcomp]) to easily get the required comparisons from our 
 ANOVA model. Unfortunately, its code format is a little complicated -- but there are 
 just two places to modify the code, by including the model name and after ``mcp`` 
 (stands for multiple comparisons) in the ``linfct`` option, you need to include the
@@ -1650,7 +1651,7 @@ example of this sort of overlap is seen in the next section.
 
 There is a method that many researchers use to more efficiently generate and 
 report these sorts of results that is called a  ***compact letter display*** 
-(CLD, Piepho, 2004). The ``cld`` function can be applied to the results from 
+(CLD, @Piepho2004). The ``cld`` function can be applied to the results from 
 ``glht`` to generate the CLD that we can use to provide a "simple" summary of 
 the sets of groups. In this discussion, we define a  **set as a union of different
 groups that can contain one or more members** and the member of these groups are 

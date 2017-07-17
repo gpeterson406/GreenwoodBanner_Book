@@ -729,7 +729,7 @@ follow the rules of the sums of squares decomposition but they
 will test the desired hypotheses. Specifically, they provide each test
 conditional on any other terms at the same level of the model and match the
 hypotheses written out earlier in this section. To get the "correct" ANOVA
-results, the ``car`` (Fox and Weisberg, 2011) package is required. We use the 
+results, the ``car`` (@R-car, @Fox2011) package is required. We use the 
 ``Anova`` function on our linear models from here forward to get the "right" 
 tests in our ANOVA tables. Note how the case-sensitive nature of R code shows 
 up in the use of the capital-A ``Anova`` function instead of the ``anova`` 
@@ -1064,9 +1064,9 @@ dosages, OJ is clearly better than VC by about 10 microns of growth on average.
 ## Observational study example: The Psychology of Debt	{#section4-5}
 
 In this section, the analysis of a survey of $N=464$ randomly sampled
-adults will be analyzed from a survey conducted by Lee, Webley, and Walker (1995)
+adults will be analyzed from a survey conducted by @Lea1995
 and available in the ``debt`` data set from the ``faraway`` package 
-(Faraway, 2016). The subjects responded to a variety of questions
+[@R-faraway]. The subjects responded to a variety of questions
 including whether they buy cigarettes (``cigbuy``: 0 if
 no, 1 if yes), their housing situation (``house``: 1 = rent, 2 = mortgage,
 and 3 = owned outright), their income group (``incomegp``: 1 =
@@ -1077,7 +1077,7 @@ question measured on an ***ordinal*** 1 to 5 scale, with higher values
 corresponding to more positive responses about **going into debt** of
 various kinds. The ordered scale on surveys that try to elicit your opinions on
 topics with scales from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called
-a ***Likert scale*** (Likert, 1932). It is not a quantitative scale and really 
+a ***Likert scale*** [@Likert1932]. It is not a quantitative scale and really 
 should be handled more carefully than taking an average of a set responses. That 
 said, it is extremely common practice in social science research to treat ordinal
 responses as if they are quantitative and take the average of many of them to
@@ -1665,9 +1665,9 @@ mathematics course
 work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two
 Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning
 Calculus. These data were generated from summary statistics for one particular
-form of the test as reported by Doolittle (1989). The source of this version of
-the data set is Ramsey and Schafer (2002) and the ``Sleuth2`` package 
-(Ramsey and Schafer, 2012). 
+form of the test as reported by @Doolittle1989. The source of this version of
+the data set is @Ramsey2002 and the ``Sleuth2`` package 
+[@R-Sleuth2]. 
 First install and then load that package. 
 
 ```

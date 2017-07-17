@@ -1,7 +1,7 @@
 --- 
 title: "A Second Semester Statistics Course with R"
 author: "Mark Greenwood and Katherine Banner"
-date: '2017-07-14'
+date: '2017-07-17'
 output:
   bookdown::pdf_book: 
     keep_tex: yes
@@ -15,7 +15,7 @@ documentclass: book
 link-citations: yes
 github-repo: gpeterson406/GreenwoodBanner_Book
 bibliography:
-- book.bib
+- references.bib
 - packages.bib
 site: bookdown::bookdown_site
 biblio-style: apalike

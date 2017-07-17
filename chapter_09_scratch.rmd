@@ -1,53 +1,5 @@
 
 
-</span>
-
-
-EN-US;mso-bidi-language:AR-SA'>
- **</span>
-
-
-<h2 style='margin-left:0in;text-indent:0in;mso-list:l0 level2 lfo1'>
-<a
-name="_Toc459020970">
-8. 4: General summary</a>
-
-
-</h2>
-
-
-????????????? </span>
-Aswe wrap up, it is important to remember that these tools are limited by the
-quality of the data collected. If you are ever involved in applying these
-statistical models, whether in a research or industrial setting, make sure that
-the research questions are discussed before data collection. And before data
-collection is started, make sure that the methods will provide results that can
-address the research questions. And, finally, make sure someone involved in the
-project knows how to perform the appropriate statistical analysis. One way to
-make sure you know how to analyze a data set and, often, clarify the research
-questions and data collection needs, is to  **** . With this sort of preparation, many issuescan be avoided. Remember to think about reasons why assumptions of your
-proposed method might be violated. 
-
-</span>
-
-
-????????????? </span>
-Youare now  ****  and a bit  ****  with statistical methods. Ifyou go to use them, remember the fundamentals and find the story in the data. 
-After deciding on any research questions of interest, graph the data and make
-sure that the statistical methods will give you results that make some sense
-based on the graphical results. In the MLR results, it is possible that graphs
-will not be able to completely tell you the story, but all the other methods
-should follow the pictures you see. Even when (or especially when) you use
-sophisticated statistical methods, graphical presentations are critical to
-helping others understand the results. We have discussed examples that involve
-displaying categorical and quantitative variables and even some displays that
-bridge both types of variables. We hope you have enjoyed this material and been
-able to continue to develop your interests in statistics. You will see it in
-many future situations both in courses in your area of study and in real
-problems that need answers. You are also prepared to take more advanced
-statistics courses - if you want to discuss the next options, we are happy to
-provide additional information about the best next steps in learning
-statistics. 
 
 </span>
 

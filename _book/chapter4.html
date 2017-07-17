@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-14">
+<meta name="date" content="2017-07-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
 <li class="chapter" data-level="1" data-path="chapter1.html"><a href="chapter1.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
-<li class="chapter" data-level="1.1" data-path="chapter1.html"><a href="chapter1.html#overview-of-methods"><i class="fa fa-check"></i><b>1.1</b> Overview of methods</a></a></li>
+<li class="chapter" data-level="1.1" data-path="chapter1.html"><a href="chapter1.html#overview-of-methods"><i class="fa fa-check"></i><b>1.1</b> Overview of methods</a></li>
 <li class="chapter" data-level="1.2" data-path="chapter1.html"><a href="chapter1.html#getting-started-in-r"><i class="fa fa-check"></i><b>1.2</b> Getting started in R</a></li>
 <li class="chapter" data-level="1.3" data-path="chapter1.html"><a href="chapter1.html#basic-summary-statistics-histograms-and-boxplots-using-r"><i class="fa fa-check"></i><b>1.3</b> Basic summary statistics, histograms, and boxplots using R</a></li>
 <li class="chapter" data-level="1.4" data-path="chapter1.html"><a href="chapter1.html#chapter-summary"><i class="fa fa-check"></i><b>1.4</b> Chapter summary</a></li>
@@ -215,6 +215,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.4" data-path="chapter9.html"><a href="chapter9.html#section9-4"><i class="fa fa-check"></i><b>9.4</b> Multi-variate models are essential for understanding vertebrate diversification in deep time</a></li>
 <li class="chapter" data-level="9.5" data-path="chapter9.html"><a href="chapter9.html#section9-5"><i class="fa fa-check"></i><b>9.5</b> General summary</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -480,13 +481,11 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: responses
-##             Df Sum Sq Mean Sq F value   Pr(&gt;F)   
-## brand        1 4.3322  4.3322 10.5192 0.003458 **
-## drops        2 4.8581  2.4290  5.8981 0.008251 **
-## brand:drops  2 1.5801  0.7901  1.9184 0.168695   
-## Residuals   24 9.8840  0.4118                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##             Df Sum Sq Mean Sq F value   Pr(&gt;F)
+## brand        1 4.3322  4.3322 10.5192 0.003458
+## drops        2 4.8581  2.4290  5.8981 0.008251
+## brand:drops  2 1.5801  0.7901  1.9184 0.168695
+## Residuals   24 9.8840  0.4118</code></pre>
 <table style="width:89%;">
 <caption>Interaction ANOVA table with interaction row in bold.</caption>
 <colgroup>
@@ -558,12 +557,10 @@ Figure 4.6: Plot of estimated results of interaction model.
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: responses
-##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
-## brand      1  4.3322  4.3322  9.8251 0.004236 **
-## drops      2  4.8581  2.4290  5.5089 0.010123 * 
-## Residuals 26 11.4641  0.4409                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)
+## brand      1  4.3322  4.3322  9.8251 0.004236
+## drops      2  4.8581  2.4290  5.5089 0.010123
+## Residuals 26 11.4641  0.4409</code></pre>
 <p>The p-values for the main effects of <code>brand</code> and <code>drops</code> change slightly from the results in the interaction model due to changes in the <span class="math inline">\(\text{MS}_E\)</span> from 0.4118 to 0.4409 (more variability is left over in the simpler model) and the <span class="math inline">\(\text{DF}_{\text{error}}\)</span> that increases from 24 to 26. In both models, the <span class="math inline">\(\text{SS}_{\text{Total}}\)</span> is the same (20.6544). In the interaction model,</p>
 <p><span class="math display">\[\begin{array}{rl}
 \text{SS}_{\text{Total}} &amp; = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
@@ -579,18 +576,16 @@ Figure 4.6: Plot of estimated results of interaction model.
 &amp; = 20.6544 \\
 \end{array}\]</span></p>
 <p>This shows that the sums of squares decomposition applies in these more complicated models as it did in the One-Way ANOVA. It also shows that if the interaction is removed from the model, that variability is lumped in with the other unexplained variability that goes in the <span class="math inline">\(\text{SS}_{\text{E}}\)</span> in any model.</p>
-<p>The fact that the sums of squares decomposition can be applied here is useful, except that there is a small issue with the main effect tests in the ANOVA table results that follow this decomposition when the design is not balanced. It ends up that the tests in a typical ANOVA table are only conditional on the tests higher up in the table. For example, in the additive model ANOVA table, the <code>Brand</code> test is not conditional on the <code>Drops</code> effect, but the <code>Drops</code> effect is conditional on the <code>Brand</code> effect. To fix this issue, we have to use another type of sums of squares, called <strong><em>Type II sums of squares</em></strong>. They will no longer always follow the rules of the sums of squares decomposition but they will test the desired hypotheses. Specifically, they provide each test conditional on any other terms at the same level of the model and match the hypotheses written out earlier in this section. To get the “correct” ANOVA results, the <code>car</code> (Fox and Weisberg, 2011) package is required. We use the <code>Anova</code> function on our linear models from here forward to get the “right” tests in our ANOVA tables. Note how the case-sensitive nature of R code shows up in the use of the capital-A <code>Anova</code> function instead of the <code>anova</code> function used previously. In this case, because the design was balanced, the results are the same using either function. Observational studies rarely generate balanced designs (some designed studies can result in unbalanced designs) so we will generally just use the Type II version of the sums of squares. The <code>Anova</code> results using the Type II sums of squares are slightly more conservative than the results from <code>anova</code>, which are called Type I sums of squares. The sums of squares decomposition no longer can be applied, but it is a small sacrifice to get each test after adjusting for all other variables<a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a>.</p>
+<p>The fact that the sums of squares decomposition can be applied here is useful, except that there is a small issue with the main effect tests in the ANOVA table results that follow this decomposition when the design is not balanced. It ends up that the tests in a typical ANOVA table are only conditional on the tests higher up in the table. For example, in the additive model ANOVA table, the <code>Brand</code> test is not conditional on the <code>Drops</code> effect, but the <code>Drops</code> effect is conditional on the <code>Brand</code> effect. To fix this issue, we have to use another type of sums of squares, called <strong><em>Type II sums of squares</em></strong>. They will no longer always follow the rules of the sums of squares decomposition but they will test the desired hypotheses. Specifically, they provide each test conditional on any other terms at the same level of the model and match the hypotheses written out earlier in this section. To get the “correct” ANOVA results, the <code>car</code> (<span class="citation">Fox and Weisberg (<a href="#ref-R-car">2016</a>)</span>, <span class="citation">Fox and Weisberg (<a href="#ref-Fox2011">2011</a>)</span>) package is required. We use the <code>Anova</code> function on our linear models from here forward to get the “right” tests in our ANOVA tables. Note how the case-sensitive nature of R code shows up in the use of the capital-A <code>Anova</code> function instead of the <code>anova</code> function used previously. In this case, because the design was balanced, the results are the same using either function. Observational studies rarely generate balanced designs (some designed studies can result in unbalanced designs) so we will generally just use the Type II version of the sums of squares. The <code>Anova</code> results using the Type II sums of squares are slightly more conservative than the results from <code>anova</code>, which are called Type I sums of squares. The sums of squares decomposition no longer can be applied, but it is a small sacrifice to get each test after adjusting for all other variables<a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(car)
 <span class="kw">Anova</span>(m2)</code></pre></div>
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: responses
-##            Sum Sq Df F value   Pr(&gt;F)   
-## brand      4.3322  1  9.8251 0.004236 **
-## drops      4.8581  2  5.5089 0.010123 * 
-## Residuals 11.4641 26                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##            Sum Sq Df F value   Pr(&gt;F)
+## brand      4.3322  1  9.8251 0.004236
+## drops      4.8581  2  5.5089 0.010123
+## Residuals 11.4641 26</code></pre>
 <p>The new output switches the columns around and doesn’t show you the mean squares, but gives the most critical parts of the output. Here, there is no change in results because it is balanced design with equal counts of responses in each combination of the two explanatory variables.</p>
 <p>The additive model, when appropriate, provides simpler interpretations for each explanatory variable compared to models with interactions because the effect of one variable is the same regardless of the levels of the other variable and vice versa. There are two tools to aid in understanding the impacts of the two variables in the additive model. First, the model summary provides estimated coefficients with interpretations like those seen in Chapter <a href="chapter3.html#chapter3">3</a> (deviation of group <span class="math inline">\(j\)</span> or <span class="math inline">\(k\)</span> from the baseline group’s mean), except with the additional wording of “controlling for” the other variable added to any of the discussion. Second, the term-plots now show each main effect and how the groups differ with one panel for each of the two explanatory variables in the model. These term-plots are created by holding the other variable constant at one of its levels.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m2)</code></pre></div>
@@ -603,13 +598,11 @@ Figure 4.6: Plot of estimated results of interaction model.
 ## -1.4561 -0.4587  0.1297  0.4434  0.9695 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   1.8454     0.2425   7.611 4.45e-08 ***
-## brandB2       0.7600     0.2425   3.134  0.00424 ** 
-## drops20      -0.4680     0.2970  -1.576  0.12715    
-## drops30      -0.9853     0.2970  -3.318  0.00269 ** 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   1.8454     0.2425   7.611 4.45e-08
+## brandB2       0.7600     0.2425   3.134  0.00424
+## drops20      -0.4680     0.2970  -1.576  0.12715
+## drops30      -0.9853     0.2970  -3.318  0.00269
 ## 
 ## Residual standard error: 0.664 on 26 degrees of freedom
 ## Multiple R-squared:  0.445,  Adjusted R-squared:  0.3809 
@@ -650,13 +643,11 @@ Figure 4.8: Beanplot and interaction plot of the tooth growth data set.
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##            Sum Sq Df  F value    Pr(&gt;F)    
-## supp       205.35  1  12.3170 0.0008936 ***
-## dose      2224.30  1 133.4151 &lt; 2.2e-16 ***
-## supp:dose   88.92  1   5.3335 0.0246314 *  
-## Residuals  933.63 56                       
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##            Sum Sq Df  F value    Pr(&gt;F)
+## supp       205.35  1  12.3170 0.0008936
+## dose      2224.30  1 133.4151 &lt; 2.2e-16
+## supp:dose   88.92  1   5.3335 0.0246314
+## Residuals  933.63 56</code></pre>
 <p>The R output is reporting an interaction test result of <span class="math inline">\(F(1,56)=5.3\)</span> with a p-value of 0.025. But this should raise a red flag since the numerator degrees of freedom are not what we should expect of <span class="math inline">\((K-1)*(J-1) = (2-1)*(3-1)=2\)</span>. This brings up an issue in R when working with categorical variables. If the levels of a categorical variable are entered numerically, R will treat them as quantitative variables and not split out the different levels of the categorical variable. To make sure that R treats categorical variables the correct way, we should use the <code>factor</code> function on any variables that are categorical but are coded numerically in the data set. The following code creates a new variable called <code>dosef</code> using the function that will help us obtain correct results from the linear model. The re-run of the ANOVA table provides the correct analysis and the expected <span class="math inline">\(df\)</span> for the two rows of output involving <code>dosef</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ToothGrowth<span class="op">$</span>dosef&lt;-<span class="kw">factor</span>(ToothGrowth<span class="op">$</span>dose)
 TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dosef, <span class="dt">data=</span>ToothGrowth)
@@ -664,13 +655,11 @@ TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##             Sum Sq Df F value    Pr(&gt;F)    
-## supp        205.35  1  15.572 0.0002312 ***
-## dosef      2426.43  2  92.000 &lt; 2.2e-16 ***
-## supp:dosef  108.32  2   4.107 0.0218603 *  
-## Residuals   712.11 54                      
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##             Sum Sq Df F value    Pr(&gt;F)
+## supp        205.35  1  15.572 0.0002312
+## dosef      2426.43  2  92.000 &lt; 2.2e-16
+## supp:dosef  108.32  2   4.107 0.0218603
+## Residuals   712.11 54</code></pre>
 <p>The ANOVA <span class="math inline">\(F\)</span>-test for an interaction between supplement type and dosage level is <span class="math inline">\(F(2,54)= 4.107\)</span> with a p-value of 0.022. So there appears to be enough evidence to reject the null hypothesis of no interaction between <em>Dosage</em> and <em>Delivery method</em>, supporting a changing effect on tooth growth of dosage based on the delivery method in the Guinea Pigs that were assigned.</p>
 <p>Any similarities between this correct result and the previous WRONG result are coincidence. I (Greenwood) once attended a Master’s defense where the results from a similar model were not as expected (small p-values in places they didn’t expect and large p-values in places where they thought differences existed). During the presentation, the student showed some ANOVA tables and the four level categorical variable had 1 numerator <span class="math inline">\(df\)</span> in the ANOVA table. The student passed with major revisions but had to re-run <strong>all</strong> the results and re-write <strong>all</strong> of the conclusions… So be careful to check the ANOVA results (<span class="math inline">\(df\)</span> and for the right number of expected model coefficients) to make sure they match your expectations. This is one reason why you will be learning to fill in ANOVA tables based on information about the study so that you can be prepared to detect when your code has let you down<a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a>. It is also a great reason to explore term-plots and coefficient interpretations as that can also help diagnose errors in model construction.</p>
 <p>Getting back to the previous results, we now have enough background information to more formally write up a focused interpretation of these results. The 6+ hypothesis testing steps in this situation would be focused on first identifying that the best analysis here is as a Two-Way ANOVA situation (these data were analyzed in Chapter <a href="chapter3.html#chapter3">3</a> as a One-Way ANOVA but this version is better because it can explore whether there is an interaction between delivery method and dosage). We will use a 5% significance level and start with assessing the evidence for an interaction. If the interaction had not been dropped, we would have reported the test for the interaction, re-fit the additive model and used it to explore the main effect tests and estimates for <em>Dose</em> and <em>Delivery method</em>.</p>
@@ -715,13 +704,11 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: len
-##             Sum Sq Df F value    Pr(&gt;F)    
-## supp        205.35  1  15.572 0.0002312 ***
-## dosef      2426.43  2  92.000 &lt; 2.2e-16 ***
-## supp:dosef  108.32  2   4.107 0.0218603 *  
-## Residuals   712.11 54                      
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##             Sum Sq Df F value    Pr(&gt;F)
+## supp        205.35  1  15.572 0.0002312
+## dosef      2426.43  2  92.000 &lt; 2.2e-16
+## supp:dosef  108.32  2   4.107 0.0218603
+## Residuals   712.11 54</code></pre>
 <ul>
 <li>The test statistic is <span class="math inline">\(F(2,54)=4.107\)</span>.</li>
 </ul></li>
@@ -752,15 +739,13 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 ##  -8.20  -2.72  -0.27   2.65   8.27 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)     13.230      1.148  11.521 3.60e-16 ***
-## suppVC          -5.250      1.624  -3.233  0.00209 ** 
-## dosef1           9.470      1.624   5.831 3.18e-07 ***
-## dosef2          12.830      1.624   7.900 1.43e-10 ***
-## suppVC:dosef1   -0.680      2.297  -0.296  0.76831    
-## suppVC:dosef2    5.330      2.297   2.321  0.02411 *  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##               Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)     13.230      1.148  11.521 3.60e-16
+## suppVC          -5.250      1.624  -3.233  0.00209
+## dosef1           9.470      1.624   5.831 3.18e-07
+## dosef2          12.830      1.624   7.900 1.43e-10
+## suppVC:dosef1   -0.680      2.297  -0.296  0.76831
+## suppVC:dosef2    5.330      2.297   2.321  0.02411
 ## 
 ## Residual standard error: 3.631 on 54 degrees of freedom
 ## Multiple R-squared:  0.7937, Adjusted R-squared:  0.7746 
@@ -788,7 +773,7 @@ Figure 4.11: Interaction plot with added CLD from Tukey’s HSD.
 </div>
 <div id="section4-5" class="section level2">
 <h2><span class="header-section-number">4.5</span> Observational study example: The Psychology of Debt</h2>
-<p>In this section, the analysis of a survey of <span class="math inline">\(N=464\)</span> randomly sampled adults will be analyzed from a survey conducted by Lee, Webley, and Walker (1995) and available in the <code>debt</code> data set from the <code>faraway</code> package (Faraway, 2016). The subjects responded to a variety of questions including whether they buy cigarettes (<code>cigbuy</code>: 0 if no, 1 if yes), their housing situation (<code>house</code>: 1 = rent, 2 = mortgage, and 3 = owned outright), their income group (<code>incomegp</code>: 1 = lowest, 5 = highest), and their score on a continuous scale of attitudes about debt (<code>prodebt</code>: 1 = least favorable, 5 = most favorable). <code>prodebt</code> was derived as the average of a series of questions about debt with each question measured on an <strong><em>ordinal</em></strong> 1 to 5 scale, with higher values corresponding to more positive responses about <strong>going into debt</strong> of various kinds. The ordered scale on surveys that try to elicit your opinions on topics with scales from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called a <strong><em>Likert scale</em></strong> (Likert, 1932). It is not a quantitative scale and really should be handled more carefully than taking an average of a set responses. That said, it is extremely common practice in social science research to treat ordinal responses as if they are quantitative and take the average of many of them to create a more continuous response variable like the one we are using here. If you continue your statistics explorations, you will see some better techniques for analyzing responses obtained in this fashion. That said, the scale of the response is relatively easy to understand as an amount of willingness to go into debt on a scale from 1 to 5 with higher values corresponding to more willingness to be in debt.</p>
+<p>In this section, the analysis of a survey of <span class="math inline">\(N=464\)</span> randomly sampled adults will be analyzed from a survey conducted by <span class="citation">Lea and Walker (<a href="#ref-Lea1995">1995</a>)</span> and available in the <code>debt</code> data set from the <code>faraway</code> package <span class="citation">(Faraway <a href="#ref-R-faraway">2016</a>)</span>. The subjects responded to a variety of questions including whether they buy cigarettes (<code>cigbuy</code>: 0 if no, 1 if yes), their housing situation (<code>house</code>: 1 = rent, 2 = mortgage, and 3 = owned outright), their income group (<code>incomegp</code>: 1 = lowest, 5 = highest), and their score on a continuous scale of attitudes about debt (<code>prodebt</code>: 1 = least favorable, 5 = most favorable). <code>prodebt</code> was derived as the average of a series of questions about debt with each question measured on an <strong><em>ordinal</em></strong> 1 to 5 scale, with higher values corresponding to more positive responses about <strong>going into debt</strong> of various kinds. The ordered scale on surveys that try to elicit your opinions on topics with scales from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called a <strong><em>Likert scale</em></strong> <span class="citation">(Likert <a href="#ref-Likert1932">1932</a>)</span>. It is not a quantitative scale and really should be handled more carefully than taking an average of a set responses. That said, it is extremely common practice in social science research to treat ordinal responses as if they are quantitative and take the average of many of them to create a more continuous response variable like the one we are using here. If you continue your statistics explorations, you will see some better techniques for analyzing responses obtained in this fashion. That said, the scale of the response is relatively easy to understand as an amount of willingness to go into debt on a scale from 1 to 5 with higher values corresponding to more willingness to be in debt.</p>
 <p>This data set is typical of survey data where respondents were not required to answer all questions and there are some missing responses. We will clean out any individuals that failed to respond to all questions using the <code>na.omit</code> function, which will return only subjects that responded to every question in the data set. But is this dangerous? Suppose that people did not want to provide their income levels if they were in the lowest or, maybe, highest income groups. Then we would be missing responses systematically and conclusions could be biased because of ignoring these types of subjects. This is another topic for more advanced statistical methods to try to handle but something every researcher should worry about when selected subjects do not respond at all or fail to answer some questions. Is there bias because of responses that were not observed that could invalidate all my hard won statistical conclusions? This ties back into our discussion of who was sampled. We need to think carefully about who was part of the sample but refused to participate and how that might impact our inferences.</p>
 <p>Ignoring this potential for bias in the results for the moment, we are first interested in whether buying cigarettes/not and income groups interact in their explanation of the respondent’s mean opinions on being in debt. The interaction plot (Figure <a href="chapter4.html#fig:Figure4-12">4.12</a>) may suggest an interaction between <code>cigbuy</code> and <code>incomegp</code> from income levels 1 to 3 where the lines cross but it is not as clear as the previous examples. The interaction <span class="math inline">\(F\)</span>-test helps us objectively assess evidence for that interaction. Based on the plot, there do not appear to be differences based on cigarette purchasing but there might be some differences between the income groups. If there is no interaction present, then this suggests that we might be in Scenario 2 or 3 where a single main effect of interest is present.</p>
 
@@ -817,13 +802,11 @@ debt1 &lt;-<span class="st"> </span><span class="kw">lm</span>(prodebt <span cla
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: prodebt
-##                  Sum Sq  Df F value   Pr(&gt;F)   
-## incomegp          9.018   4  4.5766 0.001339 **
-## cigbuy            0.703   1  1.4270 0.233222   
-## incomegp:cigbuy   1.971   4  1.0003 0.407656   
-## Residuals       144.835 294                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##                  Sum Sq  Df F value   Pr(&gt;F)
+## incomegp          9.018   4  4.5766 0.001339
+## cigbuy            0.703   1  1.4270 0.233222
+## incomegp:cigbuy   1.971   4  1.0003 0.407656
+## Residuals       144.835 294</code></pre>
 <p>The diagnostic plots (Figure <a href="chapter4.html#fig:Figure4-13">4.13</a>) seem to be pretty well-behaved with no apparent violations of the normality assumption and no clear evidence of a violation of the constant variance assumption. The observations would seem to be independent because there is no indication of structure to the measurements of the survey respondents that might create dependencies. In observational studies, violations of the independence assumption might come from repeated measures of the same person or multiple measurements within the same family/household or samples that are clustered geographically. The random sampling from a population should allow inferences to a larger population except for that issue of removing partially missing responses. We also don’t have much information on the population sampled, so will just leave this vague here but know that there is a population these conclusions apply to since it was random sample. All of this suggests proceeding to fitting and exploring the additive model is reasonable here. No causal inferences are possible because this is an observational study.</p>
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
@@ -895,12 +878,10 @@ Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 <pre><code>## Anova Table (Type II tests)
 ## 
 ## Response: prodebt
-##            Sum Sq  Df F value   Pr(&gt;F)   
-## incomegp    9.018   4  4.5766 0.001335 **
-## cigbuy      0.703   1  1.4270 0.233210   
-## Residuals 146.806 298                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+##            Sum Sq  Df F value   Pr(&gt;F)
+## incomegp    9.018   4  4.5766 0.001335
+## cigbuy      0.703   1  1.4270 0.233210
+## Residuals 146.806 298</code></pre>
 <ul>
 <li>The test statistics are <span class="math inline">\(F(4,298)=4.577\)</span> and <span class="math inline">\(F(1,298)=1.427\)</span>.</li>
 </ul></li>
@@ -937,15 +918,13 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 ## -1.72124 -0.41788 -0.00676  0.46157  2.24616 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  3.05484    0.11127  27.454  &lt; 2e-16 ***
-## incomegp2    0.01641    0.13289   0.123 0.901826    
-## incomegp3    0.17477    0.13649   1.280 0.201385    
-## incomegp4    0.16901    0.14275   1.184 0.237381    
-## incomegp5    0.46833    0.13378   3.501 0.000535 ***
-## cigbuy1     -0.10640    0.08907  -1.195 0.233210    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  3.05484    0.11127  27.454  &lt; 2e-16
+## incomegp2    0.01641    0.13289   0.123 0.901826
+## incomegp3    0.17477    0.13649   1.280 0.201385
+## incomegp4    0.16901    0.14275   1.184 0.237381
+## incomegp5    0.46833    0.13378   3.501 0.000535
+## cigbuy1     -0.10640    0.08907  -1.195 0.233210
 ## 
 ## Residual standard error: 0.7019 on 298 degrees of freedom
 ## Multiple R-squared:  0.06778,    Adjusted R-squared:  0.05214 
@@ -1142,7 +1121,7 @@ Figure 4.18: Term-plots for the additive model in paper towel data set with no r
 </div>
 <div id="section4-9" class="section level2">
 <h2><span class="header-section-number">4.9</span> Practice problems</h2>
-<p>To practice the Two-Way ANOVA, consider a data set on <span class="math inline">\(N=861\)</span> ACT Mathematics Usage Test scores from 1987. The test was given to a sample of high school seniors who met one of three profiles of high school mathematics course work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning Calculus. These data were generated from summary statistics for one particular form of the test as reported by Doolittle (1989). The source of this version of the data set is Ramsey and Schafer (2002) and the <code>Sleuth2</code> package (Ramsey and Schafer, 2012). First install and then load that package.</p>
+<p>To practice the Two-Way ANOVA, consider a data set on <span class="math inline">\(N=861\)</span> ACT Mathematics Usage Test scores from 1987. The test was given to a sample of high school seniors who met one of three profiles of high school mathematics course work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning Calculus. These data were generated from summary statistics for one particular form of the test as reported by <span class="citation">Doolittle and Welch (<a href="#ref-Doolittle1989">1989</a>)</span>. The source of this version of the data set is <span class="citation">(<span class="citeproc-not-found" data-reference-id="Ramsey2002"><strong>???</strong></span>)</span> and the <code>Sleuth2</code> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-Sleuth2"><strong>???</strong></span>)</span>. First install and then load that package.</p>
 <pre><code>require(Sleuth2)
 require(mosaic)
 math &lt;- ex1320
@@ -1157,6 +1136,27 @@ favstats(Score ~ Sex+Background, data=math)</code></pre>
 <p>4.7. Make our standard diagnostic plots and assess the assumptions using these plots. Can you assess independence using these plots? Discuss this assumption in this situation.</p>
 <p>4.8. Use the estimated model coefficients to determine which of the combinations of levels provides the highest estimated average score.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-car">
+<p>Fox, John, and Sanford Weisberg. 2016. <em>Car: Companion to Applied Regression</em>. <a href="https://CRAN.R-project.org/package=car" class="uri">https://CRAN.R-project.org/package=car</a>.</p>
+</div>
+<div id="ref-Fox2011">
+<p>Fox, J., and S. Weisberg. 2011. <em>An R-Companion to Applied Regression, Second Edition</em>. Thousand Oaks, CA: SAGE Publications. <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a>.</p>
+</div>
+<div id="ref-Lea1995">
+<p>Lea, Webley, S., and C. Walker. 1995. “Psychological Factors in Consumer Debt: Money Management, Economic Socialization, and Credit Use.” <em>Journal of Economic Psychology</em> 16 (4): 681–701.</p>
+</div>
+<div id="ref-R-faraway">
+<p>Faraway, Julian. 2016. <em>Faraway: Functions and Datasets for Books by Julian Faraway</em>. <a href="https://CRAN.R-project.org/package=faraway" class="uri">https://CRAN.R-project.org/package=faraway</a>.</p>
+</div>
+<div id="ref-Likert1932">
+<p>Likert, R. 1932. “A Technique for the Measurement of Attitudes.” <em>Archives of Psychology</em> 140: 1–55.</p>
+</div>
+<div id="ref-Doolittle1989">
+<p>Doolittle, A., and C. Welch. 1989. “Gender Differences in Performance on a College-Level Acheivement Test.” <em>ACT Research Report</em>. Iowa City: American College Testing Program, 89–90.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -1207,7 +1207,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["GreenwoodBanner.pdf"],
 "toc": {
 "collapse": "subsection"
 }

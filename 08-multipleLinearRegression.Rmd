@@ -40,6 +40,13 @@ colFmtBold = function(x, color){
   else
     x
 }
+blackOut = function(x){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("$\\colorbox{black}{",x,"}$",sep="")
+  else if(outputFormat == 'html')
+    paste("$\\require{color}\\colorbox{black}{",x,"}$",sep="")
+}
 ```
 
 ## Going from SLR to MLR {#section8-1}
@@ -656,7 +663,7 @@ The Residuals vs. Leverage diagnostic plot in Figure \@ref(fig:Figure8-7) for
 the model fit to the data set without NE Entrance (now $n=24$) reveals a new 
 point that is somewhat influential (point 22 in the data set has Cook's D 
 $\approx$ 0.5). It is for a location called "Bloody
-$\require{color}\colorbox{black}{Redact.}$"^[The site name is redacted to protect
+`r blackOut("Redact.")`^[The site name is redacted to protect
 the innocence of the reader. More information on this site, located in
 Beaverhead County, is available at
 http://www.wcc.nrcs.usda.gov/nwcc/site?sitenum=355&amp;state=mt.] which has a
@@ -699,7 +706,7 @@ snotel2[22,]
 ```
 
 With the removal of both the "Northeast Entrance" and "Bloody
-$\require{color}\colorbox{black}{Redact.}$" sites, there are $n=23$ observations
+`r blackOut("Redact.")`" sites, there are $n=23$ observations
 remaining. This model (``m6``) seems to contain residual diagnostics (Figure
 \@ref(fig:Figure8-8)) that are finally generally reasonable. 
 
@@ -1510,7 +1517,7 @@ to use them in this way. Quality assessments of recruiting classes are also
 based on their test scores. The Educational Testing Service (the company behind
 such fun exams as the SAT and GRE) collected a data set to validate their SAT
 on $n=1000$ students from an unnamed Midwestern university; the data set is
-available in the ``openintro`` package (Diez, Barr, and Cetinkaya-Rundel, 2012)
+available in the ``openintro`` package [@R-openintro]
 in the ``satGPA`` data set. It is unclear from the documentation whether a
 random sample was collected, in fact it looks like it certainly wasn't a random
 sample of all incoming students at a large university (more later). What
@@ -2416,7 +2423,7 @@ reading accuracy differs between dyslexic and non-dyslexic students. Two groups
 of students were identified one group of *dyslexic* students was identified
 first (19 students) and then a group of gender and age similar student matches
 were identified (25 students) for a total sample size of $n=44$, provided in the
-``dyslexic3`` data set from the ``smdata`` package (Merkle and Smithson, 2013).
+``dyslexic3`` data set from the ``smdata`` package [@R-smdata].
 This type of study design is an attempt to "balance" the data from the two
 groups on some important characteristics to make the comparisons of the groups
 as fair as possible. The researchers attempted to balance the characteristics
@@ -3015,11 +3022,11 @@ model than the ***adjusted*** $\boldsymbol{R}^2$. The measure is called the
 ***AIC*** (Akaike's An Information Criterion^[Most people now call this 
 Akaike's (pronounced **ah-kah-ee-kay**) Information Criterion, but he used the
 AIC nomenclature to mean An Information Criterion -- he was not so vain as to
-name the method after himself in the original paper that proposed it.], Akaike,
-1974). It is extremely popular, but sometimes misused, in some fields
+name the method after himself in the original paper that proposed it.], 
+[@Akaike1974]. It is extremely popular, but sometimes misused, in some fields
 such as Ecology and has been applied in almost every other potential
-application area where statistical models can be compared. Burnham and Anderson
-(2002) have been responsible for popularizing the use of AIC for model
+application area where statistical models can be compared. @Burnham2002
+have been responsible for popularizing the use of AIC for model
 selection, especially in Ecology. The **AIC is an estimate of the distance
 (or discrepancy or divergence) between a candidate model and the true model, 
 on a log-scale**, based on a measure called the Kullback-Leibler divergence. The
@@ -3135,7 +3142,7 @@ then run the ``AIC`` function on each model. This can be tedious, especially
 when we have many possible models to consider. We can make
 it easy to fit all the potential candidate models that are implied by a
 complicated starting model by using the ``dredge`` function from the ``MuMIn``
-package (Barton, 2016). The name (dredge) actually speaks to what ***fitting
+package [@R-MuMIn]. The name (dredge) actually speaks to what ***fitting
 all possible models*** really engages -- what is called ***data dredging***.
 The term is meant to
 refer to considering way too many models for your data set, probably finding
@@ -3232,7 +3239,7 @@ Researchers were interested in studying the effects of smoking by children on
 their lung development by measuring the forced expiratory volume (*FEV*,
 measured in Liters) in a representative sample of children ($n=654$) between 
 the ages of 3 and 19; this data set is available in the ``FEV`` data set in the
-``coneproj`` package (Liao and Meyer, 2014). Measurements on the *age* (in years)
+``coneproj`` package (@R-coneproj, @Liao2014). Measurements on the *age* (in years)
 and *height* (in inches) as well as the *sex* and *smoking status* of the
 children were made. We would expect both the *age* and *height* to have positive
 relationships with *FEV* (lung capacity) and that smoking might decrease the lung

@@ -299,7 +299,7 @@ hand to complete the analyses.
 * For the *Beers, BAC* data, the 95% confidence for the true slope
   coefficient, $\beta_1$, is
   
-  $$\begin{array}
+  $$\begin{array}{rl}
   \boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
   & \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
   & \boldsymbol{= 0.01796 \mp 0.00515} \\
@@ -494,7 +494,7 @@ randomly assign the amount of area burned, we cannot make causal inferences --
 there are many reasons why both the average temperature and area burned would
 vary together that would not involve a direct connection between them. 
 
-$$\text{99% CI for } \beta_1: \boldsymbol{b_1 \mp
+$$\text{99}\% \text{ CI for } \beta_1: \boldsymbol{b_1 \mp
 t^*_{n-2}}\textbf{SE}_{\boldsymbol{b_1}} \rightarrow 1.39 \mp 2.831\bullet 0.217
 \rightarrow (0.78, 2.00)$$
 
@@ -783,14 +783,15 @@ series as well? And if I did the analysis for Bozeman, what about Butte and
 Helena and...?). Remember our discussion of multiple testing issues in an ANOVA
 context when we compared lots of groups? This issue can arise when regression
 modeling is repeated in many similar data sets, say different sites or
-different response variables or both, in one study. Moore, Harper, and
-Greenwood (2007) considered the impacts on the assessment of evidence of trends
+different response variables or both, in one study. @Moore2007
+considered the impacts on the assessment of evidence of trends
 of earlier spring onset timing in the Mountain West when the number of tests
 across many sites is accounted for. We found that the evidence for time trends
-decreases substantially but does not disappear. In a related study, Greenwood, 
-Harper, and Moore (2011) found evidence for regional trends to earlier spring
+decreases substantially but does not disappear. In a related study, @Greenwood2011
+found evidence for regional trends to earlier spring
 onset using more sophisticated statistical models. The main point here is to
-**be careful when using simple statistical methods repeatedly if you are not accounting for the number of tests performed**^[The simplest adjustment for 
+**be careful when using simple statistical methods repeatedly if you are 
+not accounting for the number of tests performed**^[The simplest adjustment for 
 multiple testing is using a Bonferroni adjustment, 
 where you multiply all the p-values by the number of tests performed. It
 controls the chances of at least one error to be same as your Type I error rate
@@ -1249,7 +1250,7 @@ Data were collected in 1988 on the rates of infant mortality
 (infant deaths per 1,000
 live births) and gross domestic product (GDP) per capita (in 1998 US dollars)
 from $n=207$ countries. These data are available from the ``car`` package 
-(Fox, 2003) in a data set called ``UN``. The four panels in 
+(@R-car, @Fox2003) in a data set called ``UN``. The four panels in 
 Figure \@ref(fig:Figure7-16) show the original relationship and the impacts of
 log-transforming one or both variables. 
 The only scatterplot that could potentially be modeled using SLR is the lower
@@ -1306,7 +1307,7 @@ to the variables would lead to very similar results, but readers may assume
 you used $\ln$ if you don't state that you used $log_10$. The main thing
 to remember to do is to be clear when communicating the version you are
 using. As an example, I (Greenwood) was working with researchers on a study
-(Dieser, Greenwood, and Foreman, 2010) related to impacts of environmental
+[@Dieser2010] related to impacts of environmental
 stresses on bacterial survival. The response variable was log-transformed
 counts and involved smoothed regression lines fit on this scale. I was using
 natural logs to fit the models and then shared the fitted values from the
@@ -1489,7 +1490,7 @@ since we haven't changed the $y\sim$ part of the model.
 infant mortality data.
 
 ```{r Figure7-18,fig.cap="(ref:fig7-18)",echo=F,warning=F,message=F}
-require(UN)
+data(UN)
 ID1<-lm(infant.mortality~log(gdp),data=UN)
 par(mfrow=c(1,2))
 
@@ -1519,7 +1520,7 @@ the SLR model was fit (panel a) and the other on the original x-scale (panel b)
 that matches these last interpretations. 
 
 ```{r warning=F,message=F}
-require(UN)
+data(UN)
 ID1 <- lm(infant.mortality~log(gdp), data=UN)
 summary(ID1)
 -16.6*log(2)
@@ -1577,7 +1578,7 @@ the relationship between the original $x$ and $y$ in $y=\beta_0x^{\beta_1}$
 is linear $(y=\beta_0x^1)$ or quadratic $(y=\beta_0x^2)$ or even quartic
 $(y=\beta_0x^4)$ in some really heavily glacier carved
 U-shaped valleys. There are some issues with "ignoring the errors" in using SLR
-to estimate these models (Greenwood and Humphrey, 2002) but it is still a
+to estimate these models [@Greenwood2002] but it is still a
 pretty powerful result to be able to estimate the coefficients in
 $(y=\beta_0x^{\beta_1})$ using SLR.
 
@@ -1676,9 +1677,9 @@ the estimated regression equation. Those shaded areas are based on connecting
 the dots on 95% confidence intervals constructed for the true mean $y$ value
 across all the x-values. To formalize this idea, consider a specific value 
 of $x$, and call it $\boldsymbol{x_{\nu}}$ (pronounced **x-new**^[This silly
-nomenclature was adopted from De Veaux, Velleman, and Bock's *Stats: Data and
+nomenclature was adopted from @DeVeaux2001 *Stats: Data and
 Models* text. If you find this too cheesy, you can just call it x-vee.]). 
-Then the true mean response for this  ***subpopulation*** (a subpopulation
+Then the true mean response for this ***subpopulation*** (a subpopulation
 is all observations we could obtain at $\boldsymbol{x=x_{\nu}}$) is given by
 $\boldsymbol{E(Y)=\mu_\nu=\beta_0+\beta_1x_{\nu}}$. To estimate the mean 
 response at $\boldsymbol{x_{\nu}}$, we plug $\boldsymbol{x_{\nu}}$ into the
