@@ -1,0 +1,108 @@
+\contentsline {chapter}{Acknowledgments}{7}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Preface}{9}{chapter.1}
+\contentsline {section}{\numberline {1.1}Overview of methods}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}Getting started in R}{12}{section.1.2}
+\contentsline {section}{\numberline {1.3}Basic summary statistics, histograms, and boxplots using R}{17}{section.1.3}
+\contentsline {section}{\numberline {1.4}Chapter summary}{23}{section.1.4}
+\contentsline {section}{\numberline {1.5}Important R Code}{23}{section.1.5}
+\contentsline {section}{\numberline {1.6}Practice problems}{24}{section.1.6}
+\contentsline {chapter}{\numberline {2}(R)e-Introduction to statistics}{25}{chapter.2}
+\contentsline {section}{\numberline {2.1}Histograms, boxplots, and density curves}{25}{section.2.1}
+\contentsline {section}{\numberline {2.2}Beanplots}{32}{section.2.2}
+\contentsline {section}{\numberline {2.3}Models, hypotheses, and permutations for the 2 sample mean situation}{35}{section.2.3}
+\contentsline {section}{\numberline {2.4}Permutation testing for the 2 sample mean situation}{40}{section.2.4}
+\contentsline {section}{\numberline {2.5}Hypothesis testing (general)}{45}{section.2.5}
+\contentsline {section}{\numberline {2.6}Connecting randomization (nonparametric) and parametric tests}{48}{section.2.6}
+\contentsline {section}{\numberline {2.7}Second example of permutation tests}{54}{section.2.7}
+\contentsline {section}{\numberline {2.8}Confidence intervals and bootstrapping}{56}{section.2.8}
+\contentsline {section}{\numberline {2.9}Bootstrap confidence intervals for difference in GPAs}{63}{section.2.9}
+\contentsline {section}{\numberline {2.10}Chapter summary}{66}{section.2.10}
+\contentsline {section}{\numberline {2.11}Summary of important R code}{66}{section.2.11}
+\contentsline {section}{\numberline {2.12}Practice problems}{67}{section.2.12}
+\contentsline {chapter}{\numberline {3}One-Way ANOVA}{69}{chapter.3}
+\contentsline {section}{\numberline {3.1}Situation}{69}{section.3.1}
+\contentsline {section}{\numberline {3.2}Linear model for One-Way ANOVA (cell-means and reference-coding)}{71}{section.3.2}
+\contentsline {section}{\numberline {3.3}One-Way ANOVA Sums of Squares, Mean Squares, and F-test}{76}{section.3.3}
+\contentsline {section}{\numberline {3.4}ANOVA model diagnostics including QQ-plots}{85}{section.3.4}
+\contentsline {section}{\numberline {3.5}Guinea pig tooth growth One-Way ANOVA example}{93}{section.3.5}
+\contentsline {section}{\numberline {3.6}Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display}{100}{section.3.6}
+\contentsline {section}{\numberline {3.7}Pair-wise comparisons for Prisoner Rating data}{104}{section.3.7}
+\contentsline {section}{\numberline {3.8}Chapter Summary}{108}{section.3.8}
+\contentsline {section}{\numberline {3.9}Summary of important R code}{109}{section.3.9}
+\contentsline {section}{\numberline {3.10}Practice problems}{110}{section.3.10}
+\contentsline {chapter}{\numberline {4}Two-Way ANOVA}{111}{chapter.4}
+\contentsline {section}{\numberline {4.1}Situation}{111}{section.4.1}
+\contentsline {section}{\numberline {4.2}Designing a two-way experiment and visualizing results}{111}{section.4.2}
+\contentsline {section}{\numberline {4.3}Two-Way ANOVA models and hypothesis tests}{119}{section.4.3}
+\contentsline {section}{\numberline {4.4}Guinea pig tooth growth analysis with Two-Way ANOVA}{124}{section.4.4}
+\contentsline {section}{\numberline {4.5}Observational study example: The Psychology of Debt}{132}{section.4.5}
+\contentsline {section}{\numberline {4.6}Pushing Two-Way ANOVA to the limit: Un-replicated designs}{142}{section.4.6}
+\contentsline {section}{\numberline {4.7}Chapter summary}{143}{section.4.7}
+\contentsline {section}{\numberline {4.8}Important R code}{145}{section.4.8}
+\contentsline {section}{\numberline {4.9}Practice problems}{146}{section.4.9}
+\contentsline {chapter}{\numberline {5}Chi-square tests}{149}{chapter.5}
+\contentsline {section}{\numberline {5.1}Situation, contingency tables, and plots}{149}{section.5.1}
+\contentsline {section}{\numberline {5.2}Homogeneity Test Hypotheses}{154}{section.5.2}
+\contentsline {section}{\numberline {5.3}Independence Test Hypotheses}{156}{section.5.3}
+\contentsline {section}{\numberline {5.4}Models for R by C tables}{157}{section.5.4}
+\contentsline {section}{\numberline {5.5}Permutation tests for the \(X^2\) statistic}{160}{section.5.5}
+\contentsline {section}{\numberline {5.6}Chi-square distribution for the \(X^2\) statistic}{166}{section.5.6}
+\contentsline {section}{\numberline {5.7}Examining residuals for the source of differences}{168}{section.5.7}
+\contentsline {section}{\numberline {5.8}General Protocol for \(X^2\) tests}{169}{section.5.8}
+\contentsline {section}{\numberline {5.9}Political Party and Voting results: Complete Analysis}{171}{section.5.9}
+\contentsline {section}{\numberline {5.10}Is cheating and lying related in students?}{178}{section.5.10}
+\contentsline {section}{\numberline {5.11}Analyzing a stratified random sample of California schools}{185}{section.5.11}
+\contentsline {section}{\numberline {5.12}Chapter summary}{191}{section.5.12}
+\contentsline {section}{\numberline {5.13}Review of Important R commands}{191}{section.5.13}
+\contentsline {section}{\numberline {5.14}Practice problems}{192}{section.5.14}
+\contentsline {chapter}{\numberline {6}Correlation and Simple Linear Regression}{195}{chapter.6}
+\contentsline {section}{\numberline {6.1}Relationships between two quantitative variables}{195}{section.6.1}
+\contentsline {section}{\numberline {6.2}Estimating the correlation coefficient}{197}{section.6.2}
+\contentsline {section}{\numberline {6.3}Relationships between variables by groups}{204}{section.6.3}
+\contentsline {section}{\numberline {6.4}Inference for the correlation coefficient (Optional Section)}{209}{section.6.4}
+\contentsline {section}{\numberline {6.5}Are tree diameters related to tree heights?}{211}{section.6.5}
+\contentsline {section}{\numberline {6.6}Describing relationships with a regression model}{214}{section.6.6}
+\contentsline {section}{\numberline {6.7}Least Squares Estimation}{217}{section.6.7}
+\contentsline {section}{\numberline {6.8}Measuring the strength of regressions: R2}{221}{section.6.8}
+\contentsline {section}{\numberline {6.9}Outliers: leverage and influence}{225}{section.6.9}
+\contentsline {section}{\numberline {6.10}Residual diagnostics -- setting the stage for inference}{227}{section.6.10}
+\contentsline {section}{\numberline {6.11}Old Faithful discharge and waiting times}{232}{section.6.11}
+\contentsline {section}{\numberline {6.12}Chapter summary}{235}{section.6.12}
+\contentsline {section}{\numberline {6.13}Important R code}{235}{section.6.13}
+\contentsline {section}{\numberline {6.14}Practice problems}{236}{section.6.14}
+\contentsline {chapter}{\numberline {7}Simple linear regression inference}{237}{chapter.7}
+\contentsline {section}{\numberline {7.1}Model}{237}{section.7.1}
+\contentsline {section}{\numberline {7.2}Confidence Interval and Hypothesis tests for the slope and intercept}{240}{section.7.2}
+\contentsline {section}{\numberline {7.3}Bozeman temperature trend}{244}{section.7.3}
+\contentsline {section}{\numberline {7.4}Randomizing inferences for the slope coefficient}{251}{section.7.4}
+\contentsline {section}{\numberline {7.5}Transformations part I: Linearizing relationships}{255}{section.7.5}
+\contentsline {section}{\numberline {7.6}Transformations part II: Impacts on SLR interpretations: log(y), log(x), \& both log(y) \& log(x)}{264}{section.7.6}
+\contentsline {section}{\numberline {7.7}Confidence Interval for the mean and prediction Intervals for a new observation}{271}{section.7.7}
+\contentsline {section}{\numberline {7.8}Chapter summary}{277}{section.7.8}
+\contentsline {section}{\numberline {7.9}Important R code}{277}{section.7.9}
+\contentsline {section}{\numberline {7.10}Practice problems}{278}{section.7.10}
+\contentsline {chapter}{\numberline {8}Multiple linear regression}{281}{chapter.8}
+\contentsline {section}{\numberline {8.1}Going from SLR to MLR}{281}{section.8.1}
+\contentsline {section}{\numberline {8.2}Validity conditions in MLR}{287}{section.8.2}
+\contentsline {section}{\numberline {8.3}Interpretation of MLR terms}{296}{section.8.3}
+\contentsline {section}{\numberline {8.4}Comparing multiple regression models}{300}{section.8.4}
+\contentsline {section}{\numberline {8.5}General recommendations for MLR interpretations and VIFs}{302}{section.8.5}
+\contentsline {section}{\numberline {8.6}MLR Inference: Parameter inferences using the t-distribution}{307}{section.8.6}
+\contentsline {section}{\numberline {8.7}Overall F-test in Multiple Linear Regression}{309}{section.8.7}
+\contentsline {section}{\numberline {8.8}Case Study: First year college GPA and SATs}{310}{section.8.8}
+\contentsline {section}{\numberline {8.9}Different intercepts for different groups: MLR with Indicator variables}{318}{section.8.9}
+\contentsline {section}{\numberline {8.10}Additive MLR with more than two groups: Headache example}{325}{section.8.10}
+\contentsline {section}{\numberline {8.11}Different slopes and different intercepts}{332}{section.8.11}
+\contentsline {section}{\numberline {8.12}F-tests for MLR models with quantitative and categorical variables and interactions}{342}{section.8.12}
+\contentsline {section}{\numberline {8.13}AICs for model selection}{346}{section.8.13}
+\contentsline {section}{\numberline {8.14}Forced Expiratory Volume model selection using AICs}{350}{section.8.14}
+\contentsline {section}{\numberline {8.15}Chapter summary}{356}{section.8.15}
+\contentsline {section}{\numberline {8.16}Important R code}{356}{section.8.16}
+\contentsline {section}{\numberline {8.17}Practice problems}{358}{section.8.17}
+\contentsline {chapter}{\numberline {9}Case studies}{361}{chapter.9}
+\contentsline {section}{\numberline {9.1}Overview of material covered}{361}{section.9.1}
+\contentsline {section}{\numberline {9.2}The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss--cyanobacteria associations}{363}{section.9.2}
+\contentsline {section}{\numberline {9.3}Ants learn to rely on more informative attributes during decision-making}{372}{section.9.3}
+\contentsline {section}{\numberline {9.4}Multi-variate models are essential for understanding vertebrate diversification in deep time}{374}{section.9.4}
+\contentsline {section}{\numberline {9.5}General summary}{380}{section.9.5}
+\contentsline {chapter}{\numberline {10}Bibliography}{381}{chapter.10}

@@ -954,7 +954,7 @@ $$\begin{array}{rl}
 \widehat{\text{SnowDepth}}_i &= -213.3 + 0.0269\text{ Elevation}_i
 +0.984*\boldsymbol{27.826} +1.243*\boldsymbol{36.391} \\
 &= -213.3 + 0.0269\text{ Elevation}_i + 27.38 + 45.23 \\
-&= \boldsymbol{-140.69 + 0.0269}\textbf{ Elevation}_\boldsymbol{i}.
+&= \boldsymbol{-140.69 + 0.0269\textbf{ Elevation}_i}.
 \end{array}$$
 
 So at the means on the two temperature variables, 
@@ -4397,16 +4397,16 @@ data=\textcolor{red}{DATASETNAME}, smooth=F)
     mean.
     
 * predict(\textcolor{red}{MODELNAME}, newdata=data.frame(\textcolor{red}{x1}
-= \textcolor{red}{X1_NEW}, \textcolor{red}{x2} = \textcolor{red}{X2_NEW}, 
-\textcolor{red}{...}, \textcolor{red}{xK} = \textcolor{red}{XK_NEW}, 
+= \textcolor{red}{X1\_NEW}, \textcolor{red}{x2} = \textcolor{red}{X2\_NEW}, 
+\textcolor{red}{...}, \textcolor{red}{xK} = \textcolor{red}{XK\_NEW}, 
 interval="confidence")
 
     * Provides fitted value for specific values of the quantitative predictors
     with CI for the mean. 
 
 * predict(\textcolor{red}{MODELNAME}, newdata=data.frame(\textcolor{red}{x1}
-= \textcolor{red}{X1_NEW}, \textcolor{red}{x2} = \textcolor{red}{X2_NEW}, 
-\textcolor{red}{...}, \textcolor{red}{xK} = \textcolor{red}{XK_NEW}, 
+= \textcolor{red}{X1\_NEW}, \textcolor{red}{x2} = \textcolor{red}{X2\_NEW}, 
+\textcolor{red}{...}, \textcolor{red}{xK} = \textcolor{red}{XK\_NEW}, 
 interval="prediction")
 
     * Provides fitted value for specific values of the quantitative predictors 
@@ -4419,13 +4419,13 @@ interval="prediction")
     * Use to generate ANOVA tables and $F$-tests useful when categorical
     variables are included in either the additive or interaction models. 
 
-* AIC(\textcolor{red}{MODELNAME_1}, \textcolor{red}{MODELNAME_2})
+* AIC(\textcolor{red}{MODELNAME\_1}, \textcolor{red}{MODELNAME\_2})
 
     * Use to get AIC results for two candidate models called ``MODELNAME_1``
     and ``MODELNAME_2``.
     
 * options(na.action = "na.fail")  
-dredge(\textcolor{red}{FULL_MODELNAME}, rank="AIC", extra=c("R^2", 
+dredge(\textcolor{red}{FULL\_MODELNAME}, rank="AIC", extra=c("R^2", 
 adjRsq=function(x) summary(x)$adj.r.squared))
 
     * Requires the ``MuMIn`` package.

@@ -796,7 +796,7 @@ $$\begin{array}{rl}
 \widehat{\text{SnowDepth}}_i &= -213.3 + 0.0269\text{ Elevation}_i
 +0.984*\boldsymbol{27.826} +1.243*\boldsymbol{36.391} \\
 &= -213.3 + 0.0269\text{ Elevation}_i + 27.38 + 45.23 \\
-&= \boldsymbol{-140.69 + 0.0269}\textbf{ Elevation}_\boldsymbol{i}.
+&= \boldsymbol{-140.69 + 0.0269\textbf{ Elevation}_i}.
 \end{array}$$
 
 So at the means on the two temperature variables, 
@@ -3555,16 +3555,16 @@ data=`r colFmt("DATASETNAME","red")`, smooth=F)
     mean.
     
 * predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
-= `r colFmt("X1_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2_NEW","red")`, 
-`r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK_NEW","red")`, 
+= `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
+`r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
 interval="confidence")
 
     * Provides fitted value for specific values of the quantitative predictors
     with CI for the mean. 
 
 * predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
-= `r colFmt("X1_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2_NEW","red")`, 
-`r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK_NEW","red")`, 
+= `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
+`r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
 interval="prediction")
 
     * Provides fitted value for specific values of the quantitative predictors 
@@ -3577,13 +3577,13 @@ interval="prediction")
     * Use to generate ANOVA tables and $F$-tests useful when categorical
     variables are included in either the additive or interaction models. 
 
-* AIC(`r colFmt("MODELNAME_1","red")`, `r colFmt("MODELNAME_2","red")`)
+* AIC(`r colFmt("MODELNAME\\_1","red")`, `r colFmt("MODELNAME\\_2","red")`)
 
     * Use to get AIC results for two candidate models called ``MODELNAME_1``
     and ``MODELNAME_2``.
     
 * options(na.action = "na.fail")  
-dredge(`r colFmt("FULL_MODELNAME","red")`, rank="AIC", extra=c("R^2", 
+dredge(`r colFmt("FULL\\_MODELNAME","red")`, rank="AIC", extra=c("R^2", 
 adjRsq=function(x) summary(x)$adj.r.squared))
 
     * Requires the ``MuMIn`` package.

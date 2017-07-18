@@ -309,24 +309,25 @@ We can also see that suggested prison sentences (data.frame variable
 ``Years`` ) ranged from 1 year to 15 years with a median of 3 years. 
 It seems that all the other variables except for *Crime* (type of crime 
 that they were told the pictured woman committed) contained responses 
-between 1 and 9 based on rating scales from 1 = low to 9 = high. 
+between 1 and 9 based on rating scales from 1 = low to 9 = high.
 
 To accompany the numerical summaries, histograms, and boxplots can 
 provide some initial information on the shape of the distribution of 
 the responses for the Figure \@ref(fig:Figure2-1) contains the histogram 
 and boxplot of Years, ignoring any information on which picture the 
 "jurors" were shown. The calls to the two plotting functions are 
-enhanced slightly to add better labels. 
+enhanced slightly to add better labels.
 
 (ref:fig2-1) Histogram and boxplot of suggested sentences in years.
 
 
 ```r
+par(mfrow=c(1,2))
 hist(MockJury$Years, xlab="Years", labels=T, main="Histogram of Years")
 boxplot(MockJury$Years, ylab="Years", main="Boxplot of Years")
 ```
 
-![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf) ![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-2.pdf) 
+![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf) 
 
 The distribution appears to have a strong right skew with three 
 observations at 15 years flagged as potential

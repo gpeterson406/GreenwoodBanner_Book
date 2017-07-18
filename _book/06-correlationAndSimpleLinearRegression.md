@@ -1468,11 +1468,8 @@ equation, $\widehat{\text{log(Ha)}} = -69.78 + 1.39\bullet \text{Temp}$,
 we get
 
 
-```
-## [1] "$$\\begin{array}{rl} \\\\ \\widehat{\\log(\\text{Ha})&= -69.78\\text{ log-hectacres }+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}\\bullet 59^\\circ\\text{F} \\\\&= -69.78\\text{ log-hectacres } +1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}\\bullet 59\\cancel{^\\circ \\text{F}} \\\\&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$"
-```
 
-
+$$\begin{array}{rl} \\ \widehat{\log(\text{Ha}}&= -69.78\text{ log-hectacres }+ 1.39\text{ log-hectacres}/^\circ \text{F}\bullet 59^\circ\text{F} \\&= -69.78\text{ log-hectacres } +1.39\text{ log-hectacres}/\cancel{^\circ \text{F}}\bullet 59\cancel{^\circ \text{F}} \\&= 12.23 \text{ log-hectares} \\ \end{array}$$
 
 We did not observe any summers at exactly $x=59$ but did observe some 
 nearby and this result seems relatively reasonable. 

@@ -1232,30 +1232,32 @@ equation, $\widehat{\text{log(Ha)}} = -69.78 + 1.39\bullet \text{Temp}$,
 we get
 
 ```{r echo=F}
-outputFormat = opts_knit$get("rmarkdown.pandoc.to")
-if(outputFormat == 'latex') {
-  paste("$$\\begin{array}{rl} \\\\ \\widehat{\\log(\\text{Ha})",
-        "&= -69.78\\text{ log-hectacres }",
-        "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
-        "\\bullet 59^\\circ\\text{F} \\\\",
-        "&= -69.78\\text{ log-hectacres } +",
-        "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
-        "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
-        "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
-}
-if(outputFormat == 'html') {
-  paste("$$\\begin{array}{rl} \\\\ \\require{cancel} \\widehat{\\log(\\text{Ha})",
-        "&= -69.78\\text{ log-hectacres }",
-        "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
-        "\\bullet 59^\\circ\\text{F} \\\\",
-        "&= -69.78\\text{ log-hectacres } +",
-        "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
-        "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
-        "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
+#Equation for log-hectares with degrees cancelled
+cancelDegrees = function(){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex') 
+      paste("$$\\begin{array}{rl} \\\\ \\widehat{\\log(\\text{Ha}}",
+          "&= -69.78\\text{ log-hectacres }",
+          "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
+          "\\bullet 59^\\circ\\text{F} \\\\",
+          "&= -69.78\\text{ log-hectacres } +",
+          "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
+          "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
+          "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
+  
+  else if(outputFormat == 'html') 
+    paste("$$\\begin{array}{rl} \\\\ \\require{cancel} \\widehat{\\log(\\text{Ha})}",
+          "&= -69.78\\text{ log-hectacres }",
+          "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
+          "\\bullet 59^\\circ\\text{F} \\\\",
+          "&= -69.78\\text{ log-hectacres } +",
+          "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
+          "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
+          "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
 }
 ```
 
-
+`r cancelDegrees()`
 
 We did not observe any summers at exactly $x=59$ but did observe some 
 nearby and this result seems relatively reasonable. 

@@ -549,7 +549,7 @@ complicated problems, you will want to learn how to manage and save your R code.
 The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
 start a new ".R"" file to store your code, click on **File**, then 
-**New File**, then **R Script*. This will create a blank page to enter and 
+**New File**, then **R Script**. This will create a blank page to enter and 
 edit code -- then save the file as MyFileName.R in your preferred location. 
 Saving your code will mean that you can return to where you
 last were working by simply re-running the saved script file. With code in the

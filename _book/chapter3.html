@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-17">
+<meta name="date" content="2017-07-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -944,11 +944,11 @@ Figure 3.17: Effect plot of the One-Way ANOVA model for the toothgrowth data.
 <h2><span class="header-section-number">3.6</span> Multiple (pair-wise) comparisons using Tukey’s HSD and the compact letter display</h2>
 <p>With evidence that the true means are likely not all equal, many researchers want to know which groups show evidence of differing from one another. This provides information on the source of the overall difference that was detected and detailed information on which groups differed from one another. Because this is a shot-gun/unfocused sort of approach, some people think it is an over-used procedure. Others feel that it is an important method of addressing detailed questions about group comparisons in a valid way. For example, we might want to know if OJ is dosage level and these methods will allow us to get an answer to this sort of question. It also will test for differences between the OJ,0.5 and VC,2 groups and every other pair of levels that you can construct. This method actually takes us back to the methods in Chapter <a href="chapter2.html#chapter2">2</a> where we compared the means of two groups except that we need to deal with potentially many pair-wise comparisons, making an adjustment to account for that inflation in Type I errors that occurs due to many tests being performed at the same time. There are many different statistical methods to make all the pair-wise comparisons, but we will employ the most commonly used one, called <strong><em>Tukey’s Honest Significant Difference</em></strong> (Tukey’s HSD) method<a href="#fn39" class="footnoteRef" id="fnref39"><sup>39</sup></a>. The name suggests that not using it could lead to a dishonest answer and that it will give you an honest result. It is more that if you don’t do some sort of correction for all the tests you are performing, you might find some <strong><em>spurious</em></strong><a href="#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a> results. There are other methods that could be used to do a similar correction and also provide “honest” inferences; we are just going to learn one of them.</p>
 <p>Generally, the general challenge in this situation is that if you perform many tests at the same time, you inflate the Type I error rate. We can define the <strong><em>family-wise error rate</em></strong> as the probability that at least one error is made on a set of tests or, more compactly, Pr(At least 1 error is made) where Pr() is the probability of an event occurring. The family-wise error is meant to capture the overall situation in terms of measuring the likelihood of making a mistake if we consider many tests, each with some chance of making their own mistake, and focus on how often we make at least one error when we do many tests. A quick probability calculation shows the magnitude of the problem. If we start with a 5% significance level test, then Pr(Type I error on one test) =0.05 and the Pr(no errors made on one test) =0.95, by definition. This is our standard hypothesis testing situation. Now, suppose we have <span class="math inline">\(m\)</span> independent tests, then</p>
-<p><span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{array}{ll}
 &amp; \text{Pr(make at least 1 Type I error given all null hypotheses are true)} \\
 &amp; = 1 - \text{Pr(no errors made)} \\
 &amp; = 1 - 0.95^m.
-\end{align*}\]</span></p>
+\end{array}\]</span></p>
 <p>Figure (fig:Figure3-18) shows how the probability of having at least one false detection grows rapidly with the number of tests. The plot stops at 100 tests since it is effectively a 100% chance of at least on false detection. It might seem like doing 100 tests is a lot, but in Genetics research it is possible to consider situations where millions of tests are considered so these are real issues to be concerned about in many situations. Researchers want to make sure that when they report a “significant” result that it is really likely to be a real result and will show up as a difference in the next data set they collect.<a href="#fn41" class="footnoteRef" id="fnref41"><sup>41</sup></a></p>
 
 <div class="figure"><span id="fig:Figure3-18"></span>

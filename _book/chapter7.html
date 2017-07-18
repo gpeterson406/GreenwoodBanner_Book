@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-17">
+<meta name="date" content="2017-07-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -302,7 +302,7 @@ Figure 7.3: Variability in realized regression lines based on sampling variation
 <ul>
 <li>For the <em>Beers, BAC</em> data, the 95% confidence for the true slope coefficient, <span class="math inline">\(\beta_1\)</span>, is</li>
 </ul>
-<p><span class="math display">\[\begin{array}
+<p><span class="math display">\[\begin{array}{rl}
   \boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
   &amp; \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
   &amp; \boldsymbol{= 0.01796 \mp 0.00515} \\
@@ -422,7 +422,7 @@ fire1 &lt;-<span class="st"> </span><span class="kw">lm</span>(loghectacres<span
 </ul>
 <p>Decision: At the 1% significance level (<span class="math inline">\(\alpha=0.01\)</span>), the p-value is less than <span class="math inline">\(\alpha\)</span>, so reject <span class="math inline">\(H_0\)</span>.</p>
 <p>Conclusion: There is strong evidence to reject the null hypothesis of no linear relationship and conclude that there is, in fact, a linear relationship between Temperature and log(Hectares) burned. Since we have a time series of results, our inferences pertain to the results we could have observed for these years but not for years we did not observe – so just for the true slope for this sample of years. Because we can’t randomly assign the amount of area burned, we cannot make causal inferences – there are many reasons why both the average temperature and area burned would vary together that would not involve a direct connection between them.</p>
-<p><span class="math display">\[\text{99% CI for } \beta_1: \boldsymbol{b_1 \mp
+<p><span class="math display">\[\text{99}\% \text{ CI for } \beta_1: \boldsymbol{b_1 \mp
 t^*_{n-2}}\textbf{SE}_{\boldsymbol{b_1}} \rightarrow 1.39 \mp 2.831\bullet 0.217
 \rightarrow (0.78, 2.00)\]</span></p>
 <p>Interpretation of 99% CI for slope coefficient:</p>

@@ -898,6 +898,8 @@ are parallel enough for the two groups. The scatterplot in Figure
 groups is probably reasonable but a full assessment really should also explore
 that fully to verify that there is no support for an interaction. 
 
+
+
 Ignoring the violation of the independence assumption, we are otherwise ok to
 explore the model more and see what it tells us about biodiversity of
 *Sauropodomorphs*. The top model is estimated to be
@@ -917,9 +919,7 @@ question of interest involves the differences between the periods. The change
 in the y-intercepts of -0.76 suggests that the Cretaceous has a lower average
 log-biodiversity by 0.75 log-count, after controlling for the log-sampling 
 effort. This suggests that the *Cretaceous* had a lower corrected mean
-log-Sauropodomorph biodiversity 
-$\require{enclose}(t_{23}=-3.41;\enclose{horizontalstrike}{\text{p-value}=0.0024})$
-than the combined
+log-Sauropodomorph biodiversity $(t_{23}=-3.41;\text{\sout{p-value=0.0024}})$ than the combined
 results for the Triassic and Jurassic. On the original count scale, this 
 suggests $\exp(-0.76)=0.47$ times (53% drop in) the median biodiversity count 
 per stage for Cretaceous versus the prior time period, after correcting for
