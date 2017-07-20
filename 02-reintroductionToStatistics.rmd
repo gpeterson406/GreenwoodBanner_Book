@@ -6,6 +6,8 @@ output:
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
+tablenos-cleveref: On
+tablenos-plus-name: Tab.
 ---
 
 #(R)e-Introduction to statistics {#chapter2}
@@ -15,7 +17,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE,fig.height=5,fig.width=8)
+knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT')
 options(show.signif.stars = FALSE)
 ```
 
@@ -109,36 +111,28 @@ will bypass some aspects of their research and just focus on differences in the
 sentence suggested among the three pictures. To get a sense of these data, 
 let's consider the first and last parts of the data set:
 
--------------------------------------------------------------------------
-Subject   Attr        Crime       Years   Serious   independent   Sincere  
---------  ----------  ----------  ------  --------  ------------  --------
-1	        Beautiful	  Burglary	  10	    8	        9	            8
+(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
 
-2	        Beautiful	  Burglary	  3	      8	        9	            3
-
-3	        Beautiful	  Burglary	  5	      5	        6	            3
-
-4	        Beautiful	  Burglary	  1	      3	        9	            8
-
-5	        Beautiful	  Burglary	  7	      9	        5	            1
-
-…	        …           …	          …	      …	        …	            …
-
-108	      Average	    Swindle	    3	      3	        5	            4
-
-109	      Average	    Swindle	    3	      2	        9	            9
-
-110	      Average	    Swindle	    2	      1	        8	            8
-
-111	      Average	    Swindle	    7	      4	        9	            1
-
-112	      Average	    Swindle	    6	      3	        5	            2
-
-113	      Average	    Swindle	    12	    9	        9	            1
-
-114	      Average	    Swindle	    8	      8	        1	            5
--------------------------------------------------------------------------
-
+```{r Table2-1,echo=F}
+column.headers = c("Subject","Attr","Crime","Years","Serious","Independent","Sincere")
+row1 <- c(1,"Beautiful","Burglary",10,8,9,8)
+row2 <- c(2,"Beautiful","Burglary",3,8,9,3)
+row3 <- c(3,"Beautiful","Burglary",5,5,6,3)
+row4 <- c(4,"Beautiful","Burglary",1,3,9,8)
+row5 <- c(5,"Beautiful","Burglary",7,9,5,1)
+row6 <- c("$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$",
+          "$\\ldots$","$\\ldots$")
+row7 <- c(108,"Average","Swindle",3,3,5,4)
+row8 <- c(109,"Average","Swindle",3,2,9,9)
+row9 <- c(110,"Average","Swindle",2,1,8,8)
+row10 <- c(111,"Average","Swindle",7,4,9,1)
+row11 <- c(112,"Average","Swindle",6,3,5,2)
+row12 <- c(113,"Average","Swindle",12,9,9,1)
+row13 <- c(114,"Average","Swindle",8,8,1,5)
+x <- matrix(c(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10,row11,row12,row13),
+            byrow=T,ncol=7)
+kable(x,col.names = column.headers,caption = "(ref:tab2-1)",escape=F)
+```
 
 When working with data, we should always start with 
 summarizing the sample size. We will use ***n*** for the 
@@ -587,7 +581,8 @@ the two groups of interest here as seen in Figure \@ref(fig:Figure2-6).
 
 (ref:fig2-6) Boxplot and beanplot of the Years responses on the reduced data set. 
 
-```{r Figure2-6, fig.cap="(ref:fig2-6)", fig.show="hold", fig.width=3}
+```{r Figure2-6, fig.cap="(ref:fig2-6)"}
+par(mfrow=c(1,2))
 boxplot(Years ~ Attr,data=MockJury2) 
 beanplot(Years ~ Attr,data=MockJury2,log="",col="bisque",method="jitter")
 ```
@@ -681,7 +676,7 @@ model where the groups "look the same".
 and a single possibility that could occur if the alternative were true 
 (right) and the true means were different. 
 
-```{r Figure2-7, echo=FALSE, fig.cap ="(ref:fig2-7)"}
+```{r Figure2-7, echo=FALSE, fig.cap ="(ref:fig2-7)",fig.height=4}
 knitr::include_graphics('chapter1_files/image015.png')
 ```
 
@@ -766,7 +761,8 @@ diffmean(Years ~ PermutedAttr, data=Perm1)
 permuted groups. 
 
 
-```{r Figure2-8, fig.cap="(ref:fig2-8)",echo=F, fig.show="hold", fig.width=3}
+```{r Figure2-8, fig.cap="(ref:fig2-8)",echo=F, fig.width=7}
+par(mfrow=c(1,2))
 beanplot(Years~Attr,data=Perm1,log="",col="bisque",method="jitter",
          main="Original data")
 beanplot(Years~PermutedAttr,data=Perm1,log="",col="bisque",method="jitter",
@@ -925,7 +921,8 @@ statistics of the results:
 (ref:fig2-9) Histogram (left, with counts in bars) and density curve (right) of 
 values of test statistic for 1,000 permutations. 
 
-```{r Figure2-9, fig.cap="(ref:fig2-9)", fig.show="hold", fig.width=3}
+```{r Figure2-9, fig.cap="(ref:fig2-9)"}
+par(mfrow=c(1,2))
 B <- 1000
 Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
@@ -955,7 +952,8 @@ Figure \@ref(fig:Figure2-10), using the ``abline`` function.
 values of test statistic for 1,000 permutations with bold vertical line for
 value of observed test statistic. 
 
-```{r Figure2-10, fig.cap="(ref:fig2-10)", fig.show="hold", fig.width=3}
+```{r Figure2-10, fig.cap="(ref:fig2-10)", fig.width=3, fig.height=3.5}
+par(mfrow=c(1,2))
 Tobs <- 1.837
 hist(Tstar, labels=T)
 abline(v=Tobs, lwd=2, col="red")
@@ -1026,7 +1024,8 @@ Figure \@ref(fig:Figure2-11) shows both cut-offs on the histogram and density cu
 permutations with bold lines for value of observed test statistic and its opposite
 value required for performing two-sided test.
 
-```{r Figure2-11, fig.cap="(ref:fig2-11)", fig.show="hold", fig.width=3}
+```{r Figure2-11, fig.cap="(ref:fig2-11)"}
+par(mfrow=c(1,2))
 hist(Tstar, labels=T)
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar),main="Density curve of Tstar")
@@ -1166,7 +1165,7 @@ differ "beyond a reasonable doubt".
 
 The scope of any inferences is constrained based on whether there is a 
 ***random sample*** (RS) and/or ***random assignment*** (RA).
-Table \@ref(tab:Table2-1) contains the four possible combinations of these 
+Table \@ref(tab:Table2-2) contains the four possible combinations of these 
 two characteristics of a given study. Random assignment allows for causal
 inferences for differences that are observed -- the difference in treatment
 levels causes differences in the mean responses. Random sampling (or at least
@@ -1175,19 +1174,20 @@ population of interest. If we do not have RA, then causal inferences cannot be
 made. If we do not have a representative sample, then our inferences are
 limited to the sampled subjects. 
 
-(ref:tab2-1) Scope of inference summary.
+(ref:tab2-2) Scope of inference summary.
 
-```{r Table2-1, echo=F}
-columnHeaders <- c("**Random Sampling/Random Assignment**","**Random Assignment (RA) -- Yes (controlled experiment)**","**Random Assignment (RA) -- No (observational study)**")
+```{r Table2-2, echo=F}
+columnHeaders <- c("Random Sampling/Random Assignment",
+                   "Random Assignment (RA) -- Yes (controlled experiment)",
+                   "Random Assignment (RA) -- No (observational study)")
 cell21 <- '**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)**'
-cell22 <- 'Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. '
-cell23 <- 'Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).'
+cell22 <- 'Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference.'
+cell23 <- 'Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA -- cannot isolate treatment variable as only difference among groups, could be confounding variables).'
 cell31 <- '**Random Sampling (RS) -- No (usually a convenience sample)**'
-cell32 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA 	&rarr; the inference from this type of study applies only to the sample.'
-cell33 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.'
-x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),nrow=,ncol=3,byrow=TRUE)
-library(knitr)
-kable(x,col.names=columnHeaders,caption='(ref:tab2-1)')
+cell32 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Can establish causal inference due to RA $\\rightarrow$ the inference from this type of study applies only to the sample.'
+cell33 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.'
+x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),byrow=T,ncol=3)
+kable(x,caption='(ref:tab2-2)',escape=F,col.names = columnHeaders)
 ```
 
 A simple example helps to clarify how the scope of inference can change. Suppose
@@ -1279,14 +1279,14 @@ of the significance level, allowing us to control the rate of Type I errors
 at $\alpha$. We also have to worry about **Type II errors**, which are failing
 to reject the null hypothesis when it's false. In a courtroom, this is the same
 as failing to convict a truly guilty person. This most often occurs due to a 
-lack of evidence. You can use the Table \@ref(tab:Table2-2) to help you 
+lack of evidence. You can use the Table \@ref(tab:Table2-3) to help you 
 remember all the possibilities. 
 
-(ref:tab2-2) Table of decisions and truth scenarios in a hypothesis 
+(ref:tab2-3) Table of decisions and truth scenarios in a hypothesis 
 testing situation. But we never know the truth in a real situation. 
 
-```{r Table2-2, echo=F}
-columnHeaders <- c("$\\mathbf{H_0}$ **True**","$\\mathbf{H_0}$ **False**")
+```{r Table2-3, echo=F}
+columnHeaders <- c("$\\mathbf{H_0}\\textbf{ True}$","$\\mathbf{H_0}\\textbf{ False}$")
 cell21 <- "$\\textbf{FTR }\\mathbf{H_0}$"
 cell22 <- 'Correct decision'
 cell23 <- 'Type II error'
@@ -1296,7 +1296,7 @@ cell33 <- 'Correct decision'
 x <- matrix(c(cell22,cell23,cell32,cell33),
             dimnames = list(c(cell21,cell31),columnHeaders),ncol=2,byrow=TRUE)
 library(knitr)
-kable(x,caption="(ref:tab2-2)")
+kable(x,caption="(ref:tab2-3)",escape=F)
 ```
 
 In comparing different procedures, there is an interest in studying the rate or
@@ -1357,13 +1357,17 @@ and significance level.
 inference discussion. 
 -------------------------------------------------------------------------------
 
+\newpage
+
 ## Connecting randomization (nonparametric) and parametric tests {#section2-6}
 
 In developing statistical inference techniques, we need to define the test
 quantity of interest. To compare the means of two groups, a statistic is needed 
 that measures their differences. In general, for comparing two groups, the
 choices are simple -- a difference in the means often works well and is a
-natural choice. There are other options such as tracking the ratio of means or
+natural choice.  
+
+There are other options such as tracking the ratio of means or
 possibly the difference in medians. Instead of just using the difference in the
 means, we also could "standardize" the difference in the means by dividing by
 an appropriate quantity that reflects the variation in the difference in the
@@ -1420,7 +1424,8 @@ the same data set or if you re-run your permutation code.
 
 (ref:fig2-12) Permutation distribution of the $t$-statistic
 
-```{r Figure2-12, fig.cap="(ref:fig2-12)", fig.show="hold", fig.width=3}
+```{r Figure2-12, fig.cap="(ref:fig2-12)", fig.width=3}
+par(mfrow=c(1,2))
 Tobs <- t.test(Years ~ Attr, data=MockJury2, var.equal=T)$statistic
 Tobs
 Tstar <- matrix(NA, nrow=B)
@@ -1937,11 +1942,13 @@ difference of 0 years). In general, if our confidence interval does not contain
 0, then it is saying that 0 is not one of our likely values for the difference 
 in the true means. This implies that we should reject a claim that they are 
 equal. This provides the same inferences for the hypotheses that we considered
-previously using both a parametric and permutation approach. The general summary
+previously using both a parametric and permutation approach. 
+
+The general summary
 is that we can use confidence intervals to test hypotheses by assessing whether 
 the reference value under the null hypothesis is in the confidence interval
 (FTR $H_0$) or outside the confidence interval (Reject $H_0$). P-values are more
-informative about hypotheses but confidence intervals are more information
+informative about hypotheses but confidence intervals are more informative
 about the size of differences, so both offer useful information and, as shown
 here, can provide consistent conclusions about hypotheses. 
 
@@ -1956,8 +1963,6 @@ parametric 95% confidence interval calculated for you:
 ```{r}
 t.test(Years ~ Attr, data=MockJury2, var.equal=T)
 ```
-
-
 
 The ``t.test`` function again switched the order of the groups and provides 
 slightly different end-points than our bootstrap confidence interval (both are 
@@ -1992,7 +1997,7 @@ area in the middle.
 (ref:fig2-20) Plot of $t(73)$ with cut-offs for putting 95% of distributions in 
 the middle. 
 
-```{r Figure2-20,fig.cap="(ref:fig2-20)"}
+```{r Figure2-20,fig.cap="(ref:fig2-20)",fig.height=2.5}
 par(mfrow=c(1,1))
 x<-seq(from=-4,to=4,length.out=200)
 plot(x,dt(x,df=73),col="red",lty=2,lwd=3,type="l",xlab="t-values",ylab="Density",

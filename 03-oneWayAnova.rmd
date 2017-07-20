@@ -12,7 +12,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = TRUE,fig.height=4,fig.width=6,fig.pos='HT')
 options(show.signif.stars = FALSE)
 ```
 
@@ -62,10 +62,10 @@ ANOVA tests are used in Chapter \@ref(chapter8) for working with extensions of
 these models.] grouping variable. After we perform our One-Way ANOVA test for 
 overall evidence of a difference, we will revisit the comparisons similar to those
 considered in Chapter \@ref(chapter2) to get more details on specific differences 
-among *all* the pairs of groups -- what we call  ***pair-wise comparisons***.
+among *all* the pairs of groups -- what we call ***pair-wise comparisons***.
 An issue is created when you perform many tests simultaneously and we will augment 
 our previous methods with an adjusted method for pairwise comparisons to make our
-results valid called  ***Tukey's Honest Significant Difference***. 
+results valid called ***Tukey's Honest Significant Difference***. 
 
 To make this more concrete, we return to the original MockJury data, making
 side-by-side boxplots and beanplots (Figure \@ref(fig:Figure3-1) as well 
@@ -150,7 +150,7 @@ This linear model states that the response for the $i^{th}$ observation in
 the $j^{th}$ group, $\mathbf{y_{ij}}$, is modeled with a group $j$ 
 ($j=1, \ldots, J$) population mean, $\mu_j$, and a random error for each subject
 in each group $\varepsilon_{ij}$, that we assume follows a normal distribution and 
-that all the random errors have the same variance, $\sigma^2$. We can write the assumption about the random errors, often called the  ***normality assumption***, 
+that all the random errors have the same variance, $\sigma^2$. We can write the assumption about the random errors, often called the ***normality assumption***, 
 as $\varepsilon_{ij} \sim N(0,\sigma^2)$. There is a second way to write out this 
 model that allows extension to more complex models discussed below, so we
 need a name for this version of the model. The model written in terms of the
@@ -166,7 +166,7 @@ evidence against the null hypothesis. You can also see the null model on the plo
 that assumes all the groups have the same as displayed in the dashed horizontal line
 at 4.7 years (the R code below shows the overall mean of *Years* is 4.7). While 
 the hypotheses focus on the means, the model also contains assumptions about the
-distribution of the responses  -- specifically that the distributions are normal 
+distribution of the responses -- specifically that the distributions are normal 
 and that all the groups have the same variability. As discussed previously, it 
 appears that the distributions are right skewed and the variability might not be 
 the same for all the groups. The boxplot provides the information about the skew 
@@ -181,7 +181,7 @@ There is a second way to write out the One-Way ANOVA model that provides a frame
 for extensions to more complex models described in Chapter \@ref(chapter4) and 
 beyond. The other ***parameterization*** (way of writing out or defining) of the 
 model is called the `r colFmtBold("reference-coded model","purple")` since it 
-writes out the model in terms of a  
+writes out the model in terms of a 
 ***baseline group*** and deviations from that baseline or reference level. The
 reference-coded model for the $i^{th}$ subject in the $j^{th}$ group is 
 $y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$ where 
@@ -253,7 +253,7 @@ baseline group.
 different from 0 or that at least one group has a different true mean than the
 baseline group. 
 
-* Alternative model:  $y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$
+* Alternative model: $y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$
 
 In order to estimate the models discussed above, the ``lm`` function is used.
 If you look closely in the code for the rest of the book, any model for a 
@@ -264,7 +264,7 @@ It ends up that this code will give you the reference-coded version of the
 model by default (R thinks it is that important!). We want to start with the
 cell-means version of the model, so we have to override the standard technique 
 and add a "``-1``" to the formula interface to tell R that we want to the 
-cell-means coding. Generally, this looks like ``lm(Y~X-1 , data=datasetname).``
+cell-means coding. Generally, this looks like ``lm(Y~X-1, data=datasetname).``
 Once we fit a model in R, the ``summary`` function run on the model provides a
 useful "summary" of the model coefficients and a suite of other potentially
 interesting information. When fitting this version of the One-Way ANOVA model, 
@@ -337,11 +337,10 @@ row2 <- c("Average","$\\hat{\\alpha}+\\hat{\\tau}_2$",
 row3 <- c("Unattractive","$\\hat{\\alpha}+\\hat{\\tau}_3$", 
           "4.3333 + 1.4775 = **5.811** years")
 x <- matrix(c(row1,row2,row3),ncol=3,byrow=TRUE)
-library(knitr)
-kable(x,col.names=columnHeaders,caption='(ref:tab3-1)')
+kable(x,col.names=columnHeaders,caption='(ref:tab3-1)',escape=F)
 ```
 
-We can also visualize the results of our linear models using what are called  ***term-plots*** or  ***effect-plots***  (from the ``effects`` package; @Fox2003,
+We can also visualize the results of our linear models using what are called ***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
 [@R-effects])
 as displayed in Figure \@ref(fig:Figure3-2). We don't want to use the word 
 "effect" for these model components unless we have random assignment in the study
@@ -468,7 +467,7 @@ beanplot(y3~x1,ylab="",main="Scenario 4",ylim=c(0,20),method="jitter",col="red")
 ```
 
 The statistic that allows the comparison of relative amounts of variation is called
-the  ***ANOVA F-statistic*** . It is developed using  ***sums of squares***  which 
+the ***ANOVA F-statistic***. It is developed using ***sums of squares*** which 
 are measures of total variation like are used in the numerator of the standard
 deviation ($\Sigma_1^N(y_i-\bar{y})^2$) that took all the observations, 
 subtracted the mean, squared the differences, and then added up the results
@@ -483,7 +482,7 @@ the One-Way ANOVA situation as follows:
 $= \Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{\bar{y}})^2$
 
     * This is the total variation in the responses around the overall or
-    ***grand mean***  ($\bar{\bar{y}}$, the estimated mean for all the 
+    ***grand mean*** ($\bar{\bar{y}}$, the estimated mean for all the 
     observations and available from the mean-only model). 
 
     * By summing over all $n_j$ observations in each group, $\Sigma^{n_j}_{i=1}(\ )$,
@@ -497,7 +496,7 @@ $= \Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{\bar{y}})^2$
     $\Sigma^{N}_{1}(y_{i}-\bar{y})^2$ which is what you get when you ignore 
     the information on the potential differences in the groups. 
 
-*  $\textbf{SS}_{\textbf{A}} =$ Explanatory Variable *A*'s Sums of Squares 
+* $\textbf{SS}_{\textbf{A}} =$ Explanatory Variable *A*'s Sums of Squares 
 $=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(\bar{y}_{i}-\bar{\bar{y}})^2 =\Sigma^J_{j=1}n_j(\bar{y}_{i}-\bar{\bar{y}})^2$
 
     * This is the variation in the group means around the grand mean based on 
@@ -506,7 +505,7 @@ $=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(\bar{y}_{i}-\bar{\bar{y}})^2 =\Sigma^J_{j=1}n
     * Also called sums of squares for the treatment, regression, or model. 
 
 * $\textbf{SS}_E =$ Error (Residual) Sums of Squares 
-$=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{y})^2  
+$=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{y})^2 
 =\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(e_{ij})^2$
 
     * This is the variation in the responses around the group means. 
@@ -654,7 +653,7 @@ text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue")
 To do a permutation test, we need to be able to calculate and extract the 
 $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the 
 second number and we can use the bracket, ``[, ]``, referencing to extract that 
-number from the ANOVA table that ``anova``  produces with 
+number from the ANOVA table that ``anova`` produces with 
 ``anova(lm(Years~Attr, data=MockJury))[1, 2]``. We'll store the observed value
 of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref{chapter2}. 
 
@@ -726,7 +725,7 @@ $$\textbf{Mean Square Error} = \text{MS}_E = \text{SS}_E/(N-J).$$
 Basically, we lose $J$ pieces of information in this calculation because we have 
 to estimate $J$ means. 
 
-The similar calculation of the  ***Mean Square for variable*** $\mathbf{A}$
+The similar calculation of the ***Mean Square for variable*** $\mathbf{A}$
 ($\text{MS}_A$) is harder to see in the formula 
 ($\text{SS}_A = \Sigma^J_{j=1}n_j(\bar{y}_i-\bar{\bar{y}})^2$), but the same 
 reasoning can be used to understand the denominator for forming $\text{MS}_A$:
@@ -742,8 +741,8 @@ means around the grand mean.
 * $\text{MS}_{\text{Error}} = \text{SS}_{\text{Error}}/(N-J)$, which estimates 
 the variation of the errors around the group means.
 
-These results are put together using a ratio to define the  ***ANOVA F-statistic***
-(also called the  ***F-ratio*** ) as 
+These results are put together using a ratio to define the ***ANOVA F-statistic***
+(also called the ***F-ratio*** ) as 
 
 $$F=\text{MS}_A/\text{MS}_{\text{Error}}.$$
 
@@ -755,8 +754,8 @@ the null hypothesis. The "size" of the $F$-statistic is formalized by finding th
 p-value. The $F$-statistic, if assumptions discussed below are met and we assume 
 the null hypothesis is true, follows what is called an $F$-distribution. The 
 ***F-distribution*** is a right-skewed distribution whose shape is defined by what
-are called the  ***numerator degrees of freedom***  ($J-1$) and the
-***denominator degrees of freedom***  ($N-J$). These names correspond to the values
+are called the ***numerator degrees of freedom*** ($J-1$) and the
+***denominator degrees of freedom*** ($N-J$). These names correspond to the values
 that we used to calculate the mean squares and where in the $F$-ratio each mean 
 square was used; $F$-distributions are denoted by their degrees of freedom using 
 the convention of $F$ (*numerator df*, *denominator df*). Some examples of 
@@ -768,7 +767,7 @@ The characteristics of the F-distribution can be summarized as:
 
 * Nonzero probabilities for values greater than 0, 
 
-* Its shape changes depending on the  **numerator**  and  **denominator DF**, and
+* Its shape changes depending on the **numerator** and **denominator DF**, and
 
 * **Always use the right-tailed area for p-values.**
 
@@ -809,8 +808,7 @@ row1 <- c("Variable A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/(J-1
 row2 <- c("Residuals","$N-J$","$\\text{SS}_E$","$\\text{MS}_E = \\text{SS}_E/(N-J)$","","")
 row3 <- c("Total","$N-1$","$\\text{SS}_{\\text{Total}}$","","","")
 x <- matrix(c(row1,row2,row3),ncol=6,byrow=TRUE)
-library(knitr)
-kable(x,col.names=columnHeaders,caption='(ref:tab3-2)')
+kable(x,col.names=columnHeaders,caption='(ref:tab3-2)',escape=F)
 ```
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
@@ -830,7 +828,7 @@ F=`r round(orig_anova[1,3],2)`/`r round(orig_anova[2,3],2)`)
 which follows an $F(2, 111)$ distribution if the null hypothesis is true and some 
 other assumptions are met. Using the ``pf`` function provides us with areas in the
 specified $F$-distribution with the ``df1`` provided to the function as the 
-numerator *df* and ``df2`` as the denominator *df*  and ``lower.tail=F`` reflecting 
+numerator *df* and ``df2`` as the denominator *df* and ``lower.tail=F`` reflecting 
 our desire for a right tailed area.
 
 ```{r}
@@ -1035,7 +1033,7 @@ consistent about the x and y axis choices but different functions that make
 these plots in R do switch the axes.], the QQ-plots display the value of 
 observed percentiles in the residual distribution on the y-axis versus the 
 percentiles of a theoretical normal distribution on the x-axis. If the 
-observed  **distribution of the residuals matches the shape of the normal
+observed **distribution of the residuals matches the shape of the normal
 distribution, then the plotted points should follow a 1-1 relationship.**
 If the points follow the displayed straight line then that suggests that the 
 residuals have a similar shape to a normal distribution. Some variation is 
@@ -1048,7 +1046,7 @@ QQ-plots.
 The QQ-plot of the linear model residuals from Figure \@ref(fig:Figure3-9) is
 extracted and enhanced it a little to make Figure \@ref(fig:Figure3-11) so we 
 can just focus on it. We know from looking at the histogram that this is a 
-slightly right skewed distribution. The QQ-plot places the observed  ***standardized***^[Here this means re-scaled so that they should have similar 
+slightly right skewed distribution. The QQ-plot places the observed ***standardized***^[Here this means re-scaled so that they should have similar 
 scaling to a standard normal with mean 0 and standard deviation 1. This does 
 not change the shape of the distribution but can make outlier identification 
 simpler -- having a standardized residual more extreme than 5 or -5 would 
@@ -1099,7 +1097,7 @@ problematic pattern is to have more spread than a normal curve as in
 Figure \@ref(fig:Figure3-12)(e) and (f). This shows up with the points being 
 below the line in the left tail (more extreme negative than expected by the normal)
 and the points being above the line for the right tail (more extreme positive 
-than the normal predicts). We call these distributions  ***heavy-tailed***
+than the normal predicts). We call these distributions ***heavy-tailed***
 which can manifest as distributions with outliers in both tails or just a bit 
 more spread out than a normal distribution. Heavy-tailed residual distributions 
 can be problematic for our models as the variation is greater than what the normal
@@ -1140,7 +1138,7 @@ plot(density(y4),xlab="y4",ylab='Density',main="(h) Density plot of y4",col="blu
 Finally, to help you calibrate expectations for data that are actually normally
 distributed, two data sets simulated from normal distributions are displayed in 
 Figure \@ref(fig:Figure3-13). Note how neither follows the line exactly but 
-that the overall pattern matches fairly well.  **You have to allow for some
+that the overall pattern matches fairly well. **You have to allow for some
 variation from the line in real data sets** and focus on when there are really
 noticeable issues in the distribution of the residuals such as those
 displayed above. Again, you will never be able to prove that you have normally
@@ -1180,7 +1178,7 @@ is some intuition available here -- it makes some sense that you would have bett
 results in comparing groups if the information available is similar in all the
 groups and none are relatively under-represented. We can check the number of
 observations in each group to see if they are equal or similar using the 
-``tally``  function from the ``mosaic`` package. This function is useful for
+``tally`` function from the ``mosaic`` package. This function is useful for
 being able to get counts of observations, especially for cross-classifying
 observations on two variables that is used in Chapter \@ref(chapter5). For just 
 a single variable, we use ``tally(~x, data=...)``:
@@ -1361,7 +1359,7 @@ start. We will use a 5% significance level.
     saying that the p-value here is $2.2*10^{-16}$ or 0.00000000000000022. When you see 
     ``2.2e-16`` in R output, it also means that the calculation is at the numerical precision 
     of the computer. What R is really trying to report is that this is a very small
-    number.  **When you encounter p-values that are smaller than 0.0001, you should just
+    number. **When you encounter p-values that are smaller than 0.0001, you should just
     report that the p-value<0.0001** Do not report that it is 0 as this gives the false 
     impression that there is no chance of the result occurring when it is just a really small
     probability. This distribution (the distribution of the test statistic if the null 
@@ -1388,7 +1386,7 @@ start. We will use a 5% significance level.
     abline(v=Tobs,col="red",lwd=3)
     ```
     
-    *  **The permutation p-value was reported as 0. This should be reported as p-value<0.001**
+    * **The permutation p-value was reported as 0. This should be reported as p-value<0.001**
     since we did 1000 permutations and found that none of the permuted $F$-statistics, $F^*$,
     were larger than the observed $F$-statistic of 41.56. The permuted results do not exceed 
     6 as seen in Figure \@ref(fig:Figure3-16), so the observed result is *really unusual* 
@@ -1490,17 +1488,17 @@ groups except that we need to deal with potentially many pair-wise comparisons,
 making an adjustment to account for that inflation in Type I errors that occurs
 due to many tests being performed at the same time. There are many different statistical
 methods to make all the pair-wise comparisons, but we will employ the most
-commonly used one, called  ***Tukey's Honest Significant Difference*** (Tukey's HSD) 
+commonly used one, called ***Tukey's Honest Significant Difference*** (Tukey's HSD) 
 method^[When this procedure is used with unequal group sizes it is also sometimes
 called Tukey-Kramer's method.]. The name suggests that not using it could lead to a 
 dishonest answer and that it will give you an honest result. It is more that if you don't 
-do some sort of correction for all the tests you are performing, you might find some  ***spurious***^[We often use "spurious" to describe falsely rejected null hypotheses, but 
+do some sort of correction for all the tests you are performing, you might find some ***spurious***^[We often use "spurious" to describe falsely rejected null hypotheses, but 
 there are also called false detections.] results. There are other methods that could be used 
 to do a similar correction and also provide "honest" inferences; we are just going to learn 
 one of them. 
 
 Generally, the general challenge in this situation is that if you perform many tests at the 
-same time, you inflate the Type I error rate. We can define the  ***family-wise error rate***
+same time, you inflate the Type I error rate. We can define the ***family-wise error rate***
 as the probability that at least one error is made on a set of tests or, more
 compactly, Pr(At least 1 error is made) where Pr() is the probability of an
 event occurring. The family-wise error is meant to capture the overall
@@ -1568,7 +1566,7 @@ us figure out how much more conservative we need to be.
 Tukey's HSD starts with focusing on the difference between the groups with the 
 largest and smallest means ($\bar{y}_{max}-\bar{y}_{min}$). If 
 $(\bar{y}_{max}-\bar{y}_{min}) \le \text{Margin of Error}$
-for the difference in the means, then  all other pairwise differences, say
+for the difference in the means, then all other pairwise differences, say
 $\vert \bar{y}_j - \bar{y}_{j'}\vert$, for two groups $j$ and $j'$, will be less
 than or equal to that margin of error. This also means that any confidence
 intervals for any difference in the means will contain 0. Tukey's HSD selects a
@@ -1650,10 +1648,10 @@ different groups and the story is not as clear as it is in this case. An
 example of this sort of overlap is seen in the next section. 
 
 There is a method that many researchers use to more efficiently generate and 
-report these sorts of results that is called a  ***compact letter display*** 
+report these sorts of results that is called a ***compact letter display*** 
 (CLD, @Piepho2004). The ``cld`` function can be applied to the results from 
 ``glht`` to generate the CLD that we can use to provide a "simple" summary of 
-the sets of groups. In this discussion, we define a  **set as a union of different
+the sets of groups. In this discussion, we define a **set as a union of different
 groups that can contain one or more members** and the member of these groups are 
 the different treatment levels. 
 
@@ -1667,7 +1665,7 @@ different sets). Groups can have more than one letter to reflect "overlap"
 between the sets of groups and sometimes a set of groups contains only a 
 single treatment level (VC.0.5 is a set of size 1). Note
 that if the groups have the same letter, this does not mean they are the same, 
-just that there is  **no evidence of a difference for that pair**. If we consider 
+just that there is **no evidence of a difference for that pair**. If we consider 
 the previous output for the CLD, the "a" set contains VC.0.5, the "b" set contains 
 OJ.1, OJ.2, and VC.2, and the "c" set contains OJ.0.5 and VC.1. These are exactly 
 the groups of treatment levels that we obtained by going through all fifteen 
@@ -1844,7 +1842,7 @@ data=`r colFmt("DATASETNAME","red")`)
 
 * anova(`r colFmt("MODELNAME","red")`)
 
-    * Generatesthe ANOVA table but  **must only be run on the reference-coded version of
+    * Generates the ANOVA table but **must only be run on the reference-coded version of
     the model**.
     
     * Results are incorrect if run on the cell-means model since the reduced model 

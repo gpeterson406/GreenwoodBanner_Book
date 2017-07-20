@@ -16,7 +16,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = TRUE,fig.height=3.5,fig.width=6,fig.pos='HT')
 options(show.signif.stars = FALSE)
 ```
 
@@ -46,7 +46,7 @@ colFmtBold = function(x, color){
 ## Situation {#section4-1}
 
 In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory
-variables in a method that is generally called the  ***Two-Way ANOVA*** . This 
+variables in a method that is generally called the ***Two-Way ANOVA***. This 
 allows researchers to simultaneously study more than one variable that might
 explain variability in the responses and explore whether the impacts of one
 variable change depending on the other variable. In some situations, each
@@ -60,13 +60,13 @@ production quotas, and see if the training programs work differently for
 different production quotas. In a clinical trials context, it is well known
 that certain factors can change the performance of certain drugs. For example, 
 different dosages of a drug might have different benefits or side-effects on
-men, versus women or children.  **When the impact of one factor changes on the
+men, versus women or children. **When the impact of one factor changes on the
 level of another factor**, we say that they ***interact***. It is also possible 
 for both factors to be related to differences in the mean responses and not 
 interact. For example, suppose there is a difference in the
 response means between men and women and a difference among various dosages, 
 but the effect of increasing the dosage is the same for the male and female
-subjects. This is an example of what is called an  ***additive*** type of model. 
+subjects. This is an example of what is called an ***additive*** type of model. 
 In general, the world is more complicated than the single factor models we
 considered in Chapter \@ref(chapter3) can account for, especially in 
 observational studies, so these models allow us to start to handle more 
@@ -79,8 +79,8 @@ a weight is placed on the towel held at the four corners. We are interested
 in studying the differences between brands and the impact of different amounts 
 of water applied to the towels. 
 
-* Predictors (Explanatory Variables):  **A** : ``Brand`` (2 brands of interest, 
-named *B1* and *B2*) and  **B** : Number of ``Drops`` of water (10, 20, 30 drops).
+* Predictors (Explanatory Variables): **A** : ``Brand`` (2 brands of interest, 
+named *B1* and *B2*) and **B** : Number of ``Drops`` of water (10, 20, 30 drops).
 
 * Response: *Time* to failure (in seconds) of a towel ($y$) with a weight 
 sitting in the middle of the towel. 
@@ -211,7 +211,7 @@ tally(brand ~ drops, data=pt)
 The sample sizes in each of the six treatment level combinations of ``Brand`` 
 and ``Drops`` [(*B1*, 10), (*B1*, 20), (*B1*, 30), (*B2*, 10), (*B2*, 20), 
 (*B2*, 30)] are $n_{jk} = 5$ for $j^{th}$ level of ``Brand`` ($j=1, 2$) and 
-$k^{th}$ level of ``Drops`` ($k=1, 2, 3$). The ``tally`` function gives us a  
+$k^{th}$ level of ``Drops`` ($k=1, 2, 3$). The ``tally`` function gives us a 
 ***contingency table*** with $R = 2$ rows (*B1*, *B2*) and $C = 3$ columns 
 (10, 20, and 30). We'll have more fun with this sort of summary of $R$ by $C$
 tables in Chapter \@ref(chapter5) -- here it helps us see the sample size in 
@@ -508,7 +508,7 @@ and B ($\gamma_k\text{'s}$). If evidence is found to reject the null hypothesis
 that no interaction is
 present, then it is dangerous to ignore it and test for the main effects
 because important main effects can be masked by interactions (examples later). 
-It is important to note that, by definition,  **both variables matter if an
+It is important to note that, by definition, **both variables matter if an
 interaction is found to be important** so the main effect tests may not be 
 very interesting. If the interaction is found
 to be important based on the test and retained in the model, you should focus
@@ -589,8 +589,7 @@ row4 <- c("Error","$N-J-K+1$","$\\text{SS}_E$","$\\text{MS}_E=\\text{SS}_E/\\tex
 row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
           "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
 x <- matrix(c(row1,row2,row3,row4,row5),ncol=5,byrow=TRUE)
-library(knitr)
-kable(x,caption="(ref:tab4-1)",col.names=columnHeaders)
+kable(x,caption="(ref:tab4-1)",col.names=columnHeaders,escape=F)
 ```
 
 (ref:tab4-2) Additive Model ANOVA Table. 
@@ -607,7 +606,7 @@ row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
           "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
 x <- matrix(c(row1,row2,row4,row5),ncol=5,byrow=TRUE)
 library(knitr)
-kable(x,caption="(ref:tab4-2)",col.names=columnHeaders)
+kable(x,caption="(ref:tab4-2)",col.names=columnHeaders,escape=F)
 ```
 
 The mean squares are formed by taking the sums of squares (we'll let R find those
@@ -653,8 +652,8 @@ anova(m1)
 require(pander)
 t <- anova(m1)
 emphasize.strong.rows(3)
-pander(anova(m1),add.significance.stars=F,caption="Interaction ANOVA table with interaction
-       row in bold.")
+pander(anova(m1),add.significance.stars=F,
+      caption="Interaction ANOVA table with interaction row in bold.")
 ```
 
 It is useful to display the estimates from this model and we can utilize
@@ -879,7 +878,7 @@ expected (small p-values in places they didn't expect and large p-values in
 places where they thought differences existed). During the presentation, the student
 showed some ANOVA tables and the four level categorical variable had 1 numerator
 $df$ in the ANOVA table. The student
-passed with major revisions but had to re-run  **all** the results and re-write
+passed with major revisions but had to re-run **all** the results and re-write
 **all** of the conclusions... So be careful to check the ANOVA results ($df$
 and for the right number of expected model coefficients) to make
 sure they match your expectations. This is one reason why you will be learning
@@ -1310,13 +1309,13 @@ six combinations can be found in Table \@ref(tab:Table4-3).
 of variables for the ``prodebt`` additive model.
 
 ```{r Table4-3,echo=F}
-columnHeaders <- c("$\\color{red}{\\text{Cig}\\\\\\text{Buy}}$",
-                   "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 1}}$",
-                   "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 2}}$",
-                   "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 3}}$",
-                   "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 4}}$", 
-                   "$\\color{blue}{\\textbf{Income}\\\\\\textbf{Group 5}}$")
-row1 <- c("$\\color{red}{\\text{0:}\\\\\\text{No}}$","$\\hat{\\alpha} \\\\=\\small{3.055}$",
+columnHeaders <- c("$\\color{red}{\\text{Cig}\\\\ \\text{Buy}}$",
+                   "$\\color{blue}{\\textbf{Income}\\\\ \\textbf{Group 1}}$",
+                   "$\\color{blue}{\\textbf{Income}\\\\ \\textbf{Group 2}}$",
+                   "$\\color{blue}{\\textbf{Income}\\\\ \\textbf{Group 3}}$",
+                   "$\\color{blue}{\\textbf{Income}\\\\ \\textbf{Group 4}}$", 
+                   "$\\color{blue}{\\textbf{Income}\\\\ \\textbf{Group 5}}$")
+row1 <- c("$\\color{red}{\\text{0:}\\\\ \\text{No}}$","$\\hat{\\alpha} \\\\=\\small{3.055}$",
           "$\\hat{\\alpha} + \\hat{\\tau}_2 \\\\=\\small{3.055 + 0.016} \\\\= \\small{3.071}$",
           "$\\hat{\\alpha} + \\hat{\\tau}_3 \\\\=\\small{3.055 + 0.175} \\\\= \\small{3.230}$",
           "$\\hat{\\alpha} + \\hat{\\tau}_4 \\\\=\\small{3.055 + 0.169} \\\\= \\small{3.224}$",
@@ -1328,8 +1327,8 @@ row2 <- c("$\\color{red}{\\text{1:}\\\\\\text{Yes}}$",
           "$\\hat{\\alpha}+\\hat{\\tau}_3+\\hat{\\gamma}_2\\\\=\\small{3.055+0.175}\\\\\\small{-0.106}\\\\=\\small{3.124}$",
           "$\\hat{\\alpha}+\\hat{\\tau}_4+\\hat{\\gamma}_2\\\\=\\small{3.055+0.169}\\\\\\small{-0.106}\\\\=\\small{3.118}$",
           "$\\hat{\\alpha}+\\hat{\\tau}_5+\\hat{\\gamma}_2\\\\=\\small{3.055+0.468}\\\\\\small{-0.106}\\\\=\\small{3.417}$")
-t <- matrix(c(row1,row2),ncol = 6,byrow=T,dimnames = list(c("",""),columnHeaders))
-kable(t,caption="(ref:tab4-3)")
+t <- matrix(c(row1,row2),ncol = 6,byrow=T)
+kable(t,caption="(ref:tab4-3)",escape=F,col.names = columnHeaders)
 ```
 
 One final plot of the fitted values

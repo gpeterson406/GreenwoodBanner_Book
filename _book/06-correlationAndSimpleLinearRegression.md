@@ -7,7 +7,6 @@ header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
 - \usepackage{cancel}
-- \usepackage[svgnames]{xcolor}
 ---
 
 # Correlation and Simple Linear Regression {#chapter6}
@@ -514,13 +513,6 @@ and black for negative correlations.
 
 ```r
 require(corrplot)
-```
-
-```
-## Loading required package: corrplot
-```
-
-```r
 corrplot.mixed(cor(aisR2), col=c("black", "orange"))
 ```
 

@@ -3889,13 +3889,6 @@ most complex model that included four predictor variables used up 5 *model df*.
 
 ```r
 require(MuMIn)
-```
-
-```
-## Loading required package: MuMIn
-```
-
-```r
 options(na.action = "na.fail") #Must run this code once to use dredge
 dredge(m6, rank="AIC",
        extra = c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))

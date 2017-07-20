@@ -6,6 +6,8 @@ output:
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}
+tablenos-cleveref: On
+tablenos-plus-name: Tab.
 ---
 
 #(R)e-Introduction to statistics {#chapter2}
@@ -82,36 +84,44 @@ will bypass some aspects of their research and just focus on differences in the
 sentence suggested among the three pictures. To get a sense of these data, 
 let's consider the first and last parts of the data set:
 
--------------------------------------------------------------------------
-Subject   Attr        Crime       Years   Serious   independent   Sincere  
---------  ----------  ----------  ------  --------  ------------  --------
-1	        Beautiful	  Burglary	  10	    8	        9	            8
+(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
 
-2	        Beautiful	  Burglary	  3	      8	        9	            3
+\begin{table}
 
-3	        Beautiful	  Burglary	  5	      5	        6	            3
-
-4	        Beautiful	  Burglary	  1	      3	        9	            8
-
-5	        Beautiful	  Burglary	  7	      9	        5	            1
-
-…	        …           …	          …	      …	        …	            …
-
-108	      Average	    Swindle	    3	      3	        5	            4
-
-109	      Average	    Swindle	    3	      2	        9	            9
-
-110	      Average	    Swindle	    2	      1	        8	            8
-
-111	      Average	    Swindle	    7	      4	        9	            1
-
-112	      Average	    Swindle	    6	      3	        5	            2
-
-113	      Average	    Swindle	    12	    9	        9	            1
-
-114	      Average	    Swindle	    8	      8	        1	            5
--------------------------------------------------------------------------
-
+\caption{(\#tab:Table2-1)(ref:tab2-1)}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l|l}
+\hline
+Subject & Attr & Crime & Years & Serious & Independent & Sincere\\
+\hline
+1 & Beautiful & Burglary & 10 & 8 & 9 & 8\\
+\hline
+2 & Beautiful & Burglary & 3 & 8 & 9 & 3\\
+\hline
+3 & Beautiful & Burglary & 5 & 5 & 6 & 3\\
+\hline
+4 & Beautiful & Burglary & 1 & 3 & 9 & 8\\
+\hline
+5 & Beautiful & Burglary & 7 & 9 & 5 & 1\\
+\hline
+$\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$\\
+\hline
+108 & Average & Swindle & 3 & 3 & 5 & 4\\
+\hline
+109 & Average & Swindle & 3 & 2 & 9 & 9\\
+\hline
+110 & Average & Swindle & 2 & 1 & 8 & 8\\
+\hline
+111 & Average & Swindle & 7 & 4 & 9 & 1\\
+\hline
+112 & Average & Swindle & 6 & 3 & 5 & 2\\
+\hline
+113 & Average & Swindle & 12 & 9 & 9 & 1\\
+\hline
+114 & Average & Swindle & 8 & 8 & 1 & 5\\
+\hline
+\end{tabular}
+\end{table}
 
 When working with data, we should always start with 
 summarizing the sample size. We will use ***n*** for the 
@@ -746,11 +756,12 @@ the two groups of interest here as seen in Figure \@ref(fig:Figure2-6).
 
 
 ```r
+par(mfrow=c(1,2))
 boxplot(Years ~ Attr,data=MockJury2) 
 beanplot(Years ~ Attr,data=MockJury2,log="",col="bisque",method="jitter")
 ```
 
-![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf) ![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-2.pdf) 
+![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf) 
 
 The two-sample mean techniques you learned in your previous course all 
 start with comparing the means the two groups. We can obtain the two 
@@ -1033,7 +1044,7 @@ diffmean(Years ~ PermutedAttr, data=Perm1)
 permuted groups. 
 
 
-![(\#fig:Figure2-8)(ref:fig2-8)](02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf) ![(\#fig:Figure2-8)(ref:fig2-8)](02-reintroductionToStatistics_files/figure-latex/Figure2-8-2.pdf) 
+![(\#fig:Figure2-8)(ref:fig2-8)](02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf) 
 
 These results suggest that the observed difference was larger than what we got 
 when we did a single permutation although it was only a little bit larger than 
@@ -1229,6 +1240,7 @@ values of test statistic for 1,000 permutations.
 
 
 ```r
+par(mfrow=c(1,2))
 B <- 1000
 Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
@@ -1238,7 +1250,7 @@ hist(Tstar, label=T)
 plot(density(Tstar), main="Density curve of Tstar")
 ```
 
-![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf) ![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-2.pdf) 
+![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf) 
 
 
 ```r
@@ -1270,6 +1282,7 @@ value of observed test statistic.
 
 
 ```r
+par(mfrow=c(1,2))
 Tobs <- 1.837
 hist(Tstar, labels=T)
 abline(v=Tobs, lwd=2, col="red")
@@ -1277,7 +1290,7 @@ plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs, lwd=2, col="red")
 ```
 
-![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf) ![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-2.pdf) 
+![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf) 
 
 Second, we can calculate the exact number of permuted results that were larger 
 than what we observed. To calculate the proportion of the 1,000 values that were 
@@ -1350,13 +1363,14 @@ value required for performing two-sided test.
 
 
 ```r
+par(mfrow=c(1,2))
 hist(Tstar, labels=T)
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar),main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
-![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf) ![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-2.pdf) 
+![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf) 
 
 In general, the ***one-sided test p-value*** is the proportion of the permuted
 results that are more extreme than observed in the direction of the *alternative*
@@ -1496,7 +1510,7 @@ differ "beyond a reasonable doubt".
 
 The scope of any inferences is constrained based on whether there is a 
 ***random sample*** (RS) and/or ***random assignment*** (RA).
-Table \@ref(tab:Table2-1) contains the four possible combinations of these 
+Table \@ref(tab:Table2-2) contains the four possible combinations of these 
 two characteristics of a given study. Random assignment allows for causal
 inferences for differences that are observed -- the difference in treatment
 levels causes differences in the mean responses. Random sampling (or at least
@@ -1505,19 +1519,19 @@ population of interest. If we do not have RA, then causal inferences cannot be
 made. If we do not have a representative sample, then our inferences are
 limited to the sampled subjects. 
 
-(ref:tab2-1) Scope of inference summary.
+(ref:tab2-2) Scope of inference summary.
 
 \begin{table}
 
-\caption{(\#tab:Table2-1)(ref:tab2-1)}
+\caption{(\#tab:Table2-2)(ref:tab2-2)}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
-**Random Sampling/Random Assignment** & **Random Assignment (RA) -- Yes (controlled experiment)** & **Random Assignment (RA) -- No (observational study)**\\
+Random Sampling/Random Assignment & Random Assignment (RA) -- Yes (controlled experiment) & Random Assignment (RA) -- No (observational study)\\
 \hline
-**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
+**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA -- cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
 \hline
-**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA 	\&rarr; the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
+**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Can establish causal inference due to RA $\rightarrow$ the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
 \hline
 \end{tabular}
 \end{table}
@@ -1611,23 +1625,23 @@ of the significance level, allowing us to control the rate of Type I errors
 at $\alpha$. We also have to worry about **Type II errors**, which are failing
 to reject the null hypothesis when it's false. In a courtroom, this is the same
 as failing to convict a truly guilty person. This most often occurs due to a 
-lack of evidence. You can use the Table \@ref(tab:Table2-2) to help you 
+lack of evidence. You can use the Table \@ref(tab:Table2-3) to help you 
 remember all the possibilities. 
 
-(ref:tab2-2) Table of decisions and truth scenarios in a hypothesis 
+(ref:tab2-3) Table of decisions and truth scenarios in a hypothesis 
 testing situation. But we never know the truth in a real situation. 
 
 \begin{table}
 
-\caption{(\#tab:Table2-2)(ref:tab2-2)}
+\caption{(\#tab:Table2-3)(ref:tab2-3)}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
-  & \$\textbackslash{}mathbf\{H\_0\}\$ **True** & \$\textbackslash{}mathbf\{H\_0\}\$ **False**\\
+  & $\mathbf{H_0}\textbf{ True}$ & $\mathbf{H_0}\textbf{ False}$\\
 \hline
-\$\textbackslash{}textbf\{FTR \}\textbackslash{}mathbf\{H\_0\}\$ & Correct decision & Type II error\\
+$\textbf{FTR }\mathbf{H_0}$ & Correct decision & Type II error\\
 \hline
-\$\textbackslash{}textbf\{Reject \}\textbackslash{}mathbf\{H\_0\}\$ & Type I error & Correct decision\\
+$\textbf{Reject }\mathbf{H_0}$ & Type I error & Correct decision\\
 \hline
 \end{tabular}
 \end{table}
@@ -1690,13 +1704,17 @@ and significance level.
 inference discussion. 
 -------------------------------------------------------------------------------
 
+\newpage
+
 ## Connecting randomization (nonparametric) and parametric tests {#section2-6}
 
 In developing statistical inference techniques, we need to define the test
 quantity of interest. To compare the means of two groups, a statistic is needed 
 that measures their differences. In general, for comparing two groups, the
 choices are simple -- a difference in the means often works well and is a
-natural choice. There are other options such as tracking the ratio of means or
+natural choice.  
+
+There are other options such as tracking the ratio of means or
 possibly the difference in medians. Instead of just using the difference in the
 means, we also could "standardize" the difference in the means by dividing by
 an appropriate quantity that reflects the variation in the difference in the
@@ -1755,6 +1773,7 @@ the same data set or if you re-run your permutation code.
 
 
 ```r
+par(mfrow=c(1,2))
 Tobs <- t.test(Years ~ Attr, data=MockJury2, var.equal=T)$statistic
 Tobs
 ```
@@ -1773,6 +1792,11 @@ hist(Tstar, labels=T)
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+```
+
+![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf) 
+
+```r
 pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ```
 
@@ -1780,8 +1804,6 @@ pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ##     t 
 ## 0.031
 ```
-
-![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf) ![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-2.pdf) 
 
 The parametric version of these results is based on using what is called the
 ***two-independent sample t-test***. There are actually two versions of this 
@@ -2395,11 +2417,13 @@ difference of 0 years). In general, if our confidence interval does not contain
 0, then it is saying that 0 is not one of our likely values for the difference 
 in the true means. This implies that we should reject a claim that they are 
 equal. This provides the same inferences for the hypotheses that we considered
-previously using both a parametric and permutation approach. The general summary
+previously using both a parametric and permutation approach. 
+
+The general summary
 is that we can use confidence intervals to test hypotheses by assessing whether 
 the reference value under the null hypothesis is in the confidence interval
 (FTR $H_0$) or outside the confidence interval (Reject $H_0$). P-values are more
-informative about hypotheses but confidence intervals are more information
+informative about hypotheses but confidence intervals are more informative
 about the size of differences, so both offer useful information and, as shown
 here, can provide consistent conclusions about hypotheses. 
 
@@ -2429,8 +2453,6 @@ t.test(Years ~ Attr, data=MockJury2, var.equal=T)
 ##      mean in group Average mean in group Unattractive 
 ##                   3.973684                   5.810811
 ```
-
-
 
 The ``t.test`` function again switched the order of the groups and provides 
 slightly different end-points than our bootstrap confidence interval (both are 

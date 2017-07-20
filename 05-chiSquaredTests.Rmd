@@ -18,7 +18,7 @@ library(pander)
 require(mosaic)
 library(knitr)
 require(beanplot)
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT')
 options(show.signif.stars = FALSE)
 ```
 
@@ -203,7 +203,7 @@ rowT <- c("$\\mathbf{n_{\\bullet 1}}$","$\\mathbf{n_{\\bullet 2}}$","$\\mathbf{n
 x <- matrix(c(row1,row2,row3,rowR,rowT),ncol=6,byrow = T,
             dimnames = list(rowLabels,columnHeaders))
 
-kable(x,caption="(ref:tab5-1)")
+kable(x,caption="(ref:tab5-1)",escape=F)
 ```
 
 Comparing counts from the contingency table is useful, but comparing proportions
@@ -343,7 +343,7 @@ row3 <- c("$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\mathbf
 rowR <- c("$p_{R1}$","$p_{R2}$","$p_{R3}$","$\\ldots$","$p_{RC}$","$\\mathbf{1.0}$")
 x <- matrix(c(row1,row2,row3,rowR),ncol=6,byrow = T,
             dimnames = list(rowLabels,columnHeaders))
-kable(x,caption="(ref:tab5-2)")
+kable(x,caption="(ref:tab5-2)",escape=F)
 ```
 
 In the Homogeneity situation, the null hypothesis is that the distributions are the same in all
@@ -697,7 +697,7 @@ row3 <- c(cell31,cell32,cell33,cell34)
 
 t <- matrix(c(row1,row2,row3),ncol = 4,byrow=T,
             dimnames = list(rowLabels,columnHeaders))
-kable(t,caption="(ref:tab5-3)")
+kable(t,caption="(ref:tab5-3)",escape=F)
 ```
 
 Of course, using R can help us avoid tedium like this... The main 
@@ -748,7 +748,7 @@ row2 <- c(cell21,cell22,cell23)
 
 t <- matrix(c(row1,row2),ncol = 3,byrow=T,
             dimnames = list(rowLabels,columnHeaders))
-kable(t,caption="(ref:tab5-4)")
+kable(t,caption="(ref:tab5-4)",escape=F)
 ```
 
 

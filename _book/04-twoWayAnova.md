@@ -19,7 +19,7 @@ header-includes:
 ## Situation {#section4-1}
 
 In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory
-variables in a method that is generally called the  ***Two-Way ANOVA*** . This 
+variables in a method that is generally called the ***Two-Way ANOVA***. This 
 allows researchers to simultaneously study more than one variable that might
 explain variability in the responses and explore whether the impacts of one
 variable change depending on the other variable. In some situations, each
@@ -33,13 +33,13 @@ production quotas, and see if the training programs work differently for
 different production quotas. In a clinical trials context, it is well known
 that certain factors can change the performance of certain drugs. For example, 
 different dosages of a drug might have different benefits or side-effects on
-men, versus women or children.  **When the impact of one factor changes on the
+men, versus women or children. **When the impact of one factor changes on the
 level of another factor**, we say that they ***interact***. It is also possible 
 for both factors to be related to differences in the mean responses and not 
 interact. For example, suppose there is a difference in the
 response means between men and women and a difference among various dosages, 
 but the effect of increasing the dosage is the same for the male and female
-subjects. This is an example of what is called an  ***additive*** type of model. 
+subjects. This is an example of what is called an ***additive*** type of model. 
 In general, the world is more complicated than the single factor models we
 considered in Chapter \@ref(chapter3) can account for, especially in 
 observational studies, so these models allow us to start to handle more 
@@ -52,8 +52,8 @@ a weight is placed on the towel held at the four corners. We are interested
 in studying the differences between brands and the impact of different amounts 
 of water applied to the towels. 
 
-* Predictors (Explanatory Variables):  **A** : ``Brand`` (2 brands of interest, 
-named *B1* and *B2*) and  **B** : Number of ``Drops`` of water (10, 20, 30 drops).
+* Predictors (Explanatory Variables): **A** : ``Brand`` (2 brands of interest, 
+named *B1* and *B2*) and **B** : Number of ``Drops`` of water (10, 20, 30 drops).
 
 * Response: *Time* to failure (in seconds) of a towel ($y$) with a weight 
 sitting in the middle of the towel. 
@@ -193,7 +193,7 @@ tally(brand ~ drops, data=pt)
 The sample sizes in each of the six treatment level combinations of ``Brand`` 
 and ``Drops`` [(*B1*, 10), (*B1*, 20), (*B1*, 30), (*B2*, 10), (*B2*, 20), 
 (*B2*, 30)] are $n_{jk} = 5$ for $j^{th}$ level of ``Brand`` ($j=1, 2$) and 
-$k^{th}$ level of ``Drops`` ($k=1, 2, 3$). The ``tally`` function gives us a  
+$k^{th}$ level of ``Drops`` ($k=1, 2, 3$). The ``tally`` function gives us a 
 ***contingency table*** with $R = 2$ rows (*B1*, *B2*) and $C = 3$ columns 
 (10, 20, and 30). We'll have more fun with this sort of summary of $R$ by $C$
 tables in Chapter \@ref(chapter5) -- here it helps us see the sample size in 
@@ -490,7 +490,7 @@ and B ($\gamma_k\text{'s}$). If evidence is found to reject the null hypothesis
 that no interaction is
 present, then it is dangerous to ignore it and test for the main effects
 because important main effects can be masked by interactions (examples later). 
-It is important to note that, by definition,  **both variables matter if an
+It is important to note that, by definition, **both variables matter if an
 interaction is found to be important** so the main effect tests may not be 
 very interesting. If the interaction is found
 to be important based on the test and retained in the model, you should focus
@@ -565,15 +565,15 @@ error need to equal $N-1$, just like in the One-Way ANOVA table.
 \hline
 Source & DF & SS & MS & F-statistics\\
 \hline
-A & \$J-1\$ & \$\textbackslash{}text\{SS\}\_A\$ & \$\textbackslash{}text\{MS\}\_A=\textbackslash{}text\{SS\}\_A/\textbackslash{}text\{df\}\_A\$ & \$\textbackslash{}text\{MS\}\_A/\textbackslash{}text\{MS\}\_E\$\\
+A & $J-1$ & $\text{SS}_A$ & $\text{MS}_A=\text{SS}_A/\text{df}_A$ & $\text{MS}_A/\text{MS}_E$\\
 \hline
-B & \$K-1\$ & \$\textbackslash{}text\{SS\}\_B\$ & \$\textbackslash{}text\{MS\}\_B=\textbackslash{}text\{SS\}\_B/\textbackslash{}text\{df\}\_B\$ & \$\textbackslash{}text\{MS\}\_B/\textbackslash{}text\{MS\}\_E\$\\
+B & $K-1$ & $\text{SS}_B$ & $\text{MS}_B=\text{SS}_B/\text{df}_B$ & $\text{MS}_B/\text{MS}_E$\\
 \hline
-A:B (interaction) & \$(J-1)(K-1)\$ & \$\textbackslash{}text\{SS\}\_\{AB\}\$ & \$\textbackslash{}text\{MS\}\_\{AB\}=\textbackslash{}text\{SS\}\_\{AB\}/\textbackslash{}text\{df\}\_\{AB\}\$ & \$\textbackslash{}text\{MS\}\_\{AB\}/\textbackslash{}text\{MS\}\_E\$\\
+A:B (interaction) & $(J-1)(K-1)$ & $\text{SS}_{AB}$ & $\text{MS}_{AB}=\text{SS}_{AB}/\text{df}_{AB}$ & $\text{MS}_{AB}/\text{MS}_E$\\
 \hline
-Error & \$N-J-K+1\$ & \$\textbackslash{}text\{SS\}\_E\$ & \$\textbackslash{}text\{MS\}\_E=\textbackslash{}text\{SS\}\_E/\textbackslash{}text\{df\}\_E\$ & \\
+Error & $N-J-K+1$ & $\text{SS}_E$ & $\text{MS}_E=\text{SS}_E/\text{df}_E$ & \\
 \hline
-\textbackslash{}textcolor\{red\}\{\textbackslash{}textbf\{Total\}\} & \$\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{N-1\}\}\$ & \$\textbackslash{}color\{red\}\{\textbackslash{}textbf\{SS\}\_\{\textbackslash{}textbf\{Total\}\}\}\$ &  & \\
+\textcolor{red}{\textbf{Total}} & $\color{red}{\mathbf{N-1}}$ & $\color{red}{\textbf{SS}_{\textbf{Total}}}$ &  & \\
 \hline
 \end{tabular}
 \end{table}
@@ -588,13 +588,13 @@ Error & \$N-J-K+1\$ & \$\textbackslash{}text\{SS\}\_E\$ & \$\textbackslash{}text
 \hline
 Source & DF & SS & MS & F-statistics\\
 \hline
-A & \$J-1\$ & \$\textbackslash{}text\{SS\}\_A\$ & \$\textbackslash{}text\{MS\}\_A=\textbackslash{}text\{SS\}\_A/\textbackslash{}text\{df\}\_A\$ & \$\textbackslash{}text\{MS\}\_A/\textbackslash{}text\{MS\}\_E\$\\
+A & $J-1$ & $\text{SS}_A$ & $\text{MS}_A=\text{SS}_A/\text{df}_A$ & $\text{MS}_A/\text{MS}_E$\\
 \hline
-B & \$K-1\$ & \$\textbackslash{}text\{SS\}\_B\$ & \$\textbackslash{}text\{MS\}\_B=\textbackslash{}text\{SS\}\_B/\textbackslash{}text\{df\}\_B\$ & \$\textbackslash{}text\{MS\}\_B/\textbackslash{}text\{MS\}\_E\$\\
+B & $K-1$ & $\text{SS}_B$ & $\text{MS}_B=\text{SS}_B/\text{df}_B$ & $\text{MS}_B/\text{MS}_E$\\
 \hline
-Error & \$N-J-K+1\$ & \$\textbackslash{}text\{SS\}\_E\$ & \$\textbackslash{}text\{MS\}\_E=\textbackslash{}text\{SS\}\_E/\textbackslash{}text\{df\}\_E\$ & \\
+Error & $N-J-K+1$ & $\text{SS}_E$ & $\text{MS}_E=\text{SS}_E/\text{df}_E$ & \\
 \hline
-\textbackslash{}textcolor\{red\}\{\textbackslash{}textbf\{Total\}\} & \$\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{N-1\}\}\$ & \$\textbackslash{}color\{red\}\{\textbackslash{}textbf\{SS\}\_\{\textbackslash{}textbf\{Total\}\}\}\$ &  & \\
+\textcolor{red}{\textbf{Total}} & $\color{red}{\mathbf{N-1}}$ & $\color{red}{\textbf{SS}_{\textbf{Total}}}$ &  & \\
 \hline
 \end{tabular}
 \end{table}
@@ -663,8 +663,7 @@ anova(m1)
   **Residuals**    24    9.884     0.4118      NA         NA    
 ----------------------------------------------------------------
 
-Table: Interaction ANOVA table with interaction
-       row in bold.
+Table: Interaction ANOVA table with interaction row in bold.
 
 It is useful to display the estimates from this model and we can utilize
 ``plot(allEffects(modelname))`` to visualize the results for the terms 
@@ -965,7 +964,7 @@ expected (small p-values in places they didn't expect and large p-values in
 places where they thought differences existed). During the presentation, the student
 showed some ANOVA tables and the four level categorical variable had 1 numerator
 $df$ in the ANOVA table. The student
-passed with major revisions but had to re-run  **all** the results and re-write
+passed with major revisions but had to re-run **all** the results and re-write
 **all** of the conclusions... So be careful to check the ANOVA results ($df$
 and for the right number of expected model coefficients) to make
 sure they match your expectations. This is one reason why you will be learning
@@ -1516,13 +1515,13 @@ of variables for the ``prodebt`` additive model.
 
 \caption{(\#tab:Table4-3)(ref:tab4-3)}
 \centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
+\begin{tabular}[t]{l|l|l|l|l|l}
 \hline
-  & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{Cig\}\textbackslash{}\textbackslash{}\textbackslash{}text\{Buy\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 1\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 2\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 3\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 4\}\}\$ & \$\textbackslash{}color\{blue\}\{\textbackslash{}textbf\{Income\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Group 5\}\}\$\\
+$\color{red}{\text{Cig}\\ \text{Buy}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 1}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 2}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 3}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 4}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 5}}$\\
 \hline
- & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{0:\}\textbackslash{}\textbackslash{}\textbackslash{}text\{No\}\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_2 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.016\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.071\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_3 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.175\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.230\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_4 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.169\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.224\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\} + \textbackslash{}hat\{\textbackslash{}tau\}\_5 \textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055 + 0.468\} \textbackslash{}\textbackslash{}= \textbackslash{}small\{3.523\}\$\\
+$\color{red}{\text{0:}\\ \text{No}}$ & $\hat{\alpha} \\=\small{3.055}$ & $\hat{\alpha} + \hat{\tau}_2 \\=\small{3.055 + 0.016} \\= \small{3.071}$ & $\hat{\alpha} + \hat{\tau}_3 \\=\small{3.055 + 0.175} \\= \small{3.230}$ & $\hat{\alpha} + \hat{\tau}_4 \\=\small{3.055 + 0.169} \\= \small{3.224}$ & $\hat{\alpha} + \hat{\tau}_5 \\=\small{3.055 + 0.468} \\= \small{3.523}$\\
 \hline
- & \$\textbackslash{}color\{red\}\{\textbackslash{}text\{1:\}\textbackslash{}\textbackslash{}\textbackslash{}text\{Yes\}\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{2.949\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_2+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.016\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{2.965\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_3+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.175\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.124\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_4+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.169\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.118\}\$ & \$\textbackslash{}hat\{\textbackslash{}alpha\}+\textbackslash{}hat\{\textbackslash{}tau\}\_5+\textbackslash{}hat\{\textbackslash{}gamma\}\_2\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.055+0.468\}\textbackslash{}\textbackslash{}\textbackslash{}small\{-0.106\}\textbackslash{}\textbackslash{}=\textbackslash{}small\{3.417\}\$\\
+$\color{red}{\text{1:}\\\text{Yes}}$ & $\hat{\alpha}+\hat{\gamma}_2\\=\small{3.055}\\\small{-0.106}\\=\small{2.949}$ & $\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2\\=\small{3.055+0.016}\\\small{-0.106}\\=\small{2.965}$ & $\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2\\=\small{3.055+0.175}\\\small{-0.106}\\=\small{3.124}$ & $\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2\\=\small{3.055+0.169}\\\small{-0.106}\\=\small{3.118}$ & $\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2\\=\small{3.055+0.468}\\\small{-0.106}\\=\small{3.417}$\\
 \hline
 \end{tabular}
 \end{table}

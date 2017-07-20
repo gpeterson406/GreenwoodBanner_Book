@@ -100,7 +100,7 @@ shape and variance that is an assumption of the regression model.
 (ref:fig7-1) Sketch of assumed normal distributions for the responses 
 centered at the regression line.
 
-\begin{figure}
+\begin{figure}[HT]
 
 {\centering \includegraphics{chapter7_files/image029} 
 

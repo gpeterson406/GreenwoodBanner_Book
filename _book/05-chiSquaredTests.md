@@ -185,17 +185,17 @@ function is provided in Table \@ref(tab:Table5-1).
 \centering
 \begin{tabular}[t]{l|l|l|l|l|l|l}
 \hline
-  & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}1\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}2\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}3\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\textbackslash{}\textbackslash{}\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}C\$ & \$\textbackslash{}textbf\{Totals\}\$\\
+  & $\textbf{Response}\\\textbf{Level }1$ & $\textbf{Response}\\\textbf{Level }2$ & $\textbf{Response}\\\textbf{Level }3$ & $\mathbf{\ldots}\\$ & $\textbf{Response}\\\textbf{Level }C$ & $\textbf{Totals}$\\
 \hline
-**Group 1** & \$n\_\{11\}\$ & \$n\_\{12\}\$ & \$n\_\{13\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{1C\}\$ & \$\textbackslash{}mathbf\{n\_\{1\textbackslash{}bullet\}\}\$\\
+**Group 1** & $n_{11}$ & $n_{12}$ & $n_{13}$ & $\ldots$ & $n_{1C}$ & $\mathbf{n_{1\bullet}}$\\
 \hline
-**Group 2** & \$n\_\{21\}\$ & \$n\_\{22\}\$ & \$n\_\{23\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{2C\}\$ & \$\textbackslash{}mathbf\{n\_\{2\textbackslash{}bullet\}\}\$\\
+**Group 2** & $n_{21}$ & $n_{22}$ & $n_{23}$ & $\ldots$ & $n_{2C}$ & $\mathbf{n_{2\bullet}}$\\
 \hline
-\$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$\\
+$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
 \hline
-**Group R** & \$n\_\{R1\}\$ & \$n\_\{R2\}\$ & \$n\_\{R3\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{RC\}\$ & \$\textbackslash{}mathbf\{n\_\{R\textbackslash{}bullet\}\}\$\\
+**Group R** & $n_{R1}$ & $n_{R2}$ & $n_{R3}$ & $\ldots$ & $n_{RC}$ & $\mathbf{n_{R\bullet}}$\\
 \hline
-**Totals** & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 1\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 2\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 3\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet C\}\}\$ & \$\textbackslash{}mathbf\{N\}\$\\
+**Totals** & $\mathbf{n_{\bullet 1}}$ & $\mathbf{n_{\bullet 2}}$ & $\mathbf{n_{\bullet 3}}$ & $\mathbf{\ldots}$ & $\mathbf{n_{\bullet C}}$ & $\mathbf{N}$\\
 \hline
 \end{tabular}
 \end{table}
@@ -340,15 +340,15 @@ produced by the ``tally`` function if you use the formula ``~y|x``.
 \centering
 \begin{tabular}[t]{l|l|l|l|l|l|l}
 \hline
-  & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}1\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}2\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}3\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\textbackslash{}\textbackslash{}\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}C\$ & \$\textbackslash{}textbf\{Totals\}\$\\
+  & $\textbf{Response}\\\textbf{Level }1$ & $\textbf{Response}\\\textbf{Level }2$ & $\textbf{Response}\\\textbf{Level }3$ & $\mathbf{\ldots}\\$ & $\textbf{Response}\\\textbf{Level }C$ & $\textbf{Totals}$\\
 \hline
-**Group 1** & \$p\_\{11\}\$ & \$p\_\{12\}\$ & \$p\_\{13\}\$ & \$\textbackslash{}ldots\$ & \$p\_\{1C\}\$ & \$\textbackslash{}mathbf\{1.0\}\$\\
+**Group 1** & $p_{11}$ & $p_{12}$ & $p_{13}$ & $\ldots$ & $p_{1C}$ & $\mathbf{1.0}$\\
 \hline
-**Group 2** & \$p\_\{21\}\$ & \$p\_\{22\}\$ & \$p\_\{23\}\$ & \$\textbackslash{}ldots\$ & \$p\_\{2C\}\$ & \$\textbackslash{}mathbf\{1.0\}\$\\
+**Group 2** & $p_{21}$ & $p_{22}$ & $p_{23}$ & $\ldots$ & $p_{2C}$ & $\mathbf{1.0}$\\
 \hline
-\$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$\\
+$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
 \hline
-**Group R** & \$p\_\{R1\}\$ & \$p\_\{R2\}\$ & \$p\_\{R3\}\$ & \$\textbackslash{}ldots\$ & \$p\_\{RC\}\$ & \$\textbackslash{}mathbf\{1.0\}\$\\
+**Group R** & $p_{R1}$ & $p_{R2}$ & $p_{R3}$ & $\ldots$ & $p_{RC}$ & $\mathbf{1.0}$\\
 \hline
 \end{tabular}
 \end{table}
@@ -689,11 +689,11 @@ for Arthritis data.
 \hline
   & None & Some & Marked & Totals\\
 \hline
-**Placebo** & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Placebo\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{None\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{43*42\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{21.5\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Placebo\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{Some\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{43*14\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{7.167\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Placebo\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{Marked\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{43*28\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{14.33\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}text\{Placebo\}\textbackslash{}bullet\}=43\}\$\\
+**Placebo** & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{None}}}{N}\\=\frac{43*42}{84}}\\=\color{red}{\mathbf{21.5}}$ & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Some}}}{N}\\=\frac{43*14}{84}}\\=\color{red}{\mathbf{7.167}}$ & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Marked}}}{N}\\=\frac{43*28}{84}}\\=\color{red}{\mathbf{14.33}}$ & $\mathbf{n_{\text{Placebo}\bullet}=43}$\\
 \hline
-**Treated** & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Treated\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{None\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{41*42\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{20.5\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Treated\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{Some\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{41*14\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{6.83\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}frac\{n\_\{\textbackslash{}text\{Treated\}\textbackslash{}bullet\}*n\_\{\textbackslash{}bullet\textbackslash{}text\{Marked\}\}\}\{N\}\textbackslash{}\textbackslash{}=\textbackslash{}frac\{41*28\}\{84\}\}\textbackslash{}\textbackslash{}=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{13.67\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}text\{Treated\}\textbackslash{}bullet\}=41\}\$\\
+**Treated** & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{None}}}{N}\\=\frac{41*42}{84}}\\=\color{red}{\mathbf{20.5}}$ & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{Some}}}{N}\\=\frac{41*14}{84}}\\=\color{red}{\mathbf{6.83}}$ & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{Marked}}}{N}\\=\frac{41*28}{84}}\\=\color{red}{\mathbf{13.67}}$ & $\mathbf{n_{\text{Treated}\bullet}=41}$\\
 \hline
-**Totals** & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet\textbackslash{}text\{None\}\}=42\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet\textbackslash{}text\{Some\}\}=14\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet\textbackslash{}text\{Marked\}\}=28\}\$ & \$\textbackslash{}mathbf\{N=84\}\$\\
+**Totals** & $\mathbf{n_{\bullet\text{None}}=42}$ & $\mathbf{n_{\bullet\text{Some}}=14}$ & $\mathbf{n_{\bullet\text{Marked}}=28}$ & $\mathbf{N=84}$\\
 \hline
 \end{tabular}
 \end{table}
@@ -757,9 +757,9 @@ in Table \@ref{tab:Table5-4}.
 \hline
   & None & Some & Marked\\
 \hline
-**Placebo** & \$\textbackslash{}left(\textbackslash{}frac\{29-21.5\}\{\textbackslash{}sqrt\{21.5\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{2.616\}\}\$ & \$\textbackslash{}left(\textbackslash{}frac\{7-7.167\}\{\textbackslash{}sqrt\{7.167\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{0.004\}\}\$ & \$\textbackslash{}left(\textbackslash{}frac\{7-14.33\}\{\textbackslash{}sqrt\{14.33\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{3.752\}\}\$\\
+**Placebo** & $\left(\frac{29-21.5}{\sqrt{21.5}}\right)^2=\color{red}{\mathbf{2.616}}$ & $\left(\frac{7-7.167}{\sqrt{7.167}}\right)^2=\color{red}{\mathbf{0.004}}$ & $\left(\frac{7-14.33}{\sqrt{14.33}}\right)^2=\color{red}{\mathbf{3.752}}$\\
 \hline
-**Treated** & \$\textbackslash{}left(\textbackslash{}frac\{13-20.5\}\{\textbackslash{}sqrt\{20.5\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{2.744\}\}\$ & \$\textbackslash{}left(\textbackslash{}frac\{7-6.833\}\{\textbackslash{}sqrt\{6.833\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{0.004\}\}\$ & \$\textbackslash{}left(\textbackslash{}frac\{21-13.67\}\{\textbackslash{}sqrt\{13.67\}\}\textbackslash{}right)\textasciicircum{}2=\textbackslash{}color\{red\}\{\textbackslash{}mathbf\{3.935\}\}\$\\
+**Treated** & $\left(\frac{13-20.5}{\sqrt{20.5}}\right)^2=\color{red}{\mathbf{2.744}}$ & $\left(\frac{7-6.833}{\sqrt{6.833}}\right)^2=\color{red}{\mathbf{0.004}}$ & $\left(\frac{21-13.67}{\sqrt{13.67}}\right)^2=\color{red}{\mathbf{3.935}}$\\
 \hline
 \end{tabular}
 \end{table}

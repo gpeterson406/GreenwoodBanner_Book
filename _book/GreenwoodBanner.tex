@@ -124,24 +124,27 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-07-18}
+  \date{2017-07-19}
 
 \usepackage{booktabs}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{amsbsy}
-\definecolor{purple}{RGB}{76,0,153}
-\usepackage[svgnames]{xcolor}
 \usepackage[normalem]{ulem}
 \usepackage{cancel}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[svgnames]{xcolor}
+\usepackage{float}
 
-% make code-output smaller
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+\definecolor{purple}{RGB}{76,0,153}
+
+% % make code-output smaller
+% \DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+% 
 
 % make console-output smaller:
   \makeatletter
-\def\verbatim{\tiny\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
 \makeatother
 
 
@@ -1523,222 +1526,44 @@ will bypass some aspects of their research and just focus on differences
 in the sentence suggested among the three pictures. To get a sense of
 these data, let's consider the first and last parts of the data set:
 
-\begin{longtable}[]{@{}lllllll@{}}
-\toprule
-\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-Subject\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
-Attr\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
-Crime\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Years\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-Serious\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
-independent\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Sincere\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-10\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Beautiful\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Burglary\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-\ldots{}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-108\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-4\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-109\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-9\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-110\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-2\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-111\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-7\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-112\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-6\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-3\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-5\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-2\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-113\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-12\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-9\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-1\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-114\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Average\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Swindle\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-8\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-1\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-5\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+
+
+\begin{table}
+
+\caption{\label{tab:Table2-1}First 5 and last 6 rows of the MockJury data set}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l|l}
+\hline
+Subject & Attr & Crime & Years & Serious & Independent & Sincere\\
+\hline
+1 & Beautiful & Burglary & 10 & 8 & 9 & 8\\
+\hline
+2 & Beautiful & Burglary & 3 & 8 & 9 & 3\\
+\hline
+3 & Beautiful & Burglary & 5 & 5 & 6 & 3\\
+\hline
+4 & Beautiful & Burglary & 1 & 3 & 9 & 8\\
+\hline
+5 & Beautiful & Burglary & 7 & 9 & 5 & 1\\
+\hline
+$\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$\\
+\hline
+108 & Average & Swindle & 3 & 3 & 5 & 4\\
+\hline
+109 & Average & Swindle & 3 & 2 & 9 & 9\\
+\hline
+110 & Average & Swindle & 2 & 1 & 8 & 8\\
+\hline
+111 & Average & Swindle & 7 & 4 & 9 & 1\\
+\hline
+112 & Average & Swindle & 6 & 3 & 5 & 2\\
+\hline
+113 & Average & Swindle & 12 & 9 & 9 & 1\\
+\hline
+114 & Average & Swindle & 8 & 8 & 1 & 5\\
+\hline
+\end{tabular}
+\end{table}
 
 When working with data, we should always start with summarizing the
 sample size. We will use \textbf{\emph{n}} for the number of subjects in
@@ -2462,13 +2287,18 @@ for the two groups of interest here as seen in Figure
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{boxplot}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2) }
 \KeywordTok{beanplot}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-6-2.pdf}
+\caption{\label{fig:Figure2-6}Boxplot and beanplot of the Years responses on the reduced
+data set.}
+\end{figure}
 
 The two-sample mean techniques you learned in your previous course all
 start with comparing the means the two groups. We can obtain the two
@@ -2779,8 +2609,12 @@ higher mean than Unattractive in the permuted data).
 
 
 
+\begin{figure}
+\centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-8-2.pdf}
+\caption{\label{fig:Figure2-8}Boxplots of Years responses versus actual treatment groups
+and permuted groups.}
+\end{figure}
 
 These results suggest that the observed difference was larger than what
 we got when we did a single permutation although it was only a little
@@ -2999,6 +2833,7 @@ statistics of the results:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{B <-}\StringTok{ }\DecValTok{1000}
 \NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
@@ -3009,8 +2844,12 @@ statistics of the results:
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-9-2.pdf}
+\caption{\label{fig:Figure2-9}Histogram (left, with counts in bars) and density curve
+(right) of values of test statistic for 1,000 permutations.}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3044,6 +2883,7 @@ function.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{Tobs <-}\StringTok{ }\FloatTok{1.837}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
@@ -3052,8 +2892,13 @@ function.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-10-2.pdf}
+\caption{\label{fig:Figure2-10}Histogram (left) and density curve (right) of values of
+test statistic for 1,000 permutations with bold vertical line for value
+of observed test statistic.}
+\end{figure}
 
 Second, we can calculate the exact number of permuted results that were
 larger than what we observed. To calculate the proportion of the 1,000
@@ -3133,6 +2978,7 @@ density curve.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar),}\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
@@ -3140,8 +2986,13 @@ density curve.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-11-2.pdf}
+\caption{\label{fig:Figure2-11}Histogram and density curve of values of test statistic
+for 1,000 permutations with bold lines for value of observed test
+statistic and its opposite value required for performing two-sided test.}
+\end{figure}
 
 In general, the \textbf{\emph{one-sided test p-value}} is the proportion
 of the permuted results that are more extreme than observed in the
@@ -3303,7 +3154,7 @@ doubt''.
 
 The scope of any inferences is constrained based on whether there is a
 \textbf{\emph{random sample}} (RS) and/or \textbf{\emph{random
-assignment}} (RA). Table \ref{tab:Table2-1} contains the four possible
+assignment}} (RA). Table \ref{tab:Table2-2} contains the four possible
 combinations of these two characteristics of a given study. Random
 assignment allows for causal inferences for differences that are
 observed -- the difference in treatment levels causes differences in the
@@ -3317,15 +3168,15 @@ sampled subjects.
 
 \begin{table}
 
-\caption{\label{tab:Table2-1}Scope of inference summary.}
+\caption{\label{tab:Table2-2}Scope of inference summary.}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
-**Random Sampling/Random Assignment** & **Random Assignment (RA) -- Yes (controlled experiment)** & **Random Assignment (RA) -- No (observational study)**\\
+Random Sampling/Random Assignment & Random Assignment (RA) -- Yes (controlled experiment) & Random Assignment (RA) -- No (observational study)\\
 \hline
-**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA - cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
+**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA -- cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
 \hline
-**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Can establish causal inference due to RA   \&rarr; the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased - may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
+**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Can establish causal inference due to RA $\rightarrow$ the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
 \hline
 \end{tabular}
 \end{table}
@@ -3429,23 +3280,23 @@ significance level, allowing us to control the rate of Type I errors at
 are failing to reject the null hypothesis when it's false. In a
 courtroom, this is the same as failing to convict a truly guilty person.
 This most often occurs due to a lack of evidence. You can use the Table
-\ref{tab:Table2-2} to help you remember all the possibilities.
+\ref{tab:Table2-3} to help you remember all the possibilities.
 
 
 
 
 \begin{table}
 
-\caption{\label{tab:Table2-2}Table of decisions and truth scenarios in a hypothesis
+\caption{\label{tab:Table2-3}Table of decisions and truth scenarios in a hypothesis
 testing situation. But we never know the truth in a real situation.}
 \centering
 \begin{tabular}[t]{l|l|l}
 \hline
-  & \$\textbackslash{}mathbf\{H\_0\}\$ **True** & \$\textbackslash{}mathbf\{H\_0\}\$ **False**\\
+  & $\mathbf{H_0}\textbf{ True}$ & $\mathbf{H_0}\textbf{ False}$\\
 \hline
-\$\textbackslash{}textbf\{FTR \}\textbackslash{}mathbf\{H\_0\}\$ & Correct decision & Type II error\\
+$\textbf{FTR }\mathbf{H_0}$ & Correct decision & Type II error\\
 \hline
-\$\textbackslash{}textbf\{Reject \}\textbackslash{}mathbf\{H\_0\}\$ & Type I error & Correct decision\\
+$\textbf{Reject }\mathbf{H_0}$ & Type I error & Correct decision\\
 \hline
 \end{tabular}
 \end{table}
@@ -3523,6 +3374,8 @@ inference discussion.\strut
 \bottomrule
 \end{longtable}
 
+\newpage
+
 \section{Connecting randomization (nonparametric) and parametric
 tests}\label{section2-6}
 
@@ -3530,22 +3383,23 @@ In developing statistical inference techniques, we need to define the
 test quantity of interest. To compare the means of two groups, a
 statistic is needed that measures their differences. In general, for
 comparing two groups, the choices are simple -- a difference in the
-means often works well and is a natural choice. There are other options
-such as tracking the ratio of means or possibly the difference in
-medians. Instead of just using the difference in the means, we also
-could ``standardize'' the difference in the means by dividing by an
-appropriate quantity that reflects the variation in the difference in
-the means. All of these are valid and can sometimes provide similar
-results - it ends up that there are many possibilities for testing using
-the randomization (nonparametric) techniques introduced previously.
-Parametric statistical methods focus on means because the statistical
-theory surrounding means is quite a bit easier (not easy, just easier)
-than other options but there are just a couple of test statistics that
-you can use and end up with named distributions to use for generating
-inferences. Randomization techniques allow inference for other
-quantities but our focus here will be on using randomization for
-inferences on means to see the similarities with the more traditional
-parametric procedures.
+means often works well and is a natural choice.
+
+There are other options such as tracking the ratio of means or possibly
+the difference in medians. Instead of just using the difference in the
+means, we also could ``standardize'' the difference in the means by
+dividing by an appropriate quantity that reflects the variation in the
+difference in the means. All of these are valid and can sometimes
+provide similar results - it ends up that there are many possibilities
+for testing using the randomization (nonparametric) techniques
+introduced previously. Parametric statistical methods focus on means
+because the statistical theory surrounding means is quite a bit easier
+(not easy, just easier) than other options but there are just a couple
+of test statistics that you can use and end up with named distributions
+to use for generating inferences. Randomization techniques allow
+inference for other quantities but our focus here will be on using
+randomization for inferences on means to see the similarities with the
+more traditional parametric procedures.
 
 In two-sample mean situations, instead of working just with the
 difference in the means, we often calculate a test statistic that is
@@ -3595,6 +3449,7 @@ both analyzing the same data set or if you re-run your permutation code.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{Tobs <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
 \NormalTok{Tobs}
 \end{Highlighting}
@@ -3615,6 +3470,17 @@ both analyzing the same data set or if you re-run your permutation code.
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf}
+\caption{\label{fig:Figure2-12}Permutation distribution of the \(t\)-statistic}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{pdata}\NormalTok{(}\KeywordTok{abs}\NormalTok{(Tstar),}\KeywordTok{abs}\NormalTok{(Tobs),}\DataTypeTok{lower.tail=}\NormalTok{F)}
 \end{Highlighting}
 \end{Shaded}
@@ -3623,9 +3489,6 @@ both analyzing the same data set or if you re-run your permutation code.
 ##     t 
 ## 0.031
 \end{verbatim}
-
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf}
-\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-12-2.pdf}
 
 The parametric version of these results is based on using what is called
 the \textbf{\emph{two-independent sample t-test}}. There are actually
@@ -4380,14 +4243,15 @@ interval does not contain 0, then it is saying that 0 is not one of our
 likely values for the difference in the true means. This implies that we
 should reject a claim that they are equal. This provides the same
 inferences for the hypotheses that we considered previously using both a
-parametric and permutation approach. The general summary is that we can
-use confidence intervals to test hypotheses by assessing whether the
-reference value under the null hypothesis is in the confidence interval
-(FTR \(H_0\)) or outside the confidence interval (Reject \(H_0\)).
-P-values are more informative about hypotheses but confidence intervals
-are more information about the size of differences, so both offer useful
-information and, as shown here, can provide consistent conclusions about
-hypotheses.
+parametric and permutation approach.
+
+The general summary is that we can use confidence intervals to test
+hypotheses by assessing whether the reference value under the null
+hypothesis is in the confidence interval (FTR \(H_0\)) or outside the
+confidence interval (Reject \(H_0\)). P-values are more informative
+about hypotheses but confidence intervals are more informative about the
+size of differences, so both offer useful information and, as shown
+here, can provide consistent conclusions about hypotheses.
 
 As in the previous situation, we also want to consider the parametric
 approach for comparison purposes and to have that method available,

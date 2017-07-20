@@ -1,19 +1,22 @@
 \usepackage{booktabs}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{amsbsy}
-\definecolor{purple}{RGB}{76,0,153}
-\usepackage[svgnames]{xcolor}
 \usepackage[normalem]{ulem}
 \usepackage{cancel}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[svgnames]{xcolor}
+\usepackage{float}
 
-% make code-output smaller
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+\definecolor{purple}{RGB}{76,0,153}
+
+% % make code-output smaller
+% \DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+% 
 
 % make console-output smaller:
   \makeatletter
-\def\verbatim{\tiny\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
 \makeatother
 
 
