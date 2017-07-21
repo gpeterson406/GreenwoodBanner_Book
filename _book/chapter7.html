@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-18">
+<meta name="date" content="2017-07-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -261,7 +261,7 @@ Figure 7.1: Sketch of assumed normal distributions for the responses centered at
 <p>Figure <a href="chapter7.html#fig:Figure7-2">7.2</a> contains simulated realizations from a normal distribution of 20 subjects at each <em>Beer</em> level around the assumed true regression line with two different residual SEs of 0.02 and 0.06. The original BAC model has a residual SE of 0.02 but had many fewer observations at each <em>Beer</em> value.</p>
 
 <div class="figure"><span id="fig:Figure7-2"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-2-1.png" alt="Simulated data for Beers and BAC assuming two different residual standard errors (0.02 and 0.06)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-2-1.png" alt="Simulated data for Beers and BAC assuming two different residual standard errors (0.02 and 0.06)." width="576" />
 <p class="caption">
 Figure 7.2: Simulated data for Beers and BAC assuming two different residual standard errors (0.02 and 0.06).
 </p>
@@ -482,7 +482,7 @@ Figure 7.4: Scatterplot of average yearly maximum temperatures in Bozeman from 1
 <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(temp1, <span class="dt">add.smooth=</span>F)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-5"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-5-1.png" alt="Diagnostic plots of the Bozeman yearly temperature simple linear regression model." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-5-1.png" alt="Diagnostic plots of the Bozeman yearly temperature simple linear regression model." width="576" />
 <p class="caption">
 Figure 7.5: Diagnostic plots of the Bozeman yearly temperature simple linear regression model.
 </p>
@@ -561,7 +561,7 @@ Figure 7.5: Diagnostic plots of the Bozeman yearly temperature simple linear reg
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(temp1, <span class="dt">xlevels=</span><span class="kw">list</span>(<span class="dt">Year=</span>bozemantemps<span class="op">$</span>Year)),
      <span class="dt">grid=</span>T)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-6"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-6-1.png" alt="Term-plot for the Bozeman mean yearly maximum temperature linear regression model with 95% confidence interval bands for the mean in each year." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-6-1.png" alt="Term-plot for the Bozeman mean yearly maximum temperature linear regression model with 95% confidence interval bands for the mean in each year." width="576" />
 <p class="caption">
 Figure 7.6: Term-plot for the Bozeman mean yearly maximum temperature linear regression model with 95% confidence interval bands for the mean in each year.
 </p>
@@ -602,7 +602,7 @@ Figure 7.6: Term-plot for the Bozeman mean yearly maximum temperature linear reg
 <p>Exploring permutation testing in SLR provides an opportunity to gauge the observed relationship against the sorts of relationships we would expect to see if there was no linear relationship between the variables. If the relationship is linear (not curvilinear) and the null hypothesis of <span class="math inline">\(\beta_1=0\)</span> is true, then any configuration of the responses relative to the predictor variables is a good as any other. Consider the four scatterplots of the Bozeman temperature data versus <code>Year</code> and permuted versions of <code>Year</code> in Figure <a href="chapter7.html#fig:Figure7-7">7.7</a>. First, think about which of the panels you think presents the most evidence of a linear relationship between <code>Year</code> and <code>Temperature</code>?</p>
 
 <div class="figure"><span id="fig:Figure7-7"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-7-1.png" alt="Plot of the Temperature responses versus four versions of Year, three of which are permutations of the Year variable relative to the Temperatures." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-7-1.png" alt="Plot of the Temperature responses versus four versions of Year, three of which are permutations of the Year variable relative to the Temperatures." width="576" />
 <p class="caption">
 Figure 7.7: Plot of the <code>Temperature</code> responses versus four versions of <code>Year</code>, three of which are permutations of the Year variable relative to the Temperatures.
 </p>
@@ -628,7 +628,7 @@ Tstar &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="
 <span class="kw">plot</span>(<span class="kw">density</span>(Tstar), <span class="dt">main=</span><span class="st">&quot;Density curve of Tstar&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>Tobs)
 <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span>Tobs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-8"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-8-1.png" alt="Permutation distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines at \(\pm b_1=0.56\)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-8-1.png" alt="Permutation distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines at \(\pm b_1=0.56\)." width="576" />
 <p class="caption">
 Figure 7.8: Permutation distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines at <span class="math inline">\(\pm b_1=0.56\)</span>.
 </p>
@@ -659,7 +659,7 @@ quantiles</code></pre></div>
 <span class="kw">abline</span>(<span class="dt">v=</span>Tobs,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">abline</span>(<span class="dt">v=</span>quantiles<span class="op">$</span>quantile,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-9"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-9-1.png" alt="Bootstrap distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines delineating 95% confidence interval and observed slope of 0.52." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-9-1.png" alt="Bootstrap distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines delineating 95% confidence interval and observed slope of 0.52." width="576" />
 <p class="caption">
 Figure 7.9: Bootstrap distribution of the slope coefficient in the Bozeman temperature linear regression model with bold vertical lines delineating 95% confidence interval and observed slope of 0.52.
 </p>
@@ -676,7 +676,7 @@ Figure 7.9: Bootstrap distribution of the slope coefficient in the Bozeman tempe
 <p><strong><em>Transformations</em></strong> involve applying a function to one or both variables. After applying this transformation, one hopes to have alleviated whatever issues encouraged its consideration. <strong><em>Linear transformation functions</em></strong>, of the form <span class="math inline">\(z_{\text{new}}=a*x+b\)</span>, will never help us to fix assumptions in regression situations; linear transformations change the scaling of the variables but not their shape or the relationship between two variables. For example, in the Bozeman Temperature data example, we subtracted 1901 from the <code>Year</code> variable to have <code>Year2</code> start at 0 and go up to 113. We could also apply a linear transformation to change Temperature from being measured in <span class="math inline">\(^\circ F\)</span> to <span class="math inline">\(^\circ C\)</span> using <span class="math inline">\(^\circ C=[^\circ F - 32] *(5/9)\)</span>. The scatterplots on both the original and transformed scales are provided in Figure <a href="chapter7.html#fig:Figure7-10">7.10</a>. All the coefficients in the regression model and the labels on the axes change, but the “picture” is still the same. Additionally, all the inferences remain the same – and p-values are unchanged by linear transformations. So linear transformations can be “fun” but really are only useful if they make the coefficients easier to interpret. Here if you like changes in <span class="math inline">\(^\circ C\)</span> for a 1 year increase, the slope coefficient is 0.029 and if you like the original change in <span class="math inline">\(^\circ F\)</span> for a 1 year increase, the slope coefficient is 0.052.</p>
 
 <div class="figure"><span id="fig:Figure7-10"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-10-1.png" alt="Scatterplots of Temperature (\(^\circ F\)) versus Year (left) and Temperature (\(^\circ C\)) vs Years since 1901 (right)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-10-1.png" alt="Scatterplots of Temperature (\(^\circ F\)) versus Year (left) and Temperature (\(^\circ C\)) vs Years since 1901 (right)." width="576" />
 <p class="caption">
 Figure 7.10: Scatterplots of <em>Temperature</em> (<span class="math inline">\(^\circ F\)</span>) versus <em>Year</em> (left) and <em>Temperature</em> (<span class="math inline">\(^\circ C\)</span>) vs <em>Years</em> since 1901 (right).
 </p>
@@ -775,7 +775,7 @@ temp3 &lt;-<span class="st"> </span><span class="kw">lm</span>(meanmaxC<span cla
 <span class="kw">plot</span>(loghectacres<span class="op">~</span>Temperature, <span class="dt">data=</span>mtfires, <span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>,
      <span class="dt">ylab=</span><span class="st">&quot;log-Hectacres&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-11"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-11-1.png" alt="Scatterplots of Hectares (a) and log-Hectares (b) vs Temperature." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-11-1.png" alt="Scatterplots of Hectares (a) and log-Hectares (b) vs Temperature." width="576" />
 <p class="caption">
 Figure 7.11: Scatterplots of Hectares (a) and log-Hectares (b) vs Temperature.
 </p>
@@ -791,7 +791,7 @@ Figure 7.11: Scatterplots of Hectares (a) and log-Hectares (b) vs Temperature.
             <span class="dt">main=</span><span class="st">&quot;log-Tree height vs tree diameter&quot;</span>)</code></pre></div>
 
 <div class="figure"><span id="fig:Figure7-12"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-12-1.png" alt="Scatterplot of tree height versus tree diameter." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-12-1.png" alt="Scatterplot of tree height versus tree diameter." width="576" />
 <p class="caption">
 Figure 7.12: Scatterplot of tree height versus tree diameter.
 </p>
@@ -799,7 +799,7 @@ Figure 7.12: Scatterplot of tree height versus tree diameter.
 <p>Figure <a href="chapter7.html#fig:Figure7-13">7.13</a> with the log-transformed response seems to show a more nonlinear relationship and may even have more issues with non-constant variance. This example shows that log-transforming the response variable cannot fix all problems, even though we’ve seen some researchers assume it can. It is OK to try a transformation but remember to always plot the results to make sure it actually helped and did not make the situation worse.</p>
 
 <div class="figure"><span id="fig:Figure7-13"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-13-1.png" alt="Scatterplot of log(tree height) versus tree diameter." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-13-1.png" alt="Scatterplot of log(tree height) versus tree diameter." width="576" />
 <p class="caption">
 Figure 7.13: Scatterplot of log(tree height) versus tree diameter.
 </p>
@@ -807,7 +807,7 @@ Figure 7.13: Scatterplot of log(tree height) versus tree diameter.
 <p>All is not lost in this situation, we can consider two other potential uses of the log-transformation and see if they can “fix” the relationship up a bit. One option is to apply the transformation to the explanatory variable (<code>y~log(x)</code>), displayed in Figure <a href="chapter7.html#fig:Figure7-14">7.14</a>. If the distribution of the explanatory variable is right skewed (see the boxplot on the x-axis), then consider log-transforming the explanatory variable. This will often reduce the leverage of those most extreme observations which can be useful.</p>
 
 <div class="figure"><span id="fig:Figure7-14"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-14-1.png" alt="Scatterplot of tree height versus log(tree diameter)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-14-1.png" alt="Scatterplot of tree height versus log(tree diameter)." width="576" />
 <p class="caption">
 Figure 7.14: Scatterplot of tree height versus log(tree diameter).
 </p>
@@ -818,7 +818,7 @@ Figure 7.14: Scatterplot of tree height versus log(tree diameter).
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">scatterplot</span>(<span class="kw">log</span>(height.m)<span class="op">~</span><span class="kw">log</span>(dbh.cm), <span class="dt">data=</span>ufc[<span class="op">-</span><span class="dv">168</span>,], <span class="dt">smooth=</span>T,
             <span class="dt">spread=</span>F, <span class="dt">main=</span><span class="st">&quot;log-Tree height vs log-tree diameter&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-15"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-15-1.png" alt="Scatterplot of log(tree height) versus log(tree diameter)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-15-1.png" alt="Scatterplot of log(tree height) versus log(tree diameter)." width="576" />
 <p class="caption">
 Figure 7.15: Scatterplot of log(tree height) versus log(tree diameter).
 </p>
@@ -827,7 +827,7 @@ Figure 7.15: Scatterplot of log(tree height) versus log(tree diameter).
 <p>Data were collected in 1988 on the rates of infant mortality (infant deaths per 1,000 live births) and gross domestic product (GDP) per capita (in 1998 US dollars) from <span class="math inline">\(n=207\)</span> countries. These data are available from the <code>car</code> package (<span class="citation">Fox and Weisberg (<a href="#ref-R-car">2016</a>)</span>, <span class="citation">Fox (<a href="#ref-Fox2003">2003</a>)</span>) in a data set called <code>UN</code>. The four panels in Figure <a href="chapter7.html#fig:Figure7-16">7.16</a> show the original relationship and the impacts of log-transforming one or both variables. The only scatterplot that could potentially be modeled using SLR is the lower right panel (d) that shows the relationship between <em>log(infant mortality)</em> and <em>log(GDP)</em>. In the next section, we will fit models to some of these relationships and use our diagnostic plots to help us assess “success” of the transformations.</p>
 
 <div class="figure"><span id="fig:Figure7-16"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-16-1.png" alt="Scatterplots of Infant Mortality vs GDP under four different combinations of log-transformations." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-16-1.png" alt="Scatterplots of Infant Mortality vs GDP under four different combinations of log-transformations." width="576" />
 <p class="caption">
 Figure 7.16: Scatterplots of Infant Mortality vs GDP under four different combinations of log-transformations.
 </p>
@@ -872,7 +872,7 @@ Figure 7.16: Scatterplots of Infant Mortality vs GDP under four different combin
 <p>For the area burned data set, the estimated regression model is <span class="math inline">\(\log(\widehat{\text{hectares}})=-69.8+1.39\text{ Temp}\)</span>. On the original scale, this implies that the model is <span class="math inline">\(\widehat{\text{hectares}}=\exp(-69.8)\exp(1.39\text{ Temp})\)</span>. Figure <a href="chapter7.html#fig:Figure7-17">7.17</a> provides the <span class="math inline">\(\log(y)\)</span> scale version of the model and the model transformed to the original scale of measurement. On the log-hectares scale, the interpretation of the slope is: For a 1<span class="math inline">\(^\circ F\)</span> increase in summer temperature, we expect a 1.39 log-hectares/1<span class="math inline">\(^\circ F\)</span> change, on average, in the log-area burned. On the original scale: A 1<span class="math inline">\(^\circ F\)</span> increase in temperature is related to multiplicative change in the median number of hectares burned of <span class="math inline">\(\exp(1.39)=4.01\)</span>. That seems like a big rate of growth but the curve does grow rapidly as shown in panel (b), especially for values over 58<span class="math inline">\(^\circ F\)</span> where the area burned is starting to be large. You can think of the multiplicative change here in the following way: the median number of hectares burned is 4 times higher at 58<span class="math inline">\(^\circ F\)</span> than at 57<span class="math inline">\(^\circ F\)</span> and the median area burned is 4 times larger at 59<span class="math inline">\(^\circ F\)</span> than at 58<span class="math inline">\(^\circ F\)</span>… This can also be interpreted on a % change scale: A 1<span class="math inline">\(^\circ F\)</span> increase in temperature is related to a <span class="math inline">\((4.01-1)*100 = 301\%\)</span> increase in the median number of hectares burned.</p>
 
 <div class="figure"><span id="fig:Figure7-17"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-17-1.png" alt="Plot of the estimated SLR (a) and implied model for the median on the original Hectares scale (b) for the area burned vs temperature data." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-17-1.png" alt="Plot of the estimated SLR (a) and implied model for the median on the original Hectares scale (b) for the area burned vs temperature data." width="576" />
 <p class="caption">
 Figure 7.17: Plot of the estimated SLR (a) and implied model for the median on the original Hectares scale (b) for the area burned vs temperature data.
 </p>
@@ -892,7 +892,7 @@ Figure 7.17: Plot of the estimated SLR (a) and implied model for the median on t
 </ol>
 
 <div class="figure"><span id="fig:Figure7-18"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-18-1.png" alt="Plot of the observations and estimated SLR model (mortality~ log(GDP)) (top) and implied model (bottom) for the infant mortality data." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-18-1.png" alt="Plot of the observations and estimated SLR model (mortality~ log(GDP)) (top) and implied model (bottom) for the infant mortality data." width="576" />
 <p class="caption">
 Figure 7.18: Plot of the observations and estimated SLR model (mortality~ log(GDP)) (top) and implied model (bottom) for the infant mortality data.
 </p>
@@ -925,7 +925,7 @@ ID1 &lt;-<span class="st"> </span><span class="kw">lm</span>(infant.mortality<sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(ID1)</code></pre></div>
 <div class="figure"><span id="fig:Figure7-19"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-19-1.png" alt="Diagnostics plots of the infant mortality model with log(GDP)." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-19-1.png" alt="Diagnostics plots of the infant mortality model with log(GDP)." width="576" />
 <p class="caption">
 Figure 7.19: Diagnostics plots of the infant mortality model with log(GDP).
 </p>
@@ -973,7 +973,7 @@ Figure 7.19: Diagnostics plots of the infant mortality model with log(GDP).
 ## F-statistic: 363.7 on 1 and 191 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <div class="figure"><span id="fig:Figure7-20"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-20-1.png" alt="Plot of the observations and estimated SLR model log(mortality) \(\sim\) log(GDP) (left) and implied model (right) for the infant mortality data." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-20-1.png" alt="Plot of the observations and estimated SLR model log(mortality) \(\sim\) log(GDP) (left) and implied model (right) for the infant mortality data." width="576" />
 <p class="caption">
 Figure 7.20: Plot of the observations and estimated SLR model log(mortality) <span class="math inline">\(\sim\)</span> log(GDP) (left) and implied model (right) for the infant mortality data.
 </p>
@@ -986,7 +986,7 @@ Figure 7.20: Plot of the observations and estimated SLR model log(mortality) <sp
 <p>The diagnostics of the log-log SLR model (Figure <a href="chapter7.html#fig:Figure7-21">7.21</a>) show that the assumptions are fairly reasonably met although the tails of the residuals are a little heavy (more spread out than a normal distribution) and there might still be a little pattern remaining in the residuals vs fitted. There are no influential points to be concerned about in this situation.</p>
 
 <div class="figure"><span id="fig:Figure7-21"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-21-1.png" alt="Diagnostic plots for the log-log infant mortality model." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-21-1.png" alt="Diagnostic plots for the log-log infant mortality model." width="576" />
 <p class="caption">
 Figure 7.21: Diagnostic plots for the log-log infant mortality model.
 </p>
@@ -1099,7 +1099,7 @@ t^*_{n-2}}\textbf{SE}_{\boldsymbol{\hat{\mu}_{\nu}}}.\]</span></p>
 <span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Estimate&quot;</span>,<span class="st">&quot;CI&quot;</span>,<span class="st">&quot;PI&quot;</span>), <span class="dt">lwd=</span><span class="dv">3</span>, <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),
        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;grey&quot;</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure7-22"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-22-1.png" alt="Estimated SLR for BAC data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-22-1.png" alt="Estimated SLR for BAC data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals." width="576" />
 <p class="caption">
 Figure 7.22: Estimated SLR for BAC data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals.
 </p>
@@ -1108,7 +1108,7 @@ Figure 7.22: Estimated SLR for BAC data with 95% confidence (dashed lines) and 9
 <p>Similarly, the 95% CI and PIs for the Bozeman yearly average maximum temperatures in Figure <a href="chapter7.html#fig:Figure7-23">7.23</a> provide interesting information on the uncertainty in the estimated mean temperature over time. It is also interesting to explore how many of the observations fall within the 95% prediction intervals. The PIs are for new observations, but you can see how the PIs that were constructed to contain almost all the observations in the original data set but not all of them. In fact, only 2 of the 109 observations (1.8%) fall outside the 95% PIs. Since the PI needs to be concerned with unobserved new observations it makes sense that it might contain more than 95% of the observations used to make it.</p>
 
 <div class="figure"><span id="fig:Figure7-23"></span>
-<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-23-1.png" alt="Estimated SLR for Bozeman temperature data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals." width="672" />
+<img src="07-simpleLinearRegressionInference_files/figure-html/Figure7-23-1.png" alt="Estimated SLR for Bozeman temperature data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals." width="576" />
 <p class="caption">
 Figure 7.23: Estimated SLR for Bozeman temperature data with 95% confidence (dashed lines) and 95% prediction (lighter, dotted lines) intervals.
 </p>

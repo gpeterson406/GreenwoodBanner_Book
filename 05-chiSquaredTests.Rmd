@@ -187,23 +187,28 @@ function is provided in Table \@ref(tab:Table5-1).
 (ref:tab5-1) General notation for counts in an R by C contingency table.
 
 ```{r Table5-1, echo=F}
-columnHeaders <- c("$\\textbf{Response}\\\\\\textbf{Level }1$", 
-                   "$\\textbf{Response}\\\\\\textbf{Level }2$",
-                   "$\\textbf{Response}\\\\\\textbf{Level }3$",
-                   "$\\mathbf{\\ldots}\\\\$",
-                   "$\\textbf{Response}\\\\\\textbf{Level }C$",
-                   "$\\textbf{Totals}$")
-rowLabels <- c("**Group 1**","**Group 2**","$\\mathbf{\\ldots}$","**Group R**","**Totals**")
-row1 <- c("$n_{11}$","$n_{12}$","$n_{13}$","$\\ldots$","$n_{1C}$","$\\mathbf{n_{1\\bullet}}$")
-row2 <- c("$n_{21}$","$n_{22}$","$n_{23}$","$\\ldots$","$n_{2C}$","$\\mathbf{n_{2\\bullet}}$")
-row3 <- c("$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\mathbf{\\ldots}$")
-rowR <- c("$n_{R1}$","$n_{R2}$","$n_{R3}$","$\\ldots$","$n_{RC}$","$\\mathbf{n_{R\\bullet}}$")
-rowT <- c("$\\mathbf{n_{\\bullet 1}}$","$\\mathbf{n_{\\bullet 2}}$","$\\mathbf{n_{\\bullet 3}}$",
-          "$\\mathbf{\\ldots}$","$\\mathbf{n_{\\bullet C}}$","$\\mathbf{N}$")
-x <- matrix(c(row1,row2,row3,rowR,rowT),ncol=6,byrow = T,
-            dimnames = list(rowLabels,columnHeaders))
-
-kable(x,caption="(ref:tab5-1)",escape=F)
+col1 <- c("**Group 1**","**Group 2**","**...**","**Group R**","**Totals**")
+col2 <- c("$n_{11}$","$n_{21}$","...","$n_{R1}$",
+          "$\\boldsymbol{n_{\\bullet 1}}$")
+col3 <- c("$n_{12}$","$n_{22}$","...","$n_{R2}$",
+          "$\\boldsymbol{n_{\\bullet 2}}$")
+col4 <- c("$n_{13}$","$n_{23}$","...","$n_{R3}$",
+          "$\\boldsymbol{n_{\\bullet 3}}$")
+col5 <- c("...","...","...","...","...")
+col6 <- c("$n_{15}$","$n_{25}$","...","$n_{R5}$",
+          "$\\boldsymbol{n_{\\bullet C}}$")
+col7 <- c("$\\boldsymbol{n_{1 \\bullet}}$",
+          "$\\boldsymbol{n_{2 \\bullet}}$",
+          "**...**",
+          "$\\boldsymbol{n_{R \\bullet}}$","$\\boldsymbol{N}$")
+m <- data.frame(col1, col2, col3,col4,col5,col6,col7)
+colnames(m) <- columnHeaders <- c("","**Response\\\n Level 1**", 
+                   "**Response\\\n Level 2**",
+                   "**Response\\\n Level 3**",
+                   "\\\n **...**",
+                   "**Response\\\n Level C**",
+                   "\\\n **Totals**")
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table5-2) My table caption", split.table = Inf)
 ```
 
 Comparing counts from the contingency table is useful, but comparing proportions

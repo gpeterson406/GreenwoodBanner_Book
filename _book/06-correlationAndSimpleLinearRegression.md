@@ -371,7 +371,7 @@ The correlation matrix alone is misleading -- we need to explore scatterplots
 to check for nonlinear
 relationships, outliers, and clustering of observations that may be distorting
 the numerical measure of the linear relationship. The ``pairs.panels``
-function from the ``psych`` package [@Revelle2016] combines the numerical 
+function from the ``psych`` package [@R-psych] combines the numerical 
 correlation information and scatterplots in one display. There are
 some options to turn off for the moment but it is an easy function to use to
 get lots of information in one place. As in the correlation matrix, you

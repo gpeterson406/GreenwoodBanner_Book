@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-18">
+<meta name="date" content="2017-07-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -294,7 +294,7 @@ y_i=&amp;\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level
          <span class="dt">col=</span><span class="kw">list</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>), <span class="dt">xlab=</span><span class="st">&quot;Treatment&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Biomass&quot;</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;HS&quot;</span>, <span class="st">&quot;PS&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure9-2"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-2-1.png" alt="Beanplot of biomass responses by treatment and species." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-2-1.png" alt="Beanplot of biomass responses by treatment and species." width="576" />
 <p class="caption">
 Figure 9.2: Beanplot of biomass responses by treatment and species.
 </p>
@@ -304,7 +304,7 @@ Figure 9.2: Beanplot of biomass responses by treatment and species.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;http://www.math.montana.edu/courses/s217/documents/intplot.R&quot;</span>)
 <span class="kw">intplot</span>(Massperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-3"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-3-1.png" alt="Interaction plot of biomass responses by treatment and species." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-3-1.png" alt="Interaction plot of biomass responses by treatment and species." width="576" />
 <p class="caption">
 Figure 9.3: Interaction plot of biomass responses by treatment and species.
 </p>
@@ -336,7 +336,7 @@ Figure 9.3: Interaction plot of biomass responses by treatment and species.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(m1, <span class="dt">sub.caption=</span><span class="st">&quot;Initial Massperha 2-WAY model&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-4"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-4-1.png" alt="Diagnostic plots of treatment by species interaction model for Biomass." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-4-1.png" alt="Diagnostic plots of treatment by species interaction model for Biomass." width="576" />
 <p class="caption">
 Figure 9.4: Diagnostic plots of treatment by species interaction model for Biomass.
 </p>
@@ -356,7 +356,7 @@ Figure 9.4: Diagnostic plots of treatment by species interaction model for Bioma
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;HS&quot;</span>,<span class="st">&quot;PS&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;lightgreen&quot;</span>))
 <span class="kw">intplot</span>(logMassperha<span class="op">~</span>Species<span class="op">*</span>Treatment, <span class="dt">data=</span>gdn, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">main=</span><span class="st">&quot;(b)&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-5"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-5-1.png" alt="Beanplot and interaction plot of the log-Biomass responses by treatment and species." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-5-1.png" alt="Beanplot and interaction plot of the log-Biomass responses by treatment and species." width="576" />
 <p class="caption">
 Figure 9.5: Beanplot and interaction plot of the log-Biomass responses by treatment and species.
 </p>
@@ -400,7 +400,7 @@ Figure 9.5: Beanplot and interaction plot of the log-Biomass responses by treatm
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(m2, <span class="dt">sub.caption=</span><span class="st">&quot;log-Massperha 2-WAY model&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-6"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-6-1.png" alt="Diagnostic plots of treatment by species interaction model for log-Biomass." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-6-1.png" alt="Diagnostic plots of treatment by species interaction model for log-Biomass." width="576" />
 <p class="caption">
 Figure 9.6: Diagnostic plots of treatment by species interaction model for log-Biomass.
 </p>
@@ -411,7 +411,7 @@ Figure 9.6: Diagnostic plots of treatment by species interaction model for log-B
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(m2), <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-7"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-7-1.png" alt="Term-plot of the interaction model for log-biomass." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-7-1.png" alt="Term-plot of the interaction model for log-biomass." width="576" />
 <p class="caption">
 Figure 9.7: Term-plot of the interaction model for log-biomass.
 </p>
@@ -473,7 +473,7 @@ PWnewm2 &lt;-<span class="st"> </span><span class="kw">glht</span>(newm2, <span 
         <span class="dt">cldcol=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>), <span class="dt">data=</span>gdn, <span class="dt">lwd=</span><span class="dv">2</span>, 
         <span class="dt">main=</span><span class="st">&quot;Interaction with CLD from Tukey&#39;s HSD on One-Way ANOVA&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-8"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-8-1.png" alt="Interaction plot for log-biomass with CLD from Tukey’s HSD for all pairwise comparisons." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-8-1.png" alt="Interaction plot for log-biomass with CLD from Tukey’s HSD for all pairwise comparisons." width="576" />
 <p class="caption">
 Figure 9.8: Interaction plot for log-biomass with CLD from Tukey’s HSD for all pairwise comparisons.
 </p>
@@ -494,7 +494,7 @@ sasakipratt<span class="op">$</span>before &lt;-<span class="st"> </span><span c
 <span class="kw">levels</span>(sasakipratt<span class="op">$</span>before) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SmallBright&quot;</span>,<span class="st">&quot;LargeDark&quot;</span>)
 <span class="kw">plot</span>(after<span class="op">~</span>group, <span class="dt">data=</span>sasakipratt)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-9"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-9-1.png" alt="Stacked bar chart for Ant Colony results." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-9-1.png" alt="Stacked bar chart for Ant Colony results." width="576" />
 <p class="caption">
 Figure 9.9: Stacked bar chart for Ant Colony results.
 </p>
@@ -541,7 +541,7 @@ bm2 &lt;-<span class="st"> </span>bm[,<span class="op">-</span><span class="kw">
 <span class="kw">require</span>(psych)
 <span class="kw">pairs.panels</span>(bm2, <span class="dt">ellipses=</span>F)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-10"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-10-1.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-10-1.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="576" />
 <p class="caption">
 Figure 9.10: Scatterplot of log-biodiversity vs log-DBCs by TJK.
 </p>
@@ -552,7 +552,7 @@ bm<span class="op">$</span>logDBFs &lt;-<span class="st"> </span><span class="kw
 bm<span class="op">$</span>TJK &lt;-<span class="st"> </span><span class="kw">factor</span>(bm<span class="op">$</span>TJK)
 <span class="kw">scatterplot</span>(logSpecies<span class="op">~</span>StageNumber, <span class="dt">data=</span>bm, <span class="dt">spread=</span>F)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-10"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-10-2.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-10-2.png" alt="Scatterplot of log-biodiversity vs log-DBCs by TJK." width="576" />
 <p class="caption">
 Figure 9.10: Scatterplot of log-biodiversity vs log-DBCs by TJK.
 </p>
@@ -679,7 +679,7 @@ Figure 9.10: Scatterplot of log-biodiversity vs log-DBCs by TJK.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(bd1)</code></pre></div>
 <div class="figure"><span id="fig:Figure9-11"></span>
-<img src="09-caseStudies_files/figure-html/Figure9-11-1.png" alt="Diagnostic plots for the top AIC model." width="672" />
+<img src="09-caseStudies_files/figure-html/Figure9-11-1.png" alt="Diagnostic plots for the top AIC model." width="576" />
 <p class="caption">
 Figure 9.11: Diagnostic plots for the top AIC model.
 </p>

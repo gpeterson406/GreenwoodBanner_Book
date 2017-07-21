@@ -1508,23 +1508,20 @@ variable had a moderately
 large p-value in this model. The additive model-based estimates for all 
 six combinations can be found in Table \@ref(tab:Table4-3).
 
-(ref:tab4-3) Calculations to construct the estimates for all combinations 
+(ref:tab4-3) Calculations to construct the estimates for all combinations
 of variables for the ``prodebt`` additive model.
 
-\begin{table}
 
-\caption{(\#tab:Table4-3)(ref:tab4-3)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l}
-\hline
-$\color{red}{\text{Cig}\\ \text{Buy}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 1}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 2}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 3}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 4}}$ & $\color{blue}{\textbf{Income}\\ \textbf{Group 5}}$\\
-\hline
-$\color{red}{\text{0:}\\ \text{No}}$ & $\hat{\alpha} \\=\small{3.055}$ & $\hat{\alpha} + \hat{\tau}_2 \\=\small{3.055 + 0.016} \\= \small{3.071}$ & $\hat{\alpha} + \hat{\tau}_3 \\=\small{3.055 + 0.175} \\= \small{3.230}$ & $\hat{\alpha} + \hat{\tau}_4 \\=\small{3.055 + 0.169} \\= \small{3.224}$ & $\hat{\alpha} + \hat{\tau}_5 \\=\small{3.055 + 0.468} \\= \small{3.523}$\\
-\hline
-$\color{red}{\text{1:}\\\text{Yes}}$ & $\hat{\alpha}+\hat{\gamma}_2\\=\small{3.055}\\\small{-0.106}\\=\small{2.949}$ & $\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2\\=\small{3.055+0.016}\\\small{-0.106}\\=\small{2.965}$ & $\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2\\=\small{3.055+0.175}\\\small{-0.106}\\=\small{3.124}$ & $\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2\\=\small{3.055+0.169}\\\small{-0.106}\\=\small{3.118}$ & $\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2\\=\small{3.055+0.468}\\\small{-0.106}\\=\small{3.417}$\\
-\hline
-\end{tabular}
-\end{table}
+
+\begin{longtable}[t]{llllll}
+\caption{(\#tab:Table4-3)(ref:tab4-3)}\\
+\toprule
+$\color{red}{\text{Cig Buy}}$ & $\color{blue}{\textbf{Income Group 1}}$ & $\color{blue}{\textbf{Income Group 2}}$ & $\color{blue}{\textbf{Income Group 3}}$ & $\color{blue}{\textbf{Income Group 4}}$ & $\color{blue}{\textbf{Income Group 5}}$\\
+\midrule
+$\color{red}{\text{0:}\text{No}}$ & $\hat{\alpha} ={\small 3.055}$ & $\hat{\alpha} + \hat{\tau}_2={\small 3.055 + 0.016} = {\small 3.071}$ & $\hat{\alpha} + \hat{\tau}_3 =\small{3.055 + 0.175} = \small{3.230}$ & $\hat{\alpha} + \hat{\tau}_4 =\small{3.055 + 0.169} = \small{3.224}$ & $\hat{\alpha} + \hat{\tau}_5 =\small{3.055 + 0.468} = \small{3.523}$\\
+$\color{red}{\text{1:}\text{Yes}}$ & $\hat{\alpha}+\hat{\gamma}_2={\small 3.055 -0.106=2.949}$ & $\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2={\small 3.055+0.016}\small{-0.106}=\small{2.965}$ & $\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2={\small 3.055+0.175}\small{-0.106}=\small{3.124}$ & $\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2={\small 3.055+0.169}\small{-0.106}=\small{3.118}$ & $\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2={\small 3.055+0.468 -0.106} ={\small 3.417}$\\
+\bottomrule
+\end{longtable}
 
 One final plot of the fitted values
 from this additive model in Figure \@ref(fig:Figure4-16) hopefully crystallizes
@@ -1882,7 +1879,7 @@ work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two
 Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning
 Calculus. These data were generated from summary statistics for one particular
 form of the test as reported by @Doolittle1989. The source of this version of
-the data set is @Ramsey2002 and the ``Sleuth2`` package 
+the data set is @Ramsey2012 and the ``Sleuth2`` package 
 [@R-Sleuth2]. 
 First install and then load that package. 
 

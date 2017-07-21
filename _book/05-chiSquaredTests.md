@@ -185,17 +185,17 @@ function is provided in Table \@ref(tab:Table5-1).
 \centering
 \begin{tabular}[t]{l|l|l|l|l|l|l}
 \hline
-  & $\textbf{Response}\\\textbf{Level }1$ & $\textbf{Response}\\\textbf{Level }2$ & $\textbf{Response}\\\textbf{Level }3$ & $\mathbf{\ldots}\\$ & $\textbf{Response}\\\textbf{Level }C$ & $\textbf{Totals}$\\
+  & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}1\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}2\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}3\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\textbackslash{}\textbackslash{}\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}C\$ & \$\textbackslash{}textbf\{Totals\}\$\\
 \hline
-**Group 1** & $n_{11}$ & $n_{12}$ & $n_{13}$ & $\ldots$ & $n_{1C}$ & $\mathbf{n_{1\bullet}}$\\
+**Group 1** & \$n\_\{11\}\$ & \$n\_\{12\}\$ & \$n\_\{13\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{1C\}\$ & \$\textbackslash{}mathbf\{n\_\{1\textbackslash{}bullet\}\}\$\\
 \hline
-**Group 2** & $n_{21}$ & $n_{22}$ & $n_{23}$ & $\ldots$ & $n_{2C}$ & $\mathbf{n_{2\bullet}}$\\
+**Group 2** & \$n\_\{21\}\$ & \$n\_\{22\}\$ & \$n\_\{23\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{2C\}\$ & \$\textbackslash{}mathbf\{n\_\{2\textbackslash{}bullet\}\}\$\\
 \hline
-$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
+\$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$\\
 \hline
-**Group R** & $n_{R1}$ & $n_{R2}$ & $n_{R3}$ & $\ldots$ & $n_{RC}$ & $\mathbf{n_{R\bullet}}$\\
+**Group R** & \$n\_\{R1\}\$ & \$n\_\{R2\}\$ & \$n\_\{R3\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{RC\}\$ & \$\textbackslash{}mathbf\{n\_\{R\textbackslash{}bullet\}\}\$\\
 \hline
-**Totals** & $\mathbf{n_{\bullet 1}}$ & $\mathbf{n_{\bullet 2}}$ & $\mathbf{n_{\bullet 3}}$ & $\mathbf{\ldots}$ & $\mathbf{n_{\bullet C}}$ & $\mathbf{N}$\\
+**Totals** & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 1\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 2\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 3\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet C\}\}\$ & \$\textbackslash{}mathbf\{N\}\$\\
 \hline
 \end{tabular}
 \end{table}

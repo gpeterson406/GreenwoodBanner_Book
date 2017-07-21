@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-18">
+<meta name="date" content="2017-07-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -237,7 +237,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 4</span> Two-Way ANOVA</h1>
 <div id="section4-1" class="section level2">
 <h2><span class="header-section-number">4.1</span> Situation</h2>
-<p>In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory variables in a method that is generally called the <strong><em>Two-Way ANOVA</em></strong> . This allows researchers to simultaneously study more than one variable that might explain variability in the responses and explore whether the impacts of one variable change depending on the other variable. In some situations, each observation is so expensive that researchers want to use a single study to explore two different sets of research questions in the same round of data collection. For example, a company might want to study factors that affect the number of defective products per day and are interested in the impacts of two different types of training programs and three different levels of production quotas. These methods would allow engineers to compare the training programs, production quotas, and see if the training programs work differently for different production quotas. In a clinical trials context, it is well known that certain factors can change the performance of certain drugs. For example, different dosages of a drug might have different benefits or side-effects on men, versus women or children. <strong>When the impact of one factor changes on the level of another factor</strong>, we say that they <strong><em>interact</em></strong>. It is also possible for both factors to be related to differences in the mean responses and not interact. For example, suppose there is a difference in the response means between men and women and a difference among various dosages, but the effect of increasing the dosage is the same for the male and female subjects. This is an example of what is called an <strong><em>additive</em></strong> type of model. In general, the world is more complicated than the single factor models we considered in Chapter <a href="chapter3.html#chapter3">3</a> can account for, especially in observational studies, so these models allow us to start to handle more realistic situations.</p>
+<p>In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory variables in a method that is generally called the <strong><em>Two-Way ANOVA</em></strong>. This allows researchers to simultaneously study more than one variable that might explain variability in the responses and explore whether the impacts of one variable change depending on the other variable. In some situations, each observation is so expensive that researchers want to use a single study to explore two different sets of research questions in the same round of data collection. For example, a company might want to study factors that affect the number of defective products per day and are interested in the impacts of two different types of training programs and three different levels of production quotas. These methods would allow engineers to compare the training programs, production quotas, and see if the training programs work differently for different production quotas. In a clinical trials context, it is well known that certain factors can change the performance of certain drugs. For example, different dosages of a drug might have different benefits or side-effects on men, versus women or children. <strong>When the impact of one factor changes on the level of another factor</strong>, we say that they <strong><em>interact</em></strong>. It is also possible for both factors to be related to differences in the mean responses and not interact. For example, suppose there is a difference in the response means between men and women and a difference among various dosages, but the effect of increasing the dosage is the same for the male and female subjects. This is an example of what is called an <strong><em>additive</em></strong> type of model. In general, the world is more complicated than the single factor models we considered in Chapter <a href="chapter3.html#chapter3">3</a> can account for, especially in observational studies, so these models allow us to start to handle more realistic situations.</p>
 <p>Consider the following “experiment” where we want to compare the strength of different brands of paper towels when they are wet. The response variable will be the time to failure in seconds (a continuous response variable) when a weight is placed on the towel held at the four corners. We are interested in studying the differences between brands and the impact of different amounts of water applied to the towels.</p>
 <ul>
 <li><p>Predictors (Explanatory Variables): <strong>A</strong> : <code>Brand</code> (2 brands of interest, named <em>B1</em> and <em>B2</em>) and <strong>B</strong> : Number of <code>Drops</code> of water (10, 20, 30 drops).</p></li>
@@ -270,8 +270,7 @@ pt<span class="op">$</span>drops&lt;-<span class="kw">factor</span>(pt<span clas
 ## brand 10 20 30
 ##    B1  5  5  5
 ##    B2  5  5  5</code></pre>
-<p>The sample sizes in each of the six treatment level combinations of <code>Brand</code> and <code>Drops</code> [(<em>B1</em>, 10), (<em>B1</em>, 20), (<em>B1</em>, 30), (<em>B2</em>, 10), (<em>B2</em>, 20), (<em>B2</em>, 30)] are <span class="math inline">\(n_{jk} = 5\)</span> for <span class="math inline">\(j^{th}\)</span> level of <code>Brand</code> (<span class="math inline">\(j=1, 2\)</span>) and <span class="math inline">\(k^{th}\)</span> level of <code>Drops</code> (<span class="math inline">\(k=1, 2, 3\)</span>). The <code>tally</code> function gives us a<br />
-<strong><em>contingency table</em></strong> with <span class="math inline">\(R = 2\)</span> rows (<em>B1</em>, <em>B2</em>) and <span class="math inline">\(C = 3\)</span> columns (10, 20, and 30). We’ll have more fun with this sort of summary of <span class="math inline">\(R\)</span> by <span class="math inline">\(C\)</span> tables in Chapter <a href="chapter5.html#chapter5">5</a> – here it helps us see the sample size in each combination of factor levels. The <code>favstats</code> function also helps us dig into the results for all combinations of factor levels. The notation involves putting both variables after the “~” with a “<code>+</code>” between them. In the output, the first row contains summary information for the 5 observations for <code>Brand</code> <em>B1</em> and <code>Drops</code> amount 10. It also contains the sample size in the <code>n</code> column, although here it rolled into a new set of rows with the standard deviations.</p>
+<p>The sample sizes in each of the six treatment level combinations of <code>Brand</code> and <code>Drops</code> [(<em>B1</em>, 10), (<em>B1</em>, 20), (<em>B1</em>, 30), (<em>B2</em>, 10), (<em>B2</em>, 20), (<em>B2</em>, 30)] are <span class="math inline">\(n_{jk} = 5\)</span> for <span class="math inline">\(j^{th}\)</span> level of <code>Brand</code> (<span class="math inline">\(j=1, 2\)</span>) and <span class="math inline">\(k^{th}\)</span> level of <code>Drops</code> (<span class="math inline">\(k=1, 2, 3\)</span>). The <code>tally</code> function gives us a <strong><em>contingency table</em></strong> with <span class="math inline">\(R = 2\)</span> rows (<em>B1</em>, <em>B2</em>) and <span class="math inline">\(C = 3\)</span> columns (10, 20, and 30). We’ll have more fun with this sort of summary of <span class="math inline">\(R\)</span> by <span class="math inline">\(C\)</span> tables in Chapter <a href="chapter5.html#chapter5">5</a> – here it helps us see the sample size in each combination of factor levels. The <code>favstats</code> function also helps us dig into the results for all combinations of factor levels. The notation involves putting both variables after the “~” with a “<code>+</code>” between them. In the output, the first row contains summary information for the 5 observations for <code>Brand</code> <em>B1</em> and <code>Drops</code> amount 10. It also contains the sample size in the <code>n</code> column, although here it rolled into a new set of rows with the standard deviations.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">favstats</span>(responses <span class="op">~</span><span class="st"> </span>brand <span class="op">+</span><span class="st"> </span>drops, <span class="dt">data=</span>pt)</code></pre></div>
 <pre><code>##   brand.drops       min        Q1   median       Q3      max     mean
 ## 1       B1.10 0.3892621 1.3158737 1.906436 2.050363 2.333138 1.599015
@@ -294,7 +293,7 @@ pt<span class="op">$</span>drops&lt;-<span class="kw">factor</span>(pt<span clas
          <span class="dt">xlab=</span><span class="st">&quot;Drops&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Time&quot;</span>, <span class="dt">method=</span><span class="st">&quot;jitter&quot;</span>,<span class="dt">log=</span><span class="st">&quot;&quot;</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>), <span class="dt">fill=</span><span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>,<span class="st">&quot;white&quot;</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-1"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-1-1.png" alt="Beanplot of paper towel data by Drops (x-axis) and Brand (side of bean, shaded area for Brand B1." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-1-1.png" alt="Beanplot of paper towel data by Drops (x-axis) and Brand (side of bean, shaded area for Brand B1." width="576" />
 <p class="caption">
 Figure 4.1: Beanplot of paper towel data by <code>Drops</code> (x-axis) and <code>Brand</code> (side of bean, shaded area for <code>Brand</code> <em>B1</em>.
 </p>
@@ -305,7 +304,7 @@ Figure 4.1: Beanplot of paper towel data by <code>Drops</code> (x-axis) and <cod
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(responses <span class="op">~</span><span class="st"> </span>brand<span class="op">*</span>drops, <span class="dt">data=</span>pt)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-2"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-2-1.png" alt="Interaction plot of the paper towel data with Drops on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-2-1.png" alt="Interaction plot of the paper towel data with Drops on the x-axis." width="576" />
 <p class="caption">
 Figure 4.2: Interaction plot of the paper towel data with <code>Drops</code> on the x-axis.
 </p>
@@ -314,7 +313,7 @@ Figure 4.2: Interaction plot of the paper towel data with <code>Drops</code> on 
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(responses <span class="op">~</span><span class="st"> </span>drops<span class="op">*</span>brand, <span class="dt">data=</span>pt)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-3"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-3-1.png" alt="Interaction plot of paper towel data with Brand on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-3-1.png" alt="Interaction plot of paper towel data with Brand on the x-axis." width="576" />
 <p class="caption">
 Figure 4.3: Interaction plot of paper towel data with <code>Brand</code> on the x-axis.
 </p>
@@ -325,7 +324,7 @@ Figure 4.3: Interaction plot of paper towel data with <code>Brand</code> on the 
 <p>Before we get to the hypothesis tests to formally make this assessment (you knew some sort of p-value was coming, right?), we can visualize the 5 different scenarios that could characterize the sorts of results you could observe in a Two-Way ANOVA situation. Figure <a href="chapter4.html#fig:Figure4-4">4.4</a> shows 4 of the 5 scenarios. In panel (a), when there are no differences from either variable (Scenario 1), it provides relatively parallel lines and basically no differences either across <code>Drops</code> levels (x-axis) or <code>Brand</code> (lines). This would result in no evidence related to a difference in brands, water levels, or any interaction between them.</p>
 
 <div class="figure"><span id="fig:Figure4-4"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-4-1.png" alt="Interaction plots of four possible scenarios in the paper towel study." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-4-1.png" alt="Interaction plots of four possible scenarios in the paper towel study." width="576" />
 <p class="caption">
 Figure 4.4: Interaction plots of four possible scenarios in the paper towel study.
 </p>
@@ -336,7 +335,7 @@ Figure 4.4: Interaction plots of four possible scenarios in the paper towel stud
 <p>Finally, Scenario 5 (Figure <a href="chapter4.html#fig:Figure4-5">4.5</a>) involves an interaction between the two variables (<code>Drops</code> and <code>Brand</code>). There are many ways that interactions can present but the main thing is to look for clearly non-parallel lines. As noted in the previous discussion, the <code>Drops</code> effect appears to change depending on which level of <code>Brand</code> is being considered. Note that the plot here described as Scenario 5 is the same as the initial plot of the results in Figure <a href="chapter4.html#fig:Figure4-2">4.2</a>.</p>
 
 <div class="figure"><span id="fig:Figure4-5"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-5-1.png" alt="Interaction plot of Scenario 5 where it appears that an interaction is present." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-5-1.png" alt="Interaction plot of Scenario 5 where it appears that an interaction is present." width="576" />
 <p class="caption">
 Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction is present.
 </p>
@@ -546,7 +545,7 @@ Figure 4.5: Interaction plot of Scenario 5 where it appears that an interaction 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(m1), <span class="dt">grid=</span>T, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-6"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-6-1.png" alt="Plot of estimated results of interaction model." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-6-1.png" alt="Plot of estimated results of interaction model." width="576" />
 <p class="caption">
 Figure 4.6: Plot of estimated results of interaction model.
 </p>
@@ -612,7 +611,7 @@ Figure 4.6: Plot of estimated results of interaction model.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(m2))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-7"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-7-1.png" alt="Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-7-1.png" alt="Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other." width="576" />
 <p class="caption">
 Figure 4.7: Term-plots of additive model for paper towel data. Left panel displays results for two brands and right panel for number of drops of water, each after controlling for the other.
 </p>
@@ -631,7 +630,7 @@ Figure 4.7: Term-plots of additive model for paper towel data. Left panel displa
 <span class="kw">intplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), 
         <span class="dt">main=</span><span class="st">&quot;Interaction Plot&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">40</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-8"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-8-1.png" alt="Beanplot and interaction plot of the tooth growth data set." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-8-1.png" alt="Beanplot and interaction plot of the tooth growth data set." width="576" />
 <p class="caption">
 Figure 4.8: Beanplot and interaction plot of the tooth growth data set.
 </p>
@@ -688,7 +687,7 @@ TG2 &lt;-<span class="st"> </span><span class="kw">lm</span>(len <span class="op
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(TG2, <span class="dt">pch=</span><span class="dv">16</span>) </code></pre></div>
 <div class="figure"><span id="fig:Figure4-9"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-9-1.png" alt="Diagnostic plots for the interaction model for Tooth Growth." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-9-1.png" alt="Diagnostic plots for the interaction model for Tooth Growth." width="576" />
 <p class="caption">
 Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 </p>
@@ -754,7 +753,7 @@ Figure 4.9: Diagnostic plots for the interaction model for Tooth Growth.
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(TG2), <span class="dt">grid=</span>T, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bars&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-10"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-10-1.png" alt="Term-plot for the estimated interaction for the Tooth Growth data." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-10-1.png" alt="Term-plot for the estimated interaction for the Tooth Growth data." width="576" />
 <p class="caption">
 Figure 4.10: Term-plot for the estimated interaction for the Tooth Growth data.
 </p>
@@ -764,7 +763,7 @@ Figure 4.10: Term-plot for the estimated interaction for the Tooth Growth data.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">intplot</span>(len <span class="op">~</span><span class="st"> </span>supp<span class="op">*</span>dose, <span class="dt">data=</span>ToothGrowth, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">cldshift=</span><span class="dv">1</span>,
         <span class="dt">cld=</span>T, <span class="dt">main=</span><span class="st">&quot;Interaction Plot with CLD&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-11"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-11-1.png" alt="Interaction plot with added CLD from Tukey’s HSD." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-11-1.png" alt="Interaction plot with added CLD from Tukey’s HSD." width="576" />
 <p class="caption">
 Figure 4.11: Interaction plot with added CLD from Tukey’s HSD.
 </p>
@@ -784,7 +783,7 @@ debt<span class="op">$</span>cigbuy &lt;-<span class="st"> </span><span class="k
 debtc &lt;-<span class="st"> </span><span class="kw">na.omit</span>(debt)
 <span class="kw">intplot</span>(prodebt <span class="op">~</span><span class="st"> </span>cigbuy<span class="op">*</span>incomegp, <span class="dt">data=</span>debtc, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-12"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-12-1.png" alt="Interaction plot of prodebt by income group and buy cigarettes (0=no, 1=yes)." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-12-1.png" alt="Interaction plot of prodebt by income group and buy cigarettes (0=no, 1=yes)." width="576" />
 <p class="caption">
 Figure 4.12: Interaction plot of <code>prodebt</code> by income group and buy cigarettes (0=no, 1=yes).
 </p>
@@ -812,7 +811,7 @@ debt1 &lt;-<span class="st"> </span><span class="kw">lm</span>(prodebt <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(debt1)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-13"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-13-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not interaction model." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-13-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not interaction model." width="576" />
 <p class="caption">
 Figure 4.13: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not interaction model.
 </p>
@@ -840,25 +839,25 @@ Figure 4.13: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">debt1r&lt;-<span class="kw">lm</span>(prodebt<span class="op">~</span>incomegp<span class="op">+</span>cigbuy,<span class="dt">data=</span>debtc)
 <span class="kw">plot</span>(debt1r)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-14-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-1.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="576" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-14-2.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-2.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="576" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-14-3.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-3.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="576" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
 </div>
 <div class="figure"><span id="fig:Figure4-14"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-14-4.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-14-4.png" alt="Diagnostic plot for prodebt by income group and buy cigarettes/not" width="576" />
 <p class="caption">
 Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy cigarettes/not
 </p>
@@ -902,7 +901,7 @@ Figure 4.14: Diagnostic plot for <code>prodebt</code> by income group and buy ci
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(debt1r))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-15"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes)." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-15-1.png" alt="Term-plots for the prodebt additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes)." width="576" />
 <p class="caption">
 Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left panel for income group and the right panel for buying cigarettes or not (1 for yes).
 </p>
@@ -935,40 +934,37 @@ Figure 4.15: Term-plots for the <code>prodebt</code> additive model with left pa
 <caption><span id="tab:Table4-3">Table 4.3: </span>Calculations to construct the estimates for all combinations of variables for the <code>prodebt</code> additive model.</caption>
 <thead>
 <tr class="header">
-<th></th>
-<th align="left"><span class="math inline">\(\color{red}{\text{Cig}\\\text{Buy}}\)</span></th>
-<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income}\\\textbf{Group 1}}\)</span></th>
-<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income}\\\textbf{Group 2}}\)</span></th>
-<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income}\\\textbf{Group 3}}\)</span></th>
-<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income}\\\textbf{Group 4}}\)</span></th>
-<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income}\\\textbf{Group 5}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{red}{\text{Cig Buy}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income Group 1}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income Group 2}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income Group 3}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income Group 4}}\)</span></th>
+<th align="left"><span class="math inline">\(\color{blue}{\textbf{Income Group 5}}\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td align="left"><span class="math inline">\(\color{red}{\text{0:}\\\text{No}}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha} \\=\small{3.055}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_2 \\=\small{3.055 + 0.016} \\= \small{3.071}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_3 \\=\small{3.055 + 0.175} \\= \small{3.230}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_4 \\=\small{3.055 + 0.169} \\= \small{3.224}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_5 \\=\small{3.055 + 0.468} \\= \small{3.523}\)</span></td>
+<td align="left"><span class="math inline">\(\color{red}{\text{0:}\text{No}}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha} ={\small 3.055}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_2={\small 3.055 + 0.016} = {\small 3.071}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_3 =\small{3.055 + 0.175} = \small{3.230}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_4 =\small{3.055 + 0.169} = \small{3.224}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha} + \hat{\tau}_5 =\small{3.055 + 0.468} = \small{3.523}\)</span></td>
 </tr>
 <tr class="even">
-<td></td>
-<td align="left"><span class="math inline">\(\color{red}{\text{1:}\\\text{Yes}}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\gamma}_2\\=\small{3.055}\\\small{-0.106}\\=\small{2.949}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2\\=\small{3.055+0.016}\\\small{-0.106}\\=\small{2.965}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2\\=\small{3.055+0.175}\\\small{-0.106}\\=\small{3.124}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2\\=\small{3.055+0.169}\\\small{-0.106}\\=\small{3.118}\)</span></td>
-<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2\\=\small{3.055+0.468}\\\small{-0.106}\\=\small{3.417}\)</span></td>
+<td align="left"><span class="math inline">\(\color{red}{\text{1:}\text{Yes}}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\gamma}_2={\small 3.055 -0.106=2.949}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_2+\hat{\gamma}_2={\small 3.055+0.016}\small{-0.106}=\small{2.965}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_3+\hat{\gamma}_2={\small 3.055+0.175}\small{-0.106}=\small{3.124}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_4+\hat{\gamma}_2={\small 3.055+0.169}\small{-0.106}=\small{3.118}\)</span></td>
+<td align="left"><span class="math inline">\(\hat{\alpha}+\hat{\tau}_5+\hat{\gamma}_2={\small 3.055+0.468 -0.106} ={\small 3.417}\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>One final plot of the fitted values from this additive model in Figure <a href="chapter4.html#fig:Figure4-16">4.16</a> hopefully crystallizes the implications of an additive model and reinforces that this model creates and assumes that the differences across levels of one variable are the same regardless of the level of the other variable and that this creates parallel lines. The difference between <code>cigbuy</code> levels across all income groups is a drop in -0.106 points. The income groups have the same differences regardless of cigarette buying or not, with income group 5 much higher than the other four groups.</p>
 
 <div class="figure"><span id="fig:Figure4-16"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table 4.2 showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-16-1.png" alt="Illustration of the results from Table 4.2 showing the combined impacts of the components of the additive model for prodebt. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis." width="576" />
 <p class="caption">
 Figure 4.16: Illustration of the results from Table <a href="chapter4.html#tab:Table4-2">4.2</a> showing the combined impacts of the components of the additive model for <code>prodebt</code>. Panel (a) uses income groups on the x-axis and different lines for cigarette buyers (1) or not (0). Panel (b) displays the different income groups as lines with the cigarette buying status on the x-axis.
 </p>
@@ -1010,7 +1006,7 @@ ptR</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))
 <span class="kw">intplot</span>(responses<span class="op">~</span>brand<span class="op">*</span>dropsf,<span class="dt">data=</span>ptR,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure4-17"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-17-1.png" alt="Interaction plot in paper towel data set with no replication." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-17-1.png" alt="Interaction plot in paper towel data set with no replication." width="576" />
 <p class="caption">
 Figure 4.17: Interaction plot in paper towel data set with no replication.
 </p>
@@ -1043,7 +1039,7 @@ In anova.lm(lm(responses ~ dropsf * brand, data = ptR)) :
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(norep1))</code></pre></div>
 <div class="figure"><span id="fig:Figure4-18"></span>
-<img src="04-twoWayAnova_files/figure-html/Figure4-18-1.png" alt="Term-plots for the additive model in paper towel data set with no replication." width="672" />
+<img src="04-twoWayAnova_files/figure-html/Figure4-18-1.png" alt="Term-plots for the additive model in paper towel data set with no replication." width="576" />
 <p class="caption">
 Figure 4.18: Term-plots for the additive model in paper towel data set with no replication.
 </p>
@@ -1121,7 +1117,7 @@ Figure 4.18: Term-plots for the additive model in paper towel data set with no r
 </div>
 <div id="section4-9" class="section level2">
 <h2><span class="header-section-number">4.9</span> Practice problems</h2>
-<p>To practice the Two-Way ANOVA, consider a data set on <span class="math inline">\(N=861\)</span> ACT Mathematics Usage Test scores from 1987. The test was given to a sample of high school seniors who met one of three profiles of high school mathematics course work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning Calculus. These data were generated from summary statistics for one particular form of the test as reported by <span class="citation">Doolittle and Welch (<a href="#ref-Doolittle1989">1989</a>)</span>. The source of this version of the data set is <span class="citation">(<span class="citeproc-not-found" data-reference-id="Ramsey2002"><strong>???</strong></span>)</span> and the <code>Sleuth2</code> package <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-Sleuth2"><strong>???</strong></span>)</span>. First install and then load that package.</p>
+<p>To practice the Two-Way ANOVA, consider a data set on <span class="math inline">\(N=861\)</span> ACT Mathematics Usage Test scores from 1987. The test was given to a sample of high school seniors who met one of three profiles of high school mathematics course work: (a) Algebra I only; (b) two Algebra courses and Geometry; and (c) two Algebra courses, Geometry, Trigonometry, Advanced Mathematics, and Beginning Calculus. These data were generated from summary statistics for one particular form of the test as reported by <span class="citation">Doolittle and Welch (<a href="#ref-Doolittle1989">1989</a>)</span>. The source of this version of the data set is <span class="citation">Ramsey and Schafer (<a href="#ref-Ramsey2012">2012</a>)</span> and the <code>Sleuth2</code> package <span class="citation">(Ramsey et al. <a href="#ref-R-Sleuth2">2016</a>)</span>. First install and then load that package.</p>
 <pre><code>require(Sleuth2)
 require(mosaic)
 math &lt;- ex1320
@@ -1157,6 +1153,12 @@ favstats(Score ~ Sex+Background, data=math)</code></pre>
 </div>
 <div id="ref-Doolittle1989">
 <p>Doolittle, A., and C. Welch. 1989. “Gender Differences in Performance on a College-Level Acheivement Test.” <em>ACT Research Report</em>. Iowa City: American College Testing Program, 89–90.</p>
+</div>
+<div id="ref-Ramsey2012">
+<p>Ramsey, F., and D. Schafer. 2012. <em>The Statistical Sleuth: A Course in Methods of Data Analysis</em>. Cengage Learning. <a href="https://books.google.com/books?id=eSlLjA9TwkUC" class="uri">https://books.google.com/books?id=eSlLjA9TwkUC</a>.</p>
+</div>
+<div id="ref-R-Sleuth2">
+<p>Ramsey, F. L., D. W. Schafer, Jeannie Sifneos, and Berwin A. Turlach. 2016. <em>Sleuth2: Data Sets from Ramsey and Schafer’s “Statistical Sleuth (2nd Ed)”</em>. <a href="https://CRAN.R-project.org/package=Sleuth2" class="uri">https://CRAN.R-project.org/package=Sleuth2</a>.</p>
 </div>
 </div>
 <div class="footnotes">

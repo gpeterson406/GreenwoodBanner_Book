@@ -1,7 +1,7 @@
 --- 
 title: "A Second Semester Statistics Course with R"
 author: "Mark Greenwood and Katherine Banner"
-date: '2017-07-19'
+date: '2017-07-21'
 output:
   bookdown::pdf_book: 
     keep_tex: yes

@@ -25,7 +25,7 @@
 <meta name="author" content="Mark Greenwood and Katherine Banner">
 
 
-<meta name="date" content="2017-07-18">
+<meta name="date" content="2017-07-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -253,7 +253,7 @@ snotel2 &lt;-<span class="st"> </span>snotel_s[,<span class="kw">c</span>(<span 
 <span class="kw">pairs.panels</span>(snotel2[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)], <span class="dt">ellipse=</span>F,
              <span class="dt">main=</span><span class="st">&quot;Scatterplot matrix of SNOTEL Data&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-1"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-1-1.png" alt="Scatterplot matrix of the SNOTEL data." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-1-1.png" alt="Scatterplot matrix of the SNOTEL data." width="576" />
 <p class="caption">
 Figure 8.1: Scatterplot matrix of the SNOTEL data.
 </p>
@@ -263,7 +263,7 @@ Figure 8.1: Scatterplot matrix of the SNOTEL data.
 <p>To get familiar with this example, we can start with fitting some potential SLR models and plotting the estimated models. Figure <a href="chapter8.html#fig:Figure8-2">8.2</a> contains the result for the SLR using <em>Elevation</em> and results for two temperature based models are in Figure <a href="chapter8.html#fig:Figure8-3">8.3</a>. <em>Snow Depth</em> is selected as the obvious response variable both due to skier interest and potential scientific causation (snow can’t change elevation but elevation could be the driver of snow deposition and retention).</p>
 
 <div class="figure"><span id="fig:Figure8-2"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-2-1.png" alt="Plot of estimated SLR model for Snow Depth with Elevation as the predictor." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-2-1.png" alt="Plot of estimated SLR model for Snow Depth with Elevation as the predictor." width="576" />
 <p class="caption">
 Figure 8.2: Plot of estimated SLR model for Snow Depth with Elevation as the predictor.
 </p>
@@ -278,7 +278,7 @@ Figure 8.2: Plot of estimated SLR model for Snow Depth with Elevation as the pre
 <p>The plots of the two estimated temperature models in Figure <a href="chapter8.html#fig:Figure8-3">8.3</a> suggest a similar change in the responses over the range of observed temperatures. Those predictors range from 22<span class="math inline">\(^\circ F\)</span> to 34<span class="math inline">\(^\circ F\)</span> (minimum temperature) and from 26<span class="math inline">\(^\circ F\)</span> to 50<span class="math inline">\(^\circ F\)</span> (maximum temperature). This tells us a 1<span class="math inline">\(^\circ F\)</span> increase in either temperature is a greater proportion of the observed range of each predictor than a 1 unit (foot) increase in elevation, so these two variables will generate larger apparent magnitudes of slope coefficients. But having large slope coefficients is no guarantee of a good model – in fact, the elevation model has the highest <span class="math inline">\(R^2\)</span> value of these three models even though its slope coefficient looks tiny compared to the other models.</p>
 
 <div class="figure"><span id="fig:Figure8-3"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-3-1.png" alt="Plots of two estimated SLR models using Min Temp (top panel) and Max Temp (bottom panel) as predictors. Note that each of these results are from models with a single predictor variable." width="672" /><img src="08-multipleLinearRegression_files/figure-html/Figure8-3-2.png" alt="Plots of two estimated SLR models using Min Temp (top panel) and Max Temp (bottom panel) as predictors. Note that each of these results are from models with a single predictor variable." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-3-1.png" alt="Plots of two estimated SLR models using Min Temp (top panel) and Max Temp (bottom panel) as predictors. Note that each of these results are from models with a single predictor variable." width="576" /><img src="08-multipleLinearRegression_files/figure-html/Figure8-3-2.png" alt="Plots of two estimated SLR models using Min Temp (top panel) and Max Temp (bottom panel) as predictors. Note that each of these results are from models with a single predictor variable." width="576" />
 <p class="caption">
 Figure 8.3: Plots of two estimated SLR models using Min Temp (top panel) and Max Temp (bottom panel) as predictors. Note that each of these results are from models with a single predictor variable.
 </p>
@@ -467,7 +467,7 @@ Figure 8.4: Term-plots for the MLR for Snow Depth based on Elevation, Min Temp a
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(m4, <span class="dt">sub.caption=</span><span class="st">&quot;Diagnostics for m4&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-5"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-5-1.png" alt="Diagnostic plots for model m4: \(\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}\)" width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-5-1.png" alt="Diagnostic plots for model m4: \(\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}\)" width="576" />
 <p class="caption">
 Figure 8.5: Diagnostic plots for model m4: <span class="math inline">\(\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}\)</span>
 </p>
@@ -585,7 +585,7 @@ Figure 8.6: Term-plots for the MLR for Snow Depth based on Elevation, Min Temp, 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(m5, <span class="dt">sub.caption=</span><span class="st">&quot;Diagnostics for m5&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-7"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-7-1.png" alt="Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with Northeast entrance observation removed from data set." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-7-1.png" alt="Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with Northeast entrance observation removed from data set." width="576" />
 <p class="caption">
 Figure 8.7: Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with Northeast entrance observation removed from data set.
 </p>
@@ -620,7 +620,7 @@ Figure 8.7: Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(m6, <span class="dt">sub.caption=</span><span class="st">&quot;Diagnostics for m6&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-8"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-8-1.png" alt="Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed (\(n=23\))." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-8-1.png" alt="Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed (\(n=23\))." width="576" />
 <p class="caption">
 Figure 8.8: Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed (<span class="math inline">\(n=23\)</span>).
 </p>
@@ -630,7 +630,7 @@ Figure 8.8: Diagnostic plots for MLR for Snow Depth based on Elevation, Min Temp
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(m6), <span class="dt">main=</span><span class="st">&quot;MLR model with n=23&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-9"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-9-1.png" alt="Term-plots for the MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-9-1.png" alt="Term-plots for the MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed." width="576" />
 <p class="caption">
 Figure 8.9: Term-plots for the MLR for Snow Depth based on Elevation, Min Temp and Max Temp with two observations removed.
 </p>
@@ -673,7 +673,7 @@ snowdepths &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="
      <span class="dt">main=</span><span class="st">&quot;Effect plot of elevation by hand&quot;</span>)
 <span class="kw">lines</span>(snowdepths<span class="op">~</span>elevs, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-10"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-10-1.png" alt="Term-plot for Elevation “by-hand”, holding temperature variables constant at their means." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-10-1.png" alt="Term-plot for Elevation “by-hand”, holding temperature variables constant at their means." width="576" />
 <p class="caption">
 Figure 8.10: Term-plot for Elevation “by-hand”, holding temperature variables constant at their means.
 </p>
@@ -877,7 +877,7 @@ newdata1</code></pre></div>
 <p>It is harder to know if you are doing extrapolation in MLR since you could be in a region of the <span class="math inline">\(x\text{&#39;s}\)</span> that no observations were obtained. Suppose we want to predict the <em>Snow Depth</em> for an <em>Elevation</em> of 6000 and <em>Max.Temp</em> of 30. Is this extrapolation based on Figure <a href="chapter8.html#fig:Figure8-11">8.11</a>? In other words, can you find any observations “nearby” in the plot of the two variables together? What about an <em>Elevation</em> of 6000 and a <em>Max.Temp</em> of 40? The first prediction is in a different proximity to observations than the second one… In situations with more than two explanatory variables it becomes even more challenging to know whether you are doing extrapolation and the problem grows as the number of dimensions to search increases… In fact, in complicated MLR models we typically do not know whether there are observations “nearby” if we are doing predictions for unobserved combinations of our predictors. Note that Figure <a href="chapter8.html#fig:Figure8-11">8.11</a> also reinforces our potential collinearity problem between <em>Elevation</em> and <em>Max.Temp</em> with higher elevations being strongly associated with lower temperatures.</p>
 
 <div class="figure"><span id="fig:Figure8-11"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-11-1.png" alt="Scatterplot of observed Elevations and Maximum Temperatures for SNOTEL data." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-11-1.png" alt="Scatterplot of observed Elevations and Maximum Temperatures for SNOTEL data." width="576" />
 <p class="caption">
 Figure 8.11: Scatterplot of observed Elevations and Maximum Temperatures for SNOTEL data.
 </p>
@@ -891,7 +891,7 @@ Figure 8.11: Scatterplot of observed Elevations and Maximum Temperatures for SNO
 <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))
 <span class="kw">corrplot.mixed</span>(<span class="kw">cor</span>(snotel2[<span class="op">-</span><span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">22</span>),<span class="dv">3</span><span class="op">:</span><span class="dv">6</span>]), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;orange&quot;</span>))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-12"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-12-1.png" alt="Plot of correlation matrix in the snow depth data set with influential points removed" width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-12-1.png" alt="Plot of correlation matrix in the snow depth data set with influential points removed" width="576" />
 <p class="caption">
 Figure 8.12: Plot of correlation matrix in the snow depth data set with influential points removed
 </p>
@@ -1030,7 +1030,7 @@ elev1&lt;-<span class="kw">lm</span>(Elevation<span class="op">~</span>Min.Temp<
 <span class="kw">require</span>(psych)
 <span class="kw">pairs.panels</span>(satGPA[,<span class="op">-</span><span class="dv">4</span>], <span class="dt">ellipse=</span>F, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-13"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-13-1.png" alt="Scatterplot matrix of SAT and GPA data set." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-13-1.png" alt="Scatterplot matrix of SAT and GPA data set." width="576" />
 <p class="caption">
 Figure 8.13: Scatterplot matrix of SAT and GPA data set.
 </p>
@@ -1065,7 +1065,7 @@ Figure 8.13: Scatterplot matrix of SAT and GPA data set.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(gpa1, <span class="dt">sub.caption=</span><span class="st">&quot;Diagnostics for GPA model with SATV and SATM&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-14"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-14-1.png" alt="Diagnostic plots for the \(\text{FYGPA}\sim\text{ SATV }+\text{ SATM}\) model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-14-1.png" alt="Diagnostic plots for the \(\text{FYGPA}\sim\text{ SATV }+\text{ SATM}\) model." width="576" />
 <p class="caption">
 Figure 8.14: Diagnostic plots for the <span class="math inline">\(\text{FYGPA}\sim\text{ SATV }+\text{ SATM}\)</span> model.
 </p>
@@ -1152,7 +1152,7 @@ Figure 8.14: Diagnostic plots for the <span class="math inline">\(\text{FYGPA}\s
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(gpa1))</code></pre></div>
 
 <div class="figure"><span id="fig:Figure8-15"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-15-1.png" alt="Term-plots for the \(\text{FYGPA}\sim\text{SATV} + \text{SATM}\) model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-15-1.png" alt="Term-plots for the \(\text{FYGPA}\sim\text{SATV} + \text{SATM}\) model." width="576" />
 <p class="caption">
 Figure 8.15: Term-plots for the <span class="math inline">\(\text{FYGPA}\sim\text{SATV} + \text{SATM}\)</span> model.
 </p>
@@ -1213,7 +1213,7 @@ pm1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class
 <span class="kw">lines</span>(dm1<span class="op">$</span>SATM, pm1<span class="op">$</span>lwr, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="dv">3</span>)
 <span class="kw">lines</span>(dm1<span class="op">$</span>SATM, pm1<span class="op">$</span>upr, <span class="dt">col=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">lty=</span><span class="dv">3</span>, <span class="dt">lwd=</span><span class="dv">3</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-16"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-16-1.png" alt="Term-plots for the \(\text{FYGPA}\sim\text{SATV} + \text{SATM}\) model with 95% PIs." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-16-1.png" alt="Term-plots for the \(\text{FYGPA}\sim\text{SATV} + \text{SATM}\) model with 95% PIs." width="576" />
 <p class="caption">
 Figure 8.16: Term-plots for the <span class="math inline">\(\text{FYGPA}\sim\text{SATV} + \text{SATM}\)</span> model with 95% PIs.
 </p>
@@ -1230,14 +1230,14 @@ Figure 8.16: Term-plots for the <span class="math inline">\(\text{FYGPA}\sim\tex
             <span class="dt">smooth=</span>F, <span class="dt">main=</span><span class="st">&quot;Scatterplot of GPA vs SATM by Sex&quot;</span>)</code></pre></div>
 
 <div class="figure"><span id="fig:Figure8-17"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-17-1.png" alt="Plot of FYGPA vs SATV by Sex of students." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-17-1.png" alt="Plot of FYGPA vs SATV by Sex of students." width="576" />
 <p class="caption">
 Figure 8.17: Plot of FYGPA vs SATV by Sex of students.
 </p>
 </div>
 
 <div class="figure"><span id="fig:Figure8-18"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-18-1.png" alt="Plot of FYGPA vs SATM by Sex of students." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-18-1.png" alt="Plot of FYGPA vs SATM by Sex of students." width="576" />
 <p class="caption">
 Figure 8.18: Plot of FYGPA vs SATM by Sex of students.
 </p>
@@ -1319,7 +1319,7 @@ SATSex1 &lt;-<span class="st"> </span><span class="kw">lm</span>(FYGPA<span clas
 <p>To make this visually clearer, Figure <a href="chapter8.html#fig:Figure8-19">8.19</a> contains the regression lines that were estimated for each group. For any <em>SATM</em>, the difference in the groups is the 0.313 coefficient from the <code>SEXFEMALE</code> or <code>SEXINDICATOR</code> row of the model summaries. For example, at <em>SATM</em>=50, the difference in terms of predicted average first year GPAs between males and females is displayed as a difference between 2.15 and 2.46. This model assumes that the slope on <em>SATM</em> is the same for both groups except that they are allowed to have different y-intercepts, which is reasonable here because we saw approximately parallel relationships for the two groups in Figure <a href="chapter8.html#fig:Figure8-18">8.18</a>.</p>
 
 <div class="figure"><span id="fig:Figure8-19"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-19-1.png" alt="Plot of estimated model for FYGPA vs SATM by SEX of students (female line is red, bold)." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-19-1.png" alt="Plot of estimated model for FYGPA vs SATM by SEX of students (female line is red, bold)." width="576" />
 <p class="caption">
 Figure 8.19: Plot of estimated model for <em>FYGPA</em> vs <em>SATM</em> by <em>SEX</em> of students (female line is red, bold).
 </p>
@@ -1340,7 +1340,7 @@ Figure 8.19: Plot of estimated model for <em>FYGPA</em> vs <em>SATM</em> by <em>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(effects)
 <span class="kw">plot</span>(<span class="kw">allEffects</span>(SATSex1))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-20"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-20-1.png" alt="Term-plots for the estimated model for \(\text{FYGPA}\sim\text{SATM} + \text{SEX}\)." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-20-1.png" alt="Term-plots for the estimated model for \(\text{FYGPA}\sim\text{SATM} + \text{SEX}\)." width="576" />
 <p class="caption">
 Figure 8.20: Term-plots for the estimated model for <span class="math inline">\(\text{FYGPA}\sim\text{SATM} + \text{SEX}\)</span>.
 </p>
@@ -1365,7 +1365,7 @@ Figure 8.20: Term-plots for the estimated model for <span class="math inline">\(
             <span class="dt">main=</span><span class="st">&quot;Plot of Maximum DB tolerances before and after treatment (by treatment)&quot;</span>,
             <span class="dt">legend.coords=</span><span class="st">&quot;topleft&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-21"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-21-1.png" alt="Scatterplot of post-treatment decibel tolerance (du2) vs pre-treatment tolerance (du1) by treatment level (4 groups)." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-21-1.png" alt="Scatterplot of post-treatment decibel tolerance (du2) vs pre-treatment tolerance (du1) by treatment level (4 groups)." width="576" />
 <p class="caption">
 Figure 8.21: Scatterplot of post-treatment decibel tolerance (du2) vs pre-treatment tolerance (du1) by treatment level (4 groups).
 </p>
@@ -1554,7 +1554,7 @@ Figure 8.21: Scatterplot of post-treatment decibel tolerance (du2) vs pre-treatm
 <p>To reinforce what this additive model is doing, Figure <a href="chapter8.html#fig:Figure8-22">8.22</a> displays the estimated regression lines for all four groups, showing the shifts in the <em>y</em>-intercepts among the groups.</p>
 
 <div class="figure"><span id="fig:Figure8-22"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-22-1.png" alt="Plot of estimated noise tolerance additive model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-22-1.png" alt="Plot of estimated noise tolerance additive model." width="576" />
 <p class="caption">
 Figure 8.22: Plot of estimated noise tolerance additive model.
 </p>
@@ -1563,7 +1563,7 @@ Figure 8.22: Plot of estimated noise tolerance additive model.
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(head1))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-23"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-23-1.png" alt="Term-plots of the additive decibel tolerance model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-23-1.png" alt="Term-plots of the additive decibel tolerance model." width="576" />
 <p class="caption">
 Figure 8.23: Term-plots of the additive decibel tolerance model.
 </p>
@@ -1573,7 +1573,7 @@ Figure 8.23: Term-plots of the additive decibel tolerance model.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(head1, <span class="dt">sub.caption=</span><span class="st">&quot;Plot of diagnostics for additive model with du1 and treatment for du2&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-24"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-24-1.png" alt="Diagnostic plots for the additive decibel tolerance model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-24-1.png" alt="Diagnostic plots for the additive decibel tolerance model." width="576" />
 <p class="caption">
 Figure 8.24: Diagnostic plots for the additive decibel tolerance model.
 </p>
@@ -1617,7 +1617,7 @@ Figure 8.24: Diagnostic plots for the additive decibel tolerance model.
             <span class="dt">ylab=</span><span class="st">&quot;Reading score&quot;</span>, <span class="dt">data=</span>dyslexic3, <span class="dt">smooth=</span>F,
             <span class="dt">main=</span><span class="st">&quot;Plot of IQ vs Reading by dyslexia status&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-25"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-25-1.png" alt="Scatterplot for reading score versus nonverbal IQ by dyslexia group." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-25-1.png" alt="Scatterplot for reading score versus nonverbal IQ by dyslexia group." width="576" />
 <p class="caption">
 Figure 8.25: Scatterplot for reading score versus nonverbal IQ by dyslexia group.
 </p>
@@ -1699,7 +1699,7 @@ dys_model &lt;-<span class="st"> </span><span class="kw">lm</span>(score<span cl
 <span class="kw">plot</span>(dys_model,
      <span class="dt">sub.caption=</span><span class="st">&quot;Plot of diagnostics for Dyslexia Interaction model&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-26"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-26-1.png" alt="Diagnostic plots for interaction model for reading scores." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-26-1.png" alt="Diagnostic plots for interaction model for reading scores." width="576" />
 <p class="caption">
 Figure 8.26: Diagnostic plots for interaction model for reading scores.
 </p>
@@ -1709,7 +1709,7 @@ Figure 8.26: Diagnostic plots for interaction model for reading scores.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">scatterplot</span>(<span class="kw">residuals</span>(dys_model)<span class="op">~</span><span class="kw">fitted</span>(dys_model)<span class="op">|</span>dys,
             <span class="dt">data=</span>dyslexic3, <span class="dt">smooth=</span>F)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-27"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-27-1.png" alt="Plot of Residuals vs Fitted from interaction dyslexia data model with groups indicated." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-27-1.png" alt="Plot of Residuals vs Fitted from interaction dyslexia data model with groups indicated." width="576" />
 <p class="caption">
 Figure 8.27: Plot of Residuals vs Fitted from interaction dyslexia data model with groups indicated.
 </p>
@@ -1719,7 +1719,7 @@ Figure 8.27: Plot of Residuals vs Fitted from interaction dyslexia data model wi
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(dys_model), <span class="dt">ci.style=</span><span class="st">&quot;bands&quot;</span>, <span class="dt">multiline=</span>T)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-28"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-28-1.png" alt="Term-plots for interaction model for reading scores." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-28-1.png" alt="Term-plots for interaction model for reading scores." width="576" />
 <p class="caption">
 Figure 8.28: Term-plots for interaction model for reading scores.
 </p>
@@ -1747,7 +1747,7 @@ Figure 8.28: Term-plots for interaction model for reading scores.
 ## F-statistic: 44.75 on 2 and 41 DF,  p-value: 4.917e-11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(dys_modelR))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-29"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-29-1.png" alt="Term-plots for additive model for reading scores." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-29-1.png" alt="Term-plots for additive model for reading scores." width="576" />
 <p class="caption">
 Figure 8.29: Term-plots for additive model for reading scores.
 </p>
@@ -1775,7 +1775,7 @@ Figure 8.29: Term-plots for additive model for reading scores.
 ## F-statistic: 86.08 on 1 and 42 DF,  p-value: 1e-11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(dys_modelR2))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-30"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-30-1.png" alt="Term-plot for dyslexia status only model for reading scores." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-30-1.png" alt="Term-plot for dyslexia status only model for reading scores." width="576" />
 <p class="caption">
 Figure 8.30: Term-plot for dyslexia status only model for reading scores.
 </p>
@@ -1839,7 +1839,7 @@ y_i=\beta_0 &amp;+ \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(head2), <span class="dt">x.var=</span><span class="st">&quot;du1&quot;</span>, <span class="dt">ci.style=</span><span class="st">&quot;bands&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-31"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-31-1.png" alt="Term-plot for decibel tolerance interaction model (version 1)." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-31-1.png" alt="Term-plot for decibel tolerance interaction model (version 1)." width="576" />
 <p class="caption">
 Figure 8.31: Term-plot for decibel tolerance interaction model (version 1).
 </p>
@@ -1847,7 +1847,7 @@ Figure 8.31: Term-plot for decibel tolerance interaction model (version 1).
 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(head2), <span class="dt">x.var=</span><span class="st">&quot;du1&quot;</span>, <span class="dt">multiline=</span>T, <span class="dt">ci.style=</span><span class="st">&quot;bands&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-32"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-32-1.png" alt="Term-plot for decibel tolerance interaction model (version 2). This plot is not printed in color because it is impossible to distinguish the four groups whether in color or black and white." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-32-1.png" alt="Term-plot for decibel tolerance interaction model (version 2). This plot is not printed in color because it is impossible to distinguish the four groups whether in color or black and white." width="576" />
 <p class="caption">
 Figure 8.32: Term-plot for decibel tolerance interaction model (version 2). This plot is not printed in color because it is impossible to distinguish the four groups whether in color or black and white.
 </p>
@@ -2004,7 +2004,7 @@ FEV<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw"
             <span class="dt">main=</span><span class="st">&quot;Plot of log(FEV) vs Age of children by smoking  status&quot;</span>,
             <span class="dt">legend.coords=</span><span class="st">&quot;topleft&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-34"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-34-1.png" alt="Scatterplot of log(FEV) vs Age by smoking status." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-34-1.png" alt="Scatterplot of log(FEV) vs Age by smoking status." width="576" />
 <p class="caption">
 Figure 8.34: Scatterplot of log(FEV) vs Age by smoking status.
 </p>
@@ -2036,7 +2036,7 @@ Figure 8.34: Scatterplot of log(FEV) vs Age by smoking status.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))
 <span class="kw">plot</span>(fm1, <span class="dt">sub.caption=</span><span class="st">&quot;Diagnostics for full FEV model&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:Figure8-35"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-35-1.png" alt="Diagnostics for the log(FEV) model that includes height, sex, and an interaction between age and smoking status (the full model)." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-35-1.png" alt="Diagnostics for the log(FEV) model that includes height, sex, and an interaction between age and smoking status (the full model)." width="576" />
 <p class="caption">
 Figure 8.35: Diagnostics for the log(FEV) model that includes height, sex, and an interaction between age and smoking status (the full model).
 </p>
@@ -2120,7 +2120,7 @@ Figure 8.35: Diagnostics for the log(FEV) model that includes height, sex, and a
 ## sexMale      0.006308481  0.052330236</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">allEffects</span>(fm1R))</code></pre></div>
 <div class="figure"><span id="fig:Figure8-36"></span>
-<img src="08-multipleLinearRegression_files/figure-html/Figure8-36-1.png" alt="Term-plots for the top AIC model for log(FEV) that includes height, age, smoking status and sex in the model." width="672" />
+<img src="08-multipleLinearRegression_files/figure-html/Figure8-36-1.png" alt="Term-plots for the top AIC model for log(FEV) that includes height, age, smoking status and sex in the model." width="576" />
 <p class="caption">
 Figure 8.36: Term-plots for the top AIC model for log(FEV) that includes height, age, smoking status and sex in the model.
 </p>

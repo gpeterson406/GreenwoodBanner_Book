@@ -41,7 +41,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-NoDer
 
 ```{r include=FALSE}
 knitr::write_bib(c(
-  .packages(), "knitr", "mosaic","heplots", "beanplot",
+  .packages(), "knitr", "mosaic","heplots", "beanplot", "spuRs",
   "mosaicData", "effects", "car", "multcomp", "faraway", "Sleuth2", "vcd",
   "tabplot", "poLCA","survey","psych","alr3","corrplot","tigerstats","manipulate",
   "MASS","MuMIn","coneproj","openintro","smdata"), 'packages.bib', width = 60)
