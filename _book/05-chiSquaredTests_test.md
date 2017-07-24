@@ -89,7 +89,10 @@ require(tabplot)
 tableplot(Arthritis,select=c(Treatment,Improved,Sex,Age))
 ```
 
-![(\#fig:Figure5-1)(ref:fig5-1)](05-chiSquaredTests_test_files/figure-latex/Figure5-1-1.pdf) 
+<div class="figure">
+<img src="05-chiSquaredTests_test_files/figure-html/Figure5-1-1.png" alt="(ref:fig5-1)" width="672" />
+<p class="caption">(\#fig:Figure5-1)(ref:fig5-1)</p>
+</div>
 
 The first thing we can gather from Figure \@ref(fig:Figure5-1) is that there 
 are no red cells so there were no missing
@@ -179,26 +182,16 @@ function is provided in Table \@ref(tab:Table5-1).
 
 (ref:tab5-1) General notation for counts in an R by C contingency table.
 
-\begin{table}
 
-\caption{(\#tab:Table5-1)(ref:tab5-1)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
- & **Response Level 1** & Response Level 2 & Response Level 3 & ... & Response Level C & Totals\\
-\hline
-$\textbf{Group 1}$ & $n_{11}$ & $n_{12}$ & $n_{13}$ & $\ldots$ & $n_{1C}$ & $\mathbf{n_{1\bullet}}$\\
-\hline
-$\textbf{Group 2}$ & $n_{21}$ & $n_{22}$ & $n_{23}$ & $\ldots$ & $n_{2C}$ & $\mathbf{n_{2\bullet}}$\\
-\hline
-$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
-\hline
-$\textbf{Group R}$ & $n_{R1}$ & $n_{R2}$ & $n_{R3}$ & $\ldots$ & $n_{RC}$ & $\mathbf{n_{R\bullet}}$\\
-\hline
-$\textbf{Totals}$ & $\mathbf{n_{\bullet 1}}$ & $\mathbf{n_{\bullet 2}}$ & $\mathbf{n_{\bullet 3}}$ & $\mathbf{\ldots}$ & $\mathbf{n_{\bullet C}}$ & $\mathbf{N}$\\
-\hline
-\end{tabular}
-\end{table}
+Table: (\#tab:Table5-1)(ref:tab5-1)
+
+                     **Response Level 1**       Response Level 2           Response Level 3           ...                 Response Level C           Totals                  
+-------------------  -------------------------  -------------------------  -------------------------  ------------------  -------------------------  ------------------------
+$\textbf{Group 1}$   $n_{11}$                   $n_{12}$                   $n_{13}$                   $\ldots$            $n_{1C}$                   $\mathbf{n_{1\bullet}}$ 
+$\textbf{Group 2}$   $n_{21}$                   $n_{22}$                   $n_{23}$                   $\ldots$            $n_{2C}$                   $\mathbf{n_{2\bullet}}$ 
+$\mathbf{\ldots}$    $\ldots$                   $\ldots$                   $\ldots$                   $\ldots$            $\ldots$                   $\mathbf{\ldots}$       
+$\textbf{Group R}$   $n_{R1}$                   $n_{R2}$                   $n_{R3}$                   $\ldots$            $n_{RC}$                   $\mathbf{n_{R\bullet}}$ 
+$\textbf{Totals}$    $\mathbf{n_{\bullet 1}}$   $\mathbf{n_{\bullet 2}}$   $\mathbf{n_{\bullet 3}}$   $\mathbf{\ldots}$   $\mathbf{n_{\bullet C}}$   $\mathbf{N}$            
 
 Comparing counts from the contingency table is useful, but comparing proportions
 in each category is better, especially when the sample sizes in the levels of 
@@ -220,15 +213,52 @@ See \@ref(tab:Table5-2)
   &nbsp;            **Response\                  **Response\                  **Response\              \             **Response\                       \              
                      Level 1**                    Level 2**                    Level 3**            **...**           Level C**                    **Totals**         
 ----------- ---------------------------- ---------------------------- ---------------------------- --------- ---------------------------- ----------------------------
-**Group 1**           $n_{11}$                     $n_{12}$                     $n_{13}$              ...              $n_{15}$                     $n_{11}$          
+**Group 1**           $n_{11}$                     $n_{12}$                     $n_{13}$              ...              $n_{15}$           $\boldsymbol{n_{1 \bullet}}$
 
-**Group 2**           $n_{21}$                     $n_{22}$                     $n_{23}$              ...              $n_{25}$                     $n_{21}$          
+**Group 2**           $n_{21}$                     $n_{22}$                     $n_{23}$              ...              $n_{25}$           $\boldsymbol{n_{2 \bullet}}$
 
-  **...**               ...                          ...                          ...                 ...                ...                          ...             
+  **...**               ...                          ...                          ...                 ...                ...                        **...**           
 
-**Group R**           $n_{R1}$                     $n_{R2}$                     $n_{R3}$              ...              $n_{R5}$                     $n_{R1}$          
+**Group R**           $n_{R1}$                     $n_{R2}$                     $n_{R3}$              ...              $n_{R5}$           $\boldsymbol{n_{R \bullet}}$
 
-**Totals**  $\boldsymbol{n_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{n_{\bullet 3}}$    ...    $\boldsymbol{n_{\bullet C}}$ $\boldsymbol{n_{\bullet 1}}$
+**Totals**  $\boldsymbol{n_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{n_{\bullet 3}}$    ...    $\boldsymbol{n_{\bullet C}}$       $\boldsymbol{N}$      
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Table: (\#tab:Table5-2) My table caption
+Table: (\#tab:Table5-2) (ref:tab5-2)
+
+Here I am going to reference Table \@ref(tab:Table2-1) and we'll see if it works from the get-go.
+
+(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
+
+
+----------------------------------------------------------------------
+ Subject    Attr     Crime    Years   Serious   Independent   Sincere 
+--------- --------- -------- ------- --------- ------------- ---------
+    1     Beautiful Burglary   10        8           9           8    
+
+    2     Beautiful Burglary    3        8           9           3    
+
+    3     Beautiful Burglary    5        5           6           3    
+
+    4     Beautiful Burglary    1        3           9           8    
+
+    5     Beautiful Burglary    7        9           5           1    
+
+   ...       ...      ...      ...      ...         ...         ...   
+
+   108     Average  Swindle     3        3           5           4    
+
+   109     Average  Swindle     3        2           9           9    
+
+   110     Average  Swindle     2        1           8           8    
+
+   111     Average  Swindle     7        4           9           1    
+
+   112     Average  Swindle     6        3           5           2    
+
+   113     Average  Swindle    12        9           9           1    
+
+   114     Average  Swindle     8        8           1           5    
+----------------------------------------------------------------------
+
+Table: (\#tab:Table2-1) (ref:tab2-1)

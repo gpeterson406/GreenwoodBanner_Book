@@ -17,7 +17,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT')
+knitr::opts_chunk$set(cache = F,fig.width = 5, fig.height = 3.5,fig.pos='HT')
 options(show.signif.stars = FALSE)
 ```
 
@@ -111,17 +111,17 @@ will bypass some aspects of their research and just focus on differences in the
 sentence suggested among the three pictures. To get a sense of these data, 
 let's consider the first and last parts of the data set:
 
-(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
+(ref:tab2-1) First 5 and last 6 rows of the Mock Jury data set.
 
-```{r Table2-1,echo=F}
+```{r Table2-1,echo=F,results="asis"}
 column.headers = c("Subject","Attr","Crime","Years","Serious","Independent","Sincere")
 row1 <- c(1,"Beautiful","Burglary",10,8,9,8)
 row2 <- c(2,"Beautiful","Burglary",3,8,9,3)
 row3 <- c(3,"Beautiful","Burglary",5,5,6,3)
 row4 <- c(4,"Beautiful","Burglary",1,3,9,8)
 row5 <- c(5,"Beautiful","Burglary",7,9,5,1)
-row6 <- c("$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$","$\\ldots$",
-          "$\\ldots$","$\\ldots$")
+row6 <- c("...","...","...","...","...",
+          "...","...")
 row7 <- c(108,"Average","Swindle",3,3,5,4)
 row8 <- c(109,"Average","Swindle",3,2,9,9)
 row9 <- c(110,"Average","Swindle",2,1,8,8)
@@ -131,7 +131,9 @@ row12 <- c(113,"Average","Swindle",12,9,9,1)
 row13 <- c(114,"Average","Swindle",8,8,1,5)
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10,row11,row12,row13),
             byrow=T,ncol=7)
-kable(x,col.names = column.headers,caption = "(ref:tab2-1)",escape=F)
+m <- as.data.frame(x)
+colnames(m) <- column.headers
+pandoc.table(m,caption="(\\#tab:Table2-1) (ref:tab2-1)", keep.line.breaks = TRUE, split.table = Inf)
 ```
 
 When working with data, we should always start with 
@@ -952,7 +954,7 @@ Figure \@ref(fig:Figure2-10), using the ``abline`` function.
 values of test statistic for 1,000 permutations with bold vertical line for
 value of observed test statistic. 
 
-```{r Figure2-10, fig.cap="(ref:fig2-10)", fig.width=3, fig.height=3.5}
+```{r Figure2-10, fig.cap="(ref:fig2-10)"}
 par(mfrow=c(1,2))
 Tobs <- 1.837
 hist(Tstar, labels=T)
@@ -1174,21 +1176,27 @@ population of interest. If we do not have RA, then causal inferences cannot be
 made. If we do not have a representative sample, then our inferences are
 limited to the sampled subjects. 
 
+\footnotesize
+
 (ref:tab2-2) Scope of inference summary.
 
-```{r Table2-2, echo=F}
-columnHeaders <- c("Random Sampling/Random Assignment",
-                   "Random Assignment (RA) -- Yes (controlled experiment)",
-                   "Random Assignment (RA) -- No (observational study)")
-cell21 <- '**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)**'
-cell22 <- 'Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference.'
-cell23 <- 'Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA -- cannot isolate treatment variable as only difference among groups, could be confounding variables).'
-cell31 <- '**Random Sampling (RS) -- No (usually a convenience sample)**'
-cell32 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Can establish causal inference due to RA $\\rightarrow$ the inference from this type of study applies only to the sample.'
-cell33 <- 'Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.'
-x <- matrix(c(cell21,cell22,cell23,cell31,cell32,cell33),byrow=T,ncol=3)
-kable(x,caption='(ref:tab2-2)',escape=F,col.names = columnHeaders)
+```{r Table2-2, echo=F,results="asis"}
+columnHeaders <- c("**Random\\\n Sampling/Random\\\n Assignment**",
+                   "**Random Assignment (RA)\\\n -- Yes (controlled experiment)**",
+                   "**Random Assignment (RA)\\\n -- No (observational study)**")
+cell21 <- '**Random Sampling (RS)\\\n -- Yes (or some method\\\n that results in a\\\n representative sample of\\\n population of\\\n interest)**'
+cell22 <- 'Because we have RS, we can\\\n generalize inferences to the\\\n population the RS was taken\\\n from. Because we have\\\n RA we can assume the groups\\\n were equivalent on all aspects\\\n except for the treatment\\\n and can establish causal inference.\\\n'
+cell23 <- 'Can generalize inference to\\\n population the RS was taken\\\n from but cannot establish\\\n causal inference (no RA\\\n -- cannot isolate treatment\\\n variable as only difference\\\n among groups, could be\\\n confounding variables).'
+cell31 <- '**Random Sampling (RS)\\\n -- No (usually a\\\n convenience sample)**'
+cell32 <- 'Cannot generalize inference to\\\n the population of interest\\\n because the sample was\\\n not random and could be\\\n biased -- may not be\\\n "representative" of the\\\n population of interest.\\\n Can establish causal\\\n inference due to RA $\\rightarrow$\\\n the inference from this type of\\\n study applies only to the sample.'
+cell33 <- 'Cannot generalize inference to\\\n the population of interest\\\n because the sample was\\\n not random and could be\\\n biased -- may not be\\\n "representative" of the\\\n population of interest.\\\n Cannot establish causal\\\n inference due to lack of RA of\\\n the treatment.'
+x <- data.frame(c(cell21,cell31),c(cell22,cell32),c(cell23,cell33))
+colnames(x) <- columnHeaders
+pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table2-2) (ref:tab2-2)", split.table = Inf,
+             justify="left")
 ```
+
+\normalsize
 
 A simple example helps to clarify how the scope of inference can change. Suppose
 we are interested in studying the GPA of students. If we had taken a random 
@@ -1285,18 +1293,19 @@ remember all the possibilities.
 (ref:tab2-3) Table of decisions and truth scenarios in a hypothesis 
 testing situation. But we never know the truth in a real situation. 
 
-```{r Table2-3, echo=F}
-columnHeaders <- c("$\\mathbf{H_0}\\textbf{ True}$","$\\mathbf{H_0}\\textbf{ False}$")
-cell21 <- "$\\textbf{FTR }\\mathbf{H_0}$"
+```{r Table2-3, echo=F,results="asis"}
+columnHeaders <- c("","$\\mathbf{H_0}$ **True**","$\\mathbf{H_0}$ **False**")
+cell21 <- "**FTR** $\\mathbf{H_0}$"
 cell22 <- 'Correct decision'
 cell23 <- 'Type II error'
-cell31 <- "$\\textbf{Reject }\\mathbf{H_0}$"
+cell31 <- "**Reject** $\\mathbf{H_0}$"
 cell32 <- 'Type I error'
 cell33 <- 'Correct decision'
-x <- matrix(c(cell22,cell23,cell32,cell33),
-            dimnames = list(c(cell21,cell31),columnHeaders),ncol=2,byrow=TRUE)
-library(knitr)
-kable(x,caption="(ref:tab2-3)",escape=F)
+
+x <- data.frame(c(cell21,cell31),c(cell22,cell32),c(cell23,cell33))
+colnames(x) <- columnHeaders
+pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table2-3) (ref:tab2-3)", split.table = Inf,
+             justify="left")
 ```
 
 In comparing different procedures, there is an interest in studying the rate or
@@ -1424,7 +1433,7 @@ the same data set or if you re-run your permutation code.
 
 (ref:fig2-12) Permutation distribution of the $t$-statistic
 
-```{r Figure2-12, fig.cap="(ref:fig2-12)", fig.width=3}
+```{r Figure2-12, fig.cap="(ref:fig2-12)"}
 par(mfrow=c(1,2))
 Tobs <- t.test(Years ~ Attr, data=MockJury2, var.equal=T)$statistic
 Tobs
@@ -1997,7 +2006,7 @@ area in the middle.
 (ref:fig2-20) Plot of $t(73)$ with cut-offs for putting 95% of distributions in 
 the middle. 
 
-```{r Figure2-20,fig.cap="(ref:fig2-20)",fig.height=2.5}
+```{r Figure2-20,fig.cap="(ref:fig2-20)"}
 par(mfrow=c(1,1))
 x<-seq(from=-4,to=4,length.out=200)
 plot(x,dt(x,df=73),col="red",lty=2,lwd=3,type="l",xlab="t-values",ylab="Density",
@@ -2050,18 +2059,11 @@ To finish this example, R can be used to help you do calculations much like a
 calculator except with much more power "under the hood". You have to make sure 
 you are careful with using ``( )`` to group items and remember that the 
 asterisk (*) is used for multiplication in R. We need the pertinent information
-which is available from the ``favstats`` output. Two versions of this output are
-provided below, the first is how the output appears directly from R, the second
-is a formatted table has the relevant information bolded which is needed to 
+which is available from the ``favstats`` output repeated below to 
 calculate the confidence interval "by hand" using R. 
 
 ```{r}
 favstats(Years~Attr, data=MockJury2)
-```
-
-```{r echo=F}
-t <- favstats(Years~Attr, data=MockJury2)
-pander(t, digits=3,emphasize.strong.cols=c(1,7,8,9))
 ```
 
 Start with typing the following command to calculate $s_p$ and store it in a 

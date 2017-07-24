@@ -12,7 +12,8 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = TRUE,fig.height=4,fig.width=6,fig.pos='HT')
+knitr::opts_chunk$set(cache = T,fig.width = 5, fig.height = 3.5,fig.pos='HT',
+                      message=F,warning=F)
 options(show.signif.stars = FALSE)
 ```
 
@@ -74,7 +75,7 @@ summarizing the sentences for the three groups using ``favstats``.
 (ref:fig3-1) Boxplot and beanplot of the sentences (years) for the three 
 treatment groups.
 
-```{r Figure3-1,fig.cap="(ref:fig3-1)",message=F,warning=F}
+```{r Figure3-1,fig.cap="(ref:fig3-1)"}
 require(heplots)
 require(mosaic)
 data(MockJury)
@@ -184,7 +185,7 @@ model is called the `r colFmtBold("reference-coded model","purple")` since it
 writes out the model in terms of a 
 ***baseline group*** and deviations from that baseline or reference level. The
 reference-coded model for the $i^{th}$ subject in the $j^{th}$ group is 
-$y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$ where 
+$y_{ij} ={\color{purple}{\boldsymbol{\alpha + \tau_j}}}+\varepsilon_{ij}$ where 
 $\color{purple}{\boldsymbol{\alpha}}$ (alpha) is the true mean for the
 baseline group (first alphabetically) and the $\color{purple}{\boldsymbol{\tau_j}}$
 (tau $j$) are the deviations from the baseline group for group $j$. The deviation 
@@ -193,19 +194,13 @@ so there are really just deviations for groups 2 through $J$. The equivalence
 between the two models can be seen by considering the mean for the first, second, 
 and $J^{th}$ groups in both models:
 
-```{r echo=F}
-columnHeaders <- c("","Cell means:", "Reference-coded:")
-row1 <- c("Group 1:", "${\\color{red}{\\mu_1}}$", 
-          "${\\color{purple}{\\boldsymbol{\\alpha}}}$")
-row2 <- c("Group 2:", "${\\color{red}{\\mu_2}}$", 
-          "${\\color{red}{\\boldsymbol{\\tau_2}}}$")
-row3 <- c("$\\ldots$","$\\ldots$","$\\ldots$")
-row4 <- c("Group $J$:", "${\\color{red}{\\mu_J}}$", 
-          "${\\color{purple}{\\boldsymbol{\\tau_J}}}$")
-x <- matrix(c(row1,row2,row3,row4),ncol=3,byrow=TRUE)
-library(knitr)
-kable(x,col.names=columnHeaders)
-```
+$$\begin{array}{lccc}
+& \textbf{Cell means:} && \textbf{Reference-coded:}\\
+\textbf{Group } 1: & \color{red}{\mu_1} && \color{purple}{\boldsymbol{\alpha}} \\
+\textbf{Group } 2: & \color{red}{\mu_2} && \color{purple}{\boldsymbol{\alpha + \tau_2}} \\
+\ldots & \ldots && \ldots \\
+\textbf{Group } J: & \color{red}{\mu_J} && \color{purple}{\boldsymbol{\alpha +\tau_J}}
+\end{array}$$
 
 The hypotheses for the reference-coded model are similar to those in the 
 cell-means coding except that they are defined in terms of the deviations,
@@ -280,11 +275,6 @@ lm1 <- lm(Years ~ Attr-1, data=MockJury)
 summary(lm1)
 ```
 
-```{r echo=F}
-t <- summary(lm(Years~Attr-1, data=MockJury))$coefficients
-pander(t, digits=3,emphasize.strong.cols=c(1))
-```
-
 In general, we denote estimated parameters with a hat over the parameter of 
 interest to show that it is an estimate. For the true mean of group $j$, 
 $\mu_j$, we estimate it with $\hat{\mu}_j$, which is just the sample mean for group
@@ -329,7 +319,7 @@ pertinent deviations as shown in Table \@ref(tab:Table3-1).
 (ref:tab3-1) Constructing group mean estimates from the reference-coded linear
 model estimates.
 
-```{r Table3-1, echo=F}
+```{r Table3-1, echo=F,results="asis"}
 columnHeaders <- c("Group","Formula","Estimates")
 row1 <- c("Beautiful","$\\hat{\\alpha}$","**4.3333** years")
 row2 <- c("Average","$\\hat{\\alpha}+\\hat{\\tau}_2$", 
@@ -337,10 +327,14 @@ row2 <- c("Average","$\\hat{\\alpha}+\\hat{\\tau}_2$",
 row3 <- c("Unattractive","$\\hat{\\alpha}+\\hat{\\tau}_3$", 
           "4.3333 + 1.4775 = **5.811** years")
 x <- matrix(c(row1,row2,row3),ncol=3,byrow=TRUE)
-kable(x,col.names=columnHeaders,caption='(ref:tab3-1)',escape=F)
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table3-1) (ref:tab3-1)",
+             split.table = Inf, justify="left")
 ```
 
-We can also visualize the results of our linear models using what are called ***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
+We can also visualize the results of our linear models using what are called
+***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
 [@R-effects])
 as displayed in Figure \@ref(fig:Figure3-2). We don't want to use the word 
 "effect" for these model components unless we have random assignment in the study
@@ -357,7 +351,7 @@ constructed in Table \@ref(tab:Table3-1).
 (ref:fig3-2) Plot of the estimated group mean sentences from the reference-coded
 model for the MockJury data.
 
-```{r Figure3-2, fig.cap="(ref:fig3-2)", warning=F,message=F}
+```{r Figure3-2, fig.cap="(ref:fig3-2)", fig.width=4,fig.height=2.75}
 require(effects)
 plot(allEffects(lm2))
 ```
@@ -444,7 +438,7 @@ difference and Scenario 1 would have the least.
 to variability. Scenarios have same means in rows and same variance around means 
 in columns of plot. 
 
-```{r Figure3-3, fig.cap="(ref:fig3-3)", echo=F}
+```{r Figure3-3, fig.cap="(ref:fig3-3)", echo=F,fig.width=6}
 set.seed(98876)
 e1<-rnorm(40)
 x1<-rep(c("A","B","C","D"),10)
@@ -457,8 +451,8 @@ y2<-2*e1+mean1
 y3<-0.5*e1+mean2
 y4<-2*e1+mean2
 
-
-par(mfrow=(c(2,2)))
+par(mfrow=c(2,2))
+old.par<- par(mai=c(0.5,0.3,0.3,0.3))
 beanplot(y2~x1,ylab="",main="Scenario 1",ylim=c(0,20),method="jitter",col="orange")
 beanplot(y1~x1,ylab="",main="Scenario 2",ylim=c(0,20),method="jitter",col="red")
 
@@ -610,9 +604,10 @@ to the same responses in (b), (c), and (d). Note that SSTotal is always the same
 but the different amounts of variation associated with the means (SSA) or the 
 errors (SSE) changes in permutation.
 
-```{r Figure3-4, fig.cap="(ref:fig3-4)",echo=F,message=F,warning=F,fig.height=6}
+```{r Figure3-4, fig.cap="(ref:fig3-4)",echo=F,fig.width=6}
 Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]; Tobs
 par(mfrow=c(2,2))
+old.par <- par(mai=c(0.5,0.3,0.3,0.3))
 require(gplots)
 label_list = c(paste("SSA=",as.character(orig_SSA),sep=""),
                paste("SSE=",as.character(orig_SSE),sep=""),
@@ -620,7 +615,7 @@ label_list = c(paste("SSA=",as.character(orig_SSA),sep=""),
 plotmeans(Years~Attr,data=MockJury,ylab="Years",mean.labels=T,
           digits=2,legends=c("Beautiful","Average","Unattractive"),
           barcol="red",col="black", main="(a) Real Data",ylim=c(3,7.2))
-text(c(1.25,1.25,1.25),c(7,6.5,6), labels=label_list, col="blue")
+text(c(1.25,1.25,1.25),c(7,6.5,6), labels=label_list, col="blue",cex=0.75)
 
 label_list = c(paste("SSA=",as.character(MJP1_SSA),sep=""),
                paste("SSE=",as.character(MJP1_SSE),sep=""),
@@ -629,7 +624,7 @@ plotmeans(Years~Attr,data=MockJuryP1,main="(b) Permuted Data",
           ylab="Years",mean.labels=T,digits=2,
           legends=c("Beautiful","Average","Unattractive"),
           barcol="red",col="black",ylim=c(3,7.2))
-text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue")
+text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue",cex=0.75)
 
 label_list = c(paste("SSA=",as.character(MJP2_SSA),sep=""),
                paste("SSE=",as.character(MJP2_SSE),sep=""),
@@ -638,7 +633,7 @@ plotmeans(Years~Attr,data=MockJuryP2,main="(c) Permuted Data",
           ylab="Years",mean.labels=T,digits=2,
           legends=c("Beautiful","Average","Unattractive"),
           barcol="red",col="black",ylim=c(3,7.2))
-text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue")
+text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue",cex=0.75)
 
 label_list = c(paste("SSA=",as.character(MJP3_SSA),sep=""),
                paste("SSE=",as.character(MJP3_SSE),sep=""),
@@ -647,7 +642,7 @@ plotmeans(Years~Attr,data=MockJuryP3,main="(d) Permuted Data",
           ylab="Years",mean.labels=T,digits=2,
           legends=c("Beautiful","Average","Unattractive"),
           barcol="red",col="black",ylim=c(3,7.2))
-text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue")
+text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue",cex=0.75)
 ```
 
 To do a permutation test, we need to be able to calculate and extract the 
@@ -655,7 +650,7 @@ $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the
 second number and we can use the bracket, ``[, ]``, referencing to extract that 
 number from the ANOVA table that ``anova`` produces with 
 ``anova(lm(Years~Attr, data=MockJury))[1, 2]``. We'll store the observed value
-of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref{chapter2}. 
+of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref(chapter2). 
 
 ```{r}
 Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]; Tobs
@@ -771,14 +766,16 @@ The characteristics of the F-distribution can be summarized as:
 
 * **Always use the right-tailed area for p-values.**
 
+
 (ref:fig3-6) Density curves of four different $F$-distributions. Upper left is an 
 $F(2, 111)$, upper right is $F(2, 10)$, lower left is $F(6, 10)$, and lower right 
 is $F(6, 111)$. P-values are found using the areas to the right of the observed
 $F$-statistic value. 
 
-```{r Figure3-6,fig.cap="(ref:fig3-6)",echo=F}
+```{r Figure3-6,fig.cap="(ref:fig3-6)",echo=F,fig.height=4.25}
 x<-seq(from=0,to=6,length.out=50)
 par(mfrow=c(2,2))
+old.par <- par(mai=c(0.5,0.3,0.3,0.3))
 plot(x,df(x,df1=2,df2=111),type="l",ylab="Density",xlab="F",
      main="F(2,111)",col="red",lwd=3)
 
@@ -800,15 +797,19 @@ question like this on the exam...]:
 
 (ref:tab3-2) General One-Way ANOVA table.
 
-```{r Table3-2, echo=F, message=F,warning=F}
-columnHeaders <- c("Source","DF","Sums of Squares","Mean Squares","F-ratio",
-                   "P-value")
-row1 <- c("Variable A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/(J-1)$",
+```{r Table3-2, echo=F, message=F,warning=F,results="asis"}
+columnHeaders <- c("Source&nbsp;","DF&nbsp;","Sums of\\\n Squares",
+                   "Mean Squares","F-ratio","P-value")
+row1 <- c("Variable A","$J-1$","$\\text{SS}_A$",
+          "$\\text{MS}_A=\\text{SS}_A/(J-1)$",
           "$F=\\text{MS}_A/\\text{MS}_E$","Right tail of $F(J-1,N-J)$")
 row2 <- c("Residuals","$N-J$","$\\text{SS}_E$","$\\text{MS}_E = \\text{SS}_E/(N-J)$","","")
 row3 <- c("Total","$N-1$","$\\text{SS}_{\\text{Total}}$","","","")
 x <- matrix(c(row1,row2,row3),ncol=6,byrow=TRUE)
-kable(x,col.names=columnHeaders,caption='(ref:tab3-2)',escape=F)
+m <- as.data.frame(x)
+colnames(x) <- columnHeaders
+pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table3-2) (ref:tab3-2)",
+             split.table = Inf, justify="left")
 ```
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
@@ -826,7 +827,9 @@ verify this result using the observed $F$-statistic of `r round(orig_anova[1,4],
 (which came from taking the ratio of the two mean squares, 
 F=`r round(orig_anova[1,3],2)`/`r round(orig_anova[2,3],2)`)
 which follows an $F(2, 111)$ distribution if the null hypothesis is true and some 
-other assumptions are met. Using the ``pf`` function provides us with areas in the
+other assumptions are met.
+
+Using the ``pf`` function provides us with areas in the
 specified $F$-distribution with the ``df1`` provided to the function as the 
 numerator *df* and ``df2`` as the denominator *df* and ``lower.tail=F`` reflecting 
 our desire for a right tailed area.
@@ -848,11 +851,7 @@ The only change in the code involves moving from extracting $\text{SS}_A$ to
 extracting the $F$-ratio which is in the 4<sup>th</sup> column of the ``anova`` 
 output:
 
-(ref:fig3-7) Histogram and density curve of the permutation distribution of 
-the F-statistic with bold, vertical line for observed value of the test 
-statistic of `r round(orig_anova[1,4],2)`. 
-
-```{r Figure3-7,fig.cap="(ref:fig3-7)",warning=F,message=F}
+```{r warning=F,message=F}
 Tobs <- anova(lm(Years ~ Attr, data=MockJury))[1,4]; Tobs
 
 par(mfrow=c(1,2))
@@ -863,7 +862,21 @@ for (b in (1:B)){
 }
 
 pdata(Tstar, Tobs, lower.tail=F)
+```
 
+```{r eval=F}
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=3)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=3)
+```
+
+(ref:fig3-7) Histogram and density curve of the permutation distribution of 
+the F-statistic with bold, vertical line for observed value of the test 
+statistic of `r round(orig_anova[1,4],2)`. 
+
+```{r Figure3-7,fig.cap="(ref:fig3-7)",echo=F}
+par(mfrow=c(1,2),ps=8)
 hist(Tstar, labels=T)
 abline(v=Tobs, col="red", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
@@ -891,12 +904,14 @@ situations, the correspondence will not be quite so close.
 (ref:fig3-8) Comparison of $F(2, 111)$ (dashed line) and permutation distribution
 (solid line). 
 
-```{r Figure3-8,fig.cap="(ref:fig3-8)",echo=F,message=F,warning=F}
+```{r Figure3-8,fig.cap="(ref:fig3-8)",echo=F,fig.height=3}
 par(mfrow=c(1,1))
-plot(density(Tstar),xlab="F-values",ylab="Density",main="Comparison of permutation and F(2,111) distributions",lwd=2,xlim=c(0,9))
+plot(density(Tstar),xlab="F-values",ylab="Density",
+     main="Comparison of permutation and F(2,111) distributions",
+     lwd=2,xlim=c(0,9),cex.main=0.75)
 x<-seq(from=0,to=9,length.out=50)
 lines(x,df(x,df1=2,df2=111),col="red",lwd=2,lty=2)
-legend("right",legend=c("Permutation distribution","F(2,111)"),col=c("black","red"),lty=c(1,2),lwd=2)
+legend("right",legend=c("Permutation distribution","F(2,111)"),col=c("black","red"),lty=c(1,2),lwd=2,cex=0.5)
 ```
 
 So how can we rectify this result ($\text{p-value}\approx 0.06$) and the 
@@ -980,7 +995,7 @@ clear evidence that the assumption is violated!
 
 (ref:fig3-9) Default diagnostic plots for the linear model.
 
-```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F}
+```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F,fig.width=6,fig.asp=0.75}
 par(mfrow=c(2,2))
 plot(lm2,pch=16)
 ```
@@ -1009,12 +1024,12 @@ this new display. We can obtain the residuals from the linear model using the
 
 (ref:fig3-10) Histogram and density curve of the linear model raw residuals. 
 
-```{r Figure3-10, fig.cap="(ref:fig3-10)"}
+```{r Figure3-10, fig.cap="(ref:fig3-10)",fig.height=3}
 par(mfrow=c(1,2))
 eij<-residuals(lm2)
-hist(eij, main="Histogram of residuals")
+hist(eij, main="Histogram of residuals",cex.main=0.75)
 plot(density(eij), main="Density plot of residuals", ylab="Density",
-     xlab="Residuals")
+     xlab="Residuals",cex.main=0.75)
 ```
 
 Figure \@ref(fig:Figure3-10) shows that there is a right skew present in the 
@@ -1073,13 +1088,15 @@ histogram and density curve!
 
 (ref:fig3-11) QQ-plot of residuals from linear model.
 
-```{r Figure3-11,fig.cap="(ref:fig3-11)",echo=F,warning=F,message=F}
-par(mfrow=c(1,1))
+
+```{r Figure3-11,fig.cap="(ref:fig3-11)",echo=F,fig.height=3,fig.width=6}
+par(mfrow=c(1,2))
 require(car)
 qqPlot(eij, main="QQ-Plot of residuals")
 plot(density(eij), main="Density plot of residuals", ylab="Density",
      xlab="Residuals")
 ```
+
 
 Generally, when both tails deviate on the same side of the line (forming a 
 sort of quadratic curve, especially in more extreme cases), that is evidence 
@@ -1111,7 +1128,7 @@ as they will just be a little conservative.
 (ref:fig3-12) QQ-plots and density curves of four simulated distributions with
 different shapes. 
 
-```{r Figure3-12,fig.cap="(ref:fig3-12)",echo=F,warning=F,message=F,fig.height=8}
+```{r Figure3-12,fig.cap="(ref:fig3-12)",echo=F,fig.height=8,fig.width=6}
 #QQ plot code and examples:
 require(car)
 par(mfrow=c(4,2))
@@ -1148,8 +1165,9 @@ situations that provide evidence of clear violations of the normality assumption
 
 (ref:fig3-13) Two more simulated data sets, generated from normal distributions.
 
-```{r Figure3-13,fig.cap="(ref:fig3-13)",echo=F,warning=F,message=F}
+```{r Figure3-13,fig.cap="(ref:fig3-13)",echo=F,fig.width=6}
 par(mfrow=c(2,2))
+old.par <- par(mai=c(0.75,0.5,0.5,0.5))
 #One normal example
 
 y5<-scale(rnorm(75))
@@ -1316,13 +1334,12 @@ start. We will use a 5% significance level.
         size was small in each group. We need to fit the linear model to get 
         the other diagnostic plots to make an overall assessment. 
 
-        (ref:fig3-15) Diagnostic plots for the toothgrowth model.
-        
-        ```{r Figure3-15,fig.cap="(ref:fig3-15)"}
+        ```{r Figure3-15,fig.cap="Diagnostic plots for the toothgrowth model.",fig.height=4,fig.width=6.5}
         m2<-lm(len~Treat,data=ToothGrowth)
         par(mfrow=c(2,2))
         plot(m2,pch=16)
         ```
+            
         * The Residuals vs Fitted panel in Figure \@ref(fig:Figure3-15) shows some 
         difference in the spreads but the spread is not that different between the groups. 
         
@@ -1368,10 +1385,8 @@ start. We will use a 5% significance level.
     * The nonparametric approach is not too hard so we can compare the two approaches here 
     as well:
     
-    (ref:fig3-16) Histogram and density curve of permutation distribution for $F$-statistic 
-    for tooth growth data. Observed test statistic in bold, vertical line at 41.56. 
     
-    ```{r Figure3-16, fig.cap="(ref:fig3-16)"}
+    ```{r Figure3-16, fig.cap="Histogram and density curve of permutation distribution for $F$-statistic for tooth growth data. Observed test statistic in bold, vertical line at 41.56."}
     Tobs <- anova(lm(len~Treat,data=ToothGrowth))[1,4]; Tobs
     par(mfrow=c(1,2))
     B<- 1000
@@ -1464,10 +1479,10 @@ the same whether you plot the results from ``m2`` or ``m3``.
 
 (ref:fig3-17) Effect plot of the One-Way ANOVA model for the toothgrowth data.
 
-```{r Figure3-17, fig.cap="(ref:fig3-17)"}
+```{r Figure3-17, fig.cap="(ref:fig3-17)",fig.height=3,fig.width=4}
 m3<-lm(len~Treat-1,data=ToothGrowth)
 summary(m3)
-par(mfrow=c(1,2))
+par(mfrow=c(1,1))
 plot(allEffects(m2))
 ```
 
@@ -1610,12 +1625,12 @@ to the linear model for the Guinea Pig data:
 Guinea Pig data. Any confidence intervals that do not contain 0 provide evidence 
 of a difference in the groups.
 
-```{r Figure3-19, fig.cap="(ref:fig3-19)", warning=F,message=F}
+```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=4}
 par(mfrow=c(1,1))
 require(multcomp)
 Tm2 <- glht(m2, linfct = mcp(Treat = "Tukey"))
 confint(Tm2)
-old.par <- par(mai=c(1.5,2,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
@@ -1675,14 +1690,15 @@ One benefit of this work is that the CLD letters can be added to a beanplot to
 help fully report the results and understand the sorts of differences Tukey's 
 HSD detected. 
 
-(ref:fig3-20) Beanplot of tooth growth by group with Tukey?s HSD compact 
+(ref:fig3-20) Beanplot of tooth growth by group with Tukey's HSD compact 
 letter display.
 
-```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,warning=F,message=F}
+```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=5.5,fig.asp=0.75}
+old.par <- par(mai=c(1,1,1,1))
 beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
-text(c(2),c(10),"a",col="blue",cex=2)
-text(c(3,5,6),c(25,28,28),"b",col="green",cex=2)
-text(c(1,4),c(15,18),"c",col="red",cex=2)
+text(c(2),c(10),"a",col="blue",cex=1.5)
+text(c(3,5,6),c(25,28,28),"b",col="green",cex=1.5)
+text(c(1,4),c(15,18),"c",col="red",cex=1.5)
 ```
 
 The lines with text in them are involved in placing text on the figure but are 
@@ -1732,13 +1748,13 @@ confidence intervals displayed in Figure \@ref(fig:Figure3-21).
 
 (ref:fig3-21) Tukey's HSD confidence interval results at the 95% family-wise confidence level.
 
-```{r Figure3-21,fig.cap="(ref:fig3-21)",message=F,warning=F}
+```{r Figure3-21,fig.cap="(ref:fig3-21)",fig.height=4}
 lm2<-lm(Years~Attr, data=MockJury)
 require(multcomp)
 Tm2 <- glht(lm2, linfct = mcp(Attr = "Tukey"))
 confint(Tm2)
 cld(Tm2)
-old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
@@ -1753,10 +1769,10 @@ significance level.
 
 (ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
 
-```{r Figure3-22, fig.cap="(ref:fig3-22)"}
+```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
 confint(Tm2,level=0.9)
 cld(Tm2,level=0.1)
-old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(confint(Tm2,level=.9))
 ```
 
@@ -1781,10 +1797,11 @@ different groups. *Beautiful* picture responses are not detected as different
 from the other two groups.
 
 ```{r Figure3-23, fig.cap="(ref:fig3-23)"}
+old.par <- par(mai=c(0.5,1,1,1))
 beanplot(Years~Attr,data=MockJury,log="",col="white",method="jitter")
-text(c(1),c(5),"ab",col="blue",cex=2)
-text(c(2),c(4.8),"a",col="green",cex=2)
-text(c(3),c(6.5),"b",col="red",cex=2)
+text(c(1),c(5),"ab",col="blue",cex=1.5)
+text(c(2),c(4.8),"a",col="green",cex=1.5)
+text(c(3),c(6.5),"b",col="red",cex=1.5)
 ```
 
 ## Chapter Summary {#section3-8}
@@ -1848,8 +1865,8 @@ data=`r colFmt("DATASETNAME","red")`)
     * Results are incorrect if run on the cell-means model since the reduced model 
     under the null is that the mean of all the observations is 0!
 
-* pf(`r colFmt("FSTATISTIC","red")`,df1=`r colFmt("NUMDF","red")`,df2=`r colFmt("DENOMDF","red")`,
-lower.tail=F)
+* pf(`r colFmt("FSTATISTIC","red")`, df1=`r colFmt("NUMDF","red")`,
+df2=`r colFmt("DENOMDF","red")`, lower.tail=F)
 
     * Finds the p-value for an observed $F$-statistic with NUMDF and DENOMDF degrees 
     of freedom. 

@@ -175,7 +175,7 @@ model is called the \textcolor{purple}{\textbf{reference-coded model}} since it
 writes out the model in terms of a 
 ***baseline group*** and deviations from that baseline or reference level. The
 reference-coded model for the $i^{th}$ subject in the $j^{th}$ group is 
-$y_{ij} =\color{purple}{\boldsymbol{\alpha + \tau_j}}+\varepsilon_{ij}$ where 
+$y_{ij} ={\color{purple}{\boldsymbol{\alpha + \tau_j}}}+\varepsilon_{ij}$ where 
 $\color{purple}{\boldsymbol{\alpha}}$ (alpha) is the true mean for the
 baseline group (first alphabetically) and the $\color{purple}{\boldsymbol{\tau_j}}$
 (tau $j$) are the deviations from the baseline group for group $j$. The deviation 
@@ -184,20 +184,13 @@ so there are really just deviations for groups 2 through $J$. The equivalence
 between the two models can be seen by considering the mean for the first, second, 
 and $J^{th}$ groups in both models:
 
-
-\begin{tabular}{l|l|l}
-\hline
- & Cell means: & Reference-coded:\\
-\hline
-Group 1: & \$\{\textbackslash{}color\{red\}\{\textbackslash{}mu\_1\}\}\$ & \$\{\textbackslash{}color\{purple\}\{\textbackslash{}boldsymbol\{\textbackslash{}alpha\}\}\}\$\\
-\hline
-Group 2: & \$\{\textbackslash{}color\{red\}\{\textbackslash{}mu\_2\}\}\$ & \$\{\textbackslash{}color\{red\}\{\textbackslash{}boldsymbol\{\textbackslash{}tau\_2\}\}\}\$\\
-\hline
-\$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$\\
-\hline
-Group \$J\$: & \$\{\textbackslash{}color\{red\}\{\textbackslash{}mu\_J\}\}\$ & \$\{\textbackslash{}color\{purple\}\{\textbackslash{}boldsymbol\{\textbackslash{}tau\_J\}\}\}\$\\
-\hline
-\end{tabular}
+$$\begin{array}{lccc}
+& \textbf{Cell means:} && \textbf{Reference-coded:}\\
+\textbf{Group } 1: & \color{red}{\mu_1} && \color{purple}{\boldsymbol{\alpha}} \\
+\textbf{Group } 2: & \color{red}{\mu_2} && \color{purple}{\boldsymbol{\alpha + \tau_2}} \\
+\ldots & \ldots && \ldots \\
+\textbf{Group } J: & \color{red}{\mu_J} && \color{purple}{\boldsymbol{\alpha +\tau_J}}
+\end{array}$$
 
 The hypotheses for the reference-coded model are similar to those in the 
 cell-means coding except that they are defined in terms of the deviations,
@@ -293,17 +286,6 @@ summary(lm1)
 ## F-statistic: 67.21 on 3 and 111 DF,  p-value: < 2.2e-16
 ```
 
-
--------------------------------------------------------------------
-        &nbsp;          Estimate   Std. Error   t value   Pr(>|t|) 
----------------------- ---------- ------------ --------- ----------
-  **AttrBeautiful**     **4.33**     0.573       7.56     1.23e-11 
-
-   **AttrAverage**      **3.97**      0.58       6.85     4.41e-10 
-
- **AttrUnattractive**   **5.81**     0.588       9.88     6.86e-17 
--------------------------------------------------------------------
-
 In general, we denote estimated parameters with a hat over the parameter of 
 interest to show that it is an estimate. For the true mean of group $j$, 
 $\mu_j$, we estimate it with $\hat{\mu}_j$, which is just the sample mean for group
@@ -375,24 +357,23 @@ pertinent deviations as shown in Table \@ref(tab:Table3-1).
 (ref:tab3-1) Constructing group mean estimates from the reference-coded linear
 model estimates.
 
-\begin{table}
 
-\caption{(\#tab:Table3-1)(ref:tab3-1)}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-Group & Formula & Estimates\\
-\hline
-Beautiful & $\hat{\alpha}$ & **4.3333** years\\
-\hline
-Average & $\hat{\alpha}+\hat{\tau}_2$ & 4.3333 - 0.3596 = **3.974** years\\
-\hline
-Unattractive & $\hat{\alpha}+\hat{\tau}_3$ & 4.3333 + 1.4775 = **5.811** years\\
-\hline
-\end{tabular}
-\end{table}
+--------------------------------------------------------------------
+Group        Formula                     Estimates                  
+------------ --------------------------- ---------------------------
+Beautiful    $\hat{\alpha}$              **4.3333** years           
 
-We can also visualize the results of our linear models using what are called ***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
+Average      $\hat{\alpha}+\hat{\tau}_2$ 4.3333 - 0.3596 = **3.974**
+                                         years                      
+
+Unattractive $\hat{\alpha}+\hat{\tau}_3$ 4.3333 + 1.4775 = **5.811**
+                                         years                      
+--------------------------------------------------------------------
+
+Table: (\#tab:Table3-1) (ref:tab3-1)
+
+We can also visualize the results of our linear models using what are called
+***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
 [@R-effects])
 as displayed in Figure \@ref(fig:Figure3-2). We don't want to use the word 
 "effect" for these model components unless we have random assignment in the study
@@ -649,7 +630,7 @@ $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the
 second number and we can use the bracket, ``[, ]``, referencing to extract that 
 number from the ANOVA table that ``anova`` produces with 
 ``anova(lm(Years~Attr, data=MockJury))[1, 2]``. We'll store the observed value
-of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref{chapter2}. 
+of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref(chapter2). 
 
 
 ```r
@@ -776,6 +757,7 @@ The characteristics of the F-distribution can be summarized as:
 
 * **Always use the right-tailed area for p-values.**
 
+
 (ref:fig3-6) Density curves of four different $F$-distributions. Upper left is an 
 $F(2, 111)$, upper right is $F(2, 10)$, lower left is $F(6, 10)$, and lower right 
 is $F(6, 111)$. P-values are found using the areas to the right of the observed
@@ -791,22 +773,20 @@ question like this on the exam...]:
 
 (ref:tab3-2) General One-Way ANOVA table.
 
-\begin{table}
 
-\caption{(\#tab:Table3-2)(ref:tab3-2)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l}
-\hline
-Source & DF & Sums of Squares & Mean Squares & F-ratio & P-value\\
-\hline
-Variable A & $J-1$ & $\text{SS}_A$ & $\text{MS}_A=\text{SS}_A/(J-1)$ & $F=\text{MS}_A/\text{MS}_E$ & Right tail of $F(J-1,N-J)$\\
-\hline
-Residuals & $N-J$ & $\text{SS}_E$ & $\text{MS}_E = \text{SS}_E/(N-J)$ &  & \\
-\hline
-Total & $N-1$ & $\text{SS}_{\text{Total}}$ &  &  & \\
-\hline
-\end{tabular}
-\end{table}
+-------------------------------------------------------------------------------------------------------------------------------------------
+Source&nbsp;   DF&nbsp;   Sums of\                   Mean Squares                    F-ratio                     P-value                   
+                          Squares                                                                                                          
+-------------- ---------- -------------------------- ------------------------------- --------------------------- --------------------------
+Variable A     $J-1$      $\text{SS}_A$              $\text{MS}_A=\text{SS}_A/(J-1)$ $F=\text{MS}_A/\text{MS}_E$ Right tail of $F(J-1,N-J)$
+
+Residuals      $N-J$      $\text{SS}_E$              $\text{MS}_E =                                                                        
+                                                     \text{SS}_E/(N-J)$                                                                    
+
+Total          $N-1$      $\text{SS}_{\text{Total}}$                                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table3-2) (ref:tab3-2)
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
 components. The output from R is similar although it does not provide the last row 
@@ -833,7 +813,9 @@ verify this result using the observed $F$-statistic of 2.77
 (which came from taking the ratio of the two mean squares, 
 F=35.47/12.8)
 which follows an $F(2, 111)$ distribution if the null hypothesis is true and some 
-other assumptions are met. Using the ``pf`` function provides us with areas in the
+other assumptions are met.
+
+Using the ``pf`` function provides us with areas in the
 specified $F$-distribution with the ``df1`` provided to the function as the 
 numerator *df* and ``df2`` as the denominator *df* and ``lower.tail=F`` reflecting 
 our desire for a right tailed area.
@@ -860,10 +842,6 @@ The only change in the code involves moving from extracting $\text{SS}_A$ to
 extracting the $F$-ratio which is in the 4<sup>th</sup> column of the ``anova`` 
 output:
 
-(ref:fig3-7) Histogram and density curve of the permutation distribution of 
-the F-statistic with bold, vertical line for observed value of the test 
-statistic of 2.77. 
-
 
 ```r
 Tobs <- anova(lm(Years ~ Attr, data=MockJury))[1,4]; Tobs
@@ -888,12 +866,17 @@ pdata(Tstar, Tobs, lower.tail=F)
 ## [1] 0.064
 ```
 
+
 ```r
 hist(Tstar, labels=T)
 abline(v=Tobs, col="red", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=Tobs, col="red", lwd=3)
 ```
+
+(ref:fig3-7) Histogram and density curve of the permutation distribution of 
+the F-statistic with bold, vertical line for observed value of the test 
+statistic of 2.77. 
 
 ![(\#fig:Figure3-7)(ref:fig3-7)](03-oneWayAnova_files/figure-latex/Figure3-7-1.pdf) 
 
@@ -1030,9 +1013,9 @@ this new display. We can obtain the residuals from the linear model using the
 ```r
 par(mfrow=c(1,2))
 eij<-residuals(lm2)
-hist(eij, main="Histogram of residuals")
+hist(eij, main="Histogram of residuals",cex.main=0.75)
 plot(density(eij), main="Density plot of residuals", ylab="Density",
-     xlab="Residuals")
+     xlab="Residuals",cex.main=0.75)
 ```
 
 ![(\#fig:Figure3-10)(ref:fig3-10)](03-oneWayAnova_files/figure-latex/Figure3-10-1.pdf) 
@@ -1093,7 +1076,9 @@ histogram and density curve!
 
 (ref:fig3-11) QQ-plot of residuals from linear model.
 
-![(\#fig:Figure3-11)(ref:fig3-11)](03-oneWayAnova_files/figure-latex/Figure3-11-1.pdf) ![(\#fig:Figure3-11)(ref:fig3-11)](03-oneWayAnova_files/figure-latex/Figure3-11-2.pdf) 
+
+![(\#fig:Figure3-11)(ref:fig3-11)](03-oneWayAnova_files/figure-latex/Figure3-11-1.pdf) 
+
 
 Generally, when both tails deviate on the same side of the line (forming a 
 sort of quadratic curve, especially in more extreme cases), that is evidence 
@@ -1340,8 +1325,6 @@ start. We will use a 5% significance level.
         size was small in each group. We need to fit the linear model to get 
         the other diagnostic plots to make an overall assessment. 
 
-        (ref:fig3-15) Diagnostic plots for the toothgrowth model.
-        
         
         ```r
         m2<-lm(len~Treat,data=ToothGrowth)
@@ -1349,7 +1332,8 @@ start. We will use a 5% significance level.
         plot(m2,pch=16)
         ```
         
-        ![(\#fig:Figure3-15)(ref:fig3-15)](03-oneWayAnova_files/figure-latex/Figure3-15-1.pdf) 
+        ![(\#fig:Figure3-15)Diagnostic plots for the toothgrowth model.](03-oneWayAnova_files/figure-latex/Figure3-15-1.pdf) 
+            
         * The Residuals vs Fitted panel in Figure \@ref(fig:Figure3-15) shows some 
         difference in the spreads but the spread is not that different between the groups. 
         
@@ -1405,8 +1389,6 @@ start. We will use a 5% significance level.
     * The nonparametric approach is not too hard so we can compare the two approaches here 
     as well:
     
-    (ref:fig3-16) Histogram and density curve of permutation distribution for $F$-statistic 
-    for tooth growth data. Observed test statistic in bold, vertical line at 41.56. 
     
     
     ```r
@@ -1438,7 +1420,7 @@ start. We will use a 5% significance level.
     abline(v=Tobs,col="red",lwd=3)
     ```
     
-    ![(\#fig:Figure3-16)(ref:fig3-16)](03-oneWayAnova_files/figure-latex/Figure3-16-1.pdf) 
+    ![(\#fig:Figure3-16)Histogram and density curve of permutation distribution for $F$-statistic for tooth growth data. Observed test statistic in bold, vertical line at 41.56.](03-oneWayAnova_files/figure-latex/Figure3-16-1.pdf) 
     
     * **The permutation p-value was reported as 0. This should be reported as p-value<0.001**
     since we did 1000 permutations and found that none of the permuted $F$-statistics, $F^*$,
@@ -1577,7 +1559,7 @@ summary(m3)
 ```
 
 ```r
-par(mfrow=c(1,2))
+par(mfrow=c(1,1))
 plot(allEffects(m2))
 ```
 
@@ -1784,7 +1766,7 @@ confint(Tm2)
 ```
 
 ```r
-old.par <- par(mai=c(1.5,2,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
@@ -1852,7 +1834,7 @@ One benefit of this work is that the CLD letters can be added to a beanplot to
 help fully report the results and understand the sorts of differences Tukey's 
 HSD detected. 
 
-(ref:fig3-20) Beanplot of tooth growth by group with Tukey?s HSD compact 
+(ref:fig3-20) Beanplot of tooth growth by group with Tukey's HSD compact 
 letter display.
 
 ![(\#fig:Figure3-20)(ref:fig3-20)](03-oneWayAnova_files/figure-latex/Figure3-20-1.pdf) 
@@ -1942,7 +1924,7 @@ cld(Tm2)
 ```
 
 ```r
-old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
@@ -1994,7 +1976,7 @@ cld(Tm2,level=0.1)
 ```
 
 ```r
-old.par <- par(mai=c(1.5,2.5,1,1)) #Makes room on the plot for the group names
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(confint(Tm2,level=.9))
 ```
 
@@ -2022,10 +2004,11 @@ from the other two groups.
 
 
 ```r
+old.par <- par(mai=c(0.5,1,1,1))
 beanplot(Years~Attr,data=MockJury,log="",col="white",method="jitter")
-text(c(1),c(5),"ab",col="blue",cex=2)
-text(c(2),c(4.8),"a",col="green",cex=2)
-text(c(3),c(6.5),"b",col="red",cex=2)
+text(c(1),c(5),"ab",col="blue",cex=1.5)
+text(c(2),c(4.8),"a",col="green",cex=1.5)
+text(c(3),c(6.5),"b",col="red",cex=1.5)
 ```
 
 ![(\#fig:Figure3-23)(ref:fig3-23)](03-oneWayAnova_files/figure-latex/Figure3-23-1.pdf) 
@@ -2091,8 +2074,8 @@ data=\textcolor{red}{DATASETNAME})
     * Results are incorrect if run on the cell-means model since the reduced model 
     under the null is that the mean of all the observations is 0!
 
-* pf(\textcolor{red}{FSTATISTIC},df1=\textcolor{red}{NUMDF},df2=\textcolor{red}{DENOMDF},
-lower.tail=F)
+* pf(\textcolor{red}{FSTATISTIC}, df1=\textcolor{red}{NUMDF},
+df2=\textcolor{red}{DENOMDF}, lower.tail=F)
 
     * Finds the p-value for an observed $F$-statistic with NUMDF and DENOMDF degrees 
     of freedom. 

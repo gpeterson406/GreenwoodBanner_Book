@@ -220,15 +220,15 @@ Figure 1.1: Table plot of the arthritis data set.
 <p>Comparing counts from the contingency table is useful, but comparing proportions in each category is better, especially when the sample sizes in the levels of the explanatory variable differ. Switching the formula used in the <code>tally</code> function formula to <code>~ y | x</code> and adding the <code>format=&quot;proportion&quot;</code> option provides the proportions in the response categories conditional on the category of the predictor (these are called <strong><em>conditional proportions</em></strong> or the <strong><em>conditional distribution</em></strong> of, here, <em>Improved</em> on <em>Treatment</em>)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Note that they sum to 1.0 in each level of x, <em>placebo</em> or <em>treated</em>: See <a href="chapter5.html#tab:Table5-2">1.2</a></p>
 
 <table>
-<caption><span id="tab:Table5-2">Table 1.2: </span> My table caption</caption>
+<caption><span id="tab:Table5-2">Table 1.2: </span> Table test</caption>
 <colgroup>
-<col width="8%" />
-<col width="16%" />
-<col width="16%" />
-<col width="16%" />
 <col width="7%" />
-<col width="16%" />
-<col width="16%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="5%" />
+<col width="17%" />
+<col width="17%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -255,7 +255,7 @@ Level C</strong></th>
 <td align="center"><span class="math inline">\(n_{13}\)</span></td>
 <td align="center">…</td>
 <td align="center"><span class="math inline">\(n_{15}\)</span></td>
-<td align="center"><span class="math inline">\(n_{11}\)</span></td>
+<td align="center"><span class="math inline">\(\boldsymbol{n_{1 \bullet}}\)</span></td>
 </tr>
 <tr class="even">
 <td align="center"><strong>Group 2</strong></td>
@@ -264,7 +264,7 @@ Level C</strong></th>
 <td align="center"><span class="math inline">\(n_{23}\)</span></td>
 <td align="center">…</td>
 <td align="center"><span class="math inline">\(n_{25}\)</span></td>
-<td align="center"><span class="math inline">\(n_{21}\)</span></td>
+<td align="center"><span class="math inline">\(\boldsymbol{n_{2 \bullet}}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>…</strong></td>
@@ -273,7 +273,7 @@ Level C</strong></th>
 <td align="center">…</td>
 <td align="center">…</td>
 <td align="center">…</td>
-<td align="center">…</td>
+<td align="center"><strong>…</strong></td>
 </tr>
 <tr class="even">
 <td align="center"><strong>Group R</strong></td>
@@ -282,16 +282,160 @@ Level C</strong></th>
 <td align="center"><span class="math inline">\(n_{R3}\)</span></td>
 <td align="center">…</td>
 <td align="center"><span class="math inline">\(n_{R5}\)</span></td>
-<td align="center"><span class="math inline">\(n_{R1}\)</span></td>
+<td align="center"><span class="math inline">\(\boldsymbol{n_{R \bullet}}\)</span></td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>Totals</strong></td>
 <td align="center"><span class="math inline">\(\boldsymbol{n_{\bullet 1}}\)</span></td>
 <td align="center"><span class="math inline">\(\boldsymbol{n_{\bullet 2}}\)</span></td>
 <td align="center"><span class="math inline">\(\boldsymbol{n_{\bullet 3}}\)</span></td>
-<td align="center">$…</td>
+<td align="center">…</td>
 <td align="center"><span class="math inline">\(\boldsymbol{n_{\bullet C}}\)</span></td>
-<td align="center"><span class="math inline">\(\boldsymbol{n_{\bullet 1}}\)</span></td>
+<td align="center"><span class="math inline">\(\boldsymbol{N}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here I am going to reference Table <a href="chapter5.html#tab:Table2-1">1.3</a> and we’ll see if it works from the get-go.</p>
+
+<table style="width:97%;">
+<caption><span id="tab:Table2-1">Table 1.3: </span> First 5 and last 6 rows of the MockJury data set</caption>
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="12%" />
+<col width="11%" />
+<col width="13%" />
+<col width="19%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Subject</th>
+<th align="center">Attr</th>
+<th align="center">Crime</th>
+<th align="center">Years</th>
+<th align="center">Serious</th>
+<th align="center">Independent</th>
+<th align="center">Sincere</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Beautiful</td>
+<td align="center">Burglary</td>
+<td align="center">10</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Beautiful</td>
+<td align="center">Burglary</td>
+<td align="center">3</td>
+<td align="center">8</td>
+<td align="center">9</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">Beautiful</td>
+<td align="center">Burglary</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">Beautiful</td>
+<td align="center">Burglary</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">9</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">Beautiful</td>
+<td align="center">Burglary</td>
+<td align="center">7</td>
+<td align="center">9</td>
+<td align="center">5</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+</tr>
+<tr class="odd">
+<td align="center">108</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">4</td>
+</tr>
+<tr class="even">
+<td align="center">109</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">9</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">110</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">111</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">7</td>
+<td align="center">4</td>
+<td align="center">9</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">112</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">6</td>
+<td align="center">3</td>
+<td align="center">5</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">113</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">12</td>
+<td align="center">9</td>
+<td align="center">9</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center">114</td>
+<td align="center">Average</td>
+<td align="center">Swindle</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">1</td>
+<td align="center">5</td>
 </tr>
 </tbody>
 </table>

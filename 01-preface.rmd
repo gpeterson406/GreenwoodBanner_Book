@@ -8,7 +8,8 @@ output:
 ```{r include=F}
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE,fig.height=3.5,fig.width=6,cache=T)
+knitr::opts_chunk$set(echo = TRUE,cache=T,fig.width = 5, fig.height = 3.5,
+                      fig.pos = "HT")
 options(show.signif.stars = FALSE)
 ```
 
@@ -198,7 +199,8 @@ want to go with learning the software.
 
 All the methods you will learn require you to carefully consider how the data were collected, how that
 pertains to the population of interest, and how that impacts the inferences
-that can be made. The ***scope of inference*** from the bottom of Figure \@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
+that can be made. The ***scope of inference*** from the bottom of Figure
+\@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
 of the study -- ***random assignment*** and ***random sampling***. In a given
 situation, you need to use the description of the study to decide if the
 explanatory variable was randomly assigned to study units (this allows for ***causal inferences*** if differences are detected) or not (so no causal statements
@@ -285,7 +287,8 @@ versions of R.^[The need to keep the code up-to-date as R continues to evolve is
 three years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
-interface. When you open RStudio, you will see a screen like Figure 2. The
+interface. When you open RStudio, you will see a screen like Figure 
+\@ref(fig:Figure2). The
 added annotation in this and the following screen-grabs is there to help you
 get initially oriented to the software interface. R is command-line software --
 meaning that most of the time you have to create code and then enter and execute
@@ -690,8 +693,10 @@ boxplot(treadmill$RunTime)
 While the default boxplot is fine, it fails to provide good graphical labels, 
 especially on the y-axis. Additionally, there is no title on the plot. The
 following code provides some enhancements to the plot by using the ``ylab`` and 
-``main`` options in the call to ``boxplot``, with the results displayed in Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
-be assigned into the options ``ylab`` (for y-axis) or ``main`` (for the title) here to put it into those locations. 
+``main`` options in the call to ``boxplot``, with the results displayed in
+Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
+be assigned into the options ``ylab`` (for y-axis) or ``main``
+(for the title) here to put it into those locations. 
 
 (ref:fig9) Boxplot of Run Times with improved labels.
 
@@ -846,10 +851,10 @@ ages does this study pertain to?
 
 1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
-lbs=2. 205*kgs. Create a new variable in the ``treadmill``
+lbs=2.205*kgs. Create a new variable in the ``treadmill``
 data.frame called *BWlb* using this code:
 
-``treadmill$BWlb <- 2. 205*treadmill$BodyWeight`` 
+``treadmill$BWlb <- 2.205*treadmill$BodyWeight`` 
  
 and find the mean and SD of the new variable (*BWlb*). 
 
