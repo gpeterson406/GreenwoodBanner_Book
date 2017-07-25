@@ -78,7 +78,7 @@ types of conclusions that are appropriate based on the design of the study.
 
 (ref:fig1) Flow chart of methods
 
-![(\#fig:Figure1)(ref:fig1)](chapter0_files/image001.png) 
+![(\#fig:Figure1)(ref:fig1)](chapter0_files/image002.png) 
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
@@ -180,7 +180,8 @@ want to go with learning the software.
 
 All the methods you will learn require you to carefully consider how the data were collected, how that
 pertains to the population of interest, and how that impacts the inferences
-that can be made. The ***scope of inference*** from the bottom of Figure \@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
+that can be made. The ***scope of inference*** from the bottom of Figure
+\@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
 of the study -- ***random assignment*** and ***random sampling***. In a given
 situation, you need to use the description of the study to decide if the
 explanatory variable was randomly assigned to study units (this allows for ***causal inferences*** if differences are detected) or not (so no causal statements
@@ -267,7 +268,8 @@ versions of R.^[The need to keep the code up-to-date as R continues to evolve is
 three years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
-interface. When you open RStudio, you will see a screen like Figure 2. The
+interface. When you open RStudio, you will see a screen like Figure 
+\@ref(fig:Figure2). The
 added annotation in this and the following screen-grabs is there to help you
 get initially oriented to the software interface. R is command-line software --
 meaning that most of the time you have to create code and then enter and execute
@@ -653,11 +655,6 @@ We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
 
 (ref:fig5) Histogram of Run Times #(minutes) of n=31 subjects in Treadmill study.
 
-
-```r
-hist(treadmill$RunTime)
-```
-
 ![(\#fig:Figure5)(ref:fig5)](01-preface_files/figure-latex/Figure5-1.pdf) 
 
 
@@ -732,30 +729,30 @@ but worth noting.
 
 (ref:fig8) Boxplot of 1.5 mile Run Times.
 
+![(\#fig:Figure8)(ref:fig8)](01-preface_files/figure-latex/Figure8-1.pdf) 
+
 
 ```r
 boxplot(treadmill$RunTime)
 ```
 
-![(\#fig:Figure8)(ref:fig8)](01-preface_files/figure-latex/Figure8-1.pdf) 
-
 While the default boxplot is fine, it fails to provide good graphical labels, 
 especially on the y-axis. Additionally, there is no title on the plot. The
 following code provides some enhancements to the plot by using the ``ylab`` and 
-``main`` options in the call to ``boxplot``, with the results displayed in Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
-be assigned into the options ``ylab`` (for y-axis) or ``main`` (for the title) here to put it into those locations. 
+``main`` options in the call to ``boxplot``, with the results displayed in
+Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
+be assigned into the options ``ylab`` (for y-axis) or ``main``
+(for the title) here to put it into those locations. 
 
 (ref:fig9) Boxplot of Run Times with improved labels.
+
+![(\#fig:Figure9)(ref:fig9)](01-preface_files/figure-latex/Figure9-1.pdf) 
 
 
 ```r
 boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)", 
         main="Boxplot of the Run Times of n=31 participants")
 ```
-
-![(\#fig:Figure9)(ref:fig9)](01-preface_files/figure-latex/Figure9-1.pdf) 
-
-
 
 Throughout the book, we will often use extra options to make figures that are easier for you to understand. There
 are often simpler versions of the functions that will suffice but the extra
@@ -907,10 +904,10 @@ ages does this study pertain to?
 
 1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
-lbs=2. 205*kgs. Create a new variable in the ``treadmill``
+lbs=2.205*kgs. Create a new variable in the ``treadmill``
 data.frame called *BWlb* using this code:
 
-``treadmill$BWlb <- 2. 205*treadmill$BodyWeight`` 
+``treadmill$BWlb <- 2.205*treadmill$BodyWeight`` 
  
 and find the mean and SD of the new variable (*BWlb*). 
 

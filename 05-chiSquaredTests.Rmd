@@ -208,7 +208,7 @@ colnames(m) <- columnHeaders <- c("","**Response\\\n Level 1**",
                    "\\\n **...**",
                    "**Response\\\n Level C**",
                    "\\\n **Totals**")
-pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table5-2) My table caption", split.table = Inf)
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table5-1) (ref:tab5-1", split.table = Inf)
 ```
 
 Comparing counts from the contingency table is useful, but comparing proportions

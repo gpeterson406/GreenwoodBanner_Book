@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  21 JUL 2017 16:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  25 JUL 2017 15:58
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -894,7 +894,26 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box36
 \@float@everytoks=\toks28
 \@floatcapt=\box37
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+) (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+(C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen148
+\captionmargin@=\dimen149
+\captionwidth=\dimen150
+\caption@tempdima=\dimen151
+\caption@indent=\dimen152
+\caption@parindent=\dimen153
+\caption@hangindent=\dimen154
+)
+\c@ContinuedFloat=\count131
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+(C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks29
 \thm@bodyfont=\toks30
@@ -906,43 +925,43 @@ Package: amsthm 2015/03/04 v2.20.2
 \thm@headsep=\skip61
 \dth@everypar=\toks34
 )
-\c@theorem=\count131
-\c@lemma=\count132
-\c@definition=\count133
-\c@corollary=\count134
-\c@proposition=\count135
-\c@example=\count136
+\c@theorem=\count132
+\c@lemma=\count133
+\c@definition=\count134
+\c@corollary=\count135
+\c@proposition=\count136
+\c@example=\count137
 (GreenwoodBanner.aux)
 \openout1 = `GreenwoodBanner.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 170.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 171.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 171.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 170.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 171.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 170.
+LaTeX Info: Redefining \microtypecontext on input line 171.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -991,33 +1010,33 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring OFF on input line 170.
+Package hyperref Info: Link coloring OFF on input line 171.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count137
+\c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 170.
-LaTeX Info: Redefining \pageref on input line 170.
-LaTeX Info: Redefining \nameref on input line 170.
+LaTeX Info: Redefining \ref on input line 171.
+LaTeX Info: Redefining \pageref on input line 171.
+LaTeX Info: Redefining \nameref on input line 171.
 (GreenwoodBanner.out) (GreenwoodBanner.out)
 \@outlinefile=\write4
 \openout4 = `GreenwoodBanner.out'.
 
 (C:\Users\greta\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen148
+\scratchcounter=\count139
+\scratchdimen=\dimen155
 \scratchbox=\box39
-\nofMPsegments=\count139
-\nofMParguments=\count140
+\nofMPsegments=\count140
+\nofMParguments=\count141
 \everyMPshowfont=\toks35
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen149
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
+\MPscratchCnt=\count142
+\MPscratchDim=\dimen156
+\MPnumerator=\count143
+\makeMPintoPDFobject=\count144
 \everyMPtoPDFconversion=\toks36
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1030,7 +1049,10 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-) [1
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+[1
 
 
 {C:/Users/greta/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
@@ -1079,142 +1101,1109 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ]
 Chapter 1.
-
-LaTeX Warning: Reference `chapter2' on page 7 undefined on input line 262.
-
-
-LaTeX Warning: Reference `chapter3' on page 7 undefined on input line 263.
-
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 280.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 270.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 270.
+[7]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 596.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 290.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 290.
-[7]
+) [8]
 
-Package xcolor Warning: Incompatible color definition on input line 304.
+Package xcolor Warning: Incompatible color definition on input line 604.
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 306.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 606.
 
-Package xcolor Warning: Incompatible color definition on input line 312.
-
-
-Package xcolor Warning: Incompatible color definition on input line 312.
+Package xcolor Warning: Incompatible color definition on input line 608.
 
 
-<05-chiSquaredTests_test_files/figure-latex/Figure5-1-1.pdf, id=79, 469.755pt x
- 325.215pt>
-File: 05-chiSquaredTests_test_files/figure-latex/Figure5-1-1.pdf Graphic file (
-type pdf)
-<use 05-chiSquaredTests_test_files/figure-latex/Figure5-1-1.pdf>
-Package pdftex.def Info: 05-chiSquaredTests_test_files/figure-latex/Figure5-1-1
-.pdf used on input line 316.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.348 
-       <./05-chiSquaredTests_test_files/figure-latex/Figure5-1-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 372.
+Package xcolor Warning: Incompatible color definition on input line 608.
 
 
-Package xcolor Warning: Incompatible color definition on input line 377.
+Package xcolor Warning: Incompatible color definition on input line 615.
 
 
-Package xcolor Warning: Incompatible color definition on input line 377.
+Package xcolor Warning: Incompatible color definition on input line 620.
 
 
-Overfull \hbox (20.34341pt too wide) in paragraph at lines 417--432
- [][] 
+Package xcolor Warning: Incompatible color definition on input line 620.
+
+
+Package xcolor Warning: Incompatible color definition on input line 630.
+
+
+Package xcolor Warning: Incompatible color definition on input line 634.
+
+
+Package xcolor Warning: Incompatible color definition on input line 634.
+
+
+Package xcolor Warning: Incompatible color definition on input line 645.
+
+
+Package xcolor Warning: Incompatible color definition on input line 650.
+
+
+Package xcolor Warning: Incompatible color definition on input line 650.
+
+
+Package xcolor Warning: Incompatible color definition on input line 669.
+
+
+Package xcolor Warning: Incompatible color definition on input line 673.
+
+
+Package xcolor Warning: Incompatible color definition on input line 673.
+
+[9]
+
+Package xcolor Warning: Incompatible color definition on input line 697.
+
+
+Package xcolor Warning: Incompatible color definition on input line 701.
+
+
+Package xcolor Warning: Incompatible color definition on input line 701.
+
+
+Package xcolor Warning: Incompatible color definition on input line 712.
+
+
+Package xcolor Warning: Incompatible color definition on input line 716.
+
+
+Package xcolor Warning: Incompatible color definition on input line 716.
+
+[10]
+<02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf, id=154, 433.
+62pt x 289.08pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-1-1.pdf used on input line 783.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+Package xcolor Warning: Incompatible color definition on input line 787.
+
+
+Package xcolor Warning: Incompatible color definition on input line 793.
+
+
+Package xcolor Warning: Incompatible color definition on input line 793.
+
+[11 <./02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 849.
+
+
+Package xcolor Warning: Incompatible color definition on input line 854.
+
+
+Package xcolor Warning: Incompatible color definition on input line 854.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-2-1.pdf, id=168, 361.
+35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-2-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-2-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-2-1.pdf used on input line 858.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[12 <./02-reintroductionToStatistics_files/figure-latex/Figure2-2-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 893.
+
+
+Package xcolor Warning: Incompatible color definition on input line 900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 900.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-3-1.pdf, id=187, 361.
+35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-3-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-3-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-3-1.pdf used on input line 904.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf, id=189, 361.
+35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-4-1.pdf used on input line 931.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 935.
+
+
+Package xcolor Warning: Incompatible color definition on input line 939.
+
+
+Package xcolor Warning: Incompatible color definition on input line 939.
+
+[13 <./02-reintroductionToStatistics_files/figure-latex/Figure2-3-1.pdf>]
+<02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf, id=212, 361.
+35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-5-1.pdf used on input line 997.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1002.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1007.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1007.
+
+[14 <./02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1032.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1036.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1036.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1043.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1047.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1047.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1057.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1061.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1061.
+
+[15 <./02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1124.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1129.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1129.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1149.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1153.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1153.
+
+[16]
+
+Package xcolor Warning: Incompatible color definition on input line 1167.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1171.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1171.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1191.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1195.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1195.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1210.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1214.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1214.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1227.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1231.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1231.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1237.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1241.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1241.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1256.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1261.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1261.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf, id=242, 415.
+5525pt x 271.0125pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-6-1.pdf used on input line 1277.
+(pdftex.def)             Requested size: 415.56416pt x 271.0201pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1282.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1288.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1288.
+
+[17]
+
+Package xcolor Warning: Incompatible color definition on input line 1304.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1308.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1308.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1315.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1319.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1319.
+
+
+Underfull \vbox (badness 2452) has occurred while \output is active []
+
+[18 <./02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 1358
+.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) <chapter1_files/image015.png, id=264, 722.7pt x 360.59718pt>
+File: chapter1_files/image015.png Graphic file (type png)
+<use chapter1_files/image015.png>
+Package pdftex.def Info: chapter1_files/image015.png used on input line 1406.
+(pdftex.def)             Requested size: 469.76045pt x 234.39088pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1444.
+
+[19]
+
+Package xcolor Warning: Incompatible color definition on input line 1448.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1448.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1450.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1455.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1455.
+
+[20 <./chapter1_files/image015.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[21]
+
+Package xcolor Warning: Incompatible color definition on input line 1574.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1578.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1578.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1585.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1589.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1589.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf, id=289, 505.
+89pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-8-1.pdf used on input line 1601.
+(pdftex.def)             Requested size: 469.76265pt x 234.88133pt.
+[22 <./02-reintroductionToStatistics_files/figure-latex/Figure2-8-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1692.
+
+[23]
+
+Package xcolor Warning: Incompatible color definition on input line 1698.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1698.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1703.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1711.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1711.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1721.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1726.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1726.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1736.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1744.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1744.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1766.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1771.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1771.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1784.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+[24]
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf, id=314, 433.
+62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf Graphic 
+file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-9-1.pdf used on input line 1823.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1828.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1839.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1839.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1841.
+
+
+Underfull \vbox (badness 1331) has occurred while \output is active []
+
+[25 <./02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1845.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1845.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf, id=330, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-10-1.pdf used on input line 1873.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1879.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1888.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1888.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1904.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1904.
+
+[26 <./02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1947.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1951.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1951.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf, id=345, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-11-1.pdf used on input line 1968.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1974.
+
+[27 <./02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1982.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1982.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2000.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2004.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2004.
+
+[28] [29] [30] [31]
+Underfull \vbox (badness 10000) detected at line 2463
  []
 
-[9pdfTeX warning (ext4): destination with the same identifier (name{table.1.1})
- has been already used, duplicate ignored
+[32]
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.449 
-      ]
-Overfull \hbox (4.12184pt too wide) in paragraph at lines 498--500
- []|\T1/lmr/bx/n/10 Group 
- []
+Package xcolor Warning: Incompatible color definition on input line 2534.
 
 
-Overfull \hbox (4.12184pt too wide) in paragraph at lines 513--515
- []|\T1/lmr/bx/n/10 Group 
- []
+Package xcolor Warning: Incompatible color definition on input line 2540.
 
 
-Overfull \hbox (4.12184pt too wide) in paragraph at lines 543--545
- []|\T1/lmr/bx/n/10 Group 
- []
+Package xcolor Warning: Incompatible color definition on input line 2540.
 
 
-Overfull \hbox (2.4pt too wide) in paragraph at lines 558--560
- []|\T1/lmr/bx/n/10 Totals| 
- []
+Package xcolor Warning: Incompatible color definition on input line 2547.
 
-(GreenwoodBanner.bbl [10]
+
+Package xcolor Warning: Incompatible color definition on input line 2555.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2555.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2562.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2569.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2569.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf, id=400, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-12-1.pdf used on input line 2575.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[33] <chapter1_files/image045small.png, id=407, 361.35pt x 252.945pt>
+File: chapter1_files/image045small.png Graphic file (type png)
+<use chapter1_files/image045small.png>
+Package pdftex.def Info: chapter1_files/image045small.png used on input line 26
+13.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 2631.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2635.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2635.
+
+<chapter1_files/image047small.png, id=409, 361.35pt x 252.945pt>
+File: chapter1_files/image047small.png Graphic file (type png)
+<use chapter1_files/image047small.png>
+Package pdftex.def Info: chapter1_files/image047small.png used on input line 26
+64.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[34 <./02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2684.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2688.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2688.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2697.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2701.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2701.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2711.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2715.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2715.
+
+[35 <./chapter1_files/image045small.png>] [36 <./chapter1_files/image047small.p
+ng>]
+
+Package xcolor Warning: Incompatible color definition on input line 2810.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2817.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2817.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2824.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2828.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2828.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf, id=440, 361
+.35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-15-1.pdf used on input line 2841.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 2846.
+
+[37 <./02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2852.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2852.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2861.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2865.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2865.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2874.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2878.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2878.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2904.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2913.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2913.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf, id=452, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-16-1.pdf used on input line 2920.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 2925.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2933.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2933.
+
+[38] [39 <./02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf>]
+[40]
+
+Package xcolor Warning: Incompatible color definition on input line 3101.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3106.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3126.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3131.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3131.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-17-1.pdf, id=483, 361
+.35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-17-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-17-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-17-1.pdf used on input line 3154.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[41 <./02-reintroductionToStatistics_files/figure-latex/Figure2-17-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3180.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3185.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3185.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3192.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3201.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3201.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf, id=496, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-18-1.pdf used on input line 3216.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 3222.
+
+[42 <./02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3229.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3229.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3261.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3265.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3265.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3272.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3276.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3276.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3292.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3297.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3297.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf, id=512, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-19-1.pdf used on input line 3313.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 3318.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3326.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3326.
+
+[43]
+
+Package xcolor Warning: Incompatible color definition on input line 3362.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3366.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3366.
+
+[44 <./02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3417.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3426.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3426.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf, id=531, 361
+.35pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-20-1.pdf used on input line 3430.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[45 <./02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 3450.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3454.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3454.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3464.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3468.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3468.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3499.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3503.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3503.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3514.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3519.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3519.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3528.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3532.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3532.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3545.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3549.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3549.
+
+[46]
+
+Package xcolor Warning: Incompatible color definition on input line 3564.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3568.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3568.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3579.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3584.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3584.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3592.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3596.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3596.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3604.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3608.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3608.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3620.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3624.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3653.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3657.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3657.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3663.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3667.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3667.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3673.
+
+[47]
+
+Package xcolor Warning: Incompatible color definition on input line 3677.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3677.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3693.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3697.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3697.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3737.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3741.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3741.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3748.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3758.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3758.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3765.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3769.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3769.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3776.
+
+[48]
+
+Package xcolor Warning: Incompatible color definition on input line 3781.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3781.
+
+
+<02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf, id=568, 433
+.62pt x 252.945pt>
+File: 02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf Graphic
+ file (type pdf)
+<use 02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf>
+Package pdftex.def Info: 02-reintroductionToStatistics_files/figure-latex/Figur
+e2-21-1.pdf used on input line 3801.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 3808.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3818.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3818.
+
+[49 <./02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf>]
+
+LaTeX Warning: Reference `chapter3' on page 50 undefined on input line 3875.
+
+[50] [51] (GreenwoodBanner.bbl [52]
 Chapter 2.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 579.
-[11
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4083.
+[53
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 579.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4083.
 (GreenwoodBanner.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 579.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 579.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4083.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4083.
+
 Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
-(rerunfilecheck)             Checksum: 8939EB03B8FA3D112534D6F2A696AF36;618.
+(rerunfilecheck)             Checksum: 1F150E0271D9E97FE9DFCC42817F7CA7;3464.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 579.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4083.
  ) 
 Here is how much of TeX's memory you used:
- 14406 strings out of 493366
- 206564 string characters out of 3137241
- 331928 words of memory out of 3000000
- 17534 multiletter control sequences out of 15000+200000
- 112197 words of font info for 135 fonts, out of 3000000 for 9000
+ 15831 strings out of 493366
+ 235098 string characters out of 3137241
+ 364606 words of memory out of 3000000
+ 18750 multiletter control sequences out of 15000+200000
+ 117828 words of font info for 176 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
- 32i,12n,38p,320b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,9n,49p,536b,489s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/
-MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/
-fonts/enc/dvips/lm/lm-rm.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmbsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx
-10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx7.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/lm/lmmi7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmmib10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
-mib7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
-lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.p
-fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
-/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb>
-Output written on GreenwoodBanner.pdf (11 pages, 460136 bytes).
+iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKT
+eX 2.9/fonts/enc/dvips/lm/lm-mathex.enc}{C:/Program Files (x86)/MiKTeX 2.9/font
+s/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips
+/lm/lm-ts1.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.
+enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/lm/lmbxi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmib10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/lm/lmr5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/lm/lmri8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+sy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt
+9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb>
+Output written on GreenwoodBanner.pdf (53 pages, 949271 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 18470 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 728 PDF objects out of 1000 (max. 8388607)
+ 140 named destinations out of 1000 (max. 500000)
+ 20706 words of extra memory for PDF output out of 20736 (max. 10000000)
 

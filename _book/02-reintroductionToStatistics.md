@@ -84,44 +84,40 @@ will bypass some aspects of their research and just focus on differences in the
 sentence suggested among the three pictures. To get a sense of these data, 
 let's consider the first and last parts of the data set:
 
-(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
+(ref:tab2-1) First 5 and last 6 rows of the Mock Jury data set.
 
-\begin{table}
 
-\caption{(\#tab:Table2-1)(ref:tab2-1)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
-Subject & Attr & Crime & Years & Serious & Independent & Sincere\\
-\hline
-1 & Beautiful & Burglary & 10 & 8 & 9 & 8\\
-\hline
-2 & Beautiful & Burglary & 3 & 8 & 9 & 3\\
-\hline
-3 & Beautiful & Burglary & 5 & 5 & 6 & 3\\
-\hline
-4 & Beautiful & Burglary & 1 & 3 & 9 & 8\\
-\hline
-5 & Beautiful & Burglary & 7 & 9 & 5 & 1\\
-\hline
-$\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$\\
-\hline
-108 & Average & Swindle & 3 & 3 & 5 & 4\\
-\hline
-109 & Average & Swindle & 3 & 2 & 9 & 9\\
-\hline
-110 & Average & Swindle & 2 & 1 & 8 & 8\\
-\hline
-111 & Average & Swindle & 7 & 4 & 9 & 1\\
-\hline
-112 & Average & Swindle & 6 & 3 & 5 & 2\\
-\hline
-113 & Average & Swindle & 12 & 9 & 9 & 1\\
-\hline
-114 & Average & Swindle & 8 & 8 & 1 & 5\\
-\hline
-\end{tabular}
-\end{table}
+----------------------------------------------------------------------
+ Subject    Attr     Crime    Years   Serious   Independent   Sincere 
+--------- --------- -------- ------- --------- ------------- ---------
+    1     Beautiful Burglary   10        8           9           8    
+
+    2     Beautiful Burglary    3        8           9           3    
+
+    3     Beautiful Burglary    5        5           6           3    
+
+    4     Beautiful Burglary    1        3           9           8    
+
+    5     Beautiful Burglary    7        9           5           1    
+
+   ...       ...      ...      ...      ...         ...         ...   
+
+   108     Average  Swindle     3        3           5           4    
+
+   109     Average  Swindle     3        2           9           9    
+
+   110     Average  Swindle     2        1           8           8    
+
+   111     Average  Swindle     7        4           9           1    
+
+   112     Average  Swindle     6        3           5           2    
+
+   113     Average  Swindle    12        9           9           1    
+
+   114     Average  Swindle     8        8           1           5    
+----------------------------------------------------------------------
+
+Table: (\#tab:Table2-1) (ref:tab2-1)
 
 When working with data, we should always start with 
 summarizing the sample size. We will use ***n*** for the 
@@ -207,6 +203,7 @@ View(MockJury)
 head(MockJury)
 ```
 
+
 ```
 ##        Attr    Crime Years Serious exciting calm independent sincere warm
 ## 1 Beautiful Burglary    10       8        6    9           9       8    5
@@ -224,9 +221,11 @@ head(MockJury)
 ## 6       8        9    5           8      9             9     9     9
 ```
 
+
 ```r
 tail(MockJury)
 ```
+
 
 ```
 ##        Attr   Crime Years Serious exciting calm independent sincere warm
@@ -330,14 +329,14 @@ enhanced slightly to add better labels.
 
 (ref:fig2-1) Histogram and boxplot of suggested sentences in years.
 
+![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
 hist(MockJury$Years, xlab="Years", labels=T, main="Histogram of Years")
 boxplot(MockJury$Years, ylab="Years", main="Boxplot of Years")
 ```
-
-![(\#fig:Figure2-1)(ref:fig2-1)](02-reintroductionToStatistics_files/figure-latex/Figure2-1-1.pdf) 
 
 The distribution appears to have a strong right skew with three 
 observations at 15 years flagged as potential
@@ -451,12 +450,12 @@ more variability for the *Unattractive* group along with some potential outliers
 
 (ref:fig2-4) Side-by-side boxplot of Years based on picture groups. 
 
+![(\#fig:Figure2-4)(ref:fig2-4)](02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf) 
+
 
 ```r
 boxplot(Years~Attr,data=MockJury)
 ```
-
-![(\#fig:Figure2-4)(ref:fig2-4)](02-reintroductionToStatistics_files/figure-latex/Figure2-4-1.pdf) 
 
 The "~" (which is read as the *tilde* symbol, which you can find in the
 upper left corner of your keyboard) notation will be used in two ways this 
@@ -508,14 +507,14 @@ looks nice in these plots.] options for any beanplots you make:
 (ref:fig2-5) Beanplot of Years by picture group. Long, bold lines correspond 
 to mean of each group.
 
+![(\#fig:Figure2-5)(ref:fig2-5)](02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf) 
+
 
 ```r
 require(beanplot)
 beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
 ```
 
-![(\#fig:Figure2-5)(ref:fig2-5)](02-reintroductionToStatistics_files/figure-latex/Figure2-5-1.pdf) 
- 
 Figure \@ref(fig:Figure2-5) reinforces the strong right skews that were also 
 detected in the boxplots previously. The three large sentences of 15 years 
 can now be clearly identified, with one in the *Beautiful* group and two in 
@@ -658,6 +657,9 @@ head(data.frame(MockJury$Attr, MockJury$NotBeautiful))
 ## 6     Beautiful                 FALSE
 ```
 
+\newpage
+
+
 ```r
 tail(data.frame(MockJury$Attr, MockJury$NotBeautiful))
 ```
@@ -754,14 +756,14 @@ the two groups of interest here as seen in Figure \@ref(fig:Figure2-6).
 
 (ref:fig2-6) Boxplot and beanplot of the Years responses on the reduced data set. 
 
+![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
 boxplot(Years ~ Attr,data=MockJury2) 
 beanplot(Years ~ Attr,data=MockJury2,log="",col="bisque",method="jitter")
 ```
-
-![(\#fig:Figure2-6)(ref:fig2-6)](02-reintroductionToStatistics_files/figure-latex/Figure2-6-1.pdf) 
 
 The two-sample mean techniques you learned in your previous course all 
 start with comparing the means the two groups. We can obtain the two 
@@ -1238,6 +1240,8 @@ statistics of the results:
 (ref:fig2-9) Histogram (left, with counts in bars) and density curve (right) of 
 values of test statistic for 1,000 permutations. 
 
+![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
@@ -1249,8 +1253,6 @@ for (b in (1:B)){
 hist(Tstar, label=T)
 plot(density(Tstar), main="Density curve of Tstar")
 ```
-
-![(\#fig:Figure2-9)(ref:fig2-9)](02-reintroductionToStatistics_files/figure-latex/Figure2-9-1.pdf) 
 
 
 ```r
@@ -1280,6 +1282,8 @@ Figure \@ref(fig:Figure2-10), using the ``abline`` function.
 values of test statistic for 1,000 permutations with bold vertical line for
 value of observed test statistic. 
 
+![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
@@ -1289,8 +1293,6 @@ abline(v=Tobs, lwd=2, col="red")
 plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs, lwd=2, col="red")
 ```
-
-![(\#fig:Figure2-10)(ref:fig2-10)](02-reintroductionToStatistics_files/figure-latex/Figure2-10-1.pdf) 
 
 Second, we can calculate the exact number of permuted results that were larger 
 than what we observed. To calculate the proportion of the 1,000 values that were 
@@ -1361,6 +1363,8 @@ Figure \@ref(fig:Figure2-11) shows both cut-offs on the histogram and density cu
 permutations with bold lines for value of observed test statistic and its opposite
 value required for performing two-sided test.
 
+![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
@@ -1369,8 +1373,6 @@ abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar),main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
-
-![(\#fig:Figure2-11)(ref:fig2-11)](02-reintroductionToStatistics_files/figure-latex/Figure2-11-1.pdf) 
 
 In general, the ***one-sided test p-value*** is the proportion of the permuted
 results that are more extreme than observed in the direction of the *alternative*
@@ -1519,22 +1521,47 @@ population of interest. If we do not have RA, then causal inferences cannot be
 made. If we do not have a representative sample, then our inferences are
 limited to the sampled subjects. 
 
+\footnotesize
+
 (ref:tab2-2) Scope of inference summary.
 
-\begin{table}
 
-\caption{(\#tab:Table2-2)(ref:tab2-2)}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-Random Sampling/Random Assignment & Random Assignment (RA) -- Yes (controlled experiment) & Random Assignment (RA) -- No (observational study)\\
-\hline
-**Random Sampling (RS) -- Yes (or some method that results in a representative sample of population of interest)** & Because we have RS, we can generalize inferences to the population the RS was taken from. Because we have RA we can assume the groups were equivalent on all aspects except for the treatment and can establish causal inference. & Can generalize inference to population the RS was taken from but cannot establish causal inference (no RA -- cannot isolate treatment variable as only difference among groups, could be confounding variables).\\
-\hline
-**Random Sampling (RS) -- No (usually a convenience sample)** & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Can establish causal inference due to RA $\rightarrow$ the inference from this type of study applies only to the sample. & Cannot generalize inference to the population of interest because the sample was not random and could be biased -- may not be "representative" of the population of interest. Cannot establish causal inference due to lack of RA of the treatment.\\
-\hline
-\end{tabular}
-\end{table}
+---------------------------------------------------------------------------------------
+**Random\                 **Random Assignment (RA)\     **Random Assignment (RA)\      
+Sampling/Random\          -- Yes (controlled            -- No (observational study)**  
+Assignment**              experiment)**                                                
+------------------------- ----------------------------- -------------------------------
+**Random Sampling (RS)\   Because we have RS, we can\   Can generalize inference to\   
+-- Yes (or some method\   generalize inferences to the\ population the RS was taken\   
+that results in a\        population the RS was taken\  from but cannot establish\     
+representative sample of\ from. Because we have\        causal inference (no RA\       
+population of\            RA we can assume the groups\  -- cannot isolate treatment\   
+interest)**               were equivalent on all        variable as only difference\   
+                          aspects\                      among groups, could be\        
+                          except for the treatment\     confounding variables).        
+                          and can establish causal                                     
+                          inference.\                                                  
+
+**Random Sampling (RS)\   Cannot generalize inference   Cannot generalize inference    
+-- No (usually a\         to\                           to\                            
+convenience sample)**     the population of interest\   the population of interest\    
+                          because the sample was\       because the sample was\        
+                          not random and could be\      not random and could be\       
+                          biased -- may not be\         biased -- may not be\          
+                          "representative" of the\      "representative" of the\       
+                          population of interest.\      population of interest.\       
+                          Can establish causal\         Cannot establish causal\       
+                          inference due to RA           inference due to lack of RA    
+                          $\rightarrow$\                of\                            
+                          the inference from this type  the treatment.                 
+                          of\                                                          
+                          study applies only to the                                    
+                          sample.                                                      
+---------------------------------------------------------------------------------------
+
+Table: (\#tab:Table2-2) (ref:tab2-2)
+
+\normalsize
 
 A simple example helps to clarify how the scope of inference can change. Suppose
 we are interested in studying the GPA of students. If we had taken a random 
@@ -1631,20 +1658,16 @@ remember all the possibilities.
 (ref:tab2-3) Table of decisions and truth scenarios in a hypothesis 
 testing situation. But we never know the truth in a real situation. 
 
-\begin{table}
 
-\caption{(\#tab:Table2-3)(ref:tab2-3)}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-  & $\mathbf{H_0}\textbf{ True}$ & $\mathbf{H_0}\textbf{ False}$\\
-\hline
-$\textbf{FTR }\mathbf{H_0}$ & Correct decision & Type II error\\
-\hline
-$\textbf{Reject }\mathbf{H_0}$ & Type I error & Correct decision\\
-\hline
-\end{tabular}
-\end{table}
+------------------------------------------------------------------------------
+&nbsp;                    $\mathbf{H_0}$ **True**   $\mathbf{H_0}$ **False**  
+------------------------- ------------------------- --------------------------
+**FTR** $\mathbf{H_0}$    Correct decision          Type II error             
+
+**Reject** $\mathbf{H_0}$ Type I error              Correct decision          
+------------------------------------------------------------------------------
+
+Table: (\#tab:Table2-3) (ref:tab2-3)
 
 In comparing different procedures, there is an interest in studying the rate or
 probability of Type I and II errors. The probability of a Type I error was 
@@ -1704,8 +1727,6 @@ and significance level.
 inference discussion. 
 -------------------------------------------------------------------------------
 
-\newpage
-
 ## Connecting randomization (nonparametric) and parametric tests {#section2-6}
 
 In developing statistical inference techniques, we need to define the test
@@ -1737,7 +1758,7 @@ $$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}},$$
 
 where $s_1^2$ and $s_2^2$ are the sample variances for the two groups, $n_1$ and 
 $n_2$ are the sample sizes for the two groups, and the 
-***pooled sample standard deviation*** , 
+***pooled sample standard deviation***, 
 
 $$s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}.$$
 
@@ -1769,8 +1790,6 @@ Usually this uncertainty will not cause any substantive problems -- but do not
 be surprised if your results vary from a colleagues if you are both analyzing 
 the same data set or if you re-run your permutation code. 
 
-(ref:fig2-12) Permutation distribution of the $t$-statistic
-
 
 ```r
 par(mfrow=c(1,2))
@@ -1788,15 +1807,6 @@ Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- t.test(Years ~ shuffle(Attr), data=MockJury2, var.equal=T)$statistic
 }
-hist(Tstar, labels=T)
-abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-plot(density(Tstar), main="Density curve of Tstar")
-abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-```
-
-![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf) 
-
-```r
 pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ```
 
@@ -1804,6 +1814,18 @@ pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ##     t 
 ## 0.031
 ```
+
+
+```r
+hist(Tstar, labels=T)
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=c(-1,1)*Tobs, lwd=2, col="red")
+```
+
+(ref:fig2-12) Permutation distribution of the $t$-statistic
+
+![(\#fig:Figure2-12)(ref:fig2-12)](02-reintroductionToStatistics_files/figure-latex/Figure2-12-1.pdf) 
 
 The parametric version of these results is based on using what is called the
 ***two-independent sample t-test***. There are actually two versions of this 
@@ -1833,7 +1855,7 @@ $t$-distribution looks more and more like a ***standard normal distribution***
 
 (ref:fig2-13) Plots of $t$ and normal distributions
 
-![(\#fig:Figure2-13)(ref:fig2-13)](chapter1_files/image045.png) 
+![(\#fig:Figure2-13)(ref:fig2-13)](chapter1_files/image045small.png) 
 
 To get the p-value for the parametric $t$-test, we need to calculate the test
 statistic and $df$, then look up the areas in the tails of the $t$-distribution
@@ -1875,7 +1897,7 @@ happened to be here.
 
 (ref:fig2-14) Plot of permutation and $t$ distribution with $df=73$. 
 
-![(\#fig:Figure2-14)(ref:fig2-14)](chapter1_files/image047.png) 
+![(\#fig:Figure2-14)(ref:fig2-14)](chapter1_files/image047small.png) 
 
 In your previous statistics course, you might have used an applet or a table to 
 find p-values such as what was provided in the previous R output. When not 
@@ -1929,6 +1951,8 @@ to work correctly, although this happened in the previous example. The
 parametric certain conditions to be met for the sampling distribution of the 
 statistic to follow the named distribution and provide accurate p-values. The
 conditions for the equal variance t-test are:
+
+\newpage
 
 1. **Independent observations**: Each observation obtained is unrelated to all other
 observations. To assess this, consider whether anything in the data collection
@@ -1993,21 +2017,11 @@ interested in whether Males and Females had different average GPAs. First,
 we can take a look at the difference in the responses by groups based on the
 output and as displayed in Figure \@ref(fig:Figure2-15). 
 
-(ref:fig2-15) Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex.
-
 
 ```r
 s217 <- read.csv("http://www.math.montana.edu/courses/s217/documents/s217.csv")
 require(mosaic)
-par(mfrow=c(1,2))
-boxplot(GPA~Sex, data=s217)
 require(beanplot)
-beanplot(GPA~Sex, data=s217, log="", col="lightblue", method="jitter")
-```
-
-![(\#fig:Figure2-15)(ref:fig2-15)](02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf) 
-
-```r
 mean(GPA~Sex, data=s217)
 ```
 
@@ -2024,6 +2038,17 @@ favstats(GPA~Sex, data=s217)
 ##   Sex  min  Q1 median   Q3 max     mean        sd  n missing
 ## 1   F 2.50 3.1  3.400 3.70   4 3.338378 0.4074549 37       0
 ## 2   M 1.96 2.8  3.175 3.46   4 3.088571 0.4151789 42       0
+```
+
+(ref:fig2-15) Side-by-side boxplot and beanplot of GPAs of STAT 217 students by sex.
+
+![(\#fig:Figure2-15)(ref:fig2-15)](02-reintroductionToStatistics_files/figure-latex/Figure2-15-1.pdf) 
+
+
+```r
+par(mfrow=c(1,2))
+boxplot(GPA~Sex, data=s217)
+beanplot(GPA~Sex, data=s217, log="", col="lightblue", method="jitter")
 ```
 
 In these data, the distributions of the GPAs look to be left skewed but maybe not
@@ -2081,10 +2106,13 @@ Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- t.test(GPA~shuffle(Sex), data=s217, var.equal=T)$statistic
 }
+pdata(abs(Tstar),abs(Tobs),lower.tail=F)
 ```
 
 (ref:fig2-16) Histogram and density curve of permutation distribution of test
 statistic for STAT 217 GPAs.
+
+![(\#fig:Figure2-16)(ref:fig2-16)](02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf) 
 
 
 ```r
@@ -2093,18 +2121,6 @@ hist(Tstar,labels=T)
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-```
-
-![(\#fig:Figure2-16)(ref:fig2-16)](02-reintroductionToStatistics_files/figure-latex/Figure2-16-1.pdf) 
-
-
-```r
-pdata(abs(Tstar),abs(Tobs),lower.tail=F)
-```
-
-```
-##     t 
-## 0.005
 ```
 
 Here is a full write-up of the results using all 6+ hypothesis testing steps, using the permutation results:
@@ -2157,6 +2173,8 @@ Here is a full write-up of the results using all 6+ hypothesis testing steps, us
     a difference in mean GPA (female-male or male-female) of 0.25 points or more 
     if there in fact no difference in true mean GPA between females and males 
     in STAT 217 in a particular semester. 
+
+\newpage
 
 5. Decision
 
@@ -2222,6 +2240,8 @@ were sampled one time each, the 4<sup>th</sup> observation was sampled three
 times, and the 1<sup>st</sup>, 3<sup>rd</sup>, 5<sup>th</sup>, and many others 
 were not sampled at all. Bootstrap sampling thus picks some observations 
 multiple times and to do that it has to ignore some observations. 
+
+\newpage
 
 
 ```r
@@ -2289,40 +2309,46 @@ code is very similar to the permutation code except that we apply the
 ``resample`` function to the entire data set as opposed to the ``shuffle``
 function being applied to the explanatory variable. 
 
-(ref:fig2-18) Histogram and density curve of bootstrap distributions of 
-difference in sample mean ``Years`` with vertical line for the observed 
-difference in the means of 1.84 years.
-
 
 ```r
 par(mfrow=c(1,2))
 Tobs <- diffmean(Years ~ Attr, data=MockJury2); Tobs
+```
+
+```
+## diffmean 
+## 1.837127
+```
+
+```r
 B <- 1000
 Tstar <- matrix(NA,nrow=B)
 for (b in (1:B)){
   Tstar[b] <- diffmean(Years ~ Attr, data=resample(MockJury2))
   }
-hist(Tstar, labels=T)
-abline(v=Tobs, col="red", lwd=2)
-plot(density(Tstar), main="Density curve of Tstar")
-abline(v=Tobs, col="red", lwd=2)
-```
-
-![(\#fig:Figure2-18)(ref:fig2-18)](02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf) 
-
-```r
 favstats(Tstar)
 ```
 
 ```
-## diffmean 
-## 1.837127 
 ##         min       Q1   median       Q3      max     mean        sd    n
 ##  -0.3627312 1.305773 1.833091 2.385281 4.988756 1.854428 0.8438987 1000
 ##  missing
 ##        0
 ```
 
+(ref:fig2-18) Histogram and density curve of bootstrap distributions of 
+difference in sample mean ``Years`` with vertical line for the observed 
+difference in the means of 1.84 years.
+
+![(\#fig:Figure2-18)(ref:fig2-18)](02-reintroductionToStatistics_files/figure-latex/Figure2-18-1.pdf) 
+
+
+```r
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=2)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=2)
+```
 In this situation, the observed difference in the mean sentences is 1.84 years
 (Unattractive-Average), which is the vertical line in Figure \@ref(fig:Figure2-18).
 The bootstrap distribution shows the results for the difference in the sample 
@@ -2395,6 +2421,8 @@ distribution residing in ``Tstar``.
 (ref:fig2-19) Histogram and density curve of bootstrap distribution with 
 95% bootstrap confidence intervals displayed (vertical lines).
 
+![(\#fig:Figure2-19)(ref:fig2-19)](02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
@@ -2403,8 +2431,6 @@ abline(v=quantiles$quantile, col="blue", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=quantiles$quantile, col="blue", lwd=3)
 ```
-
-![(\#fig:Figure2-19)(ref:fig2-19)](02-reintroductionToStatistics_files/figure-latex/Figure2-19-1.pdf) 
 
 Although confidence intervals can exist without referencing hypotheses, we can 
 revisit our previous $H_0: \mu_{Unattr} = \mu_{Avg}$. This null hypothesis is
@@ -2553,9 +2579,7 @@ To finish this example, R can be used to help you do calculations much like a
 calculator except with much more power "under the hood". You have to make sure 
 you are careful with using ``( )`` to group items and remember that the 
 asterisk (*) is used for multiplication in R. We need the pertinent information
-which is available from the ``favstats`` output. Two versions of this output are
-provided below, the first is how the output appears directly from R, the second
-is a formatted table has the relevant information bolded which is needed to 
+which is available from the ``favstats`` output repeated below to 
 calculate the confidence interval "by hand" using R. 
 
 
@@ -2568,15 +2592,6 @@ favstats(Years~Attr, data=MockJury2)
 ## 1      Average   1  2      3  5  12 3.973684 2.823519 38       0
 ## 2 Unattractive   1  2      5 10  15 5.810811 4.364235 37       0
 ```
-
-
-----------------------------------------------------------------------------------
-      Attr        min   Q1   median   Q3   max    mean      sd      n     missing 
----------------- ----- ---- -------- ---- ----- -------- -------- ------ ---------
-  **Average**      1    2      3      5    12   **3.97** **2.82** **38**     0    
-
-**Unattractive**   1    2      5      10   15   **5.81** **4.36** **37**     0    
-----------------------------------------------------------------------------------
 
 Start with typing the following command to calculate $s_p$ and store it in a 
 variable named ``sp``:
@@ -2830,6 +2845,8 @@ difference in sample mean GPAs (male minus female) with observed difference
 (solid vertical line) and quantiles that delineate the 90% confidence intervals
 (dashed vertical lines). 
 
+![(\#fig:Figure2-21)(ref:fig2-21)](02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf) 
+
 
 ```r
 par(mfrow=c(1,2))
@@ -2840,9 +2857,6 @@ plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs,col="red",lwd=2)
 abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
 ```
-
-![(\#fig:Figure2-21)(ref:fig2-21)](02-reintroductionToStatistics_files/figure-latex/Figure2-21-1.pdf) 
-
 
 In the previous output, the parametric 90% confidence interval is from 
 0.095 to 0.404, suggesting similar results again from the two approaches once 
@@ -2929,15 +2943,16 @@ data=\textcolor{red}{DATASETNAME}, conf.level=0.95)
     
 * beanplot(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME})
 
+    * Requires the ``beanplot`` package is loaded. 
+    
     * Makes a beanplot of a variable named Y for groups in X from the data set. 
     
-    * Requires the ``beanplot`` package is loaded. 
-
 * mean(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}); sd(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}) 
+
+    * This usage of ``mean`` and ``sd`` requires the ``mosaic`` package.
 
     * Provides the mean and sd of responses of Y for each group described in X. 
     
-    * This usage of ``mean`` and ``sd`` requires the ``mosaic`` package.
 
 * favstats(\textcolor{red}{Y}~\textcolor{red}{X}, data=\textcolor{red}{DATASETNAME}) 
 

@@ -16,7 +16,8 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT')
+knitr::opts_chunk$set(cache = T,fig.width = 5, fig.height = 3.5,fig.pos='HT',
+                      message=F,warning=F)
 options(show.signif.stars = FALSE)
 ```
 
@@ -253,7 +254,7 @@ model assumptions.
 (ref:fig4-1) Beanplot of paper towel data by ``Drops`` (x-axis) and ``Brand`` 
 (side of bean, shaded area for ``Brand`` *B1*. 
 
-```{r Figure4-1,fig.cap="(ref:fig4-1)", message=F,warning=F}
+```{r Figure4-1,fig.cap="(ref:fig4-1)"}
 require(beanplot)
 beanplot(responses ~ brand*drops, data=pt, side="b", col=list("lightblue","white"),
          xlab="Drops", ylab="Time", method="jitter",log="")
@@ -280,7 +281,11 @@ everything clear.
 
 (ref:fig4-2) Interaction plot of the paper towel data with ``Drops`` on the x-axis. 
 
-```{r Figure4-2,fig.cap="(ref:fig4-2)",message=F,warning=F}
+```{r Figure4-2,fig.cap="(ref:fig4-2)",echo=F}
+intplot(responses ~ brand*drops, data=pt,cex.main=1,cex.leg=0.75,xleg=25)
+```
+
+```{r eval=F}
 intplot(responses ~ brand*drops, data=pt)
 ```
 
@@ -292,7 +297,11 @@ but not always. Try both and decide on the one that you like best.
 
 (ref:fig4-3) Interaction plot of paper towel data with ``Brand`` on the x-axis. 
 
-```{r Figure4-3, fig.cap="(ref:fig4-3)",message=F,warning=F}
+```{r Figure4-3, fig.cap="(ref:fig4-3)",echo=F}
+intplot(responses ~ drops*brand, data=pt,cex.main=1,cex.leg=0.75,xleg=2.5)
+```
+
+```{r eval=F}
 intplot(responses ~ drops*brand, data=pt)
 ```
 
@@ -362,29 +371,33 @@ levels, or any interaction between them.
 
 (ref:fig4-4) Interaction plots of four possible scenarios in the paper towel study.
 
-```{r Figure4-4, fig.cap="(ref:fig4-4)",echo=F,message=F,warning=F}
+```{r Figure4-4, fig.cap="(ref:fig4-4)",echo=F,fig.width=6.5,fig.height=4}
 lm1<-lm(responses~brand*dropsf,data=pt)
 res1<-residuals(lm1)
 
 par(mfrow=c(2,2))
+old.par <- par(mai=c(0.75,0.75,0.25,0.25))
 #Scenario 1: No effects
 m1<-lm(responses~1,data=pt)
 pt$r1<-fitted(m1)+res1
-intplot(r1~brand*drops,ylim=c(0,3.2),data=pt,main="(a) Scenario 1: No effects",col=c(1,2),lwd=2)
+intplot(r1~brand*drops,ylim=c(0,3.2),data=pt,
+        main="(a) Scenario 1: No effects",col=c(1,2),lwd=2,cex.main=1,cex.leg=0.75,xlim=c(0.8,3.8),
+        x.leg=3.2,cex.lab=0.75)
 #Scenario 2: A effect only
 m2<-lm(responses~brand,data=pt)
 pt$r2<-fitted(m2)+res1
-intplot(r2~brand*drops,ylim=c(0,3.2),data=pt,main="(b) Scenario 2: A only",col=c(1,2),lwd=2)
-
+intplot(r2~brand*drops,ylim=c(0,3.2),data=pt,main="(b) Scenario 2: A only",col=c(1,2),lwd=2,cex.main=1,cex.leg=0.75,xlim=c(0.8,3.8),
+        x.leg=3.2,cex.lab=0.75)
 #Scenario 3: B effect only
 m3<-lm(responses~drops,data=pt)
 pt$r3<-fitted(m3)+res1
-intplot(r3~brand*drops,ylim=c(0,3.2),data=pt,main="(c) Scenario 3: B only",col=c(1,2),lwd=2)
-
+intplot(r3~brand*drops,ylim=c(0,3.2),data=pt,main="(c) Scenario 3: B only",col=c(1,2),lwd=2,cex.main=1,cex.leg=0.75,xlim=c(0.8,3.8),
+        x.leg=3.2,cex.lab=0.75)
 #Scenario 4: A and B additive
 m4<-lm(responses~brand+drops,data=pt)
 pt$r4<-fitted(m4)+res1
-intplot(r4~brand*drops,ylim=c(0,3.2),data=pt,main="(d) Scenario 4: A and B additive",col=c(1,2),lwd=2)
+intplot(r4~brand*drops,ylim=c(0,3.2),data=pt,main="(d) Scenario 4: A and B additive",col=c(1,2),lwd=2,cex.main=1,cex.leg=0.75,xlim=c(0.8,3.8),
+        x.leg=3.2,cex.lab=0.75)
 ```
 
 Scenario 2 (Figure \@ref(fig:Figure4-4) panel (b))
@@ -425,11 +438,13 @@ of the results in Figure \@ref(fig:Figure4-2).
 (ref:fig4-5) Interaction plot of Scenario 5 where it appears that an 
 interaction is present. 
 
-```{r Figure4-5, fig.cap="(ref:fig4-5)",echo=F,message=F,warning=F}
+```{r Figure4-5, fig.cap="(ref:fig4-5)",echo=F,fig.height=3,fig.width=4.5}
+old.par <- par(mai=c(1,1,0.75,1))
 m5<-lm(responses~brand*drops,data=pt)
 pt$r5<-fitted(m5)+res1
 par(mfrow=c(1,1))
-intplot(r5~brand*drops,ylim=c(0,3.2),data=pt,main="Scenario 5: Interaction between A and B",col=c(1,2),lwd=2)
+intplot(r5~brand*drops,ylim=c(0,3.2),data=pt,main="Scenario 5: Interaction between A and B",col=c(1,2),lwd=2,cex.leg=0.75,x.leg=3.2,xlim=c(0.8,3.8),
+        cex.lab=0.75,cex.main=1)
 ```
 
 The typical modeling protocol is to start with assuming that Scenario 5 is a possible
@@ -575,8 +590,10 @@ error need to equal $N-1$, just like in the One-Way ANOVA table.
 
 (ref:tab4-1) Interaction Model ANOVA Table. 
 
-```{r Table4-1,echo=F}
-columnHeaders <- c("Source","DF","SS","MS","F-statistics")
+```{r Table4-1,echo=F,results="asis"}
+columnHeaders <- c("**Source**&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "**DF**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "**SS**","**MS**","**F-statistics**")
 row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
           "$\\text{MS}_A/\\text{MS}_E$")
 row2 <- c("B","$K-1$","$\\text{SS}_B$","$\\text{MS}_B=\\text{SS}_B/\\text{df}_B$",
@@ -589,13 +606,18 @@ row4 <- c("Error","$N-J-K+1$","$\\text{SS}_E$","$\\text{MS}_E=\\text{SS}_E/\\tex
 row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
           "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
 x <- matrix(c(row1,row2,row3,row4,row5),ncol=5,byrow=TRUE)
-kable(x,caption="(ref:tab4-1)",col.names=columnHeaders,escape=F)
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table4-1) (ref:tab4-1)",
+             split.table = 300, justify="left")
 ```
 
 (ref:tab4-2) Additive Model ANOVA Table. 
 
-```{r Table4-2,echo=F}
-columnHeaders <- c("Source","DF","SS","MS","F-statistics")
+```{r Table4-2,echo=F,results="asis"}
+columnHeaders <- c("**Source**&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "**DF**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "**SS**","**MS**","**F-statistics**")
 row1 <- c("A","$J-1$","$\\text{SS}_A$","$\\text{MS}_A=\\text{SS}_A/\\text{df}_A$",
           "$\\text{MS}_A/\\text{MS}_E$")
 row2 <- c("B","$K-1$","$\\text{SS}_B$","$\\text{MS}_B=\\text{SS}_B/\\text{df}_B$",
@@ -605,8 +627,10 @@ row4 <- c("Error","$N-J-K+1$","$\\text{SS}_E$","$\\text{MS}_E=\\text{SS}_E/\\tex
 row5 <- c(colFmtBold("Total","red"),"$\\color{red}{\\mathbf{N-1}}$",
           "$\\color{red}{\\textbf{SS}_{\\textbf{Total}}}$","","")
 x <- matrix(c(row1,row2,row4,row5),ncol=5,byrow=TRUE)
-library(knitr)
-kable(x,caption="(ref:tab4-2)",col.names=columnHeaders,escape=F)
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table4-2) (ref:tab4-2)",
+             split.table = 300, justify="left")
 ```
 
 The mean squares are formed by taking the sums of squares (we'll let R find those
@@ -631,7 +655,9 @@ evidence to suggest that the interaction is "real" and we get that through the
 interaction hypothesis test. To fit the interaction model using ``lm``, 
 the general formulation is ``lm(y ~ x1*x2, data=...)``. The
 order of the variables doesn't matter and the most important part of the model,
-to start with, relates to the interaction of the variables. The ANOVA table output
+to start with, relates to the interaction of the variables. 
+
+The ANOVA table output
 shows the results for the interaction model obtained by running the ``anova``
 function on the model called ``m1``. Specifically, the test that 
 $H_0: \text{ All } \omega_{jk}\text{'s} = 0$ has a
@@ -648,14 +674,6 @@ m1<-lm(responses ~ brand*drops, data=pt)
 anova(m1)
 ```
 
-```{r echo=F}
-require(pander)
-t <- anova(m1)
-emphasize.strong.rows(3)
-pander(anova(m1),add.significance.stars=F,
-      caption="Interaction ANOVA table with interaction row in bold.")
-```
-
 It is useful to display the estimates from this model and we can utilize
 ``plot(allEffects(modelname))`` to visualize the results for the terms 
 in our models. If we turn on the options for ``grid=T``, ``multiline=T``, 
@@ -669,7 +687,7 @@ for the means instead of the 1 standard error used above.
 
 (ref:fig4-6) Plot of estimated results of interaction model. 
 
-```{r Figure4-6,fig.cap="(ref:fig4-6)",warning=F,message=F}
+```{r Figure4-6,fig.cap="(ref:fig4-6)",echo=F,fig.width=6,fig.asp=.75}
 require(effects)
 plot(allEffects(m1), grid=T, multiline=T, ci.style="bars")
 ```
@@ -799,11 +817,12 @@ to the coefficients just discussed.
 results for two brands and right panel for number of drops of water, each after
 controlling for the other.
 
-```{r Figure4-7, fig.cap="(ref:fig4-7)",warning=F,message=F}
+```{r Figure4-7, fig.cap="(ref:fig4-7)"}
 require(effects)
 plot(allEffects(m2))
 ```
 
+\newpage
 
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
 
@@ -818,13 +837,25 @@ Figure \@ref(fig:Figure4-8).
 
 (ref:fig4-8) Beanplot and interaction plot of the tooth growth data set.
 
-```{r Figure4-8,fig.cap="(ref:fig4-8)",message=FALSE,warning=FALSE}
+```{r Figure4-8,fig.cap="(ref:fig4-8)",echo=F,fig.height=4,fig.width=6}
+data(ToothGrowth)
+par(mfrow=c(1,2))
+beanplot(len ~ supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
+         xlim=c(0.5,3.5),main="Beanplot", col=list("white","orange"),
+         xlab="Dosage", ylab="Tooth Growth")
+legend("bottomright", bty="n", c("VC","OJ"), fill=c("white","orange"))
+intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), 
+        main="Interaction Plot", ylim=c(-5,40),xlim=c(0.5,3.5),cex.main=1,
+        cex.leg=0.75,x.leg=2.5,y.leg=5,cex.lab=0.75)
+```
+
+```{r eval=F}
 data(ToothGrowth)
 par(mfrow=c(1,2))
 beanplot(len ~ supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
          main="Beanplot", col=list("white","orange"), xlab="Dosage",
          ylab="Tooth Growth")
-legend("topright", bty="n", c("VC","OJ"), fill=c("white","orange"))
+legend("bottomright", bty="n", c("VC","OJ"), fill=c("white","orange"))
 intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), 
         main="Interaction Plot", ylim=c(-5,40))
 ```
@@ -934,10 +965,13 @@ tests and estimates for *Dose* and *Delivery method*.
         there is not strong evidence of a problem with the equal variance 
         assumption.
         
-        (ref:fig4-9) Diagnostic plots for the interaction model for Tooth 
-        Growth. 
+        ```{r Figure4-9,fig.cap="Diagnostic plots for the interaction model for Tooth         Growth.",echo=F,fig.height=4,fig.width=6}
+        par(mfrow=c(2,2))
+        old.par <- par(mai=c(0.75,0.75,0.5,0.5))
+        plot(TG2, pch=16,cex.main=0.75) 
+        ```
         
-        ```{r Figure4-9,fig.cap="(ref:fig4-9)"}
+        ```{r eval=F}
         par(mfrow=c(2,2))
         plot(TG2, pch=16) 
         ```
@@ -947,6 +981,8 @@ tests and estimates for *Dose* and *Delivery method*.
         * The QQ-Plot in Figure \@ref(fig:Figure4-9) does not suggest a 
         problem with this assumption. 
         
+\newpage
+
 3. **Calculate the test statistic for the Interaction test.**
 
     ```{r}
@@ -1029,7 +1065,21 @@ our results.
 
 (ref:fig4-10) Term-plot for the estimated interaction for the Tooth Growth data. 
 
-```{r Figure4-10,fig.cap="(ref:fig4-10)",warning=F,message=F}
+```{r Figure4-10,fig.cap="(ref:fig4-10)",echo=F}
+plot(allEffects(TG2), grid=T, multiline=T, ci.style="bars",cex=1)
+```
+
+(ref:fig4-11) Interaction plot with added CLD from Tukey's HSD. 
+
+```{r Figure4-11,fig.cap="(ref:fig4-11)",echo=F,fig.pos="HB!"}
+par(mfrow=c(1,1))
+old.par <- par(mai=c(0.85,1,0.5,1))
+intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
+        cld=T, main="Interaction Plot with CLD",x.leg=2.5,y.leg=15,
+        cex.main=1,cex.lab=0.75,cex.axis=0.75)
+```
+
+```{r eval=F}
 plot(allEffects(TG2), grid=T, multiline=T, ci.style="bars")
 ```
 
@@ -1045,13 +1095,11 @@ Figure \@ref(fig:Figure4-11). Sometimes it is hard to see the letters and so
 there is also a ``cldshift=...`` option to move the letters up or down, here a 
 value of 1 seemed to work. 
 
-(ref:fig4-11) Interaction plot with added CLD from Tukey's HSD. 
-
-```{r Figure4-11,fig.cap="(ref:fig4-11)",message=F,warning=F}
+```{r eval=F}
 intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
         cld=T, main="Interaction Plot with CLD")
 ```
-    
+
 The interpretation of the previous hypothesis test result can be concluded 
 with the following discussion. 
 Generally increasing the dosage increases the amount of mean growth except for
@@ -1117,15 +1165,23 @@ differences between the income groups. If there is no interaction present, then
 this suggests that we might be in Scenario 2 or 3 where a single main effect of
 interest is present. 
 
-(ref:fig4-12) Interaction plot of ``prodebt`` by income group and buy cigarettes 
-(0=no, 1=yes).
-
-```{r Figure4-12,fig.cap="(ref:fig4-12)",message=F,warning=F}
+```{r}
 require(faraway)
 data(debt)
 debt$incomegp <- factor(debt$incomegp)
 debt$cigbuy <- factor(debt$cigbuy)
 debtc <- na.omit(debt)
+```
+
+(ref:fig4-12) Interaction plot of ``prodebt`` by income group and buy cigarettes 
+(0=no, 1=yes).
+
+```{r Figure4-12,fig.cap="(ref:fig4-12)",echo=F,fig.height=3.75}
+intplot(prodebt ~ cigbuy*incomegp, data=debtc, col=c(1,3), lwd=2,cex.main=1,
+        cex.lab=0.75,xlim=c(0.5,6.5),x.leg=5.5)
+```
+
+```{r eval=F}
 intplot(prodebt ~ cigbuy*incomegp, data=debtc, col=c(1,3), lwd=2)
 ```
 
@@ -1181,11 +1237,17 @@ here. No causal inferences are possible because this is an observational study.
 (ref:fig4-13) Diagnostic plot for ``prodebt`` by income group and buy 
 cigarettes/not interaction model.
 
-```{r Figure4-13,fig.cap="(ref:fig4-13)"}
+```{r Figure4-13,fig.cap="(ref:fig4-13)",echo=F,fig.height=3.75,fig.width=6}
+par(mfrow=c(2,2))
+old.par <- par(mai=c(0.75,0.75,0.3,0.25))
+plot(debt1,cex.lab=0.75)
+```
+ 
+```{r eval=F}
 par(mfrow=c(2,2))
 plot(debt1)
 ```
- 
+
 1. **Hypotheses (Two sets apply when the additive model is the focus!):**
 
     * $H_0$: No difference in means for ``prodebt`` for income groups in 
@@ -1210,14 +1272,18 @@ plot(debt1)
     
 2. **Validity conditions -- discussed above but with new plots for the additive:**
 
-    (ref:fig4-14) Diagnostic plot for ``prodebt`` by income group and buy 
-    cigarettes/not
-    
-    ```{r Figure4-14,fig.cap="(ref:fig4-14)"}
+    ```{r Figure4-14,fig.cap="Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not",echo=F,fig.height=3.75,fig.width=6}
+    debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
+    par(mfrow=c(2,2))
+    old.par <- par(mai=c(0.75,0.75,0.3,0.25))
+    plot(debt1r,cex.lab=0.75)
+    ```
+
+    ```{r eval=F}
     debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
     plot(debt1r)
     ```
-
+    
     * Constant Variance:
     
         * In the Residuals vs Fitted and the Scale-Location plots in 
@@ -1287,10 +1353,10 @@ plot(allEffects(debt1r))
 ```
 
 The estimated coefficients can also be
-interesting to interpret for the additive model. Here is the model summary:
+interesting to interpret for the additive model. Here are the model summary coefficients:
 
 ```{r}
-summary(debt1r)
+summary(debt1r)$coefficients
 ```
 
 In the model, the baseline group is for non-cigarette buyers (``cigbuy=0``)
@@ -1308,30 +1374,36 @@ six combinations can be found in Table \@ref(tab:Table4-3).
 (ref:tab4-3) Calculations to construct the estimates for all combinations
 of variables for the ``prodebt`` additive model.
 
+\small
 
-```{r Table4-3,echo=F}
-columnHeaders <- c("$\\color{red}{\\text{Cig Buy}}$",
-                   "$\\color{blue}{\\textbf{Income Group 1}}$",
-                   "$\\color{blue}{\\textbf{Income Group 2}}$",
-                   "$\\color{blue}{\\textbf{Income Group 3}}$",
-                   "$\\color{blue}{\\textbf{Income Group 4}}$",
-                   "$\\color{blue}{\\textbf{Income Group 5}}$")
-row1 <- c("$\\color{red}{\\text{0:}\\text{No}}$",
+```{r Table4-3,echo=F,results="asis"}
+columnHeaders <- c("$\\color{red}{\\text{Cig}}$\\\n $\\color{red}{\\text{Buy}}$",
+      "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 1}}$",
+      "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 2}}$",
+      "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 3}}$",
+      "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 4}}$",
+      "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 5}}$")
+row1 <- c("$\\color{red}{\\text{0:No}}$",
           "$\\hat{\\alpha} ={\\small 3.055}$",
-          "$\\hat{\\alpha} + \\hat{\\tau}_2={\\small 3.055 + 0.016} = {\\small 3.071}$",
-          "$\\hat{\\alpha} + \\hat{\\tau}_3 =\\small{3.055 + 0.175} = \\small{3.230}$",
-          "$\\hat{\\alpha} + \\hat{\\tau}_4 =\\small{3.055 + 0.169} = \\small{3.224}$",
-          "$\\hat{\\alpha} + \\hat{\\tau}_5 =\\small{3.055 + 0.468} = \\small{3.523}$"
+          "$\\hat{\\alpha} + \\hat{\\tau}_2$\\\n $=3.055 + 0.016$\\\n $= 3.071$",
+          "$\\hat{\\alpha} + \\hat{\\tau}_3$\\\n $=3.055 + 0.175$\\\n $=3.230$",
+          "$\\hat{\\alpha} + \\hat{\\tau}_4$\\\n $=3.055 + 0.169$\\\n $=3.224$",
+          "$\\hat{\\alpha} + \\hat{\\tau}_5$\\\n $=3.055 + 0.468$\\\n $=3.523$\\\n"
           )
 row2 <- c("$\\color{red}{\\text{1:}\\text{Yes}}$",
-          "$\\hat{\\alpha}+\\hat{\\gamma}_2={\\small 3.055 -0.106=2.949}$",
-          "$\\hat{\\alpha}+\\hat{\\tau}_2+\\hat{\\gamma}_2={\\small 3.055+0.016}\\small{-0.106}=\\small{2.965}$",
-          "$\\hat{\\alpha}+\\hat{\\tau}_3+\\hat{\\gamma}_2={\\small 3.055+0.175}\\small{-0.106}=\\small{3.124}$",
-          "$\\hat{\\alpha}+\\hat{\\tau}_4+\\hat{\\gamma}_2={\\small 3.055+0.169}\\small{-0.106}=\\small{3.118}$",
-          "$\\hat{\\alpha}+\\hat{\\tau}_5+\\hat{\\gamma}_2={\\small 3.055+0.468 -0.106} ={\\small 3.417}$")
+          "$\\hat{\\alpha}+\\hat{\\gamma}_2$\\\n $=3.055$\\\n $-0.106$\\\n $=2.949$",
+          "$\\hat{\\alpha}+\\hat{\\tau}_2+\\hat{\\gamma}_2$\\\n $=3.055+0.016$\\\n $-0.106$\\\n $=2.965$",
+          "$\\hat{\\alpha}+\\hat{\\tau}_3+\\hat{\\gamma}_2$\\\n $=3.055+0.175$\\\n $-0.106$\\\n $=3.124$",
+          "$\\hat{\\alpha}+\\hat{\\tau}_4+\\hat{\\gamma}_2$\\\n $=3.055+0.169$\\\n $-0.106$\\\n $=3.118$",
+          "$\\hat{\\alpha}+\\hat{\\tau}_5+\\hat{\\gamma}_2$\\\n $=3.055+0.468$\\\n $-0.106$\\\n $=3.417$")
 t <- matrix(c(row1,row2),ncol = 6,byrow=T)
-kable(t,caption="(ref:tab4-3)",col.names = columnHeaders,escape=F, longtable=T, booktabs=T)
+m <- as.data.frame(t)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table4-3) (ref:tab4-3)",
+             split.table = Inf, justify="left")
 ```
+
+\normalsize
 
 One final plot of the fitted values
 from this additive model in Figure \@ref(fig:Figure4-16) hopefully crystallizes
@@ -1351,12 +1423,13 @@ groups on the x-axis and different lines for cigarette buyers (1) or not (0).
 Panel (b) displays the different income groups as lines with the cigarette
 buying status on the x-axis. 
 
-```{r Figure4-16,fig.cap="(ref:fig4-16)",echo=F,warning=F,message=F}
+```{r Figure4-16,fig.cap="(ref:fig4-16)",echo=F,fig.width=6,fig.height=3.5}
 par(mfrow=c(1,2))
+old.par <- par(mai=c(0.85,1,0.5,0.25))
 intplot(jitter(fitted(debt1r))~cigbuy*incomegp,data=debtc,col=c(1,3),
-        lwd=2,main="(a)",ylab="Mean of ProDebt")
+        lwd=2,main="(a)",ylab="Mean of ProDebt",xlim=c(0.8,7),cex.leg=0.75)
 intplot(jitter(fitted(debt1r))~incomegp*cigbuy,data=debtc,lwd=2,
-        main="(b)",ylab="Mean of ProDebt")
+        main="(b)",ylab="Mean of ProDebt",xlim=c(0.8,3),cex.leg=0.75)
 ```
 
 **In general, we proceed through the following steps in any 2-WAY ANOVA situation:**
@@ -1372,6 +1445,9 @@ normality and equal variance).
     equal variance, consider a "transformation" of the response as discussed in
     Chapter \@ref(chapter7) This can help make the responses have similar 
     variances or responses to be more normal, but sometimes not both. 
+
+
+\newpage
 
 4. If the interaction test has a small p-value, that is your main result. Focus on
 the interaction plot from (1) to fully understand the results, adding Tukey's
@@ -1432,7 +1508,14 @@ plot.
 
 (ref:fig4-17) Interaction plot in paper towel data set with no replication. 
 
-```{r Figure4-17,fig.cap="(ref:fig4-17)",warning=F,message=FALSE}
+```{r Figure4-17,fig.cap="(ref:fig4-17)",echo=F,fig.height=2.75}
+par(mfrow=c(1,1))
+old.par <- par(mai=c(0.85,1,0.5,1))
+intplot(responses~brand*dropsf,data=ptR,lwd=2,cex.main=0.75,cex.lab=0.75,
+        x.leg=2.6, y.leg=2.85)
+```
+
+```{r eval=F}
 par(mfrow=c(1,1))
 intplot(responses~brand*dropsf,data=ptR,lwd=2)
 ```
@@ -1442,10 +1525,11 @@ statistical evidence related to an interaction between ``Brand`` and
 ``Drops``. A problem will arise in trying to form the ANOVA table as you 
 would see this in the console:
 
+\small
+
 ```
 > anova(lm(responses~dropsf*brand,data=ptR))
 Analysis of Variance Table
-
 Response: responses
              Df  Sum Sq Mean Sq F value Pr(>F)
 dropsf        2 2.03872 1.01936               
@@ -1456,6 +1540,8 @@ Warning message:
 In anova.lm(lm(responses ~ dropsf * brand, data = ptR)) :
   ANOVA F-tests on an essentially perfect fit are unreliable
 ```
+
+\normalsize
 
 Warning messages in R output show up in red after you run functions that contain
 problems and are generally not a good thing, but can sometimes be ignored. In
@@ -1502,7 +1588,7 @@ seen in the error bars around each point estimate.
 (ref:fig4-18) Term-plots for the additive model in paper towel data set with no
 replication. 
 
-```{r Figure4-18,fig.cap="(ref:fig4-18)",message=F,warning=F}
+```{r Figure4-18,fig.cap="(ref:fig4-18)",fig.height=3}
 plot(allEffects(norep1))
 ```
 
@@ -1596,8 +1682,8 @@ data=`r colFmt("DATASETNAME","red")`)
     predictor variables A and B, used to check for balance and understand sample 
     sizes in each combination. 
     
-* `r colFmt("DATASETNAME","red")`$`r colFmt("VARIABLENAME","red")` <- 
-factor(`r colFmt("DATASETNAME","red")`$`r colFmt("VARIABLENAME","red")`)
+* `r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")` ``<-`` 
+factor(`r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")`)
 
     * Use the ``factor`` function on any numerically coded
     explanatory variable where the numerical codes represent levels of a
@@ -1608,11 +1694,11 @@ data=`r colFmt("DATASETNAME","red")`)
 
     * Download and install using: 
     
-    * source("http://www.math.montana.edu/courses/s217/documents/intplot.R")
+    * ``source("http://www.math.montana.edu/courses/s217/documents/intplot.R")``
     
     * Provides interaction plot.
     
-* `r colFmt("INTERACTIONMODELNAME","red")` <- 
+* `r colFmt("INTERACTIONMODELNAME","red")` ``<-`` 
 lm(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
 data=`r colFmt("DATASETNAME","red")`)
 
@@ -1622,7 +1708,7 @@ data=`r colFmt("DATASETNAME","red")`)
     * This is the first model that should be fit in Two-Way ANOVA 
     modeling situations.
     
-* `r colFmt("ADDITIVEMODELNAME","red")` <- 
+* `r colFmt("ADDITIVEMODELNAME","red")` ``<-``
 lm(`r colFmt("Y","red")`~`r colFmt("A","red")`+`r colFmt("B","red")`,
 data=`r colFmt("DATASETNAME","red")`)
 
@@ -1656,6 +1742,8 @@ data=`r colFmt("DATASETNAME","red")`)
     * Requires the ``effects`` package be loaded. 
 
     * Plots the results from the estimated model.
+
+\newpage
 
 ## Practice problems	{#section4-9}
 

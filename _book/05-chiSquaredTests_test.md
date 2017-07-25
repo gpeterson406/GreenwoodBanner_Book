@@ -220,15 +220,52 @@ See \@ref(tab:Table5-2)
   &nbsp;            **Response\                  **Response\                  **Response\              \             **Response\                       \              
                      Level 1**                    Level 2**                    Level 3**            **...**           Level C**                    **Totals**         
 ----------- ---------------------------- ---------------------------- ---------------------------- --------- ---------------------------- ----------------------------
-**Group 1**           $n_{11}$                     $n_{12}$                     $n_{13}$              ...              $n_{15}$                     $n_{11}$          
+**Group 1**           $n_{11}$                     $n_{12}$                     $n_{13}$              ...              $n_{15}$           $\boldsymbol{n_{1 \bullet}}$
 
-**Group 2**           $n_{21}$                     $n_{22}$                     $n_{23}$              ...              $n_{25}$                     $n_{21}$          
+**Group 2**           $n_{21}$                     $n_{22}$                     $n_{23}$              ...              $n_{25}$           $\boldsymbol{n_{2 \bullet}}$
 
-  **...**               ...                          ...                          ...                 ...                ...                          ...             
+  **...**               ...                          ...                          ...                 ...                ...                        **...**           
 
-**Group R**           $n_{R1}$                     $n_{R2}$                     $n_{R3}$              ...              $n_{R5}$                     $n_{R1}$          
+**Group R**           $n_{R1}$                     $n_{R2}$                     $n_{R3}$              ...              $n_{R5}$           $\boldsymbol{n_{R \bullet}}$
 
-**Totals**  $\boldsymbol{n_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{n_{\bullet 3}}$    ...    $\boldsymbol{n_{\bullet C}}$ $\boldsymbol{n_{\bullet 1}}$
+**Totals**  $\boldsymbol{n_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{n_{\bullet 3}}$    ...    $\boldsymbol{n_{\bullet C}}$       $\boldsymbol{N}$      
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Table: (\#tab:Table5-2) My table caption
+Table: (\#tab:Table5-2) (ref:tab5-2)
+
+Here I am going to reference Table \@ref(tab:Table2-1) and we'll see if it works from the get-go.
+
+(ref:tab2-1) First 5 and last 6 rows of the MockJury data set
+
+
+----------------------------------------------------------------------
+ Subject    Attr     Crime    Years   Serious   Independent   Sincere 
+--------- --------- -------- ------- --------- ------------- ---------
+    1     Beautiful Burglary   10        8           9           8    
+
+    2     Beautiful Burglary    3        8           9           3    
+
+    3     Beautiful Burglary    5        5           6           3    
+
+    4     Beautiful Burglary    1        3           9           8    
+
+    5     Beautiful Burglary    7        9           5           1    
+
+   ...       ...      ...      ...      ...         ...         ...   
+
+   108     Average  Swindle     3        3           5           4    
+
+   109     Average  Swindle     3        2           9           9    
+
+   110     Average  Swindle     2        1           8           8    
+
+   111     Average  Swindle     7        4           9           1    
+
+   112     Average  Swindle     6        3           5           2    
+
+   113     Average  Swindle    12        9           9           1    
+
+   114     Average  Swindle     8        8           1           5    
+----------------------------------------------------------------------
+
+Table: (\#tab:Table2-1) (ref:tab2-1)
