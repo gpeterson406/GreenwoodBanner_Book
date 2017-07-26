@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  25 JUL 2017 15:58
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  24 JUL 2017 16:43
+>>>>>>> origin/chapter0to1_edits
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -1108,6 +1112,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [7]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 596.
 
+<<<<<<< HEAD
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [8]
@@ -1124,11 +1129,159 @@ Package xcolor Warning: Incompatible color definition on input line 608.
 
 
 Package xcolor Warning: Incompatible color definition on input line 615.
+=======
+LaTeX Warning: Reference `chapter3' on page 7 undefined on input line 268.
+
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 281.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 281.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [7]
+
+LaTeX Warning: Reference `chapter3' on page 8 undefined on input line 369.
+
+[8]
+
+Package xcolor Warning: Incompatible color definition on input line 409.
+
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 411.
+
+Package xcolor Warning: Incompatible color definition on input line 414.
 
 
+Package xcolor Warning: Incompatible color definition on input line 414.
+
+
+Package xcolor Warning: Incompatible color definition on input line 422.
+
+
+Package xcolor Warning: Incompatible color definition on input line 427.
+
+
+Package xcolor Warning: Incompatible color definition on input line 427.
+
+
+LaTeX Warning: Reference `chapter5' on page 9 undefined on input line 444.
+
+
+Package xcolor Warning: Incompatible color definition on input line 454.
+
+
+Package xcolor Warning: Incompatible color definition on input line 458.
+
+
+Package xcolor Warning: Incompatible color definition on input line 458.
+
+[9]
+
+Package xcolor Warning: Incompatible color definition on input line 504.
+
+
+Package xcolor Warning: Incompatible color definition on input line 511.
+
+
+Package xcolor Warning: Incompatible color definition on input line 511.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf, id=127, 361.35pt x 252.945p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf used
+ on input line 515.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 532.
+
+
+Underfull \vbox (badness 1259) has occurred while \output is active []
+
+[10 <./04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 536.
+
+
+Package xcolor Warning: Incompatible color definition on input line 536.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf, id=139, 361.35pt x 252.945p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf used
+ on input line 547.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 552.
+
+
+Package xcolor Warning: Incompatible color definition on input line 556.
+
+
+Package xcolor Warning: Incompatible color definition on input line 556.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf, id=142, 361.35pt x 252.945p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf used
+ on input line 570.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 575.
+
+
+Package xcolor Warning: Incompatible color definition on input line 579.
+
+
+Package xcolor Warning: Incompatible color definition on input line 579.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 607.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 607.
+
+LaTeX Warning: Reference `chapter3' on page 11 undefined on input line 608.
+
+[11 <./04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf>]
+<04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf, id=166, 469.755pt x 289.08p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf used
+ on input line 656.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+[12 <./04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf>]
+<04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf, id=183, 325.215pt x 216.81p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf Graphic file (type pdf)
+>>>>>>> origin/chapter0to1_edits
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf used
+ on input line 704.
+(pdftex.def)             Requested size: 325.22908pt x 216.81938pt.
+
+<<<<<<< HEAD
 Package xcolor Warning: Incompatible color definition on input line 620.
+=======
+Underfull \vbox (badness 10000) has occurred while \output is active []
+>>>>>>> origin/chapter0to1_edits
 
+[13 <./04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf>]
 
+<<<<<<< HEAD
 Package xcolor Warning: Incompatible color definition on input line 620.
 
 
@@ -1139,8 +1292,23 @@ Package xcolor Warning: Incompatible color definition on input line 634.
 
 
 Package xcolor Warning: Incompatible color definition on input line 634.
+=======
+LaTeX Warning: Reference `chapter3' on page 14 undefined on input line 761.
+
+[14 <./04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf>]
+
+LaTeX Warning: Reference `chapter8' on page 15 undefined on input line 817.
 
 
+LaTeX Warning: Reference `chapter3' on page 15 undefined on input line 856.
+
+
+LaTeX Warning: Reference `chapter3' on page 15 undefined on input line 867.
+>>>>>>> origin/chapter0to1_edits
+
+[15]
+
+<<<<<<< HEAD
 Package xcolor Warning: Incompatible color definition on input line 645.
 
 
@@ -1148,11 +1316,169 @@ Package xcolor Warning: Incompatible color definition on input line 650.
 
 
 Package xcolor Warning: Incompatible color definition on input line 650.
+=======
+Package xcolor Warning: Incompatible color definition on input line 1082.
 
 
+Package xcolor Warning: Incompatible color definition on input line 1087.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1087.
+>>>>>>> origin/chapter0to1_edits
+
+[16]
+<04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf, id=228, 433.62pt x 325.215p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf Graphic file (type pdf)
+
+<<<<<<< HEAD
 Package xcolor Warning: Incompatible color definition on input line 669.
+=======
+<use 04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf used
+ on input line 1115.
+(pdftex.def)             Requested size: 433.63878pt x 325.22908pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1126.
 
 
+Package xcolor Warning: Incompatible color definition on input line 1131.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1131.
+
+[17 <./04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1208.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1213.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1213.
+
+
+LaTeX Warning: Reference `chapter3' on page 18 undefined on input line 1236.
+
+[18]
+
+Package xcolor Warning: Incompatible color definition on input line 1244.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1248.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1248.
+
+
+LaTeX Warning: Reference `chapter8' on page 19 undefined on input line 1289.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1300.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1305.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1305.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf, id=255, 361.35pt x 252.945p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf used
+ on input line 1309.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[19]
+
+LaTeX Warning: Reference `section3-4' on page 20 undefined on input line 1322.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf, id=265, 433.62pt x 289.08pt
+>
+File: 04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf used
+ on input line 1333.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1337.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1348.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1348.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1363.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1368.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1368.
+
+[20 <./04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1396.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1402.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1402.
+
+[21 <./04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf>]
+
+LaTeX Warning: Reference `chapter3' on page 22 undefined on input line 1446.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf, id=289, 433.62pt x 289.08pt
+>
+File: 04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf Graphic file (type pdf)
+
+<use 04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf used
+ on input line 1508.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1513.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1518.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1518.
+
+[22]
+
+Package xcolor Warning: Incompatible color definition on input line 1539.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1544.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1544.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1573.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1577.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1577.
+
+[23 <./04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf>]
+>>>>>>> origin/chapter0to1_edits
+
+Package xcolor Warning: Incompatible color definition on input line 1622.
+
+<<<<<<< HEAD
 Package xcolor Warning: Incompatible color definition on input line 673.
 
 
@@ -2206,4 +2532,336 @@ PDF statistics:
  728 PDF objects out of 1000 (max. 8388607)
  140 named destinations out of 1000 (max. 500000)
  20706 words of extra memory for PDF output out of 20736 (max. 10000000)
+=======
+
+Package xcolor Warning: Incompatible color definition on input line 1626.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1626.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf, id=313, 361.35pt x 252.945
+pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf use
+d on input line 1683.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+<04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf, id=314, 361.35pt x 252.945
+pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf use
+d on input line 1692.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1696.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1700.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1700.
+
+[24] [25 <./04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf> <./04-twoWayAno
+va_files/figure-latex/Figure4-11-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1714.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1719.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1719.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1791.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1799.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1799.
+
+
+Overfull \vbox (1.35425pt too high) detected at line 1799
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1799.
+
+[26]
+
+Package xcolor Warning: Incompatible color definition on input line 1799.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1799.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf, id=355, 361.35pt x 271.012
+5pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf use
+d on input line 1806.
+(pdftex.def)             Requested size: 361.34912pt x 271.01183pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1811.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1815.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1815.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1832.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1836.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1836.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1854.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1860.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1860.
+
+[27 <./04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf>]
+<04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf, id=367, 433.62pt x 271.012
+5pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf use
+d on input line 1895.
+(pdftex.def)             Requested size: 433.63217pt x 271.0201pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1905.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1905.
+
+[28 <./04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf>]
+<04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf, id=379, 433.62pt x 271.012
+5pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf use
+d on input line 1955.
+(pdftex.def)             Requested size: 433.63217pt x 271.0201pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1960.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1994.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1998.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1998.
+
+[29 <./04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2073.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2077.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2077.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf, id=395, 361.35pt x 252.945
+pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf use
+d on input line 2081.
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+
+Package xcolor Warning: Incompatible color definition on input line 2090.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2094.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2094.
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 2129.
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 2174.
+
+[30]
+<04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf, id=407, 433.62pt x 252.945
+pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf use
+d on input line 2245.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+LaTeX Warning: Reference `chapter7' on page 31 undefined on input line 2272.
+
+
+Overfull \vbox (8.89767pt too high) has occurred while \output is active []
+
+[31 <./04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf>] [32 <./04-twoWayAno
+va_files/figure-latex/Figure4-16-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2329.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2335.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2335.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf, id=444, 361.35pt x 198.742
+5pt>
+File: 04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf use
+d on input line 2360.
+(pdftex.def)             Requested size: 361.34912pt x 198.742pt.
+
+Package xcolor Warning: Incompatible color definition on input line 2365.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2370.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2370.
+
+[33 <./04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 2422.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2427.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2427.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2454.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2458.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2458.
+
+
+<04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf, id=458, 361.35pt x 216.81p
+t>
+File: 04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf Graphic file (type pdf
+)
+<use 04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf>
+Package pdftex.def Info: 04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf use
+d on input line 2462.
+(pdftex.def)             Requested size: 361.34912pt x 216.80946pt.
+
+LaTeX Warning: Reference `chapter3' on page 34 undefined on input line 2479.
+
+[34]
+
+LaTeX Warning: Reference `chapter3' on page 35 undefined on input line 2525.
+
+
+LaTeX Warning: Reference `chapter5' on page 35 undefined on input line 2549.
+
+
+LaTeX Warning: Reference `chapter3' on page 35 undefined on input line 2553.
+
+
+LaTeX Warning: Reference `chapter5' on page 35 undefined on input line 2554.
+
+
+LaTeX Warning: Reference `chapter8' on page 35 undefined on input line 2558.
+
+[35 <./04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf>] [36] (GreenwoodBann
+er.bbl [37] [38
+
+]
+Chapter 2.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2732.
+[39]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2732.
+(GreenwoodBanner.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2732.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2732.
+
+Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
+(rerunfilecheck)             Checksum: C8E97E39E98815CD40ABCC560230503F;2494.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2732.
+ ) 
+Here is how much of TeX's memory you used:
+ 15768 strings out of 493366
+ 232995 string characters out of 3137241
+ 363009 words of memory out of 3000000
+ 18742 multiletter control sequences out of 15000+200000
+ 128329 words of font info for 164 fonts, out of 3000000 for 9000
+ 1127 hyphenation exceptions out of 8191
+ 36i,11n,49p,508b,567s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/
+MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/
+fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips
+/lm/lm-ts1.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.
+pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/lm/lmbxi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/lm/lmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi6.p
+fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/lm/lmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/l
+mr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy9
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
+Output written on GreenwoodBanner.pdf (39 pages, 908607 bytes).
+PDF statistics:
+ 617 PDF objects out of 1000 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
+ 20667 words of extra memory for PDF output out of 20736 (max. 10000000)
+>>>>>>> origin/chapter0to1_edits
 

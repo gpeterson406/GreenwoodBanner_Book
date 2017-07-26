@@ -1,7 +1,11 @@
 --- 
 title: "A Second Semester Statistics Course with R"
 author: "Mark Greenwood and Katherine Banner"
+<<<<<<< HEAD
 date: '2017-07-25'
+=======
+date: '2017-07-24'
+>>>>>>> origin/chapter0to1_edits
 output:
   bookdown::pdf_book: 
     keep_tex: yes

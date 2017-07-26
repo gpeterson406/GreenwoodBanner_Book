@@ -5,3 +5,11 @@
 .DS_Store
 **/*.min.map
 revdep
+GreenwoodBanner.aux
+GreenwoodBanner.blg
+GreenwoodBanner.log
+GreenwoodBanner.out
+GreenwoodBanner.rds
+GreenwoodBanner.toc
+chapter0.htm
+chapter1.htm
