@@ -43,3 +43,6 @@ rsconnect
 *.out
 *.tex
 *.toc
+GreenwoodBanner.bbl
+GreenwoodBanner.pdf
+GreenwoodBanner.tex
