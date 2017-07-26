@@ -15,7 +15,8 @@ set.seed(5678)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = T,fig.height=3.5,fig.width=6,fig.pos='HT')
+knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT',warning=F,
+                      message=F)
 options(show.signif.stars = FALSE)
 ```
 
@@ -118,7 +119,7 @@ shape and variance that is an assumption of the regression model.
 (ref:fig7-1) Sketch of assumed normal distributions for the responses 
 centered at the regression line.
 
-```{r Figure7-1,fig.cap="(ref:fig7-1)",echo=F,message=F,warning=F,fig.align='center'}
+```{r Figure7-1,fig.cap="(ref:fig7-1)",echo=F}
 knitr::include_graphics("chapter7_files/image029.png")
 ```
 
@@ -131,7 +132,7 @@ BAC model has a residual SE of 0.02 but had many fewer observations at each
 (ref:fig7-2) Simulated data for Beers and BAC assuming two different residual
 standard errors (0.02 and 0.06).
 
-```{r Figure7-2,fig.cap="(ref:fig7-2)",echo=F,message=F,warning=F}
+```{r Figure7-2,fig.cap="(ref:fig7-2)",echo=F}
 BB<- read.csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
 m1<-lm(BAC~Beers,data=BB)
 par(mfrow=c(1,1))
@@ -139,7 +140,6 @@ set.seed(3456)
 
 coef1<-m1$coefficients
 Beersnew<-sort(rep(1:9,20))
-
 
 e1_20<-rnorm(n=length(Beersnew),0,sd=0.02)
 e1_20<-e1_20-mean(e1_20)

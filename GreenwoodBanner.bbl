@@ -1,0 +1,286 @@
+\begin{thebibliography}{}
+
+\bibitem[Akaike, 1974]{Akaike1974}
+Akaike, H. (1974).
+\newblock A new look at the statistical model identification.
+\newblock {\em IEEE Transactions on Automatic Control}, 19:716--723.
+
+\bibitem[Allaire, 2014]{R-manipulate}
+Allaire, J. (2014).
+\newblock {\em manipulate: Interactive Plots for RStudio}.
+\newblock R package version 1.0.1.
+
+\bibitem[Azzalini and Bowman, 1990]{Azzalini1990}
+Azzalini, A. and Bowman, A.~W. (1990).
+\newblock A look at some data on the old faithful geyser.
+\newblock {\em Applied Statistics}, 39:357–365.
+
+\bibitem[Barton, 2016]{R-MuMIn}
+Barton, K. (2016).
+\newblock {\em MuMIn: Multi-Model Inference}.
+\newblock R package version 1.15.6.
+
+\bibitem[Benson and Mannion, 2012]{Benson2012}
+Benson, R. and Mannion, P. (2012).
+\newblock Multi-variate models are essential for understanding vertebrate
+  diversification in deep time.
+\newblock {\em Biology Letters}, 8:127--130.
+
+\bibitem[Burnham and Anderson, 2002]{Burnham2002}
+Burnham, K. and Anderson, D. (2002).
+\newblock {\em Model selection and Multimodel Inference}.
+\newblock Springer, NY.
+
+\bibitem[Crampton, 1947]{Crampton1947}
+Crampton, E. (1947).
+\newblock The growth of the odontoblast of the incisor teeth as a criterion of
+  vitamin c intake of the guinea pig.
+\newblock {\em The Journal of Nutrition}, 33(5):491–504.
+
+\bibitem[De~Veaux and Bock, 2001]{DeVeaux2001}
+De~Veaux, R., V.~P. and Bock, D. (2001).
+\newblock {\em Stats: Data and Models, 3rd edition}.
+\newblock Pearson.
+
+\bibitem[Dieser and Foreman, 2010]{Dieser2010}
+Dieser, M., G.~M. and Foreman, C. (2010).
+\newblock Carotenoid pigmentation in antarctic heterotrophic bacteria as a
+  strategy to withstand environmental stresses.
+\newblock {\em Arctic, Antarctic, and Alpine Research}, 42(4):396--405.
+
+\bibitem[Diez et~al., 2012]{R-openintro}
+Diez, D.~M., Barr, C.~D., and Cetinkaya-Rundel, M. (2012).
+\newblock {\em openintro: OpenIntro data sets and supplemental functions}.
+\newblock R package version 1.4.
+
+\bibitem[Doolittle and Welch, 1989]{Doolittle1989}
+Doolittle, A. and Welch, C. (1989).
+\newblock Gender differences in performance on a college-level acheivement
+  test.
+\newblock {\em ACT Research Report}, pages 89--90.
+
+\bibitem[Faraway, 2016]{R-faraway}
+Faraway, J. (2016).
+\newblock {\em faraway: Functions and Datasets for Books by Julian Faraway}.
+\newblock R package version 1.0.7.
+
+\bibitem[Fox, 2003]{Fox2003}
+Fox, J. (2003).
+\newblock Effect displays in r for generalised linear models.
+\newblock {\em Journal of Statistical Software}, 8(15):1--27.
+
+\bibitem[Fox and Friendly, 2016]{R-heplots}
+Fox, J. and Friendly, M. (2016).
+\newblock {\em heplots: Visualizing Hypothesis Tests in Multivariate Linear
+  Models}.
+\newblock R package version 1.3-3.
+
+\bibitem[Fox and Weisberg, 2011]{Fox2011}
+Fox, J. and Weisberg, S. (2011).
+\newblock {\em An R-Companion to Applied Regression, Second Edition}.
+\newblock SAGE Publications, Thousand Oaks, CA.
+
+\bibitem[Fox and Weisberg, 2016]{R-car}
+Fox, J. and Weisberg, S. (2016).
+\newblock {\em car: Companion to Applied Regression}.
+\newblock R package version 2.1-4.
+
+\bibitem[Fox et~al., 2016]{R-effects}
+Fox, J., Weisberg, S., Friendly, M., and Hong, J. (2016).
+\newblock {\em effects: Effect Displays for Linear, Generalized Linear, and
+  Other Models}.
+\newblock R package version 3.1-2.
+
+\bibitem[Gandrud, 2015]{Gandrud2015}
+Gandrud, C. (2015).
+\newblock {\em Reproducible Research with R and R Studio, Second Edition}.
+\newblock Chapman Hall, CRC.
+
+\bibitem[Greenwood and Moore, 2011]{Greenwood2011}
+Greenwood, M., H.~J. and Moore, J. (2011).
+\newblock {\em An Application of Statistics in Climate Change: Detection of
+  Nonlinear Changes in a Streamflow Timing Measure in the Columbia and Missouri
+  Headwaters}, pages 1117--1142.
+\newblock Elsevier.
+
+\bibitem[Greenwood and Humphrey, 2002]{Greenwood2002}
+Greenwood, M. and Humphrey, N. (2002).
+\newblock Glaciated valley profiles: An application of nonlinear regression.
+\newblock {\em Computing Science and Statistics}, 34:452--460.
+
+\bibitem[Gude and Haggerty, 2009]{Gude2009}
+Gude, P.H., C. A. G.~M. and Haggerty, M. (2009).
+\newblock Homes in wildfire-prone areas: An empirical analysis of wildfire
+  suppression costs and climate change.
+
+\bibitem[Gundale and Nordin, 2013]{Gundale2013}
+Gundale, M., B.~L. and Nordin, A. (2013).
+\newblock The impact of simulated chronic nitrogen deposition on the biomass
+  and n2-fixation activity of two boreal feather moss–cyanobacteria
+  associations.
+\newblock {\em Biology Letters}, 9(6).
+
+\bibitem[Hothorn and Westfall, 2008]{Hothorn2008}
+Hothorn, T., B.~F. and Westfall, P. (2008).
+\newblock Simultaneous inference in general parametric models.
+\newblock {\em Biometrical Journal}, 50(3):346--363.
+
+\bibitem[Hothorn et~al., 2016]{R-multcomp}
+Hothorn, T., Bretz, F., and Westfall, P. (2016).
+\newblock {\em multcomp: Simultaneous Inference in General Parametric Models}.
+\newblock R package version 1.4-6.
+
+\bibitem[Jones et~al., 2014]{R-spuRs}
+Jones, O., Maillardet, R., Robinson, A., Borovkova, O., and Carnie, S. (2014).
+\newblock {\em spuRs: Functions and Datasets for "Introduction to Scientific
+  Programming and Simulation Using R".}
+\newblock R package version 2.0.0.
+
+\bibitem[Kampstra, 2008]{Kampstra2008}
+Kampstra, P. (2008).
+\newblock Beanplot: A boxplot alternative for visual comparison of
+  distributions.
+\newblock {\em Journal of Statistical Software, Code Snippets}, 28(1):1--9.
+
+\bibitem[Kampstra, 2014]{R-beanplot}
+Kampstra, P. (2014).
+\newblock {\em beanplot: Visualization via Beanplots (like
+  Boxplot/Stripchart/Violin Plot)}.
+\newblock R package version 1.2.
+
+\bibitem[Lea and Walker, 1995]{Lea1995}
+Lea, S., W.~P. and Walker, C. (1995).
+\newblock Psychological factors in consumer debt: Money management, economic
+  socialization, and credit use.
+\newblock {\em Journal of Economic Psychology}, 16(4):681--701.
+
+\bibitem[Liao and Meyer, 2014]{Liao2014}
+Liao, X. and Meyer, M. (2014).
+\newblock coneproj: An r package for the primal or dual cone projections with
+  routines for constrained regression.
+\newblock {\em Journal of Statistical Software}, 61(12):1--22.
+
+\bibitem[Likert, 1932]{Likert1932}
+Likert, R. (1932).
+\newblock A technique for the measurement of attitudes.
+\newblock {\em Archives of Psychology}, 140:1--55.
+
+\bibitem[Merkle and Smithson, 2013]{R-smdata}
+Merkle, E. and Smithson, M. (2013).
+\newblock {\em smdata: Data to accompany Smithson \& Merkle, 2013}.
+\newblock R package version 1.1.
+
+\bibitem[Meyer et~al., 2016]{R-vcd}
+Meyer, D., Zeileis, A., and Hornik, K. (2016).
+\newblock {\em vcd: Visualizing Categorical Data}.
+\newblock R package version 1.4-3.
+
+\bibitem[Meyer and Liao, 2016]{R-coneproj}
+Meyer, M.~C. and Liao, X. (2016).
+\newblock {\em coneproj: Primal or Dual Cone Projections with Routines for
+  Constrained Regression}.
+\newblock R package version 1.11.
+
+\bibitem[Moore and Greenwood, 2007]{Moore2007}
+Moore, J.~N., H.~J. and Greenwood, M. (2007).
+\newblock Significance of trends toward earlier snowmelt runoff, columbia and
+  missouri basin headwaters, western united states.
+\newblock {\em Geophysical Research Letters}, 34(16).
+\newblock L16402.
+
+\bibitem[Piepho, 2004]{Piepho2004}
+Piepho, H. (2004).
+\newblock An algorithm for a letter-based representation of all-pairwise
+  comparisons.
+\newblock {\em Journal of Computational and Graphical Statistics},
+  13(2):456–466.
+
+\bibitem[Plaster, 1989]{Plaster1989}
+Plaster, M.~E. (1989).
+\newblock Inmates as mock jurors: The effects of physical attractiveness upon
+  juridic decisions.
+\newblock Master's thesis, East Carolina University, Greenville, NC.
+\newblock MockJury data taken from the thesis.
+
+\bibitem[Pruim et~al., 2016a]{R-mosaicData}
+Pruim, R., Kaplan, D., and Horton, N. (2016a).
+\newblock {\em mosaicData: Project MOSAIC Data Sets}.
+\newblock R package version 0.14.0.
+
+\bibitem[Pruim et~al., 2016b]{R-mosaic}
+Pruim, R., Kaplan, D.~T., and Horton, N.~J. (2016b).
+\newblock {\em mosaic: Project MOSAIC Statistics and Mathematics Teaching
+  Utilities}.
+\newblock R package version 0.14.4.
+
+\bibitem[{R Core Team}, 2017]{R-base}
+{R Core Team} (2017).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[Ramsey and Schafer, 2012]{Ramsey2012}
+Ramsey, F. and Schafer, D. (2012).
+\newblock {\em The Statistical Sleuth: A Course in Methods of Data Analysis}.
+\newblock Cengage Learning.
+
+\bibitem[Ramsey et~al., 2016]{R-Sleuth2}
+Ramsey, F.~L., Schafer, D.~W., Sifneos, J., and Turlach, B.~A. (2016).
+\newblock {\em Sleuth2: Data Sets from Ramsey and Schafer's "Statistical Sleuth
+  (2nd Ed)"}.
+\newblock R package version 2.0-4.
+
+\bibitem[Revelle, 2017]{R-psych}
+Revelle, W. (2017).
+\newblock {\em psych: Procedures for Psychological, Psychometric, and
+  Personality Research}.
+\newblock R package version 1.7.5.
+
+\bibitem[Ripley, 2017]{R-MASS}
+Ripley, B. (2017).
+\newblock {\em MASS: Support Functions and Datasets for Venables and Ripley's
+  MASS}.
+\newblock R package version 7.3-47.
+
+\bibitem[Robinson and White, 2016]{R-tigerstats}
+Robinson, R. and White, H. (2016).
+\newblock {\em tigerstats: R Functions for Elementary Statistics}.
+\newblock R package version 0.3.
+
+\bibitem[{RStudio Team}, 2015]{RStudio}
+{RStudio Team} (2015).
+\newblock {\em RStudio: Integrated Development Environment for R}.
+\newblock RStudio, Inc., Boston, MA.
+
+\bibitem[Sasaki and Pratt, 2013]{Sasaki2013}
+Sasaki, T. and Pratt, S.~C. (2013).
+\newblock Ants learn to rely on more informative attributes during
+  decision-making.
+\newblock {\em Biology Letters}, 9(6).
+
+\bibitem[Tennekes and {de Jonge}, 2017]{R-tabplot}
+Tennekes, M. and {de Jonge}, E. (2017).
+\newblock {\em tabplot: Tableplot, a Visualization of Large Datasets}.
+\newblock R package version 1.3-1.
+
+\bibitem[Wei and Simko, 2016]{R-corrplot}
+Wei, T. and Simko, V. (2016).
+\newblock {\em corrplot: Visualization of a Correlation Matrix}.
+\newblock R package version 0.77.
+
+\bibitem[Weisberg, 2005]{Weisberg2005}
+Weisberg, S. (2005).
+\newblock {\em Applied Linear Regression, Third Edition}.
+\newblock Wiley, Hoboken, NJ.
+
+\bibitem[Weisberg, 2011]{R-alr3}
+Weisberg, S. (2011).
+\newblock {\em alr3: Data to accompany Applied Linear Regression 3rd edition}.
+\newblock R package version 2.0.5.
+
+\bibitem[Westfall and Young, 1993]{Westfall1993}
+Westfall, P. and Young, S. (1993).
+\newblock {\em Resampling-Based Multiple Testing: Examples and Methods for
+  p-value Adjustment}.
+\newblock Wiley, New York.
+
+\end{thebibliography}

@@ -2,16 +2,117 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: GreenwoodBanner.aux
 The style file: apalike.bst
 Database file #1: packages.bib
 Database file #2: references.bib
-Too many commas in name 1 of "Lea, S., Webley, P. and Walker, C." for entry Lea1995
+Repeated entry---line 279 of file references.bib
+ : @manual{R-base
+ :               ,
+I'm skipping whatever remains of this entry
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
 while executing---line 1023 of file apalike.bst
 Too many commas in name 1 of "Lea, S., Webley, P. and Walker, C." for entry Lea1995
 while executing---line 1023 of file apalike.bst
-Name 1 in "Doolittle, A., and Welch, C." has a comma at the end for entry Doolittle1989
+Too many commas in name 1 of "Lea, S., Webley, P. and Walker, C." for entry Lea1995
 while executing---line 1023 of file apalike.bst
 Name 1 in "Doolittle, A., and Welch, C." has a comma at the end for entry Doolittle1989
 while executing---line 1023 of file apalike.bst
 Name 1 in "Doolittle, A., and Welch, C." has a comma at the end for entry Doolittle1989
+while executing---line 1023 of file apalike.bst
+Name 1 in "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." has a comma at the end for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Name 1 in "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." has a comma at the end for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1023 of file apalike.bst
+Name 1 in "Moore, J. N., Harper, J.T., and Greenwood, M." has a comma at the end for entry Moore2007
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Moore, J. N., Harper, J.T., and Greenwood, M." for entry Moore2007
+while executing---line 1023 of file apalike.bst
+Name 1 in "Moore, J. N., Harper, J.T., and Greenwood, M." has a comma at the end for entry Moore2007
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Moore, J. N., Harper, J.T., and Greenwood, M." for entry Moore2007
+while executing---line 1023 of file apalike.bst
+Name 1 in "Greenwood, M., Harper, J., and Moore, J." has a comma at the end for entry Greenwood2011
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Greenwood, M., Harper, J., and Moore, J." for entry Greenwood2011
+while executing---line 1023 of file apalike.bst
+Name 1 in "Greenwood, M., Harper, J., and Moore, J." has a comma at the end for entry Greenwood2011
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Greenwood, M., Harper, J., and Moore, J." for entry Greenwood2011
+while executing---line 1023 of file apalike.bst
+Name 1 in "Dieser, M., Greenwood, M., and Foreman, C." has a comma at the end for entry Dieser2010
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Dieser, M., Greenwood, M., and Foreman, C." for entry Dieser2010
+while executing---line 1023 of file apalike.bst
+Name 1 in "Dieser, M., Greenwood, M., and Foreman, C." has a comma at the end for entry Dieser2010
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Dieser, M., Greenwood, M., and Foreman, C." for entry Dieser2010
+while executing---line 1023 of file apalike.bst
+Name 1 in "De Veaux, R., Velleman, P., and Bock, D." has a comma at the end for entry DeVeaux2001
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "De Veaux, R., Velleman, P., and Bock, D." for entry DeVeaux2001
+while executing---line 1023 of file apalike.bst
+Name 1 in "De Veaux, R., Velleman, P., and Bock, D." has a comma at the end for entry DeVeaux2001
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "De Veaux, R., Velleman, P., and Bock, D." for entry DeVeaux2001
+while executing---line 1023 of file apalike.bst
+Name 1 in "Gundale, M., Bach, L., and Nordin, A." has a comma at the end for entry Gundale2013
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gundale, M., Bach, L., and Nordin, A." for entry Gundale2013
+while executing---line 1023 of file apalike.bst
+Name 1 in "Gundale, M., Bach, L., and Nordin, A." has a comma at the end for entry Gundale2013
+while executing---line 1023 of file apalike.bst
+Too many commas in name 1 of "Gundale, M., Bach, L., and Nordin, A." for entry Gundale2013
+while executing---line 1023 of file apalike.bst
+Name 1 in "De Veaux, R., Velleman, P., and Bock, D." has a comma at the end for entry DeVeaux2001
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "De Veaux, R., Velleman, P., and Bock, D." for entry DeVeaux2001
+while executing---line 1098 of file apalike.bst
+Name 1 in "Dieser, M., Greenwood, M., and Foreman, C." has a comma at the end for entry Dieser2010
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Dieser, M., Greenwood, M., and Foreman, C." for entry Dieser2010
+while executing---line 1098 of file apalike.bst
+Name 1 in "Doolittle, A., and Welch, C." has a comma at the end for entry Doolittle1989
+while executing---line 1098 of file apalike.bst
+Name 1 in "Greenwood, M., Harper, J., and Moore, J." has a comma at the end for entry Greenwood2011
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Greenwood, M., Harper, J., and Moore, J." for entry Greenwood2011
+while executing---line 1098 of file apalike.bst
+Warning--can't use both author and editor fields in Greenwood2011
+Name 1 in "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." has a comma at the end for entry Gude2009
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Gude, P.H., Cookson, A.J., Greenwood, M.C., and Haggerty, M." for entry Gude2009
+while executing---line 1098 of file apalike.bst
+Name 1 in "Gundale, M., Bach, L., and Nordin, A." has a comma at the end for entry Gundale2013
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Gundale, M., Bach, L., and Nordin, A." for entry Gundale2013
+while executing---line 1098 of file apalike.bst
+Name 1 in "Hothorn, T., Bretz, F., and Westfall, P." has a comma at the end for entry Hothorn2008
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Hothorn, T., Bretz, F., and Westfall, P." for entry Hothorn2008
 while executing---line 1098 of file apalike.bst
 Too many commas in name 1 of "Lea, S., Webley, P. and Walker, C." for entry Lea1995
 while executing---line 1098 of file apalike.bst
-(There were 6 error messages)
+Name 1 in "Moore, J. N., Harper, J.T., and Greenwood, M." has a comma at the end for entry Moore2007
+while executing---line 1098 of file apalike.bst
+Too many commas in name 1 of "Moore, J. N., Harper, J.T., and Greenwood, M." for entry Moore2007
+while executing---line 1098 of file apalike.bst
+(There were 55 error messages)

@@ -1495,10 +1495,6 @@ log(-1)
 ```
 
 ```
-## Warning in log(-1): NaNs produced
-```
-
-```
 ## [1] NaN
 ```
 
