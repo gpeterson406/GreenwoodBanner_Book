@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 **/rsconnect/
+**/figure-latex/
 .DS_Store
 **/*.min.map
 revdep
@@ -14,15 +15,26 @@ GreenwoodBanner.toc
 chapter0.htm
 chapter1.htm
 _publish.R
-_book
-_bookdown_files
+_book/01-preface_files/
+_book/02-reintroductionToStatistics_files/
+_book/03-oneWayAnova_files/
+_book/04-twoWayAnova_files/
+_book/05-chiSquaredTests_files/
+_book/06-correlationAndSimpleLinearRegression_files/
+_book/07-simpleLinearRegressionInference_files/
+_book/08-multipleLinearRegression_files/
+_book/09-caseStudies_files/
+_bookdown_files/
 rsconnect
-
+/*_cache/
+/cache/
 # Compiled source #
 ###################
 *.md
 *.pdf
-
+*.RData
+*.rdb
+*.rdx
 # Logs and databases #
 ######################
 *.aux

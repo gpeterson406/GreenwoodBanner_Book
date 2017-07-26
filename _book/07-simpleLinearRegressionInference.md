@@ -100,14 +100,7 @@ shape and variance that is an assumption of the regression model.
 (ref:fig7-1) Sketch of assumed normal distributions for the responses 
 centered at the regression line.
 
-\begin{figure}[HT]
-
-{\centering \includegraphics{chapter7_files/image029} 
-
-}
-
-\caption{(ref:fig7-1)}(\#fig:Figure7-1)
-\end{figure}
+![(\#fig:Figure7-1)(ref:fig7-1)](chapter7_files/image029.png) 
 
 Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
 distribution of 20 subjects at each *Beer* level around the assumed true
