@@ -17,3 +17,17 @@ _publish.R
 _book
 _bookdown_files
 rsconnect
+
+# Compiled source #
+###################
+*.md
+*.pdf
+
+# Logs and databases #
+######################
+*.aux
+*.bbl
+*.log
+*.out
+*.tex
+*.toc
