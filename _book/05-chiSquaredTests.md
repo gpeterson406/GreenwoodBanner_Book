@@ -179,26 +179,23 @@ function is provided in Table \@ref(tab:Table5-1).
 
 (ref:tab5-1) General notation for counts in an R by C contingency table.
 
-\begin{table}
 
-\caption{(\#tab:Table5-1)(ref:tab5-1)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
-  & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}1\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}2\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}3\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\textbackslash{}\textbackslash{}\$ & \$\textbackslash{}textbf\{Response\}\textbackslash{}\textbackslash{}\textbackslash{}textbf\{Level \}C\$ & \$\textbackslash{}textbf\{Totals\}\$\\
-\hline
-**Group 1** & \$n\_\{11\}\$ & \$n\_\{12\}\$ & \$n\_\{13\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{1C\}\$ & \$\textbackslash{}mathbf\{n\_\{1\textbackslash{}bullet\}\}\$\\
-\hline
-**Group 2** & \$n\_\{21\}\$ & \$n\_\{22\}\$ & \$n\_\{23\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{2C\}\$ & \$\textbackslash{}mathbf\{n\_\{2\textbackslash{}bullet\}\}\$\\
-\hline
-\$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}ldots\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$\\
-\hline
-**Group R** & \$n\_\{R1\}\$ & \$n\_\{R2\}\$ & \$n\_\{R3\}\$ & \$\textbackslash{}ldots\$ & \$n\_\{RC\}\$ & \$\textbackslash{}mathbf\{n\_\{R\textbackslash{}bullet\}\}\$\\
-\hline
-**Totals** & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 1\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 2\}\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet 3\}\}\$ & \$\textbackslash{}mathbf\{\textbackslash{}ldots\}\$ & \$\textbackslash{}mathbf\{n\_\{\textbackslash{}bullet C\}\}\$ & \$\textbackslash{}mathbf\{N\}\$\\
-\hline
-\end{tabular}
-\end{table}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  &nbsp;            **Response\                  **Response\                  **Response\              \             **Response\                       \              
+                     Level 1**                    Level 2**                    Level 3**            **...**           Level C**                    **Totals**         
+----------- ---------------------------- ---------------------------- ---------------------------- --------- ---------------------------- ----------------------------
+**Group 1**           $n_{11}$                     $n_{12}$                     $n_{13}$              ...              $n_{1C}$           $\boldsymbol{n_{1 \bullet}}$
+
+**Group 2**           $n_{21}$                     $n_{22}$                     $n_{23}$              ...              $n_{2C}$           $\boldsymbol{n_{2 \bullet}}$
+
+  **...**               ...                          ...                          ...                 ...                ...                        **...**           
+
+**Group R**           $n_{R1}$                     $n_{R2}$                     $n_{R3}$              ...              $n_{RC}$           $\boldsymbol{n_{R \bullet}}$
+
+**Totals**  $\boldsymbol{n_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{n_{\bullet 3}}$    ...    $\boldsymbol{n_{\bullet C}}$       $\boldsymbol{N}$      
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table5-1) (ref:tab5-1)
 
 Comparing counts from the contingency table is useful, but comparing proportions
 in each category is better, especially when the sample sizes in the levels of 
@@ -334,24 +331,24 @@ produced by the ``tally`` function if you use the formula ``~y|x``.
 
 (ref:tab5-2) Table of conditional proportions in the Homogeneity testing scenario. 
 
-\begin{table}
 
-\caption{(\#tab:Table5-2)(ref:tab5-2)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
-  & $\textbf{Response}\\\textbf{Level }1$ & $\textbf{Response}\\\textbf{Level }2$ & $\textbf{Response}\\\textbf{Level }3$ & $\mathbf{\ldots}\\$ & $\textbf{Response}\\\textbf{Level }C$ & $\textbf{Totals}$\\
-\hline
-**Group 1** & $p_{11}$ & $p_{12}$ & $p_{13}$ & $\ldots$ & $p_{1C}$ & $\mathbf{1.0}$\\
-\hline
-**Group 2** & $p_{21}$ & $p_{22}$ & $p_{23}$ & $\ldots$ & $p_{2C}$ & $\mathbf{1.0}$\\
-\hline
-$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
-\hline
-**Group R** & $p_{R1}$ & $p_{R2}$ & $p_{R3}$ & $\ldots$ & $p_{RC}$ & $\mathbf{1.0}$\\
-\hline
-\end{tabular}
-\end{table}
+------------------------------------------------------------------------------------------------------------------------------------------------------
+  &nbsp;           **Response\                 **Response\                 **Response\             \            **Response\                 \         
+                    Level 1**                   Level 2**                   Level 3**           **...**          Level C**              **Totals**    
+----------- -------------------------- ---------------------------- -------------------------- --------- -------------------------- ------------------
+**Group 1**        $\rho_{11}$                 $\rho_{12}$                 $\rho_{13}$            ...           $\rho_{1C}$         $\boldsymbol{1.0}$
+
+**Group 2**        $\rho_{21}$                 $\rho_{22}$                 $\rho_{23}$            ...           $\rho_{2C}$         $\boldsymbol{1.0}$
+
+  **...**              ...                         ...                         ...                ...               ...                  **...**      
+
+**Group R**        $\rho_{R1}$                 $\rho_{R2}$                 $\rho_{R3}$            ...           $\rho_{RC}$         $\boldsymbol{1.0}$
+
+**Totals**  $\boldsymbol{\rho_{\bullet $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{\rho_{\bullet    ...    $\boldsymbol{\rho_{\bullet $\boldsymbol{1.0}$
+                       1}}$                                                    3}}$                                 C}}$                              
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table5-2) (ref:tab5-2)
 
 In the Homogeneity situation, the null hypothesis is that the distributions are the same in all
 the $R$ populations. This means that the null hypothesis is:
@@ -681,29 +678,29 @@ hypothesis were true.
 (ref:tab5-3) Demonstration of calculation of expected cell counts 
 for Arthritis data. 
 
-\begin{table}
 
-\caption{(\#tab:Table5-3)(ref:tab5-3)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l}
-\hline
-  & None & Some & Marked & Totals\\
-\hline
-**Placebo** & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{None}}}{N}\\=\frac{43*42}{84}}\\=\color{red}{\mathbf{21.5}}$ & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Some}}}{N}\\=\frac{43*14}{84}}\\=\color{red}{\mathbf{7.167}}$ & $\mathbf{\frac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Marked}}}{N}\\=\frac{43*28}{84}}\\=\color{red}{\mathbf{14.33}}$ & $\mathbf{n_{\text{Placebo}\bullet}=43}$\\
-\hline
-**Treated** & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{None}}}{N}\\=\frac{41*42}{84}}\\=\color{red}{\mathbf{20.5}}$ & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{Some}}}{N}\\=\frac{41*14}{84}}\\=\color{red}{\mathbf{6.83}}$ & $\mathbf{\frac{n_{\text{Treated}\bullet}*n_{\bullet\text{Marked}}}{N}\\=\frac{41*28}{84}}\\=\color{red}{\mathbf{13.67}}$ & $\mathbf{n_{\text{Treated}\bullet}=41}$\\
-\hline
-**Totals** & $\mathbf{n_{\bullet\text{None}}=42}$ & $\mathbf{n_{\bullet\text{Some}}=14}$ & $\mathbf{n_{\bullet\text{Marked}}=28}$ & $\mathbf{N=84}$\\
-\hline
-\end{tabular}
-\end{table}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+&nbsp;&nbsp;&nbsp;&nbsp;   **None**                                                                    **Some**                                                                    **Marked**                                                                    **Totals**                                 
+-------------------------- --------------------------------------------------------------------------- --------------------------------------------------------------------------- ----------------------------------------------------------------------------- -------------------------------------------
+**Placebo**                $\boldsymbol{\dfrac{n_{\text{Placebo}\bullet}*n_{\bullet\text{None}}}{N}}$\ $\boldsymbol{\dfrac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Some}}}{N}}$\ $\boldsymbol{\dfrac{n_{\text{Placebo}\bullet}*n_{\bullet\text{Marked}}}{N}}$\ $\boldsymbol{n_{\text{Placebo}\bullet}=43}$
+                           $\boldsymbol{=\dfrac{43*42}{84}}$\                                          $\boldsymbol{=\dfrac{43*14}{84}}$\                                          $\boldsymbol{=\dfrac{43*28}{84}}$\                                                                                       
+                           $\boldsymbol{=\color{red}{\mathbf{21.5}}}$                                  $\boldsymbol{=\color{red}{\mathbf{7.167}}}$                                 $\boldsymbol{=\color{red}{\mathbf{14.33}}}$\                                                                             
+
+**Treated**                $\boldsymbol{\dfrac{n_{\text{Treated}\bullet}*n_{\bullet\text{None}}}{N}}$\ $\boldsymbol{\dfrac{n_{\text{Treated}\bullet}*n_{\bullet\text{Some}}}{N}}$\ $\boldsymbol{\dfrac{n_{\text{Treated}\bullet}*n_{\bullet\text{Marked}}}{N}}$\ $\boldsymbol{n_{\text{Treated}\bullet}=41}$
+                           $\boldsymbol{=\dfrac{41*42}{84}}$\                                          $\boldsymbol{=\dfrac{41*14}{84}}$\                                          $\boldsymbol{=\dfrac{41*28}{84}}$\                                                                                       
+                           $\boldsymbol{=\color{red}{\mathbf{20.5}}}$                                  $\boldsymbol{=\color{red}{\mathbf{6.83}}}$                                  $\boldsymbol{=\color{red}{\mathbf{13.67}}}$\                                                                             
+
+**Totals**                 $\boldsymbol{n_{\bullet\text{None}}=42}$                                    $\boldsymbol{n_{\bullet\text{Some}}=14}$                                    $\boldsymbol{n_{\bullet\text{Marked}}=28}$                                    $\boldsymbol{N=84}$                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table5-3) (ref:tab5-3)
 
 Of course, using R can help us avoid tedium like this... The main 
 engine for results in this chapter is the ``chisq.test``
 function. It operates on a table of
 counts that has been produced **without row or column totals**. 
 For example, ``Arthtable`` below contains just the observed cell 
-counts. Applying the ``chisq. test`` function to ``Arthtable``
+counts. Applying the ``chisq.test`` function to ``Arthtable``
 provides a variety of useful output. For the moment, we are just 
 going to extract the information in the "``expected``" attribute of 
 the results from running this function (using ``chisq.test()$expected)``.
@@ -745,24 +742,20 @@ $$(\text{observed}-\text{expected}/\sqrt{\text{expected}}),$$
 
 **square them**, and then we need to add them **all** up. In the 
 current example, there are 6 cells to add up ($R=2$ times $C=3$), shown 
-in Table \@ref{tab:Table5-4}. 
+in Table \@ref(tab:Table5-4). 
 
 (ref:tab5-4) $X^2$ contributions for the Arthritis data.
 
-\begin{table}
 
-\caption{(\#tab:Table5-4)(ref:tab5-4)}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & None & Some & Marked\\
-\hline
-**Placebo** & $\left(\frac{29-21.5}{\sqrt{21.5}}\right)^2=\color{red}{\mathbf{2.616}}$ & $\left(\frac{7-7.167}{\sqrt{7.167}}\right)^2=\color{red}{\mathbf{0.004}}$ & $\left(\frac{7-14.33}{\sqrt{14.33}}\right)^2=\color{red}{\mathbf{3.752}}$\\
-\hline
-**Treated** & $\left(\frac{13-20.5}{\sqrt{20.5}}\right)^2=\color{red}{\mathbf{2.744}}$ & $\left(\frac{7-6.833}{\sqrt{6.833}}\right)^2=\color{red}{\mathbf{0.004}}$ & $\left(\frac{21-13.67}{\sqrt{13.67}}\right)^2=\color{red}{\mathbf{3.935}}$\\
-\hline
-\end{tabular}
-\end{table}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+&nbsp;&nbsp;&nbsp;&nbsp;   **None**                                                                 **Some**                                                                  **Marked**                                                                
+-------------------------- ------------------------------------------------------------------------ ------------------------------------------------------------------------- --------------------------------------------------------------------------
+**Placebo**                $\left(\frac{29-21.5}{\sqrt{21.5}}\right)^2=\color{red}{\mathbf{2.616}}$ $\left(\frac{7-7.167}{\sqrt{7.167}}\right)^2=\color{red}{\mathbf{0.004}}$ $\left(\frac{7-14.33}{\sqrt{14.33}}\right)^2=\color{red}{\mathbf{3.752}}$ 
+
+**Treated**                $\left(\frac{13-20.5}{\sqrt{20.5}}\right)^2=\color{red}{\mathbf{2.744}}$ $\left(\frac{7-6.833}{\sqrt{6.833}}\right)^2=\color{red}{\mathbf{0.004}}$ $\left(\frac{21-13.67}{\sqrt{13.67}}\right)^2=\color{red}{\mathbf{3.935}}$
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table5-4) (ref:tab5-4)
 
 
 Finally, the $X^2$ statistic here is the sum of these six results 
@@ -903,61 +896,6 @@ chisq.test(Arthpermtable)
 (ref:fig5-8) Stacked bar charts of four permuted Arthritis data sets 
 that produced $X^2$ between 0.62 and 2.38.
 
-
-```r
-set.seed(98765)
-Arthperm$PermTreatment<-factor(shuffle(Arthperm$Treatment))
-par(mfrow=c(2,2))
-plot(Improved~PermTreatment,data=Arthperm,main=expression(paste("X"^"2","=",0.62)))
-Arthperm$PermTreatment<-factor(shuffle(Arthperm$Treatment))
-Arthpermtable<-tally(~PermTreatment+Improved,data=Arthperm,margins=F)
-chisq.test(Arthpermtable)
-```
-
-```
-## 
-## 	Pearson's Chi-squared test
-## 
-## data:  Arthpermtable
-## X-squared = 1.62, df = 2, p-value = 0.4449
-```
-
-```r
-plot(Improved~PermTreatment,data=Arthperm,main=expression(paste("X"^"2","=",1.62)))
-
-Arthperm$PermTreatment<-factor(shuffle(Arthperm$Treatment))
-Arthpermtable<-tally(~PermTreatment+Improved,data=Arthperm,margins=F)
-chisq.test(Arthpermtable)
-```
-
-```
-## 
-## 	Pearson's Chi-squared test
-## 
-## data:  Arthpermtable
-## X-squared = 0.80998, df = 2, p-value = 0.667
-```
-
-```r
-plot(Improved~PermTreatment,data=Arthperm,main=expression(paste("X"^"2","=",0.81)))
-
-Arthperm$PermTreatment<-factor(shuffle(Arthperm$Treatment))
-Arthpermtable<-tally(~PermTreatment+Improved,data=Arthperm,margins=F)
-chisq.test(Arthpermtable)
-```
-
-```
-## 
-## 	Pearson's Chi-squared test
-## 
-## data:  Arthpermtable
-## X-squared = 2.3823, df = 2, p-value = 0.3039
-```
-
-```r
-plot(Improved~PermTreatment,data=Arthperm,main=expression(paste("X"^"2","=",2.38)))
-```
-
 ![(\#fig:Figure5-8)(ref:fig5-8)](05-chiSquaredTests_files/figure-latex/Figure5-8-1.pdf) 
 
 To build the permutation-based null distribution for the $X^2$ statistic, 
@@ -972,14 +910,37 @@ provided to ``chisq.test `` to analyze. We again extract the
 the Arthritis data with an observed $X^2$ of 13.1 (bold, vertical line). 
 
 
+```r
+Tobs <- chisq.test(Arthtable)$statistic; Tobs
+```
+
 ```
 ## X-squared 
 ##  13.05502
 ```
 
+```r
+par(mfrow=c(1,2))
+B <- 1000
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- chisq.test(tally(~shuffle(Treatment)+Improved,
+                               data=Arthritis, margins=F))$statistic
+}
+pdata(Tstar, Tobs, lower.tail=F)
+```
+
 ```
 ## X-squared 
 ##     0.004
+```
+
+```r
+hist(Tstar, xlim=c(0,Tobs+1))
+abline(v=Tobs, col="red",lwd=3)
+plot(density(Tstar), main="Density curve of Tstar",
+     xlim=c(0,Tobs+1), lwd=2)
+abline(v=Tobs, col="red", lwd=3)
 ```
 
 ![(\#fig:Figure5-9)(ref:fig5-9)](05-chiSquaredTests_files/figure-latex/Figure5-9-1.pdf) 
@@ -1038,7 +999,7 @@ approximation of the sampling distribution of the $X^2$ statistic under
 the null hypothesis.  **The standard rule of thumb is that all the expected
 cell counts need to exceed 5 for the parametric approach to be valid**. When 
 this condition is violated, it is better to use the permutation approach. 
-The ``chisq. test`` function will provide a bright red warning message 
+The ``chisq.test`` function will provide a bright red warning message 
 to help you notice this. But it is good practice to always explore
 the expected cell counts using ``chisq.test(...)$expected``. 
 
@@ -1171,10 +1132,6 @@ residuals indicated (actually, there were none that were indicated
 because all were less than 2).
 
 
-```r
-chisq.test(Arthtable)$residuals
-```
-
 ```
 ##          Improved
 ## Treatment        None        Some      Marked
@@ -1182,11 +1139,13 @@ chisq.test(Arthtable)$residuals
 ##   Treated -1.65647289  0.06375767  1.98367320
 ```
 
+![(\#fig:Figure5-12)(ref:fig5-12)](05-chiSquaredTests_files/figure-latex/Figure5-12-1.pdf) 
+
+
 ```r
+chisq.test(Arthtable)$residuals
 mosaicplot(Arthtable,shade=T)
 ```
-
-![(\#fig:Figure5-12)(ref:fig5-12)](05-chiSquaredTests_files/figure-latex/Figure5-12-1.pdf) 
 
 In this data set, the standardized residuals are all less than 2 in 
 magnitude so Figure \@ref(fig:Figure5-12) isn't
@@ -1426,7 +1385,7 @@ associational, depending on how the subjects ended up in the groups.].
         
 3. **Calculate the test statistic:**
 
-    * This is best performed by the ``chisq. test`` function since there 
+    * This is best performed by the ``chisq.test`` function since there 
     are 21 cells and many potential places for a calculation error if 
     performed by hand.
     
@@ -1456,10 +1415,7 @@ associational, depending on how the subjects ended up in the groups.].
     to the right which reflects how little area is to the right of 
     that value in the distribution.
     
-    (ref:fig5-15) Plot of $\boldsymbol{\chi^2}$-distribution with
-    12 degrees of freedom.
-    
-    ![(\#fig:Figure5-15)(ref:fig5-15)](05-chiSquaredTests_files/figure-latex/Figure5-15-1.pdf) 
+    ![(\#fig:Figure5-15)Plot of $\boldsymbol{\chi^2}$-distribution with 12 degrees of freedom.](05-chiSquaredTests_files/figure-latex/Figure5-15-1.pdf) 
 
     * If you want to repeat this calculation directly you get a similarly 
     tiny value that R reports as 1.5e-155. Again, reporting less than 
@@ -1477,10 +1433,7 @@ associational, depending on how the subjects ended up in the groups.].
     * But since the expected cell count condition is violated, we should 
     use permutations as implemented in the following code to provide a 
     trustworthy p-value:
-    
-    (ref:fig5-16) Permutation distribution of $X^2$ for the election data.
-    Observed value of 763 not displayed.
-    
+
     
     ```r
     Tobs <- chisq.test(electable)$statistic; Tobs
@@ -1514,7 +1467,7 @@ associational, depending on how the subjects ended up in the groups.].
     abline(v=Tobs, col="red", lwd=3)
     ```
     
-    ![(\#fig:Figure5-16)(ref:fig5-16)](05-chiSquaredTests_files/figure-latex/Figure5-16-1.pdf) 
+    ![(\#fig:Figure5-16)Permutation distribution of $X^2$ for the election data. Observed value of 763 not displayed.](05-chiSquaredTests_files/figure-latex/Figure5-16-1.pdf) 
 
     * The last results tells us that there were no permuted data sets 
     that produced larger $X^2\text{'s}$ than the observed $X^2$ in 1,000
@@ -1567,13 +1520,13 @@ And visually using:
 (ref:fig5-17) Mosaic plot with shading based on standardized residuals
 for the election
 
+![(\#fig:Figure5-17)(ref:fig5-17)](05-chiSquaredTests_files/figure-latex/Figure5-17-1.pdf) 
+
 
 ```r
 #Adds information on the size of the residuals
 mosaicplot(electable, shade=T) 
 ```
-
-![(\#fig:Figure5-17)(ref:fig5-17)](05-chiSquaredTests_files/figure-latex/Figure5-17-1.pdf) 
 
 In this example, the standardized residuals show some clear sources 
 of the differences from the
@@ -1792,24 +1745,13 @@ single sample was taken from the population):
         * When we request the expected cell counts, there is a 
         warning message (not shown).
         
-        * There are three expected cell counts (in bold) below 5, 
+        * There are three expected cell counts below 5, 
         so the condition is violated and a permutation approach 
         should be used to obtain more trustworthy p-values.
-        
-        
-        -------------------------------------------------
-             &nbsp;        None   ExamorPaper   CopyBoth 
-        ----------------- ------ ------------- ----------
-            **None**      200.2      55.66       9.138   
-        
-         **ExamorPaper**   27.2      7.561     **1.241** 
-        
-           **LieBoth**     13.6    **3.781**   **0.6207**
-        -------------------------------------------------
 
 3. **Calculate the test statistic:**
 
-    * Use ``chisq. test`` although this table is small enough to do 
+    * Use ``chisq.test`` although this table is small enough to do 
     by hand if you want the practice -- see if you can find a similar answer
     to what the function provides:
 
@@ -1835,11 +1777,8 @@ single sample was taken from the population):
     that is displayed in Figure \@ref(fig:Figure5-21). Remember that this 
     isn't quite the right distribution for the test statistic since our 
     expected cell count condition was violated.
-    
-    (ref:fig5-21) Plot of $\boldsymbol{\chi^2}$-distribution with 4 
-    degrees of freedom. 
-    
-    ![(\#fig:Figure5-21)(ref:fig5-21)](05-chiSquaredTests_files/figure-latex/Figure5-21-1.pdf) 
+
+    ![(\#fig:Figure5-21)Plot of $\boldsymbol{\chi^2}$-distribution with 4 degrees of freedom.](05-chiSquaredTests_files/figure-latex/Figure5-21-1.pdf) 
 
     * If you want to repeat the p-value calculation directly:
     
@@ -1857,9 +1796,6 @@ single sample was taken from the population):
     code with the number of permutations increased to 10,000 to help 
     get a better estimate of the p-value since it is 
     possibly close to 0.05:
-    
-    (ref:fig5-22) Plot of permutation distributions for cheat/lie 
-    results with observed value of 13.24 (bold, vertical line).
 
     
     ```r
@@ -1895,7 +1831,7 @@ single sample was taken from the population):
     abline(v=Tobs, col="red", lwd=3)
     ```
     
-    ![(\#fig:Figure5-22)(ref:fig5-22)](05-chiSquaredTests_files/figure-latex/Figure5-22-1.pdf) 
+    ![(\#fig:Figure5-22)Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line).](05-chiSquaredTests_files/figure-latex/Figure5-22-1.pdf) 
 
     
     
@@ -1936,16 +1872,13 @@ The standardized residuals can help us more fully understand this result
 chisq.test(cheatlietable)$residuals
 ```
 
-
---------------------------------------------------
-     &nbsp;        None    ExamorPaper   CopyBoth 
------------------ ------- ------------- ----------
-    **None**      0.4803     -0.3563     -1.3689  
-
- **ExamorPaper**  -0.8049    0.5233     **2.4759**
-
-   **LieBoth**    -0.7047    0.6272       1.7508  
---------------------------------------------------
+```
+##              copier2
+## liar2               None ExamorPaper   CopyBoth
+##   None         0.4803220  -0.3563200 -1.3688609
+##   ExamorPaper -0.8048695   0.5232734  2.4759378
+##   LieBoth     -0.7047165   0.6271633  1.7507524
+```
 
 There is really one large standardized residual for the *ExamorPaper*
 liars and the *CopyBoth* copiers, with a much larger observed value than
@@ -1986,9 +1919,6 @@ variable. The boxplot and beanplot of the growth scores are displayed in Figure
 rates among the different
 levels. There are also a few schools flagged as being possible outliers. 
 
-(ref:fig5-23) Boxplot and beanplot of the API growth scores by level 
-of school (E for elementary, M for Middle, and H for High school).
-
 
 ```r
 require(survey)
@@ -2012,14 +1942,18 @@ tally(~stype, data=apistrat) #Sample counts
 ## 100  50  50
 ```
 
+(ref:fig5-23) Boxplot and beanplot of the API growth scores by level 
+of school (E for elementary, M for Middle, and H for High school).
+
+![(\#fig:Figure5-23)(ref:fig5-23)](05-chiSquaredTests_files/figure-latex/Figure5-23-1.pdf) 
+
+
 ```r
 par(mfrow=c(1,2))
 boxplot(growth~stype, data=apistrat, ylab="Growth", ylim=c(-55,160))
 beanplot(growth~stype, data=apistrat, log="", col="beige",
          method="jitter", ylim=c(-55,160))
 ```
-
-![(\#fig:Figure5-23)(ref:fig5-23)](05-chiSquaredTests_files/figure-latex/Figure5-23-1.pdf) 
 
 The One-Way ANOVA $F$-test, provided below, suggests
 evidence of some difference in the true mean growth scores among the different
@@ -2113,12 +2047,12 @@ created in the new ``growthcut`` variable:
 (ref:fig5-25) Stacked bar chart of the growth category responses
 by level of school.
 
+![(\#fig:Figure5-25)(ref:fig5-25)](05-chiSquaredTests_files/figure-latex/Figure5-25-1.pdf) 
+
 
 ```r
 plot(growthcut~stype, data=apistrat)
 ```
-
-![(\#fig:Figure5-25)(ref:fig5-25)](05-chiSquaredTests_files/figure-latex/Figure5-25-1.pdf) 
 
 
 Figure \@ref(fig:Figure5-25) suggests that the distributions of growth
@@ -2214,9 +2148,6 @@ assigned, we cannot say that level of school causes these differences.
 The standardized residuals can enhance this interpretation, displayed in 
 Figure \@ref(fig:Figure5-26):
 
-(ref:fig5-26) Mosaic plot of the API Growth rate categories versus 
-level of the school with shading for size of standardized residuals. 
-
 
 ```r
 chisq.test(growthtable)$residuals
@@ -2230,11 +2161,15 @@ chisq.test(growthtable)$residuals
 ##     M -0.1414214 -0.2773501  1.3571429 -0.9285714
 ```
 
-```r
-mosaicplot(growthcut~stype,data=apistrat,shade=T)    
-```
+(ref:fig5-26) Mosaic plot of the API Growth rate categories versus 
+level of the school with shading for size of standardized residuals. 
 
 ![(\#fig:Figure5-26)(ref:fig5-26)](05-chiSquaredTests_files/figure-latex/Figure5-26-1.pdf) 
+
+
+```r
+mosaicplot(growthcut~stype,data=apistrat,shade=T)
+```
 
 The *Elementary* schools have fewer low/negative growth schools and more
 high growth schools than expected under the null hypothesis. The *High* 

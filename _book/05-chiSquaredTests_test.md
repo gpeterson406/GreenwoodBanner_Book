@@ -179,26 +179,25 @@ function is provided in Table \@ref(tab:Table5-1).
 
 (ref:tab5-1) General notation for counts in an R by C contingency table.
 
-\begin{table}
 
-\caption{(\#tab:Table5-1)(ref:tab5-1)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
- & **Response Level 1** & Response Level 2 & Response Level 3 & ... & Response Level C & Totals\\
-\hline
-$\textbf{Group 1}$ & $n_{11}$ & $n_{12}$ & $n_{13}$ & $\ldots$ & $n_{1C}$ & $\mathbf{n_{1\bullet}}$\\
-\hline
-$\textbf{Group 2}$ & $n_{21}$ & $n_{22}$ & $n_{23}$ & $\ldots$ & $n_{2C}$ & $\mathbf{n_{2\bullet}}$\\
-\hline
-$\mathbf{\ldots}$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\ldots$ & $\mathbf{\ldots}$\\
-\hline
-$\textbf{Group R}$ & $n_{R1}$ & $n_{R2}$ & $n_{R3}$ & $\ldots$ & $n_{RC}$ & $\mathbf{n_{R\bullet}}$\\
-\hline
-$\textbf{Totals}$ & $\mathbf{n_{\bullet 1}}$ & $\mathbf{n_{\bullet 2}}$ & $\mathbf{n_{\bullet 3}}$ & $\mathbf{\ldots}$ & $\mathbf{n_{\bullet C}}$ & $\mathbf{N}$\\
-\hline
-\end{tabular}
-\end{table}
+```
+## 
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+## &nbsp;             **Response Level 1**     **Response Level 2**     **Response Level 3**     **...             **Response Level C**     **Totals**             
+## ------------------ ------------------------ ------------------------ ------------------------ ----------------- ------------------------ -----------------------
+## $\textbf{Group 1}$ $n_{11}$                 $n_{12}$                 $n_{13}$                 $\ldots$          $n_{1C}$                 $\mathbf{n_{1\bullet}}$
+## 
+## $\textbf{Group 2}$ $n_{21}$                 $n_{22}$                 $n_{23}$                 $\ldots$          $n_{2C}$                 $\mathbf{n_{2\bullet}}$
+## 
+## $\mathbf{\ldots}$  $\ldots$                 $\ldots$                 $\ldots$                 $\ldots$          $\ldots$                 $\mathbf{\ldots}$      
+## 
+## $\textbf{Group R}$ $n_{R1}$                 $n_{R2}$                 $n_{R3}$                 $\ldots$          $n_{RC}$                 $\mathbf{n_{R\bullet}}$
+## 
+## $\textbf{Totals}$  $\mathbf{n_{\bullet 1}}$ $\mathbf{n_{\bullet 2}}$ $\mathbf{n_{\bullet 3}}$ $\mathbf{\ldots}$ $\mathbf{n_{\bullet C}}$ $\mathbf{N}$           
+## ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 
+## Table: (\#tab:Table5-1) (ref:tab5-1)
+```
 
 Comparing counts from the contingency table is useful, but comparing proportions
 in each category is better, especially when the sample sizes in the levels of 
