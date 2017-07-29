@@ -510,7 +510,6 @@ outliers removed. Lighter (orange) circle for positive correlations
 and black for negative correlations. 
 
 
-
 ```r
 require(corrplot)
 corrplot.mixed(cor(aisR2), col=c("black", "orange"))
@@ -550,6 +549,8 @@ athletes where sex was coded 0 for males and 1 for females.
 (ref:fig6-7) Scatterplot of athlete's height and hematocrit by sex of athletes. 
 Males were coded as 0s and females as 1s.
 
+![(\#fig:Figure6-7)(ref:fig6-7)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf) 
+
 
 ```r
 aisR2 <- ais[-c(56,166),c("Ht","Hc","Bfat","Sex")]
@@ -557,8 +558,6 @@ require(car)
 scatterplot(Hc~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Height vs Hematocrit by Sex")
 ```
-
-![(\#fig:Figure6-7)(ref:fig6-7)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf) 
 
 Adding the grouping information really changes the impressions of the relationship
 between *Height* and *Hematocrit* -- within each sex, there is little relationship 
@@ -607,9 +606,6 @@ show weaker relationships that also appear to be in different directions
 dangers of aggregating different groups and
 ignoring the group information. 
 
-(ref:fig6-8) Scatterplot of athlete's body fat and hematocrit by sex of athletes. Males
-were coded as 0s and females as 1s. 
-
 
 ```r
 cor(Hc~Bfat, data=aisR2[aisR2$Sex==0,]) #Males only
@@ -627,12 +623,16 @@ cor(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Females only
 ## [1] -0.1679751
 ```
 
+(ref:fig6-8) Scatterplot of athlete's body fat and hematocrit by sex of athletes. Males
+were coded as 0s and females as 1s. 
+
+![(\#fig:Figure6-8)(ref:fig6-8)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pdf) 
+
+
 ```r
 scatterplot(Hc~Bfat|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Body Fat vs Hematocrit by Sex")
 ```
-
-![(\#fig:Figure6-8)(ref:fig6-8)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pdf) 
 
 One final exploration for these data involves the *body fat *and *height* relationship 
 displayed in Figure \@ref(fig:Figure6-9). This relationship shows an even greater
@@ -646,8 +646,6 @@ percentages. This might be related to the types of sports they compete in --
 that would be another categorical variable we could incorporate... Both groups
 also seem to demonstrate slightly more variability in *Body Fat* associated with taller 
 athletes (each sort of "fans out"). 
-
-(ref:fig6-9) Scatterplot of athlete's body fat and height by sex.
 
 
 ```r
@@ -666,12 +664,15 @@ cor(Bfat~Ht,data=aisR2[aisR2$Sex==1,]) #Females only
 ## [1] 0.4476962
 ```
 
+(ref:fig6-9) Scatterplot of athlete's body fat and height by sex.
+
+![(\#fig:Figure6-9)(ref:fig6-9)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf) 
+
+
 ```r
 scatterplot(Bfat~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Height vs Body Fat by Sex")
 ```
-
-![(\#fig:Figure6-9)(ref:fig6-9)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf) 
 
 In each of these situations, the sex of the athletes has the potential to cause misleading
 conclusions if ignored. There are two ways that this could occur -- if we did
@@ -943,23 +944,8 @@ observed correlation (bold line) and bounds for 95% confidence interval
 (dashed lines).
 
 
-```r
-Tobs <- cor(dbh.cm~height.m, data=ufc); Tobs
-```
-
 ```
 ## [1] 0.7699552
-```
-
-```r
-par(mfrow=c(2,1))
-B <- 1000
-Tstar <- matrix(NA, nrow=B)
-for (b in (1:B)){
-  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc))
-}
-quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
-quantiles
 ```
 
 ```
@@ -968,26 +954,8 @@ quantiles
 ## 97.5% 0.8203489 0.975
 ```
 
-```r
-hist(Tstar, labels=T, xlim=c(0.6,0.9),
-     main="Bootstrap distribution of correlation with all data")
-abline(v=Tobs, col="red", lwd=3)
-abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
-
-Tobs <- cor(dbh.cm~height.m, data=ufc[-168,]); Tobs
-```
-
 ```
 ## [1] 0.7912053
-```
-
-```r
-Tstar <- matrix(NA, nrow=B)
-for (b in (1:B)){
-  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc[-168,]))
-}
-quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
-quantiles
 ```
 
 ```
@@ -996,14 +964,36 @@ quantiles
 ## 97.5% 0.827492 0.975
 ```
 
+![(\#fig:Figure6-12)(ref:fig6-12)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.pdf) 
+
+
 ```r
+Tobs <- cor(dbh.cm~height.m, data=ufc); Tobs
+par(mfrow=c(2,1))
+B <- 1000
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc))
+}
+quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
+quantiles
+hist(Tstar, labels=T, xlim=c(0.6,0.9),
+     main="Bootstrap distribution of correlation with all data")
+abline(v=Tobs, col="red", lwd=3)
+abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
+
+Tobs <- cor(dbh.cm~height.m, data=ufc[-168,]); Tobs
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- cor(dbh.cm~height.m, data=resample(ufc[-168,]))
+}
+quantiles <- qdata(Tstar, c(.025,.975)) #95% Confidence Interval
+quantiles
 hist(Tstar, labels=T, xlim=c(0.6,0.9),
      main= "Bootstrap distribution of correlation without outlier")
 abline(v=Tobs, col="red", lwd=3)
 abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
 ```
-
-![(\#fig:Figure6-12)(ref:fig6-12)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.pdf) 
 
 ## Describing relationships with a regression model	{#section6-6}
 
@@ -1030,14 +1020,16 @@ the ``scatterplot`` function with the ``reg.line=T`` option or just omitting
 (ref:fig6-13) Scatterplot with estimate regression line for the *Beers* and 
 *BAC* data. 
 
+![(\#fig:Figure6-13)(ref:fig6-13)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pdf) 
+
 
 ```r
 scatterplot(BAC~Beers, ylim=c(0,.2), xlim=c(0,9), data=BB,
             boxplot=F, main="Scatterplot with regression line",
             lwd=2, smooth=F)
+abline(v=1:9,col="grey")
+abline(h=c(0.05914,0.0771),col="blue",lty=2,lwd=2)
 ```
-
-![(\#fig:Figure6-13)(ref:fig6-13)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pdf) 
 
 The equation for a line is $y=a+bx$, or maybe $y=mx+b$. In the version 
 $mx+b$ you learned that $m$ is a slope coefficient that relates a 
@@ -1199,8 +1191,8 @@ There is a general interpretation
 for the slope coefficient that you will need to master. In general, we
 interpret the slope coefficient as:
 
-*  **Slope interpretation (general):** For a 1 ***[unit of X]*** increase in
-***X***, we expect, *on average*, a $\mathbf{b_1}$ ***[unit of Y]*** change
+*  **Slope interpretation (general):** For a 1 **[*unit of X*]** increase in
+***X***, we expect, *on average*, a $\mathbf{b_1}$ **[*unit of Y*]** change
 in ***Y***. 
 
 Figure \@ref(fig:Figure6-14) can help you think about the
@@ -1230,8 +1222,8 @@ are particularly interested in.
 
 Similarly, the general interpretation for a y-intercept is:
 
-* **Y-intercept interpretation (general):** For ***X***= 0 ***[units of X]***,
-we expect, on average, $\mathbf{b_0}$ ***[units of Y]*** **in** ***Y***. 
+* **Y-intercept interpretation (general):** For ***X***= 0 **[*units of X*]**,
+we expect, on average, $\mathbf{b_0}$ **[*units of Y*]** **in** ***Y***. 
 
 Again, applied to the *BAC* data set: For 0 beers for *Beers* consumed, 
 we expect, on
@@ -1485,7 +1477,7 @@ scatterplot(loghectacres~Temperature, data=mtfires, smoother=T,
 
 ![(\#fig:Figure6-18)(ref:fig6-18)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1.pdf) 
 
-## Measuring the strength of regressions: R2	{#section6-8}
+## Measuring the strength of regressions: R^2^ {#section6-8}
 
 At the beginning of the chapter, 
 we used the correlation coefficient to measure the strength and direction of
@@ -1494,7 +1486,7 @@ description of the direction of the linear relationship than the correlation
 provided; in regression we addressed the question of "for a unit change in $x$,
 what sort of change in $y$ do we expect, on average?" whereas the 
 correlation just addressed whether the relationship was positive or negative.
-However, the  **regression line tells us nothing about the strength of the
+However, the **regression line tells us nothing about the strength of the
 relationship**. Consider the three scatterplots in Figure \@ref(fig:Figure6-19):
 the left panel is the original *BAC* data and the two right
 panels have fake data that generated the same estimated regression model with a
@@ -1978,9 +1970,6 @@ examples:
         isn't possible for one person's beer consumption to change
         someone else's BAC.
         
-        (ref:fig6-22) Full suite of diagnostics plots for *Beer* vs 
-        *BAC* data.
-        
         
         ```r
         m1 <- lm(BAC~Beers, data=BB)
@@ -1988,7 +1977,7 @@ examples:
         plot(m1, add.smooth=F, main="Beers vs BAC")
         ```
         
-        ![(\#fig:Figure6-22)(ref:fig6-22)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pdf) 
+        ![(\#fig:Figure6-22)Full suite of diagnostics plots for *Beer* vs *BAC* data.](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pdf) 
         
     * Linearity, constant variance from Residuals vs Fitted:
     
@@ -2077,9 +2066,6 @@ Reporting the following regression model that has a decent $R^2$ of 62.6%
 would be misleading since it does not accurately represent the relationship
 between tree diameter and tree height. 
 
-(ref:fig6-23) Diagnostics plots for tree height and diameter simple 
-linear regression model. 
-
 
 ```r
 tree1 <- lm(height.m~dbh.cm,data=ufc[-168,])
@@ -2105,12 +2091,17 @@ summary(tree1)
 ## F-statistic: 557.4 on 1 and 333 DF,  p-value: < 2.2e-16
 ```
 
+(ref:fig6-23) Diagnostics plots for tree height and diameter simple 
+linear regression model. 
+
+
 ```r
 par(mfrow=c(2,2))
 plot(tree1, add.smooth=F)
 ```
 
 ![(\#fig:Figure6-23)(ref:fig6-23)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1.pdf) 
+
 
 ## Old Faithful discharge and waiting times {#section6-11}
 
@@ -2175,8 +2166,6 @@ we do not have to worry about non-constant variance here. So these results might
 be relatively trustworthy if we assume that the same relationship holds for all
 levels of duration of eruptions. 
 
-(ref:fig6-25) Diagnostic plots for Old Faithful waiting time model.
-
 
 ```r
 OF1 <- lm(Waiting~Duration, data=G2)
@@ -2201,6 +2190,9 @@ summary(OF1)
 ## Multiple R-squared:  0.7894,	Adjusted R-squared:  0.7887 
 ## F-statistic:  1110 on 1 and 296 DF,  p-value: < 2.2e-16
 ```
+
+(ref:fig6-25) Diagnostic plots for Old Faithful waiting time model.
+
 
 ```r
 par(mfrow=c(2,2))
@@ -2318,7 +2310,7 @@ data=\textcolor{red}{DATASETNAME})
 
     * Provides four regression diagnostic plots in one plot. 
 
-
+\newpage
 
 ## Practice problems	{#section6-14}
 

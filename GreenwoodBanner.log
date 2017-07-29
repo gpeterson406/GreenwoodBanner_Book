@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  28 JUL 2017 10:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6200) (preloaded format=pdflatex 2017.1.2)  28 JUL 2017 20:14
 entering extended mode
 **./GreenwoodBanner.tex
 (GreenwoodBanner.tex
@@ -1105,7 +1105,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ]
 Chapter 1.
-[9] <chapter0_files/image002.png, id=597, 497.60907pt x 279.66985pt>
+[9] <chapter0_files/image002.png, id=598, 497.60907pt x 279.66985pt>
 File: chapter0_files/image002.png Graphic file (type png)
 <use chapter0_files/image002.png>
 Package pdftex.def Info: chapter0_files/image002.png used on input line 320.
@@ -4677,7 +4677,7 @@ Package xcolor Warning: Incompatible color definition on input line 14210.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-6-1.pdf, id
-=2710, 433.62pt x 433.62pt>
+=2710, 252.945pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-6-1.pd
 f Graphic file (type pdf)
 
@@ -4685,27 +4685,28 @@ f Graphic file (type pdf)
 >
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
 atex/Figure6-6-1.pdf used on input line 14214.
-(pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
-
-Package xcolor Warning: Incompatible color definition on input line 14254.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14261.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14261.
-
-
+(pdftex.def)             Requested size: 252.94823pt x 252.94823pt.
+[189 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-6-1.
+pdf>]
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf, id
-=2712, 433.62pt x 252.945pt>
+=2725, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pd
 f Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf
 >
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-7-1.pdf used on input line 14265.
+atex/Figure6-7-1.pdf used on input line 14256.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 14261.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14268.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14268.
+
 
 Package xcolor Warning: Incompatible color definition on input line 14286.
 
@@ -4724,89 +4725,88 @@ Package xcolor Warning: Incompatible color definition on input line 14300.
 
 Package xcolor Warning: Incompatible color definition on input line 14300.
 
-[189] [190 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
-6-6-1.pdf>]
+[190 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.
+pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 14328.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14332.
+Package xcolor Warning: Incompatible color definition on input line 14325.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14332.
+Package xcolor Warning: Incompatible color definition on input line 14329.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14338.
+Package xcolor Warning: Incompatible color definition on input line 14329.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14342.
+Package xcolor Warning: Incompatible color definition on input line 14335.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14342.
+Package xcolor Warning: Incompatible color definition on input line 14339.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14348.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14353.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14353.
+Package xcolor Warning: Incompatible color definition on input line 14339.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pdf, id
-=2732, 433.62pt x 252.945pt>
+=2738, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pd
 f Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pdf
 >
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-8-1.pdf used on input line 14357.
+atex/Figure6-8-1.pdf used on input line 14350.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 14380.
+Package xcolor Warning: Incompatible color definition on input line 14355.
 
-[191 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.
+
+Package xcolor Warning: Incompatible color definition on input line 14360.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14360.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14378.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14382.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14382.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14388.
+
+[191 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.
 pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 14384.
+Package xcolor Warning: Incompatible color definition on input line 14392.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14384.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14390.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14394.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14394.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14400.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14405.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14405.
+Package xcolor Warning: Incompatible color definition on input line 14392.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf, id
-=2746, 433.62pt x 252.945pt>
+=2752, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pd
 f Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf
 >
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-9-1.pdf used on input line 14409.
+atex/Figure6-9-1.pdf used on input line 14402.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[192 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.
-pdf>] [193 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
-6-9-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 14406.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14411.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14411.
+
+[192 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.
+pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 14524.
 
@@ -4825,6 +4825,7 @@ Package xcolor Warning: Incompatible color definition on input line 14545.
 
 Package xcolor Warning: Incompatible color definition on input line 14545.
 
+[193]
 
 Package xcolor Warning: Incompatible color definition on input line 14553.
 
@@ -4836,7 +4837,7 @@ Package xcolor Warning: Incompatible color definition on input line 14563.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-10-1.pdf, i
-d=2771, 433.62pt x 252.945pt>
+d=2772, 361.35pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-10-1.p
 df Graphic file (type pdf)
 
@@ -4844,8 +4845,9 @@ df Graphic file (type pdf)
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
 atex/Figure6-10-1.pdf used on input line 14567.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[194]
+(pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
+[194 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-10-1
+.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 14634.
 
@@ -4857,7 +4859,7 @@ Package xcolor Warning: Incompatible color definition on input line 14640.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-11-1.pdf, i
-d=2780, 433.62pt x 252.945pt>
+d=2786, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-11-1.p
 df Graphic file (type pdf)
 
@@ -4875,11 +4877,11 @@ Package xcolor Warning: Incompatible color definition on input line 14659.
 
 Package xcolor Warning: Incompatible color definition on input line 14659.
 
-[195 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-10-1
-.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 14675.
 
+[195 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-11-1
+.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 14679.
 
@@ -4896,663 +4898,648 @@ Package xcolor Warning: Incompatible color definition on input line 14689.
 Package xcolor Warning: Incompatible color definition on input line 14689.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14720.
-
-[196 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-11-1
-.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 14724.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14724.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14730.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14741.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14741.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14749.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14758.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14758.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14764.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14773.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14773.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14781.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14788.
-
-
-Package xcolor Warning: Incompatible color definition on input line 14788.
-
-
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.pdf, i
-d=2808, 578.16pt x 505.89pt>
+d=2802, 505.89pt x 505.89pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-12-1.pdf used on input line 14792.
-(pdftex.def)             Requested size: 469.75385pt x 411.0346pt.
+atex/Figure6-12-1.pdf used on input line 14742.
+(pdftex.def)             Requested size: 469.76265pt x 469.76265pt.
 
-Package xcolor Warning: Incompatible color definition on input line 14826.
+Package xcolor Warning: Incompatible color definition on input line 14749.
 
-[197] [198 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
+
+Package xcolor Warning: Incompatible color definition on input line 14777.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14777.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14777.
+
+[196] [197 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
 6-12-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 14832.
+Package xcolor Warning: Incompatible color definition on input line 14777.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14832.
+Package xcolor Warning: Incompatible color definition on input line 14777.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pdf, i
-d=2824, 433.62pt x 252.945pt>
+d=2820, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-13-1.pdf used on input line 14836.
+atex/Figure6-13-1.pdf used on input line 14808.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[199 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1
-.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 14947.
+Package xcolor Warning: Incompatible color definition on input line 14813.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14952.
+Package xcolor Warning: Incompatible color definition on input line 14821.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14952.
+Package xcolor Warning: Incompatible color definition on input line 14821.
+
+[198 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1
+.pdf>] [199]
+
+Package xcolor Warning: Incompatible color definition on input line 14929.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14967.
+Package xcolor Warning: Incompatible color definition on input line 14934.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14971.
+Package xcolor Warning: Incompatible color definition on input line 14934.
 
 
-Package xcolor Warning: Incompatible color definition on input line 14971.
+Package xcolor Warning: Incompatible color definition on input line 14949.
 
-[200] <chapter6_files/image047.png, id=2850, 702.2235pt x 237.2865pt>
+
+Package xcolor Warning: Incompatible color definition on input line 14953.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14953.
+
+<chapter6_files/image047.png, id=2846, 702.2235pt x 237.2865pt>
 File: chapter6_files/image047.png Graphic file (type png)
 <use chapter6_files/image047.png>
-Package pdftex.def Info: chapter6_files/image047.png used on input line 15028.
+Package pdftex.def Info: chapter6_files/image047.png used on input line 15010.
 (pdftex.def)             Requested size: 469.74797pt x 158.7313pt.
+[200]
+
+Package xcolor Warning: Incompatible color definition on input line 15066.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15072.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15072.
+
 [201 <./chapter6_files/image047.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 15084.
+Package xcolor Warning: Incompatible color definition on input line 15093.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15090.
+Package xcolor Warning: Incompatible color definition on input line 15099.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15090.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15111.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15117.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15117.
+Package xcolor Warning: Incompatible color definition on input line 15099.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1.pdf, i
-d=2858, 433.62pt x 252.945pt>
+d=2859, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-15-1.pdf used on input line 15121.
+atex/Figure6-15-1.pdf used on input line 15103.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[202]
+[202 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1
+.pdf>]
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-16-1.pdf, i
-d=2865, 433.62pt x 252.945pt>
+d=2871, 289.08pt x 216.81pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-16-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-16-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-16-1.pdf used on input line 15172.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-<chapter6_files/image063.png, id=2871, 331.2375pt x 180.2986pt>
+atex/Figure6-16-1.pdf used on input line 15154.
+(pdftex.def)             Requested size: 289.09251pt x 216.81938pt.
+<chapter6_files/image063.png, id=2877, 331.2375pt x 180.2986pt>
 File: chapter6_files/image063.png Graphic file (type png)
 <use chapter6_files/image063.png>
-Package pdftex.def Info: chapter6_files/image063.png used on input line 15207.
+Package pdftex.def Info: chapter6_files/image063.png used on input line 15189.
 (pdftex.def)             Requested size: 331.23668pt x 180.29814pt.
-[203 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1
-.pdf>] [204 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figur
-e6-16-1.pdf> <./chapter6_files/image063.png>]
+[203 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-16-1
+.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 15248.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15253.
+Package xcolor Warning: Incompatible color definition on input line 15230.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15253.
-
-[205]
-
-Package xcolor Warning: Incompatible color definition on input line 15332.
+Package xcolor Warning: Incompatible color definition on input line 15235.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15337.
+Package xcolor Warning: Incompatible color definition on input line 15235.
+
+[204 <./chapter6_files/image063.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 15314.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15337.
+Package xcolor Warning: Incompatible color definition on input line 15319.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15319.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1.pdf, i
-d=2903, 433.62pt x 252.945pt>
+d=2897, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-18-1.pdf used on input line 15341.
+atex/Figure6-18-1.pdf used on input line 15323.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[206 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1
-.pdf>]
+[205]
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-19-1.pdf, i
-d=2919, 433.62pt x 252.945pt>
+d=2908, 433.62pt x 216.81pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-19-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-19-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-19-1.pdf used on input line 15389.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+atex/Figure6-19-1.pdf used on input line 15372.
+(pdftex.def)             Requested size: 433.63878pt x 216.81938pt.
+
+Package xcolor Warning: Incompatible color definition on input line 15412.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15417.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15417.
+
+[206 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1
+.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 15449.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15453.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15453.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15464.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15470.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15470.
+
 [207 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-19-1
 .pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 15429.
+Package xcolor Warning: Incompatible color definition on input line 15496.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15434.
+Package xcolor Warning: Incompatible color definition on input line 15501.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15434.
+Package xcolor Warning: Incompatible color definition on input line 15501.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15466.
+Package xcolor Warning: Incompatible color definition on input line 15533.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15470.
+Package xcolor Warning: Incompatible color definition on input line 15538.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15470.
+Package xcolor Warning: Incompatible color definition on input line 15538.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15481.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15487.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15487.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15513.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [208]
-
-Package xcolor Warning: Incompatible color definition on input line 15518.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15518.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15550.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15555.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15555.
-
-[209]
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1.pdf, i
-d=2942, 433.62pt x 252.945pt>
+d=2938, 433.62pt x 252.945pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-20-1.pdf used on input line 15648.
+atex/Figure6-20-1.pdf used on input line 15631.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[210]
+[209]
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-21-1.pdf, i
-d=2952, 578.16pt x 722.7pt>
+d=2948, 578.16pt x 722.7pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-21-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-21-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-21-1.pdf used on input line 15711.
+atex/Figure6-21-1.pdf used on input line 15694.
 (pdftex.def)             Requested size: 469.75385pt x 587.1923pt.
-[211 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1
-.pdf>] [212 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figur
-e6-21-1.pdf>] [213]
+[210 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1
+.pdf>] [211 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figur
+e6-21-1.pdf>] [212]
 
-Package xcolor Warning: Incompatible color definition on input line 15915.
-
-
-Package xcolor Warning: Incompatible color definition on input line 15921.
+Package xcolor Warning: Incompatible color definition on input line 15895.
 
 
-Package xcolor Warning: Incompatible color definition on input line 15921.
+Package xcolor Warning: Incompatible color definition on input line 15901.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15901.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pdf, i
-d=2981, 578.16pt x 361.35pt>
+d=2977, 578.16pt x 361.35pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-22-1.pdf used on input line 15925.
+atex/Figure6-22-1.pdf used on input line 15905.
 (pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
-[214] [215 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
+[213] [214 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
 6-22-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 16056.
+Package xcolor Warning: Incompatible color definition on input line 16034.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16061.
+Package xcolor Warning: Incompatible color definition on input line 16039.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16061.
+Package xcolor Warning: Incompatible color definition on input line 16039.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16082.
+Package xcolor Warning: Incompatible color definition on input line 16063.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16087.
+Package xcolor Warning: Incompatible color definition on input line 16068.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16087.
+Package xcolor Warning: Incompatible color definition on input line 16068.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1.pdf, i
-d=3000, 433.62pt x 252.945pt>
+d=2996, 578.16pt x 361.35pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-23-1.pdf used on input line 16091.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[216 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1
-.pdf>]
+atex/Figure6-23-1.pdf used on input line 16072.
+(pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
+[215]
 
-Package xcolor Warning: Incompatible color definition on input line 16134.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16142.
+Package xcolor Warning: Incompatible color definition on input line 16115.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16142.
+Package xcolor Warning: Incompatible color definition on input line 16123.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16123.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-24-1.pdf, i
-d=3015, 578.16pt x 361.35pt>
+d=3009, 433.62pt x 289.08pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-24-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-24-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-24-1.pdf used on input line 16146.
-(pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
+atex/Figure6-24-1.pdf used on input line 16127.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
 
-Package xcolor Warning: Incompatible color definition on input line 16170.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16175.
+Package xcolor Warning: Incompatible color definition on input line 16149.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16175.
-
-[217] [218 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure
-6-24-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 16196.
+Package xcolor Warning: Incompatible color definition on input line 16154.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16201.
+Package xcolor Warning: Incompatible color definition on input line 16154.
+
+[216 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1
+.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 16177.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16201.
+Package xcolor Warning: Incompatible color definition on input line 16182.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16182.
 
 
 <06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-25-1.pdf, i
-d=3035, 578.16pt x 361.35pt>
+d=3021, 433.62pt x 289.08pt>
 File: 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-25-1.p
 df Graphic file (type pdf)
 
 <use 06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-25-1.pd
 f>
 Package pdftex.def Info: 06-correlationAndSimpleLinearRegression_files/figure-l
-atex/Figure6-25-1.pdf used on input line 16205.
-(pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
-[219 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-25-1
-.pdf>] [220] [221] [222
-
-]
+atex/Figure6-25-1.pdf used on input line 16186.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[217 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-24-1
+.pdf>] [218 <./06-correlationAndSimpleLinearRegression_files/figure-latex/Figur
+e6-25-1.pdf>] [219] [220]
 Chapter 7.
-[223] <chapter7_files/image029.png, id=3073, 261.97874pt x 197.538pt>
+[221
+
+] <chapter7_files/image029.png, id=3064, 261.97874pt x 197.538pt>
 File: chapter7_files/image029.png Graphic file (type png)
 <use chapter7_files/image029.png>
-Package pdftex.def Info: chapter7_files/image029.png used on input line 16489.
+Package pdftex.def Info: chapter7_files/image029.png used on input line 16472.
 (pdftex.def)             Requested size: 261.98608pt x 197.54353pt.
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-2-1.pdf, id=3075
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-2-1.pdf, id=3066
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-2-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-2-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-2-1.pdf used on input line 16505.
+Figure7-2-1.pdf used on input line 16488.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-<chapter7_files/image034.png, id=3077, 419.31656pt x 197.98969pt>
+<chapter7_files/image034.png, id=3068, 419.31656pt x 197.98969pt>
 File: chapter7_files/image034.png Graphic file (type png)
 <use chapter7_files/image034.png>
-Package pdftex.def Info: chapter7_files/image034.png used on input line 16535.
+Package pdftex.def Info: chapter7_files/image034.png used on input line 16518.
 (pdftex.def)             Requested size: 419.31552pt x 197.9892pt.
 
 Underfull \vbox (badness 2452) has occurred while \output is active []
 
-[224 <./chapter7_files/image029.png>] [225 <./07-simpleLinearRegressionInferenc
+[222 <./chapter7_files/image029.png>] [223 <./07-simpleLinearRegressionInferenc
 e_files/figure-latex/Figure7-2-1.pdf> <./chapter7_files/image034.png>] <chapter
-7_files/image045.png, id=3095, 252.945pt x 163.812pt>
+7_files/image045.png, id=3087, 252.945pt x 163.812pt>
 File: chapter7_files/image045.png Graphic file (type png)
 <use chapter7_files/image045.png>
-Package pdftex.def Info: chapter7_files/image045.png used on input line 16578.
+Package pdftex.def Info: chapter7_files/image045.png used on input line 16561.
 (pdftex.def)             Requested size: 252.94823pt x 163.81407pt.
-[226 <./chapter7_files/image045.png>]
+[224 <./chapter7_files/image045.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 16683.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16688.
+Package xcolor Warning: Incompatible color definition on input line 16666.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16688.
+Package xcolor Warning: Incompatible color definition on input line 16671.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16671.
+
+[225]
+
+Package xcolor Warning: Incompatible color definition on input line 16692.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16696.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16696.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16702.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16706.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16706.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16712.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16716.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16716.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16727.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16731.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16731.
+
+[226]
+
+Package xcolor Warning: Incompatible color definition on input line 16829.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16837.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16837.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16858.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16862.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16862.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16876.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16883.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16883.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16883.
 
 [227]
 
-Package xcolor Warning: Incompatible color definition on input line 16709.
+Package xcolor Warning: Incompatible color definition on input line 16883.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16713.
+Package xcolor Warning: Incompatible color definition on input line 16883.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16713.
+Package xcolor Warning: Incompatible color definition on input line 16904.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16719.
+Package xcolor Warning: Incompatible color definition on input line 16908.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16723.
+Package xcolor Warning: Incompatible color definition on input line 16908.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16723.
+Package xcolor Warning: Incompatible color definition on input line 16916.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16729.
+Package xcolor Warning: Incompatible color definition on input line 16920.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16733.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16733.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16744.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16748.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16748.
+Package xcolor Warning: Incompatible color definition on input line 16920.
 
 [228]
 
-Package xcolor Warning: Incompatible color definition on input line 16846.
+Package xcolor Warning: Incompatible color definition on input line 17067.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16854.
+Package xcolor Warning: Incompatible color definition on input line 17072.
 
 
-Package xcolor Warning: Incompatible color definition on input line 16854.
+Package xcolor Warning: Incompatible color definition on input line 17072.
 
-
-Package xcolor Warning: Incompatible color definition on input line 16875.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16879.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16879.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16893.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16900.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16900.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16900.
-
-[229]
-
-Package xcolor Warning: Incompatible color definition on input line 16900.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16900.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16921.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16925.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16925.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16933.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16937.
-
-
-Package xcolor Warning: Incompatible color definition on input line 16937.
-
-[230]
 
 Package xcolor Warning: Incompatible color definition on input line 17084.
 
+[229]
 
-Package xcolor Warning: Incompatible color definition on input line 17089.
+Package xcolor Warning: Incompatible color definition on input line 17088.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17089.
+Package xcolor Warning: Incompatible color definition on input line 17088.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17094.
 
 
 Package xcolor Warning: Incompatible color definition on input line 17101.
 
-[231]
 
-Package xcolor Warning: Incompatible color definition on input line 17105.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17105.
+Package xcolor Warning: Incompatible color definition on input line 17101.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17111.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17118.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17118.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf, id=3128
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf, id=3120
 , 578.16pt x 361.35pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-4-1.pdf used on input line 17122.
+Figure7-4-1.pdf used on input line 17105.
 (pdftex.def)             Requested size: 469.75385pt x 293.59616pt.
-[232 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf>]
+[230 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-4-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 17214.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17220.
+Package xcolor Warning: Incompatible color definition on input line 17197.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17220.
+Package xcolor Warning: Incompatible color definition on input line 17203.
 
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf, id=3145
+Package xcolor Warning: Incompatible color definition on input line 17203.
+
+
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf, id=3137
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-5-1.pdf used on input line 17224.
+Figure7-5-1.pdf used on input line 17207.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[231]
+
+Package xcolor Warning: Incompatible color definition on input line 17299.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17303.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17303.
+
+[232 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 17336.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17340.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17340.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17394.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17398.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17398.
+
 [233]
 
-Package xcolor Warning: Incompatible color definition on input line 17316.
+Package xcolor Warning: Incompatible color definition on input line 17468.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17320.
+Package xcolor Warning: Incompatible color definition on input line 17474.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17320.
-
-[234 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 17353.
+Package xcolor Warning: Incompatible color definition on input line 17474.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17357.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17357.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17411.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17415.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17415.
-
-[235]
-
-Package xcolor Warning: Incompatible color definition on input line 17485.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17491.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17491.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf, id=3178
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf, id=3169
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-6-1.pdf used on input line 17495.
+Figure7-6-1.pdf used on input line 17478.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 17514.
+Package xcolor Warning: Incompatible color definition on input line 17497.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17519.
+Package xcolor Warning: Incompatible color definition on input line 17502.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17519.
+Package xcolor Warning: Incompatible color definition on input line 17502.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17538.
+Package xcolor Warning: Incompatible color definition on input line 17521.
 
-[236]
+[234]
 
-Package xcolor Warning: Incompatible color definition on input line 17543.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17543.
+Package xcolor Warning: Incompatible color definition on input line 17526.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17564.
+Package xcolor Warning: Incompatible color definition on input line 17526.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17568.
+Package xcolor Warning: Incompatible color definition on input line 17547.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17568.
+Package xcolor Warning: Incompatible color definition on input line 17551.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17551.
 
 
 Underfull \vbox (badness 1596) has occurred while \output is active []
 
-[237 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf>]
+[235 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-6-1.pdf>]
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf, id=3204
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf, id=3196
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-7-1.pdf used on input line 17606.
+Figure7-7-1.pdf used on input line 17589.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 17640.
+Package xcolor Warning: Incompatible color definition on input line 17623.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17628.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17628.
+
+[236 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 17635.
 
 
 Package xcolor Warning: Incompatible color definition on input line 17645.
@@ -5560,46 +5547,45 @@ Package xcolor Warning: Incompatible color definition on input line 17645.
 
 Package xcolor Warning: Incompatible color definition on input line 17645.
 
-[238 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-7-1.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 17652.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17662.
+Package xcolor Warning: Incompatible color definition on input line 17659.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17662.
+Package xcolor Warning: Incompatible color definition on input line 17659.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17669.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17676.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17676.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf, id=3220
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf, id=3212
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-8-1.pdf used on input line 17680.
+Figure7-8-1.pdf used on input line 17663.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[239 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf>]
+[237 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-8-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 17721.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17726.
+Package xcolor Warning: Incompatible color definition on input line 17704.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17726.
+Package xcolor Warning: Incompatible color definition on input line 17709.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17733.
+Package xcolor Warning: Incompatible color definition on input line 17709.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17716.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17727.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17727.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17735.
 
 
 Package xcolor Warning: Incompatible color definition on input line 17744.
@@ -5608,183 +5594,228 @@ Package xcolor Warning: Incompatible color definition on input line 17744.
 Package xcolor Warning: Incompatible color definition on input line 17744.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17752.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17761.
-
-
-Package xcolor Warning: Incompatible color definition on input line 17761.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf, id=3235
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf, id=3227
 , 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf Gra
 phic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-9-1.pdf used on input line 17765.
+Figure7-9-1.pdf used on input line 17748.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[240 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf>]
+[238 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-9-1.pdf>]
 
 <07-simpleLinearRegressionInference_files/figure-latex/Figure7-10-1.pdf, id=324
-9, 433.62pt x 252.945pt>
+1, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-10-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-10-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-10-1.pdf used on input line 17832.
+Figure7-10-1.pdf used on input line 17815.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 17838.
+Package xcolor Warning: Incompatible color definition on input line 17821.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17844.
+Package xcolor Warning: Incompatible color definition on input line 17827.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17844.
+Package xcolor Warning: Incompatible color definition on input line 17827.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17865.
+Package xcolor Warning: Incompatible color definition on input line 17848.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17869.
+Package xcolor Warning: Incompatible color definition on input line 17852.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17869.
+Package xcolor Warning: Incompatible color definition on input line 17852.
 
-[241] [242 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-10-
+[239] [240 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-10-
 1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 17957.
+Package xcolor Warning: Incompatible color definition on input line 17940.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17965.
+Package xcolor Warning: Incompatible color definition on input line 17948.
 
 
-Package xcolor Warning: Incompatible color definition on input line 17965.
+Package xcolor Warning: Incompatible color definition on input line 17948.
 
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf, id=327
-3, 433.62pt x 252.945pt>
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf, id=326
+4, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-11-1.pdf used on input line 17969.
+Figure7-11-1.pdf used on input line 17952.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[243 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf>
+[241 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-11-1.pdf>
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 17992.
+Package xcolor Warning: Incompatible color definition on input line 17975.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18002.
+Package xcolor Warning: Incompatible color definition on input line 17985.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18002.
+Package xcolor Warning: Incompatible color definition on input line 17985.
 
 
 <07-simpleLinearRegressionInference_files/figure-latex/Figure7-12-1.pdf, id=328
-8, 433.62pt x 252.945pt>
+0, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-12-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-12-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-12-1.pdf used on input line 18008.
+Figure7-12-1.pdf used on input line 17991.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pdf, id=329
-0, 433.62pt x 252.945pt>
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pdf, id=328
+2, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-13-1.pdf used on input line 18024.
+Figure7-13-1.pdf used on input line 18007.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-14-1.pdf, id=329
-2, 433.62pt x 252.945pt>
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-14-1.pdf, id=328
+4, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-14-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-14-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-14-1.pdf used on input line 18041.
+Figure7-14-1.pdf used on input line 18024.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[244 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-12-1.pdf>
-] [245 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pd
+[242 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-12-1.pdf>
+] [243 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-13-1.pd
 f> <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-14-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 18063.
+Package xcolor Warning: Incompatible color definition on input line 18046.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18068.
+Package xcolor Warning: Incompatible color definition on input line 18051.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18068.
+Package xcolor Warning: Incompatible color definition on input line 18051.
 
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf, id=332
-5, 433.62pt x 252.945pt>
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf, id=331
+7, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-15-1.pdf used on input line 18072.
+Figure7-15-1.pdf used on input line 18055.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf, id=333
-1, 433.62pt x 252.945pt>
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf, id=332
+3, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-16-1.pdf used on input line 18104.
+Figure7-16-1.pdf used on input line 18087.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 18113.
+Package xcolor Warning: Incompatible color definition on input line 18096.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18117.
+Package xcolor Warning: Incompatible color definition on input line 18100.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18117.
+Package xcolor Warning: Incompatible color definition on input line 18100.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18123.
+Package xcolor Warning: Incompatible color definition on input line 18106.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18127.
+Package xcolor Warning: Incompatible color definition on input line 18110.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18127.
+Package xcolor Warning: Incompatible color definition on input line 18110.
 
-[246 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf>
+[244 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-15-1.pdf>
 ]
+Overfull \hbox (118.19878pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 7.6.  TRANSFORMATIONS PART II: IMPACTS ON SLR INTERPRETATIONS: 
+LOG(Y), LOG(X), & BOTH LOG(Y) & LOG(X) \T1/lmr/m/n/10 245
+ []
+
+[245 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf>
+]
+
+Package xcolor Warning: Incompatible color definition on input line 18237.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18241.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18241.
+
+[246]
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf, id=336
+0, 433.62pt x 252.945pt>
+File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf Gr
+aphic file (type pdf)
+<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf>
+Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
+Figure7-17-1.pdf used on input line 18298.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
 Overfull \hbox (118.19878pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 7.6.  TRANSFORMATIONS PART II: IMPACTS ON SLR INTERPRETATIONS: 
 LOG(Y), LOG(X), & BOTH LOG(Y) & LOG(X) \T1/lmr/m/n/10 247
  []
 
-[247 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-16-1.pdf>
+[247 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf>
+]
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf, id=337
+3, 433.62pt x 252.945pt>
+File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf Gr
+aphic file (type pdf)
+<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf>
+Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
+Figure7-18-1.pdf used on input line 18357.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 18380.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18386.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18386.
+
+[248 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf>
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 18254.
+Package xcolor Warning: Incompatible color definition on input line 18408.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18258.
+Package xcolor Warning: Incompatible color definition on input line 18412.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18258.
+Package xcolor Warning: Incompatible color definition on input line 18412.
 
-[248]
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf, id=336
+
+Package xcolor Warning: Incompatible color definition on input line 18426.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18431.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18431.
+
+
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf, id=338
 9, 433.62pt x 252.945pt>
-File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf Gr
+File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf Gr
 aphic file (type pdf)
-<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf>
+<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-17-1.pdf used on input line 18315.
+Figure7-19-1.pdf used on input line 18435.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Overfull \hbox (118.19878pt too wide) has occurred while \output is active
@@ -5792,726 +5823,682 @@ Overfull \hbox (118.19878pt too wide) has occurred while \output is active
 LOG(Y), LOG(X), & BOTH LOG(Y) & LOG(X) \T1/lmr/m/n/10 249
  []
 
-[249 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-17-1.pdf>
-]
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf, id=338
-1, 433.62pt x 252.945pt>
-File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf Gr
-aphic file (type pdf)
-<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf>
-Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-18-1.pdf used on input line 18374.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Package xcolor Warning: Incompatible color definition on input line 18397.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18403.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18403.
-
-[250 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-18-1.pdf>
+[249 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf>
 ]
 
-Package xcolor Warning: Incompatible color definition on input line 18425.
+Package xcolor Warning: Incompatible color definition on input line 18527.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18429.
+Package xcolor Warning: Incompatible color definition on input line 18532.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18429.
+Package xcolor Warning: Incompatible color definition on input line 18532.
 
-
-Package xcolor Warning: Incompatible color definition on input line 18443.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18448.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18448.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf, id=339
-7, 433.62pt x 252.945pt>
-File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf Gr
-aphic file (type pdf)
-<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf>
-Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-19-1.pdf used on input line 18452.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Overfull \hbox (118.19878pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 7.6.  TRANSFORMATIONS PART II: IMPACTS ON SLR INTERPRETATIONS: 
-LOG(Y), LOG(X), & BOTH LOG(Y) & LOG(X) \T1/lmr/m/n/10 251
- []
-
-[251 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-19-1.pdf>
-]
-
-Package xcolor Warning: Incompatible color definition on input line 18544.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18549.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18549.
-
-[252]
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf, id=341
-7, 433.62pt x 252.945pt>
+[250]
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf, id=340
+9, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-20-1.pdf used on input line 18577.
+Figure7-20-1.pdf used on input line 18560.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 <07-simpleLinearRegressionInference_files/figure-latex/Figure7-21-1.pdf, id=341
-9, 433.62pt x 252.945pt>
+1, 433.62pt x 252.945pt>
 File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-21-1.pdf Gr
 aphic file (type pdf)
 <use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-21-1.pdf>
 Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-21-1.pdf used on input line 18611.
+Figure7-21-1.pdf used on input line 18594.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Overfull \hbox (56.94408pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 7.7.  CONFIDENCE INTERVAL FOR THE MEAN AND PREDICTION INTERVALS
+ FOR A NEW OBSERVATION \T1/lmr/m/n/10 251
+ []
+
+[251 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf>
+] [252 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-21-1.pd
+f>]
+
+Package xcolor Warning: Incompatible color definition on input line 18744.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18749.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18749.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18760.
+
 
 Overfull \hbox (56.94408pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 7.7.  CONFIDENCE INTERVAL FOR THE MEAN AND PREDICTION INTERVALS
  FOR A NEW OBSERVATION \T1/lmr/m/n/10 253
  []
 
-[253 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-20-1.pdf>
-] [254 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-21-1.pd
-f>]
+[253]
 
-Package xcolor Warning: Incompatible color definition on input line 18761.
+Package xcolor Warning: Incompatible color definition on input line 18764.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18766.
+Package xcolor Warning: Incompatible color definition on input line 18764.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18766.
+Package xcolor Warning: Incompatible color definition on input line 18785.
 
 
-Package xcolor Warning: Incompatible color definition on input line 18777.
+Package xcolor Warning: Incompatible color definition on input line 18789.
 
+
+Package xcolor Warning: Incompatible color definition on input line 18789.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18796.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18800.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18800.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18824.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18828.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18828.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18836.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18840.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18840.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18851.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18855.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18855.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18863.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18867.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18867.
+
+[254]
+
+Package xcolor Warning: Incompatible color definition on input line 18885.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18889.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18889.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18894.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18900.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18914.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18920.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18920.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18938.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18951.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18951.
+
+
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf, id=345
+4, 433.62pt x 252.945pt>
+File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf Gr
+aphic file (type pdf)
+<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf>
+Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
+Figure7-22-1.pdf used on input line 18955.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+<07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf, id=345
+7, 433.62pt x 252.945pt>
+File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf Gr
+aphic file (type pdf)
+<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf>
+Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
+Figure7-23-1.pdf used on input line 18986.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Overfull \hbox (56.94408pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 7.7.  CONFIDENCE INTERVAL FOR THE MEAN AND PREDICTION INTERVALS
  FOR A NEW OBSERVATION \T1/lmr/m/n/10 255
  []
 
-[255]
-
-Package xcolor Warning: Incompatible color definition on input line 18781.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18781.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18802.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18806.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18806.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18813.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18817.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18817.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18841.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18845.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18845.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18853.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18857.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18857.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18868.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18872.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18872.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18880.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18884.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18884.
-
-[256]
-
-Package xcolor Warning: Incompatible color definition on input line 18902.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18906.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18906.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18911.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18917.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18917.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18931.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18937.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18937.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18955.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18968.
-
-
-Package xcolor Warning: Incompatible color definition on input line 18968.
-
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf, id=346
-2, 433.62pt x 252.945pt>
-File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf Gr
-aphic file (type pdf)
-<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-1.pdf>
-Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-22-1.pdf used on input line 18972.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-<07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf, id=346
-5, 433.62pt x 252.945pt>
-File: 07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf Gr
-aphic file (type pdf)
-<use 07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pdf>
-Package pdftex.def Info: 07-simpleLinearRegressionInference_files/figure-latex/
-Figure7-23-1.pdf used on input line 19003.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Overfull \hbox (56.94408pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 7.7.  CONFIDENCE INTERVAL FOR THE MEAN AND PREDICTION INTERVALS
- FOR A NEW OBSERVATION \T1/lmr/m/n/10 257
- []
-
-[257] [258 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-
+[255] [256 <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-22-
 1.pdf> <./07-simpleLinearRegressionInference_files/figure-latex/Figure7-23-1.pd
 f>]
 
-Package xcolor Warning: Incompatible color definition on input line 19012.
+Package xcolor Warning: Incompatible color definition on input line 18995.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19016.
+Package xcolor Warning: Incompatible color definition on input line 18999.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19016.
+Package xcolor Warning: Incompatible color definition on input line 18999.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19023.
+Package xcolor Warning: Incompatible color definition on input line 19006.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19027.
+Package xcolor Warning: Incompatible color definition on input line 19010.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19027.
+Package xcolor Warning: Incompatible color definition on input line 19010.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19034.
+Package xcolor Warning: Incompatible color definition on input line 19017.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19038.
+Package xcolor Warning: Incompatible color definition on input line 19021.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19038.
+Package xcolor Warning: Incompatible color definition on input line 19021.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19045.
+Package xcolor Warning: Incompatible color definition on input line 19028.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19049.
+Package xcolor Warning: Incompatible color definition on input line 19032.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19049.
+Package xcolor Warning: Incompatible color definition on input line 19032.
 
-[259] [260]
+[257] [258]
 
-Package xcolor Warning: Incompatible color definition on input line 19254.
-
-
-Package xcolor Warning: Incompatible color definition on input line 19258.
+Package xcolor Warning: Incompatible color definition on input line 19237.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19258.
+Package xcolor Warning: Incompatible color definition on input line 19241.
 
-[261] [262
+
+Package xcolor Warning: Incompatible color definition on input line 19241.
+
+[259] [260
 
 ]
 Chapter 8.
-[263]
+[261]
 
-Package xcolor Warning: Incompatible color definition on input line 19366.
-
-
-Package xcolor Warning: Incompatible color definition on input line 19374.
+Package xcolor Warning: Incompatible color definition on input line 19349.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19374.
+Package xcolor Warning: Incompatible color definition on input line 19357.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf, id=3521, 433.6
+Package xcolor Warning: Incompatible color definition on input line 19357.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf, id=3513, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--1-1.pdf used on input line 19378.
+-1-1.pdf used on input line 19361.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-LaTeX Warning: Reference `fig:Figure8-3' on page 264 undefined on input line 19
-407.
+LaTeX Warning: Reference `fig:Figure8-3' on page 262 undefined on input line 19
+390.
 
-[264 <./08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf>]
-<08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf, id=3536, 433.6
+[262 <./08-multipleLinearRegression_files/figure-latex/Figure8-1-1.pdf>]
+<08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf, id=3528, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--2-1.pdf used on input line 19417.
+-2-1.pdf used on input line 19400.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[265 <./08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf>]
+[263 <./08-multipleLinearRegression_files/figure-latex/Figure8-2-1.pdf>]
 
-LaTeX Warning: Reference `fig:Figure8-3' on page 266 undefined on input line 19
-462.
+LaTeX Warning: Reference `fig:Figure8-3' on page 264 undefined on input line 19
+445.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf, id=3554, 433.6
+<08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf, id=3545, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--3-1.pdf used on input line 19478.
+-3-1.pdf used on input line 19461.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf, id=3555, 433.6
+<08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf, id=3546, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--3-2.pdf used on input line 19479.
+-3-2.pdf used on input line 19462.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 19478--19480
+Underfull \hbox (badness 10000) in paragraph at lines 19461--19463
 [][]
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 19481.
+Package xcolor Warning: Incompatible color definition on input line 19464.
 
 
 Underfull \vbox (badness 1005) has occurred while \output is active []
 
-[266 <./08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf> <./08-m
+[264 <./08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf> <./08-m
 ultipleLinearRegression_files/figure-latex/Figure8-3-2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 19494.
+Package xcolor Warning: Incompatible color definition on input line 19477.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19494.
+Package xcolor Warning: Incompatible color definition on input line 19477.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19496.
+Package xcolor Warning: Incompatible color definition on input line 19479.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19500.
+Package xcolor Warning: Incompatible color definition on input line 19483.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19500.
+Package xcolor Warning: Incompatible color definition on input line 19483.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19521.
+Package xcolor Warning: Incompatible color definition on input line 19504.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19525.
+Package xcolor Warning: Incompatible color definition on input line 19508.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19525.
+Package xcolor Warning: Incompatible color definition on input line 19508.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19546.
+Package xcolor Warning: Incompatible color definition on input line 19529.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19550.
+Package xcolor Warning: Incompatible color definition on input line 19533.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19550.
+Package xcolor Warning: Incompatible color definition on input line 19533.
 
-[267]
+[265]
 
-Package xcolor Warning: Incompatible color definition on input line 19586.
-
-
-Package xcolor Warning: Incompatible color definition on input line 19591.
+Package xcolor Warning: Incompatible color definition on input line 19569.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19591.
+Package xcolor Warning: Incompatible color definition on input line 19574.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19614.
+Package xcolor Warning: Incompatible color definition on input line 19574.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19618.
+Package xcolor Warning: Incompatible color definition on input line 19597.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19618.
+Package xcolor Warning: Incompatible color definition on input line 19601.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf, id=3581, 578.1
+Package xcolor Warning: Incompatible color definition on input line 19601.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf, id=3573, 578.1
 6pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--4-1.pdf used on input line 19622.
+-4-1.pdf used on input line 19605.
 (pdftex.def)             Requested size: 469.75385pt x 205.5173pt.
 
-LaTeX Warning: Reference `fig:Figure8-3' on page 268 undefined on input line 19
-626.
+LaTeX Warning: Reference `fig:Figure8-3' on page 266 undefined on input line 19
+609.
 
 
-LaTeX Warning: Reference `fig:Figure8-3' on page 268 undefined on input line 19
-626.
+LaTeX Warning: Reference `fig:Figure8-3' on page 266 undefined on input line 19
+609.
 
-[268] [269 <./08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf>] 
-[270]
+[266] [267 <./08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf>] 
+[268]
 
-Package xcolor Warning: Incompatible color definition on input line 19896.
-
-
-Package xcolor Warning: Incompatible color definition on input line 19901.
+Package xcolor Warning: Incompatible color definition on input line 19879.
 
 
-Package xcolor Warning: Incompatible color definition on input line 19901.
+Package xcolor Warning: Incompatible color definition on input line 19884.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf, id=3619, 433.6
+Package xcolor Warning: Incompatible color definition on input line 19884.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf, id=3611, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--5-1.pdf used on input line 19905.
+-5-1.pdf used on input line 19888.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[269]
+
+Package xcolor Warning: Incompatible color definition on input line 19997.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20001.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20001.
+
+[270 <./08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 20032.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20036.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20036.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20042.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20046.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20046.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20082.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20086.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20086.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20092.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20096.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20096.
+
+
+Package xcolor Warning: Incompatible color definition on input line 20112.
+
 [271]
 
-Package xcolor Warning: Incompatible color definition on input line 20014.
+Package xcolor Warning: Incompatible color definition on input line 20117.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20018.
+Package xcolor Warning: Incompatible color definition on input line 20117.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20018.
-
-[272 <./08-multipleLinearRegression_files/figure-latex/Figure8-5-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 20049.
+Package xcolor Warning: Incompatible color definition on input line 20141.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20053.
+Package xcolor Warning: Incompatible color definition on input line 20145.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20053.
+Package xcolor Warning: Incompatible color definition on input line 20145.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20059.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20063.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20063.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20099.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20103.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20103.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20109.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20113.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20113.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20129.
-
-[273]
-
-Package xcolor Warning: Incompatible color definition on input line 20134.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20134.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20158.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20162.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20162.
-
-
-<08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf, id=3645, 578.1
+<08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf, id=3637, 578.1
 6pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--6-1.pdf used on input line 20166.
+-6-1.pdf used on input line 20149.
 (pdftex.def)             Requested size: 469.75385pt x 205.5173pt.
-[274 <./08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf>]
+[272 <./08-multipleLinearRegression_files/figure-latex/Figure8-6-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 20247.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20252.
+Package xcolor Warning: Incompatible color definition on input line 20230.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20252.
+Package xcolor Warning: Incompatible color definition on input line 20235.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf, id=3664, 433.6
+Package xcolor Warning: Incompatible color definition on input line 20235.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf, id=3656, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--7-1.pdf used on input line 20256.
+-7-1.pdf used on input line 20239.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 20265.
+Package xcolor Warning: Incompatible color definition on input line 20248.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20269.
+Package xcolor Warning: Incompatible color definition on input line 20252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20269.
+Package xcolor Warning: Incompatible color definition on input line 20252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20285.
+Package xcolor Warning: Incompatible color definition on input line 20268.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20290.
+Package xcolor Warning: Incompatible color definition on input line 20273.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20290.
+Package xcolor Warning: Incompatible color definition on input line 20273.
 
-[275]
+[273]
 
-Package xcolor Warning: Incompatible color definition on input line 20314.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20319.
+Package xcolor Warning: Incompatible color definition on input line 20297.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20319.
+Package xcolor Warning: Incompatible color definition on input line 20302.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf, id=3673, 433.6
+Package xcolor Warning: Incompatible color definition on input line 20302.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf, id=3665, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--8-1.pdf used on input line 20323.
+-8-1.pdf used on input line 20306.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 20350.
+Package xcolor Warning: Incompatible color definition on input line 20333.
 
-[276 <./08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf>]
+[274 <./08-multipleLinearRegression_files/figure-latex/Figure8-7-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 20354.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20354.
+Package xcolor Warning: Incompatible color definition on input line 20337.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf, id=3685, 433.6
+Package xcolor Warning: Incompatible color definition on input line 20337.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf, id=3677, 433.6
 2pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf Graphic fi
 le (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--9-1.pdf used on input line 20358.
+-9-1.pdf used on input line 20341.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 20404.
+Package xcolor Warning: Incompatible color definition on input line 20387.
 
-[277 <./08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf>]
+[275 <./08-multipleLinearRegression_files/figure-latex/Figure8-8-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 20408.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20408.
+Package xcolor Warning: Incompatible color definition on input line 20391.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20414.
+Package xcolor Warning: Incompatible color definition on input line 20391.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20418.
+Package xcolor Warning: Incompatible color definition on input line 20397.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20418.
+Package xcolor Warning: Incompatible color definition on input line 20401.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20465.
-
-[278 <./08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 20475.
+Package xcolor Warning: Incompatible color definition on input line 20401.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20475.
+Package xcolor Warning: Incompatible color definition on input line 20448.
+
+[276 <./08-multipleLinearRegression_files/figure-latex/Figure8-9-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 20458.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf, id=3712, 433.
+Package xcolor Warning: Incompatible color definition on input line 20458.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf, id=3703, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--10-1.pdf used on input line 20479.
+-10-1.pdf used on input line 20462.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Overfull \hbox (9.87976pt too wide) in paragraph at lines 20498--20498
+Overfull \hbox (9.87976pt too wide) in paragraph at lines 20481--20481
 [][][]\T1/lmr/m/n/8 (-20) The \T1/lmtt/m/n/8 seq \T1/lmr/m/n/8 (-20) function h
 as syn-tax of \T1/lmtt/m/n/8 seq(from=startingpoint, to=endingpoint, length.out
 =#ofvalues_between_start_and_end)
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 20505.
+Package xcolor Warning: Incompatible color definition on input line 20488.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20512.
+Package xcolor Warning: Incompatible color definition on input line 20495.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20512.
+Package xcolor Warning: Incompatible color definition on input line 20495.
 
-[279 <./08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf>]
+[277 <./08-multipleLinearRegression_files/figure-latex/Figure8-10-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 20551.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20555.
+Package xcolor Warning: Incompatible color definition on input line 20534.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20555.
-
-[280] [281] [282]
-
-Package xcolor Warning: Incompatible color definition on input line 20779.
+Package xcolor Warning: Incompatible color definition on input line 20538.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20784.
+Package xcolor Warning: Incompatible color definition on input line 20538.
+
+[278] [279] [280]
+
+Package xcolor Warning: Incompatible color definition on input line 20762.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20784.
+Package xcolor Warning: Incompatible color definition on input line 20767.
 
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 20809.
+Package xcolor Warning: Incompatible color definition on input line 20767.
+
+
+LaTeX Font Warning: Command \large invalid in math mode on input line 20792.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 20809.
+(Font)              <12> on input line 20792.
 
-LaTeX Font Warning: Command \large invalid in math mode on input line 20815.
+LaTeX Font Warning: Command \large invalid in math mode on input line 20798.
 
 
-Overfull \hbox (364.24442pt too wide) in paragraph at lines 20832--20851
+Overfull \hbox (364.24442pt too wide) in paragraph at lines 20815--20834
  [][] 
  []
 
-[283]
-<08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf, id=3757, 433.
+[281]
+<08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf, id=3748, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--11-1.pdf used on input line 20937.
+-11-1.pdf used on input line 20920.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[284]
+[282]
 
-Package xcolor Warning: Incompatible color definition on input line 20960.
-
-
-Package xcolor Warning: Incompatible color definition on input line 20966.
+Package xcolor Warning: Incompatible color definition on input line 20943.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20966.
+Package xcolor Warning: Incompatible color definition on input line 20949.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf, id=3765, 433.
+Package xcolor Warning: Incompatible color definition on input line 20949.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf, id=3756, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--12-1.pdf used on input line 20970.
+-12-1.pdf used on input line 20953.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 20974.
+Package xcolor Warning: Incompatible color definition on input line 20957.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20978.
+Package xcolor Warning: Incompatible color definition on input line 20961.
 
 
-Package xcolor Warning: Incompatible color definition on input line 20978.
+Package xcolor Warning: Incompatible color definition on input line 20961.
 
-[285 <./08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf>]
+[283 <./08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 21046.
+Package xcolor Warning: Incompatible color definition on input line 21029.
 
+
+Package xcolor Warning: Incompatible color definition on input line 21034.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21034.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21047.
+
+[284 <./08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 21051.
 
@@ -6519,261 +6506,283 @@ Package xcolor Warning: Incompatible color definition on input line 21051.
 Package xcolor Warning: Incompatible color definition on input line 21051.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21064.
-
-[286 <./08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 21068.
+Package xcolor Warning: Incompatible color definition on input line 21073.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21068.
+Package xcolor Warning: Incompatible color definition on input line 21079.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21090.
+Package xcolor Warning: Incompatible color definition on input line 21079.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21096.
+Package xcolor Warning: Incompatible color definition on input line 21106.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21096.
+Package xcolor Warning: Incompatible color definition on input line 21110.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21123.
+Package xcolor Warning: Incompatible color definition on input line 21110.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21127.
+Package xcolor Warning: Incompatible color definition on input line 21116.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21127.
+Package xcolor Warning: Incompatible color definition on input line 21120.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21133.
+Package xcolor Warning: Incompatible color definition on input line 21120.
+
+[285]
+
+Package xcolor Warning: Incompatible color definition on input line 21182.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21137.
+Package xcolor Warning: Incompatible color definition on input line 21187.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21137.
-
-[287]
-
-Package xcolor Warning: Incompatible color definition on input line 21199.
+Package xcolor Warning: Incompatible color definition on input line 21187.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21204.
+Package xcolor Warning: Incompatible color definition on input line 21228.
+
+[286]
+
+Package xcolor Warning: Incompatible color definition on input line 21232.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21204.
+Package xcolor Warning: Incompatible color definition on input line 21232.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21245.
-
-[288]
-
-Package xcolor Warning: Incompatible color definition on input line 21249.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21249.
-
-
-Overfull \hbox (83.81393pt too wide) in paragraph at lines 21268--21272
+Overfull \hbox (83.81393pt too wide) in paragraph at lines 21251--21255
 []\T1/lmr/m/n/10 (-20) Similarly, we can test for \T1/lmr/m/it/10 (-20) Ele-va-
 tion \T1/lmr/m/n/10 (-20) af-ter con-trol-ling for the \T1/lmr/m/it/10 (-20) Ma
 x-i-mum Tem-pe-ra-ture\T1/lmr/m/n/10 (-20) : $[]$,
  []
 
-[289]
+[287]
 
-Package xcolor Warning: Incompatible color definition on input line 21359.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21363.
+Package xcolor Warning: Incompatible color definition on input line 21342.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21363.
-
-[290]
-
-Package xcolor Warning: Incompatible color definition on input line 21488.
+Package xcolor Warning: Incompatible color definition on input line 21346.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21495.
+Package xcolor Warning: Incompatible color definition on input line 21346.
+
+[288]
+
+Package xcolor Warning: Incompatible color definition on input line 21471.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21495.
+Package xcolor Warning: Incompatible color definition on input line 21478.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf, id=3811, 433.
+Package xcolor Warning: Incompatible color definition on input line 21478.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf, id=3802, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--13-1.pdf used on input line 21499.
+-13-1.pdf used on input line 21482.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[291]
+[289]
 
-Package xcolor Warning: Incompatible color definition on input line 21554.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21559.
+Package xcolor Warning: Incompatible color definition on input line 21537.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21559.
-
-[292 <./08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 21581.
+Package xcolor Warning: Incompatible color definition on input line 21542.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21586.
+Package xcolor Warning: Incompatible color definition on input line 21542.
+
+[290 <./08-multipleLinearRegression_files/figure-latex/Figure8-13-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 21564.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21586.
+Package xcolor Warning: Incompatible color definition on input line 21569.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf, id=3830, 433.
+Package xcolor Warning: Incompatible color definition on input line 21569.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf, id=3822, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--14-1.pdf used on input line 21590.
+-14-1.pdf used on input line 21573.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[293 <./08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf>]
+[291 <./08-multipleLinearRegression_files/figure-latex/Figure8-14-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 21672.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21676.
+Package xcolor Warning: Incompatible color definition on input line 21655.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21676.
+Package xcolor Warning: Incompatible color definition on input line 21659.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21683.
+Package xcolor Warning: Incompatible color definition on input line 21659.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21687.
+Package xcolor Warning: Incompatible color definition on input line 21666.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21687.
-
-[294]
-
-Package xcolor Warning: Incompatible color definition on input line 21848.
+Package xcolor Warning: Incompatible color definition on input line 21670.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21853.
+Package xcolor Warning: Incompatible color definition on input line 21670.
+
+[292]
+
+Package xcolor Warning: Incompatible color definition on input line 21831.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21853.
+Package xcolor Warning: Incompatible color definition on input line 21836.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf, id=3853, 433.
+Package xcolor Warning: Incompatible color definition on input line 21836.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf, id=3845, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--15-1.pdf used on input line 21860.
+-15-1.pdf used on input line 21843.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[293]
+
+Package xcolor Warning: Incompatible color definition on input line 21860.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21864.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21864.
+
+[294 <./08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 21903.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21907.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21907.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21914.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21918.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21918.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21930.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21934.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21934.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21967.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21997.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21997.
+
+
+Package xcolor Warning: Incompatible color definition on input line 21997.
+
 [295]
 
-Package xcolor Warning: Incompatible color definition on input line 21877.
+Package xcolor Warning: Incompatible color definition on input line 21997.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21881.
+Package xcolor Warning: Incompatible color definition on input line 21997.
 
 
-Package xcolor Warning: Incompatible color definition on input line 21881.
-
-[296 <./08-multipleLinearRegression_files/figure-latex/Figure8-15-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 21920.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21924.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21924.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21931.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21935.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21935.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21947.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21951.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21951.
-
-
-Package xcolor Warning: Incompatible color definition on input line 21984.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22014.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22014.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22014.
-
-[297]
-
-Package xcolor Warning: Incompatible color definition on input line 22014.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22014.
-
-
-<08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf, id=3882, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf, id=3874, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--16-1.pdf used on input line 22018.
+-16-1.pdf used on input line 22001.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[298 <./08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf>]
+[296 <./08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 22076.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22083.
+Package xcolor Warning: Incompatible color definition on input line 22059.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22083.
+Package xcolor Warning: Incompatible color definition on input line 22066.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf, id=3899, 433.
+Package xcolor Warning: Incompatible color definition on input line 22066.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf, id=3891, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--17-1.pdf used on input line 22089.
+-17-1.pdf used on input line 22072.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf, id=3900, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf, id=3892, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--18-1.pdf used on input line 22097.
+-18-1.pdf used on input line 22080.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 22120.
+Package xcolor Warning: Incompatible color definition on input line 22103.
+
+
+Overfull \hbox (5.48944pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 8.9.  DIFFERENT INTERCEPTS FOR DIFFERENT GROUPS: MLR WITH INDIC
+ATOR VARIABLES \T1/lmr/m/n/10 297
+ []
+
+[297 <./08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 22110.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22110.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22140.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22145.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22145.
+
+[298 <./08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 22171.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22176.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22176.
 
 
 Overfull \hbox (5.48944pt too wide) has occurred while \output is active
@@ -6781,333 +6790,319 @@ Overfull \hbox (5.48944pt too wide) has occurred while \output is active
 ATOR VARIABLES \T1/lmr/m/n/10 299
  []
 
-[299 <./08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf>]
+[299]
+<08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf, id=3926, 433.
+62pt x 252.945pt>
+File: 08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf Graphic f
+ile (type pdf)
+<use 08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf>
+Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
+-19-1.pdf used on input line 22275.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[300 <./08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 22127.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22127.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22157.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22162.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22162.
-
-[300 <./08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 22188.
+Package xcolor Warning: Incompatible color definition on input line 22336.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22193.
+Package xcolor Warning: Incompatible color definition on input line 22341.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22193.
+Package xcolor Warning: Incompatible color definition on input line 22341.
 
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf, id=3941, 433.
+62pt x 252.945pt>
+File: 08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf Graphic f
+ile (type pdf)
+<use 08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf>
+Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
+-20-1.pdf used on input line 22345.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Overfull \hbox (5.48944pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 8.9.  DIFFERENT INTERCEPTS FOR DIFFERENT GROUPS: MLR WITH INDIC
 ATOR VARIABLES \T1/lmr/m/n/10 301
  []
 
-[301]
-<08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf, id=3935, 433.
-62pt x 252.945pt>
-File: 08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf Graphic f
-ile (type pdf)
-<use 08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf>
-Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--19-1.pdf used on input line 22292.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[302 <./08-multipleLinearRegression_files/figure-latex/Figure8-19-1.pdf>]
+[301 <./08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 22353.
+Package xcolor Warning: Incompatible color definition on input line 22374.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22358.
+Package xcolor Warning: Incompatible color definition on input line 22378.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22358.
+Package xcolor Warning: Incompatible color definition on input line 22378.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf, id=3950, 433.
-62pt x 252.945pt>
-File: 08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf Graphic f
-ile (type pdf)
-<use 08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf>
-Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--20-1.pdf used on input line 22362.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Overfull \hbox (5.48944pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 8.9.  DIFFERENT INTERCEPTS FOR DIFFERENT GROUPS: MLR WITH INDIC
-ATOR VARIABLES \T1/lmr/m/n/10 303
- []
-
-[303 <./08-multipleLinearRegression_files/figure-latex/Figure8-20-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 22391.
+Package xcolor Warning: Incompatible color definition on input line 22428.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22395.
+Package xcolor Warning: Incompatible color definition on input line 22436.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22395.
+Package xcolor Warning: Incompatible color definition on input line 22436.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22445.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22453.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22453.
-
-
-<08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf, id=3967, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf, id=3959, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--21-1.pdf used on input line 22457.
+-21-1.pdf used on input line 22440.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[304]
+[302]
 
-Package xcolor Warning: Incompatible color definition on input line 22688.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22693.
+Package xcolor Warning: Incompatible color definition on input line 22671.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22693.
+Package xcolor Warning: Incompatible color definition on input line 22676.
+
+
+Package xcolor Warning: Incompatible color definition on input line 22676.
 
 
 Overfull \vbox (289.71152pt too high) has occurred while \output is active []
 
-[305 <./08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf>]
-<08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf, id=3986, 433.
+[303 <./08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf>]
+<08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf, id=3978, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--22-1.pdf used on input line 22773.
+-22-1.pdf used on input line 22756.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 22796.
+Package xcolor Warning: Incompatible color definition on input line 22779.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22800.
+Package xcolor Warning: Incompatible color definition on input line 22783.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22800.
+Package xcolor Warning: Incompatible color definition on input line 22783.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-23-1.pdf, id=3988, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-23-1.pdf, id=3980, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-23-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-23-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--23-1.pdf used on input line 22804.
+-23-1.pdf used on input line 22787.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 22818.
+Package xcolor Warning: Incompatible color definition on input line 22801.
 
-[306] [307 <./08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf> 
+[304] [305 <./08-multipleLinearRegression_files/figure-latex/Figure8-22-1.pdf> 
 <./08-multipleLinearRegression_files/figure-latex/Figure8-23-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 22823.
+Package xcolor Warning: Incompatible color definition on input line 22806.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22823.
+Package xcolor Warning: Incompatible color definition on input line 22806.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf, id=4017, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf, id=4008, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--24-1.pdf used on input line 22827.
+-24-1.pdf used on input line 22810.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 22843.
+Package xcolor Warning: Incompatible color definition on input line 22826.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22848.
+Package xcolor Warning: Incompatible color definition on input line 22831.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22848.
+Package xcolor Warning: Incompatible color definition on input line 22831.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22864.
+Package xcolor Warning: Incompatible color definition on input line 22847.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22869.
+Package xcolor Warning: Incompatible color definition on input line 22852.
 
 
-Package xcolor Warning: Incompatible color definition on input line 22869.
+Package xcolor Warning: Incompatible color definition on input line 22852.
 
-[308 <./08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf>]
+[306 <./08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 22958.
+Package xcolor Warning: Incompatible color definition on input line 22941.
 
-[309]
+[307]
 
-Package xcolor Warning: Incompatible color definition on input line 22966.
-
-
-Package xcolor Warning: Incompatible color definition on input line 22966.
+Package xcolor Warning: Incompatible color definition on input line 22949.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf, id=4037, 433.
+Package xcolor Warning: Incompatible color definition on input line 22949.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf, id=4029, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--25-1.pdf used on input line 22970.
+-25-1.pdf used on input line 22953.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[310 <./08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf>]
+[308 <./08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 23047.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23054.
+Package xcolor Warning: Incompatible color definition on input line 23030.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23054.
-
-[311]
-
-Package xcolor Warning: Incompatible color definition on input line 23150.
+Package xcolor Warning: Incompatible color definition on input line 23037.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23156.
+Package xcolor Warning: Incompatible color definition on input line 23037.
+
+[309]
+
+Package xcolor Warning: Incompatible color definition on input line 23133.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23156.
+Package xcolor Warning: Incompatible color definition on input line 23139.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf, id=4053, 433.
+Package xcolor Warning: Incompatible color definition on input line 23139.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf, id=4045, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--26-1.pdf used on input line 23160.
+-26-1.pdf used on input line 23143.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 23184.
+Package xcolor Warning: Incompatible color definition on input line 23167.
 
-[312]
+[310]
 
-Package xcolor Warning: Incompatible color definition on input line 23189.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23189.
+Package xcolor Warning: Incompatible color definition on input line 23172.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-27-1.pdf, id=4061, 433.
+Package xcolor Warning: Incompatible color definition on input line 23172.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-27-1.pdf, id=4053, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-27-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-27-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--27-1.pdf used on input line 23193.
+-27-1.pdf used on input line 23176.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 23235.
+Package xcolor Warning: Incompatible color definition on input line 23218.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23239.
+Package xcolor Warning: Incompatible color definition on input line 23222.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23239.
+Package xcolor Warning: Incompatible color definition on input line 23222.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-28-1.pdf, id=4063, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-28-1.pdf, id=4055, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-28-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-28-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--28-1.pdf used on input line 23243.
+-28-1.pdf used on input line 23226.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[313 <./08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf>] [314 
+[311 <./08-multipleLinearRegression_files/figure-latex/Figure8-26-1.pdf>] [312 
 <./08-multipleLinearRegression_files/figure-latex/Figure8-27-1.pdf> <./08-multi
 pleLinearRegression_files/figure-latex/Figure8-28-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 23258.
+Package xcolor Warning: Incompatible color definition on input line 23241.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23263.
+Package xcolor Warning: Incompatible color definition on input line 23246.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23263.
+Package xcolor Warning: Incompatible color definition on input line 23246.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23285.
+Package xcolor Warning: Incompatible color definition on input line 23268.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23289.
+Package xcolor Warning: Incompatible color definition on input line 23272.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23289.
+Package xcolor Warning: Incompatible color definition on input line 23272.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf, id=4094, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf, id=4085, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--29-1.pdf used on input line 23293.
+-29-1.pdf used on input line 23276.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 23307.
+Package xcolor Warning: Incompatible color definition on input line 23290.
 
-[315 <./08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf>]
+[313 <./08-multipleLinearRegression_files/figure-latex/Figure8-29-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 23312.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23312.
+Package xcolor Warning: Incompatible color definition on input line 23295.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23333.
+Package xcolor Warning: Incompatible color definition on input line 23295.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23337.
+Package xcolor Warning: Incompatible color definition on input line 23316.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23337.
+Package xcolor Warning: Incompatible color definition on input line 23320.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf, id=4109, 433.
+Package xcolor Warning: Incompatible color definition on input line 23320.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf, id=4101, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--30-1.pdf used on input line 23341.
+-30-1.pdf used on input line 23324.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[316 <./08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf>]
+[314 <./08-multipleLinearRegression_files/figure-latex/Figure8-30-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 23411.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23416.
+Package xcolor Warning: Incompatible color definition on input line 23394.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23416.
+Package xcolor Warning: Incompatible color definition on input line 23399.
 
-[317]
+
+Package xcolor Warning: Incompatible color definition on input line 23399.
+
+[315]
+
+Package xcolor Warning: Incompatible color definition on input line 23442.
+
+
+Package xcolor Warning: Incompatible color definition on input line 23446.
+
+
+Package xcolor Warning: Incompatible color definition on input line 23446.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf, id=4123, 433.
+62pt x 252.945pt>
+File: 08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf Graphic f
+ile (type pdf)
+<use 08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf>
+Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
+-31-1.pdf used on input line 23450.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Package xcolor Warning: Incompatible color definition on input line 23459.
 
@@ -7118,225 +7113,270 @@ Package xcolor Warning: Incompatible color definition on input line 23463.
 Package xcolor Warning: Incompatible color definition on input line 23463.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf, id=4131, 433.
-62pt x 252.945pt>
-File: 08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf Graphic f
-ile (type pdf)
-<use 08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf>
-Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--31-1.pdf used on input line 23467.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Package xcolor Warning: Incompatible color definition on input line 23476.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23480.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23480.
-
-
-<08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf, id=4132, 433.
+<08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf, id=4124, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--32-1.pdf used on input line 23484.
+-32-1.pdf used on input line 23467.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[318 <./08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf>] <chap
-ter8_files/image299.png, id=4149, 542.025pt x 360.1455pt>
+[316 <./08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf>] <chap
+ter8_files/image299.png, id=4141, 542.025pt x 360.1455pt>
 File: chapter8_files/image299.png Graphic file (type png)
 <use chapter8_files/image299.png>
-Package pdftex.def Info: chapter8_files/image299.png used on input line 23535.
+Package pdftex.def Info: chapter8_files/image299.png used on input line 23518.
 (pdftex.def)             Requested size: 469.77148pt x 312.13704pt.
+
+Overfull \hbox (89.23578pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 8.12.  F-TESTS FOR MLR MODELS WITH QUANTITATIVE AND CATEGORICAL
+ VARIABLES AND INTERACTIONS \T1/lmr/m/n/10 317
+ []
+
+[317 <./08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf>] [318 
+<./chapter8_files/image299.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 23634.
+
+
+Package xcolor Warning: Incompatible color definition on input line 23638.
+
+
+Package xcolor Warning: Incompatible color definition on input line 23638.
+
 
 Overfull \hbox (89.23578pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 8.12.  F-TESTS FOR MLR MODELS WITH QUANTITATIVE AND CATEGORICAL
  VARIABLES AND INTERACTIONS \T1/lmr/m/n/10 319
  []
 
-[319 <./08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf>] [320 
-<./chapter8_files/image299.png>]
+[319]
 
-Package xcolor Warning: Incompatible color definition on input line 23651.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23655.
+Package xcolor Warning: Incompatible color definition on input line 23707.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23655.
+Package xcolor Warning: Incompatible color definition on input line 23712.
 
 
-Overfull \hbox (89.23578pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 8.12.  F-TESTS FOR MLR MODELS WITH QUANTITATIVE AND CATEGORICAL
- VARIABLES AND INTERACTIONS \T1/lmr/m/n/10 321
- []
+Package xcolor Warning: Incompatible color definition on input line 23712.
 
-[321]
+[320] [321] [322]
 
-Package xcolor Warning: Incompatible color definition on input line 23724.
+Package xcolor Warning: Incompatible color definition on input line 23963.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23729.
+Package xcolor Warning: Incompatible color definition on input line 23970.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23729.
-
-[322] [323] [324]
-
-Package xcolor Warning: Incompatible color definition on input line 23980.
+Package xcolor Warning: Incompatible color definition on input line 23970.
 
 
-Package xcolor Warning: Incompatible color definition on input line 23987.
-
-
-Package xcolor Warning: Incompatible color definition on input line 23987.
-
-
-Overfull \hbox (7.46906pt too wide) in paragraph at lines 24017--24017
+Overfull \hbox (7.46906pt too wide) in paragraph at lines 24000--24000
 []\T1/lmtt/m/n/9 ## Global model call: lm(formula = Snow.Depth ~ Elevation + Mi
 n.Temp + Max.Temp, data = snotel2[-c(9,[] 
  []
 
-[325]
+[323]
 
-Package xcolor Warning: Incompatible color definition on input line 24094.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24107.
+Package xcolor Warning: Incompatible color definition on input line 24077.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24107.
+Package xcolor Warning: Incompatible color definition on input line 24090.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf, id=4221, 433.
+Package xcolor Warning: Incompatible color definition on input line 24090.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf, id=4212, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--34-1.pdf used on input line 24111.
+-34-1.pdf used on input line 24094.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 24126.
+Package xcolor Warning: Incompatible color definition on input line 24109.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24131.
+Package xcolor Warning: Incompatible color definition on input line 24114.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24131.
+Package xcolor Warning: Incompatible color definition on input line 24114.
 
-[326]
+[324]
 
-Package xcolor Warning: Incompatible color definition on input line 24156.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24161.
+Package xcolor Warning: Incompatible color definition on input line 24139.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24161.
+Package xcolor Warning: Incompatible color definition on input line 24144.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf, id=4229, 433.
+Package xcolor Warning: Incompatible color definition on input line 24144.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf, id=4220, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--35-1.pdf used on input line 24165.
+-35-1.pdf used on input line 24148.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 24184.
+Package xcolor Warning: Incompatible color definition on input line 24167.
 
-[327 <./08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf>]
+[325 <./08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 24189.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24189.
+Package xcolor Warning: Incompatible color definition on input line 24172.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24209.
+Package xcolor Warning: Incompatible color definition on input line 24172.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24216.
+Package xcolor Warning: Incompatible color definition on input line 24192.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24216.
-
-[328 <./08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf>] [329]
-
-Package xcolor Warning: Incompatible color definition on input line 24364.
+Package xcolor Warning: Incompatible color definition on input line 24199.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24368.
+Package xcolor Warning: Incompatible color definition on input line 24199.
+
+[326 <./08-multipleLinearRegression_files/figure-latex/Figure8-35-1.pdf>] [327]
+
+Package xcolor Warning: Incompatible color definition on input line 24347.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24368.
+Package xcolor Warning: Incompatible color definition on input line 24351.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24375.
+Package xcolor Warning: Incompatible color definition on input line 24351.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24379.
+Package xcolor Warning: Incompatible color definition on input line 24358.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24379.
+Package xcolor Warning: Incompatible color definition on input line 24362.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24390.
+Package xcolor Warning: Incompatible color definition on input line 24362.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24394.
+Package xcolor Warning: Incompatible color definition on input line 24373.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24394.
+Package xcolor Warning: Incompatible color definition on input line 24377.
 
 
-<08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf, id=4260, 433.
+Package xcolor Warning: Incompatible color definition on input line 24377.
+
+
+<08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf, id=4252, 433.
 62pt x 252.945pt>
 File: 08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf Graphic f
 ile (type pdf)
 <use 08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf>
 Package pdftex.def Info: 08-multipleLinearRegression_files/figure-latex/Figure8
--36-1.pdf used on input line 24398.
+-36-1.pdf used on input line 24381.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[330] [331 <./08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf>]
-[332]
-Overfull \hbox (28.0538pt too wide) in paragraph at lines 24624--24627
+[328] [329 <./08-multipleLinearRegression_files/figure-latex/Figure8-36-1.pdf>]
+[330]
+Overfull \hbox (28.0538pt too wide) in paragraph at lines 24607--24610
 \T1/lmr/m/n/10 (-20) dredge([]FULL_MODELNAME[], rank=``AIC'', ex-tra=c(``R2'',
  ad-jRsq=function(x) sum-mary(x)$adj.r.squared)) 
  []
 
-[333] [334]
+[331] [332]
 Chapter 9.
-<chapter9_files/image002.png, id=4295, 497.60907pt x 279.66985pt>
+<chapter9_files/image002.png, id=4287, 497.60907pt x 279.66985pt>
 File: chapter9_files/image002.png Graphic file (type png)
 <use chapter9_files/image002.png>
-Package pdftex.def Info: chapter9_files/image002.png used on input line 24740.
+Package pdftex.def Info: chapter9_files/image002.png used on input line 24723.
 (pdftex.def)             Requested size: 469.76471pt x 264.02054pt.
-[335
+[333
 
-] [336 <./chapter9_files/image002.png>]
+] [334 <./chapter9_files/image002.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 24888.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24896.
+Package xcolor Warning: Incompatible color definition on input line 24871.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24896.
+Package xcolor Warning: Incompatible color definition on input line 24879.
 
 
-<09-caseStudies_files/figure-latex/Figure9-2-1.pdf, id=4312, 433.62pt x 252.945
+Package xcolor Warning: Incompatible color definition on input line 24879.
+
+
+<09-caseStudies_files/figure-latex/Figure9-2-1.pdf, id=4304, 433.62pt x 252.945
 pt>
 File: 09-caseStudies_files/figure-latex/Figure9-2-1.pdf Graphic file (type pdf)
 
 <use 09-caseStudies_files/figure-latex/Figure9-2-1.pdf>
 Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-2-1.pdf used
- on input line 24900.
+ on input line 24883.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Overfull \hbox (464.64285pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 9.2.  THE IMPACT OF SIMULATED CHRONIC NITROGEN DEPOSITION ON TH
+E BIOMASS AND N2-FIXATION ACTIVITY OF TWO BOREAL FEATHER MOSS--CYANOBACTERIA AS
+SOCIATIONS \T1/lmr/m/n/10 335
+ []
+
+[335 <./09-caseStudies_files/figure-latex/Figure9-2-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 24903.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24908.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24908.
+
+
+<09-caseStudies_files/figure-latex/Figure9-3-1.pdf, id=4318, 433.62pt x 252.945
+pt>
+File: 09-caseStudies_files/figure-latex/Figure9-3-1.pdf Graphic file (type pdf)
+
+<use 09-caseStudies_files/figure-latex/Figure9-3-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-3-1.pdf used
+ on input line 24912.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 24924.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24929.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24929.
+
+[336 <./09-caseStudies_files/figure-latex/Figure9-3-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 24954.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24959.
+
+
+Package xcolor Warning: Incompatible color definition on input line 24959.
+
+
+<09-caseStudies_files/figure-latex/Figure9-4-1.pdf, id=4331, 433.62pt x 252.945
+pt>
+File: 09-caseStudies_files/figure-latex/Figure9-4-1.pdf Graphic file (type pdf)
+
+<use 09-caseStudies_files/figure-latex/Figure9-4-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-4-1.pdf used
+ on input line 24963.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 24996.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25000.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25000.
+
 
 Overfull \hbox (464.64285pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 9.2.  THE IMPACT OF SIMULATED CHRONIC NITROGEN DEPOSITION ON TH
@@ -7344,62 +7384,80 @@ E BIOMASS AND N2-FIXATION ACTIVITY OF TWO BOREAL FEATHER MOSS--CYANOBACTERIA AS
 SOCIATIONS \T1/lmr/m/n/10 337
  []
 
-[337 <./09-caseStudies_files/figure-latex/Figure9-2-1.pdf>]
+[337 <./09-caseStudies_files/figure-latex/Figure9-4-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 24920.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24925.
+Package xcolor Warning: Incompatible color definition on input line 25014.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24925.
+Package xcolor Warning: Incompatible color definition on input line 25024.
 
 
-<09-caseStudies_files/figure-latex/Figure9-3-1.pdf, id=4327, 433.62pt x 252.945
+Package xcolor Warning: Incompatible color definition on input line 25024.
+
+
+<09-caseStudies_files/figure-latex/Figure9-5-1.pdf, id=4346, 433.62pt x 252.945
 pt>
-File: 09-caseStudies_files/figure-latex/Figure9-3-1.pdf Graphic file (type pdf)
+File: 09-caseStudies_files/figure-latex/Figure9-5-1.pdf Graphic file (type pdf)
 
-<use 09-caseStudies_files/figure-latex/Figure9-3-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-3-1.pdf used
- on input line 24929.
+<use 09-caseStudies_files/figure-latex/Figure9-5-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-5-1.pdf used
+ on input line 25028.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 24941.
+Package xcolor Warning: Incompatible color definition on input line 25065.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24946.
+Package xcolor Warning: Incompatible color definition on input line 25070.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24946.
+Package xcolor Warning: Incompatible color definition on input line 25070.
 
-[338 <./09-caseStudies_files/figure-latex/Figure9-3-1.pdf>]
+[338 <./09-caseStudies_files/figure-latex/Figure9-5-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 24971.
-
-
-Package xcolor Warning: Incompatible color definition on input line 24976.
+Package xcolor Warning: Incompatible color definition on input line 25095.
 
 
-Package xcolor Warning: Incompatible color definition on input line 24976.
+Package xcolor Warning: Incompatible color definition on input line 25100.
 
 
-<09-caseStudies_files/figure-latex/Figure9-4-1.pdf, id=4340, 433.62pt x 252.945
+Package xcolor Warning: Incompatible color definition on input line 25100.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25113.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25118.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25118.
+
+
+<09-caseStudies_files/figure-latex/Figure9-6-1.pdf, id=4362, 433.62pt x 252.945
 pt>
-File: 09-caseStudies_files/figure-latex/Figure9-4-1.pdf Graphic file (type pdf)
+File: 09-caseStudies_files/figure-latex/Figure9-6-1.pdf Graphic file (type pdf)
 
-<use 09-caseStudies_files/figure-latex/Figure9-4-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-4-1.pdf used
- on input line 24980.
+<use 09-caseStudies_files/figure-latex/Figure9-6-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-6-1.pdf used
+ on input line 25122.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 25013.
+Package xcolor Warning: Incompatible color definition on input line 25157.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25017.
+Package xcolor Warning: Incompatible color definition on input line 25162.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25017.
+Package xcolor Warning: Incompatible color definition on input line 25162.
 
+
+<09-caseStudies_files/figure-latex/Figure9-7-1.pdf, id=4364, 433.62pt x 252.945
+pt>
+File: 09-caseStudies_files/figure-latex/Figure9-7-1.pdf Graphic file (type pdf)
+
+<use 09-caseStudies_files/figure-latex/Figure9-7-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-7-1.pdf used
+ on input line 25166.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Overfull \hbox (464.64285pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 9.2.  THE IMPACT OF SIMULATED CHRONIC NITROGEN DEPOSITION ON TH
@@ -7407,80 +7465,35 @@ E BIOMASS AND N2-FIXATION ACTIVITY OF TWO BOREAL FEATHER MOSS--CYANOBACTERIA AS
 SOCIATIONS \T1/lmr/m/n/10 339
  []
 
-[339 <./09-caseStudies_files/figure-latex/Figure9-4-1.pdf>]
+[339] [340 <./09-caseStudies_files/figure-latex/Figure9-6-1.pdf> <./09-caseStud
+ies_files/figure-latex/Figure9-7-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 25031.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25041.
+Package xcolor Warning: Incompatible color definition on input line 25192.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25041.
+Package xcolor Warning: Incompatible color definition on input line 25198.
 
 
-<09-caseStudies_files/figure-latex/Figure9-5-1.pdf, id=4354, 433.62pt x 252.945
-pt>
-File: 09-caseStudies_files/figure-latex/Figure9-5-1.pdf Graphic file (type pdf)
-
-<use 09-caseStudies_files/figure-latex/Figure9-5-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-5-1.pdf used
- on input line 25045.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Package xcolor Warning: Incompatible color definition on input line 25082.
+Package xcolor Warning: Incompatible color definition on input line 25198.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25087.
+Package xcolor Warning: Incompatible color definition on input line 25205.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25087.
-
-[340 <./09-caseStudies_files/figure-latex/Figure9-5-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 25112.
+Package xcolor Warning: Incompatible color definition on input line 25210.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25117.
+Package xcolor Warning: Incompatible color definition on input line 25210.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25117.
+Package xcolor Warning: Incompatible color definition on input line 25221.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25130.
+Package xcolor Warning: Incompatible color definition on input line 25227.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25135.
+Package xcolor Warning: Incompatible color definition on input line 25227.
 
-
-Package xcolor Warning: Incompatible color definition on input line 25135.
-
-
-<09-caseStudies_files/figure-latex/Figure9-6-1.pdf, id=4370, 433.62pt x 252.945
-pt>
-File: 09-caseStudies_files/figure-latex/Figure9-6-1.pdf Graphic file (type pdf)
-
-<use 09-caseStudies_files/figure-latex/Figure9-6-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-6-1.pdf used
- on input line 25139.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-
-Package xcolor Warning: Incompatible color definition on input line 25174.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25179.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25179.
-
-
-<09-caseStudies_files/figure-latex/Figure9-7-1.pdf, id=4372, 433.62pt x 252.945
-pt>
-File: 09-caseStudies_files/figure-latex/Figure9-7-1.pdf Graphic file (type pdf)
-
-<use 09-caseStudies_files/figure-latex/Figure9-7-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-7-1.pdf used
- on input line 25183.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Overfull \hbox (464.64285pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 9.2.  THE IMPACT OF SIMULATED CHRONIC NITROGEN DEPOSITION ON TH
@@ -7488,165 +7501,175 @@ E BIOMASS AND N2-FIXATION ACTIVITY OF TWO BOREAL FEATHER MOSS--CYANOBACTERIA AS
 SOCIATIONS \T1/lmr/m/n/10 341
  []
 
-[341] [342 <./09-caseStudies_files/figure-latex/Figure9-6-1.pdf> <./09-caseStud
-ies_files/figure-latex/Figure9-7-1.pdf>]
+[341]
 
-Package xcolor Warning: Incompatible color definition on input line 25209.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25215.
+Package xcolor Warning: Incompatible color definition on input line 25264.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25215.
+Package xcolor Warning: Incompatible color definition on input line 25268.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25222.
+Package xcolor Warning: Incompatible color definition on input line 25268.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25227.
+Package xcolor Warning: Incompatible color definition on input line 25286.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25227.
+Package xcolor Warning: Incompatible color definition on input line 25292.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25238.
+Package xcolor Warning: Incompatible color definition on input line 25292.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25244.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25244.
-
-
-Overfull \hbox (464.64285pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 9.2.  THE IMPACT OF SIMULATED CHRONIC NITROGEN DEPOSITION ON TH
-E BIOMASS AND N2-FIXATION ACTIVITY OF TWO BOREAL FEATHER MOSS--CYANOBACTERIA AS
-SOCIATIONS \T1/lmr/m/n/10 343
- []
-
-[343]
-
-Package xcolor Warning: Incompatible color definition on input line 25281.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25285.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25285.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25303.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25309.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25309.
-
-
-<09-caseStudies_files/figure-latex/Figure9-8-1.pdf, id=4399, 433.62pt x 252.945
+<09-caseStudies_files/figure-latex/Figure9-8-1.pdf, id=4390, 433.62pt x 252.945
 pt>
 File: 09-caseStudies_files/figure-latex/Figure9-8-1.pdf Graphic file (type pdf)
 
 <use 09-caseStudies_files/figure-latex/Figure9-8-1.pdf>
 Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-8-1.pdf used
- on input line 25313.
+ on input line 25296.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[344 <./09-caseStudies_files/figure-latex/Figure9-8-1.pdf>]
+[342 <./09-caseStudies_files/figure-latex/Figure9-8-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 25362.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25373.
+Package xcolor Warning: Incompatible color definition on input line 25345.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25373.
+Package xcolor Warning: Incompatible color definition on input line 25356.
 
 
-<09-caseStudies_files/figure-latex/Figure9-9-1.pdf, id=4414, 433.62pt x 252.945
+Package xcolor Warning: Incompatible color definition on input line 25356.
+
+
+<09-caseStudies_files/figure-latex/Figure9-9-1.pdf, id=4405, 433.62pt x 252.945
 pt>
 File: 09-caseStudies_files/figure-latex/Figure9-9-1.pdf Graphic file (type pdf)
 
 <use 09-caseStudies_files/figure-latex/Figure9-9-1.pdf>
 Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-9-1.pdf used
- on input line 25377.
+ on input line 25360.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 25381.
+Package xcolor Warning: Incompatible color definition on input line 25364.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25386.
+Package xcolor Warning: Incompatible color definition on input line 25369.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25386.
+Package xcolor Warning: Incompatible color definition on input line 25369.
 
 
 Overfull \hbox (16.39058pt too wide) has occurred while \output is active
 \T1/lmr/m/sl/10 9.3.  ANTS LEARN TO RELY ON MORE INFORMATIVE ATTRIBUTES DURING 
-DECISION-MAKING \T1/lmr/m/n/10 345
+DECISION-MAKING \T1/lmr/m/n/10 343
  []
 
-[345 <./09-caseStudies_files/figure-latex/Figure9-9-1.pdf>]
+[343 <./09-caseStudies_files/figure-latex/Figure9-9-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 25395.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25399.
+Package xcolor Warning: Incompatible color definition on input line 25378.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25399.
+Package xcolor Warning: Incompatible color definition on input line 25382.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25414.
+Package xcolor Warning: Incompatible color definition on input line 25382.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25418.
+Package xcolor Warning: Incompatible color definition on input line 25397.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25418.
+Package xcolor Warning: Incompatible color definition on input line 25401.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25430.
+Package xcolor Warning: Incompatible color definition on input line 25401.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25434.
+Package xcolor Warning: Incompatible color definition on input line 25413.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25434.
+Package xcolor Warning: Incompatible color definition on input line 25417.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25459.
+Package xcolor Warning: Incompatible color definition on input line 25417.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25463.
+Package xcolor Warning: Incompatible color definition on input line 25442.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25463.
-
-[346]
-
-Package xcolor Warning: Incompatible color definition on input line 25573.
+Package xcolor Warning: Incompatible color definition on input line 25446.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25580.
+Package xcolor Warning: Incompatible color definition on input line 25446.
+
+[344]
+
+Package xcolor Warning: Incompatible color definition on input line 25556.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25580.
+Package xcolor Warning: Incompatible color definition on input line 25563.
 
 
-<09-caseStudies_files/figure-latex/Figure9-10-1.pdf, id=4435, 433.62pt x 252.94
+Package xcolor Warning: Incompatible color definition on input line 25563.
+
+
+<09-caseStudies_files/figure-latex/Figure9-10-1.pdf, id=4427, 433.62pt x 252.94
 5pt>
 File: 09-caseStudies_files/figure-latex/Figure9-10-1.pdf Graphic file (type pdf
 )
 <use 09-caseStudies_files/figure-latex/Figure9-10-1.pdf>
 Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-10-1.pdf use
-d on input line 25584.
+d on input line 25567.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
 
-Package xcolor Warning: Incompatible color definition on input line 25588.
+Package xcolor Warning: Incompatible color definition on input line 25571.
+
+
+Overfull \hbox (132.70752pt too wide) has occurred while \output is active
+\T1/lmr/m/sl/10 9.4.  MULTI-VARIATE MODELS ARE ESSENTIAL FOR UNDERSTANDING VERT
+EBRATE DIVERSIFICATION IN DEEP TIME \T1/lmr/m/n/10 345
+ []
+
+[345]
+
+Package xcolor Warning: Incompatible color definition on input line 25579.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25579.
+
+
+<09-caseStudies_files/figure-latex/Figure9-10-2.pdf, id=4436, 433.62pt x 252.94
+5pt>
+File: 09-caseStudies_files/figure-latex/Figure9-10-2.pdf Graphic file (type pdf
+)
+<use 09-caseStudies_files/figure-latex/Figure9-10-2.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-10-2.pdf use
+d on input line 25583.
+(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+
+Package xcolor Warning: Incompatible color definition on input line 25615.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25623.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25623.
+
+[346 <./09-caseStudies_files/figure-latex/Figure9-10-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 25639.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25645.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25645.
+
+
+Overfull \hbox (523.99556pt too wide) in paragraph at lines 25674--25691
+ [][] 
+ []
 
 
 Overfull \hbox (132.70752pt too wide) has occurred while \output is active
@@ -7654,45 +7677,34 @@ Overfull \hbox (132.70752pt too wide) has occurred while \output is active
 EBRATE DIVERSIFICATION IN DEEP TIME \T1/lmr/m/n/10 347
  []
 
-[347]
+[347 <./09-caseStudies_files/figure-latex/Figure9-10-2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 25596.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25596.
+Package xcolor Warning: Incompatible color definition on input line 25715.
 
 
-<09-caseStudies_files/figure-latex/Figure9-10-2.pdf, id=4444, 433.62pt x 252.94
+Package xcolor Warning: Incompatible color definition on input line 25720.
+
+
+Package xcolor Warning: Incompatible color definition on input line 25720.
+
+
+<09-caseStudies_files/figure-latex/Figure9-11-1.pdf, id=4462, 433.62pt x 252.94
 5pt>
-File: 09-caseStudies_files/figure-latex/Figure9-10-2.pdf Graphic file (type pdf
+File: 09-caseStudies_files/figure-latex/Figure9-11-1.pdf Graphic file (type pdf
 )
-<use 09-caseStudies_files/figure-latex/Figure9-10-2.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-10-2.pdf use
-d on input line 25600.
+<use 09-caseStudies_files/figure-latex/Figure9-11-1.pdf>
+Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-11-1.pdf use
+d on input line 25724.
 (pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
+[348 <./09-caseStudies_files/figure-latex/Figure9-11-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 25632.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25640.
+Package xcolor Warning: Incompatible color definition on input line 25777.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25640.
-
-[348 <./09-caseStudies_files/figure-latex/Figure9-10-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 25656.
+Package xcolor Warning: Incompatible color definition on input line 25781.
 
 
-Package xcolor Warning: Incompatible color definition on input line 25662.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25662.
-
-
-Overfull \hbox (523.99556pt too wide) in paragraph at lines 25691--25708
- [][] 
- []
+Package xcolor Warning: Incompatible color definition on input line 25781.
 
 
 Overfull \hbox (132.70752pt too wide) has occurred while \output is active
@@ -7700,53 +7712,18 @@ Overfull \hbox (132.70752pt too wide) has occurred while \output is active
 EBRATE DIVERSIFICATION IN DEEP TIME \T1/lmr/m/n/10 349
  []
 
-[349 <./09-caseStudies_files/figure-latex/Figure9-10-2.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 25732.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25737.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25737.
-
-
-<09-caseStudies_files/figure-latex/Figure9-11-1.pdf, id=4471, 433.62pt x 252.94
-5pt>
-File: 09-caseStudies_files/figure-latex/Figure9-11-1.pdf Graphic file (type pdf
-)
-<use 09-caseStudies_files/figure-latex/Figure9-11-1.pdf>
-Package pdftex.def Info: 09-caseStudies_files/figure-latex/Figure9-11-1.pdf use
-d on input line 25741.
-(pdftex.def)             Requested size: 433.62555pt x 252.94823pt.
-[350 <./09-caseStudies_files/figure-latex/Figure9-11-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 25794.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25798.
-
-
-Package xcolor Warning: Incompatible color definition on input line 25798.
-
-
-Overfull \hbox (132.70752pt too wide) has occurred while \output is active
-\T1/lmr/m/sl/10 9.4.  MULTI-VARIATE MODELS ARE ESSENTIAL FOR UNDERSTANDING VERT
-EBRATE DIVERSIFICATION IN DEEP TIME \T1/lmr/m/n/10 351
- []
-
-[351] (GreenwoodBanner.bbl [352]
+[349] (GreenwoodBanner.bbl [350]
 Chapter 10.
-[353
+[351
 
-] [354])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25904.
-[355]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 25904.
+] [352])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25887.
+[353]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 25887.
 (GreenwoodBanner.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 25904.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 25887.
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25904
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25887
 .
 Package rerunfilecheck Info: File `GreenwoodBanner.out' has not changed.
 (rerunfilecheck)             Checksum: C4032B30966D6D275DB6EBA463833E86;27290.
@@ -7756,14 +7733,14 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 25904.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 25887.
  ) 
 Here is how much of TeX's memory you used:
- 18137 strings out of 493366
- 298957 string characters out of 3137241
- 398117 words of memory out of 3000000
- 20073 multiletter control sequences out of 15000+200000
- 167112 words of font info for 282 fonts, out of 3000000 for 9000
+ 18138 strings out of 493366
+ 298984 string characters out of 3137241
+ 398213 words of memory out of 3000000
+ 20075 multiletter control sequences out of 15000+200000
+ 170141 words of font info for 283 fonts, out of 3000000 for 9000
  1127 hyphenation exceptions out of 8191
  36i,16n,49p,892b,612s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program 
@@ -7800,18 +7777,19 @@ pe1/public/lm/lmr7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
 les (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/lm/lmri8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/lm/lmro10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/lm/lmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
-sy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmtt8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on GreenwoodBanner.pdf (355 pages, 6949599 bytes).
+ublic/lm/lmro8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lms
+y10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
+/type1/public/lm/lmtk10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt8
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on GreenwoodBanner.pdf (353 pages, 6967282 bytes).
 PDF statistics:
- 4862 PDF objects out of 5155 (max. 8388607)
- 955 named destinations out of 1000 (max. 500000)
+ 4855 PDF objects out of 5155 (max. 8388607)
+ 953 named destinations out of 1000 (max. 500000)
  26416 words of extra memory for PDF output out of 29859 (max. 10000000)
 

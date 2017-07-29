@@ -14251,6 +14251,13 @@ and 1 for females.
 
 
 
+\begin{figure}
+\centering
+\includegraphics{06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf}
+\caption{\label{fig:Figure6-7}Scatterplot of athlete's height and hematocrit by sex of
+athletes. Males were coded as 0s and females as 1s.}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{aisR2 <-}\StringTok{ }\NormalTok{ais[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{56}\NormalTok{,}\DecValTok{166}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\StringTok{"Ht"}\NormalTok{,}\StringTok{"Hc"}\NormalTok{,}\StringTok{"Bfat"}\NormalTok{,}\StringTok{"Sex"}\NormalTok{)]}
@@ -14259,13 +14266,6 @@ and 1 for females.
             \DataTypeTok{boxplots=}\StringTok{"xy"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Scatterplot of Height vs Hematocrit by Sex"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf}
-\caption{\label{fig:Figure6-7}Scatterplot of athlete's height and hematocrit by sex of
-athletes. Males were coded as 0s and females as 1s.}
-\end{figure}
 
 Adding the grouping information really changes the impressions of the
 relationship between \emph{Height} and \emph{Hematocrit} -- within each
@@ -14322,9 +14322,6 @@ relationships that also appear to be in different directions
 This doubly reinforces the dangers of aggregating different groups and
 ignoring the group information.
 
-
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{cor}\NormalTok{(Hc}\OperatorTok{~}\NormalTok{Bfat, }\DataTypeTok{data=}\NormalTok{aisR2[aisR2}\OperatorTok{$}\NormalTok{Sex}\OperatorTok{==}\DecValTok{0}\NormalTok{,]) }\CommentTok{#Males only}
@@ -14345,12 +14342,8 @@ ignoring the group information.
 ## [1] -0.1679751
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{scatterplot}\NormalTok{(Hc}\OperatorTok{~}\NormalTok{Bfat}\OperatorTok{|}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{aisR2, }\DataTypeTok{pch=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{21}\NormalTok{), }\DataTypeTok{reg.line=}\NormalTok{F, }\DataTypeTok{smoother=}\NormalTok{F,}
-            \DataTypeTok{boxplots=}\StringTok{"xy"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Scatterplot of Body Fat vs Hematocrit by Sex"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+
+
 
 \begin{figure}
 \centering
@@ -14358,6 +14351,13 @@ ignoring the group information.
 \caption{\label{fig:Figure6-8}Scatterplot of athlete's body fat and hematocrit by sex of
 athletes. Males were coded as 0s and females as 1s.}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{scatterplot}\NormalTok{(Hc}\OperatorTok{~}\NormalTok{Bfat}\OperatorTok{|}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{aisR2, }\DataTypeTok{pch=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{21}\NormalTok{), }\DataTypeTok{reg.line=}\NormalTok{F, }\DataTypeTok{smoother=}\NormalTok{F,}
+            \DataTypeTok{boxplots=}\StringTok{"xy"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Scatterplot of Body Fat vs Hematocrit by Sex"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 One final exploration for these data involves the \emph{body fat }and
 \emph{height} relationship displayed in Figure \ref{fig:Figure6-9}. This
@@ -14374,8 +14374,6 @@ in -- that would be another categorical variable we could
 incorporate\ldots{} Both groups also seem to demonstrate slightly more
 variability in \emph{Body Fat} associated with taller athletes (each
 sort of ``fans out'').
-
-
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14397,18 +14395,20 @@ sort of ``fans out'').
 ## [1] 0.4476962
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{scatterplot}\NormalTok{(Bfat}\OperatorTok{~}\NormalTok{Ht}\OperatorTok{|}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{aisR2, }\DataTypeTok{pch=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{21}\NormalTok{), }\DataTypeTok{reg.line=}\NormalTok{F, }\DataTypeTok{smoother=}\NormalTok{F,}
-            \DataTypeTok{boxplots=}\StringTok{"xy"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Scatterplot of Height vs Body Fat by Sex"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+
 
 \begin{figure}
 \centering
 \includegraphics{06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf}
 \caption{\label{fig:Figure6-9}Scatterplot of athlete's body fat and height by sex.}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{scatterplot}\NormalTok{(Bfat}\OperatorTok{~}\NormalTok{Ht}\OperatorTok{|}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{aisR2, }\DataTypeTok{pch=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{21}\NormalTok{), }\DataTypeTok{reg.line=}\NormalTok{F, }\DataTypeTok{smoother=}\NormalTok{F,}
+            \DataTypeTok{boxplots=}\StringTok{"xy"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Scatterplot of Height vs Body Fat by Sex"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 In each of these situations, the sex of the athletes has the potential
 to cause misleading conclusions if ignored. There are two ways that this
@@ -14717,28 +14717,9 @@ transformations in the Chapter \ref{chapter7}.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\NormalTok{ufc); Tobs}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 0.7699552
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
-\NormalTok{B <-}\StringTok{ }\DecValTok{1000}
-\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
-\ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(ufc))}
-\NormalTok{\}}
-\NormalTok{quantiles <-}\StringTok{ }\KeywordTok{qdata}\NormalTok{(Tstar, }\KeywordTok{c}\NormalTok{(.}\DecValTok{025}\NormalTok{,.}\DecValTok{975}\NormalTok{)) }\CommentTok{#95% Confidence Interval}
-\NormalTok{quantiles}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##        quantile     p
@@ -14746,46 +14727,15 @@ transformations in the Chapter \ref{chapter7}.
 ## 97.5% 0.8203489 0.975
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{,}\FloatTok{0.9}\NormalTok{),}
-     \DataTypeTok{main=}\StringTok{"Bootstrap distribution of correlation with all data"}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{quantiles}\OperatorTok{$}\NormalTok{quantile, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-
-\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\NormalTok{ufc[}\OperatorTok{-}\DecValTok{168}\NormalTok{,]); Tobs}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 0.7912053
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
-\ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(ufc[}\OperatorTok{-}\DecValTok{168}\NormalTok{,]))}
-\NormalTok{\}}
-\NormalTok{quantiles <-}\StringTok{ }\KeywordTok{qdata}\NormalTok{(Tstar, }\KeywordTok{c}\NormalTok{(.}\DecValTok{025}\NormalTok{,.}\DecValTok{975}\NormalTok{)) }\CommentTok{#95% Confidence Interval}
-\NormalTok{quantiles}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##       quantile     p
 ## 2.5%  0.752252 0.025
 ## 97.5% 0.827492 0.975
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{,}\FloatTok{0.9}\NormalTok{),}
-     \DataTypeTok{main=} \StringTok{"Bootstrap distribution of correlation without outlier"}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{quantiles}\OperatorTok{$}\NormalTok{quantile, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 \centering
@@ -14795,6 +14745,36 @@ the full data set (top) and without potential outlier included (bottom)
 with observed correlation (bold line) and bounds for 95\% confidence
 interval (dashed lines).}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\NormalTok{ufc); Tobs}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\NormalTok{B <-}\StringTok{ }\DecValTok{1000}
+\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
+\ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
+\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(ufc))}
+\NormalTok{\}}
+\NormalTok{quantiles <-}\StringTok{ }\KeywordTok{qdata}\NormalTok{(Tstar, }\KeywordTok{c}\NormalTok{(.}\DecValTok{025}\NormalTok{,.}\DecValTok{975}\NormalTok{)) }\CommentTok{#95% Confidence Interval}
+\NormalTok{quantiles}
+\KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{,}\FloatTok{0.9}\NormalTok{),}
+     \DataTypeTok{main=}\StringTok{"Bootstrap distribution of correlation with all data"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{quantiles}\OperatorTok{$}\NormalTok{quantile, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
+
+\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\NormalTok{ufc[}\OperatorTok{-}\DecValTok{168}\NormalTok{,]); Tobs}
+\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
+\ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
+\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(dbh.cm}\OperatorTok{~}\NormalTok{height.m, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(ufc[}\OperatorTok{-}\DecValTok{168}\NormalTok{,]))}
+\NormalTok{\}}
+\NormalTok{quantiles <-}\StringTok{ }\KeywordTok{qdata}\NormalTok{(Tstar, }\KeywordTok{c}\NormalTok{(.}\DecValTok{025}\NormalTok{,.}\DecValTok{975}\NormalTok{)) }\CommentTok{#95% Confidence Interval}
+\NormalTok{quantiles}
+\KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{,}\FloatTok{0.9}\NormalTok{),}
+     \DataTypeTok{main=} \StringTok{"Bootstrap distribution of correlation without outlier"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{quantiles}\OperatorTok{$}\NormalTok{quantile, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Describing relationships with a regression
 model}\label{section6-6}
@@ -14823,20 +14803,22 @@ code.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{scatterplot}\NormalTok{(BAC}\OperatorTok{~}\NormalTok{Beers, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,.}\DecValTok{2}\NormalTok{), }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{9}\NormalTok{), }\DataTypeTok{data=}\NormalTok{BB,}
-            \DataTypeTok{boxplot=}\NormalTok{F, }\DataTypeTok{main=}\StringTok{"Scatterplot with regression line"}\NormalTok{,}
-            \DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{smooth=}\NormalTok{F)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \centering
 \includegraphics{06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pdf}
 \caption{\label{fig:Figure6-13}Scatterplot with estimate regression line for the
 \emph{Beers} and \emph{BAC} data.}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{scatterplot}\NormalTok{(BAC}\OperatorTok{~}\NormalTok{Beers, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,.}\DecValTok{2}\NormalTok{), }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{9}\NormalTok{), }\DataTypeTok{data=}\NormalTok{BB,}
+            \DataTypeTok{boxplot=}\NormalTok{F, }\DataTypeTok{main=}\StringTok{"Scatterplot with regression line"}\NormalTok{,}
+            \DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{smooth=}\NormalTok{F)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{,}\DataTypeTok{col=}\StringTok{"grey"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.05914}\NormalTok{,}\FloatTok{0.0771}\NormalTok{),}\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{,}\DataTypeTok{lty=}\DecValTok{2}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 The equation for a line is \(y=a+bx\), or maybe \(y=mx+b\). In the
 version \(mx+b\) you learned that \(m\) is a slope coefficient that
@@ -15011,9 +14993,9 @@ will need to master. In general, we interpret the slope coefficient as:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Slope interpretation (general):} For a 1 \textbf{\emph{{[}unit
-  of X{]}}} increase in \textbf{\emph{X}}, we expect, \emph{on average},
-  a \(\mathbf{b_1}\) \textbf{\emph{{[}unit of Y{]}}} change in
+  \textbf{Slope interpretation (general):} For a 1 \textbf{{[}\emph{unit
+  of X}{]}} increase in \textbf{\emph{X}}, we expect, \emph{on average},
+  a \(\mathbf{b_1}\) \textbf{{[}\emph{unit of Y}{]}} change in
   \textbf{\emph{Y}}.
 \end{itemize}
 
@@ -15051,8 +15033,8 @@ Similarly, the general interpretation for a y-intercept is:
 \tightlist
 \item
   \textbf{Y-intercept interpretation (general):} For \textbf{\emph{X}}=
-  0 \textbf{\emph{{[}units of X{]}}}, we expect, on average,
-  \(\mathbf{b_0}\) \textbf{\emph{{[}units of Y{]}}} \textbf{in}
+  0 \textbf{{[}\emph{units of X}{]}}, we expect, on average,
+  \(\mathbf{b_0}\) \textbf{{[}\emph{units of Y}{]}} \textbf{in}
   \textbf{\emph{Y}}.
 \end{itemize}
 
@@ -15343,7 +15325,8 @@ degrees F.
 estimated regression line.}
 \end{figure}
 
-\section{Measuring the strength of regressions: R2}\label{section6-8}
+\section{\texorpdfstring{Measuring the strength of regressions:
+R\textsuperscript{2}}{Measuring the strength of regressions: R2}}\label{section6-8}
 
 At the beginning of the chapter, we used the correlation coefficient to
 measure the strength and direction of the linear relationship. The
@@ -15909,9 +15892,6 @@ estimated regression models in a couple of our examples:
       person's beer consumption to change someone else's BAC.
     \end{itemize}
 
-    (ref:fig6-22) Full suite of diagnostics plots for \emph{Beer} vs
-    \emph{BAC} data.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{m1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(BAC}\OperatorTok{~}\NormalTok{Beers, }\DataTypeTok{data=}\NormalTok{BB)}
@@ -15923,7 +15903,8 @@ estimated regression models in a couple of our examples:
     \begin{figure}
     \centering
     \includegraphics{06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pdf}
-    \caption{\label{fig:Figure6-22}(ref:fig6-22)}
+    \caption{\label{fig:Figure6-22}Full suite of diagnostics plots for
+    \emph{Beer} vs \emph{BAC} data.}
     \end{figure}
   \item
     Linearity, constant variance from Residuals vs Fitted:
@@ -16050,9 +16031,6 @@ Reporting the following regression model that has a decent \(R^2\) of
 62.6\% would be misleading since it does not accurately represent the
 relationship between tree diameter and tree height.
 
-
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tree1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(height.m}\OperatorTok{~}\NormalTok{dbh.cm,}\DataTypeTok{data=}\NormalTok{ufc[}\OperatorTok{-}\DecValTok{168}\NormalTok{,])}
@@ -16078,6 +16056,9 @@ relationship between tree diameter and tree height.
 ## Multiple R-squared:  0.626,  Adjusted R-squared:  0.6249 
 ## F-statistic: 557.4 on 1 and 333 DF,  p-value: < 2.2e-16
 \end{verbatim}
+
+
+
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -16165,8 +16146,6 @@ do not have to worry about non-constant variance here. So these results
 might be relatively trustworthy if we assume that the same relationship
 holds for all levels of duration of eruptions.
 
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{OF1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Waiting}\OperatorTok{~}\NormalTok{Duration, }\DataTypeTok{data=}\NormalTok{G2)}
@@ -16192,6 +16171,8 @@ holds for all levels of duration of eruptions.
 ## Multiple R-squared:  0.7894, Adjusted R-squared:  0.7887 
 ## F-statistic:  1110 on 1 and 296 DF,  p-value: < 2.2e-16
 \end{verbatim}
+
+
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -16346,6 +16327,8 @@ components to modify in red where \texttt{y} is a response variable,
     Provides four regression diagnostic plots in one plot.
   \end{itemize}
 \end{itemize}
+
+\newpage
 
 \section{Practice problems}\label{section6-14}
 

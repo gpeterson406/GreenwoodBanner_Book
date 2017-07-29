@@ -61,48 +61,48 @@
 \contentsline {section}{\numberline {6.3}Relationships between variables by groups}{189}{section.6.3}
 \contentsline {section}{\numberline {6.4}Inference for the correlation coefficient (Optional Section)}{193}{section.6.4}
 \contentsline {section}{\numberline {6.5}Are tree diameters related to tree heights?}{195}{section.6.5}
-\contentsline {section}{\numberline {6.6}Describing relationships with a regression model}{197}{section.6.6}
+\contentsline {section}{\numberline {6.6}Describing relationships with a regression model}{198}{section.6.6}
 \contentsline {section}{\numberline {6.7}Least Squares Estimation}{202}{section.6.7}
-\contentsline {section}{\numberline {6.8}Measuring the strength of regressions: R2}{206}{section.6.8}
+\contentsline {section}{\numberline {6.8}Measuring the strength of regressions: R\textsuperscript {2}}{205}{section.6.8}
 \contentsline {section}{\numberline {6.9}Outliers: leverage and influence}{209}{section.6.9}
-\contentsline {section}{\numberline {6.10}Residual diagnostics -- setting the stage for inference}{211}{section.6.10}
-\contentsline {section}{\numberline {6.11}Old Faithful discharge and waiting times}{217}{section.6.11}
-\contentsline {section}{\numberline {6.12}Chapter summary}{219}{section.6.12}
-\contentsline {section}{\numberline {6.13}Important R code}{220}{section.6.13}
-\contentsline {section}{\numberline {6.14}Practice problems}{221}{section.6.14}
-\contentsline {chapter}{\numberline {7}Simple linear regression inference}{223}{chapter.7}
-\contentsline {section}{\numberline {7.1}Model}{223}{section.7.1}
-\contentsline {section}{\numberline {7.2}Confidence Interval and Hypothesis tests for the slope and intercept}{226}{section.7.2}
-\contentsline {section}{\numberline {7.3}Bozeman temperature trend}{231}{section.7.3}
-\contentsline {section}{\numberline {7.4}Randomizing inferences for the slope coefficient}{238}{section.7.4}
-\contentsline {section}{\numberline {7.5}Transformations part I: Linearizing relationships}{241}{section.7.5}
-\contentsline {section}{\numberline {7.6}Transformations part II: Impacts on SLR interpretations: log(y), log(x), \& both log(y) \& log(x)}{247}{section.7.6}
-\contentsline {section}{\numberline {7.7}Confidence Interval for the mean and prediction Intervals for a new observation}{253}{section.7.7}
-\contentsline {section}{\numberline {7.8}Chapter summary}{259}{section.7.8}
-\contentsline {section}{\numberline {7.9}Important R code}{260}{section.7.9}
-\contentsline {section}{\numberline {7.10}Practice problems}{260}{section.7.10}
-\contentsline {chapter}{\numberline {8}Multiple linear regression}{263}{chapter.8}
-\contentsline {section}{\numberline {8.1}Going from SLR to MLR}{263}{section.8.1}
-\contentsline {section}{\numberline {8.2}Validity conditions in MLR}{269}{section.8.2}
-\contentsline {section}{\numberline {8.3}Interpretation of MLR terms}{277}{section.8.3}
-\contentsline {section}{\numberline {8.4}Comparing multiple regression models}{281}{section.8.4}
-\contentsline {section}{\numberline {8.5}General recommendations for MLR interpretations and VIFs}{284}{section.8.5}
-\contentsline {section}{\numberline {8.6}MLR Inference: Parameter inferences using the t-distribution}{287}{section.8.6}
-\contentsline {section}{\numberline {8.7}Overall F-test in Multiple Linear Regression}{290}{section.8.7}
-\contentsline {section}{\numberline {8.8}Case Study: First year college GPA and SATs}{291}{section.8.8}
-\contentsline {section}{\numberline {8.9}Different intercepts for different groups: MLR with Indicator variables}{298}{section.8.9}
-\contentsline {section}{\numberline {8.10}Additive MLR with more than two groups: Headache example}{304}{section.8.10}
-\contentsline {section}{\numberline {8.11}Different slopes and different intercepts}{309}{section.8.11}
-\contentsline {section}{\numberline {8.12}F-tests for MLR models with quantitative and categorical variables and interactions}{318}{section.8.12}
-\contentsline {section}{\numberline {8.13}AICs for model selection}{322}{section.8.13}
-\contentsline {section}{\numberline {8.14}Forced Expiratory Volume model selection using AICs}{326}{section.8.14}
-\contentsline {section}{\numberline {8.15}Chapter summary}{331}{section.8.15}
-\contentsline {section}{\numberline {8.16}Important R code}{332}{section.8.16}
-\contentsline {section}{\numberline {8.17}Practice problems}{333}{section.8.17}
-\contentsline {chapter}{\numberline {9}Case studies}{335}{chapter.9}
-\contentsline {section}{\numberline {9.1}Overview of material covered}{335}{section.9.1}
-\contentsline {section}{\numberline {9.2}The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss--cyanobacteria associations}{337}{section.9.2}
-\contentsline {section}{\numberline {9.3}Ants learn to rely on more informative attributes during decision-making}{345}{section.9.3}
-\contentsline {section}{\numberline {9.4}Multi-variate models are essential for understanding vertebrate diversification in deep time}{347}{section.9.4}
-\contentsline {section}{\numberline {9.5}General summary}{352}{section.9.5}
-\contentsline {chapter}{\numberline {10}Bibliography}{353}{chapter.10}
+\contentsline {section}{\numberline {6.10}Residual diagnostics -- setting the stage for inference}{210}{section.6.10}
+\contentsline {section}{\numberline {6.11}Old Faithful discharge and waiting times}{215}{section.6.11}
+\contentsline {section}{\numberline {6.12}Chapter summary}{218}{section.6.12}
+\contentsline {section}{\numberline {6.13}Important R code}{219}{section.6.13}
+\contentsline {section}{\numberline {6.14}Practice problems}{220}{section.6.14}
+\contentsline {chapter}{\numberline {7}Simple linear regression inference}{221}{chapter.7}
+\contentsline {section}{\numberline {7.1}Model}{221}{section.7.1}
+\contentsline {section}{\numberline {7.2}Confidence Interval and Hypothesis tests for the slope and intercept}{224}{section.7.2}
+\contentsline {section}{\numberline {7.3}Bozeman temperature trend}{229}{section.7.3}
+\contentsline {section}{\numberline {7.4}Randomizing inferences for the slope coefficient}{236}{section.7.4}
+\contentsline {section}{\numberline {7.5}Transformations part I: Linearizing relationships}{239}{section.7.5}
+\contentsline {section}{\numberline {7.6}Transformations part II: Impacts on SLR interpretations: log(y), log(x), \& both log(y) \& log(x)}{245}{section.7.6}
+\contentsline {section}{\numberline {7.7}Confidence Interval for the mean and prediction Intervals for a new observation}{251}{section.7.7}
+\contentsline {section}{\numberline {7.8}Chapter summary}{257}{section.7.8}
+\contentsline {section}{\numberline {7.9}Important R code}{258}{section.7.9}
+\contentsline {section}{\numberline {7.10}Practice problems}{258}{section.7.10}
+\contentsline {chapter}{\numberline {8}Multiple linear regression}{261}{chapter.8}
+\contentsline {section}{\numberline {8.1}Going from SLR to MLR}{261}{section.8.1}
+\contentsline {section}{\numberline {8.2}Validity conditions in MLR}{267}{section.8.2}
+\contentsline {section}{\numberline {8.3}Interpretation of MLR terms}{275}{section.8.3}
+\contentsline {section}{\numberline {8.4}Comparing multiple regression models}{279}{section.8.4}
+\contentsline {section}{\numberline {8.5}General recommendations for MLR interpretations and VIFs}{282}{section.8.5}
+\contentsline {section}{\numberline {8.6}MLR Inference: Parameter inferences using the t-distribution}{285}{section.8.6}
+\contentsline {section}{\numberline {8.7}Overall F-test in Multiple Linear Regression}{288}{section.8.7}
+\contentsline {section}{\numberline {8.8}Case Study: First year college GPA and SATs}{289}{section.8.8}
+\contentsline {section}{\numberline {8.9}Different intercepts for different groups: MLR with Indicator variables}{296}{section.8.9}
+\contentsline {section}{\numberline {8.10}Additive MLR with more than two groups: Headache example}{302}{section.8.10}
+\contentsline {section}{\numberline {8.11}Different slopes and different intercepts}{307}{section.8.11}
+\contentsline {section}{\numberline {8.12}F-tests for MLR models with quantitative and categorical variables and interactions}{316}{section.8.12}
+\contentsline {section}{\numberline {8.13}AICs for model selection}{320}{section.8.13}
+\contentsline {section}{\numberline {8.14}Forced Expiratory Volume model selection using AICs}{324}{section.8.14}
+\contentsline {section}{\numberline {8.15}Chapter summary}{329}{section.8.15}
+\contentsline {section}{\numberline {8.16}Important R code}{330}{section.8.16}
+\contentsline {section}{\numberline {8.17}Practice problems}{331}{section.8.17}
+\contentsline {chapter}{\numberline {9}Case studies}{333}{chapter.9}
+\contentsline {section}{\numberline {9.1}Overview of material covered}{333}{section.9.1}
+\contentsline {section}{\numberline {9.2}The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss--cyanobacteria associations}{335}{section.9.2}
+\contentsline {section}{\numberline {9.3}Ants learn to rely on more informative attributes during decision-making}{343}{section.9.3}
+\contentsline {section}{\numberline {9.4}Multi-variate models are essential for understanding vertebrate diversification in deep time}{345}{section.9.4}
+\contentsline {section}{\numberline {9.5}General summary}{350}{section.9.5}
+\contentsline {chapter}{\numberline {10}Bibliography}{351}{chapter.10}
