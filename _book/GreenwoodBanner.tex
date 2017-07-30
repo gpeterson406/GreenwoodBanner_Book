@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-07-28}
+  \date{2017-07-30}
 
 \usepackage{booktabs}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -154,7 +154,7 @@
 
 \setlength{\OuterFrameSep}{-4pt}
 \makeatletter
-\def\preto{\@verbatim}{\topsep=-10pt \partopsep=-10pt }
+\def\preto{\@verbatim}{\topsep=5pt \partopsep=-10pt }
 \makeatother
 
 \usepackage{amsthm}
@@ -16469,7 +16469,7 @@ regression model.
 
 \begin{figure}
 \centering
-\includegraphics{chapter7_files/image029.png}
+\includegraphics{chapter7_files/image029small.png}
 \caption{\label{fig:Figure7-1}Sketch of assumed normal distributions for the responses
 centered at the regression line.}
 \end{figure}
@@ -16525,6 +16525,8 @@ properly accounted for to take the \textbf{single} estimated regression
 line to make inferences about the true line and parameters based on the
 sample-based estimates. The next sections develop those inferential
 tools.
+
+\newpage
 
 \section{Confidence Interval and Hypothesis tests for the slope and
 intercept}\label{section7-2}
@@ -17191,9 +17193,6 @@ conditions:}
   model and use the diagnostic plots in Figure \ref{fig:Figure7-5} to
   aid our assessment:
 
-  (ref:fig7-5) Diagnostic plots of the Bozeman yearly temperature simple
-  linear regression model.
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{temp1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(meanmax}\OperatorTok{~}\NormalTok{Year, }\DataTypeTok{data=}\NormalTok{bozemantemps)}
@@ -17205,7 +17204,8 @@ conditions:}
   \begin{figure}
   \centering
   \includegraphics{07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf}
-  \caption{\label{fig:Figure7-5}(ref:fig7-5)}
+  \caption{\label{fig:Figure7-5}Diagnostic plots of the Bozeman yearly
+  temperature simple linear regression model.}
   \end{figure}
 \item
   \textbf{Linearity of relationship}
@@ -17888,31 +17888,80 @@ transformations are all nonlinear functions of \(y\).
 
 
 
-\begin{table}
-
-\caption{\label{tab:Table7-1}Ladder of powers of transformations that are often used in
-statistical modeling.}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-Power & Formula & Usage\\
-\hline
-2 & \$y\textasciicircum{}2\$ & seldom used\\
-\hline
-1 & \$y\textasciicircum{}1=y\$ & no change\\
-\hline
-\$1/2\$ & \$y\textasciicircum{}\{0.5\}=\textbackslash{}sqrt\{y\}\$ & Counts and area responses\\
-\hline
-0 & \$\textbackslash{}log(y)\$ natural log of \$y\$ & Counts, normality, curves, non-constant variance\\
-\hline
-\$-1/2\$ & \$y\textasciicircum{}\{-0.5\}=1/\textbackslash{}sqrt\{y\}\$ & Uncommon\\
-\hline
-\$-1\$ & \$y\textasciicircum{}\{-1\}=1/y\$ & for ratios\\
-\hline
-\$-2\$ & \$y\textasciicircum{}\{-2\}=1/y\textasciicircum{}2\$ & seldom used\\
-\hline
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:Table7-1} Ladder of powers of transformations that are often used in
+statistical modeling.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\raggedright\strut
+\textbf{Power}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright\strut
+\textbf{Formula}\strut
+\end{minipage} & \begin{minipage}[b]{0.49\columnwidth}\raggedright\strut
+\textbf{Usage}~~~~~~\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\raggedright\strut
+\textbf{Power}\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\raggedright\strut
+\textbf{Formula}\strut
+\end{minipage} & \begin{minipage}[b]{0.49\columnwidth}\raggedright\strut
+\textbf{Usage}~~~~~~\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+seldom used\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^1=y\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+no change\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+\(1/2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^{0.5}=\sqrt{y}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+counts and area responses\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(\log(y)\) natural log of \(y\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+counts, normality, curves, non-constant variance\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+\(-1/2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^{-0.5}=1/\sqrt{y}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+uncommon\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+\(-1\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^{-1}=1/y\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+for ratios\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+\(-2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
+\(y^{-2}=1/y^2\)\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+seldom used\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 There are even more transformations possible, for example \(y^{0.33}\)
 is sometimes useful for variables involved in measuring the volume of
@@ -18151,6 +18200,8 @@ base \emph{e} unless otherwise specified.
 
 \section{Transformations part II: Impacts on SLR interpretations:
 log(y), log(x), \& both log(y) \& log(x)}\label{section7-6}
+
+\sectionmark{Transformations part II: Impacts on SLR interpretations}
 
 The previous attempts to linearize relationships imply a desire to be
 able to fit SLR models. The \emph{log}-transformations, when successful,
@@ -18604,8 +18655,10 @@ assumptions have been met. In fact, the methods in Section
 \ref{section7-7} are some of the most sensitive results to violations of
 the assumptions that we will explore.
 
-\section{Confidence Interval for the mean and prediction Intervals for a
+\section{Confidence interval for the mean and prediction intervals for a
 new observation}\label{section7-7}
+
+\sectionmark{Confidence intervals and prediction intervals}
 
 Figure \ref{fig:Figure7-6} provided a term-plot of the estimated
 regression line and a shaded area surrounding the estimated regression
@@ -20807,31 +20860,116 @@ complicated model will always have that characteristic.
 
 
 
-\begin{table}
-
-\caption{\label{tab:Table8-1}Model comparisons for Snow Depth data, sorted by model
-complexity.}
-\centering
-\begin{tabular}[t]{l|c|r|r|c}
-\hline
-Model & \$\textbackslash{}boldsymbol\{K\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\_\{\textbackslash{}text\{adjusted\}\}\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\_\{\textbackslash{}text\{adjusted\}\}\}\$ Rank\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation & 1 & 0.8087 & 0.7996 & 3\\
-\hline
-SD \$\textbackslash{}sim\$ Min.Temp & 1 & 0.6283 & 0.6106 & 5\\
-\hline
-SD \$\textbackslash{}sim\$ Max.Temp & 1 & 0.4131 & 0.3852 & 7\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Min.Temp & 2 & 0.8134 & 0.7948 & 4\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Max.Temp & 2 & 0.8495 & 0.8344 & 1\\
-\hline
-SD \$\textbackslash{}sim\$ Min.Temp + Max.Temp & 2 & 0.6308 & 0.5939 & 6\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Min.Temp + Max.Temp & 3 & 0.8535 & 0.8304 & 2\\
-\hline
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}lcrrc@{}}
+\caption{\label{tab:Table8-1} Model comparisons for Snow Depth data, sorted by model
+complexity.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\textbf{Model}~~~\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\(\boldsymbol{K}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+\(\boldsymbol{R^2}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedleft\strut
+\(\boldsymbol{R^2_{\text{adjusted}}}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering\strut
+\(\boldsymbol{R^2_{\text{adjusted}}}\) \textbf{Rank}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+\textbf{Model}~~~\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\(\boldsymbol{K}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
+\(\boldsymbol{R^2}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedleft\strut
+\(\boldsymbol{R^2_{\text{adjusted}}}\)\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\centering\strut
+\(\boldsymbol{R^2_{\text{adjusted}}}\) \textbf{Rank}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Elevation\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.8087\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.7996\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+3\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Min.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.6283\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.6106\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+5\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Max.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.4131\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.3852\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+7\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Elevation + Min.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.8134\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.7948\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Elevation + Max.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.8495\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.8344\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Min.Temp + Max.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.6308\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.5939\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+6\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+SD \(\sim\) Elevation + Min.Temp + Max.Temp\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedleft\strut
+0.8535\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedleft\strut
+0.8304\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
+2\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 The top model with \emph{Elevation} and \emph{Max.Temp} has an
 \(\boldsymbol{R}^2\) of 0.8495, so we can say that the model with

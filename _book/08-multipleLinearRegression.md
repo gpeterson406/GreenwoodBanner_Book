@@ -1317,30 +1317,28 @@ will always have that characteristic.
 
 (ref:tab8-1) Model comparisons for Snow Depth data, sorted by model complexity.
 
-\begin{table}
 
-\caption{(\#tab:Table8-1)(ref:tab8-1)}
-\centering
-\begin{tabular}[t]{l|c|r|r|c}
-\hline
-Model & \$\textbackslash{}boldsymbol\{K\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\_\{\textbackslash{}text\{adjusted\}\}\}\$ & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\_\{\textbackslash{}text\{adjusted\}\}\}\$ Rank\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation & 1 & 0.8087 & 0.7996 & 3\\
-\hline
-SD \$\textbackslash{}sim\$ Min.Temp & 1 & 0.6283 & 0.6106 & 5\\
-\hline
-SD \$\textbackslash{}sim\$ Max.Temp & 1 & 0.4131 & 0.3852 & 7\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Min.Temp & 2 & 0.8134 & 0.7948 & 4\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Max.Temp & 2 & 0.8495 & 0.8344 & 1\\
-\hline
-SD \$\textbackslash{}sim\$ Min.Temp + Max.Temp & 2 & 0.6308 & 0.5939 & 6\\
-\hline
-SD \$\textbackslash{}sim\$ Elevation + Min.Temp + Max.Temp & 3 & 0.8535 & 0.8304 & 2\\
-\hline
-\end{tabular}
-\end{table}
+----------------------------------------------------------------------------------------------------------------------------------------------------
+**Model**&nbsp;&nbsp;&nbsp;     $\boldsymbol{K}$    $\boldsymbol{R^2}$   $\boldsymbol{R^2_{\text{adjusted}}}$  $\boldsymbol{R^2_{\text{adjusted}}}$ 
+                                                                                                                             **Rank**               
+------------------------------ ------------------ -------------------- -------------------------------------- --------------------------------------
+SD $\sim$ Elevation                    1                        0.8087                                 0.7996                   3                   
+
+SD $\sim$ Min.Temp                     1                        0.6283                                 0.6106                   5                   
+
+SD $\sim$ Max.Temp                     1                        0.4131                                 0.3852                   7                   
+
+SD $\sim$ Elevation + Min.Temp         2                        0.8134                                 0.7948                   4                   
+
+SD $\sim$ Elevation + Max.Temp         2                        0.8495                                 0.8344                   1                   
+
+SD $\sim$ Min.Temp + Max.Temp          2                        0.6308                                 0.5939                   6                   
+
+SD $\sim$ Elevation + Min.Temp         3                        0.8535                                 0.8304                   2                   
++ Max.Temp                                                                                                                                          
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table8-1) (ref:tab8-1)
 
 The top model with *Elevation* and *Max.Temp* has an $\boldsymbol{R}^2$ of
 0.8495, so we can say that the model with

@@ -100,7 +100,7 @@ shape and variance that is an assumption of the regression model.
 (ref:fig7-1) Sketch of assumed normal distributions for the responses 
 centered at the regression line.
 
-![(\#fig:Figure7-1)(ref:fig7-1)](chapter7_files/image029.png) 
+![(\#fig:Figure7-1)(ref:fig7-1)](chapter7_files/image029small.png) 
 
 Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
 distribution of 20 subjects at each *Beer* level around the assumed true
@@ -142,6 +142,8 @@ This variability due to random sampling is something that needs to be
 properly accounted for to take the **single** estimated regression line to
 make inferences about the true line and parameters based on the sample-based
 estimates. The next sections develop those inferential tools. 
+
+\newpage
 
 ## Confidence Interval and Hypothesis tests for the slope and intercept	{#section7-2}
 
@@ -712,10 +714,7 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
 
     To assess the remaining conditions, we need to fit the regression model and use
     the diagnostic plots in Figure \@ref(fig:Figure7-5) to aid our assessment:
-    
-    (ref:fig7-5) Diagnostic plots of the Bozeman yearly temperature simple linear
-    regression model.
-    
+
     
     ```r
     temp1 <- lm(meanmax~Year, data=bozemantemps)
@@ -723,7 +722,7 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
     plot(temp1, add.smooth=F)
     ```
     
-    ![(\#fig:Figure7-5)(ref:fig7-5)](07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf) 
+    ![(\#fig:Figure7-5)Diagnostic plots of the Bozeman yearly temperature simple linear  regression model.](07-simpleLinearRegressionInference_files/figure-latex/Figure7-5-1.pdf) 
 
 * **Linearity of relationship**
 
@@ -1304,30 +1303,27 @@ transformations are all nonlinear functions of $y$.
 (ref:tab7-1) Ladder of powers of transformations that are often used in statistical 
 modeling.
 
-\begin{table}
 
-\caption{(\#tab:Table7-1)(ref:tab7-1)}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-Power & Formula & Usage\\
-\hline
-2 & \$y\textasciicircum{}2\$ & seldom used\\
-\hline
-1 & \$y\textasciicircum{}1=y\$ & no change\\
-\hline
-\$1/2\$ & \$y\textasciicircum{}\{0.5\}=\textbackslash{}sqrt\{y\}\$ & Counts and area responses\\
-\hline
-0 & \$\textbackslash{}log(y)\$ natural log of \$y\$ & Counts, normality, curves, non-constant variance\\
-\hline
-\$-1/2\$ & \$y\textasciicircum{}\{-0.5\}=1/\textbackslash{}sqrt\{y\}\$ & Uncommon\\
-\hline
-\$-1\$ & \$y\textasciicircum{}\{-1\}=1/y\$ & for ratios\\
-\hline
-\$-2\$ & \$y\textasciicircum{}\{-2\}=1/y\textasciicircum{}2\$ & seldom used\\
-\hline
-\end{tabular}
-\end{table}
+----------------------------------------------------------------------------------------
+**Power**   **Formula**                  **Usage**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+----------- ---------------------------- -----------------------------------------------
+2           $y^2$                        seldom used                                    
+
+1           $y^1=y$                      no change                                      
+
+$1/2$       $y^{0.5}=\sqrt{y}$           counts and area responses                      
+
+0           $\log(y)$ natural log of $y$ counts, normality, curves,                     
+                                         non-constant variance                          
+
+$-1/2$      $y^{-0.5}=1/\sqrt{y}$        uncommon                                       
+
+$-1$        $y^{-1}=1/y$                 for ratios                                     
+
+$-2$        $y^{-2}=1/y^2$               seldom used                                    
+----------------------------------------------------------------------------------------
+
+Table: (\#tab:Table7-1) (ref:tab7-1)
 
 There are even more transformations possible, for example $y^{0.33}$ is sometimes useful 
 for variables
@@ -1534,6 +1530,8 @@ defaulted to different bases. Generally, in statistics, it's safe to assume
 that everything is log base *e* unless otherwise specified. 
 
 ## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
+
+\sectionmark{Transformations part II: Impacts on SLR interpretations}
 
 The previous attempts to linearize relationships imply a desire to be 
 able to fit SLR models. The *log*-transformations, when successful, 
@@ -1908,7 +1906,9 @@ that the model assumptions have been met. In fact, the methods in Section \@ref(
 are some of the most sensitive results to violations of the assumptions that we
 will explore.
 
-## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
+## Confidence interval for the mean and prediction intervals for a new observation {#section7-7}
+
+\sectionmark{Confidence intervals and prediction intervals}
 
 Figure \@ref(fig:Figure7-6) provided a term-plot of the estimated 
 regression line and a shaded area surrounding

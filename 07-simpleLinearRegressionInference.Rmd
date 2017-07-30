@@ -120,7 +120,7 @@ shape and variance that is an assumption of the regression model.
 centered at the regression line.
 
 ```{r Figure7-1,fig.cap="(ref:fig7-1)",echo=F}
-knitr::include_graphics("chapter7_files/image029.png")
+knitr::include_graphics("chapter7_files/image029small.png")
 ```
 
 Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
@@ -132,7 +132,7 @@ BAC model has a residual SE of 0.02 but had many fewer observations at each
 (ref:fig7-2) Simulated data for Beers and BAC assuming two different residual
 standard errors (0.02 and 0.06).
 
-```{r Figure7-2,fig.cap="(ref:fig7-2)",echo=F}
+```{r Figure7-2,fig.cap="(ref:fig7-2)",echo=F,fig.height=4}
 BB<- read.csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
 m1<-lm(BAC~Beers,data=BB)
 par(mfrow=c(1,1))
@@ -151,7 +151,7 @@ e2_20<-e2_20-mean(e2_20)
 y2_20<-coef1[1]+coef1[2]*Beersnew+e2_20
 points(y2_20~I(Beersnew+.05),ylim=c(0,0.25),pch=17,col="orange")
 
-legend("topleft",c("Residual SE=0.02","Residual SE=0.06"),pch=c(16,17),col=c("black","orange"),cex=1.1)
+legend("topleft",c("Residual SE=0.02","Residual SE=0.06"),pch=c(16,17),col=c("black","orange"),cex=.75)
 ```
 
 Along with getting the idea that regression models define normal 
@@ -177,7 +177,7 @@ real data set.
 (ref:fig7-3) Variability in realized regression lines based on sampling 
 variation. 
 
-```{r Figure7-3,fig.cap="(ref:fig7-3)",echo=F,warning=F,message=F}
+```{r Figure7-3,fig.cap="(ref:fig7-3)",echo=F}
 knitr::include_graphics("chapter7_files/image034.png")
 ```
 
@@ -185,6 +185,8 @@ This variability due to random sampling is something that needs to be
 properly accounted for to take the **single** estimated regression line to
 make inferences about the true line and parameters based on the sample-based
 estimates. The next sections develop those inferential tools. 
+
+\newpage
 
 ## Confidence Interval and Hypothesis tests for the slope and intercept	{#section7-2}
 
@@ -620,11 +622,8 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
 
     To assess the remaining conditions, we need to fit the regression model and use
     the diagnostic plots in Figure \@ref(fig:Figure7-5) to aid our assessment:
-    
-    (ref:fig7-5) Diagnostic plots of the Bozeman yearly temperature simple linear
-    regression model.
-    
-    ```{r Figure7-5,fig.cap="(ref:fig7-5)",warning=F,message=F}
+
+    ```{r Figure7-5,fig.cap="Diagnostic plots of the Bozeman yearly temperature simple linear  regression model.",fig.height=5,fig.width=8}
     temp1 <- lm(meanmax~Year, data=bozemantemps)
     par(mfrow=c(2,2))
     plot(temp1, add.smooth=F)
@@ -882,7 +881,7 @@ evidence of a linear relationship between ``Year`` and ``Temperature``?
 ``Year``, three of which are permutations of the Year variable relative 
 to the Temperatures.
 
-```{r Figure7-7,fig.cap="(ref:fig7-7)",echo=F,warning=F,message=F}
+```{r Figure7-7,fig.cap="(ref:fig7-7)",echo=F,fig.height=5,fig.width=8}
 set.seed(1667)
 
 par(mfrow=c(2,2))
@@ -1061,14 +1060,17 @@ a 1 year increase, the slope coefficient is 0.052.
 (ref:fig7-10) Scatterplots of *Temperature* ($^\circ F$) versus *Year* (left)
 and *Temperature* ($^\circ C$) vs *Years* since 1901 (right).
 
-```{r Figure7-10,fig.cap="(ref:fig7-10)",warning=F,message=F,echo=F}
+```{r Figure7-10,fig.cap="(ref:fig7-10)",echo=F,fig.width=5,fig.height=4}
 bozemantemps$meanmaxC <- (bozemantemps$meanmax - 32)*(5/9)
 temp3 <- lm(meanmaxC~Year2, data=bozemantemps)
 par(mfrow=c(1,2))
-plot(meanmax~Year,data=bozemantemps,xlab="Year",ylab="degrees F",main="degrees F and Year")
+plot(meanmax~Year,data=bozemantemps,xlab="Year",ylab="degrees F",
+     main="degrees F and Year",cex.main=0.75)
 abline(lm(meanmax~Year,data=bozemantemps)$coefficients,lwd=2,col="steelblue")
 
-plot(meanmaxC~Year2,data=bozemantemps,xlab="Years since 1901",ylab="degrees C",main="degrees C and Years since 1901")
+plot(meanmaxC~Year2,data=bozemantemps,xlab="Years since 1901",
+     ylab="degrees C",main="degrees C and Years since 1901",
+     cex.main=0.75)
 abline(temp3$coefficients,lwd=2,col="steelblue")
 ```
 
@@ -1096,18 +1098,21 @@ transformations are all nonlinear functions of $y$.
 (ref:tab7-1) Ladder of powers of transformations that are often used in statistical 
 modeling.
 
-```{r Table7-1, echo=F}
-columnHeaders <- c("Power","Formula","Usage")
+```{r Table7-1, echo=F,results="asis"}
+columnHeaders <- c("**Power**","**Formula**","**Usage**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
 row1 <- c("2","$y^2$","seldom used")
 row2 <- c("1","$y^1=y$","no change")
-row3 <- c("$1/2$","$y^{0.5}=\\sqrt{y}$","Counts and area responses")
-row4 <- c("0","$\\log(y)$ natural log of $y$","Counts, normality, curves, non-constant variance")
-row5 <- c("$-1/2$","$y^{-0.5}=1/\\sqrt{y}$","Uncommon")
+row3 <- c("$1/2$","$y^{0.5}=\\sqrt{y}$","counts and area responses")
+row4 <- c("0","$\\log(y)$ natural log of $y$","counts, normality, curves, non-constant variance")
+row5 <- c("$-1/2$","$y^{-0.5}=1/\\sqrt{y}$","uncommon")
 row6 <- c("$-1$","$y^{-1}=1/y$","for ratios")
 row7 <- c("$-2$","$y^{-2}=1/y^2$","seldom used")
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=3,byrow=T)
-kable(x,caption="(ref:tab7-1)",col.names=columnHeaders)
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table7-1) (ref:tab7-1)",
+             split.table = 300, justify="left")
 ```
 
 There are even more transformations possible, for example $y^{0.33}$ is sometimes useful 
@@ -1133,7 +1138,7 @@ log-hectares scale.
 (ref:fig7-11) Scatterplots of Hectares (a) and log-Hectares 
 (b) vs Temperature.
 
-```{r Figure7-11,fig.cap="(ref:fig7-11)",message=F,warning=F}
+```{r Figure7-11,fig.cap="(ref:fig7-11)",fig.height=4,fig.width=5}
 par(mfrow=c(1,2))
 plot(hectacres~Temperature, data=mtfires, main="(a)",
      ylab="Hectacres", pch=16)
@@ -1172,7 +1177,7 @@ scatterplot(log(height.m)~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
 
 (ref:fig7-12) Scatterplot of tree height versus tree diameter.
 
-```{r Figure7-12,fig.cap="(ref:fig7-12)",echo=F,warning=F,message=F}
+```{r Figure7-12,fig.cap="(ref:fig7-12)",echo=F}
 require(spuRs) # install.packages("spuRs")
 data(ufc)
 require(car)
@@ -1190,7 +1195,7 @@ situation worse.
 
 (ref:fig7-13) Scatterplot of log(tree height) versus tree diameter.
 
-```{r Figure7-13,fig.cap="(ref:fig7-13)",echo=F,warning=F,message=F}
+```{r Figure7-13,fig.cap="(ref:fig7-13)",echo=F}
 scatterplot(log(height.m)~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
             main="log-Tree height vs tree diameter")
 ```
@@ -1207,7 +1212,7 @@ useful.
 
 (ref:fig7-14) Scatterplot of tree height versus log(tree diameter).
 
-```{r Figure7-14,fig.cap="(ref:fig7-14)",echo=F,warning=F,message=F}
+```{r Figure7-14,fig.cap="(ref:fig7-14)",echo=F}
 scatterplot(height.m~log(dbh.cm), data=ufc[-168,], smooth=T, spread=F,
             main="Tree height vs log-tree diameter")
 ```
@@ -1262,7 +1267,7 @@ the transformations.
 (ref:fig7-16) Scatterplots of Infant Mortality vs GDP under four 
 different combinations of log-transformations. 
 
-```{r Figure7-16,fig.cap="(ref:fig7-16)",echo=F,warning=F,message=F}
+```{r Figure7-16,fig.cap="(ref:fig7-16)",echo=F,fig.height=5,fig.width=8}
 require(car)
 data(UN)
 par(mfrow=c(2,2))
@@ -1319,6 +1324,8 @@ defaulted to different bases. Generally, in statistics, it's safe to assume
 that everything is log base *e* unless otherwise specified. 
 
 ## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
+
+\sectionmark{Transformations part II: Impacts on SLR interpretations}
 
 The previous attempts to linearize relationships imply a desire to be 
 able to fit SLR models. The *log*-transformations, when successful, 
@@ -1535,7 +1542,7 @@ any of those previous interpretations.
 (ref:fig7-19) Diagnostics plots of the infant mortality model with 
 log(GDP). 
 
-```{r Figure7-19,fig.cap="(ref:fig7-19)",message=F,warning=F}
+```{r Figure7-19,fig.cap="(ref:fig7-19)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2))
 plot(ID1)
 ```
@@ -1624,10 +1631,10 @@ summary(ID2)
 log(mortality) $\sim$ log(GDP) (left) and implied model (right) for the infant
 mortality data.
 
-```{r Figure7-20,fig.cap='(ref:fig7-20)',warning=F,message=F,echo=F}
+```{r Figure7-20,fig.cap='(ref:fig7-20)',echo=F}
 par(mfrow=c(1,2))
 
-plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(a) log-Infant Mort. vs log-GDP")
+plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(a) log-Infant Mort. vs log-GDP",cex.main=1)
 abline(ID2$coef,lwd=2,col="slateblue3")
 
 plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
@@ -1656,7 +1663,7 @@ There are no influential points to be concerned about in this situation.
 
 (ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
 
-```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,message=F,warning=F}
+```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,fig.height=5,fig.width=8}
 par(mfrow=c(2,2))
 plot(ID2)
 ```
@@ -1669,7 +1676,9 @@ that the model assumptions have been met. In fact, the methods in Section \@ref(
 are some of the most sensitive results to violations of the assumptions that we
 will explore.
 
-## Confidence Interval for the mean and prediction Intervals for a new observation {#section7-7}
+## Confidence interval for the mean and prediction intervals for a new observation {#section7-7}
+
+\sectionmark{Confidence intervals and prediction intervals}
 
 Figure \@ref(fig:Figure7-6) provided a term-plot of the estimated 
 regression line and a shaded area surrounding

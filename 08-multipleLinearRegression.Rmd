@@ -1063,10 +1063,10 @@ will always have that characteristic.
 
 (ref:tab8-1) Model comparisons for Snow Depth data, sorted by model complexity.
 
-```{r Table8-1,echo=F}
-columnHeaders <- c("Model","$\\boldsymbol{K}$","$\\boldsymbol{R^2}$",
+```{r Table8-1,echo=F,results="asis"}
+columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;","$\\boldsymbol{K}$","$\\boldsymbol{R^2}$",
                    "$\\boldsymbol{R^2_{\\text{adjusted}}}$",
-                   "$\\boldsymbol{R^2_{\\text{adjusted}}}$ Rank")
+                   "$\\boldsymbol{R^2_{\\text{adjusted}}}$ **Rank**")
 row1 <- c("SD $\\sim$ Elevation",1,0.8087,0.7996,3)
 row2 <- c("SD $\\sim$ Min.Temp",1,0.6283,0.6106,5)
 row3 <- c("SD $\\sim$ Max.Temp",1,0.4131,0.3852,7)
@@ -1075,8 +1075,11 @@ row5 <- c("SD $\\sim$ Elevation + Max.Temp",2,0.8495,0.8344,1)
 row6 <- c("SD $\\sim$ Min.Temp + Max.Temp",2,0.6308,0.5939,6)
 row7 <- c("SD $\\sim$ Elevation + Min.Temp + Max.Temp",3,0.8535,0.8304,2)
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=5,byrow=T)
-kable(x,col.names = columnHeaders, caption = "(ref:tab8-1)",
-      align=c("l","c","r","r","c"))
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table8-1) (ref:tab8-1)",
+             split.table = 300,
+             justify=c("left","center","right","right","center"))
 ```
 
 The top model with *Elevation* and *Max.Temp* has an $\boldsymbol{R}^2$ of
