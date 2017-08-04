@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-07-30}
+  \date{2017-08-02}
 
 \usepackage{booktabs}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -156,6 +156,9 @@
 \makeatletter
 \def\preto{\@verbatim}{\topsep=5pt \partopsep=-10pt }
 \makeatother
+
+%Change fourth level of itemize to an open circle instead of an asterisk
+\renewcommand{\labelitemiv}{$\circ$}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -19440,10 +19443,10 @@ To get familiar with this example, we can start with fitting some
 potential SLR models and plotting the estimated models. Figure
 \ref{fig:Figure8-2} contains the result for the SLR using
 \emph{Elevation} and results for two temperature based models are in
-Figure \ref{fig:Figure8-3}. \emph{Snow Depth} is selected as the obvious
-response variable both due to skier interest and potential scientific
-causation (snow can't change elevation but elevation could be the driver
-of snow deposition and retention).
+Figures \ref{fig:Figure8-3a} and \ref{fig:Figure8-3b}. \emph{Snow Depth}
+is selected as the obvious response variable both due to skier interest
+and potential scientific causation (snow can't change elevation but
+elevation could be the driver of snow deposition and retention).
 
 
 
@@ -19483,36 +19486,54 @@ inches. That gives you some practical idea of the size of the estimated
 the data. Putting this together, we can say that there was around a 55
 inch change in predicted snow depths for a close to 3400 foot increase
 in elevation. This helps make the slope coefficient of 0.0163 in the
-model more easily understood. Remember that in SLR, the range of \(x\)
-matters just as much as the units of \(x\) in determining the practical
-importance and size of the slope coefficient. A value of 0.0163 looks
-small but is actually at the heart of a pretty good model for predicting
-snow depth. A one foot change of elevation is ``tiny'' here relative to
-changes in the response so the slope coefficient can be small and still
-amount to big changes in the predicted response across the range of
-values of \(x\). If the \emph{Elevation} had been recorded in thousands
-of feet, then the slope would have been \(0.0163*1000=16.3\) inches in
-change in mean \emph{Snow Depth} for a 1000 foot increase in elevation.
+model more easily understood.
 
-The plots of the two estimated temperature models in Figure
-\ref{fig:Figure8-3} suggest a similar change in the responses over the
-range of observed temperatures. Those predictors range from
-22\(^\circ F\) to 34\(^\circ F\) (minimum temperature) and from
-26\(^\circ F\) to 50\(^\circ F\) (maximum temperature). This tells us a
-1\(^\circ F\) increase in either temperature is a greater proportion of
-the observed range of each predictor than a 1 unit (foot) increase in
-elevation, so these two variables will generate larger apparent
-magnitudes of slope coefficients. But having large slope coefficients is
-no guarantee of a good model -- in fact, the elevation model has the
-highest \(R^2\) value of these three models even though its slope
-coefficient looks tiny compared to the other models.
+Remember that in SLR, the range of \(x\) matters just as much as the
+units of \(x\) in determining the practical importance and size of the
+slope coefficient. A value of 0.0163 looks small but is actually at the
+heart of a pretty good model for predicting snow depth. A one foot
+change of elevation is ``tiny'' here relative to changes in the response
+so the slope coefficient can be small and still amount to big changes in
+the predicted response across the range of values of \(x\). If the
+\emph{Elevation} had been recorded in thousands of feet, then the slope
+would have been \(0.0163*1000=16.3\) inches in change in mean \emph{Snow
+Depth} for a 1000 foot increase in elevation.
+
+The plots of the two estimated temperature models in Figures
+\ref{fig:Figure8-3a} and \ref{fig:Figure8-3b} suggest a similar change
+in the responses over the range of observed temperatures. Those
+predictors range from 22\(^\circ F\) to 34\(^\circ F\) (minimum
+temperature) and from 26\(^\circ F\) to 50\(^\circ F\) (maximum
+temperature). This tells us a 1\(^\circ F\) increase in either
+temperature is a greater proportion of the observed range of each
+predictor than a 1 unit (foot) increase in elevation, so these two
+variables will generate larger apparent magnitudes of slope
+coefficients. But having large slope coefficients is no guarantee of a
+good model -- in fact, the elevation model has the highest \(R^2\) value
+of these three models even though its slope coefficient looks tiny
+compared to the other models.
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-3a-1.pdf}
+\caption{\label{fig:Figure8-3a}Plot of the estimated SLR model using Min Temp as
+predictor.}
+\end{figure}
 
 
 
 
 
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf}
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf}
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-3b-1.pdf}
+\caption{\label{fig:Figure8-3b}Plot of the estimated SLR model using Max Temp as
+predictor. Note that each of these results (from this plot and from
+\ref{fig:Figure8-3a} are from models with a single predictor variable.}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19528,6 +19549,8 @@ coefficient looks tiny compared to the other models.
      \DataTypeTok{main=}\StringTok{"SLR: Effect of Max Temp"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -19658,8 +19681,8 @@ use the same general format as in other topics but with adding
 \includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-4-1.pdf}
 \caption{\label{fig:Figure8-4}Term-plots for the MLR for Snow Depth based on Elevation,
 Min Temp and Max Temp. Note that the x-axis ranges are different than
-those used in Figures \ref{fig:Figure8-2} and \ref{fig:Figure8-3} for
-the comparably SLR models.}
+those used in Figures \ref{fig:Figure8-2}, \ref{fig:Figure8-3a} and
+\ref{fig:Figure8-3b} for the comparable SLR models.}
 \end{figure}
 
 Based on the output, the estimated MLR model is
@@ -20864,8 +20887,8 @@ complicated model will always have that characteristic.
 \caption{\label{tab:Table8-1} Model comparisons for Snow Depth data, sorted by model
 complexity.}\tabularnewline
 \toprule
-\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
-\textbf{Model}~~~\strut
+\begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+\textbf{Model}~~~~\strut
 \end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 \(\boldsymbol{K}\)\strut
 \end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
@@ -20878,8 +20901,8 @@ complexity.}\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-\begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
-\textbf{Model}~~~\strut
+\begin{minipage}[b]{0.20\columnwidth}\raggedright\strut
+\textbf{Model}~~~~\strut
 \end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 \(\boldsymbol{K}\)\strut
 \end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedleft\strut
@@ -20891,7 +20914,7 @@ complexity.}\tabularnewline
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Elevation\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1\strut
@@ -20902,7 +20925,7 @@ SD \(\sim\) Elevation\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 3\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Min.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1\strut
@@ -20913,7 +20936,7 @@ SD \(\sim\) Min.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 5\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1\strut
@@ -20924,7 +20947,7 @@ SD \(\sim\) Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 7\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Elevation + Min.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 2\strut
@@ -20935,7 +20958,7 @@ SD \(\sim\) Elevation + Min.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 4\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Elevation + Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 2\strut
@@ -20946,7 +20969,7 @@ SD \(\sim\) Elevation + Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 1\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Min.Temp + Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 2\strut
@@ -20957,7 +20980,7 @@ SD \(\sim\) Min.Temp + Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\centering\strut
 6\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.20\columnwidth}\raggedright\strut
 SD \(\sim\) Elevation + Min.Temp + Max.Temp\strut
 \end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 3\strut
@@ -24106,10 +24129,6 @@ model that included four predictor variables used up 5 \emph{model df}.
        \DataTypeTok{extra =} \KeywordTok{c}\NormalTok{(}\StringTok{"R^2"}\NormalTok{, }\DataTypeTok{adjRsq=}\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{summary}\NormalTok{(x)}\OperatorTok{$}\NormalTok{adj.r.squared))}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Fixed term is "(Intercept)"
-\end{verbatim}
 
 \begin{verbatim}
 ## Global model call: lm(formula = Snow.Depth ~ Elevation + Min.Temp + Max.Temp, data = snotel2[-c(9, 

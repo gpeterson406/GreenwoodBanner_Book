@@ -122,7 +122,8 @@ correlated.
 To get familiar with this example, we can start with fitting some potential SLR
 models and plotting the estimated models. Figure \@ref(fig:Figure8-2) contains
 the result for the SLR using *Elevation* and results for two temperature based
-models are in Figure \@ref(fig:Figure8-3). *Snow Depth* is selected as the
+models are in Figures \@ref(fig:Figure8-3a) and \@ref(fig:Figure8-3b).
+*Snow Depth* is selected as the
 obvious response variable both due to skier interest and potential scientific
 causation (snow can't change elevation but elevation could be the driver of
 snow deposition and retention). 
@@ -160,7 +161,9 @@ practical idea of the size of the estimated *Snow Depth* change for the changes 
 there was around a
 55 inch change in predicted snow depths for a close to 3400 foot increase in
 elevation. This helps make the slope coefficient of 0.0163 in the model more 
-easily understood. Remember that in SLR, the range of $x$ matters just as much 
+easily understood.
+
+Remember that in SLR, the range of $x$ matters just as much 
 as the units of $x$ in determining the practical importance and size of the slope
 coefficient. A value of 0.0163 looks small but is actually at the heart of a
 pretty good model for predicting snow depth. A one foot change of elevation is
@@ -171,7 +174,8 @@ then the slope would have been $0.0163*1000=16.3$ inches in change in mean
 *Snow Depth* for a 1000 foot increase in elevation. 
 
 The plots of the two estimated temperature models in 
-Figure \@ref(fig:Figure8-3) suggest a similar change in the responses over
+Figures \@ref(fig:Figure8-3a) and \@ref(fig:Figure8-3b) suggest a similar change
+in the responses over
 the range of observed temperatures. Those predictors range from 22$^\circ F$
 to 34$^\circ F$ (minimum temperature) and from 26$^\circ F$ to 50$^\circ F$
 (maximum temperature). This tells us a 1$^\circ F$ increase in either 
@@ -183,11 +187,15 @@ guarantee of a good model -- in fact, the elevation model has the highest
 $R^2$ value of these three models even though its slope coefficient looks tiny
 compared to the other models.
 
-(ref:fig8-3) Plots of two estimated SLR models using Min Temp (top panel)
-and Max Temp (bottom panel) as predictors. Note that each of these results 
+(ref:fig8-3a) Plot of the estimated SLR model using Min Temp as predictor. 
+
+![(\#fig:Figure8-3a)(ref:fig8-3a)](08-multipleLinearRegression_files/figure-latex/Figure8-3a-1.pdf) 
+
+(ref:fig8-3b) Plot of the estimated SLR model using Max Temp as predictor.
+Note that each of these results (from this plot and from \@ref(fig:Figure8-3a)
 are from models with a single predictor variable.
 
-![(\#fig:Figure8-3)(ref:fig8-3)](08-multipleLinearRegression_files/figure-latex/Figure8-3-1.pdf) ![(\#fig:Figure8-3)(ref:fig8-3)](08-multipleLinearRegression_files/figure-latex/Figure8-3-2.pdf) 
+![(\#fig:Figure8-3b)(ref:fig8-3b)](08-multipleLinearRegression_files/figure-latex/Figure8-3b-1.pdf) 
 
 
 ```r
@@ -202,6 +210,8 @@ plot(allEffects(m2, xlevels=list(Min.temp=snotel2$Min.Temp)),
 plot(allEffects(m3, xlevels=list(Max.Temp=snotel2$Max.Temp)),
      main="SLR: Effect of Max Temp")
 ```
+
+\newpage
 
 
 ```r
@@ -284,8 +294,8 @@ models are discussed later in the chapter.] we want to add to the model,
 
 (ref:fig8-4) Term-plots for the MLR for Snow Depth based on Elevation, 
 Min Temp and Max Temp. Note that the x-axis ranges are different than those 
-used in Figures \@ref(fig:Figure8-2) and \@ref(fig:Figure8-3) for the
-comparably SLR models. 
+used in Figures \@ref(fig:Figure8-2), \@ref(fig:Figure8-3a) and
+\@ref(fig:Figure8-3b) for the comparable SLR models. 
 
 
 ```r
@@ -1318,25 +1328,25 @@ will always have that characteristic.
 (ref:tab8-1) Model comparisons for Snow Depth data, sorted by model complexity.
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
-**Model**&nbsp;&nbsp;&nbsp;     $\boldsymbol{K}$    $\boldsymbol{R^2}$   $\boldsymbol{R^2_{\text{adjusted}}}$  $\boldsymbol{R^2_{\text{adjusted}}}$ 
-                                                                                                                             **Rank**               
------------------------------- ------------------ -------------------- -------------------------------------- --------------------------------------
-SD $\sim$ Elevation                    1                        0.8087                                 0.7996                   3                   
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+**Model**&nbsp;&nbsp;&nbsp;&nbsp;    $\boldsymbol{K}$    $\boldsymbol{R^2}$   $\boldsymbol{R^2_{\text{adjusted}}}$  $\boldsymbol{R^2_{\text{adjusted}}}$ 
+                                                                                                                                  **Rank**               
+----------------------------------- ------------------ -------------------- -------------------------------------- --------------------------------------
+SD $\sim$ Elevation                         1                        0.8087                                 0.7996                   3                   
 
-SD $\sim$ Min.Temp                     1                        0.6283                                 0.6106                   5                   
+SD $\sim$ Min.Temp                          1                        0.6283                                 0.6106                   5                   
 
-SD $\sim$ Max.Temp                     1                        0.4131                                 0.3852                   7                   
+SD $\sim$ Max.Temp                          1                        0.4131                                 0.3852                   7                   
 
-SD $\sim$ Elevation + Min.Temp         2                        0.8134                                 0.7948                   4                   
+SD $\sim$ Elevation + Min.Temp              2                        0.8134                                 0.7948                   4                   
 
-SD $\sim$ Elevation + Max.Temp         2                        0.8495                                 0.8344                   1                   
+SD $\sim$ Elevation + Max.Temp              2                        0.8495                                 0.8344                   1                   
 
-SD $\sim$ Min.Temp + Max.Temp          2                        0.6308                                 0.5939                   6                   
+SD $\sim$ Min.Temp + Max.Temp               2                        0.6308                                 0.5939                   6                   
 
-SD $\sim$ Elevation + Min.Temp         3                        0.8535                                 0.8304                   2                   
-+ Max.Temp                                                                                                                                          
-----------------------------------------------------------------------------------------------------------------------------------------------------
+SD $\sim$ Elevation + Min.Temp              3                        0.8535                                 0.8304                   2                   
++ Max.Temp                                                                                                                                               
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Table: (\#tab:Table8-1) (ref:tab8-1)
 
@@ -3890,10 +3900,6 @@ require(MuMIn)
 options(na.action = "na.fail") #Must run this code once to use dredge
 dredge(m6, rank="AIC",
        extra = c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))
-```
-
-```
-## Fixed term is "(Intercept)"
 ```
 
 ```
