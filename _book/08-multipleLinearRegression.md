@@ -1282,7 +1282,7 @@ In the MLR (or SLR) model summaries, both the $\boldsymbol{R}^2$ and
 $\boldsymbol{R}^2_{\text{adjusted}}$
 are available. Make sure you are able to pick out the correct one. For the
 reduced data set ($n=23$) *Snow Depth* models, the pertinent part of the model
-summary for the model with all three predictors is:
+summary for the model with all three predictors is the last three lines:
 
 
 ```r
@@ -1418,11 +1418,8 @@ regression models that can result in common mistakes.
     \@ref(fig:Figure8-11) also reinforces our potential collinearity problem
     between *Elevation* and *Max.Temp* with higher elevations being strongly
     associated with lower temperatures. 
-    
-    (ref:fig8-11) Scatterplot of observed Elevations and Maximum Temperatures for
-    SNOTEL data.
-    
-    ![(\#fig:Figure8-11)(ref:fig8-11)](08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf) 
+
+    ![(\#fig:Figure8-11)Scatterplot of observed Elevations and Maximum Temperatures for SNOTEL data.](08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf) 
 
 * **Don't think that the sign of a coefficient is special...**
 
@@ -1438,22 +1435,8 @@ regression models that can result in common mistakes.
     including one variable will have an impact on the other variable. Consider the
     correlations among the predictors in the SNOTEL data set or visually displayed
     in Figure \@ref(fig:Figure8-12):
-    
-    (ref:fig8-12) Plot of correlation matrix in the snow depth data set with
-    influential points removed
-    
-    
-    ```r
-    require(corrplot)
-    par(mfrow=c(1,1), oma=c(0,0,1,0))
-    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
-    ```
-    
-    ![(\#fig:Figure8-12)(ref:fig8-12)](08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf) 
-    
-    ```r
-    round(cor(snotel2[-c(9,22),3:6]),2)
-    ```
+
+    ![(\#fig:Figure8-12)Plot of correlation matrix in the snow depth data set with influential points removed](08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf) 
     
     ```
     ##            Max.Temp Min.Temp Elevation Snow.Depth
@@ -1461,6 +1444,14 @@ regression models that can result in common mistakes.
     ## Min.Temp       0.77     1.00     -0.91      -0.79
     ## Elevation     -0.84    -0.91      1.00       0.90
     ## Snow.Depth    -0.64    -0.79      0.90       1.00
+    ```
+    
+    
+    ```r
+    require(corrplot)
+    par(mfrow=c(1,1), oma=c(0,0,1,0))
+    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
+    round(cor(snotel2[-c(9,22),3:6]),2)
     ```
     
     The predictors all share at least moderately strong linear relationships. For
@@ -1719,7 +1710,10 @@ possible for a location to have different temperatures because of different
 snow depths. 
 
 Similarly, we can test for *Elevation* after controlling for the *Maximum Temperature*:
-$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0}$, given that *Max.Temp* is in the model.
+
+$$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},$$
+
+given that *Max.Temp* is in the model.
 
 $t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
 
@@ -2387,19 +2381,11 @@ scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
             smooth=F, main="Scatterplot of GPA vs SATM by Sex")
 ```
 
-(ref:fig8-17) Plot of FYGPA vs SATV by Sex of students.
-
-![(\#fig:Figure8-17)(ref:fig8-17)](08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf) 
-
-(ref:fig8-18) Plot of FYGPA vs SATM by Sex of students.
-
-![(\#fig:Figure8-18)(ref:fig8-18)](08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf) 
-
 To fit one model to a data set that contain multiple groups, we need a way of
 entering categorical variable information in an MLR model. Regression models
 require quantitative predictor variables for the $x\text{'s}$ so we can't 
-directly enter the sex of the
-students into the regression model since it contains categories. To be able to
+directly enter the sex of the students into the regression model since it 
+contains categories. To be able to
 put in "numbers" as predictors, we create what are called
 ***indicator variables***^[Some people also call them ***dummy variables***.]
 that are made up of 0s and 1s, with the 0 reflecting one category and 1 the
@@ -2440,6 +2426,16 @@ summary(SATSex1)
 ## Multiple R-squared:  0.1917,	Adjusted R-squared:  0.1901 
 ## F-statistic: 118.2 on 2 and 997 DF,  p-value: < 2.2e-16
 ```
+
+(ref:fig8-17) Plot of FYGPA vs SATV by Sex of students.
+
+![(\#fig:Figure8-17)(ref:fig8-17)](08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf) 
+
+(ref:fig8-18) Plot of FYGPA vs SATM by Sex of students.
+
+![(\#fig:Figure8-18)(ref:fig8-18)](08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf) 
+
+\newpage
 
 The ``SEX `` row contains information that the linear model chose *MALE* as
 the baseline category and *FEMALE* as the deviation category since *MALE* does
@@ -2520,6 +2516,8 @@ When we have a *male* observation, the indicator takes on a value of 0 so the
 *female* student, the indicator is 1 and we add 0.313 to the previous 
 y-intercept. The following
 works this out step-by-step, simplifying the MLR into two SLRs:
+
+\newpage
 
 * Simplified model for *Males* (plug in a 0 for $I_{\text{Female}}$):
 
@@ -2689,6 +2687,8 @@ seems more prominent than differences in slopes.
 (ref:fig8-21) Scatterplot of post-treatment decibel tolerance (du2) vs
 pre-treatment tolerance (du1) by treatment level (4 groups). 
 
+![(\#fig:Figure8-21)(ref:fig8-21)](08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf) 
+
 
 ```r
 require(heplots)
@@ -2697,9 +2697,6 @@ scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
             main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
             legend.coords="topleft")
 ```
-
-![(\#fig:Figure8-21)(ref:fig8-21)](08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf) 
-
 This data set contains a categorical variable with 4 levels. To go beyond two
 groups, we have to add more than one indicator variable, defining three
 indicators to turn on (1) or off (0) for three of the levels of the variable
@@ -2890,7 +2887,8 @@ minor issue. There are no influential points in the data set.
 
 ```r
 par(mfrow=c(2,2), oma=c(0,0,2,0))
-plot(head1, sub.caption="Plot of diagnostics for additive model with du1 and treatment for du2")
+plot(head1,
+     sub.caption="Plot of diagnostics for additive model with du1 and treatment for du2")
 ```
 
 ![(\#fig:Figure8-24)(ref:fig8-24)](08-multipleLinearRegression_files/figure-latex/Figure8-24-1.pdf) 
@@ -3016,6 +3014,8 @@ $x=0$) is right in the center of the plot and actually interesting.
 (ref:fig8-25) Scatterplot for reading score versus nonverbal IQ by dyslexia
 group. 
 
+![(\#fig:Figure8-25)(ref:fig8-25)](08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf) 
+
 
 ```r
 require(smdata)
@@ -3024,9 +3024,6 @@ scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
             ylab="Reading score", data=dyslexic3, smooth=F,
             main="Plot of IQ vs Reading by dyslexia status")
 ```
-
-![(\#fig:Figure8-25)(ref:fig8-25)](08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf) 
-
 To allow for both different y-intercepts and slope coefficients on the
 quantitative predictor, we need to include a "modification" of the slope
 coefficient. This is performed using an ***interaction*** between the two
@@ -3058,8 +3055,8 @@ and simplify the equations.
 
     $$y_i=\beta_0+\beta_1x_i+\varepsilon_i.$$
     
-        * So the baseline group's model involves the initial intercept and
-        quantitative slope coefficient.
+    * So the baseline group's model involves the initial intercept and
+    quantitative slope coefficient.
         
         
 * For any observation in the second category $I_{\text{CatName},i}=0$, so
@@ -3411,6 +3408,10 @@ $$\begin{array}{rll}
 \widehat{\text{du2}}_i&=0.239 &+ 0.839\text{ du1}_i
 \end{array}$$
 
+(ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
+
+![(\#fig:Figure8-31)(ref:fig8-31)](08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf) 
+
 
 ```r
 head2<-lm(du2~du1*treatment,data=Headache)
@@ -3456,25 +3457,17 @@ case, neither
 version shows much of a difference and Version 2 overlaps so much that you
 can't see all the groups. 
 
-(ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
-
-
-```r
-plot(allEffects(head2), x.var="du1", ci.style="bands")
-```
-
-![(\#fig:Figure8-31)(ref:fig8-31)](08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf) 
-
 (ref:fig8-32) Term-plot for decibel tolerance interaction model (version 2).
 This plot is not printed in color because it is impossible to distinguish the
 four groups whether in color or black and white.
 
+![(\#fig:Figure8-32)(ref:fig8-32)](08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf) 
+
 
 ```r
+plot(allEffects(head2), x.var="du1", ci.style="bands")
 plot(allEffects(head2), x.var="du1", multiline=T, ci.style="bands")
 ```
-
-![(\#fig:Figure8-32)(ref:fig8-32)](08-multipleLinearRegression_files/figure-latex/Figure8-32-1.pdf) 
 
 In situations with more than 2 levels, the $t$-tests for the interaction or
 changing y-intercepts are not informative for deciding if you really need
@@ -3517,7 +3510,7 @@ model.
 
 (ref:fig8-33) Diagram of models to consider in an interaction model. 
 
-![(\#fig:Figure8-33)(ref:fig8-33)](chapter8_files/image299.png) 
+![(\#fig:Figure8-33)(ref:fig8-33)](chapter8_files/image299_small.png) 
 
 If the initial interaction test suggests the interaction is important, then no
 further refinement should be considered and that model should be explored (this
@@ -3994,6 +3987,8 @@ involved in the interaction if we don't need the interaction.
 
 (ref:fig8-34) Scatterplot of log(FEV) vs Age by smoking status.
 
+![(\#fig:Figure8-34)(ref:fig8-34)](08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf) 
+
 
 ```r
 require(coneproj)
@@ -4007,8 +4002,6 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
             main="Plot of log(FEV) vs Age of children by smoking  status",
             legend.coords="topleft")
 ```
-
-![(\#fig:Figure8-34)(ref:fig8-34)](08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf) 
 
 To get the needed results, start with the ***full model*** -- the most
 complicated model you want to consider. It is good to check assumptions before

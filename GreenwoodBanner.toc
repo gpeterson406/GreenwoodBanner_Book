@@ -84,21 +84,21 @@
 \contentsline {chapter}{\numberline {8}Multiple linear regression}{261}{chapter.8}
 \contentsline {section}{\numberline {8.1}Going from SLR to MLR}{261}{section.8.1}
 \contentsline {section}{\numberline {8.2}Validity conditions in MLR}{268}{section.8.2}
-\contentsline {section}{\numberline {8.3}Interpretation of MLR terms}{275}{section.8.3}
-\contentsline {section}{\numberline {8.4}Comparing multiple regression models}{279}{section.8.4}
+\contentsline {section}{\numberline {8.3}Interpretation of MLR terms}{276}{section.8.3}
+\contentsline {section}{\numberline {8.4}Comparing multiple regression models}{280}{section.8.4}
 \contentsline {section}{\numberline {8.5}General recommendations for MLR interpretations and VIFs}{282}{section.8.5}
 \contentsline {section}{\numberline {8.6}MLR Inference: Parameter inferences using the t-distribution}{286}{section.8.6}
-\contentsline {section}{\numberline {8.7}Overall F-test in Multiple Linear Regression}{288}{section.8.7}
+\contentsline {section}{\numberline {8.7}Overall F-test in Multiple Linear Regression}{289}{section.8.7}
 \contentsline {section}{\numberline {8.8}Case Study: First year college GPA and SATs}{289}{section.8.8}
-\contentsline {section}{\numberline {8.9}Different intercepts for different groups: MLR with Indicator variables}{296}{section.8.9}
-\contentsline {section}{\numberline {8.10}Additive MLR with more than two groups: Headache example}{302}{section.8.10}
-\contentsline {section}{\numberline {8.11}Different slopes and different intercepts}{308}{section.8.11}
+\contentsline {section}{\numberline {8.9}Different intercepts for different groups: MLR with Indicator variables}{297}{section.8.9}
+\contentsline {section}{\numberline {8.10}Additive MLR with more than two groups: Headache example}{303}{section.8.10}
+\contentsline {section}{\numberline {8.11}Different slopes and different intercepts}{309}{section.8.11}
 \contentsline {section}{\numberline {8.12}F-tests for MLR models with quantitative and categorical variables and interactions}{318}{section.8.12}
 \contentsline {section}{\numberline {8.13}AICs for model selection}{321}{section.8.13}
 \contentsline {section}{\numberline {8.14}Forced Expiratory Volume model selection using AICs}{325}{section.8.14}
-\contentsline {section}{\numberline {8.15}Chapter summary}{330}{section.8.15}
+\contentsline {section}{\numberline {8.15}Chapter summary}{331}{section.8.15}
 \contentsline {section}{\numberline {8.16}Important R code}{331}{section.8.16}
-\contentsline {section}{\numberline {8.17}Practice problems}{332}{section.8.17}
+\contentsline {section}{\numberline {8.17}Practice problems}{333}{section.8.17}
 \contentsline {chapter}{\numberline {9}Case studies}{335}{chapter.9}
 \contentsline {section}{\numberline {9.1}Overview of material covered}{335}{section.9.1}
 \contentsline {section}{\numberline {9.2}The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss--cyanobacteria associations}{337}{section.9.2}

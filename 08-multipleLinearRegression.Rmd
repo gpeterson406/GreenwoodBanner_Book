@@ -277,7 +277,7 @@ Min Temp and Max Temp. Note that the x-axis ranges are different than those
 used in Figures \@ref(fig:Figure8-2), \@ref(fig:Figure8-3a) and
 \@ref(fig:Figure8-3b) for the comparable SLR models. 
 
-```{r Figure8-4,fig.cap="(ref:fig8-4)",fig.width=3.5,fig.height=3}
+```{r Figure8-4,fig.cap="(ref:fig8-4)",fig.width=8,fig.height=4.5}
 m4 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2)
 summary(m4)
 plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
@@ -474,7 +474,7 @@ is being displayed since we have so many to discuss here.
 (ref:fig8-5) Diagnostic plots for model m4: 
 $\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}$
 
-```{r Figure8-5,fig.cap="(ref:fig8-5)",warning=F,message=F}
+```{r Figure8-5,fig.cap="(ref:fig8-5)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m4, sub.caption="Diagnostics for m4")
 ```
@@ -620,7 +620,7 @@ after removing that observation. We can re-run the model without the
 Min Temp, and Max Temp with Northeast entrance observation removed from 
 data set (n=24).
 
-```{r Figure8-6,fig.cap="(ref:fig8-6)",warning=F,message=F, fig.width=8}
+```{r Figure8-6,fig.cap="(ref:fig8-6)",fig.height=4.5, fig.width=8}
 m5 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-9,])
 summary(m5)
 plot(allEffects(m5), main="MLR model with NE Ent. Removed")
@@ -703,7 +703,7 @@ snotel2$Station <- as.factor(snotel2$Station)
 Min Temp and Max Temp with Northeast entrance observation removed from
 data set.
 
-```{r Figure8-7,fig.cap="(ref:fig8-7)",warning=F,message=F}
+```{r Figure8-7,fig.cap="(ref:fig8-7)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m5, sub.caption="Diagnostics for m5")
 ```
@@ -724,7 +724,7 @@ remaining. This model (``m6``) seems to contain residual diagnostics (Figure
 (ref:fig8-8) Diagnostic plots for MLR for Snow Depth based on Elevation, 
 Min Temp and Max Temp with two observations removed ($n=23$). 
 
-```{r Figure8-8,fig.cap="(ref:fig8-8)",warning=F,message=F}
+```{r Figure8-8,fig.cap="(ref:fig8-8)",fig.height=5,fig.width=8}
 m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
 summary(m6)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -753,7 +753,7 @@ in the next sections.
 (ref:fig8-9) Term-plots for the MLR for Snow Depth based on Elevation,
 Min Temp and Max Temp with two observations removed.
 
-```{r Figure8-9,fig.cap="(ref:fig8-9)",warning=F,message=F}
+```{r Figure8-9,fig.cap="(ref:fig8-9)",fig.height=4.5,fig.width=8}
 plot(allEffects(m6), main="MLR model with n=23")
 ```
 
@@ -1052,7 +1052,7 @@ In the MLR (or SLR) model summaries, both the $\boldsymbol{R}^2$ and
 $\boldsymbol{R}^2_{\text{adjusted}}$
 are available. Make sure you are able to pick out the correct one. For the
 reduced data set ($n=23$) *Snow Depth* models, the pertinent part of the model
-summary for the model with all three predictors is:
+summary for the model with all three predictors is the last three lines:
 
 ```{r}
 m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
@@ -1161,11 +1161,8 @@ regression models that can result in common mistakes.
     \@ref(fig:Figure8-11) also reinforces our potential collinearity problem
     between *Elevation* and *Max.Temp* with higher elevations being strongly
     associated with lower temperatures. 
-    
-    (ref:fig8-11) Scatterplot of observed Elevations and Maximum Temperatures for
-    SNOTEL data.
-    
-    ```{r Figure8-11,fig.cap="(ref:fig8-11)",echo=F,warning=F,message=F}
+
+    ```{r Figure8-11,fig.cap="Scatterplot of observed Elevations and Maximum Temperatures for SNOTEL data.",echo=F,fig.width=5,fig.height=3}
     plot(Max.Temp~Elevation,data=snotel2[-c(9,22),],pch=16,
          main="Plot of Max Temp and Elevation")
     ```
@@ -1184,11 +1181,16 @@ regression models that can result in common mistakes.
     including one variable will have an impact on the other variable. Consider the
     correlations among the predictors in the SNOTEL data set or visually displayed
     in Figure \@ref(fig:Figure8-12):
+
+    ```{r Figure8-12,fig.cap="Plot of correlation matrix in the snow depth data set with influential points removed",fig.width=6.5,echo=F}
+    require(corrplot)
+    par(mfrow=c(1,1), oma=c(0,0,1,0))
+    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"),
+                   tl.cex=0.75)
+    round(cor(snotel2[-c(9,22),3:6]),2)
+    ```
     
-    (ref:fig8-12) Plot of correlation matrix in the snow depth data set with
-    influential points removed
-    
-    ```{r Figure8-12,fig.cap="(ref:fig8-12)",message=F,warning=F}
+    ```{r eval=F}
     require(corrplot)
     par(mfrow=c(1,1), oma=c(0,0,1,0))
     corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
@@ -1378,7 +1380,10 @@ possible for a location to have different temperatures because of different
 snow depths. 
 
 Similarly, we can test for *Elevation* after controlling for the *Maximum Temperature*:
-$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0}$, given that *Max.Temp* is in the model.
+
+$$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},$$
+
+given that *Max.Temp* is in the model.
 
 $t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
 
@@ -1557,7 +1562,7 @@ addressed with these data but this will keep us focused.
 
 (ref:fig8-13) Scatterplot matrix of SAT and GPA data set.
 
-```{r Figure8-13,fig.cap="(ref:fig8-13)",warning=F,message=F}
+```{r Figure8-13,fig.cap="(ref:fig8-13)",fig.height=5,fig.width=7}
 require(openintro)
 data(satGPA)
 require(psych)
@@ -1610,7 +1615,7 @@ the diagnostic plots, allowing us to consider the tests of interest:
 (ref:fig8-14) Diagnostic plots for the 
 $\text{FYGPA}\sim\text{ SATV }+\text{ SATM}$ model.
 
-```{r Figure8-14,fig.cap="(ref:fig8-14)",warning=F,message=F}
+```{r Figure8-14,fig.cap="(ref:fig8-14)",,fig.height=5,fig.width=8}
 gpa1 <- lm(FYGPA~SATV+SATM, data=satGPA)
 summary(gpa1)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -1965,25 +1970,11 @@ scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
             smooth=F, main="Scatterplot of GPA vs SATM by Sex")
 ```
 
-(ref:fig8-17) Plot of FYGPA vs SATV by Sex of students.
-
-```{r Figure8-17,fig.cap="(ref:fig8-17)",echo=F,warning=F,message=F}
-scatterplot(FYGPA~SATV|sex, lwd=3, data=satGPA, spread=F,
-            smooth=F, main="Scatterplot of GPA vs SATV by Sex")
-```
-
-(ref:fig8-18) Plot of FYGPA vs SATM by Sex of students.
-
-```{r Figure8-18,fig.cap="(ref:fig8-18)",echo=F,warning=F,message=F}
-scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
-            smooth=F, main="Scatterplot of GPA vs SATM by Sex")
-```
-
 To fit one model to a data set that contain multiple groups, we need a way of
 entering categorical variable information in an MLR model. Regression models
 require quantitative predictor variables for the $x\text{'s}$ so we can't 
-directly enter the sex of the
-students into the regression model since it contains categories. To be able to
+directly enter the sex of the students into the regression model since it 
+contains categories. To be able to
 put in "numbers" as predictors, we create what are called
 ***indicator variables***^[Some people also call them ***dummy variables***.]
 that are made up of 0s and 1s, with the 0 reflecting one category and 1 the
@@ -2003,6 +1994,24 @@ levels(satGPA$SEX) <- c("MALE", "FEMALE")
 SATSex1 <- lm(FYGPA~SATM+SEX, data=satGPA)
 summary(SATSex1)
 ```
+
+(ref:fig8-17) Plot of FYGPA vs SATV by Sex of students.
+
+```{r Figure8-17,fig.cap="(ref:fig8-17)",echo=F}
+scatterplot(FYGPA~SATV|sex, lwd=3, data=satGPA, spread=F,
+            smooth=F, main="Scatterplot of GPA vs SATV by Sex",
+            cex.main=1)
+```
+
+(ref:fig8-18) Plot of FYGPA vs SATM by Sex of students.
+
+```{r Figure8-18,fig.cap="(ref:fig8-18)",echo=F}
+scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
+            smooth=F, main="Scatterplot of GPA vs SATM by Sex",
+            cex.main=1)
+```
+
+\newpage
 
 The ``SEX `` row contains information that the linear model chose *MALE* as
 the baseline category and *FEMALE* as the deviation category since *MALE* does
@@ -2047,6 +2056,8 @@ When we have a *male* observation, the indicator takes on a value of 0 so the
 *female* student, the indicator is 1 and we add 0.313 to the previous 
 y-intercept. The following
 works this out step-by-step, simplifying the MLR into two SLRs:
+
+\newpage
 
 * Simplified model for *Males* (plug in a 0 for $I_{\text{Female}}$):
 
@@ -2216,14 +2227,21 @@ seems more prominent than differences in slopes.
 (ref:fig8-21) Scatterplot of post-treatment decibel tolerance (du2) vs
 pre-treatment tolerance (du1) by treatment level (4 groups). 
 
-```{r Figure8-21,fig.cap="(ref:fig8-21)",warning=F,message=F}
+```{r Figure8-21,fig.cap="(ref:fig8-21)",fig.height=4,fig.width=7,echo=F}
+require(heplots)
+data(Headache)
+scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
+            main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
+            legend.coords="topleft",cex.main=1,cex.leg=0.75)
+```
+
+```{r eval=F}
 require(heplots)
 data(Headache)
 scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
             main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
             legend.coords="topleft")
 ```
-
 This data set contains a categorical variable with 4 levels. To go beyond two
 groups, we have to add more than one indicator variable, defining three
 indicators to turn on (1) or off (0) for three of the levels of the variable
@@ -2369,9 +2387,10 @@ minor issue. There are no influential points in the data set.
 
 (ref:fig8-24) Diagnostic plots for the additive decibel tolerance model. 
 
-```{r Figure8-24,fig.cap="(ref:fig8-24)",warning=F,message=F}
+```{r Figure8-24,fig.cap="(ref:fig8-24)",fig.width=8,fig.height=5}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
-plot(head1, sub.caption="Plot of diagnostics for additive model with du1 and treatment for du2")
+plot(head1,
+     sub.caption="Plot of diagnostics for additive model with du1 and treatment for du2")
 ```
 
 The VIFs are different for categorical variables than for quantitative
@@ -2468,14 +2487,22 @@ $x=0$) is right in the center of the plot and actually interesting.
 (ref:fig8-25) Scatterplot for reading score versus nonverbal IQ by dyslexia
 group. 
 
-```{r Figure8-25,fig.cap="(ref:fig8-25)",warning=F,message=F}
+```{r Figure8-25,fig.cap="(ref:fig8-25)",echo=F}
+require(smdata)
+data("dyslexic3")
+scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
+            ylab="Reading score", data=dyslexic3, smooth=F,
+            main="Plot of IQ vs Reading by dyslexia status",
+            cex.main=0.75, cex.leg=0.75)
+```
+
+```{r eval=F}
 require(smdata)
 data("dyslexic3")
 scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
             ylab="Reading score", data=dyslexic3, smooth=F,
             main="Plot of IQ vs Reading by dyslexia status")
 ```
-
 To allow for both different y-intercepts and slope coefficients on the
 quantitative predictor, we need to include a "modification" of the slope
 coefficient. This is performed using an ***interaction*** between the two
@@ -2507,8 +2534,8 @@ and simplify the equations.
 
     $$y_i=\beta_0+\beta_1x_i+\varepsilon_i.$$
     
-        * So the baseline group's model involves the initial intercept and
-        quantitative slope coefficient.
+    * So the baseline group's model involves the initial intercept and
+    quantitative slope coefficient.
         
         
 * For any observation in the second category $I_{\text{CatName},i}=0$, so
@@ -2610,7 +2637,7 @@ major issues other than this.
 
 (ref:fig8-26) Diagnostic plots for interaction model for reading scores. 
 
-```{r Figure8-26,fig.cap="(ref:fig8-26)",warning=F,message=F}
+```{r Figure8-26,fig.cap="(ref:fig8-26)",fig.width=8,fig.height=5}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(dys_model,
      sub.caption="Plot of diagnostics for Dyslexia Interaction model")
@@ -2778,6 +2805,13 @@ $$\begin{array}{rll}
 \widehat{\text{du2}}_i&=0.239 &+ 0.839\text{ du1}_i
 \end{array}$$
 
+(ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
+
+```{r Figure8-31,fig.cap="(ref:fig8-31)",fig.height=4,fig.width=7,echo=F}
+head2<-lm(du2~du1*treatment,data=Headache)
+plot(allEffects(head2), x.var="du1", ci.style="bands")
+```
+
 ```{r}
 head2<-lm(du2~du1*treatment,data=Headache)
 summary(head2)
@@ -2797,17 +2831,16 @@ case, neither
 version shows much of a difference and Version 2 overlaps so much that you
 can't see all the groups. 
 
-(ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
-
-```{r Figure8-31,fig.cap="(ref:fig8-31)",warning=F,message=F}
-plot(allEffects(head2), x.var="du1", ci.style="bands")
-```
-
 (ref:fig8-32) Term-plot for decibel tolerance interaction model (version 2).
 This plot is not printed in color because it is impossible to distinguish the
 four groups whether in color or black and white.
 
-```{r Figure8-32,fig.cap="(ref:fig8-32)",warning=F,message=F}
+```{r Figure8-32,fig.cap="(ref:fig8-32)",echo=F}
+plot(allEffects(head2), x.var="du1", multiline=T, ci.style="bands")
+```
+
+```{r eval=F}
+plot(allEffects(head2), x.var="du1", ci.style="bands")
 plot(allEffects(head2), x.var="du1", multiline=T, ci.style="bands")
 ```
 
@@ -2853,7 +2886,7 @@ model.
 (ref:fig8-33) Diagram of models to consider in an interaction model. 
 
 ```{r Figure8-33,fig.cap="(ref:fig8-33)",echo=F,warning=F,message=F}
-knitr::include_graphics("chapter8_files/image299.png")
+knitr::include_graphics("chapter8_files/image299_small.png")
 ```
 
 If the initial interaction test suggests the interaction is important, then no
@@ -3281,7 +3314,20 @@ involved in the interaction if we don't need the interaction.
 
 (ref:fig8-34) Scatterplot of log(FEV) vs Age by smoking status.
 
-```{r Figure8-34,fig.cap="(ref:fig8-34)",warning=F,message=F}
+```{r Figure8-34,fig.cap="(ref:fig8-34)",echo=F,fig.height=4,fig.width=7}
+require(coneproj)
+data(FEV)
+FEV$sex <- factor(FEV$sex)
+levels(FEV$sex) <- c("Female","Male")
+FEV$smoke <- factor(FEV$smoke)
+levels(FEV$smoke) <- c("Nonsmoker","Smoker")
+require(car)
+scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
+            main="Plot of log(FEV) vs Age of children by smoking  status",
+            legend.coords="topleft",cex.leg=0.75)
+```
+
+```{r eval=F}
 require(coneproj)
 data(FEV)
 FEV$sex <- factor(FEV$sex)
@@ -3304,7 +3350,7 @@ specified as `log(FEV)~height+age*smoke+sex``.
 (ref:fig8-35) Diagnostics for the log(FEV) model that includes height, sex,
 and an interaction between age and smoking status (the full model). 
 
-```{r Figure8-35,fig.cap="(ref:fig8-35)",warning=F,message=F}
+```{r Figure8-35,fig.cap="(ref:fig8-35)",fig.height=5,fig.width=8}
 fm1 <- lm(log(FEV)~height+age*smoke+sex, data=FEV)
 summary(fm1)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -3433,7 +3479,7 @@ after adjusting for them.**
 (ref:fig8-36) Term-plots for the top AIC model for log(FEV) that includes
 height, age, smoking status and sex in the model.
 
-```{r Figure8-36,fig.cap="(ref:fig8-36)",warning=F,message=F}
+```{r Figure8-36,fig.cap="(ref:fig8-36)",fig.height=4.5,fig.width=7}
 fm1R$coefficients
 confint(fm1R)
 plot(allEffects(fm1R))

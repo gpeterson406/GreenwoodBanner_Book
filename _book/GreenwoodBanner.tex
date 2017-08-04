@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-08-02}
+  \date{2017-08-04}
 
 \usepackage{booktabs}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -157,8 +157,8 @@
 \def\preto{\@verbatim}{\topsep=5pt \partopsep=-10pt }
 \makeatother
 
-%Change fourth level of itemize to an open circle instead of an asterisk
-\renewcommand{\labelitemiv}{$\circ$}
+%Change third level of itemize to an open circle instead of an asterisk
+\renewcommand{\labelitemiii}{$\circ$}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -20833,7 +20833,7 @@ In the MLR (or SLR) model summaries, both the \(\boldsymbol{R}^2\) and
 \(\boldsymbol{R}^2_{\text{adjusted}}\) are available. Make sure you are
 able to pick out the correct one. For the reduced data set (\(n=23\))
 \emph{Snow Depth} models, the pertinent part of the model summary for
-the model with all three predictors is:
+the model with all three predictors is the last three lines:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -21073,13 +21073,11 @@ mistakes.
   problem between \emph{Elevation} and \emph{Max.Temp} with higher
   elevations being strongly associated with lower temperatures.
 
-  (ref:fig8-11) Scatterplot of observed Elevations and Maximum
-  Temperatures for SNOTEL data.
-
   \begin{figure}
   \centering
   \includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-11-1.pdf}
-  \caption{\label{fig:Figure8-11}(ref:fig8-11)}
+  \caption{\label{fig:Figure8-11}Scatterplot of observed Elevations and
+  Maximum Temperatures for SNOTEL data.}
   \end{figure}
 \item
   \textbf{Don't think that the sign of a coefficient is special\ldots{}}
@@ -21098,28 +21096,12 @@ mistakes.
   variable. Consider the correlations among the predictors in the SNOTEL
   data set or visually displayed in Figure \ref{fig:Figure8-12}:
 
-  (ref:fig8-12) Plot of correlation matrix in the snow depth data set
-  with influential points removed
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{require}\NormalTok{(corrplot)}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{oma=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\KeywordTok{corrplot.mixed}\NormalTok{(}\KeywordTok{cor}\NormalTok{(snotel2[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{,}\DecValTok{22}\NormalTok{),}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{]), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
   \begin{figure}
   \centering
   \includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-12-1.pdf}
-  \caption{\label{fig:Figure8-12}(ref:fig8-12)}
+  \caption{\label{fig:Figure8-12}Plot of correlation matrix in the snow
+  depth data set with influential points removed}
   \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(snotel2[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{,}\DecValTok{22}\NormalTok{),}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{]),}\DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##            Max.Temp Min.Temp Elevation Snow.Depth
@@ -21128,6 +21110,15 @@ mistakes.
 ## Elevation     -0.84    -0.91      1.00       0.90
 ## Snow.Depth    -0.64    -0.79      0.90       1.00
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(corrplot)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{oma=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\KeywordTok{corrplot.mixed}\NormalTok{(}\KeywordTok{cor}\NormalTok{(snotel2[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{,}\DecValTok{22}\NormalTok{),}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{]), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
+\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(snotel2[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\NormalTok{,}\DecValTok{22}\NormalTok{),}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{]),}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
   The predictors all share at least moderately strong linear
   relationships. For example, the \(\boldsymbol{r}=-0.91\) between
@@ -21411,7 +21402,9 @@ different temperatures because of different snow depths.
 
 Similarly, we can test for \emph{Elevation} after controlling for the
 \emph{Maximum Temperature}:
-\(\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0}\),
+
+\[\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},\]
+
 given that \emph{Max.Temp} is in the model.
 
 \(t=7.613\) (\(df=20\)) with a p-value of \(0.00000025\) or just
@@ -22226,22 +22219,6 @@ two groups.
 \end{Highlighting}
 \end{Shaded}
 
-
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf}
-\caption{\label{fig:Figure8-17}Plot of FYGPA vs SATV by Sex of students.}
-\end{figure}
-
-
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf}
-\caption{\label{fig:Figure8-18}Plot of FYGPA vs SATM by Sex of students.}
-\end{figure}
-
 To fit one model to a data set that contain multiple groups, we need a
 way of entering categorical variable information in an MLR model.
 Regression models require quantitative predictor variables for the
@@ -22289,6 +22266,24 @@ categorical using the \texttt{factor} function and making the group
 ## Multiple R-squared:  0.1917, Adjusted R-squared:  0.1901 
 ## F-statistic: 118.2 on 2 and 997 DF,  p-value: < 2.2e-16
 \end{verbatim}
+
+
+
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-17-1.pdf}
+\caption{\label{fig:Figure8-17}Plot of FYGPA vs SATV by Sex of students.}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-18-1.pdf}
+\caption{\label{fig:Figure8-18}Plot of FYGPA vs SATM by Sex of students.}
+\end{figure}
+
+\newpage
 
 The \texttt{SEX} row contains information that the linear model chose
 \emph{MALE} as the baseline category and \emph{FEMALE} as the deviation
@@ -22372,6 +22367,8 @@ of 0 so the 0.313 drops out of the model, leaving an SLR just in terms
 of \emph{SATM}. For a \emph{female} student, the indicator is 1 and we
 add 0.313 to the previous y-intercept. The following works this out
 step-by-step, simplifying the MLR into two SLRs:
+
+\newpage
 
 \begin{itemize}
 \item
@@ -22586,6 +22583,13 @@ more prominent than differences in slopes.
 
 
 
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf}
+\caption{\label{fig:Figure8-21}Scatterplot of post-treatment decibel tolerance (du2) vs
+pre-treatment tolerance (du1) by treatment level (4 groups).}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(heplots)}
@@ -22595,13 +22599,6 @@ more prominent than differences in slopes.
             \DataTypeTok{legend.coords=}\StringTok{"topleft"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-21-1.pdf}
-\caption{\label{fig:Figure8-21}Scatterplot of post-treatment decibel tolerance (du2) vs
-pre-treatment tolerance (du1) by treatment level (4 groups).}
-\end{figure}
 
 This data set contains a categorical variable with 4 levels. To go
 beyond two groups, we have to add more than one indicator variable,
@@ -22962,7 +22959,8 @@ a minor issue. There are no influential points in the data set.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{oma=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(head1, }\DataTypeTok{sub.caption=}\StringTok{"Plot of diagnostics for additive model with du1 and treatment for du2"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(head1,}
+     \DataTypeTok{sub.caption=}\StringTok{"Plot of diagnostics for additive model with du1 and treatment for du2"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -23099,6 +23097,13 @@ actually interesting.
 
 
 
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf}
+\caption{\label{fig:Figure8-25}Scatterplot for reading score versus nonverbal IQ by
+dyslexia group.}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(smdata)}
@@ -23108,13 +23113,6 @@ actually interesting.
             \DataTypeTok{main=}\StringTok{"Plot of IQ vs Reading by dyslexia status"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-25-1.pdf}
-\caption{\label{fig:Figure8-25}Scatterplot for reading score versus nonverbal IQ by
-dyslexia group.}
-\end{figure}
 
 To allow for both different y-intercepts and slope coefficients on the
 quantitative predictor, we need to include a ``modification'' of the
@@ -23151,10 +23149,12 @@ indicator variable(s) and simplify the equations.
 
   \[y_i=\beta_0+\beta_1x_i+\varepsilon_i.\]
 
-\begin{verbatim}
-* So the baseline group's model involves the initial intercept and
-quantitative slope coefficient.
-\end{verbatim}
+  \begin{itemize}
+  \tightlist
+  \item
+    So the baseline group's model involves the initial intercept and
+    quantitative slope coefficient.
+  \end{itemize}
 \item
   For any observation in the second category \(I_{\text{CatName},i}=0\),
   so
@@ -23552,6 +23552,16 @@ group:
 \widehat{\text{du2}}_i&=0.239 &+ 0.839\text{ du1}_i
 \end{array}\]
 
+
+
+
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf}
+\caption{\label{fig:Figure8-31}Term-plot for decibel tolerance interaction model (version
+1).}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{head2<-}\KeywordTok{lm}\NormalTok{(du2}\OperatorTok{~}\NormalTok{du1}\OperatorTok{*}\NormalTok{treatment,}\DataTypeTok{data=}\NormalTok{Headache)}
@@ -23600,28 +23610,6 @@ much that you can't see all the groups.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{allEffects}\NormalTok{(head2), }\DataTypeTok{x.var=}\StringTok{"du1"}\NormalTok{, }\DataTypeTok{ci.style=}\StringTok{"bands"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-31-1.pdf}
-\caption{\label{fig:Figure8-31}Term-plot for decibel tolerance interaction model (version
-1).}
-\end{figure}
-
-
-
-
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{allEffects}\NormalTok{(head2), }\DataTypeTok{x.var=}\StringTok{"du1"}\NormalTok{, }\DataTypeTok{multiline=}\NormalTok{T, }\DataTypeTok{ci.style=}\StringTok{"bands"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 \centering
@@ -23630,6 +23618,13 @@ much that you can't see all the groups.
 2). This plot is not printed in color because it is impossible to
 distinguish the four groups whether in color or black and white.}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{allEffects}\NormalTok{(head2), }\DataTypeTok{x.var=}\StringTok{"du1"}\NormalTok{, }\DataTypeTok{ci.style=}\StringTok{"bands"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{allEffects}\NormalTok{(head2), }\DataTypeTok{x.var=}\StringTok{"du1"}\NormalTok{, }\DataTypeTok{multiline=}\NormalTok{T, }\DataTypeTok{ci.style=}\StringTok{"bands"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 In situations with more than 2 levels, the \(t\)-tests for the
 interaction or changing y-intercepts are not informative for deciding if
@@ -23676,7 +23671,7 @@ a final model.
 
 \begin{figure}
 \centering
-\includegraphics{chapter8_files/image299.png}
+\includegraphics{chapter8_files/image299_small.png}
 \caption{\label{fig:Figure8-33}Diagram of models to consider in an interaction model.}
 \end{figure}
 
@@ -24231,6 +24226,12 @@ interaction if we don't need the interaction.
 
 
 
+\begin{figure}
+\centering
+\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf}
+\caption{\label{fig:Figure8-34}Scatterplot of log(FEV) vs Age by smoking status.}
+\end{figure}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(coneproj)}
@@ -24245,12 +24246,6 @@ interaction if we don't need the interaction.
             \DataTypeTok{legend.coords=}\StringTok{"topleft"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{08-multipleLinearRegression_files/figure-latex/Figure8-34-1.pdf}
-\caption{\label{fig:Figure8-34}Scatterplot of log(FEV) vs Age by smoking status.}
-\end{figure}
 
 To get the needed results, start with the \textbf{\emph{full model}} --
 the most complicated model you want to consider. It is good to check
