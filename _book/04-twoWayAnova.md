@@ -261,7 +261,10 @@ beanplot(responses ~ brand*drops, data=pt, side="b", col=list("lightblue","white
 legend("topright", bty="n", c("B1","B2"), fill=c("lightblue","white"))
 ```
 
-![(\#fig:Figure4-1)(ref:fig4-1)](04-twoWayAnova_files/figure-latex/Figure4-1-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-1-1.png" alt="(ref:fig4-1)" width="480" />
+<p class="caption">(\#fig:Figure4-1)(ref:fig4-1)</p>
+</div>
 
 The beanplots can't handle situations where both variables have more than two 
 levels -- we need a simpler display that just focuses on the means at the 
@@ -284,7 +287,10 @@ everything clear.
 
 (ref:fig4-2) Interaction plot of the paper towel data with ``Drops`` on the x-axis. 
 
-![(\#fig:Figure4-2)(ref:fig4-2)](04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-2-1.png" alt="(ref:fig4-2)" width="480" />
+<p class="caption">(\#fig:Figure4-2)(ref:fig4-2)</p>
+</div>
 
 
 ```r
@@ -299,7 +305,10 @@ but not always. Try both and decide on the one that you like best.
 
 (ref:fig4-3) Interaction plot of paper towel data with ``Brand`` on the x-axis. 
 
-![(\#fig:Figure4-3)(ref:fig4-3)](04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-3-1.png" alt="(ref:fig4-3)" width="480" />
+<p class="caption">(\#fig:Figure4-3)(ref:fig4-3)</p>
+</div>
 
 
 ```r
@@ -372,7 +381,10 @@ levels, or any interaction between them.
 
 (ref:fig4-4) Interaction plots of four possible scenarios in the paper towel study.
 
-![(\#fig:Figure4-4)(ref:fig4-4)](04-twoWayAnova_files/figure-latex/Figure4-4-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-4-1.png" alt="(ref:fig4-4)" width="624" />
+<p class="caption">(\#fig:Figure4-4)(ref:fig4-4)</p>
+</div>
 
 Scenario 2 (Figure \@ref(fig:Figure4-4) panel (b))
 incorporates differences based on factor A (here that is ``Brand``) but no real 
@@ -412,7 +424,10 @@ of the results in Figure \@ref(fig:Figure4-2).
 (ref:fig4-5) Interaction plot of Scenario 5 where it appears that an 
 interaction is present. 
 
-![(\#fig:Figure4-5)(ref:fig4-5)](04-twoWayAnova_files/figure-latex/Figure4-5-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-5-1.png" alt="(ref:fig4-5)" width="432" />
+<p class="caption">(\#fig:Figure4-5)(ref:fig4-5)</p>
+</div>
 
 The typical modeling protocol is to start with assuming that Scenario 5 is a possible
 description of the results, related to fitting what is called the 
@@ -569,7 +584,8 @@ A:B (interaction)                    $(J-1)(K-1)$                           $\te
 
 Error                                $N-J-K+1$                              $\text{SS}_E$                               $\text{MS}_E=\text{SS}_E/\text{df}_E$                                      
 
-\textcolor{red}{\textbf{Total}}      $\color{red}{\mathbf{N-1}}$            $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                            
+<b><font                             $\color{red}{\mathbf{N-1}}$            $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                            
+color='red'>Total</font></b>                                                                                                                                                                       
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Table: (\#tab:Table4-1) (ref:tab4-1)
@@ -586,7 +602,8 @@ B                                    $K-1$                                  $\te
 
 Error                                $N-J-K+1$                              $\text{SS}_E$                               $\text{MS}_E=\text{SS}_E/\text{df}_E$                          
 
-\textcolor{red}{\textbf{Total}}      $\color{red}{\mathbf{N-1}}$            $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                
+<b><font                             $\color{red}{\mathbf{N-1}}$            $\color{red}{\textbf{SS}_{\textbf{Total}}}$                                                                
+color='red'>Total</font></b>                                                                                                                                                           
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Table: (\#tab:Table4-2) (ref:tab4-2)
@@ -657,7 +674,10 @@ for the means instead of the 1 standard error used above.
 
 (ref:fig4-6) Plot of estimated results of interaction model. 
 
-![(\#fig:Figure4-6)(ref:fig4-6)](04-twoWayAnova_files/figure-latex/Figure4-6-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-6-1.png" alt="(ref:fig4-6)" width="576" />
+<p class="caption">(\#fig:Figure4-6)(ref:fig4-6)</p>
+</div>
 
 In the absence of evidence to include the
 interaction, the model should be simplified to the additive model and the interpretation
@@ -834,7 +854,10 @@ require(effects)
 plot(allEffects(m2))
 ```
 
-![(\#fig:Figure4-7)(ref:fig4-7)](04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-7-1.png" alt="(ref:fig4-7)" width="480" />
+<p class="caption">(\#fig:Figure4-7)(ref:fig4-7)</p>
+</div>
 
 \newpage
 
@@ -851,7 +874,10 @@ Figure \@ref(fig:Figure4-8).
 
 (ref:fig4-8) Beanplot and interaction plot of the tooth growth data set.
 
-![(\#fig:Figure4-8)(ref:fig4-8)](04-twoWayAnova_files/figure-latex/Figure4-8-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-8-1.png" alt="(ref:fig4-8)" width="576" />
+<p class="caption">(\#fig:Figure4-8)(ref:fig4-8)</p>
+</div>
 
 
 ```r
@@ -1000,7 +1026,10 @@ tests and estimates for *Dose* and *Delivery method*.
         plot(TG2, pch=16,cex.main=0.75) 
         ```
         
-        ![(\#fig:Figure4-9)Diagnostic plots for the interaction model for Tooth         Growth.](04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf) 
+        <div class="figure">
+        <img src="04-twoWayAnova_files/figure-html/Figure4-9-1.png" alt="Diagnostic plots for the interaction model for Tooth         Growth." width="768" />
+        <p class="caption">(\#fig:Figure4-9)Diagnostic plots for the interaction model for Tooth         Growth.</p>
+        </div>
 
     * Normality of residuals:
     
@@ -1132,11 +1161,17 @@ our results.
 
 (ref:fig4-10) Term-plot for the estimated interaction for the Tooth Growth data. 
 
-![(\#fig:Figure4-10)(ref:fig4-10)](04-twoWayAnova_files/figure-latex/Figure4-10-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-10-1.png" alt="(ref:fig4-10)" width="480" />
+<p class="caption">(\#fig:Figure4-10)(ref:fig4-10)</p>
+</div>
 
 (ref:fig4-11) Interaction plot with added CLD from Tukey's HSD. 
 
-![(\#fig:Figure4-11)(ref:fig4-11)](04-twoWayAnova_files/figure-latex/Figure4-11-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-11-1.png" alt="(ref:fig4-11)" width="480" />
+<p class="caption">(\#fig:Figure4-11)(ref:fig4-11)</p>
+</div>
 
 
 ```r
@@ -1238,7 +1273,10 @@ debtc <- na.omit(debt)
 (ref:fig4-12) Interaction plot of ``prodebt`` by income group and buy cigarettes 
 (0=no, 1=yes).
 
-![(\#fig:Figure4-12)(ref:fig4-12)](04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-12-1.png" alt="(ref:fig4-12)" width="480" />
+<p class="caption">(\#fig:Figure4-12)(ref:fig4-12)</p>
+</div>
 
 
 ```r
@@ -1323,7 +1361,10 @@ par(mfrow=c(2,2))
 plot(debt1,cex.lab=0.75)
 ```
 
-![(\#fig:Figure4-13)(ref:fig4-13)](04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-13-1.png" alt="(ref:fig4-13)" width="768" />
+<p class="caption">(\#fig:Figure4-13)(ref:fig4-13)</p>
+</div>
  
 1. **Hypotheses (Two sets apply when the additive model is the focus!):**
 
@@ -1356,7 +1397,10 @@ plot(debt1,cex.lab=0.75)
     plot(debt1r,cex.lab=0.75)
     ```
     
-    ![(\#fig:Figure4-14)Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not](04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf) 
+    <div class="figure">
+    <img src="04-twoWayAnova_files/figure-html/Figure4-14-1.png" alt="Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not" width="768" />
+    <p class="caption">(\#fig:Figure4-14)Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not</p>
+    </div>
 
     * Constant Variance:
     
@@ -1438,7 +1482,10 @@ panel for income group and the right panel for buying cigarettes or not
 plot(allEffects(debt1r))
 ```
 
-![(\#fig:Figure4-15)(ref:fig4-15)](04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-15-1.png" alt="(ref:fig4-15)" width="480" />
+<p class="caption">(\#fig:Figure4-15)(ref:fig4-15)</p>
+</div>
 
 The estimated coefficients can also be
 interesting to interpret for the additive model. Here are the model summary coefficients:
@@ -1513,7 +1560,10 @@ groups on the x-axis and different lines for cigarette buyers (1) or not (0).
 Panel (b) displays the different income groups as lines with the cigarette
 buying status on the x-axis. 
 
-![(\#fig:Figure4-16)(ref:fig4-16)](04-twoWayAnova_files/figure-latex/Figure4-16-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-16-1.png" alt="(ref:fig4-16)" width="576" />
+<p class="caption">(\#fig:Figure4-16)(ref:fig4-16)</p>
+</div>
 
 **In general, we proceed through the following steps in any 2-WAY ANOVA situation:**
 
@@ -1602,7 +1652,10 @@ plot.
 
 (ref:fig4-17) Interaction plot in paper towel data set with no replication. 
 
-![(\#fig:Figure4-17)(ref:fig4-17)](04-twoWayAnova_files/figure-latex/Figure4-17-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-17-1.png" alt="(ref:fig4-17)" width="480" />
+<p class="caption">(\#fig:Figure4-17)(ref:fig4-17)</p>
+</div>
 
 
 ```r
@@ -1694,7 +1747,10 @@ replication.
 plot(allEffects(norep1))
 ```
 
-![(\#fig:Figure4-18)(ref:fig4-18)](04-twoWayAnova_files/figure-latex/Figure4-18-1.pdf) 
+<div class="figure">
+<img src="04-twoWayAnova_files/figure-html/Figure4-18-1.png" alt="(ref:fig4-18)" width="480" />
+<p class="caption">(\#fig:Figure4-18)(ref:fig4-18)</p>
+</div>
 
 Hopefully by pushing the limits there
 are two conclusions available from this section. First, replication is
@@ -1777,8 +1833,8 @@ modify in red, remembering that any R
 packages mentioned need to be installed and loaded for this code to have a
 chance of working:
 
-* tally(\textcolor{red}{A}~\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})
+* tally(<font color='red'>A</font>~<font color='red'>B</font>,
+data=<font color='red'>DATASETNAME</font>)
 
     * Requires the ``mosaic`` package be loaded. 
     
@@ -1786,15 +1842,15 @@ data=\textcolor{red}{DATASETNAME})
     predictor variables A and B, used to check for balance and understand sample 
     sizes in each combination. 
     
-* \textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME} ``<-`` 
-factor(\textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME})
+* <font color='red'>DATASETNAME</font>&#36;<font color='red'>VARIABLENAME</font> ``<-`` 
+factor(<font color='red'>DATASETNAME</font>&#36;<font color='red'>VARIABLENAME</font>)
 
     * Use the ``factor`` function on any numerically coded
     explanatory variable where the numerical codes represent levels of a
     categorical variable. 
     
-* intplot(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})
+* intplot(<font color='red'>Y</font>~<font color='red'>A</font>*<font color='red'>B</font>,
+data=<font color='red'>DATASETNAME</font>)
 
     * Download and install using: 
     
@@ -1802,9 +1858,9 @@ data=\textcolor{red}{DATASETNAME})
     
     * Provides interaction plot.
     
-* \textcolor{red}{INTERACTIONMODELNAME} ``<-`` 
-lm(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})
+* <font color='red'>INTERACTIONMODELNAME</font> ``<-`` 
+lm(<font color='red'>Y</font>~<font color='red'>A</font>*<font color='red'>B</font>,
+data=<font color='red'>DATASETNAME</font>)
 
     * Fits the interaction model with main effects for A and B and an 
     interaction between them.
@@ -1812,9 +1868,9 @@ data=\textcolor{red}{DATASETNAME})
     * This is the first model that should be fit in Two-Way ANOVA 
     modeling situations.
     
-* \textcolor{red}{ADDITIVEMODELNAME} ``<-``
-lm(\textcolor{red}{Y}~\textcolor{red}{A}+\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})
+* <font color='red'>ADDITIVEMODELNAME</font> ``<-``
+lm(<font color='red'>Y</font>~<font color='red'>A</font>+<font color='red'>B</font>,
+data=<font color='red'>DATASETNAME</font>)
 
     * Fits the additive model with only main effects for A and B but no 
     interaction between them.
@@ -1822,12 +1878,12 @@ data=\textcolor{red}{DATASETNAME})
     * Should only be used if the interaction has been decided to be 
     unimportant using a test for the interaction.
     
-* summary(\textcolor{red}{MODELNAME})
+* summary(<font color='red'>MODELNAME</font>)
 
     * Generates model summary information including the estimated model coefficients, 
     SEs, t-tests, and p-values. 
 
-* Anova(\textcolor{red}{MODELNAME})
+* Anova(<font color='red'>MODELNAME</font>)
 
     * Requires the ``car`` package to be loaded.
     
@@ -1836,12 +1892,12 @@ data=\textcolor{red}{DATASETNAME})
     when working with the additive model as it provides inferences for 
     each term conditional on the other one. 
 
-* par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})
+* par(mfrow=c(2,2)); plot(<font color='red'>MODELNAME</font>)
 
     * Generates four diagnostic plots including the Residuals vs Fitted and 
     Normal Q-Q plot. 
     
-* plot(allEffects(\textcolor{red}{MODELNAME}))
+* plot(allEffects(<font color='red'>MODELNAME</font>))
     
     * Requires the ``effects`` package be loaded. 
 

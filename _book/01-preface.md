@@ -78,7 +78,10 @@ types of conclusions that are appropriate based on the design of the study.
 
 (ref:fig1) Flow chart of methods
 
-![(\#fig:Figure1)(ref:fig1)](chapter0_files/image002.png) 
+<div class="figure">
+<img src="chapter0_files/image002.png" alt="(ref:fig1)"  />
+<p class="caption">(\#fig:Figure1)(ref:fig1)</p>
+</div>
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
@@ -293,7 +296,10 @@ plots that you make and requests for "Help" on specific functions.
 
 (ref:fig2) Initial RStudio layout
 
-![(\#fig:Figure2)(ref:fig2)](chapter0_files/image003.png) 
+<div class="figure">
+<img src="chapter0_files/image003.png" alt="(ref:fig2)"  />
+<p class="caption">(\#fig:Figure2)(ref:fig2)</p>
+</div>
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
 (``>``) in the lower left "console" panel, type 3+4, and then hit enter. It
@@ -445,7 +451,10 @@ code (``View(treadmill``)).
 
 (ref:fig3) RStudio with initial data set loaded
 
-![(\#fig:Figure3)(ref:fig3)](chapter0_files/image005.png) 
+<div class="figure">
+<img src="chapter0_files/image005.png" alt="(ref:fig3)"  />
+<p class="caption">(\#fig:Figure3)(ref:fig3)</p>
+</div>
 
 Just directly typing (or using) a line of code like this is actually the 
 other way that we can read in
@@ -567,7 +576,10 @@ section of code using the "Run" button.
 
 (ref:fig4) RStudio with highlighted code run
 
-![(\#fig:Figure4)(ref:fig4)](chapter0_files/image006.png) 
+<div class="figure">
+<img src="chapter0_files/image006.png" alt="(ref:fig4)"  />
+<p class="caption">(\#fig:Figure4)(ref:fig4)</p>
+</div>
 
 ##Basic summary statistics, histograms, and boxplots using R
 
@@ -655,7 +667,10 @@ We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
 
 (ref:fig5) Histogram of Run Times #(minutes) of n=31 subjects in Treadmill study.
 
-![(\#fig:Figure5)(ref:fig5)](01-preface_files/figure-latex/Figure5-1.pdf) 
+<div class="figure">
+<img src="01-preface_files/figure-html/Figure5-1.png" alt="(ref:fig5)" width="480" />
+<p class="caption">(\#fig:Figure5)(ref:fig5)</p>
+</div>
 
 
 I used the **Export** button found above the plot, followed by **Copy to 
@@ -666,7 +681,10 @@ parts of this process in the screen grab in Figure \@ref(fig:Figure6).
 
 (ref:fig6) RStudio while in the process of copying the histogram
 
-![(\#fig:Figure6)(ref:fig6)](chapter0_files/image010.png) 
+<div class="figure">
+<img src="chapter0_files/image010.png" alt="(ref:fig6)"  />
+<p class="caption">(\#fig:Figure6)(ref:fig6)</p>
+</div>
 
 You can also directly save the figures as separate files using 
 **Save as Image** or **Save as PDF**and then insert them into your word 
@@ -686,7 +704,10 @@ into each bar. Specifically, we can turn the ``labels`` option "on" by making it
 hist(treadmill$RunTime, labels=T)
 ```
 
-![(\#fig:Figure7)(ref:fig7)](01-preface_files/figure-latex/Figure7-1.pdf) 
+<div class="figure">
+<img src="01-preface_files/figure-html/Figure7-1.png" alt="(ref:fig7)" width="384" />
+<p class="caption">(\#fig:Figure7)(ref:fig7)</p>
+</div>
 
 
 Based on this histogram, it does not appear that there any outliers in the responses
@@ -729,7 +750,10 @@ but worth noting.
 
 (ref:fig8) Boxplot of 1.5 mile Run Times.
 
-![(\#fig:Figure8)(ref:fig8)](01-preface_files/figure-latex/Figure8-1.pdf) 
+<div class="figure">
+<img src="01-preface_files/figure-html/Figure8-1.png" alt="(ref:fig8)" width="384" />
+<p class="caption">(\#fig:Figure8)(ref:fig8)</p>
+</div>
 
 
 ```r
@@ -746,7 +770,10 @@ be assigned into the options ``ylab`` (for y-axis) or ``main``
 
 (ref:fig9) Boxplot of Run Times with improved labels.
 
-![(\#fig:Figure9)(ref:fig9)](01-preface_files/figure-latex/Figure9-1.pdf) 
+<div class="figure">
+<img src="01-preface_files/figure-html/Figure9-1.png" alt="(ref:fig9)" width="384" />
+<p class="caption">(\#fig:Figure9)(ref:fig9)</p>
+</div>
 
 
 ```r
@@ -835,40 +862,40 @@ required. You can use this as a guide to finding the function names and some
 hints about options that will help you to get the code to work or you can
 revisit the worked examples using each of the functions. 
 
-* \textcolor{red}{FILENAME}<- read.csv(\textcolor{red}{"path to csv file/FILENAME.csv"})
+* <font color='red'>FILENAME</font><- read.csv(<font color='red'>"path to csv file/FILENAME.csv"</font>)
 
     * Can be generated using "Import Dataset" button or by modifying this text. 
 
-* \textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME}
+* <font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>
 
     * To access a particular variable in a data.frame called DATASETNAME, use 
     a $ and then the VARIABLENAME. 
 
-* head(\textcolor{red}{DATASETNAME})
+* head(<font color='red'>DATASETNAME</font>)
 
     * Provides a list of the first few rows of the data set for all the 
     variables in it. 
 
-* mean(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
+* mean(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
 
     * Calculates the mean of the observations in a variable. 
 
-* sd(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
+* sd(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
 
     * Calculates the SD of the observations in a variable. 
 
-* favstats(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME}) 
+* favstats(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>) 
 
     * Requires the ``mosaic`` package to be loaded (``require(mosaic``) after
     installing the package). 
 
     * Provides a suite of numerical summaries of the observations in a variable.
 
-* hist(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
+* hist(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
 
     * Makes a histogram. 
     
-* boxplot(\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME})
+* boxplot(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
 
     * Makes a boxplot. 
 

@@ -47,7 +47,10 @@ $$y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
 
 (ref:fig9-1) Schematic of methods covered. 
 
-![(\#fig:Figure9-1)(ref:fig9-1)](chapter9_files/image002.png) 
+<div class="figure">
+<img src="chapter9_files/image002.png" alt="(ref:fig9-1)"  />
+<p class="caption">(\#fig:Figure9-1)(ref:fig9-1)</p>
+</div>
 
 \newpage
 
@@ -122,7 +125,10 @@ from earlier in the book.
 
 (ref:fig9-2) Beanplot of biomass responses by treatment and species. 
 
-![(\#fig:Figure9-2)(ref:fig9-2)](09-caseStudies_files/figure-latex/Figure9-2-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-2-1.png" alt="(ref:fig9-2)" width="576" />
+<p class="caption">(\#fig:Figure9-2)(ref:fig9-2)</p>
+</div>
 
 In a 16-year experiment, @Gundale2013 studied the impacts
 of Nitrogen (``N``) additions on the mass of two feather moss species 
@@ -175,7 +181,10 @@ quite different based on this plot as well.
 
 (ref:fig9-3) Interaction plot of biomass responses by treatment and species. 
 
-![(\#fig:Figure9-3)(ref:fig9-3)](09-caseStudies_files/figure-latex/Figure9-3-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-3-1.png" alt="(ref:fig9-3)" width="576" />
+<p class="caption">(\#fig:Figure9-3)(ref:fig9-3)</p>
+</div>
 
 
 ```r
@@ -224,7 +233,10 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m1, sub.caption="Initial Massperha 2-WAY model")
 ```
 
-![(\#fig:Figure9-4)(ref:fig9-4)](09-caseStudies_files/figure-latex/Figure9-4-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-4-1.png" alt="(ref:fig9-4)" width="768" />
+<p class="caption">(\#fig:Figure9-4)(ref:fig9-4)</p>
+</div>
 
 There is a clear problem with non-constant variance showing up in a fanning 
 shape^[Instructors in this class often get asked what a problem with 
@@ -279,7 +291,10 @@ legend("topright", bty="n", c("HS","PS"), fill=c("white","lightgreen"))
 intplot(logMassperha~Species*Treatment, data=gdn, col=c(1,2), lwd=2, main="(b)")
 ```
 
-![(\#fig:Figure9-5)(ref:fig9-5)](09-caseStudies_files/figure-latex/Figure9-5-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-5-1.png" alt="(ref:fig9-5)" width="576" />
+<p class="caption">(\#fig:Figure9-5)(ref:fig9-5)</p>
+</div>
 
 The variability in the beanplot in Figure \@ref(fig:Figure9-5)(a) appears to be
 more consistent across the groups but the lines appear to be a little less 
@@ -360,7 +375,10 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m2, sub.caption="log-Massperha 2-WAY model")
 ```
 
-![(\#fig:Figure9-6)(ref:fig9-6)](09-caseStudies_files/figure-latex/Figure9-6-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-6-1.png" alt="(ref:fig9-6)" width="768" />
+<p class="caption">(\#fig:Figure9-6)(ref:fig9-6)</p>
+</div>
 
 The researchers actually applied a $\log(y+1)$ transformation to all the 
 variables. This was used because one of their many variables had a value of 0
@@ -396,7 +414,10 @@ require(effects)
 plot(allEffects(m2), multiline=T, ci.style="bars")
 ```
 
-![(\#fig:Figure9-7)(ref:fig9-7)](09-caseStudies_files/figure-latex/Figure9-7-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-7-1.png" alt="(ref:fig9-7)" width="576" />
+<p class="caption">(\#fig:Figure9-7)(ref:fig9-7)</p>
+</div>
 
 **Follow-up Pairwise Comparisons:**
 
@@ -511,7 +532,10 @@ intplot(logMassperha~Species*Treatment, cld=T, cldshift=0.15,
         main="Interaction with CLD from Tukey's HSD on One-Way ANOVA")
 ```
 
-![(\#fig:Figure9-8)(ref:fig9-8)](09-caseStudies_files/figure-latex/Figure9-8-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-8-1.png" alt="(ref:fig9-8)" width="576" />
+<p class="caption">(\#fig:Figure9-8)(ref:fig9-8)</p>
+</div>
 
 These results suggest that *HS-N50* is detectably different from all the other
 groups (letter "a"). The rest of the story is more complicated since many of
@@ -565,7 +589,10 @@ levels(sasakipratt$before) <- c("SmallBright","LargeDark")
 plot(after~group, data=sasakipratt)
 ```
 
-![(\#fig:Figure9-9)(ref:fig9-9)](09-caseStudies_files/figure-latex/Figure9-9-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-9-1.png" alt="(ref:fig9-9)" width="576" />
+<p class="caption">(\#fig:Figure9-9)(ref:fig9-9)</p>
+</div>
 
 \newpage
 
@@ -742,7 +769,10 @@ variables.
 
 (ref:fig9-10) Scatterplot of log-biodiversity vs log-DBCs by TJK.
 
-![(\#fig:Figure9-10)(ref:fig9-10)](09-caseStudies_files/figure-latex/Figure9-10-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-10-1.png" alt="(ref:fig9-10)" width="576" />
+<p class="caption">(\#fig:Figure9-10)(ref:fig9-10)</p>
+</div>
 
 
 ```r
@@ -899,7 +929,10 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(bd1)
 ```
 
-![(\#fig:Figure9-11)(ref:fig9-11)](09-caseStudies_files/figure-latex/Figure9-11-1.pdf) 
+<div class="figure">
+<img src="09-caseStudies_files/figure-html/Figure9-11-1.png" alt="(ref:fig9-11)" width="768" />
+<p class="caption">(\#fig:Figure9-11)(ref:fig9-11)</p>
+</div>
 
 The constant variance and assessment of influence do not suggest any real
 problems. The normality assumption is possibly violated but shows lighter
@@ -940,7 +973,7 @@ question of interest involves the differences between the periods. The change
 in the y-intercepts of -0.76 suggests that the Cretaceous has a lower average
 log-biodiversity by 0.75 log-count, after controlling for the log-sampling 
 effort. This suggests that the *Cretaceous* had a lower corrected mean
-log-Sauropodomorph biodiversity $(t_{23}=-3.41;\text{\sout{p-value=0.0024}})$ than the combined
+log-Sauropodomorph biodiversity $\require{enclose} (t_{23}=-3.41;\enclose{horizontalstrike}{\text{p-value}=0.0024})$ than the combined
 results for the Triassic and Jurassic. On the original count scale, this 
 suggests $\exp(-0.76)=0.47$ times (53% drop in) the median biodiversity count 
 per stage for Cretaceous versus the prior time period, after correcting for

@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={A Second Semester Statistics Course with R},
-            pdfauthor={Mark Greenwood and Katherine Banner},
+            pdfauthor={Mark Greenwood and Katharine Banner},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -119,7 +119,7 @@
   \title{A Second Semester Statistics Course with R}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Mark Greenwood and Katherine Banner}
+  \author{Mark Greenwood and Katharine Banner}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \predate{\centering\large\emph}
@@ -161,6 +161,12 @@
 \renewcommand{\labelitemiii}{$\circ$}
 
 \newcommand{\BD}{\boldsymbol{\Delta}}
+
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+\includegraphics{titlepage.pdf}
+\end{titlepage}
+}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -233,7 +239,7 @@ download from Montana State University's ScholarWorks repository at
 
 Enjoy your journey from introductory to intermediate statistics!
 
-\includegraphics{chapter0_files/creative_commons_license.png}
+\begin{center}\includegraphics{frontMatter/creative_commons_license} \end{center}
 
 This work is licensed under the Creative Commons
 Attribution-NonCommercial-NoDerivatives 4.0 International License. To
@@ -3747,8 +3753,6 @@ Usually this uncertainty will not cause any substantive problems -- but
 do not be surprised if your results vary from a colleagues if you are
 both analyzing the same data set or if you re-run your permutation code.
 
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
@@ -3786,7 +3790,7 @@ both analyzing the same data set or if you re-run your permutation code.
 \end{Highlighting}
 \end{Shaded}
 
-Permutation distribution of the \(t\)-statistic Permutation distribution of the \(t\)-statistic
+
 
 \begin{figure}
 \centering

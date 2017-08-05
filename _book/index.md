@@ -1,6 +1,6 @@
 --- 
 title: "A Second Semester Statistics Course with R"
-author: "Mark Greenwood and Katherine Banner"
+author: "Mark Greenwood and Katharine Banner"
 date: 'Version 4.0 -- Published Fall 2017'
 output:
   bookdown::pdf_book: 
@@ -24,7 +24,14 @@ header-includes:
 - \usepackage{color}
 ---
 
+
+
+# Cover {-}
+
+![](frontMatter/titlepage.jpg)<!-- -->
+
 # Acknowledgments {-}
+
 We would like to thank all the students and instructors who have provided input in the development of the current version of STAT 217 and that have impacted the choice of topics and how we try to teach them. Dr. Robison-Cox initially developed this course using R and much of this work retains his initial ideas. Many years of teaching these topics and helping researchers use these topics has helped to refine how they are presented here. Observing students years after the course has also helped to refine what we try to teach in the course, trying to prepare these students for the next levels of statistics courses that they might encounter and the next class where they might need or want to use statistics.
 
 I (Greenwood) have intentionally taken a first person perspective at times to be able to include stories from some of those interactions to try to help you avoid some of their pitfalls in your current or future usage of statistics. I would like to thank my wife, Teresa Greenwood, for allowing me the time and support to work on this. I would also like to acknowledge Dr. Gordon Bril (Luther College) who introduced me to statistics while I was an undergraduate and Dr. Snehalata Huzurbazar (University of Wyoming) that guided me to completing my Master’s and Ph.D. in Statistics and still serves as a valued mentor and friend to me.
@@ -37,7 +44,7 @@ We have made every attempt to keep costs as low as possible by making it possibl
 
 Enjoy your journey from introductory to intermediate statistics!
  
-![](chapter0_files/creative_commons_license.png)<!-- --> 
+<img src="frontMatter/creative_commons_license.png" style="display: block; margin: auto;" />
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 

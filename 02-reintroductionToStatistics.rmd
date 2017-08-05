@@ -1501,8 +1501,6 @@ Usually this uncertainty will not cause any substantive problems -- but do not
 be surprised if your results vary from a colleagues if you are both analyzing 
 the same data set or if you re-run your permutation code. 
 
-(ref:fig2-12) Permutation distribution of the $t$-statistic
-
 ```{r}
 par(mfrow=c(1,2))
 Tobs <- t.test(Years ~ Attr, data=MockJury2, var.equal=T)$statistic
