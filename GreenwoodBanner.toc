@@ -102,7 +102,7 @@
 \contentsline {chapter}{\numberline {9}Case studies}{335}{chapter.9}
 \contentsline {section}{\numberline {9.1}Overview of material covered}{335}{section.9.1}
 \contentsline {section}{\numberline {9.2}The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss--cyanobacteria associations}{337}{section.9.2}
-\contentsline {section}{\numberline {9.3}Ants learn to rely on more informative attributes during decision-making}{345}{section.9.3}
+\contentsline {section}{\numberline {9.3}Ants learn to rely on more informative attributes during decision-making}{344}{section.9.3}
 \contentsline {section}{\numberline {9.4}Multi-variate models are essential for understanding vertebrate diversification in deep time}{347}{section.9.4}
 \contentsline {section}{\numberline {9.5}General summary}{352}{section.9.5}
 \contentsline {chapter}{\numberline {10}Bibliography}{353}{chapter.10}

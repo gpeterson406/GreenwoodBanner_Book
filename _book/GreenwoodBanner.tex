@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-08-04}
+  \date{2017-08-05}
 
 \usepackage{booktabs}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -159,6 +159,8 @@
 
 %Change third level of itemize to an open circle instead of an asterisk
 \renewcommand{\labelitemiii}{$\circ$}
+
+\newcommand{\BD}{\boldsymbol{\Delta}}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -24868,14 +24870,6 @@ revisiting that same diagram (Figure \ref{fig:Figure9-1} will bring back
 memories of each of the chapters. Categorical variables create special
 challenges whether they are explanatory or response variables.
 
-
-
-\begin{figure}
-\centering
-\includegraphics{chapter9_files/image002.png}
-\caption{\label{fig:Figure9-1}Schematic of methods covered.}
-\end{figure}
-
 Every scenario with a quantitative response variable was handled using
 linear models. The last material on multiple linear regression modeling
 tied back to the One and Two-Way ANOVA models as categorical variables
@@ -24896,6 +24890,16 @@ variables as:
 
 \[y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
 \cdots + \beta_{J-1}I_{\text{Level }J,i} + \varepsilon_i.\]
+
+
+
+\begin{figure}
+\centering
+\includegraphics{chapter9_files/image002.png}
+\caption{\label{fig:Figure9-1}Schematic of methods covered.}
+\end{figure}
+
+\newpage
 
 We now know how the indicator variables are either 0 or 1 for each
 observation and only one takes in the value 1 (is ``turned on'') at a
@@ -24985,6 +24989,14 @@ earlier in the book.
 biomass and N2-fixation activity of two boreal feather
 moss--cyanobacteria associations}\label{section9-2}
 
+
+
+\begin{figure}
+\centering
+\includegraphics{09-caseStudies_files/figure-latex/Figure9-2-1.pdf}
+\caption{\label{fig:Figure9-2}Beanplot of biomass responses by treatment and species.}
+\end{figure}
+
 In a 16-year experiment, \citet{Gundale2013} studied the impacts of
 Nitrogen (\texttt{N}) additions on the mass of two feather moss species
 (\emph{Pleurozium schreberi }(\texttt{PS}) and \emph{Hylocomium}
@@ -25018,8 +25030,6 @@ differences in variability in the different groups, especially with much
 more variability in the \emph{control} treatment level and more
 variability in the \emph{PS} responses than for the \emph{HS} responses.
 
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{gdn <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv"}\NormalTok{)}
@@ -25029,12 +25039,6 @@ variability in the \emph{PS} responses than for the \emph{HS} responses.
 \KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"HS"}\NormalTok{, }\StringTok{"PS"}\NormalTok{), }\DataTypeTok{fill=}\KeywordTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"lightgreen"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{09-caseStudies_files/figure-latex/Figure9-2-1.pdf}
-\caption{\label{fig:Figure9-2}Beanplot of biomass responses by treatment and species.}
-\end{figure}
 
 The Two-WAY ANOVA model that contains a \emph{species} by
 \emph{treatment} interaction is of interest (so this has a quantitative
@@ -25052,19 +25056,19 @@ this plot as well.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{source}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/intplot.R"}\NormalTok{)}
-\KeywordTok{intplot}\NormalTok{(Massperha}\OperatorTok{~}\NormalTok{Species}\OperatorTok{*}\NormalTok{Treatment, }\DataTypeTok{data=}\NormalTok{gdn, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \centering
 \includegraphics{09-caseStudies_files/figure-latex/Figure9-3-1.pdf}
 \caption{\label{fig:Figure9-3}Interaction plot of biomass responses by treatment and
 species.}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/intplot.R"}\NormalTok{)}
+\KeywordTok{intplot}\NormalTok{(Massperha}\OperatorTok{~}\NormalTok{Species}\OperatorTok{*}\NormalTok{Treatment, }\DataTypeTok{data=}\NormalTok{gdn, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 Based on the initial plots, we are going to be concerned about the equal
 variance assumption initially. We can fit the interaction model and
@@ -25513,6 +25517,8 @@ patterns of responses.
 \caption{\label{fig:Figure9-9}Stacked bar chart for Ant Colony results.}
 \end{figure}
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(mosaic)}
@@ -25705,15 +25711,6 @@ better predictor variables.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bm <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv"}\NormalTok{)}
-\NormalTok{bm2 <-}\StringTok{ }\NormalTok{bm[,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\OperatorTok{:}\DecValTok{10}\NormalTok{)]}
-\KeywordTok{require}\NormalTok{(psych)}
-\KeywordTok{pairs.panels}\NormalTok{(bm2, }\DataTypeTok{ellipses=}\NormalTok{F)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \centering
 \includegraphics{09-caseStudies_files/figure-latex/Figure9-10-1.pdf}
@@ -25722,19 +25719,19 @@ better predictor variables.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\NormalTok{bm <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv"}\NormalTok{)}
+\NormalTok{bm2 <-}\StringTok{ }\NormalTok{bm[,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{9}\OperatorTok{:}\DecValTok{10}\NormalTok{)]}
+\KeywordTok{require}\NormalTok{(psych)}
+\KeywordTok{pairs.panels}\NormalTok{(bm2, }\DataTypeTok{ellipses=}\NormalTok{F)}
 \NormalTok{bm}\OperatorTok{$}\NormalTok{logSpecies <-}\StringTok{ }\KeywordTok{log}\NormalTok{(bm}\OperatorTok{$}\NormalTok{Species)}
 \NormalTok{bm}\OperatorTok{$}\NormalTok{logDBCs <-}\StringTok{ }\KeywordTok{log}\NormalTok{(bm}\OperatorTok{$}\NormalTok{DBCs)}
 \NormalTok{bm}\OperatorTok{$}\NormalTok{logDBFs <-}\StringTok{ }\KeywordTok{log}\NormalTok{(bm}\OperatorTok{$}\NormalTok{DBFs)}
 \NormalTok{bm}\OperatorTok{$}\NormalTok{TJK <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(bm}\OperatorTok{$}\NormalTok{TJK)}
-\KeywordTok{scatterplot}\NormalTok{(logSpecies}\OperatorTok{~}\NormalTok{StageNumber, }\DataTypeTok{data=}\NormalTok{bm, }\DataTypeTok{spread=}\NormalTok{F)}
+\KeywordTok{require}\NormalTok{(car)}
+\KeywordTok{scatterplot}\NormalTok{(logSpecies}\OperatorTok{~}\NormalTok{logDBCs}\OperatorTok{|}\NormalTok{TJK, }\DataTypeTok{data=}\NormalTok{bm, }\DataTypeTok{smooth=}\NormalTok{F,}
+            \DataTypeTok{main=}\StringTok{"Scatterplot of log-diversity vs log-DBCs by period"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{09-caseStudies_files/figure-latex/Figure9-10-2.pdf}
-\caption{\label{fig:Figure9-10}Scatterplot of log-biodiversity vs log-DBCs by TJK.}
-\end{figure}
 
 The following results will allow us to explore models similar to theirs.
 One ``full'' model they considered is:
@@ -25819,28 +25816,136 @@ model considered.
 
 
 
-\begin{table}
-
-\caption{\label{tab:Table9-1}Model comparision table.}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
-Model & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & adj\$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & df & logLik & AIC & \$\textbackslash{}boldsymbol\{\textbackslash{}Delta\}\$AIC\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBC\})\_i + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\}\$ & 0.5809 & 0.5444 & 4 & -12.652 & 33.3 & 0\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBF\})\_i + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\}\$ & 0.5199 & 0.4781 & 4 & -14.418 & 36.8 & 3.5\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBC\})\_i + \textbackslash{}varepsilon\_i\}\$ & 0.3691 & 0.3428 & 3 & -17.969 & 41.9 & 8.6\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBF\})\_i + \textbackslash{}varepsilon\_i\}\$ & 0.2098 & 0.1769 & 3 & -20.895 & 47.8 & 14.5\\
-\hline
-\$\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}varepsilon\_i\$ & 0 & 0 & 2 & -23.956 & 51.9 & 18.6\\
-\hline
-\$\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\$ & 0.0048 & -0.03664 & 3 & -23.893 & 53.8 & 20.5\\
-\hline
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}lrrrrrr@{}}
+\caption{\label{tab:Table9-1} Model comparision table.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.45\columnwidth}\raggedright\strut
+\textbf{Model}~~~~~~~~~~~~~~~~\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedleft\strut
+\textbf{R\textsuperscript{2}}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
+\textbf{adj R\textsuperscript{2}}~\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedleft\strut
+\textbf{df}\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
+\textbf{logLik}~\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedleft\strut
+\textbf{AIC}\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedleft\strut
+\(\BD\)\textbf{AIC}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.45\columnwidth}\raggedright\strut
+\textbf{Model}~~~~~~~~~~~~~~~~\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\raggedleft\strut
+\textbf{R\textsuperscript{2}}\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
+\textbf{adj R\textsuperscript{2}}~\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedleft\strut
+\textbf{df}\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
+\textbf{logLik}~\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedleft\strut
+\textbf{AIC}\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\raggedleft\strut
+\(\BD\)\textbf{AIC}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\small{\log(\text{count})_i=\beta_0 + \beta_1\log(\text{DBC})_i + \beta_2I_{\text{TJK},i} + \varepsilon_i}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0.5809\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.5444\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-12.652\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+33.3\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\small{\log(\text{count})_i=\beta_0 + \beta_1\log(\text{DBF})_i + \beta_2I_{\text{TJK},i} + \varepsilon_i}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0.5199\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.4781\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-14.418\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+36.8\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+3.5\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\small{\log(\text{count})_i=\beta_0 + \beta_1\log(\text{DBC})_i + \varepsilon_i}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0.3691\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.3428\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-17.969\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+41.9\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+8.6\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\small{\log(\text{count})_i=\beta_0 + \beta_1\log(\text{DBF})_i + \varepsilon_i}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0.2098\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.1769\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-20.895\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+47.8\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+14.5\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\log(\text{count})_i=\beta_0 + \varepsilon_i\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-23.956\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+51.9\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+18.6\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.45\columnwidth}\raggedright\strut
+\(\log(\text{count})_i=\beta_0 + \beta_2I_{\text{TJK},i} + \varepsilon_i\)\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\raggedleft\strut
+0.0048\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+-0.0366\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+-23.893\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedleft\strut
+53.8\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\raggedleft\strut
+20.5\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 Table \ref{tab:Table9-1} suggests some interesting leads to the worst
 performing model on the AIC measure, ranking below a model with nothing

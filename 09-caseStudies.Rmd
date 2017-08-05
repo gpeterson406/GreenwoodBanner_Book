@@ -17,7 +17,8 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
-knitr::opts_chunk$set(cache = T,fig.height=3.5,fig.width=6,fig.pos='HT')
+knitr::opts_chunk$set(cache = T,fig.height=3.5,fig.width=6,fig.pos='HT',warning=F,
+                      message=F)
 options(show.signif.stars = FALSE)
 ```
 
@@ -44,12 +45,6 @@ learn about that was (probably) gibberish. Hopefully, revisiting that same diagr
 Categorical variables create special challenges whether they are explanatory or
 response variables. 
 
-(ref:fig9-1) Schematic of methods covered. 
-
-```{r Figure9-1,fig.cap="(ref:fig9-1)",echo=F,warning=F,message=F}
-knitr::include_graphics("chapter9_files/image002.png")
-```
-
 Every scenario with a quantitative response variable was handled using linear
 models. The last material on multiple linear regression modeling tied back to
 the One and Two-Way ANOVA models as categorical variables were added to the
@@ -68,6 +63,14 @@ variable using $J-1$ indicator variables as:
 
 $$y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
 \cdots + \beta_{J-1}I_{\text{Level }J,i} + \varepsilon_i.$$
+
+(ref:fig9-1) Schematic of methods covered. 
+
+```{r Figure9-1,fig.cap="(ref:fig9-1)",echo=F,fig.pos="b"}
+knitr::include_graphics("chapter9_files/image002.png")
+```
+
+\newpage
 
 We now know how the indicator variables are either 0 or 1 for each observation
 and only one takes in the value 1 (is "turned on") at a time for each response.
@@ -134,6 +137,16 @@ from earlier in the book.
 
 ## The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations	{#section9-2}
 
+(ref:fig9-2) Beanplot of biomass responses by treatment and species. 
+
+```{r Figure9-2,fig.cap="(ref:fig9-2)",echo=F}
+gdn <- read.csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
+require(beanplot)
+beanplot(Massperha~Species+Treatment, data=gdn, side = "b", 
+         col=list("white","lightgreen"), xlab="Treatment", ylab="Biomass")
+legend("topright", bty="n", c("HS", "PS"), fill=c("white","lightgreen"))
+```
+
 In a 16-year experiment, @Gundale2013 studied the impacts
 of Nitrogen (``N``) additions on the mass of two feather moss species 
 (*Pleurozium schreberi *(``PS``) and *Hylocomium* (``HS``) in the Svartberget
@@ -163,9 +176,7 @@ combinations of groups and some differences in variability in the different
 groups, especially with much more variability in the *control* treatment level
 and more variability in the *PS* responses than for the *HS* responses. 
 
-(ref:fig9-2) Beanplot of biomass responses by treatment and species. 
-
-```{r Figure9-2,fig.cap="(ref:fig9-2)",warning=F,message=F}
+```{r eval=F}
 gdn <- read.csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
 require(beanplot)
 beanplot(Massperha~Species+Treatment, data=gdn, side = "b", 
@@ -186,7 +197,12 @@ quite different based on this plot as well.
 
 (ref:fig9-3) Interaction plot of biomass responses by treatment and species. 
 
-```{r Figure9-3,fig.cap="(ref:fig9-3)",warning=F,message=F}
+```{r Figure9-3,fig.cap="(ref:fig9-3)",echo=F}
+source("http://www.math.montana.edu/courses/s217/documents/intplot.R")
+intplot(Massperha~Species*Treatment, data=gdn, col=c(1,2), lwd=2,cex.main=1)
+```
+
+```{r eval=F}
 source("http://www.math.montana.edu/courses/s217/documents/intplot.R")
 intplot(Massperha~Species*Treatment, data=gdn, col=c(1,2), lwd=2)
 ```
@@ -198,7 +214,7 @@ the diagnostic plots to verify that we have a problem.
 (ref:fig9-4) Diagnostic plots of treatment by species interaction model for
 Biomass.
 
-```{r Figure9-4,fig.cap="(ref:fig9-4)",warning=F,message=F}
+```{r Figure9-4,fig.cap="(ref:fig9-4)",fig.height=5,fig.width=8}
 m1 <- lm(Massperha~Species*Treatment, data=gdn)
 summary(m1)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -241,7 +257,7 @@ the response variable (*Biomass*) and repeat the previous plots:
 (ref:fig9-5) Beanplot and interaction plot of the log-Biomass responses by 
 treatment and species.
 
-```{r Figure9-5,fig.cap="(ref:fig9-5)",warning=F,message=F}
+```{r Figure9-5,fig.cap="(ref:fig9-5)"}
 gdn$logMassperha <- log(gdn$Massperha)
 par(mfrow=c(1,2))
 beanplot(logMassperha~Species+Treatment, data=gdn, side = "b",
@@ -280,7 +296,7 @@ species.
 (ref:fig9-6) Diagnostic plots of treatment by species interaction model for
 log-Biomass. 
 
-```{r Figure9-6,fig.cap="(ref:fig9-6)",warning=F,message=F}
+```{r Figure9-6,fig.cap="(ref:fig9-6)",fig.height=5,fig.width=8}
 m2 <- lm(logMassperha~Species*Treatment, data=gdn)
 summary(m2)
 require(car)
@@ -317,7 +333,7 @@ important interactions.
 
 (ref:fig9-7) Term-plot of the interaction model for log-biomass.
 
-```{r Figure9-7,fig.cap="(ref:fig9-7)",warning=F,message=F}
+```{r Figure9-7,fig.cap="(ref:fig9-7)"}
 require(effects)
 plot(allEffects(m2), multiline=T, ci.style="bars")
 ```
@@ -369,7 +385,7 @@ different. The following code creates the plot of these results using our
 (ref:fig9-8) Interaction plot for log-biomass with CLD from Tukey's HSD for all
 pairwise comparisons.
 
-```{r Figure9-8,fig.cap="(ref:fig9-8)",warning=F,message=F}
+```{r Figure9-8,fig.cap="(ref:fig9-8)"}
 intplot(logMassperha~Species*Treatment, cld=T, cldshift=0.15,
         cldcol=c(2,3,4,5,6,8), data=gdn, lwd=2, 
         main="Interaction with CLD from Tukey's HSD on One-Way ANOVA")
@@ -413,7 +429,7 @@ of differences in the patterns of responses.
 
 (ref:fig9-9) Stacked bar chart for Ant Colony results.
 
-```{r Figure9-9,fig.cap="(ref:fig9-9)",warning=F,message=F}
+```{r Figure9-9,fig.cap="(ref:fig9-9)"}
 sasakipratt <- read.csv("http://www.math.montana.edu/courses/s217/documents/sasakipratt.csv")
 sasakipratt$group <- factor(sasakipratt$group)
 levels(sasakipratt$group) <- c("Light","Entrance")
@@ -423,6 +439,8 @@ sasakipratt$before <- factor(sasakipratt$before)
 levels(sasakipratt$before) <- c("SmallBright","LargeDark")
 plot(after~group, data=sasakipratt)
 ```
+
+\newpage
 
 ```{r warning=F,message=F}
 require(mosaic)
@@ -559,7 +577,22 @@ variables.
 
 (ref:fig9-10) Scatterplot of log-biodiversity vs log-DBCs by TJK.
 
-```{r Figure9-10,fig.cap="(ref:fig9-10)",warning=F,message=F}
+```{r Figure9-10,fig.cap="(ref:fig9-10)",echo=F}
+bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
+bm2 <- bm[,-c(9:10)]
+require(psych)
+#pairs.panels(bm2, ellipses=F)
+bm$logSpecies <- log(bm$Species)
+bm$logDBCs <- log(bm$DBCs)
+bm$logDBFs <- log(bm$DBFs)
+bm$TJK <- factor(bm$TJK)
+require(car)
+scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F, cex.main=0.75,cex.leg=0.5,
+            main="Scatterplot of log-diversity vs log-DBCs by period", lwd=2,
+            legend.coords="topleft")
+```
+
+```{r eval=F}
 bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
 bm2 <- bm[,-c(9:10)]
 require(psych)
@@ -568,9 +601,10 @@ bm$logSpecies <- log(bm$Species)
 bm$logDBCs <- log(bm$DBCs)
 bm$logDBFs <- log(bm$DBFs)
 bm$TJK <- factor(bm$TJK)
-scatterplot(logSpecies~StageNumber, data=bm, spread=F)
+require(car)
+scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F,
+            main="Scatterplot of log-diversity vs log-DBCs by period", lwd=2)
 ```
-
 The following results will allow us to explore models similar to theirs. One
 "full" model they considered is:
 
@@ -624,9 +658,11 @@ AICs based on the top model from the first full model considered.
 
 (ref:tab9-1) Model comparision table.
 
-```{r Table9-1,echo=F,warning=F,message=F}
-columnHeaders <- c("Model","$\\boldsymbol{R^2}$", "adj$\\boldsymbol{R^2}$",
-                   "df","logLik","AIC","$\\boldsymbol{\\Delta}$AIC")
+```{r Table9-1,echo=F,results="asis"}
+columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "**R^2^**", "**adj R^2^**&nbsp;",
+                   "**df**","**logLik**&nbsp;","**AIC**",
+                   "$\\BD$**AIC**")
 cell11 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i}$"
 cell21 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i}$"
 cell31 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\varepsilon_i}$"
@@ -639,10 +675,14 @@ row2 <- c(cell21,0.5199,0.4781,4,-14.418,36.8,3.5)
 row3 <- c(cell31,0.3691,0.3428,3,-17.969,41.9,8.6)
 row4 <- c(cell41,0.2098,0.1769,3,-20.895,47.8,14.5)
 row5 <- c(cell51,0,0,2,-23.956,51.9,18.6)
-row6 <- c(cell61,0.0048,-0.03664,3,-23.893,53.8,20.5)
+row6 <- c(cell61,0.0048,-0.0366,3,-23.893,53.8,20.5)
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6),ncol = 7, byrow = T)
-kable(x,col.names=columnHeaders,caption="(ref:tab9-1)")
+m <- as.data.frame(x)
+colnames(m) <- columnHeaders
+pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table9-1) (ref:tab9-1)",
+             split.table = 300,
+             justify=c("left","right","right","right","right","right","right"))
 ```
 
 
@@ -665,7 +705,7 @@ assumptions as AICs are not valid if model assumptions are not met.
 
 (ref:fig9-11) Diagnostic plots for the top AIC model.
 
-```{r Figure9-11,fig.cap="(ref:fig9-11)",warning=F,message=F}
+```{r Figure9-11,fig.cap="(ref:fig9-11)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(bd1)
 ```

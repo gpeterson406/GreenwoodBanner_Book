@@ -2343,7 +2343,7 @@ groups, showing the shifts in the *y*-intercepts among the groups.
 
 (ref:fig8-22) Plot of estimated noise tolerance additive model.
 
-```{r Figure8-22,fig.cap="(ref:fig8-22)",echo=F,warning=F,message=F}
+```{r Figure8-22,fig.cap="(ref:fig8-22)",echo=F}
 du1s<-seq(from=0.37,to=15.1,length.out=50)
 hdT1<-data.frame(du1=du1s,treatment=rep("T1",50))
 hdT2<-data.frame(du1=du1s,treatment=rep("T2",50))

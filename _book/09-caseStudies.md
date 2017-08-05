@@ -26,10 +26,6 @@ learn about that was (probably) gibberish. Hopefully, revisiting that same diagr
 Categorical variables create special challenges whether they are explanatory or
 response variables. 
 
-(ref:fig9-1) Schematic of methods covered. 
-
-![(\#fig:Figure9-1)(ref:fig9-1)](chapter9_files/image002.png) 
-
 Every scenario with a quantitative response variable was handled using linear
 models. The last material on multiple linear regression modeling tied back to
 the One and Two-Way ANOVA models as categorical variables were added to the
@@ -48,6 +44,12 @@ variable using $J-1$ indicator variables as:
 
 $$y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
 \cdots + \beta_{J-1}I_{\text{Level }J,i} + \varepsilon_i.$$
+
+(ref:fig9-1) Schematic of methods covered. 
+
+![(\#fig:Figure9-1)(ref:fig9-1)](chapter9_files/image002.png) 
+
+\newpage
 
 We now know how the indicator variables are either 0 or 1 for each observation
 and only one takes in the value 1 (is "turned on") at a time for each response.
@@ -114,6 +116,10 @@ from earlier in the book.
 
 ## The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations	{#section9-2}
 
+(ref:fig9-2) Beanplot of biomass responses by treatment and species. 
+
+![(\#fig:Figure9-2)(ref:fig9-2)](09-caseStudies_files/figure-latex/Figure9-2-1.pdf) 
+
 In a 16-year experiment, @Gundale2013 studied the impacts
 of Nitrogen (``N``) additions on the mass of two feather moss species 
 (*Pleurozium schreberi *(``PS``) and *Hylocomium* (``HS``) in the Svartberget
@@ -143,8 +149,6 @@ combinations of groups and some differences in variability in the different
 groups, especially with much more variability in the *control* treatment level
 and more variability in the *PS* responses than for the *HS* responses. 
 
-(ref:fig9-2) Beanplot of biomass responses by treatment and species. 
-
 
 ```r
 gdn <- read.csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
@@ -153,8 +157,6 @@ beanplot(Massperha~Species+Treatment, data=gdn, side = "b",
          col=list("white","lightgreen"), xlab="Treatment", ylab="Biomass")
 legend("topright", bty="n", c("HS", "PS"), fill=c("white","lightgreen"))
 ```
-
-![(\#fig:Figure9-2)(ref:fig9-2)](09-caseStudies_files/figure-latex/Figure9-2-1.pdf) 
 
 The Two-WAY ANOVA model that contains a *species* by *treatment* interaction is
 of interest (so this has a quantitative response variable of *biomass* and two
@@ -169,13 +171,13 @@ quite different based on this plot as well.
 
 (ref:fig9-3) Interaction plot of biomass responses by treatment and species. 
 
+![(\#fig:Figure9-3)(ref:fig9-3)](09-caseStudies_files/figure-latex/Figure9-3-1.pdf) 
+
 
 ```r
 source("http://www.math.montana.edu/courses/s217/documents/intplot.R")
 intplot(Massperha~Species*Treatment, data=gdn, col=c(1,2), lwd=2)
 ```
-
-![(\#fig:Figure9-3)(ref:fig9-3)](09-caseStudies_files/figure-latex/Figure9-3-1.pdf) 
 
 Based on the initial plots, we are going to be concerned about the equal
 variance assumption initially. We can fit the interaction model and explore
@@ -559,6 +561,8 @@ plot(after~group, data=sasakipratt)
 
 ![(\#fig:Figure9-9)(ref:fig9-9)](09-caseStudies_files/figure-latex/Figure9-9-1.pdf) 
 
+\newpage
+
 
 ```r
 require(mosaic)
@@ -730,26 +734,22 @@ variables.
 
 (ref:fig9-10) Scatterplot of log-biodiversity vs log-DBCs by TJK.
 
+![(\#fig:Figure9-10)(ref:fig9-10)](09-caseStudies_files/figure-latex/Figure9-10-1.pdf) 
+
 
 ```r
 bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
 bm2 <- bm[,-c(9:10)]
 require(psych)
 pairs.panels(bm2, ellipses=F)
-```
-
-![(\#fig:Figure9-10)(ref:fig9-10)](09-caseStudies_files/figure-latex/Figure9-10-1.pdf) 
-
-```r
 bm$logSpecies <- log(bm$Species)
 bm$logDBCs <- log(bm$DBCs)
 bm$logDBFs <- log(bm$DBFs)
 bm$TJK <- factor(bm$TJK)
-scatterplot(logSpecies~StageNumber, data=bm, spread=F)
+require(car)
+scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F,
+            main="Scatterplot of log-diversity vs log-DBCs by period", lwd=2)
 ```
-
-![(\#fig:Figure9-10)(ref:fig9-10)](09-caseStudies_files/figure-latex/Figure9-10-2.pdf) 
-
 The following results will allow us to explore models similar to theirs. One
 "full" model they considered is:
 
@@ -829,28 +829,41 @@ AICs based on the top model from the first full model considered.
 
 (ref:tab9-1) Model comparision table.
 
-\begin{table}
 
-\caption{(\#tab:Table9-1)(ref:tab9-1)}
-\centering
-\begin{tabular}[t]{l|l|l|l|l|l|l}
-\hline
-Model & \$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & adj\$\textbackslash{}boldsymbol\{R\textasciicircum{}2\}\$ & df & logLik & AIC & \$\textbackslash{}boldsymbol\{\textbackslash{}Delta\}\$AIC\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBC\})\_i + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\}\$ & 0.5809 & 0.5444 & 4 & -12.652 & 33.3 & 0\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBF\})\_i + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\}\$ & 0.5199 & 0.4781 & 4 & -14.418 & 36.8 & 3.5\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBC\})\_i + \textbackslash{}varepsilon\_i\}\$ & 0.3691 & 0.3428 & 3 & -17.969 & 41.9 & 8.6\\
-\hline
-\$\textbackslash{}small\{\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_1\textbackslash{}log(\textbackslash{}text\{DBF\})\_i + \textbackslash{}varepsilon\_i\}\$ & 0.2098 & 0.1769 & 3 & -20.895 & 47.8 & 14.5\\
-\hline
-\$\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}varepsilon\_i\$ & 0 & 0 & 2 & -23.956 & 51.9 & 18.6\\
-\hline
-\$\textbackslash{}log(\textbackslash{}text\{count\})\_i=\textbackslash{}beta\_0 + \textbackslash{}beta\_2I\_\{\textbackslash{}text\{TJK\},i\} + \textbackslash{}varepsilon\_i\$ & 0.0048 & -0.03664 & 3 & -23.893 & 53.8 & 20.5\\
-\hline
-\end{tabular}
-\end{table}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Model**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     **R^2^**   **adj R^2^**&nbsp;   **df**   **logLik**&nbsp;   **AIC**   $\BD$**AIC**
+----------------------------------------------------------------------------------------------------------- ---------- -------------------- -------- ------------------ --------- --------------
+$\small{\log(\text{count})_i=\beta_0                                                                            0.5809               0.5444        4            -12.652      33.3              0
++                                                                                                                                                                                               
+\beta_1\log(\text{DBC})_i +                                                                                                                                                                     
+\beta_2I_{\text{TJK},i} +                                                                                                                                                                       
+\varepsilon_i}$                                                                                                                                                                                 
+
+$\small{\log(\text{count})_i=\beta_0                                                                            0.5199               0.4781        4            -14.418      36.8            3.5
++                                                                                                                                                                                               
+\beta_1\log(\text{DBF})_i +                                                                                                                                                                     
+\beta_2I_{\text{TJK},i} +                                                                                                                                                                       
+\varepsilon_i}$                                                                                                                                                                                 
+
+$\small{\log(\text{count})_i=\beta_0                                                                            0.3691               0.3428        3            -17.969      41.9            8.6
++                                                                                                                                                                                               
+\beta_1\log(\text{DBC})_i +                                                                                                                                                                     
+\varepsilon_i}$                                                                                                                                                                                 
+
+$\small{\log(\text{count})_i=\beta_0                                                                            0.2098               0.1769        3            -20.895      47.8           14.5
++                                                                                                                                                                                               
+\beta_1\log(\text{DBF})_i +                                                                                                                                                                     
+\varepsilon_i}$                                                                                                                                                                                 
+
+$\log(\text{count})_i=\beta_0                                                                                        0                    0        2            -23.956      51.9           18.6
++ \varepsilon_i$                                                                                                                                                                                
+
+$\log(\text{count})_i=\beta_0                                                                                   0.0048              -0.0366        3            -23.893      53.8           20.5
++ \beta_2I_{\text{TJK},i} +                                                                                                                                                                     
+\varepsilon_i$                                                                                                                                                                                  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Table: (\#tab:Table9-1) (ref:tab9-1)
 
 
 Table \@ref(tab:Table9-1) suggests some interesting leads to the worst 
