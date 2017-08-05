@@ -190,6 +190,8 @@ estimates. The next sections develop those inferential tools.
 
 ## Confidence Interval and Hypothesis tests for the slope and intercept	{#section7-2}
 
+\sectionmark{CI and Hypothesis tests for slope and intercept}
+
 Our inference techniques will resemble previous material with an 
 interest in forming confidence intervals and
 doing hypothesis testing, although the interpretation of confidence intervals

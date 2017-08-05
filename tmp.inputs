@@ -1,0 +1,5 @@
+  \usepackage[dvipsnames,prologue,table]{pstricks}
+	\usepackage{pst-text}
+	\usepackage{pst-char}
+	\usepackage{pst-grad}
+	\psset{unit=1in}

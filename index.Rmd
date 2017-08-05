@@ -1,7 +1,7 @@
 --- 
 title: "A Second Semester Statistics Course with R"
-author: "Mark Greenwood and Katherine Banner"
-date: '`r Sys.Date()`'
+author: "Mark Greenwood and Katharine Banner"
+date: 'Version 4.0 -- Published Fall 2017'
 output:
   bookdown::pdf_book: 
     keep_tex: yes
@@ -37,6 +37,10 @@ We have made every attempt to keep costs as low as possible by making it possibl
 
 Enjoy your journey from introductory to intermediate statistics!
  
+```{r echo=F,fig.align="center"}
+knitr::include_graphics("chapter0_files/creative_commons_license.png")
+```
+
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 ```{r include=FALSE}

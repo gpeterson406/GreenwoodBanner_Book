@@ -995,7 +995,7 @@ clear evidence that the assumption is violated!
 
 (ref:fig3-9) Default diagnostic plots for the linear model.
 
-```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F,fig.width=6,fig.asp=0.75}
+```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F,fig.width=8,fig.height=5}
 par(mfrow=c(2,2))
 plot(lm2,pch=16)
 ```
@@ -1334,7 +1334,7 @@ start. We will use a 5% significance level.
         size was small in each group. We need to fit the linear model to get 
         the other diagnostic plots to make an overall assessment. 
 
-        ```{r Figure3-15,fig.cap="Diagnostic plots for the toothgrowth model.",fig.height=4,fig.width=6.5}
+        ```{r Figure3-15,fig.cap="Diagnostic plots for the toothgrowth model.",fig.height=5,fig.width=8}
         m2<-lm(len~Treat,data=ToothGrowth)
         par(mfrow=c(2,2))
         plot(m2,pch=16)
@@ -1487,6 +1487,8 @@ plot(allEffects(m2))
 ```
 
 ## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
+
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
 With evidence that the true means are likely not all equal, many researchers want to know 
 which groups show evidence of differing from one another. This provides information on the

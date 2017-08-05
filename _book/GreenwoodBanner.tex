@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-08-05}
+  \date{Version 4.0 -- Published Fall 2017}
 
 \usepackage{booktabs}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -232,6 +232,8 @@ download from Montana State University's ScholarWorks repository at
 \url{https://scholarworks.montana.edu/xmlui/handle/1/2999}.
 
 Enjoy your journey from introductory to intermediate statistics!
+
+\includegraphics{chapter0_files/creative_commons_license.png}
 
 This work is licensed under the Creative Commons
 Attribution-NonCommercial-NoDerivatives 4.0 International License. To
@@ -7294,6 +7296,8 @@ data.}
 \section{Multiple (pair-wise) comparisons using Tukey's HSD and the
 compact letter display}\label{section3-6}
 
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
+
 With evidence that the true means are likely not all equal, many
 researchers want to know which groups show evidence of differing from
 one another. This provides information on the source of the overall
@@ -9264,19 +9268,19 @@ and \emph{Delivery method}.
       assumption.
     \end{itemize}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(TG2, }\DataTypeTok{pch=}\DecValTok{16}\NormalTok{,}\DataTypeTok{cex.main=}\FloatTok{0.75}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
     \begin{figure}
     \centering
     \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf}
     \caption{\label{fig:Figure4-9}Diagnostic plots for the interaction model
     for Tooth Growth.}
     \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(TG2, }\DataTypeTok{pch=}\DecValTok{16}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
   \item
     Normality of residuals:
 
@@ -9651,19 +9655,19 @@ inferences are possible because this is an observational study.
 
 
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(debt1,}\DataTypeTok{cex.lab=}\FloatTok{0.75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
 \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf}
 \caption{\label{fig:Figure4-13}Diagnostic plot for \texttt{prodebt} by income group and
 buy cigarettes/not interaction model.}
 \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(debt1)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -9711,19 +9715,20 @@ buy cigarettes/not interaction model.}
   \textbf{Validity conditions -- discussed above but with new plots for
   the additive:}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{debt1r<-}\KeywordTok{lm}\NormalTok{(prodebt}\OperatorTok{~}\NormalTok{incomegp}\OperatorTok{+}\NormalTok{cigbuy,}\DataTypeTok{data=}\NormalTok{debtc)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(debt1r,}\DataTypeTok{cex.lab=}\FloatTok{0.75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
   \begin{figure}
   \centering
   \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf}
   \caption{\label{fig:Figure4-14}Diagnostic plot for \texttt{prodebt} by
   income group and buy cigarettes/not}
   \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{debt1r<-}\KeywordTok{lm}\NormalTok{(prodebt}\OperatorTok{~}\NormalTok{incomegp}\OperatorTok{+}\NormalTok{cigbuy,}\DataTypeTok{data=}\NormalTok{debtc)}
-\KeywordTok{plot}\NormalTok{(debt1r)}
-\end{Highlighting}
-\end{Shaded}
 
   \begin{itemize}
   \item
@@ -16536,6 +16541,8 @@ tools.
 \section{Confidence Interval and Hypothesis tests for the slope and
 intercept}\label{section7-2}
 
+\sectionmark{CI and Hypothesis tests for slope and intercept}
+
 Our inference techniques will resemble previous material with an
 interest in forming confidence intervals and doing hypothesis testing,
 although the interpretation of confidence intervals for slope
@@ -22159,8 +22166,12 @@ we usually do that by fixing the other variables at their means.
 \(\text{FYGPA}\sim\text{SATV} + \text{SATM}\) model with 95\% PIs.}
 \end{figure}
 
+\sectionmark{Different intercepts for different groups}
+
 \section{Different intercepts for different groups: MLR with Indicator
 variables}\label{section8-9}
+
+\sectionmark{Different intercepts for different groups}
 
 One of the implicit assumptions up to this point was that the models
 were being applied to a single homogeneous population. In many cases, we
@@ -23640,6 +23651,8 @@ of the model.
 \section{F-tests for MLR models with quantitative and categorical
 variables and interactions}\label{section8-12}
 
+\sectionmark{F-tests for MLR models with Q and C variables and interactions}
+
 For models with multi-category \((J-2)\) categorical variables we need a
 method for deciding if all the extra complexity present in the additive
 or interaction models is necessary. We can appeal to model selection
@@ -24985,9 +24998,13 @@ encourages authors to share their data sets, making our re-analyses
 possible. Use these sections to review or to re-inforce methods from
 earlier in the book.
 
+\sectionmark{The impact of simulated chronic nitrogen deposition}
+
 \section{The impact of simulated chronic nitrogen deposition on the
 biomass and N2-fixation activity of two boreal feather
 moss--cyanobacteria associations}\label{section9-2}
+
+\sectionmark{The impact of simulated chronic nitrogen deposition}
 
 
 
@@ -25473,6 +25490,8 @@ the Tukey's HSD results printed above.
 \section{Ants learn to rely on more informative attributes during
 decision-making}\label{section9-3}
 
+\sectionmark{Ants learn to rely on more informative attributes}
+
 In \citet{Sasaki2013}, a set of ant colonies were randomly assigned to
 one of two treatments to study whether the ants could be ``trained'' to
 have a preference for or against certain attributes for potential nest
@@ -25638,6 +25657,8 @@ continue exploring.
 
 \section{Multi-variate models are essential for understanding vertebrate
 diversification in deep time}\label{section9-4}
+
+\sectionmark{understanding vertebrate diversification in deep time}
 
 \citet{Benson2012} published a paleontology study that considered
 modeling the diversity of \emph{Sauropodomorphs} across \(n=26\)

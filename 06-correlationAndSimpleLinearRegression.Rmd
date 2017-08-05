@@ -2011,7 +2011,7 @@ summary(OF1)
 
 (ref:fig6-25) Diagnostic plots for Old Faithful waiting time model.
 
-```{r Figure6-25,fig.cap="(ref:fig6-25)",fig.height=4,fig.width=6}
+```{r Figure6-25,fig.cap="(ref:fig6-25)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2))
 plot(OF1)
 ```

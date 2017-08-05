@@ -2325,8 +2325,11 @@ lines(dm1$SATM, pm1$upr, col="grey", lty=3, lwd=3)
 
 ![(\#fig:Figure8-16)(ref:fig8-16)](08-multipleLinearRegression_files/figure-latex/Figure8-16-1.pdf) 
 
+\sectionmark{Different intercepts for different groups}
 
 ## Different intercepts for different groups: MLR with Indicator variables	{#section8-9}
+
+\sectionmark{Different intercepts for different groups}
 
 One of the implicit assumptions up to this point was that the models were being
 applied to a single homogeneous population. In many cases, we take a sample
@@ -3478,6 +3481,8 @@ have varying slopes or intercepts with more than two groups we need to develop
 $F$-tests for the interaction part of the model. 
 
 ## F-tests for MLR models with quantitative and categorical variables and interactions	{#section8-12}
+
+\sectionmark{F-tests for MLR models with Q and C variables and interactions}
 
 For models with multi-category $(J-2)$ categorical variables we need a method
 for deciding if all the extra

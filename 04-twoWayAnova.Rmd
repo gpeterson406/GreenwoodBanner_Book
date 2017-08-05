@@ -965,17 +965,11 @@ tests and estimates for *Dose* and *Delivery method*.
         there is not strong evidence of a problem with the equal variance 
         assumption.
         
-        ```{r Figure4-9,fig.cap="Diagnostic plots for the interaction model for Tooth         Growth.",echo=F,fig.height=4,fig.width=6}
+        ```{r Figure4-9,fig.cap="Diagnostic plots for the interaction model for Tooth         Growth.",fig.height=5,fig.width=8}
         par(mfrow=c(2,2))
-        old.par <- par(mai=c(0.75,0.75,0.5,0.5))
         plot(TG2, pch=16,cex.main=0.75) 
         ```
-        
-        ```{r eval=F}
-        par(mfrow=c(2,2))
-        plot(TG2, pch=16) 
-        ```
-        
+
     * Normality of residuals:
     
         * The QQ-Plot in Figure \@ref(fig:Figure4-9) does not suggest a 
@@ -1237,17 +1231,11 @@ here. No causal inferences are possible because this is an observational study.
 (ref:fig4-13) Diagnostic plot for ``prodebt`` by income group and buy 
 cigarettes/not interaction model.
 
-```{r Figure4-13,fig.cap="(ref:fig4-13)",echo=F,fig.height=3.75,fig.width=6}
+```{r Figure4-13,fig.cap="(ref:fig4-13)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2))
-old.par <- par(mai=c(0.75,0.75,0.3,0.25))
 plot(debt1,cex.lab=0.75)
 ```
  
-```{r eval=F}
-par(mfrow=c(2,2))
-plot(debt1)
-```
-
 1. **Hypotheses (Two sets apply when the additive model is the focus!):**
 
     * $H_0$: No difference in means for ``prodebt`` for income groups in 
@@ -1272,18 +1260,12 @@ plot(debt1)
     
 2. **Validity conditions -- discussed above but with new plots for the additive:**
 
-    ```{r Figure4-14,fig.cap="Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not",echo=F,fig.height=3.75,fig.width=6}
+    ```{r Figure4-14,fig.cap="Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not",fig.height=5,fig.width=8}
     debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
     par(mfrow=c(2,2))
-    old.par <- par(mai=c(0.75,0.75,0.3,0.25))
     plot(debt1r,cex.lab=0.75)
     ```
 
-    ```{r eval=F}
-    debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
-    plot(debt1r)
-    ```
-    
     * Constant Variance:
     
         * In the Residuals vs Fitted and the Scale-Location plots in 

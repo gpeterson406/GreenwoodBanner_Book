@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {3.5}Guinea pig tooth growth One-Way ANOVA example}{91}{section.3.5}
 \contentsline {section}{\numberline {3.6}Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display}{97}{section.3.6}
 \contentsline {section}{\numberline {3.7}Pair-wise comparisons for Prisoner Rating data}{102}{section.3.7}
-\contentsline {section}{\numberline {3.8}Chapter Summary}{106}{section.3.8}
+\contentsline {section}{\numberline {3.8}Chapter Summary}{104}{section.3.8}
 \contentsline {section}{\numberline {3.9}Summary of important R code}{106}{section.3.9}
 \contentsline {section}{\numberline {3.10}Practice problems}{107}{section.3.10}
 \contentsline {chapter}{\numberline {4}Two-Way ANOVA}{109}{chapter.4}

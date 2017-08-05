@@ -114,7 +114,11 @@ all of these were drawn from encourages authors to share their data sets, making
 our re-analyses possible. Use these sections to review or to re-inforce methods 
 from earlier in the book.
 
+\sectionmark{The impact of simulated chronic nitrogen deposition}
+
 ## The impact of simulated chronic nitrogen deposition on the biomass and N2-fixation activity of two boreal feather moss–cyanobacteria associations	{#section9-2}
+
+\sectionmark{The impact of simulated chronic nitrogen deposition}
 
 (ref:fig9-2) Beanplot of biomass responses by treatment and species. 
 
@@ -525,6 +529,8 @@ intervals in the Tukey's HSD results printed above.
 
 ## Ants learn to rely on more informative attributes during decision-making	{#section9-3}
 
+\sectionmark{Ants learn to rely on more informative attributes}
+
 In @Sasaki2013, a set of ant colonies were randomly assigned to one
 of two treatments to study whether the ants could be "trained" to have a
 preference for or against certain attributes for potential nest sites. The
@@ -669,6 +675,8 @@ of what are called generalized linear models and are a topic for the next level
 of statistics if you continue exploring.
 
 ## Multi-variate models are essential for understanding vertebrate diversification in deep time	{#section9-4}
+
+\sectionmark{understanding vertebrate diversification in deep time}
 
 @Benson2012 published a paleontology study that considered
 modeling the diversity of *Sauropodomorphs* across $n=26$ "stage-level" time

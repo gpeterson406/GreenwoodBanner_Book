@@ -1567,6 +1567,8 @@ plot(allEffects(m2))
 
 ## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
 
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
+
 With evidence that the true means are likely not all equal, many researchers want to know 
 which groups show evidence of differing from one another. This provides information on the
 source of the overall difference that was detected and detailed information on

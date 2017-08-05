@@ -994,14 +994,14 @@ tests and estimates for *Dose* and *Delivery method*.
         there is not strong evidence of a problem with the equal variance 
         assumption.
         
-        ![(\#fig:Figure4-9)Diagnostic plots for the interaction model for Tooth         Growth.](04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf) 
-        
         
         ```r
         par(mfrow=c(2,2))
-        plot(TG2, pch=16) 
+        plot(TG2, pch=16,cex.main=0.75) 
         ```
         
+        ![(\#fig:Figure4-9)Diagnostic plots for the interaction model for Tooth         Growth.](04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf) 
+
     * Normality of residuals:
     
         * The QQ-Plot in Figure \@ref(fig:Figure4-9) does not suggest a 
@@ -1317,14 +1317,14 @@ here. No causal inferences are possible because this is an observational study.
 (ref:fig4-13) Diagnostic plot for ``prodebt`` by income group and buy 
 cigarettes/not interaction model.
 
-![(\#fig:Figure4-13)(ref:fig4-13)](04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf) 
- 
 
 ```r
 par(mfrow=c(2,2))
-plot(debt1)
+plot(debt1,cex.lab=0.75)
 ```
 
+![(\#fig:Figure4-13)(ref:fig4-13)](04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf) 
+ 
 1. **Hypotheses (Two sets apply when the additive model is the focus!):**
 
     * $H_0$: No difference in means for ``prodebt`` for income groups in 
@@ -1349,14 +1349,15 @@ plot(debt1)
     
 2. **Validity conditions -- discussed above but with new plots for the additive:**
 
-    ![(\#fig:Figure4-14)Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not](04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf) 
-
     
     ```r
     debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
-    plot(debt1r)
+    par(mfrow=c(2,2))
+    plot(debt1r,cex.lab=0.75)
     ```
     
+    ![(\#fig:Figure4-14)Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not](04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf) 
+
     * Constant Variance:
     
         * In the Residuals vs Fitted and the Scale-Location plots in 
