@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{caption}
 
+
 \definecolor{purple}{RGB}{76,0,153}
 
 % % make code-output smaller
@@ -16,17 +17,17 @@
 % 
 
 % make console-output smaller:
-  \makeatletter
-\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
-\makeatother
+%  \makeatletter
+% \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+% \makeatother
 
 
 %\setlength{\parskip}{0pt}
 
 
-\setlength{\OuterFrameSep}{-4pt}
+\setlength{\OuterFrameSep}{0pt}
 \makeatletter
-\def\preto{\@verbatim}{\topsep=5pt \partopsep=-10pt }
+\def\preto{\@verbatim}{\topsep=-10pt \partopsep=-10pt }
 \makeatother
 
 %Change third level of itemize to an open circle instead of an asterisk

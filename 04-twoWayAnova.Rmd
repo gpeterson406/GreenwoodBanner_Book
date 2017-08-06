@@ -1366,7 +1366,7 @@ columnHeaders <- c("$\\color{red}{\\text{Cig}}$\\\n $\\color{red}{\\text{Buy}}$"
       "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 4}}$",
       "$\\color{blue}{\\textbf{Income}}$\\\n $\\color{blue}{\\textbf{Group 5}}$")
 row1 <- c("$\\color{red}{\\text{0:No}}$",
-          "$\\hat{\\alpha} ={\\small 3.055}$",
+          "$\\hat{\\alpha} ={3.055}$",
           "$\\hat{\\alpha} + \\hat{\\tau}_2$\\\n $=3.055 + 0.016$\\\n $= 3.071$",
           "$\\hat{\\alpha} + \\hat{\\tau}_3$\\\n $=3.055 + 0.175$\\\n $=3.230$",
           "$\\hat{\\alpha} + \\hat{\\tau}_4$\\\n $=3.055 + 0.169$\\\n $=3.224$",

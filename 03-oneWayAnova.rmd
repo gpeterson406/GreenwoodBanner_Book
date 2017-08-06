@@ -1533,7 +1533,7 @@ $$\begin{array}{ll}
 & = 1 - 0.95^m.
 \end{array}$$
 
-Figure \ref(fig:Figure3-18) shows how the probability of having at least one false detection 
+Figure \@ref(fig:Figure3-18) shows how the probability of having at least one false detection 
 grows rapidly with the number of tests. The plot stops at 100 tests since it is effectively 
 a 100% chance of at least on false detection. It might seem like doing 100 tests is a lot, 
 but in Genetics research it is possible to consider situations where millions of tests are

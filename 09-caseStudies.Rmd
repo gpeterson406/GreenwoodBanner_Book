@@ -671,10 +671,10 @@ columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
                    "**R^2^**", "**adj R^2^**&nbsp;",
                    "**df**","**logLik**&nbsp;","**AIC**",
                    "$\\BD$**AIC**")
-cell11 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i}$"
-cell21 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i}$"
-cell31 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\varepsilon_i}$"
-cell41 <- "$\\small{\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\varepsilon_i}$"
+cell11 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
+cell21 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
+cell31 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\varepsilon_i$"
+cell41 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\varepsilon_i$"
 cell51 <- "$\\log(\\text{count})_i=\\beta_0 + \\varepsilon_i$"
 cell61 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
 
