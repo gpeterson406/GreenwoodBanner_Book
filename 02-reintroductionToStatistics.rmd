@@ -569,15 +569,16 @@ To get rid of one of the groups, we need to learn a little bit about data
 management in R. ***Brackets*** ``([, ])`` are used to modify the rows or
 columns in a data.frame with entries before the comma operating on rows and
 entries after the comma on the columns. For example, if you want to see the
-results for the 5$^{th}$ subject, you can reference the 5$^{th}$ row of the 
+results for the 5^th^ subject, you can reference the 5^th^ row of the 
 data.frame using ``[5, ]`` after the data.frame name:
 
 ```{r}
 MockJury[5,]
 ```
-We could just extract the *Years* response for the 5$^{th}$ 
+
+We could just extract the *Years* response for the 5^th^ 
 subject by incorporating information on the row and column of interest 
-(``Years`` is the 3$^{rd}$ column):
+(``Years`` is the 3^rd^ column):
 
 ```{r}
 MockJury[5,3]

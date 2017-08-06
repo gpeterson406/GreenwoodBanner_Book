@@ -89,10 +89,7 @@ require(tabplot)
 tableplot(Arthritis,select=c(Treatment,Improved,Sex,Age))
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-1-1.png" alt="(ref:fig5-1)" width="480" />
-<p class="caption">(\#fig:Figure5-1)(ref:fig5-1)</p>
-</div>
+![(\#fig:Figure5-1)(ref:fig5-1)](05-chiSquaredTests_files/figure-latex/Figure5-1-1.pdf) 
 
 The first thing we can gather from Figure \@ref(fig:Figure5-1) is that there 
 are no red cells so there were no missing
@@ -250,10 +247,7 @@ plot(Improved~Treatment, data=Arthritis,
      main="Stacked Bar Chart of Arthritis Data")
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-2-1.png" alt="(ref:fig5-2)" width="480" />
-<p class="caption">(\#fig:Figure5-2)(ref:fig5-2)</p>
-</div>
+![(\#fig:Figure5-2)(ref:fig5-2)](05-chiSquaredTests_files/figure-latex/Figure5-2-1.pdf) 
 
 The stacked bar-chart in Figure \@ref(fig:Figure5-2) displays the previous 
 conditional proportions for the groups, with
@@ -307,10 +301,7 @@ in Homogeneity and Independence tests. Homogeneity testing involves R random
 samples or subjects assigned to R groups. Independence testing involves a
 single random sample and measurements on two categorical variables. 
 
-<div class="figure">
-<img src="chapter4_files/image027.png" alt="(ref:fig5-3)"  />
-<p class="caption">(\#fig:Figure5-3)(ref:fig5-3)</p>
-</div>
+![(\#fig:Figure5-3)(ref:fig5-3)](chapter4_files/image027.png) 
 
 You will discover that the test statistics are the same for both methods, 
 which can create some desire
@@ -392,10 +383,7 @@ the null hypothesis for the *Arthritis* example, as displayed in Figure \@ref(fi
 (ref:fig5-4) Plot of what the Arthritis proportions would look like if the null 
 hypothesis had been true.
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-4-1.png" alt="(ref:fig5-4)" width="480" />
-<p class="caption">(\#fig:Figure5-4)(ref:fig5-4)</p>
-</div>
+![(\#fig:Figure5-4)(ref:fig5-4)](05-chiSquaredTests_files/figure-latex/Figure5-4-1.pdf) 
 
 Note that the proportions in the different response categories do not need to be the 
 same just that the distribution needs
@@ -575,10 +563,7 @@ affiliation and voting results.
 mosaicplot(electable) 
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-5-1.png" alt="(ref:fig5-5)" width="480" />
-<p class="caption">(\#fig:Figure5-5)(ref:fig5-5)</p>
-</div>
+![(\#fig:Figure5-5)(ref:fig5-5)](05-chiSquaredTests_files/figure-latex/Figure5-5-1.pdf) 
 
 In general, the results here are not too surprising as the respondents 
 became more heavily republican, 
@@ -602,10 +587,7 @@ Figure \@ref(fig:Figure5-5).
 (ref:fig5-6) Mosaic plot of what the 2000 election data would look 
 like if the null hypothesis of no relationship were true. 
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-6-1.png" alt="(ref:fig5-6)" width="480" />
-<p class="caption">(\#fig:Figure5-6)(ref:fig5-6)</p>
-</div>
+![(\#fig:Figure5-6)(ref:fig5-6)](05-chiSquaredTests_files/figure-latex/Figure5-6-1.pdf) 
 
 
 
@@ -690,10 +672,7 @@ table.
 (ref:fig5-7) Stacked bar chart that could occur if the null 
 hypothesis were true. 
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-7-1.png" alt="(ref:fig5-7)" width="480" />
-<p class="caption">(\#fig:Figure5-7)(ref:fig5-7)</p>
-</div>
+![(\#fig:Figure5-7)(ref:fig5-7)](05-chiSquaredTests_files/figure-latex/Figure5-7-1.pdf) 
 
 
 (ref:tab5-3) Demonstration of calculation of expected cell counts 
@@ -917,10 +896,7 @@ chisq.test(Arthpermtable)
 (ref:fig5-8) Stacked bar charts of four permuted Arthritis data sets 
 that produced $X^2$ between 0.62 and 2.38.
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-8-1.png" alt="(ref:fig5-8)" width="672" />
-<p class="caption">(\#fig:Figure5-8)(ref:fig5-8)</p>
-</div>
+![(\#fig:Figure5-8)(ref:fig5-8)](05-chiSquaredTests_files/figure-latex/Figure5-8-1.pdf) 
 
 To build the permutation-based null distribution for the $X^2$ statistic, 
 we need to collect up the test statistics ($X^{2*}$) in many of these permuted
@@ -967,10 +943,7 @@ plot(density(Tstar), main="Density curve of Tstar",
 abline(v=Tobs, col="red", lwd=3)
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-9-1.png" alt="(ref:fig5-9)" width="480" />
-<p class="caption">(\#fig:Figure5-9)(ref:fig5-9)</p>
-</div>
+![(\#fig:Figure5-9)(ref:fig5-9)](05-chiSquaredTests_files/figure-latex/Figure5-9-1.pdf) 
 
 
 
@@ -1078,10 +1051,7 @@ in each of the examples that follow.
 (ref:fig5-10) $\boldsymbol{\chi^2}$-distribution with two degrees of 
 freedom with 13.1 indicated with a vertical line. 
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-10-1.png" alt="(ref:fig5-10)" width="480" />
-<p class="caption">(\#fig:Figure5-10)(ref:fig5-10)</p>
-</div>
+![(\#fig:Figure5-10)(ref:fig5-10)](05-chiSquaredTests_files/figure-latex/Figure5-10-1.pdf) 
 
 A small side note about sample sizes is warranted here. In 
 contingency tables, especially those based
@@ -1111,10 +1081,7 @@ say about the effectiveness of the arthritis medication?
 (ref:fig5-11) Stacked bar chart of the Arthritis data comparing 
 *Treated* and *Placebo*.
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-11-1.png" alt="(ref:fig5-11)" width="480" />
-<p class="caption">(\#fig:Figure5-11)(ref:fig5-11)</p>
-</div>
+![(\#fig:Figure5-11)(ref:fig5-11)](05-chiSquaredTests_files/figure-latex/Figure5-11-1.pdf) 
 
 It seems that there is a real and important increase in the proportion 
 of patients getting improvement (*Some* or *Marked*). If the differences 
@@ -1172,10 +1139,7 @@ because all were less than 2).
 ##   Treated -1.65647289  0.06375767  1.98367320
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-12-1.png" alt="(ref:fig5-12)" width="480" />
-<p class="caption">(\#fig:Figure5-12)(ref:fig5-12)</p>
-</div>
+![(\#fig:Figure5-12)(ref:fig5-12)](05-chiSquaredTests_files/figure-latex/Figure5-12-1.pdf) 
 
 
 ```r
@@ -1276,10 +1240,7 @@ levels(election$VOTEF) <- c("Gore","Bush","Other")
 tableplot(election, select=c(VOTEF,PARTY,EDUC,SEX))
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-13-1.png" alt="(ref:fig5-13)" width="480" />
-<p class="caption">(\#fig:Figure5-13)(ref:fig5-13)</p>
-</div>
+![(\#fig:Figure5-13)(ref:fig5-13)](05-chiSquaredTests_files/figure-latex/Figure5-13-1.pdf) 
 
 In Figure \@ref(fig:Figure5-13), we can see many missing ``VOTEF``
 responses but also some missingness in ``PARTY`` and ``EDUC`` 
@@ -1308,10 +1269,7 @@ election2 <- na.omit(election[,c("VOTEF","PARTY","EDUC","SEX")])
 tableplot(election2, select=c(VOTEF,PARTY,EDUC,SEX), sort=1)
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-14-1.png" alt="(ref:fig5-14)" width="480" />
-<p class="caption">(\#fig:Figure5-14)(ref:fig5-14)</p>
-</div>
+![(\#fig:Figure5-14)(ref:fig5-14)](05-chiSquaredTests_files/figure-latex/Figure5-14-1.pdf) 
  
 
 Figure \@ref(fig:Figure5-14) shows us that there are clear differences
@@ -1457,10 +1415,7 @@ associational, depending on how the subjects ended up in the groups.].
     to the right which reflects how little area is to the right of 
     that value in the distribution.
     
-    <div class="figure">
-    <img src="05-chiSquaredTests_files/figure-html/Figure5-15-1.png" alt="Plot of $\boldsymbol{\chi^2}$-distribution with 12 degrees of freedom." width="288" />
-    <p class="caption">(\#fig:Figure5-15)Plot of $\boldsymbol{\chi^2}$-distribution with 12 degrees of freedom.</p>
-    </div>
+    ![(\#fig:Figure5-15)Plot of $\boldsymbol{\chi^2}$-distribution with 12 degrees of freedom.](05-chiSquaredTests_files/figure-latex/Figure5-15-1.pdf) 
 
     * If you want to repeat this calculation directly you get a similarly 
     tiny value that R reports as 1.5e-155. Again, reporting less than 
@@ -1512,10 +1467,7 @@ associational, depending on how the subjects ended up in the groups.].
     abline(v=Tobs, col="red", lwd=3)
     ```
     
-    <div class="figure">
-    <img src="05-chiSquaredTests_files/figure-html/Figure5-16-1.png" alt="Permutation distribution of $X^2$ for the election data. Observed value of 763 not displayed." width="480" />
-    <p class="caption">(\#fig:Figure5-16)Permutation distribution of $X^2$ for the election data. Observed value of 763 not displayed.</p>
-    </div>
+    ![(\#fig:Figure5-16)Permutation distribution of $X^2$ for the election data. Observed value of 763 not displayed.](05-chiSquaredTests_files/figure-latex/Figure5-16-1.pdf) 
 
     * The last results tells us that there were no permuted data sets 
     that produced larger $X^2\text{'s}$ than the observed $X^2$ in 1,000
@@ -1568,10 +1520,7 @@ And visually using:
 (ref:fig5-17) Mosaic plot with shading based on standardized residuals
 for the election
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-17-1.png" alt="(ref:fig5-17)" width="480" />
-<p class="caption">(\#fig:Figure5-17)(ref:fig5-17)</p>
-</div>
+![(\#fig:Figure5-17)(ref:fig5-17)](05-chiSquaredTests_files/figure-latex/Figure5-17-1.pdf) 
 
 
 ```r
@@ -1636,10 +1585,7 @@ require(tabplot)
 tableplot(cheating, sort=GPA)
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-18-1.png" alt="(ref:fig5-18)" width="480" />
-<p class="caption">(\#fig:Figure5-18)(ref:fig5-18)</p>
-</div>
+![(\#fig:Figure5-18)(ref:fig5-18)](05-chiSquaredTests_files/figure-latex/Figure5-18-1.pdf) 
 
 We can explore some interesting questions about the relationships between 
 these variables. The
@@ -1714,10 +1660,7 @@ cheatlietable
 tableplot(cheating, sort=liar, select=c(liar,copier))
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-19-1.png" alt="(ref:fig5-19)" width="480" />
-<p class="caption">(\#fig:Figure5-19)(ref:fig5-19)</p>
-</div>
+![(\#fig:Figure5-19)(ref:fig5-19)](05-chiSquaredTests_files/figure-latex/Figure5-19-1.pdf) 
 
 Unfortunately, there were very few responses in some combinations of 
 categories even with $N=319$. For example, there was only one response
@@ -1743,10 +1686,7 @@ levels(cheating$copier2) <- c("None","ExamorPaper","ExamorPaper","CopyBoth")
 tableplot(cheating, sort=liar2, select=c(liar2,copier2))
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-20-1.png" alt="(ref:fig5-20)" width="480" />
-<p class="caption">(\#fig:Figure5-20)(ref:fig5-20)</p>
-</div>
+![(\#fig:Figure5-20)(ref:fig5-20)](05-chiSquaredTests_files/figure-latex/Figure5-20-1.pdf) 
 
 ```r
 cheatlietable <- tally(~liar2+copier2, data=cheating)
@@ -1838,10 +1778,7 @@ single sample was taken from the population):
     isn't quite the right distribution for the test statistic since our 
     expected cell count condition was violated.
 
-    <div class="figure">
-    <img src="05-chiSquaredTests_files/figure-html/Figure5-21-1.png" alt="Plot of $\boldsymbol{\chi^2}$-distribution with 4 degrees of freedom." width="336" />
-    <p class="caption">(\#fig:Figure5-21)Plot of $\boldsymbol{\chi^2}$-distribution with 4 degrees of freedom.</p>
-    </div>
+    ![(\#fig:Figure5-21)Plot of $\boldsymbol{\chi^2}$-distribution with 4 degrees of freedom.](05-chiSquaredTests_files/figure-latex/Figure5-21-1.pdf) 
 
     * If you want to repeat the p-value calculation directly:
     
@@ -1894,10 +1831,7 @@ single sample was taken from the population):
     abline(v=Tobs, col="red", lwd=3)
     ```
     
-    <div class="figure">
-    <img src="05-chiSquaredTests_files/figure-html/Figure5-22-1.png" alt="Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line)." width="480" />
-    <p class="caption">(\#fig:Figure5-22)Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line).</p>
-    </div>
+    ![(\#fig:Figure5-22)Plot of permutation distributions for cheat/lie results with observed value of 13.24 (bold, vertical line).](05-chiSquaredTests_files/figure-latex/Figure5-22-1.pdf) 
 
     
     
@@ -2011,10 +1945,7 @@ tally(~stype, data=apistrat) #Sample counts
 (ref:fig5-23) Boxplot and beanplot of the API growth scores by level 
 of school (E for elementary, M for Middle, and H for High school).
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-23-1.png" alt="(ref:fig5-23)" width="576" />
-<p class="caption">(\#fig:Figure5-23)(ref:fig5-23)</p>
-</div>
+![(\#fig:Figure5-23)(ref:fig5-23)](05-chiSquaredTests_files/figure-latex/Figure5-23-1.pdf) 
 
 
 ```r
@@ -2061,10 +1992,7 @@ Anova(m1)
 plot(m1, which=2)
 ```
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-24-1.png" alt="(ref:fig5-24)" width="528" />
-<p class="caption">(\#fig:Figure5-24)(ref:fig5-24)</p>
-</div>
+![(\#fig:Figure5-24)(ref:fig5-24)](05-chiSquaredTests_files/figure-latex/Figure5-24-1.pdf) 
 
 One way to get around the normality assumption is to use a method 
 that does not assume the responses
@@ -2119,10 +2047,7 @@ created in the new ``growthcut`` variable:
 (ref:fig5-25) Stacked bar chart of the growth category responses
 by level of school.
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-25-1.png" alt="(ref:fig5-25)" width="576" />
-<p class="caption">(\#fig:Figure5-25)(ref:fig5-25)</p>
-</div>
+![(\#fig:Figure5-25)(ref:fig5-25)](05-chiSquaredTests_files/figure-latex/Figure5-25-1.pdf) 
 
 
 ```r
@@ -2239,10 +2164,7 @@ chisq.test(growthtable)$residuals
 (ref:fig5-26) Mosaic plot of the API Growth rate categories versus 
 level of the school with shading for size of standardized residuals. 
 
-<div class="figure">
-<img src="05-chiSquaredTests_files/figure-html/Figure5-26-1.png" alt="(ref:fig5-26)" width="576" />
-<p class="caption">(\#fig:Figure5-26)(ref:fig5-26)</p>
-</div>
+![(\#fig:Figure5-26)(ref:fig5-26)](05-chiSquaredTests_files/figure-latex/Figure5-26-1.pdf) 
 
 
 ```r
@@ -2306,8 +2228,8 @@ The main components of R code used in this chapter follow with components
 to modify in red where ``y`` is a response variable and ``x`` is a predictor 
 are easily identified:
 
-* <font color='red'>TABLENAME</font> <- tally(~<font color='red'>x</font> +
-<font color='red'>y</font>, data=<font color='red'>DATASETNAME</font>, margins=F)
+* \textcolor{red}{TABLENAME} <- tally(~\textcolor{red}{x} +
+\textcolor{red}{y}, data=\textcolor{red}{DATASETNAME}, margins=F)
     
     * This function requires that the ``mosaic `` package has been loaded.
 
@@ -2317,28 +2239,28 @@ are easily identified:
     * ``margins=T`` is used if want to display row, column, and 
     table totals. 
 
-* plot(<font color='red'>y</font>~
-<font color='red'>x</font>, data=<font color='red'>DATASETNAME</font>)
+* plot(\textcolor{red}{y}~
+\textcolor{red}{x}, data=\textcolor{red}{DATASETNAME})
 
     * Makes a stacked bar chart useful for homogeneity test situations.
     
-* mosaicplot(<font color='red'>TABLENAME</font>)
+* mosaicplot(\textcolor{red}{TABLENAME})
 
     * Makes a mosaic plot useful for finding patterns in the table 
     in independence test situations.
     
-* chisq.test(<font color='red'>TABLENAME</font>)
+* chisq.test(\textcolor{red}{TABLENAME})
 
     * Provides $X^2$ and p-values based on the 
     $\boldsymbol{\chi^2}$-distribution with $(R-1)(C-1)$ degrees of 
     freedom.
     
-* chisq.test(<font color='red'>TABLENAME</font>)$expected
+* chisq.test(\textcolor{red}{TABLENAME})$expected
 
     * Provides expected cell counts. 
 
-* pchisq(<font color='red'>X-SQUARED</font>, 
-df=(<font color='red'>R</font>- 1)*(<font color='red'>C</font>- 1), lower.tail=F)
+* pchisq(\textcolor{red}{X-SQUARED}, 
+df=(\textcolor{red}{R}- 1)*(\textcolor{red}{C}- 1), lower.tail=F)
 
     * Provides p-value from $\boldsymbol{\chi^2}$-distribution with 
     $(R-1)(C-1)$ degrees of freedom for observed test statistic.
@@ -2346,15 +2268,15 @@ df=(<font color='red'>R</font>- 1)*(<font color='red'>C</font>- 1), lower.tail=F
     * See Section \@ref(section5-5) for code related to finding a 
     permutation-based p-value. 
     
-* chisq.test(<font color='red'>TABLENAME</font>)$residuals^2
+* chisq.test(\textcolor{red}{TABLENAME})$residuals^2
 
     * Provides $X^2$ contributions from each cell in table.
     
-* chisq.test(<font color='red'>TABLENAME</font>)$residuals
+* chisq.test(\textcolor{red}{TABLENAME})$residuals
 
     * Provides standardized residuals.
     
-* mosaicplot(<font color='red'>TABLENAME</font>, shade=T)
+* mosaicplot(\textcolor{red}{TABLENAME}, shade=T)
 
     * Provides a mosaic plot with shading based on standardized residuals.
 

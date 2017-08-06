@@ -13,7 +13,7 @@ output:
     includes:
       in_header: preamble.tex
     papersize: letter
-    geometry: margin=1in
+    geometry: innermargin=1.25in,outermargin=0.75in,top=1in,bottom=1in
     colorlinks: true
     fig_width: 5
     fig_height: 3.5

@@ -16,7 +16,7 @@ methods discussed in the text. As a text primarily designed for a second
 statistics course, it presumes that you have had an introductory statistics
 course. There are now many different varieties of introductory statistics from
 traditional, formula-based courses (called "consensus" curriculum courses) to
-more modern, computing-intensity courses that use randomization ideas to try to
+more modern, compute-intensive courses that use randomization ideas to try to
 enhance learning of basic statistical methods. We are not going to presume that
 you have had a particular "flavor" of introductory statistics or that you had
 your introductory statistics out of a particular text, just that you have had a
@@ -78,10 +78,7 @@ types of conclusions that are appropriate based on the design of the study.
 
 (ref:fig1) Flow chart of methods
 
-<div class="figure">
-<img src="chapter0_files/image002.png" alt="(ref:fig1)"  />
-<p class="caption">(\#fig:Figure1)(ref:fig1)</p>
-</div>
+![(\#fig:Figure1)(ref:fig1)](chapter0_files/image002.png) 
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
@@ -114,7 +111,8 @@ quantitative response. The ***Two-Way ANOVA*** (Chapter \@ref(chapter3))
 considers situations with two categorical explanatory variables and a 
 quantitative response. To make
 this somewhat concrete, suppose we are interested in assessing differences in, 
-say, the *yield* of wheat from a field based on the amount of *fertilizer* applied(none, low, or high) and *variety* of wheat (two types). Here, *yield* is a quantitative response variable that might be measured in bushels per acre and
+say, the *yield* of wheat from a field based on the amount of *fertilizer* applied
+(none, low, or high) and *variety* of wheat (two types). Here, *yield* is a quantitative response variable that might be measured in bushels per acre and
 there are two categorical explanatory variables, *fertilizer*, with 3 levels, and *variety*, with two levels. In this material, we introduce the idea of an
 ***interaction*** between the two explanatory variables: the relationship between one categorical
 variable and the mean of the response changes depending on the levels of the
@@ -199,7 +197,7 @@ associated with differences but because students self-selected the group they
 ended up in, we can't say that the tutoring caused the differences. The other
 aspect of scope of inference concerns random sampling: If the data were obtained
 using a random sampling mechanism, then our inferences can be safely extended
-to the population that the sample was taken from. However, if we have non-random
+to the population that the sample was taken from. However, if we have a non-random
 sample, our inference can only apply to the sample collected. In the previous
 example, the difference would be studying a random sample of students from the
 population of, say, Introductory Statistics students at a university vs
@@ -267,7 +265,7 @@ are updated frequently (up to four times a year) and if you downloaded either
 more than a few months previously, you should download the up-to-date versions, 
 especially if something you are trying to do is not working. Sometimes code
 will not work in older versions of R and sometimes old code won't work in new
-versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 3$^{rd}$ version in
+versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 3^rd^ version in
 three years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
@@ -296,10 +294,7 @@ plots that you make and requests for "Help" on specific functions.
 
 (ref:fig2) Initial RStudio layout
 
-<div class="figure">
-<img src="chapter0_files/image003.png" alt="(ref:fig2)"  />
-<p class="caption">(\#fig:Figure2)(ref:fig2)</p>
-</div>
+![(\#fig:Figure2)(ref:fig2)](chapter0_files/image003.png) 
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
 (``>``) in the lower left "console" panel, type 3+4, and then hit enter. It
@@ -310,12 +305,12 @@ should look like this:
 [1] 7
 ```
 
-You can do more interesting calculations, like finding the mean of the numbers 3, 5, 7, and 8 by adding
-them up and dividing by 4:
+You can do more interesting calculations, like finding the mean of the 
+numbers -3, 5, 7, and 8 by adding them up and dividing by 4:
 
 ```r
 > (-3+5+7+8)/4
-[1] 4. 25
+[1] 4.25
 ```
 
 Note that the parentheses help R to figure out your desired order of operations. If you drop that grouping, you get
@@ -329,9 +324,13 @@ a very different (and wrong!) result:
 We could estimate the standard deviation similarly using the formula you might remember from introductory
 statistics, but that will only work in very limited situations. To use the real
 power of R this semester, we need to work with data sets that store the
-Basically, we need to store observations in named vectors (one dimensional arrays) that contain a list of the observations. To create a vector containing
-the four numbers and assign it to a variable named *variable1*, we need to create a vector using the function 
-``c`` which means "combine the items" that follow, if they are inside parentheses and have commas separating the values, 
+observations for our subjects in *variables*.
+Basically, we need to store observations in named vectors (one dimensional 
+arrays) that contain a list of the observations. To create a vector containing
+the four numbers and assign it to a variable named *variable1*, we need to 
+create a vector using the function 
+``c`` which means "combine the items" that follow, if they are inside 
+parentheses and have commas separating the values, 
 as follows:
 
 ```r
@@ -339,23 +338,30 @@ as follows:
 [1] -3 5 7 8
 ```
 
-To get this vector stored in a variable called *variable1* we need to use the assignment operator, ``<-`` (read as "stored as") that assigns the information on the right into the variable that you are creating on the left. 
+To get this vector stored in a variable called *variable1* we need to 
+use the assignment operator, ``<-`` (read as "stored as") that assigns 
+the information on the right into the variable that you are creating on 
+the left. 
 
 ```r
 > variable1 <- c(-3, 5, 7, 8)
 ```
 
-In R, the assignment operator, ``<-``, is created by typing a "less than" symbol ``<`` followed by a "minus" sign (``-``)
-ever want to see what numbers are residing in an object in R, just type its name and hit *enter*. You can see how that variable contains the same information that was initially generated by 
-``c(-3, 5, 7, 8)`` but is easier to access since we just need the text for the variable name representing that vector. 
-
+In R, the assignment operator, ``<-``, is created by typing a 
+"less than" symbol ``<`` followed by a "minus" sign (``-``)
+**without a space between them**. If you
+ever want to see what numbers are residing in an object in R, just type 
+its name and hit *enter*. You can see how that variable contains the same 
+information that was initially generated by 
+``c(-3, 5, 7, 8)`` but is easier to access since we just need the text 
+for the variable name representing that vector. 
 
 ```r
 > variable1
 [1] -3 5 7 8
 ```
 
-With the data stored in a variable, wean use functions such as
+With the data stored in a variable, we can use functions such as
 ``mean`` and
 ``sd`` to find the mean and standard deviation of the observations contained in
 ``variable1`` : 
@@ -380,21 +386,22 @@ make sure that observations are in the rows and the names of variables are in
 the columns and that there is no "extra stuff" in the spreadsheet. If you have
 missing observations, they should be represented with blank cells. The file should
 be saved as a ".csv" file (stands for comma-separated values although Excel
-calls it "CSV (Comma Delimited)", which basically strips off some of the junk
+calls it "CSV (Comma Delimited)"), which basically strips off some of the junk
 that Excel adds to the necessary information in the file. Excel will tell you that
 this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
 directly into R but to handle multiple sheets they are more complicated and not 
 as stable across operating systems as the simpler version we recommend.]. 
 
-With data set converted to a CSV file, we need to read the data set into R. There
+With a data set converted to a CSV file, we need to read the data set into R. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
-the "Import Data Set" button in the upper right "Environment" panel as
-indicated in Figure \@ref(fig:Figure2)) or modifying the 
-
-``read.csv`` function to find the file of interest. To practice this, you can 
-download an Excel (.xls) file from http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
-31 males that volunteered for a study on methods for measuring fitness [@Westfall1993]. 
+the "Import Dataset" button in the upper right "Environment" panel as
+indicated in Figure \@ref(fig:Figure2)) or modifying the ``read.csv`` 
+function to find the file of interest. To practice this, you can 
+download an Excel (.xls) file from
+http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
+that contains observations on 31 males that volunteered for a study on methods 
+for measuring fitness [@Westfall1993]. 
 In the spreadsheet, you will find a data set that
 starts and ends with the following information (only results for Subjects 1, 2, 
 30, and 31 shown here):
@@ -423,11 +430,11 @@ during 1.5 mile run (*RunPulse*, in beats per minute), resting pulse rate
 (*RestPulse*, beats per minute), Body Weight (*BodyWeight*, in kg), and *Age* 
 (in years). Open the file in Excel or equivalent software and then save it as 
 a .csv file in a location you can find on your computer. Then go to RStudio 
-and click on **File** , then **Import Dataset** , then **From CSV...**^[If
+and click on **File**, then **Import Dataset**, then **From CSV...**^[If
 you are having trouble getting the file converted and read into R, copy and 
 run the following code: 
 ``treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
-Find your file and check "**Import**". R will store the data set as an object named 
+Find your file and click "**Import**". R will store the data set as an object named 
 whatever the .csv file was named. You could use another name as well, but it is 
 often easiest just to keep the data
 set name in R related to the original file name. You should see some text appear
@@ -451,10 +458,7 @@ code (``View(treadmill``)).
 
 (ref:fig3) RStudio with initial data set loaded
 
-<div class="figure">
-<img src="chapter0_files/image005.png" alt="(ref:fig3)"  />
-<p class="caption">(\#fig:Figure3)(ref:fig3)</p>
-</div>
+![(\#fig:Figure3)(ref:fig3)](chapter0_files/image005.png) 
 
 Just directly typing (or using) a line of code like this is actually the 
 other way that we can read in
@@ -476,49 +480,30 @@ window in RStudio to get all the columns to display
 in a single row which can be performed by dragging the gray bars that separate
 the panels.
 
-
-```r
-head(treadmill)
-```
+\small
 
 ```
-##   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse
-## 1       1       60.05               186    8.63      170        48
-## 2       2       59.57               172    8.17      166        40
-## 3       3       54.62               155    8.92      146        48
-## 4       4       54.30               168    8.65      156        45
-## 5       5       51.85               170   10.33      166        50
-## 6       6       50.55               155    9.93      148        49
-##   BodyWeight Age
-## 1      81.87  38
-## 2      68.15  42
-## 3      70.87  50
-## 4      85.84  44
-## 5      83.12  54
-## 6      59.08  57
-```
+> head(treadmill)
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
+1       1       60.05               186    8.63      170        48      81.87  38
+2       2       59.57               172    8.17      166        40      68.15  42
+3       3       54.62               155    8.92      146        48      70.87  50
+4       4       54.30               168    8.65      156        45      85.84  44
+5       5       51.85               170   10.33      166        50      83.12  54
+6       6       50.55               155    9.93      148        49      59.08  57
 
-```r
-tail(treadmill)
-```
-
-```
-##    Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse
-## 26      26       44.61               182   11.37      178        62
-## 27      27       40.84               172   10.95      168        57
-## 28      28       39.44               176   13.08      174        63
-## 29      29       39.41               176   12.63      174        58
-## 30      30       39.20               172   12.88      168        44
-## 31      31       37.39               192   14.03      186        56
-##    BodyWeight Age
-## 26      89.47  44
-## 27      69.63  51
-## 28      81.42  44
-## 29      73.37  57
-## 30      91.63  54
-## 31      87.66  45
+> tail(treadmill)
+   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
+26      26       44.61               182   11.37      178        62      89.47  44
+27      27       40.84               172   10.95      168        57      69.63  51
+28      28       39.44               176   13.08      174        63      81.42  44
+29      29       39.41               176   12.63      174        58      73.37  57
+30      30       39.20               172   12.88      168        44      91.63  54
+31      31       37.39               192   14.03      186        56      87.66  45
 ```
  
+\normalsize
+
 While not always required, for many of the analyses, we will tap into a large suite
 of additional functions available in R packages by "installing" (basically
 downloading) and then "loading" the packages. There are some packages that we
@@ -537,9 +522,8 @@ doesn't, repeat the previous steps to install it.
 After installing the package, we need to load it to make it active in a given work
 session. Go to the command prompt and type (or copy and paste) ``require(mosaic)`` :
 
-
-```r
-require(mosaic)
+```
+> require(mosaic)
 ```
 
 You may see a warning message about versions of the package and versions of 
@@ -559,11 +543,11 @@ To help you go from basic to intermediate R usage and especially to help with mo
 complicated problems, you will want to learn how to manage and save your R code. 
 The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
-start a new ".R"" file to store your code, click on **File**, then 
+start a new ".R" file to store your code, click on **File**, then 
 **New File**, then **R Script**. This will create a blank page to enter and 
 edit code -- then save the file as MyFileName.R in your preferred location. 
 Saving your code will mean that you can return to where you
-last were working by simply re-running the saved script file. With code in the
+were working last by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
 of code and hit the "Run" button on the upper part of the panel. It will appear
 in the console with results just like what you would obtain if you typed it
@@ -576,10 +560,7 @@ section of code using the "Run" button.
 
 (ref:fig4) RStudio with highlighted code run
 
-<div class="figure">
-<img src="chapter0_files/image006.png" alt="(ref:fig4)"  />
-<p class="caption">(\#fig:Figure4)(ref:fig4)</p>
-</div>
+![(\#fig:Figure4)(ref:fig4)](chapter0_files/image006.png) 
 
 ##Basic summary statistics, histograms, and boxplots using R
 
@@ -597,54 +578,37 @@ can use a $ between the data.frame name and the name of the variable of
 interest, generically as ``dataframename$variablename``. To identify the 
 ``RunTime`` variable here it would be ``treadmill$RunTime``. In the command line it would look like:
 
-
-```r
-treadmill$RunTime
+```
+> treadmill$RunTime
+[1]  8.63  8.17  8.92  8.65 10.33  9.93 10.13 10.08  9.22  8.95 10.85  9.40 11.50 10.50
+[15] 10.60 10.25 10.00 11.17 10.47 11.95  9.63 10.07 11.08 11.63 11.12 11.37 10.95 13.08
+[29] 12.63 12.88 14.03
 ```
 
-```
-##  [1]  8.63  8.17  8.92  8.65 10.33  9.93 10.13 10.08  9.22  8.95 10.85
-## [12]  9.40 11.50 10.50 10.60 10.25 10.00 11.17 10.47 11.95  9.63 10.07
-## [23] 11.08 11.63 11.12 11.37 10.95 13.08 12.63 12.88 14.03
-```
 Just as in the previous section, we can generate summary statistics using functions like ``mean`` and ``sd`` by running them on a specific variable:
 
-
-```r
-mean(treadmill$RunTime)
 ```
-
-```
-## [1] 10.58613
-```
-
-```r
-sd(treadmill$RunTime)
-```
-
-```
-## [1] 1.387414
+> mean(treadmill$RunTime)
+[1] 10.58613
+> sd(treadmill$RunTime)
+[1] 1.387414
 ```
 And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
 mean and SD are only appropriate summaries if the distribution is roughly
 ***symmetric*** (both sides of the distribution are approximately the same). The 
 ``mosaic``  package provides a useful function called ``favstats`` that provides 
-the mean and SD as well as the ***5 number summary*** : 
-the minimum (``min``), the first quartile (``Q1``, the 25$^{th}$ percentile), 
-the median (50$^{th}$ percentile), the third quartile (``Q3`` , the 75$^{th}$
+the mean and SD as well as the ***5 number summary***: 
+the minimum (``min``), the first quartile (``Q1``, the 25^th^ percentile), 
+the median (50^th^ percentile), the third quartile (``Q3``, the 75^th^
 percentile), and the maximum (``max``). It also provides the number of 
 observations (``n``) which was 31, as noted above, and a count of whether any 
 missing values were encountered (``missing``), which was 0 here since all 
 subjects had measurements available on this variable. 
 
-
-```r
-favstats(treadmill$RunTime)
 ```
-
-```
-##   min   Q1 median    Q3   max     mean       sd  n missing
-##  8.17 9.78  10.47 11.27 14.03 10.58613 1.387414 31       0
+> favstats(treadmill$RunTime)
+  min   Q1 median    Q3   max     mean       sd  n missing
+ 8.17 9.78  10.47 11.27 14.03 10.58613 1.387414 31       0
 ```
 
 We are starting to get somewhere with understanding that the runners were 
@@ -653,38 +617,37 @@ somewhat fit with worst runner covering 1.5 miles in 14 minutes
 and the best running at a 5.4 minute mile pace. The limited variation in the
 results suggests that the sample was obtained from a restricted group with
 somewhat common characteristics. When you explore the ages and weights of the
-subjects in the Practice Problems in Section 0.5, you will get even more
+subjects in the Practice Problems in Section \@ref(section1-6), you will get even more
 information about how similar all the subjects in this study were. 
 
 A graphical display of these results will help us to assess the shape 
 of the distribution of run times -- including considering the potential for the presence of a ***skew*** (whether the right or left tail of the distribution 
-is noticeably more spread out with left skew meaning that the left tail 
+is noticeably more spread out, with left skew meaning that the left tail 
 is more spread out than the right tail) and ***outliers*** 
 (unusual observations). A ***histogram *** is a good place to start.
 Histograms display connected bars with counts of observations defining
 the height of bars based on a set of bins of values of the quantitative variable. 
 We will apply the ``hist`` function to the ``RunTime`` variable, which produces Figure \@ref(fig:Figure5). 
 
+```
+> hist(treadmill$RunTime)
+```
+
 (ref:fig5) Histogram of Run Times #(minutes) of n=31 subjects in Treadmill study.
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure5-1.png" alt="(ref:fig5)" width="480" />
-<p class="caption">(\#fig:Figure5)(ref:fig5)</p>
-</div>
+![(\#fig:Figure5)(ref:fig5)](01-preface_files/figure-latex/Figure5-1.pdf) 
 
 
-I used the **Export** button found above the plot, followed by **Copy to 
-Clipboard** and clicking on the **Copy Plot** button. Then if you open your
+You can save this plot by clicking on the **Export** button found above 
+the plot, followed by **Copy to Clipboard** and clicking on the 
+**Copy Plot** button. Then if you open your
 favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
 parts of this process in the screen grab in Figure \@ref(fig:Figure6). 
 
 (ref:fig6) RStudio while in the process of copying the histogram
 
-<div class="figure">
-<img src="chapter0_files/image010.png" alt="(ref:fig6)"  />
-<p class="caption">(\#fig:Figure6)(ref:fig6)</p>
-</div>
+![(\#fig:Figure6)(ref:fig6)](chapter0_files/image010.png) 
 
 You can also directly save the figures as separate files using 
 **Save as Image** or **Save as PDF**and then insert them into your word 
@@ -697,17 +660,13 @@ can override the default options if we desire. One option we can modify here is
 to add labels to the bars to be able to see exactly how many observations fell
 into each bar. Specifically, we can turn the ``labels`` option "on" by making it true ("T") by adding ``labels=T`` to the previous call to the ``hist`` function, separated by a comma: 
 
-(ref:fig7) Histogram of #Run Times with counts in bars labeled.
-
-
-```r
-hist(treadmill$RunTime, labels=T)
+```
+> hist(treadmill$RunTime, labels=T)
 ```
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure7-1.png" alt="(ref:fig7)" width="384" />
-<p class="caption">(\#fig:Figure7)(ref:fig7)</p>
-</div>
+(ref:fig7) Histogram of #Run Times with counts in bars labeled.
+
+![(\#fig:Figure7)(ref:fig7)](01-preface_files/figure-latex/Figure7-1.pdf) 
 
 
 Based on this histogram, it does not appear that there any outliers in the responses
@@ -727,20 +686,17 @@ observations that are within $1.5*$IQR of the upper and lower quartiles. The *bo
 components of the boxplot, produce the numerical summary to help you understand 
 what happened.]. Looking back at the summary statistics above, Q1=9.78 and Q3=11.27, providing an IQR of:
 
-
-```r
-IQR <- 11.27 - 9.78
+```
+> IQR <- 11.27 - 9.78
+> IQR
+[1] 1.49
 ```
 
 One observation (the maximum value of 14.03) is indicated as a potential outlier based on this result by being larger than Q3 $+1.5*$IQR, which was 13.505:
 
-
-```r
+```
 11.27 + 1.5*IQR
-```
-
-```
-## [1] 13.505
+[1] 13.505
 ```
 
 The boxplot also shows a slight indication of a right skew (skew towards larger values) with the distance from the minimum to the median being smaller than the
@@ -750,14 +706,10 @@ but worth noting.
 
 (ref:fig8) Boxplot of 1.5 mile Run Times.
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure8-1.png" alt="(ref:fig8)" width="384" />
-<p class="caption">(\#fig:Figure8)(ref:fig8)</p>
-</div>
+![(\#fig:Figure8)(ref:fig8)](01-preface_files/figure-latex/Figure8-1.pdf) 
 
-
-```r
-boxplot(treadmill$RunTime)
+```
+> boxplot(treadmill$RunTime)
 ```
 
 While the default boxplot is fine, it fails to provide good graphical labels, 
@@ -770,15 +722,11 @@ be assigned into the options ``ylab`` (for y-axis) or ``main``
 
 (ref:fig9) Boxplot of Run Times with improved labels.
 
-<div class="figure">
-<img src="01-preface_files/figure-html/Figure9-1.png" alt="(ref:fig9)" width="384" />
-<p class="caption">(\#fig:Figure9)(ref:fig9)</p>
-</div>
+![(\#fig:Figure9)(ref:fig9)](01-preface_files/figure-latex/Figure9-1.pdf) 
 
-
-```r
-boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)", 
-        main="Boxplot of the Run Times of n=31 participants")
+```
+> boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)", 
+          main="Boxplot of the Run Times of n=31 participants")
 ```
 
 Throughout the book, we will often use extra options to make figures that are easier for you to understand. There
@@ -799,7 +747,7 @@ that follow in the book. The main reason to mention this is that you will see a
 change in formatting of the R code and output from here forward as you will no
 longer see the command prompt (">") with the code. The output will be
 flagged by having two "##"'s before it. For example, the summary statistics for
-the *RunTime* variable from ``favstats` function would look like:
+the *RunTime* variable from ``favstats`` function would look like:
 
 
 ```r
@@ -855,47 +803,48 @@ from your previous statistics experience(s).
 
 To help you learn and use R, there is a section highlighting the most important 
 R code used near the end of each
-chapter. The dark text will never change but the lighter (red) text will need
+chapter. The bold text will never change but the 
+lighter ALL CAPS  text (red in the online or digital version) will need
 to be customized to your particular application. The sub-bullet for each
 function will discuss the use of the function and pertinent options or packages
 required. You can use this as a guide to finding the function names and some
 hints about options that will help you to get the code to work or you can
 revisit the worked examples using each of the functions. 
 
-* <font color='red'>FILENAME</font><- read.csv(<font color='red'>"path to csv file/FILENAME.csv"</font>)
+* \textcolor{red}{FILENAME} ``<-`` **read.csv(**\textcolor{red}{"path to csv file/FILENAME.csv"}**)**
 
     * Can be generated using "Import Dataset" button or by modifying this text. 
 
-* <font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>
+* \textcolor{red}{DATASETNAME}**$**\textcolor{red}{VARIABLENAME}
 
     * To access a particular variable in a data.frame called DATASETNAME, use 
     a $ and then the VARIABLENAME. 
 
-* head(<font color='red'>DATASETNAME</font>)
+* **head(**\textcolor{red}{DATASETNAME}**)**
 
     * Provides a list of the first few rows of the data set for all the 
     variables in it. 
 
-* mean(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
+* **mean(**\textcolor{red}{DATASETNAME}**$**\textcolor{red}{VARIABLENAME}**)**
 
     * Calculates the mean of the observations in a variable. 
 
-* sd(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
+* **sd(**\textcolor{red}{DATASETNAME}**$**\textcolor{red}{VARIABLENAME}**)**
 
     * Calculates the SD of the observations in a variable. 
 
-* favstats(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>) 
+* **favstats(**\textcolor{red}{DATASETNAME}$\textcolor{red}{VARIABLENAME}**)** 
 
     * Requires the ``mosaic`` package to be loaded (``require(mosaic``) after
     installing the package). 
 
     * Provides a suite of numerical summaries of the observations in a variable.
 
-* hist(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
+* **hist(**\textcolor{red}{DATASETNAME}**$**\textcolor{red}{VARIABLENAME}**)**
 
     * Makes a histogram. 
     
-* boxplot(<font color='red'>DATASETNAME</font>$<font color='red'>VARIABLENAME</font>)
+* **boxplot(**\textcolor{red}{DATASETNAME}**$**\textcolor{red}{VARIABLENAME}**)**
 
     * Makes a boxplot. 
 
@@ -903,7 +852,7 @@ revisit the worked examples using each of the functions.
 
 In each chapter, the last section contains some questions for you to complete
 to make sure you understood the
-material. You can download the code to answer questions 0.1 to 0.5 below at 
+material. You can download the code to answer questions 1.1 to 1.5 below at 
 http://www.math.montana.edu/courses/s217/documents/Ch0.Rmd. But to practice 
 learning R, it would be most useful for you to try to accomplish the requested tasks 
 yourself and then only refer to the provided R code if/when you struggle. 
@@ -912,8 +861,8 @@ methods applied to another data set, and for something to discuss in study group
 with your instructor, and/or at the Math Learning Center. 
 
 1.1. Read in the treadmill data set
-discussed above and find the mean and SD of the Ages (*Age* variable) and Body
-Weights (*BodyWeight* variable). In studies involving human subjects, it is 
+discussed above and find the mean and SD of the Ages (``Age`` variable) and Body
+Weights (``BodyWeight`` variable). In studies involving human subjects, it is 
 common to report a
 summary of characteristics of the subjects. Why does this matter? Think about
 how your interpretation of any study of the fitness of subjects would change if
@@ -925,13 +874,14 @@ results for the Run Times discussed above?
 
 1.3. The mean and SD are most useful
 as summary statistics only if the distribution is relatively symmetric. Make a
+histogram of *Age* responses and 
 discuss the shape of the distribution (is it skewed right, skewed left, 
 approximately symmetric?; are there outliers?). Approximately what range of
 ages does this study pertain to?
 
 1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
-lbs=2.205*kgs. Create a new variable in the ``treadmill``
+lbs=2.205``*``kgs. Create a new variable in the ``treadmill``
 data.frame called *BWlb* using this code:
 
 ``treadmill$BWlb <- 2.205*treadmill$BodyWeight`` 

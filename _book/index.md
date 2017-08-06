@@ -26,9 +26,9 @@ header-includes:
 
 
 
-# Cover {-}
 
-![](frontMatter/titlepage.jpg)<!-- -->
+
+
 
 # Acknowledgments {-}
 
@@ -44,7 +44,8 @@ We have made every attempt to keep costs as low as possible by making it possibl
 
 Enjoy your journey from introductory to intermediate statistics!
  
-<img src="frontMatter/creative_commons_license.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{frontMatter/creative_commons_license} \end{center}
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 

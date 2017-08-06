@@ -109,10 +109,7 @@ BB <- read.csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv"
 plot(BAC~Beers, data=BB)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-1-1.png" alt="(ref:fig6-1)" width="576" />
-<p class="caption">(\#fig:Figure6-1)(ref:fig6-1)</p>
-</div>
+![(\#fig:Figure6-1)(ref:fig6-1)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-1-1.pdf) 
 
 There are a few general things to look for in scatterplots:
 
@@ -221,10 +218,7 @@ Figure \@ref(fig:Figure6-2).
 
 (ref:fig6-2) Scatterplot of an amusing relationship that has $r=0$.
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-2-1.png" alt="(ref:fig6-2)" width="576" />
-<p class="caption">(\#fig:Figure6-2)(ref:fig6-2)</p>
-</div>
+![(\#fig:Figure6-2)(ref:fig6-2)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-2-1.pdf) 
 
  
 There are some conditions for trusting the results that the 
@@ -402,10 +396,7 @@ require(psych)
 pairs.panels(mtfiresR, ellipses=F, scale=T, smooth=F, col=0)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-3-1.png" alt="(ref:fig6-3)" width="576" />
-<p class="caption">(\#fig:Figure6-3)(ref:fig6-3)</p>
-</div>
+![(\#fig:Figure6-3)(ref:fig6-3)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-3-1.pdf) 
 
 As one more example, the Australian Institute of Sport collected data 
 on 102 male and 100 female athletes that are available in the ``ais``
@@ -451,10 +442,7 @@ cor(aisR)
 pairs.panels(aisR,scale=T,ellipse=F,smooth=F,col=0)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-4-1.png" alt="(ref:fig6-4)" width="576" />
-<p class="caption">(\#fig:Figure6-4)(ref:fig6-4)</p>
-</div>
+![(\#fig:Figure6-4)(ref:fig6-4)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-4-1.pdf) 
 
 ``Ht`` (*Height*) and ``Hc`` (*Hematocrit*) have a moderate positive 
 relationship that may contain a slightly nonlinearity. It also contains one
@@ -493,10 +481,7 @@ aisR2 <- aisR[-c(56,166),] #Removes observations in rows 56 and 166
 pairs.panels(aisR2, scale=T, ellipse=F, smooth=F, col=0)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-5-1.png" alt="(ref:fig6-5)" width="576" />
-<p class="caption">(\#fig:Figure6-5)(ref:fig6-5)</p>
-</div>
+![(\#fig:Figure6-5)(ref:fig6-5)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-5-1.pdf) 
 
 After removing these two unusual observations, the relationships between 
 the variables are more obvious (Figure \@ref(fig:Figure6-5)). There is a 
@@ -530,10 +515,7 @@ require(corrplot)
 corrplot.mixed(cor(aisR2), col=c("black", "orange"))
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-6-1.png" alt="(ref:fig6-6)" width="336" />
-<p class="caption">(\#fig:Figure6-6)(ref:fig6-6)</p>
-</div>
+![(\#fig:Figure6-6)(ref:fig6-6)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-6-1.pdf) 
 
 
 ## Relationships between variables by groups	{#section6-3}
@@ -567,10 +549,7 @@ athletes where sex was coded 0 for males and 1 for females.
 (ref:fig6-7) Scatterplot of athlete's height and hematocrit by sex of athletes. 
 Males were coded as 0s and females as 1s.
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-7-1.png" alt="(ref:fig6-7)" width="576" />
-<p class="caption">(\#fig:Figure6-7)(ref:fig6-7)</p>
-</div>
+![(\#fig:Figure6-7)(ref:fig6-7)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-7-1.pdf) 
 
 
 ```r
@@ -647,10 +626,7 @@ cor(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Females only
 (ref:fig6-8) Scatterplot of athlete's body fat and hematocrit by sex of athletes. Males
 were coded as 0s and females as 1s. 
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-8-1.png" alt="(ref:fig6-8)" width="576" />
-<p class="caption">(\#fig:Figure6-8)(ref:fig6-8)</p>
-</div>
+![(\#fig:Figure6-8)(ref:fig6-8)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-8-1.pdf) 
 
 
 ```r
@@ -690,10 +666,7 @@ cor(Bfat~Ht,data=aisR2[aisR2$Sex==1,]) #Females only
 
 (ref:fig6-9) Scatterplot of athlete's body fat and height by sex.
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-9-1.png" alt="(ref:fig6-9)" width="576" />
-<p class="caption">(\#fig:Figure6-9)(ref:fig6-9)</p>
-</div>
+![(\#fig:Figure6-9)(ref:fig6-9)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-9-1.pdf) 
 
 
 ```r
@@ -840,10 +813,7 @@ abline(v=Tobs, col="red", lwd=3)
 abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-10-1.png" alt="(ref:fig6-10)" width="480" />
-<p class="caption">(\#fig:Figure6-10)(ref:fig6-10)</p>
-</div>
+![(\#fig:Figure6-10)(ref:fig6-10)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-10-1.pdf) 
 
 These results tell us that the bootstrap 95% CI is from 0.75 to 0.96 -- we are 95%
 confident that the true correlation between *Beers* and *BAC* in all OSU students 
@@ -906,10 +876,7 @@ data(ufc)
 scatterplot(height.m~dbh.cm, data=ufc, smooth=F, reg.line=F)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-11-1.png" alt="(ref:fig6-11)" width="576" />
-<p class="caption">(\#fig:Figure6-11)(ref:fig6-11)</p>
-</div>
+![(\#fig:Figure6-11)(ref:fig6-11)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-11-1.pdf) 
 
 Of particular interest is an observation with a diameter around 58 cm and a height
 of less than 5 m. Observing a tree with a diameter around 60 cm is not unusual
@@ -997,10 +964,7 @@ observed correlation (bold line) and bounds for 95% confidence interval
 ## 97.5% 0.827492 0.975
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-12-1.png" alt="(ref:fig6-12)" width="672" />
-<p class="caption">(\#fig:Figure6-12)(ref:fig6-12)</p>
-</div>
+![(\#fig:Figure6-12)(ref:fig6-12)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-12-1.pdf) 
 
 
 ```r
@@ -1056,10 +1020,7 @@ the ``scatterplot`` function with the ``reg.line=T`` option or just omitting
 (ref:fig6-13) Scatterplot with estimate regression line for the *Beers* and 
 *BAC* data. 
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-13-1.png" alt="(ref:fig6-13)" width="576" />
-<p class="caption">(\#fig:Figure6-13)(ref:fig6-13)</p>
-</div>
+![(\#fig:Figure6-13)(ref:fig6-13)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-13-1.pdf) 
 
 
 ```r
@@ -1241,10 +1202,7 @@ predictor variable.
 
 (ref:fig6-14) Diagram of interpretation of slope coefficients.
 
-<div class="figure">
-<img src="chapter6_files/image047.png" alt="(ref:fig6-14)"  />
-<p class="caption">(\#fig:Figure6-14)(ref:fig6-14)</p>
-</div>
+![(\#fig:Figure6-14)(ref:fig6-14)](chapter6_files/image047.png) 
 
 Applied to this problem, for each additional 1 beer consumed, we expect 
 a 0.018 gram per dL change in the *BAC* *on average*. Using "change" in 
@@ -1323,10 +1281,7 @@ scatterplot(Hc~Bfat, data=aisR2[aisR2$Sex==1,], smooth=F,
             ylab="Hc (% blood)", xlab="Body fat (% weight)")
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-15-1.png" alt="(ref:fig6-15)" width="576" />
-<p class="caption">(\#fig:Figure6-15)(ref:fig6-15)</p>
-</div>
+![(\#fig:Figure6-15)(ref:fig6-15)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-15-1.pdf) 
 
 Based on these results, the estimated regression equation is
 $\widehat{\text{Hc}}_i = 42.014 - 0.085\text{BodyFat}_i$ with $b_0 = 42.014$
@@ -1370,10 +1325,7 @@ estimates.
 for *Beers* vs *BAC* data, with vertical line for the least squares estimate 
 that minimizes the sum of squared residuals. 
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-16-1.png" alt="(ref:fig6-16)" width="384" />
-<p class="caption">(\#fig:Figure6-16)(ref:fig6-16)</p>
-</div>
+![(\#fig:Figure6-16)(ref:fig6-16)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-16-1.pdf) 
 
 Sometimes it is helpful to have a
 go at finding the estimates yourself. If you install and load the ``tigerstats``
@@ -1404,10 +1356,7 @@ didn't quite find the least squares line. The correct line is the bold (red)
 line and produced a smaller sum of squared residuals than the guessed thinner
 (black) line.
 
-<div class="figure">
-<img src="chapter6_files/image063.png" alt="(ref:fig6-17)"  />
-<p class="caption">(\#fig:Figure6-17)(ref:fig6-17)</p>
-</div>
+![(\#fig:Figure6-17)(ref:fig6-17)](chapter6_files/image063.png) 
 
 It ends up that the least squares
 criterion does not require a search across coefficients or trial and error --
@@ -1504,7 +1453,7 @@ we get
 
 
 
-$$\begin{array}{rl} \\ \require{cancel} \widehat{\log(\text{Ha})}&= -69.78\text{ log-hectacres }+ 1.39\text{ log-hectacres}/^\circ \text{F}\bullet 59^\circ\text{F} \\&= -69.78\text{ log-hectacres } +1.39\text{ log-hectacres}/\cancel{^\circ \text{F}}\bullet 59\cancel{^\circ \text{F}} \\&= 12.23 \text{ log-hectares} \\ \end{array}$$
+$$\begin{array}{rl} \\ \widehat{\log(\text{Ha}}&= -69.78\text{ log-hectacres }+ 1.39\text{ log-hectacres}/^\circ \text{F}\bullet 59^\circ\text{F} \\&= -69.78\text{ log-hectacres } +1.39\text{ log-hectacres}/\cancel{^\circ \text{F}}\bullet 59\cancel{^\circ \text{F}} \\&= 12.23 \text{ log-hectares} \\ \end{array}$$
 
 We did not observe any summers at exactly $x=59$ but did observe some 
 nearby and this result seems relatively reasonable. 
@@ -1526,10 +1475,7 @@ scatterplot(loghectacres~Temperature, data=mtfires, smoother=T,
             main="Scatterplot with regression line for Area burned vs Temperature")
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-18-1.png" alt="(ref:fig6-18)" width="576" />
-<p class="caption">(\#fig:Figure6-18)(ref:fig6-18)</p>
-</div>
+![(\#fig:Figure6-18)(ref:fig6-18)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-18-1.pdf) 
 
 ## Measuring the strength of regressions: R^2^ {#section6-8}
 
@@ -1572,10 +1518,7 @@ predictor variables).
 
 (ref:fig6-19) Three scatterplots with the same estimated regression line. 
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-19-1.png" alt="(ref:fig6-19)" width="576" />
-<p class="caption">(\#fig:Figure6-19)(ref:fig6-19)</p>
-</div>
+![(\#fig:Figure6-19)(ref:fig6-19)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-19-1.pdf) 
 
 $\mathbf{R^2}$ is calculated using the sums of squares we encountered in the
 ANOVA methods. We once again have some total amount of variability that is
@@ -1819,10 +1762,7 @@ influence on the line.
 (ref:fig6-20) Scatterplot and Residuals vs Leverage plot for the
 real BAC data.
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-20-1.png" alt="(ref:fig6-20)" width="576" />
-<p class="caption">(\#fig:Figure6-20)(ref:fig6-20)</p>
-</div>
+![(\#fig:Figure6-20)(ref:fig6-20)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-20-1.pdf) 
 
 
 The "$\diamond$" point has a leverage of 0.27 and the 9 *Beer* observation
@@ -1880,10 +1820,7 @@ regression models.
 (ref:fig6-21) Plots exploring the impacts of moving a single 
 additional observation.
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-21-1.png" alt="(ref:fig6-21)" width="768" />
-<p class="caption">(\#fig:Figure6-21)(ref:fig6-21)</p>
-</div>
+![(\#fig:Figure6-21)(ref:fig6-21)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-21-1.pdf) 
 
 ## Residual diagnostics – setting the stage for inference	{#section6-10}
 
@@ -2040,10 +1977,7 @@ examples:
         plot(m1, add.smooth=F, main="Beers vs BAC")
         ```
         
-        <div class="figure">
-        <img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-22-1.png" alt="Full suite of diagnostics plots for *Beer* vs *BAC* data." width="768" />
-        <p class="caption">(\#fig:Figure6-22)Full suite of diagnostics plots for *Beer* vs *BAC* data.</p>
-        </div>
+        ![(\#fig:Figure6-22)Full suite of diagnostics plots for *Beer* vs *BAC* data.](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-22-1.pdf) 
         
     * Linearity, constant variance from Residuals vs Fitted:
     
@@ -2166,10 +2100,7 @@ par(mfrow=c(2,2))
 plot(tree1, add.smooth=F)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-23-1.png" alt="(ref:fig6-23)" width="768" />
-<p class="caption">(\#fig:Figure6-23)(ref:fig6-23)</p>
-</div>
+![(\#fig:Figure6-23)(ref:fig6-23)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-23-1.pdf) 
 
 
 ## Old Faithful discharge and waiting times {#section6-11}
@@ -2217,10 +2148,7 @@ G2 <- data.frame(Waiting=geyser$waiting[-1],
 scatterplot(Waiting~Duration, data=G2, spread=F)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-24-1.png" alt="(ref:fig6-24)" width="576" />
-<p class="caption">(\#fig:Figure6-24)(ref:fig6-24)</p>
-</div>
+![(\#fig:Figure6-24)(ref:fig6-24)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-24-1.pdf) 
 
 The first concern with these data
 is that the observations are likely not independent. Since they were taken
@@ -2271,10 +2199,7 @@ par(mfrow=c(2,2))
 plot(OF1)
 ```
 
-<div class="figure">
-<img src="06-correlationAndSimpleLinearRegression_files/figure-html/Figure6-25-1.png" alt="(ref:fig6-25)" width="768" />
-<p class="caption">(\#fig:Figure6-25)(ref:fig6-25)</p>
-</div>
+![(\#fig:Figure6-25)(ref:fig6-25)](06-correlationAndSimpleLinearRegression_files/figure-latex/Figure6-25-1.pdf) 
 
 The estimated regression equation is 
 $\widehat{\text{WaitingTime}}_i = 34.95 + 10.78\text{ Duration}_i$, 
@@ -2346,7 +2271,7 @@ The main components of the R code used in this chapter follow with the
 components to modify in red where ``y`` is a response variable, ``x`` is an
 explanatory variable, and the data are in ``DATASETNAME``.
 
-* pairs.panels(<font color='red'>DATASETNAME</font>, ellipses=F, scale=T,
+* pairs.panels(\textcolor{red}{DATASETNAME}, ellipses=F, scale=T,
 smooth=F, col=0)
 
     * Requires the ``psych`` package.
@@ -2354,34 +2279,34 @@ smooth=F, col=0)
     * Makes a scatterplot matrix that also displays the correlation 
     coefficient. 
 
-* cor(<font color='red'>y</font>~<font color='red'>x</font>,
-data=<font color='red'>DATASETNAME</font>)
+* cor(\textcolor{red}{y}~\textcolor{red}{x},
+data=\textcolor{red}{DATASETNAME})
 
     * Provides the estimated correlation coefficient between $x$ and $y$.
     
-* plot(<font color='red'>y</font>~<font color='red'>x</font>,
-data=<font color='red'>DATASETNAME</font>)
+* plot(\textcolor{red}{y}~\textcolor{red}{x},
+data=\textcolor{red}{DATASETNAME})
 
     * Provides a scatter plot.
     
-* scatterplot(<font color='red'>y</font>~<font color='red'>x</font>,
-data=<font color='red'>DATASETNAME</font>, smooth=F)
+* scatterplot(\textcolor{red}{y}~\textcolor{red}{x},
+data=\textcolor{red}{DATASETNAME}, smooth=F)
 
     * Requires the ``car`` package.
     
     * Provides a scatter plot with a regression line.
     
-* <font color='red'>MODELNAME</font> <- lm(<font color='red'>y</font>~<font color='red'>x</font>,
-data=<font color='red'>DATASETNAME</font>)
+* \textcolor{red}{MODELNAME} <- lm(\textcolor{red}{y}~\textcolor{red}{x},
+data=\textcolor{red}{DATASETNAME})
 
     * Estimates a regression model using least squares.
     
-* summary(<font color='red'>MODELNAME</font>)
+* summary(\textcolor{red}{MODELNAME})
 
     * Provides parameter estimates and R-squared (used heavily in 
     Chapter \@ref(chapter7) and \@ref(chapter8) as well).
     
-* par(mfrow=c(2, 2)); plot(<font color='red'>MODELNAME</font>)
+* par(mfrow=c(2, 2)); plot(\textcolor{red}{MODELNAME})
 
     * Provides four regression diagnostic plots in one plot. 
 
