@@ -51,7 +51,7 @@ of each method -- what type of research questions are being addressed
 (relationships or group differences, for example) and what type of variables
 are being analyzed (quantitative or categorical). ***Quantitative variables*** are made up of numerical measurements that have meaningful units attached to
 them. ***Categorical variables*** take on values that are categories or labels.
-Additionally, you will need to carefully identify the ***response*** variables, where
+Additionally, you will need to carefully identify the ***response*** and ***explanatory*** variables, where
 the study and variable characteristics should suggest which variables should be used
 as the explanatory variables that may explain
 variation in the response variable. Because this is an intermediate statistics
