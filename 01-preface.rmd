@@ -83,7 +83,7 @@ one when the response is categorical. Examples of quantitative responses we will
 see later involve *suggested jail sentence* (in years) and *body fat* (percentage). 
 Examples of categorical variables include *improvement* (none, some, or marked) 
 in a clinical trial or whether a student has turned in copied work 
-(never, exam or paper, or both). There are going to be some more
+(never, done this on an exam or paper, or both). There are going to be some more
 nuanced aspects to all these analyses as the complexity of both sides of Figure
 \@ref(fig:Figure1) suggest, but note that near the bottom, each tree converges on a single
 procedure, using a ***linear model*** for a quantitative response variable or 
@@ -93,7 +93,7 @@ for a
 given data set, the final step involves assessing the scope of inference and
 types of conclusions that are appropriate based on the design of the study. 
 
-(ref:fig1) Flow chart of methods
+(ref:fig1) Flow chart of methods.
 
 ```{r Figure1, echo=FALSE, fig.cap ="(ref:fig1)"}
 knitr::include_graphics('chapter0_files/image002.png')
@@ -101,15 +101,15 @@ knitr::include_graphics('chapter0_files/image002.png')
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
-left side of Figure \@ref(fig:Figure1) covered in Chapters \@ref(chapter2),
+left side of Figure \@ref(fig:Figure1) is covered in Chapters \@ref(chapter2),
 \@ref(chapter3), \@ref(chapter4), \@ref(chapter6), \@ref(chapter7), and
-\@ref(chapter8)) and stepping
-over to handle the situation with a categorical response variable (right side
-of Figure \@ref(fig:Figure1) that is discussed in Chapter \@ref(chapter5)). 
+\@ref(chapter8)), stepping
+over to handle the situation with a categorical response variable in Chapter \@ref(chapter5) (right side
+of Figure \@ref(fig:Figure1).
 Chapter \@ref(chapter9) contains case studies
 illustrating all the methods discussed previously, providing a final opportunity
-to explore additional examples that illustrate how finding your way through the
-paths in Figure \@ref(fig:Figure1) leads to the appropriate analysis. 
+to explore additional examples that illustrate how finding a
+path through Figure \@ref(fig:Figure1) can lead to the appropriate analysis. 
 
 
 The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
@@ -136,7 +136,7 @@ there are two categorical explanatory variables, *fertilizer*, with 3 levels, an
 ***interaction*** between the two explanatory variables: the relationship between one categorical
 variable and the mean of the response changes depending on the levels of the
 other categorical variable. For example, extra fertilizer might enhance the
-growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
+growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based on the level of *variety*. Given this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
 
 Following the methods for two categorical variables and a quantitative response, we explore a method for
 analyzing data where the response is categorical, called the ***Chi-square test***
@@ -225,7 +225,7 @@ for extra credit in the class. We could still randomly assign them to
 tutoring/not but the non-random sample would only lead to conclusions about
 those students that volunteered. The most powerful scope of inference is when there
 are randomly assigned levels of explanatory variables with a random sample from
-population -- conclusions would be about causal impacts that would happen in the
+a population -- conclusions would be about causal impacts that would happen in the
 population. 
 
 By the end of this material, you should have some basic R skills and abilities to create basic ANOVA and
