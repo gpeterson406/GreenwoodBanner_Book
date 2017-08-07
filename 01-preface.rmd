@@ -269,14 +269,14 @@ for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that
 corresponds to your operating system. On the next page, click on "**base**" and then it will take you 
 to a screen to download the most current version of R that is compiled for your
-operating system, something like "**Download R 3.3.1 for Windows**". Click on that link and then open 
+operating system, something like "**Download R 3.4.1 for Windows**". Click on that link and then open 
 the file you downloaded. You will need to select your preferred language (choose English so your 
 instructor can help you), then hit "**Next**"
 until it starts to unpack and install the program (all the base settings will be fine). After you hit 
 "**Finish**" you will not do anything further with R directly. 
 
 Second, you need to download RStudio. It is an enhanced interface that will make interacting with
-R less frustrating. To download RStudio, go to http://www.rstudio.com/products/rstudio/download/ and select the correct version under
+R less frustrating. To download RStudio, go to the bottom of  https://www.rstudio.com/products/rstudio/download/#download and select the correct version under
 "Installers for Supported Platforms" for your operating system. Download and
 then install RStudio using the installer. From this point forward, you should only
 open RStudio; it provides your interface with R. Note that both R and RStudio
@@ -284,8 +284,8 @@ are updated frequently (up to four times a year) and if you downloaded either
 more than a few months previously, you should download the up-to-date versions, 
 especially if something you are trying to do is not working. Sometimes code
 will not work in older versions of R and sometimes old code won't work in new
-versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 3^rd^ version in
-three years...]
+versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 4^th^ version in
+four years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
 interface. When you open RStudio, you will see a screen like Figure 
@@ -311,7 +311,7 @@ contains information on the "Packages" (additional code we will download and
 install to add functionality to R) that are available and is where you will see
 plots that you make and requests for "Help" on specific functions. 
 
-(ref:fig2) Initial RStudio layout
+(ref:fig2) Initial RStudio layout.
 
 ```{r Figure2, echo=FALSE, fig.cap="(ref:fig2)"}
 knitr::include_graphics('chapter0_files/image003.png')
@@ -360,7 +360,7 @@ as follows:
 ```
 
 To get this vector stored in a variable called *variable1* we need to 
-use the assignment operator, ``<-`` (read as "stored as") that assigns 
+use the assignment operator, ``<-`` (read as "is defined to contain") that assigns 
 the information on the right into the variable that you are creating on 
 the left. 
 
@@ -411,13 +411,12 @@ calls it "CSV (Comma Delimited)"), which basically strips off some of the junk
 that Excel adds to the necessary information in the file. Excel will tell you that
 this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
-directly into R but to handle multiple sheets they are more complicated and not 
-as stable across operating systems as the simpler version we recommend.]. 
+directly into R that we will explore later.]. 
 
-With a data set converted to a CSV file, we need to read the data set into R. There
+With a data set converted to a CSV file, we need to read the data set into the active workspace. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
 the "Import Dataset" button in the upper right "Environment" panel as
-indicated in Figure \@ref(fig:Figure2)) or modifying the ``read.csv`` 
+indicated in Figure \@ref(fig:Figure2)) or modifying the ``read_csv`` 
 function to find the file of interest. To practice this, you can 
 download an Excel (.xls) file from
 http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
@@ -444,7 +443,7 @@ ject   MillOx    MaxPulse                        Pulse
 
 
 The variables contain information on the subject number (*Subject*), subjects' 
-treadmill oxygen consumption (*TreadMillOx*, in ml per kg per minute) and 
+maximum treadmill oxygen consumption (*TreadMillOx*, in ml per kg per minute, also called maximum VO2) and 
 maximum pulse rate (*TreadMillMaxPulse*, in beats per minute), time to run 1.5
 miles (*Run Time*, in minutes), maximum pulse
 during 1.5 mile run (*RunPulse*, in beats per minute), resting pulse rate 
@@ -454,7 +453,7 @@ a .csv file in a location you can find on your computer. Then go to RStudio
 and click on **File**, then **Import Dataset**, then **From CSV...**^[If
 you are having trouble getting the file converted and read into R, copy and 
 run the following code: 
-``treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
+``treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
 Find your file and click "**Import**". R will store the data set as an object named 
 whatever the .csv file was named. You could use another name as well, but it is 
 often easiest just to keep the data
@@ -465,11 +464,11 @@ will look something like the following -- if you had stored the file in a drive
 labeled D:, it would be:
 
 ```{r include=F}
-treadmill <- read.csv("chapter0_files/treadmill.csv")
+treadmill <- read_csv("chapter0_files/treadmill.csv")
 ```
 
 ```{r eval=F}
-treadmill <- read.csv("D:/treadmill.csv")
+treadmill <- read_csv("D:/treadmill.csv")
 ```
 
 What is put inside the 
@@ -478,7 +477,7 @@ version of the data set in what looks like a
 spreadsheet will appear in the upper left window due to the second line of 
 code (``View(treadmill``)). 
 
-(ref:fig3) RStudio with initial data set loaded
+(ref:fig3) RStudio with initial data set loaded.
 
 ```{r Figure3, echo=FALSE, fig.cap="(ref:fig3)"}
 knitr::include_graphics('chapter0_files/image005.png')
@@ -487,12 +486,12 @@ knitr::include_graphics('chapter0_files/image005.png')
 Just directly typing (or using) a line of code like this is actually the 
 other way that we can read in
 files. If you choose to use the text-only interface, then you need to tell R
-where to look in your computer to find the data file. ``read.csv`` is a 
+where to look in your computer to find the data file. ``read_csv`` is a 
 function that takes a path as an argument. To use it, specify the path to 
 your data file, put quotes around it, and put it as the input to 
-``read.csv(...)``. For some examples later in the book, you will be able to 
+``read_csv(...)``. For some examples later in the book, you will be able to 
 copy a command like this from the text and read data sets and other
-code directly from my the course folder, assuming you are connected to the
+code directly from the course folder, assuming you are connected to the
 internet. 
 
 To verify that you read the data set in correctly, it is always good to check 
