@@ -74,18 +74,32 @@ To make this more concrete, we return to the original MockJury data, making
 side-by-side boxplots and beanplots (Figure \@ref(fig:Figure3-1)) as well 
 summarizing the sentences for the three groups using ``favstats``. 
 
+```{r}
+require(heplots)
+require(mosaic)
+data(MockJury)
+favstats(Years~Attr, data=MockJury)
+```
+
 (ref:fig3-1) Boxplot and beanplot of the sentences (years) for the three 
 treatment groups.
 
-```{r Figure3-1,fig.cap="(ref:fig3-1)"}
+```{r Figure3-1,fig.cap="(ref:fig3-1)",echo=F,fig.height=5,fig.width=10}
 require(heplots)
 require(mosaic)
 data(MockJury)
 par(mfrow=c(1,2))
+#old.par <- par(mar=c(0.75,1,0.5,0.5))
 boxplot(Years~Attr,data=MockJury)
 require(beanplot)
 beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
-favstats(Years~Attr,data=MockJury)
+```
+
+```{r eval=F}
+par(mfrow=c(1,2))
+boxplot(Years~Attr,data=MockJury)
+require(beanplot)
+beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
 ```
 
 There are slight differences in the sample sizes in the three groups with 37
@@ -569,47 +583,6 @@ minSSA <- min(MJP1_SSA, MJP2_SSA, MJP3_SSA)
 maxSSA <- max(MJP1_SSA, MJP2_SSA, MJP3_SSA)
 ```
 
-It may be easiest to understand the *sums of squares decomposition* by connecting 
-it to our permutation ideas. In a permutation situation, the total variation 
-($SS_\text{Total}$) cannot change -- it is the same responses varying
-around the grand mean. However, the amount of variation attributed to variation 
-among the means and in the residuals can change if we change which observations go 
-with which group. In Figure \@ref(fig:Figure3-4) (panel a), the means, sums of 
-squares, and 95% confidence intervals for each mean are displayed for the three
-treatment levels from the original prisoner rating data. Three permuted versions 
-of the data set are summarized in panels (b), (c), and (d). The $\text{SS}_A$ is 70.9 
-in the real data set and between `r minSSA` and `r maxSSA` in the permuted data sets.
-If you had 
-to pick among the plots for the one with the most evidence of a difference in the
-means, you hopefully would pick panel (a). This visual "unusualness" suggests
-that this observed result is unusual relative to the possibilities under
-permutations, which are, again, the possibilities tied to having the null
-hypothesis being true. But note that the differences here are not that great
-between these three permuted data sets and the real one. It is likely that at
-least some of you might have selected panel (d) as also looking like it shows
-some evidence of differences (maybe not the most?) as it also looks like it
-shows some evidence differences.
-
-One way to think about $\textbf{SS}_\textbf{A}$ is that it is a function that 
-converts the variation in the group means into a single value. This makes it a
-reasonable test statistic in a permutation testing context. By comparing the 
-observed $\text{SS}_A =$ `r orig_SSA` to the permutation results of 
-`r MJP1_SSA`, `r MJP2_SSA`, and `r MJP3_SSA` we see 
-that the observed result is much more extreme than the three alternate versions. 
-In contrast to our previous test statistics where positive and negative 
-differences were possible, $\text{SS}_A$ is always positive with a value of 0 
-corresponding to no variation in the means. The larger the $\text{SS}_A$, the more 
-variation there is in the means. The permutation p-value for the alternative 
-hypothesis of **some** (not of greater or less than!) difference in the true 
-means of the groups will involve counting the number of permuted $SS_A^*$ results
-that are larger than what we observed. 
-
-(ref:fig3-4) Plot of means and 95% confidence intervals for the three groups 
-for the real data (a) and three different permutations of the treatment labels 
-to the same responses in (b), (c), and (d). Note that SSTotal is always the same 
-but the different amounts of variation associated with the means (SSA) or the 
-errors (SSE) changes in permutation.
-
 ```{r Figure3-4, fig.cap="(ref:fig3-4)",echo=F,fig.width=6}
 Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]
 par(mfrow=c(2,2))
@@ -650,6 +623,47 @@ plotmeans(Years~Attr,data=MockJuryP3,main="(d) Permuted Data",
           barcol="red",col="black",ylim=c(3,7.2))
 text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue",cex=0.75)
 ```
+
+It may be easiest to understand the *sums of squares decomposition* by connecting 
+it to our permutation ideas. In a permutation situation, the total variation 
+($SS_\text{Total}$) cannot change -- it is the same responses varying
+around the grand mean. However, the amount of variation attributed to variation 
+among the means and in the residuals can change if we change which observations go 
+with which group. In Figure \@ref(fig:Figure3-4) (panel a), the means, sums of 
+squares, and 95% confidence intervals for each mean are displayed for the three
+treatment levels from the original prisoner rating data. Three permuted versions 
+of the data set are summarized in panels (b), (c), and (d). The $\text{SS}_A$ is 70.9 
+in the real data set and between `r minSSA` and `r maxSSA` in the permuted data sets.
+If you had 
+to pick among the plots for the one with the most evidence of a difference in the
+means, you hopefully would pick panel (a). This visual "unusualness" suggests
+that this observed result is unusual relative to the possibilities under
+permutations, which are, again, the possibilities tied to having the null
+hypothesis being true. But note that the differences here are not that great
+between these three permuted data sets and the real one. It is likely that at
+least some of you might have selected panel (d) as also looking like it shows
+some evidence of differences (maybe not the most?) as it also looks like it
+shows some evidence differences.
+
+One way to think about $\textbf{SS}_\textbf{A}$ is that it is a function that 
+converts the variation in the group means into a single value. This makes it a
+reasonable test statistic in a permutation testing context. By comparing the 
+observed $\text{SS}_A =$ `r orig_SSA` to the permutation results of 
+`r MJP1_SSA`, `r MJP2_SSA`, and `r MJP3_SSA` we see 
+that the observed result is much more extreme than the three alternate versions. 
+In contrast to our previous test statistics where positive and negative 
+differences were possible, $\text{SS}_A$ is always positive with a value of 0 
+corresponding to no variation in the means. The larger the $\text{SS}_A$, the more 
+variation there is in the means. The permutation p-value for the alternative 
+hypothesis of **some** (not of greater or less than!) difference in the true 
+means of the groups will involve counting the number of permuted $SS_A^*$ results
+that are larger than what we observed. 
+
+(ref:fig3-4) Plot of means and 95% confidence intervals for the three groups 
+for the real data (a) and three different permutations of the treatment labels 
+to the same responses in (b), (c), and (d). Note that SSTotal is always the same 
+but the different amounts of variation associated with the means (SSA) or the 
+errors (SSE) changes in permutation.
 
 To do a permutation test, we need to be able to calculate and extract the 
 $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the 
@@ -774,6 +788,8 @@ square was used; $F$-distributions are denoted by their degrees of freedom using
 the convention of $F$ (*numerator df*, *denominator df*). Some examples of 
 different $F$-distributions are displayed for you in Figure \@ref(fig:Figure3-6).
 
+\newpage
+
 The characteristics of the F-distribution can be summarized as:
 
 * Right skewed,
@@ -829,6 +845,8 @@ colnames(x) <- columnHeaders
 pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table3-2) (ref:tab3-2)",
              split.table = Inf, justify="left")
 ```
+
+\newpage
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
 components. The output from R is similar although it does not provide the last row 
@@ -1281,6 +1299,10 @@ horizontal "=" signs in the grey bars that separate the different panels in
 RStudio.] (Figure \@ref(fig:Figure3-14)) and generate some summary statistics for 
 each group using ``favstats``. 
 
+```{r}
+favstats(len~Treat, data=ToothGrowth)
+```
+
 (ref:fig3-14) Boxplot and beanplot of tooth growth responses for the six 
 treatment level combinations. 
 
@@ -1289,10 +1311,6 @@ par(mfrow=c(1,2))
 boxplot(len~Treat, data=ToothGrowth, ylab="Tooth Growth in microns")
 beanplot(len~Treat, data=ToothGrowth, log="", col="yellow",
          method="jitter", ylab="Tooth Growth in microns")
-```
-
-```{r}
-favstats(len~Treat, data=ToothGrowth)
 ```
 
 Figure \@ref(fig:Figure3-14) suggests that the mean tooth growth increases with 
@@ -1517,6 +1535,8 @@ plot(allEffects(m2))
 plot(allEffects(m2))
 ```
 
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
+
 ## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
 
 \sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
@@ -1662,7 +1682,7 @@ to the linear model for the Guinea Pig data:
 Guinea Pig data. Any confidence intervals that do not contain 0 provide evidence 
 of a difference in the groups.
 
-```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=55,fig.width=10}
+```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=5,fig.width=10}
 require(multcomp)
 Tm2 <- glht(m2, linfct = mcp(Treat = "Tukey"))
 confint(Tm2)
@@ -1729,7 +1749,7 @@ HSD detected.
 (ref:fig3-20) Beanplot of tooth growth by group with Tukey's HSD compact 
 letter display.
 
-```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=5}
+```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=6}
 old.par <- par(mai=c(1,1,1,1))
 beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
 text(c(2),c(10),"a",col="blue",cex=1.5)
@@ -1809,6 +1829,15 @@ old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
+(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
+
+```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
+confint(Tm2, level=0.9)
+cld(Tm2, level=0.1)
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
+plot(confint(Tm2, level=.9))
+```
+
 At the family-wise 5% significance level, there are no pairs that are detectably different 
 -- they all get the same letter of "a". Now we will produce results for the reader that
 thought a 10% significance was suitable for this application before seeing any
@@ -1818,13 +1847,28 @@ function, the ``level`` option is the confidence level and for the ``cld``, it i
 family-wise significance level. Note that 90% confidence corresponds to a 10% 
 significance level. 
 
-(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
-
-```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
+```{r}
 confint(Tm2, level=0.9)
 cld(Tm2, level=0.1)
+```
+
+```{r eval = F}
 old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(confint(Tm2, level=.9))
+```
+
+(ref:fig3-23) Beanplot of sentences with compact letter display results from 10%
+family-wise significance level Tukey's HSD. *Average* and *Unattractive* picture
+groups are detected as being different and are displayed as belonging to
+different groups. *Beautiful* picture responses are not detected as different
+from the other two groups.
+
+```{r Figure3-23, fig.cap="(ref:fig3-23)"}
+old.par <- par(mai=c(0.5,1,1,1))
+beanplot(Years~Attr, data=MockJury, log="", col="white", method="jitter")
+text(c(1), c(5.3),"ab", col="blue", cex=1.5)
+text(c(2), c(5.1),"a", col="green", cex=1.5)
+text(c(3), c(6.8),"b", col="red", cex=1.5)
 ```
 
 With family-wise 10% significance and 90% confidence levels, the 
@@ -1842,13 +1886,7 @@ other two so it ends up not being detectably different from either one. This
 sort of overlap is actually a fairly common occurrence in these sorts of 
 situations so be prepared a mixed set of letters for some levels. 
 
-(ref:fig3-23) Beanplot of sentences with compact letter display results from 10%
-family-wise significance level Tukey's HSD. *Average* and *Unattractive* picture
-groups are detected as being different and are displayed as belonging to
-different groups. *Beautiful* picture responses are not detected as different
-from the other two groups.
-
-```{r Figure3-23, fig.cap="(ref:fig3-23)"}
+```{r eval = F}
 old.par <- par(mai=c(0.5,1,1,1))
 beanplot(Years~Attr, data=MockJury, log="", col="white", method="jitter")
 text(c(1), c(5.3),"ab", col="blue", cex=1.5)
