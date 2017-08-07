@@ -26,7 +26,7 @@ colFmt = function(x, color){
 }
 ```
 
- book is designed primarily for use in a second semester 
+This book is designed primarily for use in a second semester 
 statistics course although it can also be
 useful for researchers needing a quick review or ideas for using R for the
 methods discussed in the text. As a text primarily designed for a second
