@@ -848,6 +848,8 @@ revisit the worked examples using each of the functions.
 
     * Makes a boxplot. 
 
+\newpage
+
 ##Practice problems
 
 In each chapter, the last section contains some questions for you to complete

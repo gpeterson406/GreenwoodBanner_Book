@@ -1360,6 +1360,8 @@ each of the functions.
   \end{itemize}
 \end{itemize}
 
+\newpage
+
 \section{Practice problems}\label{practice-problems}
 
 In each chapter, the last section contains some questions for you to
@@ -1765,15 +1767,16 @@ Instead of loading this data set into R using the ``Import Dataset''
 functionality, we can load an R package that contains the data, making
 for easy access to this data set. The package called \texttt{heplots}
 \citep{R-heplots} contains a data set called MockJury that contains the
-results of the study. We also rely the R package called \texttt{mosaic}
-\citep{R-mosaic} that was introduced previously. First (but only once),
-you need to install both packages, which can be done either using the
-Packages tab in the lower right panel of R-studio or using the
-\texttt{install.packages} function with quotes around the package name:
+results of the study. We also rely on the R package called
+\texttt{mosaic} \citep{R-mosaic} that was introduced previously. First
+(but only once), you need to install both packages, which can be done
+either using the Packages tab in the lower right panel of R-studio or
+using the \texttt{install.packages} function with quotes around the
+package name:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OperatorTok{>}\StringTok{ }\NormalTok{install. }\KeywordTok{packages}\NormalTok{(}\StringTok{"heplots"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\KeywordTok{install.packages}\NormalTok{(}\StringTok{"heplots"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1804,13 +1807,13 @@ To load the data set that is available in an active package, we use the
 \end{Shaded}
 
 Now there will be a data.frame called \texttt{MockJury} available for us
-to analyze and some information about it in the Environment tab. Again,
-we can find out more about the data set in a couple of ways. First, we
-can use the \texttt{View} function to provide a spreadsheet type of
-display in the upper left panel. Second, we can use the \texttt{head}
-and \texttt{tail} functions to print out the beginning and end of the
-data set. Because there are so many variables, it may wrap around to
-show all the columns.
+to analyze and some information about it in the \textbf{Environment}
+tab. Again, we can find out more about the data set in a couple of ways.
+First, we can use the \texttt{View} function to provide a spreadsheet
+type of display in the upper left panel. Second, we can use the
+\texttt{head} and \texttt{tail} functions to print out the beginning and
+end of the data set. Because there are so many variables, it may wrap
+around to show all the columns.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1861,7 +1864,7 @@ show all the columns.
 
 When data sets are loaded from packages, there is often extra
 documentation available about the data set which can be accessed using
-the help function. In this case, it will bring up a screen with
+the \texttt{help} function. In this case, it will bring up a screen with
 information about the study and each variable that was measured.
 
 \begin{Shaded}
@@ -1870,9 +1873,9 @@ information about the study and each variable that was measured.
 \end{Highlighting}
 \end{Shaded}
 
-The help function is also useful with functions in R to help you
-understand options and, at the bottom of the help, see examples of using
-the function.
+The \texttt{help} function is also useful with functions in R to help
+you understand options and, at the bottom of the help, see examples of
+using the function.
 
 With many variables in a data set, it is often useful to get some quick
 information about all of them; the \texttt{summary} function provides
@@ -1926,25 +1929,27 @@ and notes if any values were missing.
 If we take a few moments to explore the output we can discover some
 useful aspects of the data set. The output is organized by variable,
 providing summary information based on the type of variable, either
-counts by category for categorical variables \texttt{Attr} and
-\texttt{Crime} mean for quantitative variables. If present, you would
-also get a count of missing values that are called ``NAs'' in R. For the
-first variable, called \texttt{Attr} in the data.frame and that we might
-we find counts of the number of subjects shown each picture: 37/114
-viewed the ``Unattractive'' picture, 38 viewed ``Average'', and 39
-viewed ``Beautiful''. We can also see that suggested prison sentences
-(data.frame variable \texttt{Years} ) ranged from 1 year to 15 years
-with a median of 3 years. It seems that all the other variables except
-for \emph{Crime} (type of crime that they were told the pictured woman
-committed) contained responses between 1 and 9 based on rating scales
-from 1 = low to 9 = high.
+counts by category for categorical variables (\texttt{Attr} and
+\texttt{Crime}) or the 5-number summary plus the mean for quantitative
+variables. If present, you would also get a count of missing values that
+are called ``NAs'' in R. For the first variable, called \texttt{Attr} in
+the data.frame and that we might more explicitly name
+\emph{Attractiveness}, we find counts of the number of subjects shown
+each picture: \(37/114\) viewed the ``Unattractive'' picture, \(38\)
+viewed ``Average'', and \(39\) viewed ``Beautiful''. We can also see
+that suggested prison sentences (data.frame variable \texttt{Years})
+ranged from 1 year to 15 years with a median of 3 years. It seems that
+all the other variables except for \emph{Crime} (type of crime that they
+were told the pictured woman committed) contained responses between 1
+and 9 based on rating scales from 1 = low to 9 = high.
 
-To accompany the numerical summaries, histograms, and boxplots can
+To accompany the numerical summaries, histograms and boxplots can
 provide some initial information on the shape of the distribution of the
-responses for the Figure \ref{fig:Figure2-1} contains the histogram and
-boxplot of Years, ignoring any information on which picture the
-``jurors'' were shown. The calls to the two plotting functions are
-enhanced slightly to add better labels.
+responses for the suggested sentences in \emph{Years}. Figure
+\ref{fig:Figure2-1} contains the histogram and boxplot of \emph{Years},
+ignoring any information on which picture the ``jurors'' were shown. The
+calls to the two plotting functions are enhanced slightly to add better
+labels.
 
 
 
@@ -1956,7 +1961,6 @@ enhanced slightly to add better labels.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{hist}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years, }\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{, }\DataTypeTok{labels=}\NormalTok{T, }\DataTypeTok{main=}\StringTok{"Histogram of Years"}\NormalTok{)}
 \KeywordTok{boxplot}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years, }\DataTypeTok{ylab=}\StringTok{"Years"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Boxplot of Years"}\NormalTok{)}
 \end{Highlighting}
@@ -2000,26 +2004,26 @@ that the total area\footnote{If you've taken calculus, you will know
   the same area but the top of the region wiggles.} under the curve is
 1. To make a comparable histogram, the y-axis needs to be scaled so that
 the histogram is also on the ``density'' scale which makes the bar
-heights required so that the proportion of the total data set in each
-bar is represented by the area in each bar (remember that area is height
+heights adjust so that the proportion of the total data set in each bar
+is represented by the area in each bar (remember that area is height
 times width). So the height depends on the width of the bars and the
 total area across all the bars has to be 1. In the \texttt{hist}
-function, the \texttt{freq=F} to get density-scaled histogram bars. The
-density curve is added to the histogram using the R code of
-\texttt{lines(density())}, producing the result in Figure
-\ref{fig:Figure2-2} with added modifications of options for \texttt{lwd}
-(line width) and \texttt{col} (color) to make the plot more interesting.
-You can see how the density curve somewhat matches the histogram bars
-but deals with the bumps up and down and edges a little differently. We
-can pick out the strong right skew using either display and will rarely
-make both together.
+function, the \texttt{freq=F} option does this required re-scaling to
+get density-scaled histogram bars. The density curve is added to the
+histogram using the R code of \texttt{lines(density())}, producing the
+result in Figure \ref{fig:Figure2-2} with added modifications of options
+for \texttt{lwd} (line width) and \texttt{col} (color) to make the plot
+more interesting. You can see how the density curve somewhat matches the
+histogram bars but deals with the bumps up and down and edges a little
+differently. We can pick out the strong right skew using either display
+and will rarely make both together.
 
 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years,}\DataTypeTok{freq=}\NormalTok{F,}\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Histogram of Years"}\NormalTok{)}
-\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years),}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years, }\DataTypeTok{freq=}\NormalTok{F, }\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{, }\DataTypeTok{main=}\StringTok{"Histogram of Years"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years), }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2038,24 +2042,24 @@ histogram as they are reasonably selected, but we can add information on
 the original observations being included in each bar to better
 understand the choices that \texttt{hist} is making. In the previous
 display, we can add what is called a \textbf{\emph{rug}} to the plot,
-were a tick mark is made on the x-axis for each observation. Because the
-responses were provided as whole years (1, 2, 3, \ldots{}, 15), we need
-to use a graphical technique called \textbf{\emph{jittering}} to add a
-little noise\footnote{Jittering typically involves adding random
+where a tick mark is made on the x-axis for each observation. Because
+the responses were provided as whole years (1, 2, 3, \ldots{}, 15), we
+need to use a graphical technique called \textbf{\emph{jittering}} to
+add a little noise\footnote{Jittering typically involves adding random
   variability to each observation that is uniformly distributed in a
-  range determined based on the spacing of the function, the results
-  will change. For more details, type \texttt{help(jitter)} in R.} to
-each observation so all the observations at each year value do not plot
-as a single line. In Figure \ref{fig:Figure2-3}, the added tick marks on
-the x-axis show the approximate locations of the original observations.
-We can see how there are 3 observations at 15 (all were 15 and the noise
-added makes it possible to see them all). The limitations of the
-histogram arise around the 10 year sentence area where there are many
-responses at 10 years and just one at both 9 and 11 years, but the
-histogram bars sort of miss this that aspect of the data set. The
-density curve did show a small bump at 10 years. Density curves are,
-however, not perfect and this one shows area for sentences less than 0
-years which is not possible here.
+  range determined based on the spacing of the observation. If you
+  re-run the \texttt{jitter} function, the results will change. For more
+  details, type \texttt{help(jitter)} in R.} to each observation so all
+the observations at each year value do not plot as a single line. In
+Figure \ref{fig:Figure2-3}, the added tick marks on the x-axis show the
+approximate locations of the original observations. We can see how there
+are 3 observations at 15 (all were 15 and the noise added makes it
+possible to see them all). The limitations of the histogram arise around
+the 10 year sentence area where there are many responses at 10 years and
+just one at both 9 and 11 years, but the histogram bars sort of miss
+this that aspect of the data set. The density curve did show a small
+bump at 10 years. Density curves are, however, not perfect and this one
+shows area for sentences less than 0 years which is not possible here.
 
 
 
@@ -2064,8 +2068,8 @@ years which is not possible here.
 \begin{Highlighting}[]
 \KeywordTok{hist}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years, }\DataTypeTok{freq=}\NormalTok{F, }\DataTypeTok{xlab=}\StringTok{"Years"}\NormalTok{,}
      \DataTypeTok{main=}\StringTok{"Histogram of Years with density curve and rug"}\NormalTok{)}
-\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years),}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
-\KeywordTok{rug}\NormalTok{(}\KeywordTok{jitter}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years),}\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years), }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\KeywordTok{rug}\NormalTok{(}\KeywordTok{jitter}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Years), }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2104,7 +2108,7 @@ along with some potential outliers indicated in two of the three groups.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{boxplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury)}
+\KeywordTok{boxplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2114,22 +2118,21 @@ will be used in two ways this semester. The formula use in R employed
 previously declares that the response variable here is \emph{Years} and
 the explanatory variable is \emph{Attr}. The other use for
 ``\textasciitilde{}'' is as shorthand for ``is distributed as'' and is
-used in the context of \texttt{Y\textasciitilde{}N(0,1)}, which
-translates (in statistics) to defining the random variable \emph{Y} as
-following a Normal distribution\footnote{Remember the bell-shaped curve
-  you encountered in introductory statistics? If not, you can see some
-  at \url{https://en.wikipedia.org/wiki/Normal_distribution}} with mean
-0 and standard deviation of 1. In the current situation, we could ask
+used in the context of \(Y\sim N(0,1)\), which translates (in
+statistics) to defining the random variable \emph{Y} as following a
+Normal distribution\footnote{Remember the bell-shaped curve you
+  encountered in introductory statistics? If not, you can see some at
+  \url{https://en.wikipedia.org/wiki/Normal_distribution}} with mean 0
+and standard deviation of 1. In the current situation, we could ask
 whether the \texttt{Years} variable seems like it may follow a normal
-distribution, in other words, is
-\emph{Years}\texttt{\textasciitilde{}N(0,1)}? Since the responses are
-right skewed with some groups having outliers, it is not reasonable to
-assume that the \emph{Years} variable for any of the three groups may
-follow a Normal distribution (more later on the issues this creates!).
-Remember that \(\mu\) and \(\sigma\) are parameters where \(\mu\)
-(``mu'') is our standard symbol for the \textbf{\emph{population mean}}
-and that \(\sigma\) (``sigma'') is the symbol of the
-\textbf{\emph{population standard deviation}}.
+distribution, in other words, is \(\text{Years}\sim N(\mu,\sigma)\)?
+Since the responses are right skewed with some groups having outliers,
+it is not reasonable to assume that the \emph{Years} variable for any of
+the three groups may follow a Normal distribution (more later on the
+issues this creates!). Remember that \(\mu\) and \(\sigma\) are
+parameters where \(\mu\) (``mu'') is our standard symbol for the
+\textbf{\emph{population mean}} and that \(\sigma\) (``sigma'') is the
+symbol of the \textbf{\emph{population standard deviation}}.
 
 \section{Beanplots}\label{section2-2}
 
@@ -2172,7 +2175,7 @@ correspond to mean of each group.}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(beanplot)}
-\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
+\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury, }\DataTypeTok{log=}\StringTok{""}\NormalTok{, }\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{, }\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2182,7 +2185,7 @@ also detected in the boxplots previously. The three large sentences of
 group and two in the \emph{Unattractive} group. The \emph{Unattractive}
 group seems to have more high observations than the other groups even
 though the \emph{Beautiful} group had the largest number of observations
-around 10years. The mean sentence was highest for the
+around 10 years. The mean sentence was highest for the
 \emph{Unattractive} group and the difference in the means between
 \emph{Beautiful} and \emph{Average} was small.
 
@@ -2199,9 +2202,11 @@ compare. We can get means and standard deviations by groups easily using
 the same formula notation with the \texttt{mean} and \texttt{sd}
 functions if the \texttt{mosaic} package is loaded.
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =}\NormalTok{ MockJury)}
+\KeywordTok{mean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2212,7 +2217,7 @@ functions if the \texttt{mosaic} package is loaded.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{sd}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =}\NormalTok{ MockJury)}
+\KeywordTok{sd}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2226,7 +2231,7 @@ and others.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data =}\NormalTok{ MockJury)}
+\KeywordTok{favstats}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2259,9 +2264,9 @@ frameworks for conducting statistical inference: randomization and
 parametric inference techniques. \textbf{\emph{Parametric}} statistical
 methods involve making assumptions about the distribution of the
 responses and obtaining confidence intervals and/or p-values using a
-\emph{named} distribution (like the z or \(t\)-distributions). Typically
-these results are generated using formulas and looking up areas under
-curves or cutoffs using a table or a computer.
+\emph{named} distribution (like the \(z\) or \(t\)-distributions).
+Typically these results are generated using formulas and looking up
+areas under curves or cutoffs using a table or a computer.
 \textbf{\emph{Randomization}}-based statistical methods use a computer
 to shuffle, sample, or simulate observations in ways that allow you to
 obtain distributions of possible results to find areas and cutoffs
@@ -2332,8 +2337,6 @@ variable:
 ## 6     Beautiful                 FALSE
 \end{verbatim}
 
-\newpage
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{tail}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(MockJury}\OperatorTok{$}\NormalTok{Attr, MockJury}\OperatorTok{$}\NormalTok{NotBeautiful))}
@@ -2351,12 +2354,12 @@ variable:
 \end{verbatim}
 
 To get rid of one of the groups, we need to learn a little bit about
-data management in R. \textbf{\emph{Brackets}} \texttt{({[},\ {]})} are
+data management in R. \textbf{\emph{Brackets}} \texttt{({[},{]})} are
 used to modify the rows or columns in a data.frame with entries before
 the comma operating on rows and entries after the comma on the columns.
 For example, if you want to see the results for the
 5\textsuperscript{th} subject, you can reference the
-5\textsuperscript{th} row of the data.frame using \texttt{{[}5,\ {]}}
+5\textsuperscript{th} row of the data.frame using \texttt{{[}5,{]}}
 after the data.frame name:
 
 \begin{Shaded}
@@ -2453,9 +2456,8 @@ data set.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{boxplot}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2) }
-\KeywordTok{beanplot}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury2,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2) }
+\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{log=}\StringTok{""}\NormalTok{, }\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{, }\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2464,18 +2466,18 @@ start with comparing the means the two groups. We can obtain the two
 means using the \texttt{mean} function or directly obtain the difference
 in the means using the \texttt{diffmean} function (both require the
 \texttt{mosaic} package). The \texttt{diffmean} function provides
-\(\bar{x}_{Unattractive} - \bar{x}_{Average}\) where \(\bar{x}\) (read
-as ``x-bar'') is the sample mean of observations in the subscripted
-group. Note that there are two directions that you could compare the
-means and this function chooses to take the mean from the second group
-name \emph{alphabetically} and subtract the mean from the first
-alphabetical group name. It is always good to check the direction of
-this calculation as having a difference of \(-1.84\) years versus
+\(\bar{x}_\text{Unattractive} - \bar{x}_\text{Average}\) where
+\(\bar{x}\) (read as ``x-bar'') is the sample mean of observations in
+the subscripted group. Note that there are two directions that you could
+compare the means and this function chooses to take the mean from the
+second group name \emph{alphabetically} and subtract the mean from the
+first alphabetical group name. It is always good to check the direction
+of this calculation as having a difference of \(-1.84\) years versus
 \(1.84\) years could be important.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
+\KeywordTok{mean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2486,7 +2488,7 @@ this calculation as having a difference of \(-1.84\) years versus
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
+\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2504,9 +2506,9 @@ than the \emph{Average} group, but we want to make sure that the
 difference is real -- that there is evidence to reject the assumption
 that the means are the same ``in the population''. First, a
 \textbf{\emph{null hypothesis}}\footnote{The hypothesis of no difference
-  that is typically generated in the hopes of being rejected in favor of
-  the alternative hypothesis which contains the sort of difference that
-  is of interest in the application.} which defines a \textbf{\emph{null
+  that is typically generated, in the hopes of being rejected in favor
+  of the alternative hypothesis, contains the sort of difference that is
+  of interest in the application.} which defines a \textbf{\emph{null
 model}}\footnote{The null model is the statistical model that is implied
   by the chosen null hypothesis. Here, a null hypothesis of no
   difference translates to having a model with the same mean for both
@@ -2518,8 +2520,8 @@ hypothesis of \(H_0: \mu_1 = \mu_2\) versus the alternative hypothesis
 of \(H_A: \mu_1 \ne \mu_2\), where \(\mu_1\) is the parameter for the
 true mean of the first group and \(\mu_2\) is the parameter for the true
 mean of the second group. The alternative hypothesis involves assuming a
-statistical model for the \(i^{th} (i=1,\ldots,n_j)\) response from the
-\(j^{th} (j=1,2)\) group, \(\boldsymbol{y}_{ij}\), that involves
+statistical model for the \(i^{th}\ (i=1,\ldots,n_j)\) response from the
+\(j^{th}\ (j=1,2)\) group, \(\boldsymbol{y}_{ij}\), that involves
 modeling it as \(y_{ij} = \mu_j + \varepsilon_{ij}\), where we assume
 that \(\varepsilon_{ij} \sim N(0,\sigma^2)\). For the moment, focus on
 the models that either assume the means are the same (null) or different
@@ -2534,15 +2536,16 @@ the models that either assume the means are the same (null) or different
   \textbf{a} difference in \textbf{true} means for the two groups.
 \end{itemize}
 
-Suppose we are considering the alternative model for the 4th observation
-(\(i=4\)) from the second group (\(j=2\)), then the model for this
-observation is \(y_{42} = \mu_2 +\varepsilon_{42}\), that defines the
-response as coming from the true mean for the second group plus a random
-error term for that observation, \(\varepsilon_{42}\). For, say, the 5th
-observation from the first group (\(j=1\)), the model is
-\(y_{51} = \mu_1 +\varepsilon_{51}\). If we were working with the null
-model, the mean is always the same (\(\mu\)) - the group specified does
-not change the mean we use for that observation.
+Suppose we are considering the alternative model for the
+4\textsuperscript{th} observation (\(i=4\)) from the second group
+(\(j=2\)), then the model for this observation is
+\(y_{42} = \mu_2 +\varepsilon_{42}\), that defines the response as
+coming from the true mean for the second group plus a random error term
+for that observation, \(\varepsilon_{42}\). For, say, the
+5\textsuperscript{th} observation from the first group (\(j=1\)), the
+model is \(y_{51} = \mu_1 +\varepsilon_{51}\). If we were working with
+the null model, the mean is always the same (\(\mu\)) - the group
+specified does not change the mean we use for that observation.
 
 It can be helpful to think about the null and alternative models
 graphically. By assuming the null hypothesis is true (means are equal)
@@ -2610,18 +2613,12 @@ to easily perform a permutation\footnote{We'll see the \texttt{shuffle}
   \texttt{Perm1} is provided, it isn't something to worry about right
   now.}. Just one time, we can explore what a permutation of the
 treatment labels could look like in the \texttt{PermutedAttr} variable
-below. Note that the \texttt{Years} are held in the same place the group
-labels are shuffled.
+below. Note that the \texttt{Years} are held in the same place while the
+group labels are shuffled.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Perm1 <-}\StringTok{ }\KeywordTok{with}\NormalTok{(MockJury2,}\KeywordTok{data.frame}\NormalTok{(Years,Attr,}\DataTypeTok{PermutedAttr=}\KeywordTok{shuffle}\NormalTok{(Attr)))}
+\NormalTok{Perm1 <-}\StringTok{ }\KeywordTok{with}\NormalTok{(MockJury2, }\KeywordTok{data.frame}\NormalTok{(Years, Attr, }\DataTypeTok{PermutedAttr=}\KeywordTok{shuffle}\NormalTok{(Attr)))}
 \NormalTok{Perm1}
 \end{Highlighting}
 \end{Shaded}
@@ -2737,15 +2734,15 @@ use permutations (sampling without replacement).
 The comparison of the beanplots for the real data set and permuted
 version of the labels is what is really interesting (Figure
 \ref{fig:Figure2-8}). The original difference in the sample means of the
-two groups was 1.84 years (Unattractive minus Average). The sample means
-are the \textbf{\emph{statistics}} that estimate the parameters for the
-true means of the two groups. In the permuted data set, the difference
-in the means is 1.15 years in the opposite direction (Average had a
-higher mean than Unattractive in the permuted data).
+two groups was 1.84 years (\emph{Unattractive} minus \emph{Average}).
+The sample means are the \textbf{\emph{statistics}} that estimate the
+parameters for the true means of the two groups. In the permuted data
+set, the difference in the means is 1.15 years in the opposite direction
+(Average had a higher mean than Unattractive in the permuted data).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
+\KeywordTok{mean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2756,7 +2753,7 @@ higher mean than Unattractive in the permuted data).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
+\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{PermutedAttr, }\DataTypeTok{data=}\NormalTok{Perm1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2787,7 +2784,7 @@ process many times and track how unusual our observed result is relative
 to this distribution of potential responses if the null were true. If
 the observed differences are unusual relative to the results under
 permutations, then there is evidence against the null hypothesis, the
-null hypothesis should be rejected ( Reject \(H_0\)), and a conclusion
+null hypothesis should be rejected (Reject \(H_0\)), and a conclusion
 should be made, in the direction of the alternative hypothesis, that
 there is evidence that the true means differ. If the observed
 differences are similar to (or at least not unusual relative to) what we
@@ -2809,27 +2806,27 @@ know where to look up \textbf{\emph{p-values}}\footnote{P-values are the
 settings, they can have simpler forms because we use the data set to
 find the distribution of the statistic and don't need to rely on a named
 distribution. We will label our test statistic \textbf{\emph{T}} (for
-\textbf{T} statistic) unless the test statistic has a commonly used
+\textbf{T}est statistic) unless the test statistic has a commonly used
 name. Since we are interested in comparing the means of the two groups,
 we can define
 
-\[T=\bar{x}_{Unattractive}-\bar{x}_{Average},\]
+\[T=\bar{x}_\text{Unattractive}-\bar{x}_\text{Average},\]
 
-which coincidentally is what the\texttt{diffmean} function provided us
+which coincidentally is what the \texttt{diffmean} function provided us
 previously. We label our \textbf{\emph{observed test statistic}} (the
 one from the original data set) as
 
-\[T_{obs}=\bar{x}_{Unattractive}-\bar{x}_{Average},\]
+\[T_{obs}=\bar{x}_\text{Unattractive}-\bar{x}_\text{Average},\]
 
 which happened to be 1.84 years here. We will compare this result to the
 results for the test statistic that we obtain from permuting the group
 labels. To denote permuted results, we will add a * to the labels:
 
-\[T^*=\bar{x}_{Unattractive}-\bar{x}_{Average^*}.\]
+\[T^*=\bar{x}_{\text{Unattractive}^*}-\bar{x}_{\text{Average}^*}.\]
 
 We then compare the
-\(T_{obs}=\bar{x}_{Unattractive}-\bar{x}_{Average} = 1.84\) to the
-distribution of results that are possible for the permuted results
+\(T_{obs}=\bar{x}_\text{Unattractive}-\bar{x}_\text{Average} = 1.84\) to
+the distribution of results that are possible for the permuted results
 (\(T^*\)) which corresponds to assuming the null hypothesis is true.
 
 We need to consider lots of permutations to do a permutation test. In
@@ -2865,7 +2862,7 @@ code is connected when it appears in the console, looking like this:
 \begin{Highlighting}[]
 \OperatorTok{>}\StringTok{ }\ControlFlowTok{for}\NormalTok{(b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
 \OperatorTok{+}\StringTok{   }\KeywordTok{print}\NormalTok{(b)}
-\OperatorTok{+}\NormalTok{\}}
+\OperatorTok{+}\StringTok{ }\NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2892,7 +2889,7 @@ difference in the means, storing it in a variable called \texttt{Ts} is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Ts <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
+\NormalTok{Ts <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
 \NormalTok{Ts}
 \end{Highlighting}
 \end{Shaded}
@@ -2909,7 +2906,7 @@ the test statistic under 5 different permutations easily:
 \begin{Highlighting}[]
 \NormalTok{B <-}\StringTok{ }\DecValTok{5}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Ts <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
+\NormalTok{  Ts <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
   \KeywordTok{print}\NormalTok{(Ts)}
 \NormalTok{\}}
 \end{Highlighting}
@@ -2975,17 +2972,18 @@ Five permutations are still not enough to assess whether our \(T_{obs}\)
 of 1.84 is unusual and we need to do many permutations to get an
 accurate assessment of the possibilities under the null hypothesis. It
 is common practice to consider something like 1,000 permutations. The
-\texttt{Tstar} vector when we set \emph{B} the permutation distribution
-for the selected test statistic under\footnote{We often say ``under'' in
-  statistics and we mean ``given that the following is true''.} the null
-hypothesis -- what is called the \textbf{\emph{null distribution}} of
-the statistic. The null distribution is the distribution of possible
-values of a statistic under the null hypothesis. We want to visualize
-this distribution and use it to assess how unusual our \(T_{obs}\)
-result of 1.84 years was relative to all the possibilities under
-permutations (under the null hypothesis). So we repeat the loop, now
-with \(B=1000\) and generate a histogram, density curve and summary
-statistics of the results:
+\texttt{Tstar} vector when we set \emph{B} to be large, say
+\texttt{B=1000}, contains the permutation distribution for the selected
+test statistic under\footnote{We often say ``under'' in statistics and
+  we mean ``given that the following is true''.} the null hypothesis --
+what is called the \textbf{\emph{null distribution}} of the statistic.
+The null distribution is the distribution of possible values of a
+statistic under the null hypothesis. We want to visualize this
+distribution and use it to assess how unusual our \(T_{obs}\) result of
+1.84 years was relative to all the possibilities under permutations
+(under the null hypothesis). So we repeat the loop, now with \(B=1000\)
+and generate a histogram, density curve and summary statistics of the
+results:
 
 
 
@@ -2999,11 +2997,10 @@ statistics of the results:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{B <-}\StringTok{ }\DecValTok{1000}
 \NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
+\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2)}
 \NormalTok{\}}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{label=}\NormalTok{T)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
@@ -3026,7 +3023,7 @@ statistics of the results:
 Figure \ref{fig:Figure2-9} contains visualizations of \(T^*\) and the
 \texttt{favstats} summary provides the related numerical summaries. Our
 observed \(T_{obs}\) of 1.84 seems fairly unusual relative to these
-results with only 20 \(T^*\) values over 2 based on the histogram. We
+results with only 14 \(T^*\) values over 2 based on the histogram. We
 need to make more specific comparisons of the permuted results versus
 our observed result to be able to clearly decide whether our observed
 result is really unusual.
@@ -3050,11 +3047,10 @@ of observed test statistic.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \NormalTok{Tobs <-}\StringTok{ }\FloatTok{1.837}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar),}\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3068,6 +3064,8 @@ cut-off point (\texttt{Tobs}), and whether we want calculate the
 proportion that are below (left of) or above (right of) the cut-off
 (\texttt{lower.tail=F} option provides the proportion of values above
 the cutoff of interest).
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3083,11 +3081,11 @@ The proportion of 0.02 tells us that 20 of the 1,000 permuted results
 (2\%) were larger than what we observed. This type of work is how we can
 generate \textbf{\emph{p-values}} using permutation distributions.
 P-values, as you should remember, are the probability of getting a
-result as extreme as or more extreme than what we observed, given that
-the null is true. Finding only 20 permutations of 1,000 that were larger
-than our observed result suggests that it is hard to find a result like
-what we observed if there really were no difference, although it is not
-impossible.
+result as extreme as or more extreme than what we observed,
+\(\underline{\text{given that the null is true}}\). Finding only 20
+permutations of 1,000 that were larger than our observed result suggests
+that it is hard to find a result like what we observed if there really
+were no difference, although it is not impossible.
 
 When testing hypotheses for two groups, there are two types of
 alternative hypotheses, one-sided or two-sided. \textbf{\emph{One-sided
@@ -3112,9 +3110,9 @@ observed in the right tail. Some people suggest doubling the area in one
 tail but we will collect information on the number that were more
 extreme than the same value in the other tail. In other words, we count
 the proportion over 1.84 and below -1.84. So we need to also find how
-many of the permuted results were smaller than -1.84years to add to our
-previous proportion. Using \texttt{pdata} \texttt{-Tobs} as the cut-off
-and \texttt{lower.tail=T} provides this result:
+many of the permuted results were smaller than -1.84 years to add to our
+previous proportion. Using \texttt{pdata} with \texttt{-Tobs} as the
+cut-off and \texttt{lower.tail=T} provides this result:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3145,10 +3143,9 @@ statistic and its opposite value required for performing two-sided test.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar),}\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3420,11 +3417,11 @@ the treatment.\strut
 A simple example helps to clarify how the scope of inference can change.
 Suppose we are interested in studying the GPA of students. If we had
 taken a random sample from, say, the STAT 217 students in a given
-semester, our scope of inference would be the population of 217 students
-in that semester. If we had taken a random sample from the entire MSU
-population, then the inferences would be to the entire MSU population in
-that semester. These are similar types of problems but the two
-populations are very different and the group you are trying to make
+semester, our scope of inference would be the population of STAT 217
+students in that semester. If we had taken a random sample from the
+entire MSU population, then the inferences would be to the entire MSU
+population in that semester. These are similar types of problems but the
+two populations are very different and the group you are trying to make
 conclusions about should be noted carefully in your results -- it does
 matter! If we did not have a representative sample, say the students
 could choose to provide this information or not, then we can only make
@@ -3439,18 +3436,18 @@ random sample of students from each section and compare the results and
 find evidence of some difference. In this scenario, we can conclude that
 there is some difference in the population of STAT 217 students but we
 can't say that being in different sections caused the differences in the
-mean GPAs. Now suppose that we randomly assigned every 217 student to
-get extra training in one of three different study techniques and found
-evidence of differences among the training methods. We could conclude
-that the training methods caused the differences in these students.
-These conclusions would only apply to STAT 217 students and could not be
-generalized to a larger population of students. If we took a random
-sample of STAT 217 students (say only 10 from each section) and then
-randomly assigned them to one of three training programs and found
+mean GPAs. Now suppose that we randomly assigned every STAT 217 student
+to get extra training in one of three different study techniques and
+found evidence of differences among the training methods. We could
+conclude that the training methods caused the differences in these
+students. These conclusions would only apply to STAT 217 students and
+could not be generalized to a larger population of students. If we took
+a random sample of STAT 217 students (say only 10 from each section) and
+then randomly assigned them to one of three training programs and found
 evidence of differences, then we can say that the training programs
 caused the differences. We can also say that we have evidence that those
 differences pertain to the population of STAT 217 students. This seems
-similar to the scenario where all 217 students participated in the
+similar to the scenario where all STAT 217 students participated in the
 training programs except that by using random sampling, only a fraction
 of the population needs to actually be studied to make inferences to the
 entire population of interest -- saving time and money.
@@ -3467,20 +3464,20 @@ specific difference between parameters. This is the research hypothesis
 and the claim about the population that we hope to demonstrate is more
 reasonable to conclude than the null hypothesis. In the two-group
 situation, we can have \textbf{\emph{one-sided alternatives}}
-\(H_A\):\(\mu_1 > \mu_2\) (greater than) or \(H_A\):\(\mu_1 < \mu_2\)
-(less than) or, the more common, \textbf{\emph{two-sided alternative}}
-\(H_A\):\(\mu_1 \ne \mu_2\) (not equal to). We usually default to using
+\(H_A: \mu_1 > \mu_2\) (greater than) or \(H_A: \mu_1 < \mu_2\) (less
+than) or, the more common, \textbf{\emph{two-sided alternative}}
+\(H_A: \mu_1 \ne \mu_2\) (not equal to). We usually default to using
 two-sided tests because we often do not know enough to know the
 direction of a difference in advance, especially in more complicated
 situations. The \textbf{\emph{sampling distribution under the null}} is
-the distribution of all possible values of a statistic under \(H_0\) is
-true. It is used to calculate the \textbf{\emph{p-value}} , the
-probability of obtaining a result as extreme or more extreme than what
-we observed given that the null hypothesis is true. We will find
-sampling distributions using \textbf{\emph{nonparametric}} approaches
-(like the permutation approach used above) and
-\textbf{\emph{parametric}} methods (using ``named'' distributions like
-the \(t\), F, and \(\chi^2\)).
+the distribution of all possible values of a statistic under the
+assumption that \(H_0\) is true. It is used to calculate the
+\textbf{\emph{p-value}} , the probability of obtaining a result as
+extreme or more extreme than what we observed given that the null
+hypothesis is true. We will find sampling distributions using
+\textbf{\emph{nonparametric}} approaches (like the permutation approach
+used above) and \textbf{\emph{parametric}} methods (using ``named''
+distributions like the \(t\), F, and \(\chi^2\)).
 
 Small p-values are evidence against the null hypothesis because the
 observed result is unlikely due to chance if \(H_0\) is true. Large
@@ -3691,22 +3688,24 @@ two-sided test, the code resembles the permutation test code in Section
 in the sample means that we used before.
 
 The permutation distribution in Figure \ref{fig:Figure2-12} looks
-similar to the previous results with slightly different \(x\)-axis
-scaling. The the proportion of permuted results that were more extreme
-than the observed result was 0.031. This difference is due to a
-different set of random permutations being selected. If you run
-permutation code, you will often get slightly different results each
-time you run it. If you are uncomfortable with the variation in the
-results, you can run more than \(B=\) 1,000 permutations (say 10,000)
-and the variability in the resulting p-values will be reduced further.
-Usually this uncertainty will not cause any substantive problems -- but
-do not be surprised if your results vary from a colleagues if you are
-both analyzing the same data set or if you re-run your permutation code.
+similar to the previous results with slightly different x-axis scaling.
+The observed \(t\)-statistic was \(-2.17\) and the proportion of
+permuted results that were more extreme than the observed result was
+0.031. This difference is due to a different set of random permutations
+being selected. If you run permutation code, you will often get slightly
+different results each time you run it. If you are uncomfortable with
+the variation in the results, you can run more than \(B=\) 1,000
+permutations (say 10,000) and the variability in the resulting p-values
+will be reduced further. Usually this uncertainty will not cause any
+substantive problems -- but do not be surprised if your results vary
+from a colleagues if you are both analyzing the same data set or if you
+re-run your permutation code.
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
+\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
 \NormalTok{Tobs}
 \end{Highlighting}
 \end{Shaded}
@@ -3720,9 +3719,9 @@ both analyzing the same data set or if you re-run your permutation code.
 \begin{Highlighting}[]
 \NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
+\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(Years}\OperatorTok{~}\KeywordTok{shuffle}\NormalTok{(Attr), }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
 \NormalTok{\}}
-\KeywordTok{pdata}\NormalTok{(}\KeywordTok{abs}\NormalTok{(Tstar),}\KeywordTok{abs}\NormalTok{(Tobs),}\DataTypeTok{lower.tail=}\NormalTok{F)}
+\KeywordTok{pdata}\NormalTok{(}\KeywordTok{abs}\NormalTok{(Tstar), }\KeywordTok{abs}\NormalTok{(Tobs), }\DataTypeTok{lower.tail=}\NormalTok{F)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3765,9 +3764,10 @@ approximates the distribution of the test statistic, \(t\), under the
 null hypothesis. The procedure that assumes unequal variances has a
 simpler test statistic and a very complicated degrees of freedom
 formula. The equal variance procedure is most similar to the ANOVA
-methods we will consider in Chapters 2 and 3 so that will be our focus
-for the two group problem. Fortunately, both of these methods are
-readily available in the \texttt{t.test} function in R if needed.
+methods we will consider in Chapters \ref{chapter3} and \ref{chapter4}
+so that will be our focus for the two group problem. Fortunately, both
+of these methods are readily available in the \texttt{t.test} function
+in R if needed.
 
 If the assumptions for the equal variance \(t\)-test are met and the
 null hypothesis is true, then the sampling distribution of the test
@@ -3782,7 +3782,7 @@ and more like a \textbf{\emph{standard normal distribution}}
 
 \begin{figure}
 \centering
-\includegraphics{chapter1_files/image045small.png}
+\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-13-1.pdf}
 \caption{\label{fig:Figure2-13}Plots of \(t\) and normal distributions}
 \end{figure}
 
@@ -3792,13 +3792,13 @@ the \(t\)-distribution relative to the observed \(t\)-statistic. We'll
 learn how to use R to do this below, but for now we will allow the
 \texttt{t.test} function to take care of this for us. The
 \texttt{t.test} function uses our formula notation
-(\texttt{Years\ \textasciitilde{}\ Attr}) and then \texttt{data=...} as
-we saw before for making plots. To get the equal-variance test result,
-the \texttt{var.equal=T} option needs to be turned on. Then
-\texttt{t.test} provides us with lots of useful output. The three
-results we've been discussing are highlighted in the output below -- the
-test statistic value (-2.17), \(df=73\), and the p-value, from the
-\(t\)-distribution with 73 degrees of freedom, of 0.033.
+(\texttt{Years\textasciitilde{}Attr}) and then \texttt{data=...} as we
+saw before for making plots. To get the equal-variance test result, the
+\texttt{var.equal=T} option needs to be turned on. Then \texttt{t.test}
+provides us with lots of useful output. The three results we've been
+discussing are available in the output below -- the test statistic value
+(-2.17), \(df=73\), and the p-value, from the \(t\)-distribution with 73
+degrees of freedom, of 0.033.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3825,15 +3825,16 @@ statistic of -2.1702. The negative sign on the test statistic occurred
 because the function took \emph{Average} - \emph{Unattractive} which is
 the opposite direction as \texttt{diffmean}. The p-value is very similar
 to the two permutation results found before. The reason for this
-similarity is that the permutation distribution with 73 degrees of
-freedom. Figure \ref{fig:Figure2-14} shows how similar the two
-distributions happened to be here.
+similarity is that the permutation distribution looks an awful like a
+\(t\)-distribution with 73 degrees of freedom. Figure
+\ref{fig:Figure2-14} shows how similar the two distributions happened to
+be here.
 
 
 
 \begin{figure}
 \centering
-\includegraphics{chapter1_files/image047small.png}
+\includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-14-1.pdf}
 \caption{\label{fig:Figure2-14}Plot of permutation and \(t\) distribution with \(df=73\).}
 \end{figure}
 
@@ -3892,12 +3893,10 @@ that for a two-sided test p-value:
 
 Permutation distributions do not need to match the named parametric
 distribution to work correctly, although this happened in the previous
-example. The parametric certain conditions to be met for the sampling
-distribution of the statistic to follow the named distribution and
-provide accurate p-values. The conditions for the equal variance t-test
-are:
-
-\newpage
+example. The parametric approach, the \(t\)-test, requires certain
+conditions to be met for the sampling distribution of the statistic to
+follow the named distribution and provide accurate p-values. The
+conditions for the equal variance t-test are:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3972,8 +3971,8 @@ permutation approaches provide very similar inferences.
 
 In every chapter, we will follow the first example used to motivate and
 explain the methods with a ``worked'' example where we focus just on the
-results. In a previous semester, some of the STAT 217 students (
-\textbf{\emph{n}}=79) provided information on their \emph{Sex},
+results. In a previous semester, some of the STAT 217 students
+(\textbf{\emph{n}}=79) provided information on their \emph{Sex},
 \emph{Age}, and current cumulative \emph{GPA}. We might be interested in
 whether Males and Females had different average GPAs. First, we can take
 a look at the difference in the responses by groups based on the output
@@ -4017,7 +4016,6 @@ students by sex.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{boxplot}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217)}
 \KeywordTok{beanplot}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217, }\DataTypeTok{log=}\StringTok{""}\NormalTok{, }\DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{, }\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
 \end{Highlighting}
@@ -4080,7 +4078,7 @@ re-assurance about the use of either approach.
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
 \NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{(GPA}\OperatorTok{~}\KeywordTok{shuffle}\NormalTok{(Sex), }\DataTypeTok{data=}\NormalTok{s217, }\DataTypeTok{var.equal=}\NormalTok{T)}\OperatorTok{$}\NormalTok{statistic}
 \NormalTok{\}}
-\KeywordTok{pdata}\NormalTok{(}\KeywordTok{abs}\NormalTok{(Tstar),}\KeywordTok{abs}\NormalTok{(Tobs),}\DataTypeTok{lower.tail=}\NormalTok{F)}
+\KeywordTok{pdata}\NormalTok{(}\KeywordTok{abs}\NormalTok{(Tstar), }\KeywordTok{abs}\NormalTok{(Tobs), }\DataTypeTok{lower.tail=}\NormalTok{F)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4096,8 +4094,7 @@ test statistic for STAT 217 GPAs.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{hist}\NormalTok{(Tstar,}\DataTypeTok{labels=}\NormalTok{T)}
+\KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{Tobs, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
@@ -4112,8 +4109,8 @@ steps, using the permutation results:
 \setcounter{enumi}{-1}
 \item
   \emph{Isolate the claim to be proved and method to use (define a test
-  statistic T)} We want to test for a difference in the means between
-  males and females and will use the equal-variance two-sample t-test
+  statistic T)}. We want to test for a difference in the means between
+  males and females and will use the equal variance two-sample t-test
   statistic to compare them, making a decision at the 5\% significance
   level.
 \item
@@ -4121,16 +4118,16 @@ steps, using the permutation results:
 
   \begin{itemize}
   \item
-    \(H_0: \mu_{male} = \mu_{female}\)
+    \(H_0: \mu_\text{male} = \mu_\text{female}\)
 
     \begin{itemize}
     \tightlist
     \item
-      where \(\mu_{male}\) is the true mean GPA for males and
-      \(\mu_{female}\) is true mean GPA for females.
+      where \(\mu_\text{male}\) is the true mean GPA for males and
+      \(\mu_\text{female}\) is true mean GPA for females.
     \end{itemize}
   \item
-    \(H_A: \mu_{male} \ne \mu_{female}\)
+    \(H_A: \mu_\text{male} \ne \mu_\text{female}\)
   \end{itemize}
 \item
   Check conditions for the procedure being used
@@ -4179,13 +4176,6 @@ steps, using the permutation results:
     or more if there in fact no difference in true mean GPA between
     females and males in STAT 217 in a particular semester.
   \end{itemize}
-\end{enumerate}
-
-\newpage
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
 \item
   Decision
 
@@ -4218,12 +4208,13 @@ steps, using the permutation results:
 
 Randomly shuffling the treatments between the observations is like
 randomly sampling the treatments without replacement. In other words, we
-randomly sample one observation at a observations. This provides us with
-a technique for testing hypotheses because it provides new splits of the
-observations into groups that are as interesting as what we observed if
-the null hypothesis is assumed true. In most situations, we also want to
-estimate parameters of interest and provide \textbf{\emph{confidence
-intervals}} for those parameters (an interval where we are \_\_\%
+randomly sample one observation at a time from the treatments until we
+have \(n\) observations. This provides us with a technique for testing
+hypotheses because it provides new splits of the observations into
+groups that are as interesting as what we observed if the null
+hypothesis is assumed true. In most situations, we also want to estimate
+parameters of interest and provide \textbf{\emph{confidence intervals}}
+for those parameters (an interval where we are \_\_\%
 \textbf{\emph{confident}} that the true parameter lies). As before,
 there are two options we will consider -- a parametric and a
 nonparametric approach. The nonparametric approach will be using what is
@@ -4235,40 +4226,40 @@ represents the population. Since each observation represents other
 similar observations in the population that we didn't get to measure, if
 we \textbf{\emph{sample with replacement}} to generate a new data set of
 size \emph{n} from our data set (also of size \emph{n}) it mimics the
-process of taking our population of interest. This process also ends up
-giving us useful sampling distributions of statistics even when our
-standard normality assumption is violated, similar to what we
-encountered in the permutation tests. Bootstrapping is especially useful
-in situations where we are interested in statistics other than the mean
-(say we want a confidence interval for a median or a standard deviation)
-or when we consider functions of more than one parameter and don't want
-to derive the distribution of the statistic (say the difference in two
-medians). In this text, bootstrapping is used to provide more
-trustworthy inferences when some of our assumptions (especially
-normality) might be violated for our parametric procedure.
+process of taking repeated random samples of size \(n\) from our
+population of interest. This process also ends up giving us useful
+sampling distributions of statistics even when our standard normality
+assumption is violated, similar to what we encountered in the
+permutation tests. Bootstrapping is especially useful in situations
+where we are interested in statistics other than the mean (say we want a
+confidence interval for a median or a standard deviation) or when we
+consider functions of more than one parameter and don't want to derive
+the distribution of the statistic (say the difference in two medians).
+In this text, bootstrapping is used to provide more trustworthy
+inferences when some of our assumptions (especially normality) might be
+violated for our parametric procedure.
 
 To perform bootstrapping, we will use the \texttt{resample} function
 from the \texttt{mosaic} package. We can apply this function to a data
 set and get a new version of the data set by sampling new observations
 \emph{with replacement} from the original one. The new, bootstrapped
 version of the data set (called \texttt{MockJury\_BTS} below) contains a
-new variable called \texttt{orig.\ id} which is the number of the
-subject from the original data set. By summarizing how often each of
-these id's occurred in a bootstrapped data set, we can see how the
-re-sampling works. The \texttt{table} function will count up how many
-times each observation was used in the bootstrap sample, providing a row
-with the id followed by a row with the count\footnote{The
-  \texttt{as.numeric} function is also used here. It really isn't
-  important but makes sure the output of \texttt{table} is sorted by
-  observation number by first converting the \emph{orig.id} variable
-  into a numeric vector.}. In the first bootstrap sample shown, the 2nd,
-7th, and 9th observations were sampled one time each, the 4th
-observation was sampled three times, and the 1st, 3rd, 5th, and many
-others were not sampled at all. Bootstrap sampling thus picks some
-observations multiple times and to do that it has to ignore some
-observations.
-
-\newpage
+new variable called \texttt{orig.id} which is the number of the subject
+from the original data set. By summarizing how often each of these id's
+occurred in a bootstrapped data set, we can see how the re-sampling
+works. The \texttt{table} function will count up how many times each
+observation was used in the bootstrap sample, providing a row with the
+id followed by a row with the count\footnote{The \texttt{as.numeric}
+  function is also used here. It really isn't important but makes sure
+  the output of \texttt{table} is sorted by observation number by first
+  converting the \emph{orig.id} variable into a numeric vector.}. In the
+first bootstrap sample shown, the 1\textsuperscript{st},
+4\textsuperscript{th}, and 10\textsuperscript{th} observations were
+sampled one time each, the 5\textsuperscript{th} observation was sampled
+three times, and the 7\textsuperscript{C}, 8\textsuperscript{V},
+9\textsuperscript{th}, and many others were not sampled at all.
+Bootstrap sampling thus picks some observations multiple times and to do
+that it has to ignore some observations.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4287,8 +4278,8 @@ observations.
 
 Like in permutations, one randomization isn't enough. A second bootstrap
 sample is also provided to help you get a sense of what it is doing to
-generate a data set. It did not select subject 7 but did select 2, 4, 6,
-and 8 two times. You can see other variations in the resulting
+generate a data set. It did not select subject 7 but did select 6, 14,
+and 21 more than once. You can see other variations in the resulting
 re-sampling of subjects with the most sampled subject being the chance
 of selecting any observation for any slot in the new data set is
 \(1/75\) and the expected or mean number of appearances we expect to see
@@ -4343,7 +4334,7 @@ provides a \textbf{\emph{bootstrap confidence interval}}\footnote{There
 
 To make this concrete, we can revisit our previous examples, starting
 with the \texttt{MockJury2} data created before and our interest in
-comparing the mean sentences for the \emph{Average}and
+comparing the mean sentences for the \emph{Average} and
 \emph{Unattractive} picture groups. The bootstrapping code is very
 similar to the permutation code except that we apply the
 \texttt{resample} function to the entire data set as opposed to the
@@ -4351,8 +4342,7 @@ similar to the permutation code except that we apply the
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2); Tobs}
+\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2); Tobs}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4364,9 +4354,9 @@ similar to the permutation code except that we apply the
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{B <-}\StringTok{ }\DecValTok{1000}
-\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{,}\DataTypeTok{nrow=}\NormalTok{B)}
+\NormalTok{Tstar <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
-\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(MockJury2))}
+\NormalTok{  Tstar[b] <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(MockJury2))}
 \NormalTok{  \}}
 \KeywordTok{favstats}\NormalTok{(Tstar)}
 \end{Highlighting}
@@ -4401,9 +4391,9 @@ observed difference in the means of 1.84 years.}
 \end{Shaded}
 
 In this situation, the observed difference in the mean sentences is 1.84
-years (Unattractive-Average), which is the vertical line in Figure
-\ref{fig:Figure2-18}. The bootstrap distribution shows the results for
-the difference in the sample means when fake data sets are
+years (\emph{Unattractive} - \emph{Average}), which is the vertical line
+in Figure \ref{fig:Figure2-18}. The bootstrap distribution shows the
+results for the difference in the sample means when fake data sets are
 re-constructed by sampling from the data set with replacement. The
 bootstrap distribution is approximately centered at the observed value
 (difference in the sample means) and is relatively symmetric.
@@ -4418,9 +4408,10 @@ null hypothesis is assumed; bootstrap distributions are useful for
 generating confidence intervals for the true parameter values.
 
 To create a 95\% bootstrap confidence interval for the difference in the
-true mean sentences (\(\mu_{Unattr}-\mu_{Avg}\)), select the middle 95\%
-of results from the bootstrap distribution. Specifically, find the 2.5th
-percentile and the 97.5th percentile (values that put 2.5 and 97.5\% of
+true mean sentences (\(\mu_\text{Unattr}-\mu_\text{Avg}\)), select the
+middle 95\% of results from the bootstrap distribution. Specifically,
+find the 2.5\textsuperscript{th} percentile and the
+97.5\textsuperscript{th} percentile (values that put 2.5 and 97.5\% of
 the results to the left) in the bootstrap distribution, which leaves
 95\% in the middle for the confidence interval. To find percentiles in a
 distribution in R, functions are of the form
@@ -4452,14 +4443,15 @@ statistic of interest.
 ## 0.975000 3.521528
 \end{verbatim}
 
-These results tell us that the 2.5th percentile of the bootstrap
-distribution is at 0.26 years and the 97.5th percentile is at 3.50
-years. We can combine these results to provide a 95\% confidence for
-\(\mu_{Unattr}-\mu_{Avg}\) that is between 0.26 and 3.50. We can
-interpret this as with any confidence interval, that we are 95\%
-confident that the difference in the true mean suggested sentences
-(Unattractive minus Average group) is between 0.26 and 3.50 years. We
-can also obtain both percentiles in one line of code using:
+These results tell us that the 2.5\textsuperscript{th} percentile of the
+bootstrap distribution is at 0.26 years and the 97.5\textsuperscript{th}
+percentile is at 3.50 years. We can combine these results to provide a
+95\% confidence for \(\mu_\text{Unattr}-\mu_\text{Avg}\) that is between
+0.26 and 3.50. We can interpret this as with any confidence interval,
+that we are 95\% confident that the difference in the true mean
+suggested sentences (\emph{Unattractive} minus \emph{Average} groups) is
+between 0.26 and 3.50 years. We can also obtain both percentiles in one
+line of code using:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4489,7 +4481,6 @@ bootstrap distribution residing in \texttt{Tstar}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{hist}\NormalTok{(Tstar, }\DataTypeTok{labels=}\NormalTok{T)}
 \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\NormalTok{quantiles}\OperatorTok{$}\NormalTok{quantile, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(Tstar), }\DataTypeTok{main=}\StringTok{"Density curve of Tstar"}\NormalTok{)}
@@ -4498,19 +4489,21 @@ bootstrap distribution residing in \texttt{Tstar}.
 \end{Shaded}
 
 Although confidence intervals can exist without referencing hypotheses,
-we can revisit our previous \(H_0: \mu_{Unattr} = \mu_{Avg}\). This null
-hypothesis is equivalent to testing
-\(H_0: \mu_{Unattr} - \mu_{Avg} = 0\), that the difference in the true
-means is equal to 0 years. And the difference in the means was the scale
-for our confidence interval, which did not contain 0 years. We will call
-0 an interesting \textbf{\emph{reference value}} for the confidence
-interval, because here it is the value where the true means are equal to
-each other (have a difference of 0 years). In general, if our confidence
-interval does not contain 0, then it is saying that 0 is not one of our
-likely values for the difference in the true means. This implies that we
-should reject a claim that they are equal. This provides the same
-inferences for the hypotheses that we considered previously using both a
-parametric and permutation approach.
+we can revisit our previous hypotheses and see waht this confidence
+interval tells us about the test of
+\(H_0: \mu_\text{Unattr} = \mu_\text{Avg}\). This null hypothesis is
+equivalent to testing \(H_0: \mu_\text{Unattr} - \mu_\text{Avg} = 0\),
+that the difference in the true means is equal to 0 years. And the
+difference in the means was the scale for our confidence interval, which
+did not contain 0 years. We will call 0 an interesting
+\textbf{\emph{reference value}} for the confidence interval, because
+here it is the value where the true means are equal to each other (have
+a difference of 0 years). In general, if our confidence interval does
+not contain 0, then it is saying that 0 is not one of our likely values
+for the difference in the true means. This implies that we should reject
+a claim that they are equal. This provides the same inferences for the
+hypotheses that we considered previously using both a parametric and
+permutation approach.
 
 The general summary is that we can use confidence intervals to test
 hypotheses by assessing whether the reference value under the null
@@ -4533,7 +4526,7 @@ interval calculated for you:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{t.test}\NormalTok{(Years }\OperatorTok{~}\StringTok{ }\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}
+\KeywordTok{t.test}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury2, }\DataTypeTok{var.equal=}\NormalTok{T)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4567,7 +4560,7 @@ the same as for the hypothesis test, where we continue to assume that we
 have independent observations with equal variances for the two groups.
 
 The formula that \texttt{t.test} is using to calculate the parametric
-\textbf{\emph{equal-variance two-sample t confidence interval}} is:
+\textbf{\emph{equal variance two-sample t confidence interval}} is:
 
 \[\bar{x}_1 - \bar{x}_2 \mp t^*_{df}s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\]
 
@@ -4586,17 +4579,6 @@ freedom and the cut-offs that put 95\% of the area in the middle.
 
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
-\NormalTok{x<-}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from=}\OperatorTok{-}\DecValTok{4}\NormalTok{,}\DataTypeTok{to=}\DecValTok{4}\NormalTok{,}\DataTypeTok{length.out=}\DecValTok{200}\NormalTok{)}
-\KeywordTok{plot}\NormalTok{(x,}\KeywordTok{dt}\NormalTok{(x,}\DataTypeTok{df=}\DecValTok{73}\NormalTok{),}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{,}\DataTypeTok{lty=}\DecValTok{2}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{,}\DataTypeTok{type=}\StringTok{"l"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"t-values"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"Density"}\NormalTok{,}
-     \DataTypeTok{main=}\StringTok{"Plot of t(73) distribution"}\NormalTok{ )}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\OperatorTok{-}\FloatTok{2.1702}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\FloatTok{2.1702}\NormalTok{,}\DataTypeTok{lwd=}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \centering
 \includegraphics{02-reintroductionToStatistics_files/figure-latex/Figure2-20-1.pdf}
@@ -4611,10 +4593,11 @@ similar fashion to how \texttt{qdata} was used in the bootstrap results,
 except that this new value must be used in the previous confidence
 interval formula. This function produces values for requested
 percentiles, so if we want to put 95\% in the middle, we place 2.5\% in
-each tail of the distribution and need to request the 97.5th percentile.
-Because the \(t\)-distribution is always symmetric around 0, we merely
-need to look up the value for the 97.5th percentile and know that the
-multiplier for the 2.5th percentile is just \(-t^*\). The \(t^*\)
+each tail of the distribution and need to request the
+97.5\textsuperscript{th} percentile. Because the \(t\)-distribution is
+always symmetric around 0, we merely need to look up the value for the
+97.5\textsuperscript{th} percentile and know that the multiplier for the
+2.5\textsuperscript{th} percentile is just \(-t^*\). The \(t^*\)
 multiplier to form the confidence interval is 1.993 for a 95\%
 confidence interval when the \(df=73\) based on the results from
 \texttt{qt}:
@@ -4629,9 +4612,9 @@ confidence interval when the \(df=73\) based on the results from
 ## [1] 1.992997
 \end{verbatim}
 
-Note that the 2.5th percentile is just the negative of this value due to
-symmetry and the real source of the minus in the minus/plus in the
-formula for the confidence interval.
+Note that the 2.5\textsuperscript{th} percentile is just the negative of
+this value due to symmetry and the real source of the minus in the
+minus/plus in the formula for the confidence interval.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4699,7 +4682,7 @@ using:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FloatTok{3.974}\OperatorTok{-}\FloatTok{5.811}\OperatorTok{+}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{qt}\NormalTok{(.}\DecValTok{975}\NormalTok{,}\DataTypeTok{df=}\DecValTok{73}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{38}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\NormalTok{)}
+\FloatTok{3.974}\OperatorTok{-}\FloatTok{5.811}\OperatorTok{+}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DataTypeTok{df=}\DecValTok{73}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{38}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4716,7 +4699,7 @@ is 1.69 here.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qt}\NormalTok{(.}\DecValTok{975}\NormalTok{,}\DataTypeTok{df=}\DecValTok{73}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{38}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\NormalTok{)}
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DataTypeTok{df=}\DecValTok{73}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{38}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4735,7 +4718,7 @@ information to calculate the confidence interval:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex,}\DataTypeTok{data=}\NormalTok{s217)}
+\KeywordTok{favstats}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4763,7 +4746,7 @@ The margin of error is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qt}\NormalTok{(.}\DecValTok{975}\NormalTok{,}\DataTypeTok{df=}\DecValTok{77}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{42}\NormalTok{)}
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DataTypeTok{df=}\DecValTok{77}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{42}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4775,7 +4758,7 @@ All together, the 95\% confidence interval is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FloatTok{3.338}\OperatorTok{-}\FloatTok{3.0886}\OperatorTok{+}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{qt}\NormalTok{(.}\DecValTok{975}\NormalTok{,}\DataTypeTok{df=}\DecValTok{77}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{42}\NormalTok{)}
+\FloatTok{3.338}\OperatorTok{-}\FloatTok{3.0886}\OperatorTok{+}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\KeywordTok{qt}\NormalTok{(}\FloatTok{0.975}\NormalTok{, }\DataTypeTok{df=}\DecValTok{77}\NormalTok{)}\OperatorTok{*}\NormalTok{sp}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\DecValTok{37}\OperatorTok{+}\DecValTok{1}\OperatorTok{/}\DecValTok{42}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4784,10 +4767,10 @@ All together, the 95\% confidence interval is:
 \end{verbatim}
 
 So we are 95\% confident that the difference in the true mean GPAs
-between females and males (females minus males) is between 0. 065 and 0.
-434 GPA points. We get a similar\footnote{We rounded the means a little
-  and that caused the small difference in results.} result from the
-\texttt{t.test} output:
+between females and males (females minus males) is between 0.065 and
+0.434 GPA points. We get a similar\footnote{We rounded the means a
+  little and that caused the small difference in results.} result from
+the \texttt{t.test} output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4811,7 +4794,7 @@ between females and males (females minus males) is between 0. 065 and 0.
 
 Note that we can easily switch to 90\% or 99\% confidence intervals by
 simply changing the percentile in \texttt{qt} or changing
-\texttt{conf.\ level} in the \texttt{t.test} function. In the following
+\texttt{conf.level} in the \texttt{t.test} function. In the following
 two lines of code, we added octothorpes\footnote{You can correctly call
   octothorpes \emph{number} symbols or, in the twitter verse,
   \emph{hashtags}. For more on this symbol, see
@@ -4824,7 +4807,7 @@ comments are also clearly distinguished.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qt}\NormalTok{(.}\DecValTok{95}\NormalTok{,}\DataTypeTok{df=}\DecValTok{77}\NormalTok{) }\CommentTok{# For 90% confidence and 77 df}
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.95}\NormalTok{, }\DataTypeTok{df=}\DecValTok{77}\NormalTok{) }\CommentTok{# For 90% confidence and 77 df}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4834,7 +4817,7 @@ comments are also clearly distinguished.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qt}\NormalTok{(.}\DecValTok{995}\NormalTok{,}\DataTypeTok{df=}\DecValTok{77}\NormalTok{) }\CommentTok{#For 99% confidence and 77 df}
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.995}\NormalTok{, }\DataTypeTok{df=}\DecValTok{77}\NormalTok{) }\CommentTok{#For 99% confidence and 77 df}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4844,7 +4827,7 @@ comments are also clearly distinguished.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{t.test}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex,}\DataTypeTok{data=}\NormalTok{s217,}\DataTypeTok{var.equal=}\NormalTok{T,}\DataTypeTok{conf.level=}\FloatTok{0.90}\NormalTok{)}
+\KeywordTok{t.test}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217, }\DataTypeTok{var.equal=}\NormalTok{T, }\DataTypeTok{conf.level=}\FloatTok{0.90}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4864,7 +4847,7 @@ comments are also clearly distinguished.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{t.test}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex,}\DataTypeTok{data=}\NormalTok{s217,}\DataTypeTok{var.equal=}\NormalTok{T,}\DataTypeTok{conf.level=}\FloatTok{0.99}\NormalTok{)}
+\KeywordTok{t.test}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217, }\DataTypeTok{var.equal=}\NormalTok{T, }\DataTypeTok{conf.level=}\FloatTok{0.99}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4908,7 +4891,7 @@ confidence interval using the bootstrap distribution in Figure
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(GPA }\OperatorTok{~}\StringTok{ }\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217); Tobs}
+\NormalTok{Tobs <-}\StringTok{ }\KeywordTok{diffmean}\NormalTok{(GPA}\OperatorTok{~}\NormalTok{Sex, }\DataTypeTok{data=}\NormalTok{s217); Tobs}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4919,13 +4902,12 @@ confidence interval using the bootstrap distribution in Figure
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{B<-}\StringTok{ }\DecValTok{1000}
-\NormalTok{Tstar<-}\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{,}\DataTypeTok{nrow=}\NormalTok{B)}
+\NormalTok{B <-}\StringTok{ }\DecValTok{1000}
+\NormalTok{Tstar <-}\KeywordTok{matrix}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{nrow=}\NormalTok{B)}
 \ControlFlowTok{for}\NormalTok{ (b }\ControlFlowTok{in}\NormalTok{ (}\DecValTok{1}\OperatorTok{:}\NormalTok{B))\{}
 \NormalTok{  Tstar[b]<-}\KeywordTok{diffmean}\NormalTok{(GPA }\OperatorTok{~}\StringTok{ }\NormalTok{Sex, }\DataTypeTok{data=}\KeywordTok{resample}\NormalTok{(s217))}
 \NormalTok{  \}}
-\KeywordTok{qdata}\NormalTok{(Tstar,.}\DecValTok{05}\NormalTok{)}
+\KeywordTok{qdata}\NormalTok{(Tstar, }\FloatTok{0.05}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4936,7 +4918,7 @@ confidence interval using the bootstrap distribution in Figure
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qdata}\NormalTok{(Tstar,.}\DecValTok{95}\NormalTok{)}
+\KeywordTok{qdata}\NormalTok{(Tstar, }\FloatTok{0.95}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4947,7 +4929,7 @@ confidence interval using the bootstrap distribution in Figure
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{quantiles<-}\KeywordTok{qdata}\NormalTok{(Tstar,}\KeywordTok{c}\NormalTok{(.}\DecValTok{05}\NormalTok{,.}\DecValTok{95}\NormalTok{))}
+\NormalTok{quantiles <-}\StringTok{ }\KeywordTok{qdata}\NormalTok{(Tstar, }\KeywordTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{, }\FloatTok{0.95}\NormalTok{))}
 \NormalTok{quantiles}
 \end{Highlighting}
 \end{Shaded}
@@ -5010,6 +4992,8 @@ of populations (which we rarely know). And that our inferences are
 limited to the population that we randomly sampled from, if we randomly
 sampled.
 
+\newpage
+
 \section{Chapter summary}\label{section2-10}
 
 In this chapter, we reviewed basic statistical inference methods in the
@@ -5050,13 +5034,13 @@ us assess how much those conditions are violated.
 \section{Summary of important R code}\label{section2-11}
 
 The main components of R code used in this chapter follow with
-components to modify in red, remembering that any R packages mentioned
-need to be installed and loaded for this code to have a chance of
-working:
+components to modify in red (in the digital version), remembering that
+any R packages mentioned need to be installed and loaded for this code
+to have a chance of working:
 
 \begin{itemize}
 \item
-  summary(\textcolor{red}{DATASETNAME})
+  \textbf{summary(\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \tightlist
@@ -5064,8 +5048,9 @@ working:
     Provides numerical summaries of all variables in the data set.
   \end{itemize}
 \item
-  t.test(\textcolor{red}{Y} \textasciitilde{} \textcolor{red}{X},
-  data=\textcolor{red}{DATASETNAME}, conf.level=0.95)
+  \textbf{t.test(\textcolor{red}{Y} \textasciitilde{}
+  \textcolor{red}{X}, data=\textcolor{red}{DATASETNAME},
+  conf.level=0.95)}
 
   \begin{itemize}
   \tightlist
@@ -5074,7 +5059,8 @@ working:
     confidence interval.
   \end{itemize}
 \item
-  2*pt(abs(\textcolor{red}{Tobs}), df=\textcolor{red}{DF}, lower.tail=F)
+  **2*pt(abs(\textcolor{red}{Tobs}), df=\textcolor{red}{DF},
+  lower.tail=F)**
 
   \begin{itemize}
   \tightlist
@@ -5083,7 +5069,7 @@ working:
     statistic of \texttt{Tobs}.
   \end{itemize}
 \item
-  hist(\textcolor{red}{DATASETNAME\$Y})
+  \textbf{hist(\textcolor{red}{DATASETNAME\$Y})}
 
   \begin{itemize}
   \tightlist
@@ -5092,8 +5078,8 @@ working:
     of interest.
   \end{itemize}
 \item
-  boxplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
-  data=\textcolor{red}{DATASETNAME})
+  \textbf{boxplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \tightlist
@@ -5102,8 +5088,8 @@ working:
     set.
   \end{itemize}
 \item
-  beanplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
-  data=\textcolor{red}{DATASETNAME})
+  \textbf{beanplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \item
@@ -5113,10 +5099,10 @@ working:
     set.
   \end{itemize}
 \item
-  mean(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
+  \textbf{mean(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
   data=\textcolor{red}{DATASETNAME});
   sd(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
-  data=\textcolor{red}{DATASETNAME})
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \item
@@ -5127,8 +5113,8 @@ working:
     in X.
   \end{itemize}
 \item
-  favstats(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
-  data=\textcolor{red}{DATASETNAME})
+  \textbf{favstats(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \tightlist
@@ -5136,7 +5122,7 @@ working:
     Provides numerical summaries of Y by groups described in X.
   \end{itemize}
 \item
-  Tobs \texttt{\textless{}-}
+  \textbf{Tobs \texttt{\textless{}-}
   t.test(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
   data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic; Tobs\\
   B \texttt{\textless{}-} 1000\\
@@ -5145,7 +5131,7 @@ working:
   Tstar{[}b{]} \texttt{\textless{}-}
   t.test(\textcolor{red}{Y}\textasciitilde{}shuffle(\textcolor{red}{X}),
   data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic\\
-  \}
+  \}}
 
   \begin{itemize}
   \tightlist
@@ -5155,7 +5141,7 @@ working:
     track of the results in \texttt{Tstar}
   \end{itemize}
 \item
-  pdata(Tstar, abs(\textcolor{red}{Tobs}, lower.tail=F)
+  \textbf{pdata(Tstar, abs(\textcolor{red}{Tobs}, lower.tail=F)}
 
   \begin{itemize}
   \tightlist
@@ -5166,7 +5152,7 @@ working:
     p-value.
   \end{itemize}
 \item
-  Tobs \texttt{\textless{}-}
+  \textbf{Tobs \texttt{\textless{}-}
   diffmean(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
   data=\textcolor{red}{DATASETNAME}, var.equal=T)\$statistic; Tobs\\
   B \texttt{\textless{}-} 1000\\
@@ -5175,7 +5161,7 @@ working:
   Tstar{[}b{]} \texttt{\textless{}-}
   diffmean(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{X},
   data=resample(\textcolor{red}{DATASETNAME}))\\
-  \}
+  \}}
 
   \begin{itemize}
   \tightlist
@@ -5185,7 +5171,7 @@ working:
     keep track of the results of the statistic in \texttt{Tstar}.
   \end{itemize}
 \item
-  qdata(Tstar, c(0. 025, 0. 975))
+  \textbf{qdata(Tstar, c(0.025, 0.975))}
 
   \begin{itemize}
   \tightlist
@@ -5194,6 +5180,8 @@ working:
     the bootstrap distribution (\texttt{Tstar})
   \end{itemize}
 \end{itemize}
+
+\newpage
 
 \section{Practice problems}\label{section2-12}
 
@@ -5204,20 +5192,20 @@ for adult inpatients recruited from a detoxification unit. Patients with
 no primary care physician were randomly assigned to receive a
 multidisciplinary assessment and a brief motivational intervention or
 usual care and various outcomes were observed. Two of the variables in
-the data set are \texttt{sex}, a factor with levels male and female and
-\texttt{daysanysub} which is the time (in days) to first use of any
-substance post-detox. We are interested in the difference in mean number
-of days to first use of any substance post-detox between males and
-females. There are some missing responses and the following code will
-produce \texttt{favstats} with the missing values and then provide a
-data set that for complete observations by applying the \texttt{na.omit}
-function that removes any observations with missing values.
+the data set are \texttt{sex}, a factor with levels \emph{male} and
+\emph{female} and \texttt{daysanysub} which is the time (in days) to
+first use of any substance post-detox. We are interested in the
+difference in mean number of days to first use of any substance
+post-detox between males and females. There are some missing responses
+and the following code will produce \texttt{favstats} with the missing
+values and then provide a data set that by applying the \texttt{na.omit}
+function removes any observations with missing values.
 
 \begin{verbatim}
 require(mosaicData)
 data(HELPrct)
-HELPrct <- HELPrct[, c("daysanysub", "sex")] #Just focus on two variables
-HELPrct <- na.omit(HELPrct2) #Removes subjects with missing
+HELPrct2 <- HELPrct[, c("daysanysub", "sex")] #Just focus on two variables
+HELPrct3 <- na.omit(HELPrct2) #Removes subjects with missing
 favstats(daysanysub~sex, data=HELPrct2)
 favstats(daysanysub~sex, data=HELPrct3)
 \end{verbatim}
