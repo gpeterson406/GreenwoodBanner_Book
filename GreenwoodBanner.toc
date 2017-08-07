@@ -23,13 +23,13 @@
 \contentsline {section}{\numberline {3.1}Situation}{73}{section.3.1}
 \contentsline {section}{\numberline {3.2}Linear model for One-Way ANOVA (cell-means and reference-coding)}{74}{section.3.2}
 \contentsline {section}{\numberline {3.3}One-Way ANOVA Sums of Squares, Mean Squares, and F-test}{79}{section.3.3}
-\contentsline {section}{\numberline {3.4}ANOVA model diagnostics including QQ-plots}{87}{section.3.4}
-\contentsline {section}{\numberline {3.5}Guinea pig tooth growth One-Way ANOVA example}{93}{section.3.5}
-\contentsline {section}{\numberline {3.6}Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display}{100}{section.3.6}
-\contentsline {section}{\numberline {3.7}Pair-wise comparisons for Prisoner Rating data}{105}{section.3.7}
-\contentsline {section}{\numberline {3.8}Chapter Summary}{108}{section.3.8}
-\contentsline {section}{\numberline {3.9}Summary of important R code}{109}{section.3.9}
-\contentsline {section}{\numberline {3.10}Practice problems}{110}{section.3.10}
+\contentsline {section}{\numberline {3.4}ANOVA model diagnostics including QQ-plots}{86}{section.3.4}
+\contentsline {section}{\numberline {3.5}Guinea pig tooth growth One-Way ANOVA example}{90}{section.3.5}
+\contentsline {section}{\numberline {3.6}Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display}{98}{section.3.6}
+\contentsline {section}{\numberline {3.7}Pair-wise comparisons for Prisoner Rating data}{104}{section.3.7}
+\contentsline {section}{\numberline {3.8}Chapter Summary}{107}{section.3.8}
+\contentsline {section}{\numberline {3.9}Summary of important R code}{108}{section.3.9}
+\contentsline {section}{\numberline {3.10}Practice problems}{108}{section.3.10}
 \contentsline {chapter}{\numberline {4}Two-Way ANOVA}{111}{chapter.4}
 \contentsline {section}{\numberline {4.1}Situation}{111}{section.4.1}
 \contentsline {section}{\numberline {4.2}Designing a two-way experiment and visualizing results}{111}{section.4.2}
