@@ -1649,8 +1649,8 @@ modify in ALL CAPS, remembering that any R
 packages mentioned need to be installed and loaded for this code to have a
 chance of working:
 
-* tally(`r colFmt("A","red")`~`r colFmt("B","red")`,
-data=`r colFmt("DATASETNAME","red")`)
+* **tally(`r colFmt("A","red")`~`r colFmt("B","red")`,
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Requires the ``mosaic`` package be loaded. 
     
@@ -1658,15 +1658,15 @@ data=`r colFmt("DATASETNAME","red")`)
     predictor variables A and B, used to check for balance and understand sample 
     sizes in each combination. 
     
-* `r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")` ``<-`` 
-factor(`r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")`)
+* **`r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")` ``<-`` 
+factor(`r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")`)**
 
     * Use the ``factor`` function on any numerically coded
     explanatory variable where the numerical codes represent levels of a
     categorical variable. 
     
-* intplot(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
-data=`r colFmt("DATASETNAME","red")`)
+* **intplot(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Download and install using: 
     
@@ -1674,9 +1674,9 @@ data=`r colFmt("DATASETNAME","red")`)
     
     * Provides interaction plot.
     
-* `r colFmt("INTERACTIONMODELNAME","red")` ``<-`` 
+* **`r colFmt("INTERACTIONMODELNAME","red")` ``<-`` 
 lm(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
-data=`r colFmt("DATASETNAME","red")`)
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Fits the interaction model with main effects for A and B and an 
     interaction between them.
@@ -1684,9 +1684,9 @@ data=`r colFmt("DATASETNAME","red")`)
     * This is the first model that should be fit in Two-Way ANOVA 
     modeling situations.
     
-* `r colFmt("ADDITIVEMODELNAME","red")` ``<-``
+* **`r colFmt("ADDITIVEMODELNAME","red")` ``<-``
 lm(`r colFmt("Y","red")`~`r colFmt("A","red")`+`r colFmt("B","red")`,
-data=`r colFmt("DATASETNAME","red")`)
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Fits the additive model with only main effects for A and B but no 
     interaction between them.
@@ -1694,12 +1694,12 @@ data=`r colFmt("DATASETNAME","red")`)
     * Should only be used if the interaction has been decided to be 
     unimportant using a test for the interaction.
     
-* summary(`r colFmt("MODELNAME","red")`)
+* **summary(`r colFmt("MODELNAME","red")`)**
 
     * Generates model summary information including the estimated model coefficients, 
     SEs, t-tests, and p-values. 
 
-* Anova(`r colFmt("MODELNAME","red")`)
+* **Anova(`r colFmt("MODELNAME","red")`)**
 
     * Requires the ``car`` package to be loaded.
     
@@ -1708,12 +1708,12 @@ data=`r colFmt("DATASETNAME","red")`)
     when working with the additive model as it provides inferences for 
     each term conditional on the other one. 
 
-* par(mfrow=c(2,2)); plot(`r colFmt("MODELNAME","red")`)
+* **par(mfrow=c(2,2)); plot(`r colFmt("MODELNAME","red")`)**
 
     * Generates four diagnostic plots including the Residuals vs Fitted and 
     Normal Q-Q plot. 
     
-* plot(allEffects(`r colFmt("MODELNAME","red")`))
+* **plot(allEffects(`r colFmt("MODELNAME","red")`))**
     
     * Requires the ``effects`` package be loaded. 
 
