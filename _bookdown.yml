@@ -13,12 +13,13 @@ output:
     includes:
       in_header: preamble.tex
     papersize: letter
-    geometry: innermargin=1.25in,outermargin=0.75in,top=1in,bottom=1in
     colorlinks: true
     fig_width: 5
     fig_height: 3.5
+    
   bookdown::gitbook:
     css: [style.css, toc.css, font-awesome.min.css]
     split_by: section+number
+
 tables: true
 new_session: true

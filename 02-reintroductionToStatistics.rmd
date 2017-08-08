@@ -978,15 +978,15 @@ statistics of the results:
 (ref:fig2-9) Histogram (left, with counts in bars) and density curve (right) of 
 values of test statistic for 1,000 permutations. 
 
-```{r Figure2-9, fig.cap="(ref:fig2-9)",echo=F,fig.width=6,cache=F}
+```{r Figure2-9, fig.cap="(ref:fig2-9)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
 B <- 1000
 Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- diffmean(Years ~ shuffle(Attr), data=MockJury2)
 }
-hist(Tstar, label=T,ylim=c(0,250),cex.lab=0.75)
-plot(density(Tstar), main="Density curve of Tstar",cex.lab=0.75)
+hist(Tstar, label=T,ylim=c(0,250))
+plot(density(Tstar), main="Density curve of Tstar")
 ```
 
 ```{r eval=F}
@@ -1019,12 +1019,12 @@ Figure \@ref(fig:Figure2-10), using the ``abline`` function.
 values of test statistic for 1,000 permutations with bold vertical line for
 value of observed test statistic. 
 
-```{r Figure2-10, fig.cap="(ref:fig2-10)",echo=F,fig.width=6,cache=F}
+```{r Figure2-10, fig.cap="(ref:fig2-10)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
 Tobs <- 1.837
-hist(Tstar, labels=T,ylim=c(0,250),cex.lab=0.75)
+hist(Tstar, labels=T,ylim=c(0,250))
 abline(v=Tobs, lwd=2, col="red")
-plot(density(Tstar),main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs, lwd=2, col="red")
 ```
 
@@ -1103,11 +1103,11 @@ Figure \@ref(fig:Figure2-11) shows both cut-offs on the histogram and density cu
 permutations with bold lines for value of observed test statistic and its opposite
 value required for performing two-sided test.
 
-```{r Figure2-11, fig.cap="(ref:fig2-11)",echo=F,fig.width=6,cache=T}
+```{r Figure2-11, fig.cap="(ref:fig2-11)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar, labels=T,ylim=c(0,250),cex.lab=0.75)
+hist(Tstar, labels=T,ylim=c(0,250))
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-plot(density(Tstar),main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar),main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
@@ -1536,11 +1536,11 @@ abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 
 (ref:fig2-12) Permutation distribution of the $t$-statistic
 
-```{r Figure2-12, fig.cap="(ref:fig2-12)",echo=F,fig.width=6,cache=F}
+```{r Figure2-12, fig.cap="(ref:fig2-12)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar, labels=T,ylim=c(0,250),cex.lab=0.75)
+hist(Tstar, labels=T,ylim=c(0,250))
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-plot(density(Tstar), main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
@@ -1609,13 +1609,13 @@ happened to be here.
 
 (ref:fig2-14) Plot of permutation and $t$ distribution with $df=73$. 
 
-```{r Figure2-14, echo=FALSE, fig.cap ="(ref:fig2-14)"}
+```{r Figure2-14, fig.cap ="(ref:fig2-14)", echo=F,fig.height=4,fig.width=6}
 plot(density(Tstar), main="Permutation and t(73) distributions",
      xlab="T=t-statistic", lwd=2,ylim=c(0,0.45))
 x<-seq(from=-4,to=4,length.out=100)
 lines(x,dt(x,df=73),col="red",lty=2,lwd=2)
-legend("left",legend=c("Permutation","t(73)"),col=c("black","red"),lty=c(1,2),
-       lwd=c(1,2))
+legend("topleft",legend=c("Permutation","t(73)"),col=c("black","red"),lty=c(1,2),
+       lwd=c(1,2),cex=0.75)
 ```
 
 In your previous statistics course, you might have used an applet or a table to 
@@ -1791,11 +1791,11 @@ pdata(abs(Tstar), abs(Tobs), lower.tail=F)
 (ref:fig2-16) Histogram and density curve of permutation distribution of test
 statistic for STAT 217 GPAs.
 
-```{r Figure2-16, fig.cap="(ref:fig2-16)",echo=F,fig.width=6,cache=T}
+```{r Figure2-16, fig.cap="(ref:fig2-16)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar,labels=T,ylim=c(0,225),cex.lab=0.75)
+hist(Tstar,labels=T,ylim=c(0,225))
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
-plot(density(Tstar), main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
@@ -1805,6 +1805,8 @@ abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
+
+\newpage
 
 Here is a full write-up of the results using all 6+ hypothesis testing steps, using the permutation results:
 
@@ -1938,6 +1940,8 @@ most sampled subject being the chance of selecting any observation for any slot
 in the new data set is $1/75$ and the expected or mean number of appearances we 
 expect to see for an observation is the number of tries times the probably of selection on each so $75*1/75=1$. 
 
+\newpage
+
 ```{r}
 MockJury_BTS2 <- resample(MockJury2)
 table(as.numeric(MockJury_BTS2$orig.id))
@@ -2003,11 +2007,11 @@ favstats(Tstar)
 difference in sample mean ``Years`` with vertical line for the observed 
 difference in the means of 1.84 years.
 
-```{r Figure2-18, fig.cap="(ref:fig2-18)",echo=F,fig.width=6,cache=T}
+```{r Figure2-18, fig.cap="(ref:fig2-18)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar, labels=T,ylim=c(0,225),cex.lab=0.75)
+hist(Tstar, labels=T,ylim=c(0,225))
 abline(v=Tobs, col="red", lwd=2)
-plot(density(Tstar), main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar), main="Density curve of Tstar")
 abline(v=Tobs, col="red", lwd=2)
 ```
 
@@ -2072,11 +2076,11 @@ distribution residing in ``Tstar``.
 (ref:fig2-19) Histogram and density curve of bootstrap distribution with 
 95% bootstrap confidence intervals displayed (vertical lines).
 
-```{r Figure2-19, fig.cap="(ref:fig2-19)",echo=F,fig.width=6,cache=T}
+```{r Figure2-19, fig.cap="(ref:fig2-19)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar, labels=T,ylim=c(0,225),cex.lab=0.75)
+hist(Tstar, labels=T,ylim=c(0,225))
 abline(v=quantiles$quantile, col="blue", lwd=3)
-plot(density(Tstar), main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar), main="Density curve of Tstar")
 abline(v=quantiles$quantile, col="blue", lwd=3)
 ```
 
@@ -2337,12 +2341,12 @@ difference in sample mean GPAs (male minus female) with observed difference
 (solid vertical line) and quantiles that delineate the 90% confidence intervals
 (dashed vertical lines). 
 
-```{r Figure2-21,fig.cap="(ref:fig2-21)",echo=F,fig.width=6,cache=T}
+```{r Figure2-21,fig.cap="(ref:fig2-21)",echo=F,fig.width=10,fig.height=5,cache=F}
 par(mfrow=c(1,2))
-hist(Tstar,labels=T,ylim=c(0,225),cex.lab=0.75)
+hist(Tstar,labels=T,ylim=c(0,225))
 abline(v=Tobs,col="red",lwd=2)
 abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
-plot(density(Tstar),main="Density curve of Tstar",cex.lab=0.75)
+plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs,col="red",lwd=2)
 abline(v=quantiles$quantile,col="blue",lwd=3,lty=2)
 ```
@@ -2375,6 +2379,8 @@ interest. Remember that statistics are summaries of the sample information and
 parameters are characteristics of populations (which we rarely know). And that 
 our inferences are limited to the population that we randomly sampled from, if 
 we randomly sampled. 
+
+\newpage
 
 ## Chapter summary {#section2-10}
 
@@ -2412,7 +2418,7 @@ doing diagnostics to help us assess how much those conditions are violated.
 ## Summary of important R code {#section2-11}
 
 The main components of R code used in this chapter follow with components to 
-modify in red (in the digital version), remembering that any R packages mentioned 
+modify in ALL CAPS, remembering that any R packages mentioned 
 need to be installed and loaded for this code to have a chance of working:
 
 * **summary(`r colFmt("DATASETNAME","red")`)**

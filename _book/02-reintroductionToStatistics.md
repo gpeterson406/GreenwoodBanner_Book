@@ -2131,6 +2131,8 @@ plot(density(Tstar), main="Density curve of Tstar")
 abline(v=c(-1,1)*Tobs, lwd=2, col="red")
 ```
 
+\newpage
+
 Here is a full write-up of the results using all 6+ hypothesis testing steps, using the permutation results:
 
 0. *Isolate the claim to be proved and method to use (define a test statistic T)*.
@@ -2271,6 +2273,8 @@ You can see other variations in the resulting re-sampling of subjects with the
 most sampled subject being the chance of selecting any observation for any slot 
 in the new data set is $1/75$ and the expected or mean number of appearances we 
 expect to see for an observation is the number of tries times the probably of selection on each so $75*1/75=1$. 
+
+\newpage
 
 
 ```r

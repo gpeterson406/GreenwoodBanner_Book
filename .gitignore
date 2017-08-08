@@ -46,3 +46,18 @@ rsconnect
 GreenwoodBanner.bbl
 GreenwoodBanner.pdf
 GreenwoodBanner.tex
+# Exceptions #
+##############
+!pdf_cover.tex
+!titlepage.tex
+!pdf_cover.pdf
+!titlepage.pdf
+*.pdf
+*.pdf
+*.html
+*.log
+*.log
+GreenwoodBanner.toc
+*.md
+_book/01-preface.md
+*.pdf

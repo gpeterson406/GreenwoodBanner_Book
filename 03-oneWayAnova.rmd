@@ -46,7 +46,7 @@ In Chapter \@ref(chapter2), tools for comparing the means of two groups
 were considered. More generally, these methods are used for a quantitative
 response and a categorical explanatory variable (group) which had two and only
 two levels. The full prisoner rating data set actually contained three groups 
-(Figure \@ref(fig:Figure3-1) with *Beautiful*, *Average*, and *Unattractive* 
+(Figure \@ref(fig:Figure3-1)) with *Beautiful*, *Average*, and *Unattractive* 
 rated pictures randomly assigned to the subjects for sentence ratings. In a 
 situation with more than two groups, we have two choices. First, we could rely 
 on our two group comparisons, performing tests for every possible pair 
@@ -56,7 +56,9 @@ between *Average* and *Unattractive*. The other two comparisons would lead us to
 initially end up with three p-values and no direct answer about our initial 
 question of interest -- is there some overall difference in the average sentences
 provided across the groups? In this chapter, we will learn a new method, called 
-***Analysis of Variance***, or ***One-Way ANOVA*** since there is just 
+***Analysis of Variance***, or ***ANOVA***, that directly assesses whether there is
+evidence of some overall difference in the means among the groups. This version
+of an ANOVA is called a ***One-Way ANOVA*** since there is just 
 one^[In Chapter \@ref(chapter4), methods are discussed for when there are two
 categorical explanatory variables that is called the Two-Way ANOVA and related 
 ANOVA tests are used in Chapter \@ref(chapter8) for working with extensions of 
@@ -69,21 +71,35 @@ our previous methods with an adjusted method for pairwise comparisons to make ou
 results valid called ***Tukey's Honest Significant Difference***. 
 
 To make this more concrete, we return to the original MockJury data, making
-side-by-side boxplots and beanplots (Figure \@ref(fig:Figure3-1) as well 
+side-by-side boxplots and beanplots (Figure \@ref(fig:Figure3-1)) as well 
 summarizing the sentences for the three groups using ``favstats``. 
+
+```{r}
+require(heplots)
+require(mosaic)
+data(MockJury)
+favstats(Years~Attr, data=MockJury)
+```
 
 (ref:fig3-1) Boxplot and beanplot of the sentences (years) for the three 
 treatment groups.
 
-```{r Figure3-1,fig.cap="(ref:fig3-1)"}
+```{r Figure3-1,fig.cap="(ref:fig3-1)",echo=F,fig.height=5,fig.width=10}
 require(heplots)
 require(mosaic)
 data(MockJury)
 par(mfrow=c(1,2))
+#old.par <- par(mar=c(0.75,1,0.5,0.5))
 boxplot(Years~Attr,data=MockJury)
 require(beanplot)
 beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
-favstats(Years~Attr,data=MockJury)
+```
+
+```{r eval=F}
+par(mfrow=c(1,2))
+boxplot(Years~Attr,data=MockJury)
+require(beanplot)
+beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
 ```
 
 There are slight differences in the sample sizes in the three groups with 37
@@ -91,7 +107,7 @@ There are slight differences in the sample sizes in the three groups with 37
 data set has a total sample size of $N=114$. The *Beautiful* and *Average* groups 
 do not appear to be very different with means of 4.33 and 3.97 years. In 
 Chapter \@ref(chapter2), we found moderate evidence regarding the difference in
-*Average*and *Unattractive*. It is less clear whether we might find evidence of a
+*Average* and *Unattractive*. It is less clear whether we might find evidence of a
 difference between *Beautiful* and *Unattractive* groups since we are comparing 
 means of 5.81 and 4.33 years. All the distributions appear to be right skewed 
 with relatively similar shapes. The variability in *Average* and *Unattractive* 
@@ -100,7 +116,7 @@ whether the variability is the same in all the groups.
 
 ## Linear model for One-Way ANOVA (cell-means and reference-coding) {#section3-2}
 
-We introduced the statistical model $y_{ij} = \mu_j+\varepsilon_j$ in 
+We introduced the statistical model $y_{ij} = \mu_j+\varepsilon_{ij}$ in 
 Chapter \@ref(chapter2) for the situation with $j = 1 \text{ or } 2$ to denote 
 a situation where there were two groups and, for the model that is consistent 
 with the alternative hypothesis, the means differed. Now we have three groups 
@@ -111,7 +127,7 @@ a ***linear model***. The linear model assumes that the responses follow a norma
 distribution with the linear model defining the mean, all observations have the 
 same variance, and the parameters for the mean in the model enter linearly. This 
 last condition is hard to explain at this level of material -- it is sufficient 
-to know that there models where the parameters enter the model nonlinearly and 
+to know that there are models where the parameters enter the model nonlinearly and 
 that they are beyond the scope of this course. The result of this constraint is 
 that we will be able to use the same general modeling framework for the methods
 introduced in Chapters \@ref(chapter3), \@ref(chapter4), \@ref(chapter6),
@@ -120,7 +136,7 @@ introduced in Chapters \@ref(chapter3), \@ref(chapter4), \@ref(chapter6),
 As in Chapter \@ref(chapter2), we have a null hypothesis that defines a 
 situation (and model) where all the groups have the same mean. Specifically, 
 the ***null hypothesis*** in the general situation with $J$ groups 
-($J\ge 2$) is to have all the **true** group means equal, 
+($J\ge 2$) is to have all the $\underline{\text{true}}$ group means equal, 
 
 $$H_0:\mu_1 = \ldots \mu_J.$$
 
@@ -145,7 +161,7 @@ alternative but we do not put this strict a requirement in place to reject the
 null hypothesis. The alternative model allows all the true group means to 
 differ but does require that they differ with
 
-$${\color{red}{\mu_j}}+\varepsilon_{ij}.$$
+$$y_{ij} = {\color{red}{\mu_j}}+\varepsilon_{ij}.$$
 
 This linear model states that the response for the $i^{th}$ observation in 
 the $j^{th}$ group, $\mathbf{y_{ij}}$, is modeled with a group $j$ 
@@ -164,7 +180,8 @@ all the aspects of this model. In the right panel of Figure \@ref(fig:Figure3-1)
 we can see the wider, bold horizontal lines that provide the estimated group means.
 The bigger the differences in the sample means, the more likely we are to find
 evidence against the null hypothesis. You can also see the null model on the plot 
-that assumes all the groups have the same as displayed in the dashed horizontal line
+that assumes all the groups have the same mean as displayed in the
+dashed horizontal line
 at 4.7 years (the R code below shows the overall mean of *Years* is 4.7). While 
 the hypotheses focus on the means, the model also contains assumptions about the
 distribution of the responses -- specifically that the distributions are normal 
@@ -226,7 +243,7 @@ new ideas:
 
 * Null hypothesis in words: No difference in the true means between the groups. 
 
-* Null model $y_{ij} = \mu_j+\varepsilon_{ij}$
+* Null model: $y_{ij} = \mu_j+\varepsilon_{ij}$
 
 * Alternative hypothesis in words: At least one of the true means differs between 
 the groups. 
@@ -242,7 +259,7 @@ $H_A: \color{purple}{\text{ Not all } \tau_j \text{ equal}}$
 * Null hypothesis in words: No deviation of the true mean for any groups from the
 baseline group. 
 
-* Null model: $y_{ij} =\boldsymbol{\alpha} + \tau_j+\varepsilon_{ij}$
+* Null model: $y_{ij} =\boldsymbol{\alpha} +\varepsilon_{ij}$
 
 * Alternative hypothesis in words: At least one of the true deviations is 
 different from 0 or that at least one group has a different true mean than the
@@ -262,17 +279,19 @@ and add a "``-1``" to the formula interface to tell R that we want to the
 cell-means coding. Generally, this looks like ``lm(Y~X-1, data=datasetname).``
 Once we fit a model in R, the ``summary`` function run on the model provides a
 useful "summary" of the model coefficients and a suite of other potentially
-interesting information. When fitting this version of the One-Way ANOVA model, 
+interesting information. For the moment, we will focus on the estimated model
+coefficeints, so only those lines are output. When fitting this version
+of the One-Way ANOVA model, 
 you will find a row of output for each group relating the $\mu_j\text{'s}$.
 The output contains columns for an estimate (``Estimate``), standard error 
-(``Std.Error``), $t$-value (``t value``), and p-value (``Pr(>|t|)``). We'll 
+(``Std. Error``), $t$-value (``t value``), and p-value (``Pr(>|t|)``). We'll 
 learn to use all the output in the following material, but for now just focus 
-on the estimates of the parameters that the function provides that we put in 
-bold. 
+on the estimates of the parameters that the function provides in the first
+column ("Estimate" column) of the coefficient table. 
 
 ```{r}
-lm1 <- lm(Years ~ Attr-1, data=MockJury)
-summary(lm1)
+lm1 <- lm(Years~Attr-1, data=MockJury)
+summary(lm1)$coefficients
 ```
 
 In general, we denote estimated parameters with a hat over the parameter of 
@@ -283,36 +302,37 @@ as $\hat{y}_{ij}$ that we will also call a ***fitted value*** based on the model
 being considered. The three estimates are bolded in the previous output, with the
 same estimate used for all observations in the same group. R tries to help you to 
 sort out which row of output corresponds to which group by appending the group name
-l with the variable name. Here, the variable name was ``Attr`` and the first group
+with the variable name. Here, the variable name was ``Attr`` and the first group
 alphabetically was *Beautiful*, so R provides a row labeled ``AttrBeautiful``
 with an estimate of 4.3333. The sample means from the three groups can be seen to
 directly match that and the other two results. 
 
 ```{r}
-mean(Years ~ Attr, data=MockJury)
+mean(Years~Attr, data=MockJury)
 ```
 
 The reference-coded version of the same model is more complicated but ends up 
 giving the same results once we understand what it is doing. It uses a different
-parameterization to accomplish this so has different model output. Here is the model
+parameterization to accomplish this, so has different model output. Here is the model
 summary:
 
 ```{r}
-lm2 <- lm(Years ~ Attr, data=MockJury)
-summary(lm2)
+lm2 <- lm(Years~Attr, data=MockJury)
+summary(lm2)$coefficients
 ```
 
 The estimated model coefficients are $\hat{\alpha} = 4.333$ years, 
-$\hat{tau}_2 =-0.3596$ years, $\hat{\tau}_3=1.4775$ years where R selected group 1
+$\hat{\tau}_2 =-0.3596$ years, $\hat{\tau}_3=1.4775$ years where R selected group 1
 for *Beautiful*, 2 for *Average*, and 3 for *Unattractive*. The way you can figure 
 out the baseline group (group 1 is *Beautiful* here) is to see which category label 
 is *not present* in the output. **The baseline level is typically the first group 
 label alphabetically**, but you should always check this. Based on these definitions,
-there are interpretations available for each coefficient. For $\hat{\alpha} = 4.333$ years, this is an estimate of the mean sentencing time for the *Beautiful*group.
+there are interpretations available for each coefficient. For $\hat{\alpha} = 4.333$ years, this is an estimate of the mean sentencing time for the *Beautiful* group.
 $\hat{\tau}_2 =-0.3596$ years is the deviation of the *Average* group's mean from 
-the *Beautiful* groups mean (specifically, it is $0.36$ years lower). Finally,
+the *Beautiful* group's mean (specifically, it is $0.36$ years lower). Finally,
 $\hat{\tau}_3=1.4775$ years tells us that the *Unattractive* group mean sentencing 
-time is 1.48 years higher than time. These interpretations lead directly to
+time is 1.48 years higher than the *Beautiful* group mean sentencing time. These
+interpretations lead directly to
 reconstructing the estimated means for each group by combining the baseline and
 pertinent deviations as shown in Table \@ref(tab:Table3-1). 
 
@@ -371,7 +391,8 @@ mean for all the groups. Moving from the *reference-coded* model to the *mean-on
 model is also an example of a situation where we move from a "full" model to a
 "reduced" model by setting some coefficients in the "full" model to 0 and, by doing
 this, get a simpler or "reduced" model. Simple models can be good as they are easier
-to groups that suggests no difference in the groups is not a very exciting result
+to interpret, but having a model for $J$ groups that suggests no difference in the
+groups is not a very exciting result
 in most, but not all, situations^[Suppose we were doing environmental monitoring
 and were studying asbestos levels in soils. We might be hoping that the mean-only 
 model were reasonable to use if the groups being compared were in remediated areas 
@@ -382,15 +403,9 @@ provides the estimate for the mean-only model as a reduced model from either the
 cell-means or reference-coded models when we assume that the mean is the same
 for all groups:
 
-```{r eval=F}
-lm3 <- lm(Years ~ 1, data=MockJury)
-summary(lm3)
-```
-
-```{r echo=F}
-lm3 <- lm(Years ~ 1, data=MockJury)
-x<- summary(lm3)
-print(x[4])
+```{r}
+lm3 <- lm(Years~1, data=MockJury)
+summary(lm3)$coefficients
 ```
 
 This model provides an estimate of the common mean for all observations of 
@@ -462,14 +477,15 @@ beanplot(y3~x1,ylab="",main="Scenario 4",ylim=c(0,20),method="jitter",col="red")
 
 The statistic that allows the comparison of relative amounts of variation is called
 the ***ANOVA F-statistic***. It is developed using ***sums of squares*** which 
-are measures of total variation like are used in the numerator of the standard
-deviation ($\Sigma_1^N(y_i-\bar{y})^2$) that took all the observations, 
+are measures of total variation like those that are used in the numerator of the
+standard deviation ($\Sigma_1^N(y_i-\bar{y})^2$) that took all the observations, 
 subtracted the mean, squared the differences, and then added up the results
 over all the observations to generate a measure of total variability. With
 multiple groups, we will focus on decomposing that total variability 
 (***Total Sums of Squares***) into variability among the means (we'll call this
-***Explanatory Variable*** $\mathbf{A}\textbf{'s}$ ***Sums of Squares***) and variability in the residuals 
-or errors ( ***Error Sums of Squares***). We define each of these quantities in
+***Explanatory Variable*** $\mathbf{A}\textbf{'s}$ ***Sums of Squares***) and
+variability in the residuals 
+or errors (***Error Sums of Squares***). We define each of these quantities in
 the One-Way ANOVA situation as follows:
 
 * $\textbf{SS}_{\textbf{Total}} =$ Total Sums of Squares 
@@ -498,8 +514,8 @@ $=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(\bar{y}_{i}-\bar{\bar{y}})^2 =\Sigma^J_{j=1}n
     
     * Also called sums of squares for the treatment, regression, or model. 
 
-* $\textbf{SS}_E =$ Error (Residual) Sums of Squares 
-$=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{y})^2 
+* $\textbf{SS}_\textbf{E} =$ Error (Residual) Sums of Squares 
+$=\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{y}_j)^2 
 =\Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(e_{ij})^2$
 
     * This is the variation in the responses around the group means. 
@@ -522,40 +538,20 @@ what is called an ***ANOVA table***. The ANOVA table is generated using the
 ``anova`` function applied to the reference-coded model, ``lm2`` :
 
 ```{r}
-lm2<-lm(Years ~ Attr, data=MockJury)
+lm2<-lm(Years~Attr, data=MockJury)
 anova(lm2)
 ```
 
 Note that the ANOVA table has a row labelled ``Attr``, which contains information 
 for the grouping variable (we'll generally refer to this as explanatory variable 
 $A$ but here it is the picture group that was randomly assigned), and a row 
-labelled ``Residuals``, which is synonymous with "Error". The Sums of Squares 
+labeled ``Residuals``, which is synonymous with "Error". The Sums of Squares 
 (SS) are available in the ``Sum Sq`` column. It doesn't show a row for "Total" but 
 the $\textbf{SS}_{\textbf{Total}} \mathbf{=} \textbf{SS}_\textbf{A} \mathbf{+} \textbf{SS}_\textbf{E} = 1492.26$.
 
 ```{r}
 70.94 + 1421.32
 ```
-
-It may be easiest to understand the *sums of squares decomposition* by connecting 
-it to our permutation ideas. In a permutation situation, the total variation 
-($SS_{Total}$) cannot change -- it is the same responses varying
-around the grand mean. However, the amount of variation attributed to variation 
-among the means and in the residuals can change if we change which observations go 
-with which group. In Figure \@ref(fig:Figure3-4) (panel a), the means, sums of 
-squares, and 95% confidence intervals for each mean are displayed for the three
-treatment levels from the original prisoner rating data. Three permuted versions 
-of the data set are summarized in panels (b), (c), and (d). The $\text{SS}_A$ is 70.9 
-in the real data set and between 6.6 and 11 in the permuted data sets. If you had 
-to pick among the plots for the one with the most evidence of a difference in the
-means, you hopefully would pick panel (a). This visual "unusualness" suggests
-that this observed result is unusual relative to the possibilities under
-permutations, which are, again, the possibilities tied to having the null
-hypothesis being true. But note that the differences here are not that great
-between these three permuted data sets and the real one. It is likely that at
-least some of you might have selected panel (d) as also looking like it shows
-some evidence of differences (maybe not the most?) as it also looks like it
-shows some evidence differences.
 
 ```{r echo=F}
 #Permutation approaches to an F-test:
@@ -564,6 +560,7 @@ orig_anova <- anova(lm(Years~Attr,data=MockJury))
 orig_SSA <- round(orig_anova[1,2],1)
 orig_SSE <- round(orig_anova[2,2],1)
 orig_SST <- orig_SSA + orig_SSE
+orig_pval <- round(orig_anova[1,5],3)
 MockJuryP1<-MockJury
 MockJuryP1$Attr<-shuffle(MockJuryP1$Attr)
 MJP1_anova <- anova(lm(Years~Attr,data=MockJuryP1))
@@ -582,30 +579,12 @@ MJP3_anova <- anova(lm(Years~Attr,data=MockJuryP3))
 MJP3_SSA <- round(MJP3_anova[1,2],1)
 MJP3_SSE <- round(MJP3_anova[2,2],1)
 MJP3_SST <- MJP3_SSA + MJP3_SSE
+minSSA <- min(MJP1_SSA, MJP2_SSA, MJP3_SSA)
+maxSSA <- max(MJP1_SSA, MJP2_SSA, MJP3_SSA)
 ```
 
-One way to think about $\textbf{SS}_\textbf{A}$ is that it is a function that 
-converts the variation in the group means into a single value. This makes it a
-reasonable test statistic in a permutation testing context. By comparing the 
-observed $\text{SS}_A =$ `r orig_SSA` to the permutation results of 
-`r MJP1_SSA`, `r MJP2_SSA`, and `r MJP3_SSA` we see 
-that the observed result is much more extreme than the three alternate versions. 
-In contrast to our previous test statistics where positive and negative 
-differences were possible, $\text{SS}_A$ is always positive with a value of 0 
-corresponding to no variation in the means. The larger the $\text{SS}_A$, the more 
-variation there is in the means. The permutation p-value for the alternative 
-hypothesis of **some** (not of greater or less than!) difference in the true 
-means of the groups will involve counting the number of permuted $SS_A^*$ results
-that are larger than what we observed. 
-
-(ref:fig3-4) Plot of means and 95% confidence intervals for the three groups 
-for the real data (a) and three different permutations of the treatment labels 
-to the same responses in (b), (c), and (d). Note that SSTotal is always the same 
-but the different amounts of variation associated with the means (SSA) or the 
-errors (SSE) changes in permutation.
-
 ```{r Figure3-4, fig.cap="(ref:fig3-4)",echo=F,fig.width=6}
-Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]; Tobs
+Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]
 par(mfrow=c(2,2))
 old.par <- par(mai=c(0.5,0.3,0.3,0.3))
 require(gplots)
@@ -645,9 +624,50 @@ plotmeans(Years~Attr,data=MockJuryP3,main="(d) Permuted Data",
 text(c(1.25,1.25,1.25),c(7,6.5,6),labels=label_list, col="blue",cex=0.75)
 ```
 
+It may be easiest to understand the *sums of squares decomposition* by connecting 
+it to our permutation ideas. In a permutation situation, the total variation 
+($SS_\text{Total}$) cannot change -- it is the same responses varying
+around the grand mean. However, the amount of variation attributed to variation 
+among the means and in the residuals can change if we change which observations go 
+with which group. In Figure \@ref(fig:Figure3-4) (panel a), the means, sums of 
+squares, and 95% confidence intervals for each mean are displayed for the three
+treatment levels from the original prisoner rating data. Three permuted versions 
+of the data set are summarized in panels (b), (c), and (d). The $\text{SS}_A$ is 70.9 
+in the real data set and between `r minSSA` and `r maxSSA` in the permuted data sets.
+If you had 
+to pick among the plots for the one with the most evidence of a difference in the
+means, you hopefully would pick panel (a). This visual "unusualness" suggests
+that this observed result is unusual relative to the possibilities under
+permutations, which are, again, the possibilities tied to having the null
+hypothesis being true. But note that the differences here are not that great
+between these three permuted data sets and the real one. It is likely that at
+least some of you might have selected panel (d) as also looking like it shows
+some evidence of differences (maybe not the most?) as it also looks like it
+shows some evidence differences.
+
+One way to think about $\textbf{SS}_\textbf{A}$ is that it is a function that 
+converts the variation in the group means into a single value. This makes it a
+reasonable test statistic in a permutation testing context. By comparing the 
+observed $\text{SS}_A =$ `r orig_SSA` to the permutation results of 
+`r MJP1_SSA`, `r MJP2_SSA`, and `r MJP3_SSA` we see 
+that the observed result is much more extreme than the three alternate versions. 
+In contrast to our previous test statistics where positive and negative 
+differences were possible, $\text{SS}_A$ is always positive with a value of 0 
+corresponding to no variation in the means. The larger the $\text{SS}_A$, the more 
+variation there is in the means. The permutation p-value for the alternative 
+hypothesis of **some** (not of greater or less than!) difference in the true 
+means of the groups will involve counting the number of permuted $SS_A^*$ results
+that are larger than what we observed. 
+
+(ref:fig3-4) Plot of means and 95% confidence intervals for the three groups 
+for the real data (a) and three different permutations of the treatment labels 
+to the same responses in (b), (c), and (d). Note that SSTotal is always the same 
+but the different amounts of variation associated with the means (SSA) or the 
+errors (SSE) changes in permutation.
+
 To do a permutation test, we need to be able to calculate and extract the 
 $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the 
-second number and we can use the bracket, ``[, ]``, referencing to extract that 
+second number and we can use the bracket, ``[,]``, referencing to extract that 
 number from the ANOVA table that ``anova`` produces with 
 ``anova(lm(Years~Attr, data=MockJury))[1, 2]``. We'll store the observed value
 of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref(chapter2). 
@@ -665,7 +685,7 @@ $\text{SS}_A$ with the observed value of $\text{SS}_A$ displayed as a bold,
 vertical line. The proportion of results that are larger than the observed 
 value of $\text{SS}_A$ provides an estimate of the p-value. 
 
-```{r Figure3-5,fig.cap="(ref:fig3-5)"}
+```{r Figure3-5,fig.cap="(ref:fig3-5)",echo=F,fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
 B<- 1000
 Tstar<-matrix(NA,nrow=B)
@@ -678,10 +698,22 @@ plot(density(Tstar),main="Density curve of Tstar")
 abline(v=Tobs,col="red",lwd=3)
 ```
 
+```{r eval=F}
+B <- 1000
+Tstar <- matrix(NA, nrow=B)
+for (b in (1:B)){
+  Tstar[b] <- anova(lm(Years~shuffle(Attr), data=MockJury))[1,2]
+  }
+hist(Tstar, labels=T, ylim=c(0,550))
+abline(v=Tobs, col="red", lwd=3)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=3)
+```
+
 The right-skewed distribution (Figure \@ref(fig:Figure3-5)) contains the 
-distribution of $\text{SS}_A\text{'s}$ under permutations (where
+distribution of $\text{SS}^*_A\text{'s}$ under permutations (where
 all the groups are assumed to be equivalent under the null hypothesis). While
-the observed result is larger than many of the $\text{SS}_A\text{'s}$, there are
+the observed result is larger than many of the $\text{SS}^*_A\text{'s}$, there are
 also many permuted results that are much larger than observed. The proportion
 of permuted results that exceed the observed value is found using ``pdata`` 
 as before, except only for the area to the right of the observed result. We know 
@@ -712,7 +744,7 @@ the mean and there are $N$ deviations around the single mean so we divide by
 $N-1$. The main point is that the sums of squares were divided by something and 
 we got an estimator for the variance, here of the observations. 
 
-Now consider $\text{SS}_E = \Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_i-\bar{y})^2$
+Now consider $\text{SS}_E = \Sigma^J_{j=1}\Sigma^{n_j}_{i=1}(y_{ij}-\bar{y}_j)^2$
 which still has $N$ deviations but it varies around the $J$ means, so the
 
 $$\textbf{Mean Square Error} = \text{MS}_E = \text{SS}_E/(N-J).$$
@@ -756,6 +788,8 @@ square was used; $F$-distributions are denoted by their degrees of freedom using
 the convention of $F$ (*numerator df*, *denominator df*). Some examples of 
 different $F$-distributions are displayed for you in Figure \@ref(fig:Figure3-6).
 
+\newpage
+
 The characteristics of the F-distribution can be summarized as:
 
 * Right skewed,
@@ -798,7 +832,7 @@ question like this on the exam...]:
 (ref:tab3-2) General One-Way ANOVA table.
 
 ```{r Table3-2, echo=F, message=F,warning=F,results="asis"}
-columnHeaders <- c("Source&nbsp;","DF&nbsp;","Sums of\\\n Squares",
+columnHeaders <- c("Source&nbsp;&nbsp;","DF&nbsp;","Sums of\\\n Squares",
                    "Mean Squares","F-ratio","P-value")
 row1 <- c("Variable A","$J-1$","$\\text{SS}_A$",
           "$\\text{MS}_A=\\text{SS}_A/(J-1)$",
@@ -811,6 +845,8 @@ colnames(x) <- columnHeaders
 pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table3-2) (ref:tab3-2)",
              split.table = Inf, justify="left")
 ```
+
+\newpage
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
 components. The output from R is similar although it does not provide the last row 
@@ -835,12 +871,12 @@ numerator *df* and ``df2`` as the denominator *df* and ``lower.tail=F`` reflecti
 our desire for a right tailed area.
 
 ```{r}
-pf(2.77,df1=2,df2=111,lower.tail=F)
+pf(2.77, df1=2, df2=111, lower.tail=F)
 ```
 
 The result from the $F$-distribution using this parametric procedure is similar to 
 the p-value obtained using permutations with the test statistic of the 
-$\text{SS}_A$, which was `r orig_SSA`. The $F$-statistic obviously is another
+$\text{SS}_A$, which was `r orig_pval`. The $F$-statistic obviously is another
 potential test statistic to use as a test statistic in a permutation approach, 
 now that we know about it. We should check that we get similar results from it
 with permutations as we did from using $\text{SS}_A$ as a permutation test test
@@ -848,17 +884,15 @@ statistic. The following code generates the permutation distribution for the
 $F$-statistic (Figure \@ref(fig:Figure3-7)) and assesses how unusual the observed
 $F$-statistic of `r round(orig_anova[1,4],2)` was in this permutation distribution.
 The only change in the code involves moving from extracting $\text{SS}_A$ to 
-extracting the $F$-ratio which is in the 4<sup>th</sup> column of the ``anova`` 
+extracting the $F$-ratio which is in the 4^th^ column of the ``anova`` 
 output:
 
-```{r warning=F,message=F}
-Tobs <- anova(lm(Years ~ Attr, data=MockJury))[1,4]; Tobs
-
-par(mfrow=c(1,2))
-B<- 1000
-Tstar<-matrix(NA,nrow=B)
+```{r}
+Tobs <- anova(lm(Years~Attr, data=MockJury))[1,4]; Tobs
+B <- 1000
+Tstar <- matrix(NA,nrow=B)
 for (b in (1:B)){
-  Tstar[b]<-anova(lm(Years~shuffle(Attr), data=MockJury))[1,4]
+  Tstar[b] <- anova(lm(Years~shuffle(Attr), data=MockJury))[1,4]
 }
 
 pdata(Tstar, Tobs, lower.tail=F)
@@ -875,9 +909,9 @@ abline(v=Tobs, col="red", lwd=3)
 the F-statistic with bold, vertical line for observed value of the test 
 statistic of `r round(orig_anova[1,4],2)`. 
 
-```{r Figure3-7,fig.cap="(ref:fig3-7)",echo=F}
-par(mfrow=c(1,2),ps=8)
-hist(Tstar, labels=T)
+```{r Figure3-7,fig.cap="(ref:fig3-7)",echo=F,fig.height=5,fig.width=10}
+par(mfrow=c(1,2))
+hist(Tstar, labels=T, ylim=c(0,550))
 abline(v=Tobs, col="red", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
 abline(v=Tobs, col="red", lwd=3)
@@ -954,7 +988,7 @@ clearly assess potential violations of the previous assumptions.
 
 We can obtain a suite of four diagnostic plots by using the ``plot`` function on 
 any linear model object that we have fit. To get all the plots together in four 
-panels we need to add the ``par(mfrow=c(2, 2))`` command to tell R to make a graph
+panels we need to add the ``par(mfrow=c(2,2))`` command to tell R to make a graph
 with 4 panels^[We have been using this function quite a bit to make multi-panel 
 graphs but did not show you that line of code. But you need to use this command 
 for linear model diagnostics or you won't get the plots we want from the model. 
@@ -963,12 +997,12 @@ to see some of the points in the plots.].
 
 ```{r eval=F}
 par(mfrow=c(2,2))
-plot(lm2,pch=16)
+plot(lm2, pch=16)
 ```
 
 There are two plots in Figure \@ref(fig:Figure3-9) with useful information for the
 equal variance assumption. The "Residuals vs Fitted" panel in the top left displays 
-the residuals $(e_{ij} = y_{ij}-\hat{y}_ij)$ on the y-axis and the fitted values
+the residuals $(e_{ij} = y_{ij}-\hat{y}_{ij})$ on the y-axis and the fitted values
 $(\hat{y}_{ij})$ on the x-axis. This allows you to see if the variability of the
 observations differs across the groups as a function of the mean of the groups 
 because all the observations in the same group get the same fitted value, the 
@@ -997,7 +1031,7 @@ clear evidence that the assumption is violated!
 
 ```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F,fig.width=8,fig.height=5}
 par(mfrow=c(2,2))
-plot(lm2,pch=16)
+plot(lm2, pch=16)
 ```
 
 The linear model assumes that all the random errors ($\varepsilon_{ij}$) follow a 
@@ -1007,7 +1041,7 @@ subtracting off the differences in the means and focusing on the shapes of the
 distributions of observations in each group. These plots are especially good for
 assessing whether there is there a skew or outliers present in each group. If so, 
 by definition, the normality assumption is violated. But our assumption is 
-about the distribution of all the errors after the remove the differences 
+about the distribution of all the errors after removing the differences 
 in the means and so we want an overall assessment technique to understand how
 reasonable our assumption is overall for our model. The residuals from the entire
 model provide us with estimates of the random errors and if the normality 
@@ -1024,12 +1058,12 @@ this new display. We can obtain the residuals from the linear model using the
 
 (ref:fig3-10) Histogram and density curve of the linear model raw residuals. 
 
-```{r Figure3-10, fig.cap="(ref:fig3-10)",fig.height=3}
+```{r Figure3-10, fig.cap="(ref:fig3-10)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-eij<-residuals(lm2)
-hist(eij, main="Histogram of residuals",cex.main=0.75)
+eij <- residuals(lm2)
+hist(eij, main="Histogram of residuals")
 plot(density(eij), main="Density plot of residuals", ylab="Density",
-     xlab="Residuals",cex.main=0.75)
+     xlab="Residuals")
 ```
 
 Figure \@ref(fig:Figure3-10) shows that there is a right skew present in the 
@@ -1079,7 +1113,7 @@ If you go back to the histogram you can see that the smallest residuals are all
 stacked up and do not spread out like the left tail of a normal distribution 
 should. In the right tail (positive) residuals, there is also a systematic 
 lifting from the 1-1 line to larger values in the residuals than the normal 
-would generate. For example, the point labeled as "82" (the 82<sup>nd</sup>
+would generate. For example, the point labeled as "82" (the 82^nd^
 observation in the data set) has a value of 3 in residuals but should actually 
 be smaller (maybe 2.5) if the distribution was normal. Put together, this pattern 
 in the QQ-plot suggests that the left tail is too compacted (too short) and 
@@ -1224,7 +1258,7 @@ odontoblasts (cells that are responsible for tooth growth) in 60 Guinea Pigs
 (measured in microns) from @Crampton1947. $N=60$ Guinea Pigs were obtained 
 from a local breeder and each received one of three dosages (0.5, 1, or 
 2 mg/day) of Vitamin C via one of two delivery methods, Orange Juice (*OJ*) or
-ascorbic acid (the stuff in vitamin C capsules, called $VC$ below) as the source 
+ascorbic acid (the stuff in vitamin C capsules, called $\text{VC}$ below) as the source 
 of Vitamin C in their diets. Each guinea pig was randomly assigned to receive 
 one of the six different treatment combinations possible
 (OJ at 0.5 mg, OJ at 1 mg, OJ at 2 mg, VC at 0.5 mg, VC at 1 mg, and VC at 2 mg). 
@@ -1240,17 +1274,17 @@ ANOVA to compare the combinations of treatments. To get a sense of the pattern o
 observations in the data set, the counts in ``supp`` (supplement type) and 
 ``dose`` are provided. 
 
-```{r message=F,warning=F}
+```{r}
 data(ToothGrowth) #Available in Base R
 require(mosaic)
-tally(~supp,data=ToothGrowth) #Supplement Type (VC or OJ)
-tally(~dose,data=ToothGrowth) #Dosage level
+tally(~supp, data=ToothGrowth) #Supplement Type (VC or OJ)
+tally(~dose, data=ToothGrowth) #Dosage level
 
 #Creates a new variable Treat with 6 levels
-ToothGrowth$Treat=with(ToothGrowth,interaction(supp,dose)) 
+ToothGrowth$Treat=with(ToothGrowth, interaction(supp, dose)) 
 
 #New variable that combines supplement type and dosage
-tally(~Treat,data=ToothGrowth) 
+tally(~Treat, data=ToothGrowth) 
 ```
 
 The ``tally`` function helps us to check for balance; this is a balanced design
@@ -1265,18 +1299,18 @@ horizontal "=" signs in the grey bars that separate the different panels in
 RStudio.] (Figure \@ref(fig:Figure3-14)) and generate some summary statistics for 
 each group using ``favstats``. 
 
+```{r}
+favstats(len~Treat, data=ToothGrowth)
+```
+
 (ref:fig3-14) Boxplot and beanplot of tooth growth responses for the six 
 treatment level combinations. 
 
-```{r Figure3-14, fig.cap="(ref:fig3-14)"}
+```{r Figure3-14, fig.cap="(ref:fig3-14)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-boxplot(len~Treat,data=ToothGrowth,ylab="Tooth Growth in microns")
-beanplot(len~Treat,data=ToothGrowth,log="",col="yellow",
-         method="jitter",ylab="Tooth Growth in microns")
-```
-
-```{r}
-favstats(len~Treat,data=ToothGrowth)
+boxplot(len~Treat, data=ToothGrowth, ylab="Tooth Growth in microns")
+beanplot(len~Treat, data=ToothGrowth, log="", col="yellow",
+         method="jitter", ylab="Tooth Growth in microns")
 ```
 
 Figure \@ref(fig:Figure3-14) suggests that the mean tooth growth increases with 
@@ -1301,14 +1335,12 @@ start. We will use a 5% significance level.
 
 
 
-1. **Hypotheses**: $\boldsymbol{H_0: \mu_{OJ0.5} = \mu_{VC0.5} = \mu_{OJ1}
-= \mu_{VC1} = \mu_{OJ2} = \mu_{VC2}} \textbf{ vs }$ $\boldsymbol{H_A:}
-\textbf{ Not all } \boldsymbol{\mu_j} \textbf{ equal}$
+1. **Hypotheses**: $\boldsymbol{H_0: \mu_{\text{OJ}0.5} = \mu_{\text{VC}0.5} = \mu_{\text{OJ}1} = \mu_{\text{VC}1} = \mu_{\text{OJ}2} = \mu_{\text{VC}2}} \textbf{ vs }$ $\boldsymbol{H_A:}\textbf{ Not all } \boldsymbol{\mu_j} \textbf{ equal}$
 
     * The null hypothesis could also be written in reference-coding as below
     since OJ.0.5 is chosen as the baseline group (discussed below).
 
-        * $\boldsymbol{H_0:\tau_{VC0.5}=\tau_{OJ1}=\tau_{VC1}=\tau_{OJ2}=\tau_{VC2}=0}$
+        * $\boldsymbol{H_0:\tau_{\text{VC}0.5}=\tau_{\text{OJ}1}=\tau_{\text{VC}1}=\tau_{\text{OJ}2}=\tau_{\text{VC}2}=0}$
 
     * The alternative hypothesis can be left a bit less specific: 
     
@@ -1371,16 +1403,18 @@ start. We will use a 5% significance level.
     no clear evidence against them). The parametric and nonparametric approaches should 
     provide similar results here. 
     
-    * The parametric approach is easiest -- the p-value comes from the previous ANOVA table 
-    as ``<2e-16``. First, note that this is in scientific notation that is a compact way of 
-    saying that the p-value here is $2.2*10^{-16}$ or 0.00000000000000022. When you see 
-    ``2.2e-16`` in R output, it also means that the calculation is at the numerical precision 
-    of the computer. What R is really trying to report is that this is a very small
-    number. **When you encounter p-values that are smaller than 0.0001, you should just
-    report that the p-value<0.0001** Do not report that it is 0 as this gives the false 
-    impression that there is no chance of the result occurring when it is just a really small
-    probability. This distribution (the distribution of the test statistic if the null 
-    hypothesis is true). 
+    * The parametric approach is easiest -- the p-value comes from the previous 
+    ANOVA table as ``< 2e-16``. First, note that this is in scientific notation 
+    that is a compact way of saying that the p-value here is $2.2*10^{-16}$ or
+    0.00000000000000022. When you see ``2.2e-16`` in R output, it also means
+    that the calculation is at the numerical precision     of the computer. 
+    What R is really trying to report is that this is a very small number. 
+    **When you encounter p-values that are smaller than 0.0001, you should just
+    report that the p-value < 0.0001** Do not report that it is 0 as this gives 
+    the false impression that there is no chance of the result occurring when 
+    it is just a really small probability. This p-value came from an $F(5,54)$
+    distribution (the distribution of the test statistic if the null hypothesis
+    is true). 
     
     * The nonparametric approach is not too hard so we can compare the two approaches here 
     as well:
@@ -1389,23 +1423,24 @@ start. We will use a 5% significance level.
     ```{r Figure3-16, fig.cap="Histogram and density curve of permutation distribution for $F$-statistic for tooth growth data. Observed test statistic in bold, vertical line at 41.56."}
     Tobs <- anova(lm(len~Treat,data=ToothGrowth))[1,4]; Tobs
     par(mfrow=c(1,2))
-    B<- 1000
-    Tstar<-matrix(NA,nrow=B)
+    B <- 1000
+    Tstar <- matrix(NA, nrow=B)
     for (b in (1:B)){
-      Tstar[b]<-anova(lm(len~shuffle(Treat),data=ToothGrowth))[1,4]
+      Tstar[b] <- anova(lm(len~shuffle(Treat), data=ToothGrowth))[1,4]
     }
-    pdata(Tstar,Tobs,lower.tail=F)
-    hist(Tstar,xlim=c(0,Tobs+3))
-    abline(v=Tobs,col="red",lwd=3)
-    plot(density(Tstar),xlim=c(0,Tobs+3),main="Density curve of Tstar")
-    abline(v=Tobs,col="red",lwd=3)
+    pdata(Tstar, Tobs, lower.tail=F)
+    hist(Tstar, xlim=c(0,Tobs+3))
+    abline(v=Tobs, col="red", lwd=3)
+    plot(density(Tstar), xlim=c(0,Tobs+3), main="Density curve of Tstar")
+    abline(v=Tobs, col="red", lwd=3)
     ```
     
-    * **The permutation p-value was reported as 0. This should be reported as p-value<0.001**
-    since we did 1000 permutations and found that none of the permuted $F$-statistics, $F^*$,
-    were larger than the observed $F$-statistic of 41.56. The permuted results do not exceed 
-    6 as seen in Figure \@ref(fig:Figure3-16), so the observed result is *really unusual* 
-    relative to the null hypothesis. As suggested previously, the parametric and
+    * **The permutation p-value was reported as 0. This should be reported as 
+    p-value < 0.001** since we did 1000 permutations and found that none of the
+    permuted $F$-statistics, $F^*$, were larger than the observed $F$-statistic
+    of 41.56. The permuted results do not exceed 6 as seen in Figure 
+    \@ref(fig:Figure3-16), so the observed result is *really unusual* relative 
+    to the null hypothesis. As suggested previously, the parametric and
     nonparametric approaches should be similar here and they were. 
     
 5. **Make a decision**:
@@ -1418,37 +1453,42 @@ start. We will use a 5% significance level.
     (combinations of OJ/VC and dosage levels) **cause some** difference in the  **true**
     mean tooth growth for **these** guinea pigs. 
     
-        * We can make the causal statement of the treatment causing differences because 
-        the treatments were randomly assigned but these inferences only apply to these 
-        guinea pigs since they were not randomly selected from a larger population. 
+        * We can make the causal statement of the treatment causing differences 
+        because the treatments were randomly assigned but these inferences only 
+        apply to these guinea pigs since they were not randomly selected from a 
+        larger population. 
         
-        * Remember that we are making inferences to the population or true means and not 
-        the sample means and want to make that clear in any conclusion. When there is not 
-        a random sample from a population it is more natural to discuss the true means 
-        since we can't extend to the population values. 
+        * Remember that we are making inferences to the population or true 
+        means and not the sample means and want to make that clear in any 
+        conclusion. When there is not a random sample from a population it is
+        more natural to discuss the true means since we can't extend to the 
+        population values. 
         
-        * The alternative is that there is some difference in the true means -- be sure to 
-        make the wording clear that you aren't saying that all the means differ. In fact, 
-        if you look back at Figure \@ref(fig:Figure3-14), the means for the 2 mg dosages 
-        look almost the same so we will have a tough time arguing that all groups differ. 
-        The $F$-test is about finding evidence of some means. The next section will provide 
-        some additional tools to get more specific about the source of those detected 
-        differences. 
+        * The alternative is that there is some difference in the true means 
+        -- be sure to make the wording clear that you aren't saying that all 
+        the means differ. In fact, if you look back at Figure 
+        \@ref(fig:Figure3-14), the means for the 2 mg dosages look almost the 
+        same so we will have a tough time arguing that all groups differ. The 
+        $F$-test is about finding evidence of some means. The next section will
+        provide some additional tools to get more specific about the source of 
+        those detected differences. 
         
-Before we leave this example, we should revisit our model estimates and interpretations. The
-default model parameterization is into the reference-coding. Running the model ``summary``
-function on ``m2`` provides the estimated coefficients:
+Before we leave this example, we should revisit our model estimates and 
+interpretations. The default model parameterization uses reference-coding. 
+Running the model ``summary`` function on ``m2`` provides the estimated 
+coefficients:
 
 ```{r}
-summary(m2)
+summary(m2)$coefficients
 ```
     
-For some practice with the reference coding used in these models, let's find the estimates 
-for observations for a couple of the groups. To work with the parameters, you need to start 
-with diagnosing the baseline category that was used by considering which level is
-not displayed in the output. The ``levels`` function can list the groups in a categorical 
-variable and their coding in the data set. The first level is usually the baseline category 
-but you should check this in the model summary as well.
+For some practice with the reference coding used in these models, let's find 
+the estimates for observations for a couple of the groups. To work with the 
+parameters, you need to start with determining the baseline category that was 
+used by considering which level is not displayed in the output. The 
+``levels`` function can list the groups in a categorical variable and their 
+coding in the data set. The first level is usually the baseline category but 
+you should check this in the model summary as well.
 
 ```{r}
 levels(ToothGrowth$Treat)
@@ -1462,43 +1502,56 @@ at a 0.5 mg/day dosage level. You should always start with working on the baseli
 in a reference-coded model. To get estimates for any other group, then you can use the 
 ``(Intercept)`` estimate and add the deviation for the group of interest. For 
 ``VC.0.5``, the estimated mean tooth growth is 
-$\hat{\alpha} + \hat{\tau}_2 = \hat{\alpha} + \hat{\tau}_{VC0.5}=13.23 + (-5.25)=7.98$
+$\hat{\alpha} + \hat{\tau}_2 = \hat{\alpha} + \hat{\tau}_{\text{VC}0.5}=13.23 + (-5.25)=7.98$
 microns. It is also potentially interesting to directly interpret the estimated difference 
-(or deviation) between ``OJ0.5`` (the baseline) and ``VC0.5`` (group 2) that is 
-$\hat{\tau}_{VC0.5}= -5.25$: we estimate that the mean tooth growth in ``VC0.5`` is 5.25 
-microns shorter than it is in ``OJ0.5``. This and many other direct comparisons of groups 
-are likely of interest to researchers involved in studying the impacts of these supplements 
-on tooth growth and the next section will show us how to do that (correctly!).
+(or deviation) between ``OJ.0.5`` (the baseline) and ``VC.0.5`` (group 2) that 
+is $\hat{\tau}_{\text{VC}0.5}= -5.25$: we estimate that the mean tooth growth in
+``VC.0.5`` is 5.25 microns shorter than it is in ``OJ.0.5``. This and many other 
+direct comparisons of groups are likely of interest to researchers involved in 
+studying the impacts of these supplements on tooth growth and the next section 
+will show us how to do that (correctly!).
 
 The reference-coding is still going to feel a little uncomfortable so the comparison
 to the cell-means model and exploring the effect plot can help to reinforce
 that both models patch together the same estimated means for each group. For
 example, we can find our estimate of 7.98 microns for the VC0.5 group in the
-output and Figure \@ref(fig:Figure3-17). Also note that Figure \@ref(fig:Figure3-17) is 
-the same whether you plot the results from ``m2`` or ``m3``.
+output and Figure \@ref(fig:Figure3-17). Also note that Figure 
+\@ref(fig:Figure3-17) is the same whether you plot the results from 
+``m2`` or ``m3``.
+
+```{r}
+m3 <- lm(len~Treat-1, data=ToothGrowth)
+summary(m3)
+```
 
 (ref:fig3-17) Effect plot of the One-Way ANOVA model for the toothgrowth data.
 
-```{r Figure3-17, fig.cap="(ref:fig3-17)",fig.height=3,fig.width=4}
-m3<-lm(len~Treat-1,data=ToothGrowth)
-summary(m3)
+```{r Figure3-17, fig.cap="(ref:fig3-17)",fig.height=3,fig.width=4,echo=F}
 par(mfrow=c(1,1))
 plot(allEffects(m2))
 ```
+
+```{r eval=F}
+plot(allEffects(m2))
+```
+
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
 ## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
 
 \sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
-With evidence that the true means are likely not all equal, many researchers want to know 
-which groups show evidence of differing from one another. This provides information on the
-source of the overall difference that was detected and detailed information on
-which groups differed from one another. Because this is a shot-gun/unfocused sort
-of approach, some people think it is an over-used procedure. Others feel that
+With evidence that the true means are likely not all equal, many researchers 
+want to know which groups show evidence of differing from one another. This 
+provides information on the source of the overall difference that was 
+detected and detailed information on which groups differed from one another. 
+Because this is a shot-gun/unfocused sort of approach, some people think it 
+is an over-used procedure. Others feel that
 it is an important method of addressing detailed questions about group
 comparisons in a valid way. For example, we might want to know if OJ is
-dosage level and these methods will allow us to get an answer to this sort of question.
-It also will test for differences between the OJ,0.5 and VC,2 groups
+different from VC *at the 0.5 mg/day* dosage level and these methods will allow 
+us to get an answer to this sort of question.
+It also will test for differences between the OJ.0.5 and VC.2 groups
 and every other pair of levels that you can construct. This method actually
 takes us back to the methods in Chapter \@ref(chapter2) where we compared the means of two
 groups except that we need to deal with potentially many pair-wise comparisons, 
@@ -1533,20 +1586,22 @@ $$\begin{array}{ll}
 & = 1 - 0.95^m.
 \end{array}$$
 
-Figure \@ref(fig:Figure3-18) shows how the probability of having at least one false detection 
-grows rapidly with the number of tests. The plot stops at 100 tests since it is effectively 
-a 100% chance of at least on false detection. It might seem like doing 100 tests is a lot, 
-but in Genetics research it is possible to consider situations where millions of tests are
-considered so these are real issues to be concerned about in many situations. Researchers
-want to make sure that when they report a "significant" result that it is
-really likely to be a real result and will show up as a difference in the next
-data set they collect.^[Many researchers are now collecting multiple data sets to use in a 
-single study and using one data set to identify interesting results and then using a
-validation or test data set that they withheld from initial analysis to verify
-that the first results are also present in that second data set.] 
+Figure \@ref(fig:Figure3-18) shows how the probability of having at least one 
+false detection grows rapidly with the number of tests. The plot stops at 100
+tests since it is effectively a 100% chance of at least one false detection. 
+It might seem like doing 100 tests is a lot, but in Genetics research it is 
+possible to consider situations where millions of tests are
+considered so these are real issues to be concerned about in many situations.
+Researchers want to make sure that when they report a "significant" result that
+it is really likely to be a real result and will show up as a difference in the 
+next data set they collect.^[Many researchers are now collecting multiple data 
+sets to use in a single study and using one data set to identify interesting 
+results and then using a validation or test data set that they withheld from 
+initial analysis to verify that the first results are also present in that 
+second data set.] 
 
-(ref:fig3-18) Plot of family-wise error rate as the number of tests performed increases. 
-Dashed line indicates 0.05. 
+(ref:fig3-18) Plot of family-wise error rate as the number of tests performed 
+increases. Dashed line indicates 0.05. 
 
 ```{r Figure3-18, fig.cap="(ref:fig3-18)",echo=F,warning=F,message=F}
 m=1:100
@@ -1627,8 +1682,7 @@ to the linear model for the Guinea Pig data:
 Guinea Pig data. Any confidence intervals that do not contain 0 provide evidence 
 of a difference in the groups.
 
-```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=4}
-par(mfrow=c(1,1))
+```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=5,fig.width=10}
 require(multcomp)
 Tm2 <- glht(m2, linfct = mcp(Treat = "Tukey"))
 confint(Tm2)
@@ -1652,11 +1706,11 @@ If you put all these pair-wise tests together, you can generate an overall
 interpretation of Tukey's HSD results that discusses sets of groups that 
 are not detectably different from one another and those groups that were 
 distinguished from other sets of groups. To do this, start with listing 
-out the groups that do are not detectably different (CIs contain 0), which, 
+out the groups that are not detectably different (CIs contain 0), which, 
 here, only occurs for four of the pairs. The CIs that contain 0 are for the 
-pairs VC.1 and OJ.0.5, OJ.2 and OJ.1, VC.2 and OJ.1, and, finally, VC.2 and OJ.2. So 
-VC.2, OJ.1, and OJ.2 are all not detectably different from each other and 
-VC.1 and OJ.0.5 are also not detectably different. If you look carefully, 
+pairs VC.1 and OJ.0.5, OJ.2 and OJ.1, VC.2 and OJ.1, and, finally, VC.2 and 
+OJ.2. So VC.2, OJ.1, and OJ.2 are all not detectably different from each 
+other and VC.1 and OJ.0.5 are also not detectably different. If you look carefully, 
 VC.0.5 is detected as different from every other group. So there are basically 
 three sets of groups that can be grouped together as "similar": VC.2, OJ.1, 
 and OJ.2; VC.1 and OJ.0.5; and VC.0.5. Sometimes groups overlap with some 
@@ -1684,7 +1738,7 @@ single treatment level (VC.0.5 is a set of size 1). Note
 that if the groups have the same letter, this does not mean they are the same, 
 just that there is **no evidence of a difference for that pair**. If we consider 
 the previous output for the CLD, the "a" set contains VC.0.5, the "b" set contains 
-OJ.1, OJ.2, and VC.2, and the "c" set contains OJ.0.5 and VC.1. These are exactly 
+OJ.0.5 and VC.1, and the "c" set contains OJ.1, OJ.2, and VC.2. These are exactly 
 the groups of treatment levels that we obtained by going through all fifteen 
 pairwise results. 
 
@@ -1695,23 +1749,23 @@ HSD detected.
 (ref:fig3-20) Beanplot of tooth growth by group with Tukey's HSD compact 
 letter display.
 
-```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=5.5,fig.asp=0.75}
+```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=6}
 old.par <- par(mai=c(1,1,1,1))
 beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
 text(c(2),c(10),"a",col="blue",cex=1.5)
-text(c(3,5,6),c(25,28,28),"b",col="green",cex=1.5)
-text(c(1,4),c(15,18),"c",col="red",cex=1.5)
+text(c(1,4),c(15,18),"b",col="red",cex=1.5)
+text(c(3,5,6),c(25,28,28),"c",col="green",cex=1.5)
 ```
 
 The lines with text in them are involved in placing text on the figure but are 
 something you could do in image editing software just as easily. 
 Figure \@ref(fig:Figure3-20) enhances the discussion by showing that the 
 "`r colFmtBold("a","blue")`" group with VC.0.5 had the lowest average tooth 
-growth, the "`r colFmtBold("c","red")`" group had intermediate tooth growth
+growth, the "`r colFmtBold("b","red")`" group had intermediate tooth growth
 for treatments OJ.0.5 and VC.1, and the highest growth rates came from
 OJ.1, OJ.2, and VC.2. Even though VC.2 had the highest average growth rate, 
 we are not able to prove that its true mean is any higher
-than the other groups labeled with "`r colFmtBold("b","green")`". Hopefully the 
+than the other groups labeled with "`r colFmtBold("c","green")`". Hopefully the 
 ease of getting to the story of the Tukey's HSD results from a plot like this 
 explains why it is common to report results using these methods instead of 
 reporting 15 confidence intervals. 
@@ -1738,8 +1792,9 @@ problem are also possible, but will not be considered here.
 In our previous work with the prisoner rating data, the overall ANOVA test
 provided only marginal evidence of some difference in the true means across the
 three groups with a p-value=0.067. Tukey's HSD does not require you 
-to find a small from your overall $F$-test to employ the methods but if you apply 
-it to situations with p-values larger than your *a priori* significance level,
+to find a small p-value from your overall $F$-test to employ the methods 
+but if you apply it to situations with p-values larger than your 
+*a priori* significance level,
 you are unlikely to find any pairs that are detected as being different. Some
 statisticians suggest that you shouldn't employ follow-up tests such as Tukey's
 HSD when there is not sufficient evidence to reject the overall null hypothesis
@@ -1750,14 +1805,37 @@ confidence intervals displayed in Figure \@ref(fig:Figure3-21).
 
 (ref:fig3-21) Tukey's HSD confidence interval results at the 95% family-wise confidence level.
 
-```{r Figure3-21,fig.cap="(ref:fig3-21)",fig.height=4}
-lm2<-lm(Years~Attr, data=MockJury)
+```{r Figure3-21,fig.cap="(ref:fig3-21)",fig.height=4,echo=F}
+lm2 <- lm(Years~Attr, data=MockJury)
 require(multcomp)
 Tm2 <- glht(lm2, linfct = mcp(Attr = "Tukey"))
-confint(Tm2)
-cld(Tm2)
 old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
+```
+
+```{r eval=F}
+lm2 <- lm(Years~Attr, data=MockJury)
+require(multcomp)
+Tm2 <- glht(lm2, linfct = mcp(Attr = "Tukey"))
+```
+
+```{r}
+confint(Tm2)
+cld(Tm2)
+```
+
+```{r eval=F}
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
+plot(Tm2)
+```
+
+(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
+
+```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
+confint(Tm2, level=0.9)
+cld(Tm2, level=0.1)
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
+plot(confint(Tm2, level=.9))
 ```
 
 At the family-wise 5% significance level, there are no pairs that are detectably different 
@@ -1769,28 +1847,15 @@ function, the ``level`` option is the confidence level and for the ``cld``, it i
 family-wise significance level. Note that 90% confidence corresponds to a 10% 
 significance level. 
 
-(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
-
-```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
-confint(Tm2,level=0.9)
-cld(Tm2,level=0.1)
-old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
-plot(confint(Tm2,level=.9))
+```{r}
+confint(Tm2, level=0.9)
+cld(Tm2, level=0.1)
 ```
 
-With family-wise 10% significance and 90% confidence levels, the *Unattractive* and 
-*Average* picture groups are detected as being different but the *Average* group is not 
-detected as different from *Beautiful* and *Beautiful* is not detected to be different 
-from *Unattractive*. This leaves the "overlap" of groups across the sets of groups that 
-was noted earlier. The *Beautiful* level is not detected as being dissimilar from levels 
-in two different sets and so gets two different letters. 
-
-The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons for this 
-set of results. The detection of a difference between *Average* and *Unattractive* just 
-barely occurs and the mean for *Beautiful* is between the other two so it ends up not 
-being detectably different from either one. This sort of overlap is actually a fairly 
-common occurrence in these sorts of situations so be prepared a mixed set of letters 
-for some levels. 
+```{r eval = F}
+old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
+plot(confint(Tm2, level=.9))
+```
 
 (ref:fig3-23) Beanplot of sentences with compact letter display results from 10%
 family-wise significance level Tukey's HSD. *Average* and *Unattractive* picture
@@ -1800,10 +1865,33 @@ from the other two groups.
 
 ```{r Figure3-23, fig.cap="(ref:fig3-23)"}
 old.par <- par(mai=c(0.5,1,1,1))
-beanplot(Years~Attr,data=MockJury,log="",col="white",method="jitter")
-text(c(1),c(5),"ab",col="blue",cex=1.5)
-text(c(2),c(4.8),"a",col="green",cex=1.5)
-text(c(3),c(6.5),"b",col="red",cex=1.5)
+beanplot(Years~Attr, data=MockJury, log="", col="white", method="jitter")
+text(c(1), c(5.3),"ab", col="blue", cex=1.5)
+text(c(2), c(5.1),"a", col="green", cex=1.5)
+text(c(3), c(6.8),"b", col="red", cex=1.5)
+```
+
+With family-wise 10% significance and 90% confidence levels, the 
+*Unattractive* and *Average* picture groups are detected as being different but
+the *Average* group is not detected as different from *Beautiful* and 
+*Beautiful* is not detected to be different from *Unattractive*. This leaves the
+"overlap" of groups across the sets of groups that was noted earlier. The 
+*Beautiful* level is not detected as being dissimilar from levels in two 
+different sets and so gets two different letters. 
+
+The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons
+for this set of results. The detection of a difference between *Average* and
+*Unattractive* just barely occurs and the mean for *Beautiful* is between the 
+other two so it ends up not being detectably different from either one. This 
+sort of overlap is actually a fairly common occurrence in these sorts of 
+situations so be prepared a mixed set of letters for some levels. 
+
+```{r eval = F}
+old.par <- par(mai=c(0.5,1,1,1))
+beanplot(Years~Attr, data=MockJury, log="", col="white", method="jitter")
+text(c(1), c(5.3),"ab", col="blue", cex=1.5)
+text(c(2), c(5.1),"a", col="green", cex=1.5)
+text(c(3), c(6.8),"b", col="red", cex=1.5)
 ```
 
 ## Chapter Summary {#section3-8}
@@ -1836,12 +1924,12 @@ in what is called the Two-Way ANOVA.
 
 ## Summary of important R code {#section3-9}
 
-The main components of R code used in this chapter follow with components to modify 
-in red, remembering that any R packages mentioned need to be installed and loaded 
-for this code to have a chance of working:
+The main components of R code used in this chapter follow with components to 
+modify in ALL CAPS, remembering that any R packages mentioned 
+need to be installed and loaded for this code to have a chance of working:
 
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`,
-data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`,
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Probably the most frequently used command in R. 
     
@@ -1849,17 +1937,17 @@ data=`r colFmt("DATASETNAME","red")`)
     response variable and X as the grouping variable, storing the estimated model 
     object in MODELNAME. 
 
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`-1,
-data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` <- lm(`r colFmt("Y","red")`~`r colFmt("X","red")`-1,
+data=`r colFmt("DATASETNAME","red")`)**
 
     * Fits the cell means version of the One-Way ANOVA model. 
 
-* summary(`r colFmt("MODELNAME","red")`)
+* **summary(`r colFmt("MODELNAME","red")`)**
 
     * Generates model summary information including the estimated model coefficients, 
     SEs, t-tests, and p-values. 
 
-* anova(`r colFmt("MODELNAME","red")`)
+* **anova(`r colFmt("MODELNAME","red")`)**
 
     * Generates the ANOVA table but **must only be run on the reference-coded version of
     the model**.
@@ -1867,25 +1955,25 @@ data=`r colFmt("DATASETNAME","red")`)
     * Results are incorrect if run on the cell-means model since the reduced model 
     under the null is that the mean of all the observations is 0!
 
-* pf(`r colFmt("FSTATISTIC","red")`, df1=`r colFmt("NUMDF","red")`,
-df2=`r colFmt("DENOMDF","red")`, lower.tail=F)
+* **pf(`r colFmt("FSTATISTIC","red")`, df1=`r colFmt("NUMDF","red")`,
+df2=`r colFmt("DENOMDF","red")`, lower.tail=F)**
 
     * Finds the p-value for an observed $F$-statistic with NUMDF and DENOMDF degrees 
     of freedom. 
 
-* par(mfrow=c(2,2)); plot(`r colFmt("MODELNAME","red")`)
+* **par(mfrow=c(2,2)); plot(`r colFmt("MODELNAME","red")`)**
 
     * Generates four diagnostic plots including the Residuals vs Fitted and 
     Normal Q-Q plot. 
     
-* plot(allEffects(`r colFmt("MODELNAME","red")`))
+* **plot(allEffects(`r colFmt("MODELNAME","red")`))**
     
     * Requires the ``effects`` package be loaded. 
 
     * Plots the estimated model component.
     
-* Tm2 <- glht(`r colFmt("MODELNAME","red")`, linfct=mcp(`r colFmt("X","red")`="Tukey"));
-confint(Tm2); plot(Tm2); cld(Tm2)
+* **Tm2 <- glht(`r colFmt("MODELNAME","red")`, linfct=mcp(`r colFmt("X","red")`="Tukey"));
+confint(Tm2); plot(Tm2); cld(Tm2)**
 
     * Requires the ``multcomp`` package to be installed and loaded.
     
@@ -1896,9 +1984,9 @@ confint(Tm2); plot(Tm2); cld(Tm2)
 
 ## Practice problems {#section3-10}
 
-For these practice problems, you will work with the cholesterol data set from the ``multcomp``
-package that was used to generate the Tukey's HSD results. To load the data set and 
-learn more about the study, use the following code:
+For these practice problems, you will work with the cholesterol data set from 
+the ``multcomp`` package that was used to generate the Tukey's HSD results. To 
+load the data set and learn more about the study, use the following code:
 
 ```
 require(multcomp)
