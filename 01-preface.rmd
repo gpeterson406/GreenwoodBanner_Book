@@ -263,9 +263,8 @@ from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
 You will have two downloading activities to complete before you can do anything
-more than read this book^[I recorded a video that walks through the material on the following pages 
-that is available here: https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html 
-in the digital version of the book.]. First, you need to download R. It is the engine that will do all the computing
+more than read this book^[I recorded a video that walks through getting R and Rstudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching youtube for "How to install R and Rstudio".
+]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that
 corresponds to your operating system. On the next page, click on "**base**" and then it will take you 
@@ -277,7 +276,7 @@ until it starts to unpack and install the program (all the base settings will be
 "**Finish**" you will not do anything further with R directly. 
 
 Second, you need to download RStudio. It is an enhanced interface that will make interacting with
-R less frustrating. To download RStudio, go to the bottom of  https://www.rstudio.com/products/rstudio/download/#download and select the correct version under
+R less frustrating. To download RStudio, go near the bottom of  https://www.rstudio.com/products/rstudio/download/ and select the correct version under
 "Installers for Supported Platforms" for your operating system. Download and
 then install RStudio using the installer. From this point forward, you should only
 open RStudio; it provides your interface with R. Note that both R and RStudio
@@ -414,7 +413,26 @@ this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
 directly into R that we will explore later.]. 
 
-With a data set converted to a CSV file, we need to read the data set into the active workspace. There
+The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or Rstudio. To get acccess to the packages, first "install" (basically
+download) and then "load" the package. To install an R package, go to the **Packages** tab in the lower right panel of
+RStudio. Click on the **Install** button and then type in the name of the package in
+the box (here type in ``readr``). RStudio will try to auto-complete the package name
+you are typing which should help you make sure you got it typed correctly. This will
+be the first of *many* times that we will mention that R is case sensitive -- in
+other words, ``Readr`` is different from ``readr`` in R syntax and this sort of
+thing applies to everything you do in R. You should only need to install each R
+package once on a given computer. If you ever see a message that R can't find a
+package, make sure it appears in the list in the **Packages** tab. If it 
+doesn't, repeat the previous steps to install it. 
+
+After installing the package, we need to load it to make it active in a given work
+session. Go to the command prompt and type (or copy and paste) ``require(readr)`` :
+
+```
+> require(readr)
+```
+
+With a data set converted to a CSV file and ``readr`` installed and loaded, we need to read the data set into the active workspace. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
 the "Import Dataset" button in the upper right "Environment" panel as
 indicated in Figure \@ref(fig:Figure2)) or modifying the ``read_csv`` 
@@ -454,9 +472,9 @@ a .csv file in a location you can find on your computer. Then go to RStudio
 and click on **File**, then **Import Dataset**, then **From CSV...**^[If
 you are having trouble getting the file converted and read into R, copy and 
 run the following code: 
-``treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
-Find your file and click "**Import**". R will store the data set as an object named 
-whatever the .csv file was named. You could use another name as well, but it is 
+``treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv")``.] 
+Find your file and click "**Import**". R will store the data set as an object with the same name 
+as the .csv file. You could use another name as well, but it is 
 often easiest just to keep the data
 set name in R related to the original file name. You should see some text appear
 in the console (lower left panel) like in Figure \@ref(fig:Figure3). The text 
@@ -508,49 +526,31 @@ the panels.
 
 ```
 > head(treadmill)
-  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-1       1       60.05               186    8.63      170        48      81.87  38
-2       2       59.57               172    8.17      166        40      68.15  42
-3       3       54.62               155    8.92      146        48      70.87  50
-4       4       54.30               168    8.65      156        45      85.84  44
-5       5       51.85               170   10.33      166        50      83.12  54
-6       6       50.55               155    9.93      148        49      59.08  57
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1       1       60.05               186    8.63      170        48      81.87    38
+2       2       59.57               172    8.17      166        40      68.15    42
+3       3       54.62               155    8.92      146        48      70.87    50
+4       4       54.30               168    8.65      156        45      85.84    44
+5       5       51.85               170   10.33      166        50      83.12    54
+6       6       50.55               155    9.93      148        49      59.08    57
 
 > tail(treadmill)
-   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-26      26       44.61               182   11.37      178        62      89.47  44
-27      27       40.84               172   10.95      168        57      69.63  51
-28      28       39.44               176   13.08      174        63      81.42  44
-29      29       39.41               176   12.63      174        58      73.37  57
-30      30       39.20               172   12.88      168        44      91.63  54
-31      31       37.39               192   14.03      186        56      87.66  45
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1      26       44.61               182   11.37      178        62      89.47    44
+2      27       40.84               172   10.95      168        57      69.63    51
+3      28       39.44               176   13.08      174        63      81.42    44
+4      29       39.41               176   12.63      174        58      73.37    57
+5      30       39.20               172   12.88      168        44      91.63    54
+6      31       37.39               192   14.03      186        56      87.66    45
 ```
  
 \normalsize
 
-While not always required, for many of the analyses, we will tap into a large suite
-of additional functions available in R packages by "installing" (basically
-downloading) and then "loading" the packages. There are some packages that we
-will use frequently, starting with the ``mosaic`` package [@R-mosaic].
-To install an R package, go to the **Packages** tab in the lower right panel of
-RStudio. Click on the **Install** button and then type in the name of the package in
-the box (here type in ``mosaic``). RStudio will try to auto-complete the package name
-you are typing which should help you make sure you got it typed correctly. This will
-be the first of *many* times that we will mention that R is case sensitive -- in
-other words, ``Mosaic`` is different from ``mosaic`` in R syntax and this sort of
-thing applies to everything you do in R. You should only need to install each R
-package once on a given computer. If you ever see a message that R can't find a
-package, make sure it appears in the list in the **Packages** tab and if it 
-doesn't, repeat the previous steps to install it. 
-
-After installing the package, we need to load it to make it active in a given work
-session. Go to the command prompt and type (or copy and paste) ``require(mosaic)`` :
-
-```
-> require(mosaic)
-```
-
-You may see a warning message about versions of the package and versions of 
+When you require a package, you may see a warning message about versions of the package and versions of 
 R -- this is *usually* something you can ignore. Other warning messages could
 be more ominous for proceeding but before getting too concerned, there are 
 couple of basic things to check. First, double check that the package is 
@@ -561,7 +561,7 @@ having issues, try repeating the installation process. If that fails, find
 someone more used to using R to help you (for example in the Math Learning
 Center or by emailing your instructor)^[Most computer lab computers at 
 Montana State University have RStudio installed and so provide another venue 
-to try this where the software is already installed.]. 
+to work.]. 
 
 To help you go from basic to intermediate R usage and especially to help with more
 complicated problems, you will want to learn how to manage and save your R code. 
@@ -569,20 +569,20 @@ The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
 start a new ".R" file to store your code, click on **File**, then 
 **New File**, then **R Script**. This will create a blank page to enter and 
-edit code -- then save the file as MyFileName.R in your preferred location. 
+edit code -- then save the file as something like "MyFileName.R" in your preferred location. 
 Saving your code will mean that you can return to where you
 were working last by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
-of code and hit the "Run" button on the upper part of the panel. It will appear
+of code and hit the "Run" button^[You can also use Ctrl-R if you like hotkeys.] on the upper part of the panel. It will appear
 in the console with results just like what you would obtain if you typed it
 after the command prompt and hit enter for each line. 
 
 Figure \@ref(fig:Figure4) shows the screen with the code used in this 
 section in the upper left panel, saved in
-file called Ch0.R, with the results of highlighting and executing the first
+a file called "Ch0.R", with the results of highlighting and executing the first
 section of code using the "Run" button. 
 
-(ref:fig4) RStudio with highlighted code run
+(ref:fig4) RStudio with highlighted code run.
 
 ```{r Figure4, echo=FALSE, fig.cap="(ref:fig4)"}
 knitr::include_graphics('chapter0_files/image006.png')
@@ -590,10 +590,16 @@ knitr::include_graphics('chapter0_files/image006.png')
 
 ##Basic summary statistics, histograms, and boxplots using R
 
-With RStudio running, the ``mosaic`` package loaded, a place to write and
+For the following material, you will need to install and load the ``mosaic`` [@R-mosaic]. 
+
+```
+> require(mosaic)
+```
+
+It provides a suite of enhanced functions to aid our initial explorations. With RStudio running, the ``mosaic`` package loaded, a place to write and
 save code, and the ``treadmill`` data set loaded, we can (finally!) start to
 summarize the results of the study. The ``treadmill`` object is what R calls a 
-***data.frame***^[Data frames in R are objects that can contain both 
+***tibble***^[Tibbles are R are objects that can contain both 
 categorical and quantitative variables on your n subjects with a name for each
 variable that is also the name of each column in a matrix. Each subject is a 
 row of the data set.] and contains columns corresponding to each variable in 
