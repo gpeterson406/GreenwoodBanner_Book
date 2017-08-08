@@ -52,3 +52,12 @@ GreenwoodBanner.tex
 !titlepage.tex
 !pdf_cover.pdf
 !titlepage.pdf
+*.pdf
+*.pdf
+*.html
+*.log
+*.log
+GreenwoodBanner.toc
+*.md
+_book/01-preface.md
+*.pdf
