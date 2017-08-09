@@ -105,7 +105,7 @@ possible to equate our work in the Two-Way ANOVA interaction model,
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},$$
 
-with the regression notation from the MLR model with an interaction: 
+\noindent with the regression notation from the MLR model with an interaction: 
 
 $$\begin{array}{rc}
 y_i=&\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level }3,i}
@@ -619,12 +619,12 @@ The following results will allow us to explore models similar to theirs. One
 $$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i 
 + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-which was compared to 
+\noindent which was compared to 
 
 $$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i 
 + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-as well as the simpler models that each suggests:
+\noindent as well as the simpler models that each suggests:
 
 $$\begin{array}{rl}
 \log{(\text{count})}_i &=\beta_0 + \beta_1\log{(\text{DBC})}_i 
@@ -787,10 +787,11 @@ the direct comparison of
 
 $$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-to 
+\noindent to 
+
 $$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i,$$
 
-exploring whether *DBC* or *DBF* is the "better" with *TJK* in the model. There
+\noindent exploring whether *DBC* or *DBF* is the "better" with *TJK* in the model. There
 is no hypothesis test to compare these two models because one is not ***nested***
 in the other -- **it is not possible to get from one model to the other by 
 setting one or more slope coefficients to 0 so we can't test our way from one

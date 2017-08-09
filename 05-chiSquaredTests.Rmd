@@ -171,11 +171,12 @@ $r=1,\ldots,R$ and $c=1,\ldots,C$. We can also define the ***row totals***
 as the sum across row $r$ as
 
 $$\mathbf{n_{r\bullet}}=\Sigma^C_{c=1}n_{rc},$$
-the ***column totals*** as the sum across column $c$ as
+
+\noindent the ***column totals*** as the sum across column $c$ as
 
 $$\mathbf{n_{\bullet c}}=\Sigma^R_{r=1}n_{rc},$$
 
-and the ***table total*** as
+\noindent and the ***table total*** as
 
 $$\mathbf{N}=\Sigma^R_{r=1}\mathbf{n_{r\bullet}} = \Sigma^C_{c=1}\mathbf{n_{\bullet c}}
 = \Sigma^R_{r=1}\Sigma^C_{c=1}\mathbf{n_{rc}}.$$
@@ -622,7 +623,7 @@ the sum of squared standardized differences,
 $$\boldsymbol{X^2 = \Sigma^{RC}_{i=1}\left(\frac{Observed_i-Expected_i}
 {\sqrt{Expected_i}}\right)^2},$$
 
-which is the sum over all ($R$ times $C$) cells in the contingency 
+\noindent which is the sum over all ($R$ times $C$) cells in the contingency 
 table of the square of the difference between observed and expected 
 cell counts divided by the square root of the
 expected cell count. To calculate this test statistic, it useful to start with
@@ -731,7 +732,7 @@ we need to find
 
 $$(\text{observed}-\text{expected}/\sqrt{\text{expected}}),$$
 
-**square them**, and then we need to add them **all** up. In the 
+\noindent **square them**, and then we need to add them **all** up. In the 
 current example, there are 6 cells to add up ($R=2$ times $C=3$), shown 
 in Table \@ref(tab:Table5-4). 
 
@@ -768,7 +769,7 @@ quantity called the
 $$\textbf{standardized residual}=\left(\frac{\text{Observed}_i -
 \text{Expected}_i}{\sqrt{\text{Expected}_i}}\right),$$
 
-which, when squared (in R, squaring is accomplished using ``^2``),
+\noindent which, when squared (in R, squaring is accomplished using ``^2``),
 is the contribution of that particular cell to the $X^2$
 statistic that is displayed in Table \@ref(tab:Table5-4). 
 
@@ -1065,7 +1066,7 @@ against the null hypothesis of no difference or no relationship. The  ***standar
 $$\boldsymbol{\left(\frac{\textbf{Observed}_i - 
 \textbf{Expected}_i}{\sqrt{\textbf{Expected}_i}}\right)},$$
 
-provides a measure of deviation of the observed from expected which 
+\noindent provides a measure of deviation of the observed from expected which 
 retains the **direction of deviation** (whether observed was
 **more or less than expected** is interesting for interpretations) for
 each cell in the table. It is scaled much like a standard normal distribution
@@ -1964,7 +1965,7 @@ contingency table where you identified initial patterns.
 ## Review of Important R commands	{#section5-13}
 
 The main components of R code used in this chapter follow with components
-to modify in ALL CAPS where ``y`` is a response variable and ``x`` is a predictor 
+to modify in lighter and/or ALL CAPS text where ``y`` is a response variable and ``x`` is a predictor 
 are easily identified:
 
 * **`r colFmt("TABLENAME","red")` <- tally(~`r colFmt("x","red")` +

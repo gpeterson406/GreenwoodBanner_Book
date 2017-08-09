@@ -103,7 +103,7 @@ regression equation it returns is:
 
 $$\hat{y}_i = b_0 + b_1x_{1i} +b_2x_{2i}+\ldots+b_Kx_{Ki}$$
 
-where each $b_k$ estimates its corresponding parameter $\beta_k$.
+\noindent where each $b_k$ estimates its corresponding parameter $\beta_k$.
 
 An example of snow depths at some high elevation locations on a day in 
 April provides a nice motivation for these methods. A random sample of 
@@ -562,7 +562,7 @@ $$\begin{array}{rl}
 & = 40.465 \text{ inches,}
 \end{array}$$
 
-but the observed snow depth was actually $y_9=11.2$ inches. The observed  ***residual*** is then
+\noindent but the observed snow depth was actually $y_9=11.2$ inches. The observed  ***residual*** is then
 
 $$e_9=y_9-\hat{y}_9 = 11.2-40.465 = -29.265 \text{ inches.}$$
 
@@ -775,7 +775,7 @@ different elevations, the MLR model of
 $$\widehat{\text{SnowDepth}}_i = -213.3 + 0.0269\text{ Elevation}_i
 +0.984\text{ MinTemp}_i +1.243\text{ MaxTemp}_i$$
 
-is used, but we need to have "something" to put in for the two temperature
+\noindent is used, but we need to have "something" to put in for the two temperature
 variables to predict *Snow Depth* for different *Elevations*. The typical
 convention is to hold the "other" variables at their means to
 generate these plots. This tactic also provides a way of interpreting each
@@ -1017,7 +1017,7 @@ $$R^2_{\text{adjusted}} = 1 -
 \frac{\text{SS}_{\text{error}}/df_{\text{error}}}{\text{SS}_{\text{total}}/(N-1)}
 = 1 - \frac{\text{MS}_{\text{error}}}{\text{MS}_{\text{total}}},$$
 
-which incorporates the *degrees of freedom* for the model via the error 
+\noindent which incorporates the *degrees of freedom* for the model via the error 
 *degrees of freedom* which go
 down as the model complexity increases. This adjustment means that just
 adding extra useless variables (variables that do not explain very much extra
@@ -1383,7 +1383,7 @@ Similarly, we can test for *Elevation* after controlling for the *Maximum Temper
 
 $$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},$$
 
-given that *Max.Temp* is in the model.
+\noindent given that *Max.Temp* is in the model.
 
 $t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
 
@@ -1589,7 +1589,7 @@ first model of interest using the two SAT percentiles,
 $$\text{FYGPA}_i = \beta_0 + \beta_{\text{SATV}}\text{SATV}_i 
 + \beta_{\text{SATM}}\text{SATM}_i +\varepsilon_i,$$
 
-looks like it might be worth interrogating further so we can jump straight
+\noindent looks like it might be worth interrogating further so we can jump straight
 into considering the 6+ steps involved in hypothesis testing for the two slope
 coefficients. We will be using a 5% significance level and $t$-based
 inferences, assuming that we can trust the assumptions. 
@@ -2286,7 +2286,7 @@ The model will be of the form
 $$y_i=\beta_0 + \beta_1x_i +\beta_2I_{\text{Level}2,i}+\beta_3I_{\text{Level}3,i}
 +\cdots+\beta_{J-1}I_{\text{Level}J,i}+\varepsilon_i$$
 
-where the $I_{\text{CatName}J,i}\text{'s}$ are the different indicator variables. 
+\noindent where the $I_{\text{CatName}J,i}\text{'s}$ are the different indicator variables. 
 Note that each indicator variable gets a coefficient associated with it and is
 "turned on" whenever the $i^{th}$ observation is in that category. Only one of
 the $I_{\text{CatName}J,i}\text{'s}$ is a 1 for any observation, so the
@@ -2520,7 +2520,7 @@ interaction, which is
 $$y_i=\beta_0 + \beta_1x_i +\beta_2I_{\text{CatName},i} +
 \color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i,$$
 
-where the new component involves both the indicator and the quantitative
+\noindent where the new component involves both the indicator and the quantitative
 predictor variable. The $\color{red}{\boldsymbol{\beta_3}}$ coefficient will be
 found in a row of output with **both** variable names in it (with the indicator
 level name) with a colon between them (something like ``x:grouplevel``). As
@@ -2578,7 +2578,7 @@ The estimated model can be written as
 $$\widehat{\text{Score}}_i=0.876+0.058\text{ ZIQ}_i - 0.280I_{\text{Level }1,i}
 -\color{red}{\boldsymbol{0.073}}I_{\text{Level }1,i}\text{ ZIQ}_i$$
 
-and simplified for the two groups as:
+\noindent and simplified for the two groups as:
 
 * For the baseline (non-dyslexic, $I_{\text{Level}1,i}=0$) students:
 
@@ -3132,7 +3132,7 @@ simply, $\Delta\text{AIC}$ reported. The
 
 $$\Delta\text{AIC}=\text{AIC}_{\text{model}} - \text{AIC}_{\text{topModel}}$$
 
-and so provides a value of 0 for the top-ranked AIC model and a measure of how
+\noindent and so provides a value of 0 for the top-ranked AIC model and a measure of how
 much worse on the AIC scale the other models are. A rule of thumb is that a 2 
 unit difference on AICs $(\Delta\text{AIC}=2)$ is decent evidence of a
 difference in the models and more than 4 units $(\Delta\text{AIC}>4)$ is a
@@ -3463,7 +3463,7 @@ In this situation, the top model is estimated to be
 $$\log(\widehat{\text{FEV}})_i = -1.94 + 0.043\text{Height}_i+0.0234\text{Age}_i
 -0.046I_{\text{Smoker},i}+0.0293I_{\text{Male},i}$$
 
-based on the estimated coefficients provided below. Using these results and the
+\noindent based on the estimated coefficients provided below. Using these results and the
 term-plots (Figure \@ref(fig:Figure8-36)) we see that there are positive slopes
 for *Age* and *Height* on *log-FEV*, a negative coefficient for *smoking*
 (*Smoker*), and a positive coefficient for *sex* (*Males*), all after controlling

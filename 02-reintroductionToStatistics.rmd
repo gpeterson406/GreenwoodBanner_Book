@@ -858,13 +858,13 @@ can define
 
 $$T=\bar{x}_\text{Unattractive}-\bar{x}_\text{Average},$$
 
-which coincidentally is what the ``diffmean`` function provided us previously. 
+\noindent which coincidentally is what the ``diffmean`` function provided us previously. 
 We label our ***observed test statistic*** (the one from the original data 
 set) as
 
 $$T_{obs}=\bar{x}_\text{Unattractive}-\bar{x}_\text{Average},$$
 
-which happened to be 1.84 years here. We will compare this result to the results 
+\noindent which happened to be 1.84 years here. We will compare this result to the results 
 for the test statistic that we obtain from permuting the group labels. To 
 denote permuted results, we will add a * to the labels:
 
@@ -1402,7 +1402,7 @@ Power is defined as
 $$\text{Power} = 1 - \text{Probability(Type II error) } = 
 \text{Probability(Reject) } H_0 | H_0 \text{ is false),}$$
 
-or, in words, the probability of detecting a difference when it actually
+\noindent or, in words, the probability of detecting a difference when it actually
 exists. We want to use a statistical procedure that controls the Type I error 
 rate at the pre-specified level and has high power to detect false null 
 alternatives. Increasing the sample size is one of the most commonly used 
@@ -1480,7 +1480,7 @@ the means, we often calculate a test statistic that is called the
 
 $$t = \frac{\bar{x}_1 - \bar{x}_2}{s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}},$$
 
-where $s_1^2$ and $s_2^2$ are the sample variances for the two groups, $n_1$ and 
+\noindent where $s_1^2$ and $s_2^2$ are the sample variances for the two groups, $n_1$ and 
 $n_2$ are the sample sizes for the two groups, and the 
 ***pooled sample standard deviation***, 
 
@@ -2199,7 +2199,7 @@ general form as
 $$\bar{x}_1 - \bar{x}_2 \mp t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}\ \text{ OR }\ 
 \bar{x}_1 - \bar{x}_2 \mp ME$$
 
-where $SE_{\bar{x}_1 - \bar{x}_2} = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$ and 
+\noindent where $SE_{\bar{x}_1 - \bar{x}_2} = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$ and 
 $ME = t^*_{df}SE_{\bar{x}_1 - \bar{x}_2}$. In some situations, researchers will
 report the ***standard error*** (SE) or ***margin of error*** (ME) as a method 
 of quantifying the uncertainty in a statistic. The SE is an estimate of the
@@ -2418,7 +2418,7 @@ doing diagnostics to help us assess how much those conditions are violated.
 ## Summary of important R code {#section2-11}
 
 The main components of R code used in this chapter follow with components to 
-modify in ALL CAPS, remembering that any R packages mentioned 
+modify in lighter and/or ALL CAPS text, remembering that any R packages mentioned 
 need to be installed and loaded for this code to have a chance of working:
 
 * **summary(`r colFmt("DATASETNAME","red")`)**

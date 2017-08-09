@@ -844,7 +844,7 @@ from your previous statistics experience(s).
 To help you learn and use R, there is a section highlighting the most important 
 R code used near the end of each
 chapter. The bold text will never change but the 
-lighter ALL CAPS  text (red in the online or digital version) will need
+lighter and/or ALL CAPS  text (red in the online or digital version) will need
 to be customized to your particular application. The sub-bullet for each
 function will discuss the use of the function and pertinent options or packages
 required. You can use this as a guide to finding the function names and some

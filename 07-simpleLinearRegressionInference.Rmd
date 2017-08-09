@@ -69,7 +69,7 @@ regression model is
 $$y_i \sim N(\mu_{y_i},\sigma^2), \text{ with } 
 \mu_{y_i} = \beta_0 + \beta_1x_i,$$
 
-which can be read as "y follows a normal distribution
+\noindent which can be read as "y follows a normal distribution
 with mean mu-y and variance sigma-squared". This also implies that the random
 variability around the true mean, the errors, follow a normal distribution with
 mean 0 and that same variance, $\varepsilon_i \sim N(0,\sigma^2)$. The true 
@@ -200,7 +200,7 @@ any parametric confidence interval is
 
 $$\text{estimate} \mp t^*\text{SE}_{estimate},$$
 
-so we need to obtain the appropriate standard error for regression model
+\noindent so we need to obtain the appropriate standard error for regression model
 coefficients and the degrees of freedom to define the $t$-distribution
 to look up $t^*$. We will find the $\text{SE}_{b_0}$ and $\text{SE}_{b_1}$
 in the model summary. The degrees of freedom for the $t$-distribution
@@ -260,7 +260,7 @@ prediction for $y$ for every value of $x$. Thus
 
 $$\boldsymbol{H_0: \beta_1=0}$$
 
-is a test for **no linear relationship between** $\mathbf{x}$ **and** $\mathbf{y}$
+\noindent is a test for **no linear relationship between** $\mathbf{x}$ **and** $\mathbf{y}$
 **in the population**. The alternative of $\boldsymbol{H_A: \beta_1\ne 0}$
 that there is **some** linear relationship between $x$ and $y$ in the population,
 is our main test of interest in these situations. It is also possible to test
@@ -272,7 +272,7 @@ $t$-test statistic is generally
 
 $$t=\frac{b_i}{\text{SE}_{b_i}}$$
 
-with the main interest in the test for $\beta_1$ based on $b_1$ for now.
+\noindent with the main interest in the test for $\beta_1$ based on $b_1$ for now.
 The p-value would be calculated using the two-tailed area from the 
 $t_{n-2}$ distribution calculated using the ``pt`` function. The p-value 
 to test these hypotheses is also provided
@@ -1706,7 +1706,7 @@ $\text{SE}_{\hat{\mu}_{\nu}}$, can be calculated as
 $$\text{SE}_{\hat{\mu}_{\nu}} 
 = \sqrt{\text{SE}^2_{b_1}(x_{\nu}-\bar{x})^2 + \frac{\hat{\sigma}^2}{n}}$$
 
-where $\hat{\sigma}^2$ is the squared residual standard error. This formula
+\noindent where $\hat{\sigma}^2$ is the squared residual standard error. This formula
 combines the variability in the slope estimate, $\text{SE}_{b_1}$, scaled
 based on the distance of $x_{\nu}$ from $\bar{x}$ and the variability
 around the regression line, $\hat{\sigma}^2$. Fortunately, we'll use R's
@@ -1750,7 +1750,7 @@ The __% PI is calculated as
 
 $$\boldsymbol{\hat{y}_{\nu} \mp t^*_{n-2}}\textbf{SE}_{\boldsymbol{\hat{y}_{\nu}}}$$
 
-and interpreted as:
+\noindent and interpreted as:
 
 * We are __% sure that a new observation at $\boldsymbol{x_{\nu}}$ will be between
 **LL** and **UL** ***[units of y]***. Since 
@@ -2016,7 +2016,7 @@ the results are being interpreted on.
 ## Important R code {#section7-9}
 
 The main components of the R code used in this chapter follow with the
-components to modify in red where ``y`` is a response variable, ``x`` is an
+components to modify in lighter and/or ALL CAPS text where ``y`` is a response variable, ``x`` is an
 explanatory variable, and the data are in ``DATASETNAME``. 
 
 * scatterplot(`r colFmt("y","red")`~`r colFmt("x","red")`,

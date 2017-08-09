@@ -476,7 +476,7 @@ Two-Way ANOVA model. We start with the ***Two-Way ANOVA interaction model***:
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},$$
 
-where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
+\noindent where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
 $\tau_j$ is the deviation for the ***main effect*** of A from the baseline
 for levels $2,\ldots,J$, $\gamma_k$ (gamma $k$) is the deviation for the main 
 effect of B from the baseline for levels $2,\ldots,K$, and $\omega_{jk}$ 
@@ -495,7 +495,7 @@ between them. The ***additive Two-Way model*** is
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \varepsilon_{ijk},$$
 
-where each component is defined as in the interaction model. The difference between
+\noindent where each component is defined as in the interaction model. The difference between
 the interaction and additive models is setting all the $\omega_{jk}\text{'s}$
 to 0 that are present in the interaction model. When we set parameters to 0 in
 models it removes them from the model. Setting parameters to 0 is how we will develop
@@ -1645,7 +1645,7 @@ to those considered here.
 ## Important R code	{#section4-8}
 
 The main components of R code used in this chapter follow with components to 
-modify in ALL CAPS, remembering that any R
+modify in lighter and/or ALL CAPS text, remembering that any R
 packages mentioned need to be installed and loaded for this code to have a
 chance of working:
 
