@@ -34,7 +34,7 @@ of each method -- what type of research questions are being addressed
 (relationships or group differences, for example) and what type of variables
 are being analyzed (quantitative or categorical). ***Quantitative variables*** are made up of numerical measurements that have meaningful units attached to
 them. ***Categorical variables*** take on values that are categories or labels.
-Additionally, you will need to carefully identify the ***response*** variables, where
+Additionally, you will need to carefully identify the ***response*** and ***explanatory*** variables, where
 the study and variable characteristics should suggest which variables should be used
 as the explanatory variables that may explain
 variation in the response variable. Because this is an intermediate statistics
@@ -66,7 +66,7 @@ one when the response is categorical. Examples of quantitative responses we will
 see later involve *suggested jail sentence* (in years) and *body fat* (percentage). 
 Examples of categorical variables include *improvement* (none, some, or marked) 
 in a clinical trial or whether a student has turned in copied work 
-(never, exam or paper, or both). There are going to be some more
+(never, done this on an exam or paper, or both). There are going to be some more
 nuanced aspects to all these analyses as the complexity of both sides of Figure
 \@ref(fig:Figure1) suggest, but note that near the bottom, each tree converges on a single
 procedure, using a ***linear model*** for a quantitative response variable or 
@@ -76,21 +76,21 @@ for a
 given data set, the final step involves assessing the scope of inference and
 types of conclusions that are appropriate based on the design of the study. 
 
-(ref:fig1) Flow chart of methods
+(ref:fig1) Flow chart of methods.
 
 ![(\#fig:Figure1)(ref:fig1)](chapter0_files/image002.png) 
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
-left side of Figure \@ref(fig:Figure1) covered in Chapters \@ref(chapter2),
+left side of Figure \@ref(fig:Figure1) is covered in Chapters \@ref(chapter2),
 \@ref(chapter3), \@ref(chapter4), \@ref(chapter6), \@ref(chapter7), and
-\@ref(chapter8)) and stepping
-over to handle the situation with a categorical response variable (right side
-of Figure \@ref(fig:Figure1) that is discussed in Chapter \@ref(chapter5)). 
+\@ref(chapter8)), stepping
+over to handle the situation with a categorical response variable in Chapter \@ref(chapter5) (right side
+of Figure \@ref(fig:Figure1).
 Chapter \@ref(chapter9) contains case studies
 illustrating all the methods discussed previously, providing a final opportunity
-to explore additional examples that illustrate how finding your way through the
-paths in Figure \@ref(fig:Figure1) leads to the appropriate analysis. 
+to explore additional examples that illustrate how finding a
+path through Figure \@ref(fig:Figure1) can lead to the appropriate analysis. 
 
 
 The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
@@ -117,7 +117,7 @@ there are two categorical explanatory variables, *fertilizer*, with 3 levels, an
 ***interaction*** between the two explanatory variables: the relationship between one categorical
 variable and the mean of the response changes depending on the levels of the
 other categorical variable. For example, extra fertilizer might enhance the
-growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
+growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based on the level of *variety*. Given this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
 
 Following the methods for two categorical variables and a quantitative response, we explore a method for
 analyzing data where the response is categorical, called the ***Chi-square test***
@@ -206,7 +206,7 @@ for extra credit in the class. We could still randomly assign them to
 tutoring/not but the non-random sample would only lead to conclusions about
 those students that volunteered. The most powerful scope of inference is when there
 are randomly assigned levels of explanatory variables with a random sample from
-population -- conclusions would be about causal impacts that would happen in the
+a population -- conclusions would be about causal impacts that would happen in the
 population. 
 
 By the end of this material, you should have some basic R skills and abilities to create basic ANOVA and
@@ -243,21 +243,20 @@ from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
 You will have two downloading activities to complete before you can do anything
-more than read this book^[I recorded a video that walks through the material on the following pages 
-that is available here: https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html 
-in the digital version of the book.]. First, you need to download R. It is the engine that will do all the computing
+more than read this book^[I recorded a video that walks through getting R and Rstudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching youtube for "How to install R and Rstudio".
+]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that
 corresponds to your operating system. On the next page, click on "**base**" and then it will take you 
 to a screen to download the most current version of R that is compiled for your
-operating system, something like "**Download R 3.3.1 for Windows**". Click on that link and then open 
+operating system, something like "**Download R 3.4.1 for Windows**". Click on that link and then open 
 the file you downloaded. You will need to select your preferred language (choose English so your 
 instructor can help you), then hit "**Next**"
 until it starts to unpack and install the program (all the base settings will be fine). After you hit 
 "**Finish**" you will not do anything further with R directly. 
 
 Second, you need to download RStudio. It is an enhanced interface that will make interacting with
-R less frustrating. To download RStudio, go to http://www.rstudio.com/products/rstudio/download/ and select the correct version under
+R less frustrating. To download RStudio, go near the bottom of  https://www.rstudio.com/products/rstudio/download/ and select the correct version under
 "Installers for Supported Platforms" for your operating system. Download and
 then install RStudio using the installer. From this point forward, you should only
 open RStudio; it provides your interface with R. Note that both R and RStudio
@@ -265,8 +264,8 @@ are updated frequently (up to four times a year) and if you downloaded either
 more than a few months previously, you should download the up-to-date versions, 
 especially if something you are trying to do is not working. Sometimes code
 will not work in older versions of R and sometimes old code won't work in new
-versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 3^rd^ version in
-three years...]
+versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 4^th^ version in
+four years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
 interface. When you open RStudio, you will see a screen like Figure 
@@ -292,9 +291,9 @@ contains information on the "Packages" (additional code we will download and
 install to add functionality to R) that are available and is where you will see
 plots that you make and requests for "Help" on specific functions. 
 
-(ref:fig2) Initial RStudio layout
+(ref:fig2) Initial RStudio layout.
 
-![(\#fig:Figure2)(ref:fig2)](chapter0_files/image003.png) 
+![(\#fig:Figure2)(ref:fig2)](chapter0_files/fig1.2.png) 
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
 (``>``) in the lower left "console" panel, type 3+4, and then hit enter. It
@@ -339,7 +338,7 @@ as follows:
 ```
 
 To get this vector stored in a variable called *variable1* we need to 
-use the assignment operator, ``<-`` (read as "stored as") that assigns 
+use the assignment operator, ``<-`` (read as "is defined to contain") that assigns 
 the information on the right into the variable that you are creating on 
 the left. 
 
@@ -390,13 +389,31 @@ calls it "CSV (Comma Delimited)"), which basically strips off some of the junk
 that Excel adds to the necessary information in the file. Excel will tell you that
 this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
-directly into R but to handle multiple sheets they are more complicated and not 
-as stable across operating systems as the simpler version we recommend.]. 
+directly into R that we will explore later.]. 
 
-With a data set converted to a CSV file, we need to read the data set into R. There
+The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or Rstudio. To get acccess to the packages, first "install" (basically
+download) and then "load" the package. To install an R package, go to the **Packages** tab in the lower right panel of
+RStudio. Click on the **Install** button and then type in the name of the package in
+the box (here type in ``readr``). RStudio will try to auto-complete the package name
+you are typing which should help you make sure you got it typed correctly. This will
+be the first of *many* times that we will mention that R is case sensitive -- in
+other words, ``Readr`` is different from ``readr`` in R syntax and this sort of
+thing applies to everything you do in R. You should only need to install each R
+package once on a given computer. If you ever see a message that R can't find a
+package, make sure it appears in the list in the **Packages** tab. If it 
+doesn't, repeat the previous steps to install it. 
+
+After installing the package, we need to load it to make it active in a given work
+session. Go to the command prompt and type (or copy and paste) ``require(readr)`` :
+
+```
+> require(readr)
+```
+
+With a data set converted to a CSV file and ``readr`` installed and loaded, we need to read the data set into the active workspace. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
 the "Import Dataset" button in the upper right "Environment" panel as
-indicated in Figure \@ref(fig:Figure2)) or modifying the ``read.csv`` 
+indicated in Figure \@ref(fig:Figure2)) or modifying the ``read_csv`` 
 function to find the file of interest. To practice this, you can 
 download an Excel (.xls) file from
 http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
@@ -423,7 +440,7 @@ ject   MillOx    MaxPulse                        Pulse
 
 
 The variables contain information on the subject number (*Subject*), subjects' 
-treadmill oxygen consumption (*TreadMillOx*, in ml per kg per minute) and 
+maximum treadmill oxygen consumption (*TreadMillOx*, in ml per kg per minute, also called maximum VO2) and 
 maximum pulse rate (*TreadMillMaxPulse*, in beats per minute), time to run 1.5
 miles (*Run Time*, in minutes), maximum pulse
 during 1.5 mile run (*RunPulse*, in beats per minute), resting pulse rate 
@@ -433,9 +450,9 @@ a .csv file in a location you can find on your computer. Then go to RStudio
 and click on **File**, then **Import Dataset**, then **From CSV...**^[If
 you are having trouble getting the file converted and read into R, copy and 
 run the following code: 
-``treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv", header=T)``.] 
-Find your file and click "**Import**". R will store the data set as an object named 
-whatever the .csv file was named. You could use another name as well, but it is 
+``treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv")``.] 
+Find your file and click "**Import**". R will store the data set as an object with the same name 
+as the .csv file. You could use another name as well, but it is 
 often easiest just to keep the data
 set name in R related to the original file name. You should see some text appear
 in the console (lower left panel) like in Figure \@ref(fig:Figure3). The text 
@@ -447,7 +464,7 @@ labeled D:, it would be:
 
 
 ```r
-treadmill <- read.csv("D:/treadmill.csv")
+treadmill <- read_csv("D:/treadmill.csv")
 ```
 
 What is put inside the 
@@ -456,19 +473,19 @@ version of the data set in what looks like a
 spreadsheet will appear in the upper left window due to the second line of 
 code (``View(treadmill``)). 
 
-(ref:fig3) RStudio with initial data set loaded
+(ref:fig3) RStudio with initial data set loaded.
 
-![(\#fig:Figure3)(ref:fig3)](chapter0_files/image005.png) 
+![(\#fig:Figure3)(ref:fig3)](chapter0_files/fig1.3.png) 
 
 Just directly typing (or using) a line of code like this is actually the 
 other way that we can read in
 files. If you choose to use the text-only interface, then you need to tell R
-where to look in your computer to find the data file. ``read.csv`` is a 
+where to look in your computer to find the data file. ``read_csv`` is a 
 function that takes a path as an argument. To use it, specify the path to 
 your data file, put quotes around it, and put it as the input to 
-``read.csv(...)``. For some examples later in the book, you will be able to 
+``read_csv(...)``. For some examples later in the book, you will be able to 
 copy a command like this from the text and read data sets and other
-code directly from my the course folder, assuming you are connected to the
+code directly from the course folder, assuming you are connected to the
 internet. 
 
 To verify that you read the data set in correctly, it is always good to check 
@@ -484,49 +501,31 @@ the panels.
 
 ```
 > head(treadmill)
-  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-1       1       60.05               186    8.63      170        48      81.87  38
-2       2       59.57               172    8.17      166        40      68.15  42
-3       3       54.62               155    8.92      146        48      70.87  50
-4       4       54.30               168    8.65      156        45      85.84  44
-5       5       51.85               170   10.33      166        50      83.12  54
-6       6       50.55               155    9.93      148        49      59.08  57
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1       1       60.05               186    8.63      170        48      81.87    38
+2       2       59.57               172    8.17      166        40      68.15    42
+3       3       54.62               155    8.92      146        48      70.87    50
+4       4       54.30               168    8.65      156        45      85.84    44
+5       5       51.85               170   10.33      166        50      83.12    54
+6       6       50.55               155    9.93      148        49      59.08    57
 
 > tail(treadmill)
-   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-26      26       44.61               182   11.37      178        62      89.47  44
-27      27       40.84               172   10.95      168        57      69.63  51
-28      28       39.44               176   13.08      174        63      81.42  44
-29      29       39.41               176   12.63      174        58      73.37  57
-30      30       39.20               172   12.88      168        44      91.63  54
-31      31       37.39               192   14.03      186        56      87.66  45
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1      26       44.61               182   11.37      178        62      89.47    44
+2      27       40.84               172   10.95      168        57      69.63    51
+3      28       39.44               176   13.08      174        63      81.42    44
+4      29       39.41               176   12.63      174        58      73.37    57
+5      30       39.20               172   12.88      168        44      91.63    54
+6      31       37.39               192   14.03      186        56      87.66    45
 ```
  
 \normalsize
 
-While not always required, for many of the analyses, we will tap into a large suite
-of additional functions available in R packages by "installing" (basically
-downloading) and then "loading" the packages. There are some packages that we
-will use frequently, starting with the ``mosaic`` package [@R-mosaic].
-To install an R package, go to the **Packages** tab in the lower right panel of
-RStudio. Click on the **Install** button and then type in the name of the package in
-the box (here type in ``mosaic``). RStudio will try to auto-complete the package name
-you are typing which should help you make sure you got it typed correctly. This will
-be the first of *many* times that we will mention that R is case sensitive -- in
-other words, ``Mosaic`` is different from ``mosaic`` in R syntax and this sort of
-thing applies to everything you do in R. You should only need to install each R
-package once on a given computer. If you ever see a message that R can't find a
-package, make sure it appears in the list in the **Packages** tab and if it 
-doesn't, repeat the previous steps to install it. 
-
-After installing the package, we need to load it to make it active in a given work
-session. Go to the command prompt and type (or copy and paste) ``require(mosaic)`` :
-
-```
-> require(mosaic)
-```
-
-You may see a warning message about versions of the package and versions of 
+When you require a package, you may see a warning message about versions of the package and versions of 
 R -- this is *usually* something you can ignore. Other warning messages could
 be more ominous for proceeding but before getting too concerned, there are 
 couple of basic things to check. First, double check that the package is 
@@ -537,7 +536,7 @@ having issues, try repeating the installation process. If that fails, find
 someone more used to using R to help you (for example in the Math Learning
 Center or by emailing your instructor)^[Most computer lab computers at 
 Montana State University have RStudio installed and so provide another venue 
-to try this where the software is already installed.]. 
+to work.]. 
 
 To help you go from basic to intermediate R usage and especially to help with more
 complicated problems, you will want to learn how to manage and save your R code. 
@@ -545,29 +544,35 @@ The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
 start a new ".R" file to store your code, click on **File**, then 
 **New File**, then **R Script**. This will create a blank page to enter and 
-edit code -- then save the file as MyFileName.R in your preferred location. 
+edit code -- then save the file as something like "MyFileName.R" in your preferred location. 
 Saving your code will mean that you can return to where you
 were working last by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
-of code and hit the "Run" button on the upper part of the panel. It will appear
+of code and hit the "Run" button^[You can also use Ctrl-R if you like hotkeys.] on the upper part of the panel. It will appear
 in the console with results just like what you would obtain if you typed it
 after the command prompt and hit enter for each line. 
 
 Figure \@ref(fig:Figure4) shows the screen with the code used in this 
 section in the upper left panel, saved in
-file called Ch0.R, with the results of highlighting and executing the first
+a file called "Ch0.R", with the results of highlighting and executing the first
 section of code using the "Run" button. 
 
-(ref:fig4) RStudio with highlighted code run
+(ref:fig4) RStudio with highlighted code run.
 
-![(\#fig:Figure4)(ref:fig4)](chapter0_files/image006.png) 
+![(\#fig:Figure4)(ref:fig4)](chapter0_files/fig1.4.png) 
 
 ##Basic summary statistics, histograms, and boxplots using R
 
-With RStudio running, the ``mosaic`` package loaded, a place to write and
+For the following material, you will need to install and load the ``mosaic`` [@R-mosaic]. 
+
+```
+> require(mosaic)
+```
+
+It provides a suite of enhanced functions to aid our initial explorations. With RStudio running, the ``mosaic`` package loaded, a place to write and
 save code, and the ``treadmill`` data set loaded, we can (finally!) start to
 summarize the results of the study. The ``treadmill`` object is what R calls a 
-***data.frame***^[Data frames in R are objects that can contain both 
+***tibble***^[Tibbles are R are objects that can contain both 
 categorical and quantitative variables on your n subjects with a name for each
 variable that is also the name of each column in a matrix. Each subject is a 
 row of the data set.] and contains columns corresponding to each variable in 

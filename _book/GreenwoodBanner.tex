@@ -134,6 +134,10 @@
 \usepackage[normalem]{ulem}
 \usepackage{cancel}
 \usepackage[svgnames]{xcolor}
+\usepackage{framed}
+%\colorlet{shadecolor}{Silver} Probably too dark...
+\colorlet{shadecolor}{WhiteSmoke}
+\colorlet{framecolor}{Silver}
 \usepackage{float}
 \usepackage{caption}
 \newgeometry{inner=1.25in,outer=0.75in,top=1in,bottom=1in}
@@ -149,14 +153,26 @@
 % \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
 % \makeatother
 
+\setlength{\parindent}{15pt} % Default is 0pt.
 
 %\setlength{\parskip}{0pt}
 
 
 \setlength{\OuterFrameSep}{0pt}
+\setlength{\FrameRule}{1.5pt}
 \makeatletter
 \def\preto{\@verbatim}{\topsep=-10pt \partopsep=-10pt }
 \makeatother
+
+% Adjust verbatim shade environments
+
+\renewenvironment{Shaded}{%
+\setlength{\FrameRule}{1.5pt}
+\def\FrameCommand{\fboxrule=\FrameRule\fboxsep=\FrameSep \fcolorbox{framecolor}{shadecolor}}%
+\MakeFramed {\FrameRestore}}%
+{\endMakeFramed}
+
+
 
 %Change third level of itemize to an open circle instead of an asterisk
 \renewcommand{\labelitemiii}{$\circ$}
@@ -280,14 +296,15 @@ analyzed (quantitative or categorical). \textbf{\emph{Quantitative
 variables}} are made up of numerical measurements that have meaningful
 units attached to them. \textbf{\emph{Categorical variables}} take on
 values that are categories or labels. Additionally, you will need to
-carefully identify the \textbf{\emph{response}} variables, where the
-study and variable characteristics should suggest which variables should
-be used as the explanatory variables that may explain variation in the
-response variable. Because this is an intermediate statistics course, we
-will start to handle more complex situations (many explanatory
-variables) and will provide some tools for graphical explorations to
-complement the more sophisticated statistical models required to handle
-these situations.
+carefully identify the \textbf{\emph{response}} and
+\textbf{\emph{explanatory}} variables, where the study and variable
+characteristics should suggest which variables should be used as the
+explanatory variables that may explain variation in the response
+variable. Because this is an intermediate statistics course, we will
+start to handle more complex situations (many explanatory variables) and
+will provide some tools for graphical explorations to complement the
+more sophisticated statistical models required to handle these
+situations.
 
 \section{Overview of methods}\label{overview-of-methods}
 
@@ -316,36 +333,37 @@ response is categorical. Examples of quantitative responses we will see
 later involve \emph{suggested jail sentence} (in years) and \emph{body
 fat} (percentage). Examples of categorical variables include
 \emph{improvement} (none, some, or marked) in a clinical trial or
-whether a student has turned in copied work (never, exam or paper, or
-both). There are going to be some more nuanced aspects to all these
-analyses as the complexity of both sides of Figure \ref{fig:Figure1}
-suggest, but note that near the bottom, each tree converges on a single
-procedure, using a \textbf{\emph{linear model}} for a quantitative
-response variable or using a \textbf{\emph{Chi-square test}} for a
-categorical response. After selecting the appropriate procedure and
-completing the necessary technical steps to get results for a given data
-set, the final step involves assessing the scope of inference and types
-of conclusions that are appropriate based on the design of the study.
+whether a student has turned in copied work (never, done this on an exam
+or paper, or both). There are going to be some more nuanced aspects to
+all these analyses as the complexity of both sides of Figure
+\ref{fig:Figure1} suggest, but note that near the bottom, each tree
+converges on a single procedure, using a \textbf{\emph{linear model}}
+for a quantitative response variable or using a \textbf{\emph{Chi-square
+test}} for a categorical response. After selecting the appropriate
+procedure and completing the necessary technical steps to get results
+for a given data set, the final step involves assessing the scope of
+inference and types of conclusions that are appropriate based on the
+design of the study.
 
 
 
 \begin{figure}
 \centering
 \includegraphics{chapter0_files/image002.png}
-\caption{\label{fig:Figure1}Flow chart of methods}
+\caption{\label{fig:Figure1}Flow chart of methods.}
 \end{figure}
 
 We will be spending most of the semester working on methods for
 quantitative response variables (the left side of Figure
-\ref{fig:Figure1} covered in Chapters \ref{chapter2}, \ref{chapter3},
-\ref{chapter4}, \ref{chapter6}, \ref{chapter7}, and \ref{chapter8}) and
+\ref{fig:Figure1} is covered in Chapters \ref{chapter2}, \ref{chapter3},
+\ref{chapter4}, \ref{chapter6}, \ref{chapter7}, and \ref{chapter8}),
 stepping over to handle the situation with a categorical response
-variable (right side of Figure \ref{fig:Figure1} that is discussed in
-Chapter \ref{chapter5}). Chapter \ref{chapter9} contains case studies
+variable in Chapter \ref{chapter5} (right side of Figure
+\ref{fig:Figure1}. Chapter \ref{chapter9} contains case studies
 illustrating all the methods discussed previously, providing a final
-opportunity to explore additional examples that illustrate how finding
-your way through the paths in Figure \ref{fig:Figure1} leads to the
-appropriate analysis.
+opportunity to explore additional examples that illustrate how finding a
+path through Figure \ref{fig:Figure1} can lead to the appropriate
+analysis.
 
 The first topics (Chapters \ref{chapter1}, and \ref{chapter2}) will be
 more familiar as we start with single and two group situations with a
@@ -377,10 +395,11 @@ the relationship between one categorical variable and the mean of the
 response changes depending on the levels of the other categorical
 variable. For example, extra fertilizer might enhance the growth of one
 variety and hinder the growth of another so we would say that
-\emph{fertilizer} has different impacts based this interaction may or
-may not actually be present, we will consider two versions of the model
-in Two-Way ANOVAs, what are called the \textbf{\emph{additive}} (no
-interaction) and the \textbf{\emph{interaction}} models.
+\emph{fertilizer} has different impacts based on the level of
+\emph{variety}. Given this interaction may or may not actually be
+present, we will consider two versions of the model in Two-Way ANOVAs,
+what are called the \textbf{\emph{additive}} (no interaction) and the
+\textbf{\emph{interaction}} models.
 
 Following the methods for two categorical variables and a quantitative
 response, we explore a method for analyzing data where the response is
@@ -479,8 +498,8 @@ class. We could still randomly assign them to tutoring/not but the
 non-random sample would only lead to conclusions about those students
 that volunteered. The most powerful scope of inference is when there are
 randomly assigned levels of explanatory variables with a random sample
-from population -- conclusions would be about causal impacts that would
-happen in the population.
+from a population -- conclusions would be about causal impacts that
+would happen in the population.
 
 By the end of this material, you should have some basic R skills and
 abilities to create basic ANOVA and Regression models, as well as to
@@ -521,37 +540,42 @@ testing and create confidence intervals in a couple of different ways.
 
 You will have two downloading activities to complete before you can do
 anything more than read this book\footnote{I recorded a video that walks
-  through the material on the following pages that is available here:
-  \url{https://camtasia.msu.montana.edu/Relay/Files/w76c139/RandRstudio_Final/RandRstudio_Final_-_20160715_130555_23.html}
-  in the digital version of the book.}. First, you need to download R.
-It is the engine that will do all the computing for us, but you will
-only interact with it once. Go to \url{http://cran.rstudio.com} and
-click on the ``\textbf{Download R for\ldots{}}'' button that corresponds
-to your operating system. On the next page, click on ``\textbf{base}''
-and then it will take you to a screen to download the most current
-version of R that is compiled for your operating system, something like
-``\textbf{Download R 3.3.1 for Windows}''. Click on that link and then
-open the file you downloaded. You will need to select your preferred
-language (choose English so your instructor can help you), then hit
-``\textbf{Next}'' until it starts to unpack and install the program (all
-the base settings will be fine). After you hit ``\textbf{Finish}'' you
-will not do anything further with R directly.
+  through getting R and Rstudio installed on a PC available in the
+  digital version
+  \href{https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html}{here}.
+  If you want to see them installed on a mac, you can try
+  \href{https://www.youtube.com/watch?v=GFImMj1lMRI}{this version}. Or
+  for either version, try searching youtube for ``How to install R and
+  Rstudio''.}. First, you need to download R. It is the engine that will
+do all the computing for us, but you will only interact with it once. Go
+to \url{http://cran.rstudio.com} and click on the ``\textbf{Download R
+for\ldots{}}'' button that corresponds to your operating system. On the
+next page, click on ``\textbf{base}'' and then it will take you to a
+screen to download the most current version of R that is compiled for
+your operating system, something like ``\textbf{Download R 3.4.1 for
+Windows}''. Click on that link and then open the file you downloaded.
+You will need to select your preferred language (choose English so your
+instructor can help you), then hit ``\textbf{Next}'' until it starts to
+unpack and install the program (all the base settings will be fine).
+After you hit ``\textbf{Finish}'' you will not do anything further with
+R directly.
 
 Second, you need to download RStudio. It is an enhanced interface that
 will make interacting with R less frustrating. To download RStudio, go
-to \url{http://www.rstudio.com/products/rstudio/download/} and select
-the correct version under ``Installers for Supported Platforms'' for
-your operating system. Download and then install RStudio using the
-installer. From this point forward, you should only open RStudio; it
-provides your interface with R. Note that both R and RStudio are updated
-frequently (up to four times a year) and if you downloaded either more
-than a few months previously, you should download the up-to-date
-versions, especially if something you are trying to do is not working.
-Sometimes code will not work in older versions of R and sometimes old
-code won't work in new versions of R.\footnote{The need to keep the code
-  up-to-date as R continues to evolve is one reason that this book is
-  locally published and that this is the 3\textsuperscript{rd} version
-  in three years\ldots{}}
+near the bottom of
+\url{https://www.rstudio.com/products/rstudio/download/} and select the
+correct version under ``Installers for Supported Platforms'' for your
+operating system. Download and then install RStudio using the installer.
+From this point forward, you should only open RStudio; it provides your
+interface with R. Note that both R and RStudio are updated frequently
+(up to four times a year) and if you downloaded either more than a few
+months previously, you should download the up-to-date versions,
+especially if something you are trying to do is not working. Sometimes
+code will not work in older versions of R and sometimes old code won't
+work in new versions of R.\footnote{The need to keep the code up-to-date
+  as R continues to evolve is one reason that this book is locally
+  published and that this is the 4\textsuperscript{th} version in four
+  years\ldots{}}
 
 To get started, we can complete some basic tasks in R using the RStudio
 interface. When you open RStudio, you will see a screen like Figure
@@ -583,8 +607,8 @@ that you make and requests for ``Help'' on specific functions.
 
 \begin{figure}
 \centering
-\includegraphics{chapter0_files/image003.png}
-\caption{\label{fig:Figure2}Initial RStudio layout}
+\includegraphics{chapter0_files/fig1.2.png}
+\caption{\label{fig:Figure2}Initial RStudio layout.}
 \end{figure}
 
 As a first interaction with R we can use it as a calculator. To do this,
@@ -640,9 +664,9 @@ values, as follows:
 \end{Shaded}
 
 To get this vector stored in a variable called \emph{variable1} we need
-to use the assignment operator, \texttt{\textless{}-} (read as ``stored
-as'') that assigns the information on the right into the variable that
-you are creating on the left.
+to use the assignment operator, \texttt{\textless{}-} (read as ``is
+defined to contain'') that assigns the information on the right into the
+variable that you are creating on the left.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -696,16 +720,42 @@ Delimited)''), which basically strips off some of the junk that Excel
 adds to the necessary information in the file. Excel will tell you that
 this is a bad idea, but it actually creates a more stable archival
 format and one that R can use directly\footnote{There are ways to read
-  ``.xls'' and ``.xlsx'' files directly into R but to handle multiple
-  sheets they are more complicated and not as stable across operating
-  systems as the simpler version we recommend.}.
+  ``.xls'' and ``.xlsx'' files directly into R that we will explore
+  later.}.
 
-With a data set converted to a CSV file, we need to read the data set
-into R. There are two ways to do this, either using the point-and-click
-GUI in RStudio (click the ``Import Dataset'' button in the upper right
-``Environment'' panel as indicated in Figure \ref{fig:Figure2}) or
-modifying the \texttt{read.csv} function to find the file of interest.
-To practice this, you can download an Excel (.xls) file from
+The following code to read in the data set relies on an R package called
+\texttt{readr} \citep{R-readr}. Packages in R provide additional
+functions and data sets that are not available in the initial download
+of R or Rstudio. To get acccess to the packages, first ``install''
+(basically download) and then ``load'' the package. To install an R
+package, go to the \textbf{Packages} tab in the lower right panel of
+RStudio. Click on the \textbf{Install} button and then type in the name
+of the package in the box (here type in \texttt{readr}). RStudio will
+try to auto-complete the package name you are typing which should help
+you make sure you got it typed correctly. This will be the first of
+\emph{many} times that we will mention that R is case sensitive -- in
+other words, \texttt{Readr} is different from \texttt{readr} in R syntax
+and this sort of thing applies to everything you do in R. You should
+only need to install each R package once on a given computer. If you
+ever see a message that R can't find a package, make sure it appears in
+the list in the \textbf{Packages} tab. If it doesn't, repeat the
+previous steps to install it.
+
+After installing the package, we need to load it to make it active in a
+given work session. Go to the command prompt and type (or copy and
+paste) \texttt{require(readr)} :
+
+\begin{verbatim}
+> require(readr)
+\end{verbatim}
+
+With a data set converted to a CSV file and \texttt{readr} installed and
+loaded, we need to read the data set into the active workspace. There
+are two ways to do this, either using the point-and-click GUI in RStudio
+(click the ``Import Dataset'' button in the upper right ``Environment''
+panel as indicated in Figure \ref{fig:Figure2}) or modifying the
+\texttt{read\_csv} function to find the file of interest. To practice
+this, you can download an Excel (.xls) file from
 \url{http://www.math.montana.edu/courses/s217/documents/treadmill.xls}
 that contains observations on 31 males that volunteered for a study on
 methods for measuring fitness \citep{Westfall1993}. In the spreadsheet,
@@ -822,31 +872,30 @@ Age\strut
 \end{longtable}
 
 The variables contain information on the subject number
-(\emph{Subject}), subjects' treadmill oxygen consumption
-(\emph{TreadMillOx}, in ml per kg per minute) and maximum pulse rate
-(\emph{TreadMillMaxPulse}, in beats per minute), time to run 1.5 miles
-(\emph{Run Time}, in minutes), maximum pulse during 1.5 mile run
-(\emph{RunPulse}, in beats per minute), resting pulse rate
-(\emph{RestPulse}, beats per minute), Body Weight (\emph{BodyWeight}, in
-kg), and \emph{Age} (in years). Open the file in Excel or equivalent
-software and then save it as a .csv file in a location you can find on
-your computer. Then go to RStudio and click on \textbf{File}, then
-\textbf{Import Dataset}, then \textbf{From CSV\ldots{}}\footnote{If you
-  are having trouble getting the file converted and read into R, copy
-  and run the following code:
-  \texttt{treadmill\ \textless{}-\ read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",\ header=T)}.}
+(\emph{Subject}), subjects' maximum treadmill oxygen consumption
+(\emph{TreadMillOx}, in ml per kg per minute, also called maximum VO2)
+and maximum pulse rate (\emph{TreadMillMaxPulse}, in beats per minute),
+time to run 1.5 miles (\emph{Run Time}, in minutes), maximum pulse
+during 1.5 mile run (\emph{RunPulse}, in beats per minute), resting
+pulse rate (\emph{RestPulse}, beats per minute), Body Weight
+(\emph{BodyWeight}, in kg), and \emph{Age} (in years). Open the file in
+Excel or equivalent software and then save it as a .csv file in a
+location you can find on your computer. Then go to RStudio and click on
+\textbf{File}, then \textbf{Import Dataset}, then \textbf{From
+CSV\ldots{}}\footnote{If you are having trouble getting the file
+  converted and read into R, copy and run the following code:
+  \texttt{treadmill\ \textless{}-\ read\_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv")}.}
 Find your file and click ``\textbf{Import}''. R will store the data set
-as an object named whatever the .csv file was named. You could use
-another name as well, but it is often easiest just to keep the data set
-name in R related to the original file name. You should see some text
-appear in the console (lower left panel) like in Figure
-\ref{fig:Figure3}. The text that is created will look something like the
-following -- if you had stored the file in a drive labeled D:, it would
-be:
+as an object with the same name as the .csv file. You could use another
+name as well, but it is often easiest just to keep the data set name in
+R related to the original file name. You should see some text appear in
+the console (lower left panel) like in Figure \ref{fig:Figure3}. The
+text that is created will look something like the following -- if you
+had stored the file in a drive labeled D:, it would be:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{treadmill <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"D:/treadmill.csv"}\NormalTok{)}
+\NormalTok{treadmill <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"D:/treadmill.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -859,19 +908,19 @@ second line of code (\texttt{View(treadmill})).
 
 \begin{figure}
 \centering
-\includegraphics{chapter0_files/image005.png}
-\caption{\label{fig:Figure3}RStudio with initial data set loaded}
+\includegraphics{chapter0_files/fig1.3.png}
+\caption{\label{fig:Figure3}RStudio with initial data set loaded.}
 \end{figure}
 
 Just directly typing (or using) a line of code like this is actually the
 other way that we can read in files. If you choose to use the text-only
 interface, then you need to tell R where to look in your computer to
-find the data file. \texttt{read.csv} is a function that takes a path as
-an argument. To use it, specify the path to your data file, put quotes
-around it, and put it as the input to \texttt{read.csv(...)}. For some
-examples later in the book, you will be able to copy a command like this
-from the text and read data sets and other code directly from my the
-course folder, assuming you are connected to the internet.
+find the data file. \texttt{read\_csv} is a function that takes a path
+as an argument. To use it, specify the path to your data file, put
+quotes around it, and put it as the input to \texttt{read\_csv(...)}.
+For some examples later in the book, you will be able to copy a command
+like this from the text and read data sets and other code directly from
+the course folder, assuming you are connected to the internet.
 
 To verify that you read the data set in correctly, it is always good to
 check its contents. We can view the first and last rows in the data set
@@ -885,64 +934,42 @@ dragging the gray bars that separate the panels.
 
 \begin{verbatim}
 > head(treadmill)
-  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-1       1       60.05               186    8.63      170        48      81.87  38
-2       2       59.57               172    8.17      166        40      68.15  42
-3       3       54.62               155    8.92      146        48      70.87  50
-4       4       54.30               168    8.65      156        45      85.84  44
-5       5       51.85               170   10.33      166        50      83.12  54
-6       6       50.55               155    9.93      148        49      59.08  57
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1       1       60.05               186    8.63      170        48      81.87    38
+2       2       59.57               172    8.17      166        40      68.15    42
+3       3       54.62               155    8.92      146        48      70.87    50
+4       4       54.30               168    8.65      156        45      85.84    44
+5       5       51.85               170   10.33      166        50      83.12    54
+6       6       50.55               155    9.93      148        49      59.08    57
 
 > tail(treadmill)
-   Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight Age
-26      26       44.61               182   11.37      178        62      89.47  44
-27      27       40.84               172   10.95      168        57      69.63  51
-28      28       39.44               176   13.08      174        63      81.42  44
-29      29       39.41               176   12.63      174        58      73.37  57
-30      30       39.20               172   12.88      168        44      91.63  54
-31      31       37.39               192   14.03      186        56      87.66  45
+# A tibble: 6 x 8
+  Subject TreadMillOx TreadMillMaxPulse RunTime RunPulse RestPulse BodyWeight   Age
+    <int>       <dbl>             <int>   <dbl>    <int>     <int>      <dbl> <int>
+1      26       44.61               182   11.37      178        62      89.47    44
+2      27       40.84               172   10.95      168        57      69.63    51
+3      28       39.44               176   13.08      174        63      81.42    44
+4      29       39.41               176   12.63      174        58      73.37    57
+5      30       39.20               172   12.88      168        44      91.63    54
+6      31       37.39               192   14.03      186        56      87.66    45
 \end{verbatim}
 
 \normalsize
 
-While not always required, for many of the analyses, we will tap into a
-large suite of additional functions available in R packages by
-``installing'' (basically downloading) and then ``loading'' the
-packages. There are some packages that we will use frequently, starting
-with the \texttt{mosaic} package \citep{R-mosaic}. To install an R
-package, go to the \textbf{Packages} tab in the lower right panel of
-RStudio. Click on the \textbf{Install} button and then type in the name
-of the package in the box (here type in \texttt{mosaic}). RStudio will
-try to auto-complete the package name you are typing which should help
-you make sure you got it typed correctly. This will be the first of
-\emph{many} times that we will mention that R is case sensitive -- in
-other words, \texttt{Mosaic} is different from \texttt{mosaic} in R
-syntax and this sort of thing applies to everything you do in R. You
-should only need to install each R package once on a given computer. If
-you ever see a message that R can't find a package, make sure it appears
-in the list in the \textbf{Packages} tab and if it doesn't, repeat the
-previous steps to install it.
-
-After installing the package, we need to load it to make it active in a
-given work session. Go to the command prompt and type (or copy and
-paste) \texttt{require(mosaic)} :
-
-\begin{verbatim}
-> require(mosaic)
-\end{verbatim}
-
-You may see a warning message about versions of the package and versions
-of R -- this is \emph{usually} something you can ignore. Other warning
-messages could be more ominous for proceeding but before getting too
-concerned, there are couple of basic things to check. First, double
-check that the package is installed (see previous steps). Second, check
-for typographical errors in your code -- especially for mis-spellings or
-unintended capitalization. If you are still having issues, try repeating
-the installation process. If that fails, find someone more used to using
-R to help you (for example in the Math Learning Center or by emailing
-your instructor)\footnote{Most computer lab computers at Montana State
-  University have RStudio installed and so provide another venue to try
-  this where the software is already installed.}.
+When you require a package, you may see a warning message about versions
+of the package and versions of R -- this is \emph{usually} something you
+can ignore. Other warning messages could be more ominous for proceeding
+but before getting too concerned, there are couple of basic things to
+check. First, double check that the package is installed (see previous
+steps). Second, check for typographical errors in your code --
+especially for mis-spellings or unintended capitalization. If you are
+still having issues, try repeating the installation process. If that
+fails, find someone more used to using R to help you (for example in the
+Math Learning Center or by emailing your instructor)\footnote{Most
+  computer lab computers at Montana State University have RStudio
+  installed and so provide another venue to work.}.
 
 To help you go from basic to intermediate R usage and especially to help
 with more complicated problems, you will want to learn how to manage and
@@ -951,46 +978,54 @@ in RStudio using what are called R Scripts, which are files that have a
 file extension of ``.R''. To start a new ``.R'' file to store your code,
 click on \textbf{File}, then \textbf{New File}, then \textbf{R Script}.
 This will create a blank page to enter and edit code -- then save the
-file as MyFileName.R in your preferred location. Saving your code will
-mean that you can return to where you were working last by simply
-re-running the saved script file. With code in the script window, you
-can place the cursor on a line of code or highlight a chunk of code and
-hit the ``Run'' button on the upper part of the panel. It will appear in
+file as something like ``MyFileName.R'' in your preferred location.
+Saving your code will mean that you can return to where you were working
+last by simply re-running the saved script file. With code in the script
+window, you can place the cursor on a line of code or highlight a chunk
+of code and hit the ``Run'' button\footnote{You can also use Ctrl-R if
+  you like hotkeys.} on the upper part of the panel. It will appear in
 the console with results just like what you would obtain if you typed it
 after the command prompt and hit enter for each line.
 
 Figure \ref{fig:Figure4} shows the screen with the code used in this
-section in the upper left panel, saved in file called Ch0.R, with the
-results of highlighting and executing the first section of code using
-the ``Run'' button.
+section in the upper left panel, saved in a file called ``Ch0.R'', with
+the results of highlighting and executing the first section of code
+using the ``Run'' button.
 
 
 
 \begin{figure}
 \centering
-\includegraphics{chapter0_files/image006.png}
-\caption{\label{fig:Figure4}RStudio with highlighted code run}
+\includegraphics{chapter0_files/fig1.4.png}
+\caption{\label{fig:Figure4}RStudio with highlighted code run.}
 \end{figure}
 
 \section{Basic summary statistics, histograms, and boxplots using
 R}\label{basic-summary-statistics-histograms-and-boxplots-using-r}
 
-With RStudio running, the \texttt{mosaic} package loaded, a place to
-write and save code, and the \texttt{treadmill} data set loaded, we can
-(finally!) start to summarize the results of the study. The
-\texttt{treadmill} object is what R calls a
-\textbf{\emph{data.frame}}\footnote{Data frames in R are objects that
-  can contain both categorical and quantitative variables on your n
-  subjects with a name for each variable that is also the name of each
-  column in a matrix. Each subject is a row of the data set.} and
-contains columns corresponding to each variable in the spreadsheet.
-Every function in R will involve specifying the variable(s) of interest
-and how you want to use them. To access a particular variable (column)
-in a data.frame, you can use a \$ between the data.frame name and the
-name of the variable of interest, generically as
-\texttt{dataframename\$variablename}. To identify the \texttt{RunTime}
-variable here it would be \texttt{treadmill\$RunTime}. In the command
-line it would look like:
+For the following material, you will need to install and load the
+\texttt{mosaic} \citep{R-mosaic}.
+
+\begin{verbatim}
+> require(mosaic)
+\end{verbatim}
+
+It provides a suite of enhanced functions to aid our initial
+explorations. With RStudio running, the \texttt{mosaic} package loaded,
+a place to write and save code, and the \texttt{treadmill} data set
+loaded, we can (finally!) start to summarize the results of the study.
+The \texttt{treadmill} object is what R calls a
+\textbf{\emph{tibble}}\footnote{Tibbles are R are objects that can
+  contain both categorical and quantitative variables on your n subjects
+  with a name for each variable that is also the name of each column in
+  a matrix. Each subject is a row of the data set.} and contains columns
+corresponding to each variable in the spreadsheet. Every function in R
+will involve specifying the variable(s) of interest and how you want to
+use them. To access a particular variable (column) in a data.frame, you
+can use a \$ between the data.frame name and the name of the variable of
+interest, generically as \texttt{dataframename\$variablename}. To
+identify the \texttt{RunTime} variable here it would be
+\texttt{treadmill\$RunTime}. In the command line it would look like:
 
 \begin{verbatim}
 > treadmill$RunTime
@@ -5038,9 +5073,9 @@ us assess how much those conditions are violated.
 \section{Summary of important R code}\label{section2-11}
 
 The main components of R code used in this chapter follow with
-components to modify in red (in the digital version), remembering that
-any R packages mentioned need to be installed and loaded for this code
-to have a chance of working:
+components to modify in ALL CAPS, remembering that any R packages
+mentioned need to be installed and loaded for this code to have a chance
+of working:
 
 \begin{itemize}
 \item
@@ -5284,20 +5319,24 @@ making side-by-side boxplots and beanplots (Figure \ref{fig:Figure3-1})
 as well summarizing the sentences for the three groups using
 \texttt{favstats}.
 
-
-
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(heplots)}
 \KeywordTok{require}\NormalTok{(mosaic)}
 \KeywordTok{data}\NormalTok{(MockJury)}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{boxplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury)}
-\KeywordTok{require}\NormalTok{(beanplot)}
-\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
+\KeywordTok{favstats}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##           Attr min Q1 median   Q3 max     mean       sd  n missing
+## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
+## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
+## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0
+\end{verbatim}
+
+
+
 
 \begin{figure}
 \centering
@@ -5308,16 +5347,12 @@ treatment groups.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury)}
+\KeywordTok{require}\NormalTok{(beanplot)}
+\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr,}\DataTypeTok{data=}\NormalTok{MockJury,}\DataTypeTok{log=}\StringTok{""}\NormalTok{,}\DataTypeTok{col=}\StringTok{"bisque"}\NormalTok{,}\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-##           Attr min Q1 median   Q3 max     mean       sd  n missing
-## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
-## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
-## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0
-\end{verbatim}
 
 There are slight differences in the sample sizes in the three groups
 with 37 \emph{Unattractive}, 38 \emph{Average} and 39 \emph{Beautiful}
@@ -5918,6 +5953,17 @@ synonymous with ``Error''. The Sums of Squares (SS) are available in the
 ## [1] 1492.26
 \end{verbatim}
 
+\begin{figure}
+\centering
+\includegraphics{03-oneWayAnova_files/figure-latex/Figure3-4-1.pdf}
+\caption{\label{fig:Figure3-4}Plot of means and 95\% confidence intervals for the three
+groups for the real data (a) and three different permutations of the
+treatment labels to the same responses in (b), (c), and (d). Note that
+SSTotal is always the same but the different amounts of variation
+associated with the means (SSA) or the errors (SSE) changes in
+permutation.}
+\end{figure}
+
 It may be easiest to understand the \emph{sums of squares decomposition}
 by connecting it to our permutation ideas. In a permutation situation,
 the total variation (\(SS_\text{Total}\)) cannot change -- it is the
@@ -5961,17 +6007,6 @@ larger than what we observed.
 
 
 
-
-\begin{figure}
-\centering
-\includegraphics{03-oneWayAnova_files/figure-latex/Figure3-4-1.pdf}
-\caption{\label{fig:Figure3-4}Plot of means and 95\% confidence intervals for the three
-groups for the real data (a) and three different permutations of the
-treatment labels to the same responses in (b), (c), and (d). Note that
-SSTotal is always the same but the different amounts of variation
-associated with the means (SSA) or the errors (SSE) changes in
-permutation.}
-\end{figure}
 
 To do a permutation test, we need to be able to calculate and extract
 the \(\text{SS}_A\) value. In the ANOVA table, it is in the first row
@@ -6122,6 +6157,8 @@ are denoted by their degrees of freedom using the convention of \(F\)
 (\emph{numerator df}, \emph{denominator df}). Some examples of different
 \(F\)-distributions are displayed for you in Figure \ref{fig:Figure3-6}.
 
+\newpage
+
 The characteristics of the F-distribution can be summarized as:
 
 \begin{itemize}
@@ -6236,6 +6273,8 @@ Total\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
+
+\newpage
 
 The table is oriented to help you reconstruct the \(F\)-ratio from each
 of its components. The output from R is similar although it does not
@@ -6775,6 +6814,22 @@ visualize the results using boxplots and beanplots\footnote{Note that to
 (Figure \ref{fig:Figure3-14}) and generate some summary statistics for
 each group using \texttt{favstats}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{favstats}\NormalTok{(len}\OperatorTok{~}\NormalTok{Treat, }\DataTypeTok{data=}\NormalTok{ToothGrowth)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Treat  min     Q1 median     Q3  max  mean       sd  n missing
+## 1 OJ.0.5  8.2  9.700  12.25 16.175 21.5 13.23 4.459709 10       0
+## 2 VC.0.5  4.2  5.950   7.15 10.900 11.5  7.98 2.746634 10       0
+## 3   OJ.1 14.5 20.300  23.45 25.650 27.3 22.70 3.910953 10       0
+## 4   VC.1 13.6 15.275  16.50 17.300 22.5 16.77 2.515309 10       0
+## 5   OJ.2 22.4 24.575  25.95 27.075 30.9 26.06 2.655058 10       0
+## 6   VC.2 18.5 23.375  25.95 28.800 33.9 26.14 4.797731 10       0
+\end{verbatim}
+
 
 
 
@@ -6793,22 +6848,6 @@ each group using \texttt{favstats}.
 \caption{\label{fig:Figure3-14}Boxplot and beanplot of tooth growth responses for the six
 treatment level combinations.}
 \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(len}\OperatorTok{~}\NormalTok{Treat, }\DataTypeTok{data=}\NormalTok{ToothGrowth)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    Treat  min     Q1 median     Q3  max  mean       sd  n missing
-## 1 OJ.0.5  8.2  9.700  12.25 16.175 21.5 13.23 4.459709 10       0
-## 2 VC.0.5  4.2  5.950   7.15 10.900 11.5  7.98 2.746634 10       0
-## 3   OJ.1 14.5 20.300  23.45 25.650 27.3 22.70 3.910953 10       0
-## 4   VC.1 13.6 15.275  16.50 17.300 22.5 16.77 2.515309 10       0
-## 5   OJ.2 22.4 24.575  25.95 27.075 30.9 26.06 2.655058 10       0
-## 6   VC.2 18.5 23.375  25.95 28.800 33.9 26.14 4.797731 10       0
-\end{verbatim}
 
 Figure \ref{fig:Figure3-14} suggests that the mean tooth growth
 increases with the dosage level and that OJ might lead to higher growth
@@ -7199,6 +7238,8 @@ data.}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{allEffects}\NormalTok{(m2))}
 \end{Highlighting}
 \end{Shaded}
+
+\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
 \section{Multiple (pair-wise) comparisons using Tukey's HSD and the
 compact letter display}\label{section3-6}
@@ -7642,17 +7683,6 @@ family-wise confidence level.}
 \end{Highlighting}
 \end{Shaded}
 
-At the family-wise 5\% significance level, there are no pairs that are
-detectably different -- they all get the same letter of ``a''. Now we
-will produce results for the reader that thought a 10\% significance was
-suitable for this application before seeing any of the results. We just
-need to change the confidence level or significance level that the CIs
-or tests are produced with inside the functions. For the
-\texttt{confint} function, the \texttt{level} option is the confidence
-level and for the \texttt{cld}, it is the family-wise significance
-level. Note that 90\% confidence corresponds to a 10\% significance
-level.
-
 
 
 \begin{Shaded}
@@ -7705,22 +7735,60 @@ level.
 \caption{\label{fig:Figure3-22}Tukey's HSD 90\% family-wise confidence intervals.}
 \end{figure}
 
-With family-wise 10\% significance and 90\% confidence levels, the
-\emph{Unattractive} and \emph{Average} picture groups are detected as
-being different but the \emph{Average} group is not detected as
-different from \emph{Beautiful} and \emph{Beautiful} is not detected to
-be different from \emph{Unattractive}. This leaves the ``overlap'' of
-groups across the sets of groups that was noted earlier. The
-\emph{Beautiful} level is not detected as being dissimilar from levels
-in two different sets and so gets two different letters.
+At the family-wise 5\% significance level, there are no pairs that are
+detectably different -- they all get the same letter of ``a''. Now we
+will produce results for the reader that thought a 10\% significance was
+suitable for this application before seeing any of the results. We just
+need to change the confidence level or significance level that the CIs
+or tests are produced with inside the functions. For the
+\texttt{confint} function, the \texttt{level} option is the confidence
+level and for the \texttt{cld}, it is the family-wise significance
+level. Note that 90\% confidence corresponds to a 10\% significance
+level.
 
-The beanplot (Figure \ref{fig:Figure3-23}) helps to clarify some of the
-reasons for this set of results. The detection of a difference between
-\emph{Average} and \emph{Unattractive} just barely occurs and the mean
-for \emph{Beautiful} is between the other two so it ends up not being
-detectably different from either one. This sort of overlap is actually a
-fairly common occurrence in these sorts of situations so be prepared a
-mixed set of letters for some levels.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{confint}\NormalTok{(Tm2, }\DataTypeTok{level=}\FloatTok{0.9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = Years ~ Attr, data = MockJury)
+## 
+## Quantile = 2.0738
+## 90% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##                               Estimate lwr     upr    
+## Average - Beautiful == 0      -0.3596  -2.0511  1.3318
+## Unattractive - Beautiful == 0  1.4775  -0.2255  3.1805
+## Unattractive - Average == 0    1.8371   0.1232  3.5510
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cld}\NormalTok{(Tm2, }\DataTypeTok{level=}\FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Beautiful      Average Unattractive 
+##         "ab"          "a"          "b"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{old.par <-}\StringTok{ }\KeywordTok{par}\NormalTok{(}\DataTypeTok{mai=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\FloatTok{2.5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\CommentTok{#Makes room on the plot for the group names}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{confint}\NormalTok{(Tm2, }\DataTypeTok{level=}\NormalTok{.}\DecValTok{9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
 
 
@@ -7747,6 +7815,33 @@ from 10\% family-wise significance level Tukey's HSD. \emph{Average} and
 are displayed as belonging to different groups. \emph{Beautiful} picture
 responses are not detected as different from the other two groups.}
 \end{figure}
+
+With family-wise 10\% significance and 90\% confidence levels, the
+\emph{Unattractive} and \emph{Average} picture groups are detected as
+being different but the \emph{Average} group is not detected as
+different from \emph{Beautiful} and \emph{Beautiful} is not detected to
+be different from \emph{Unattractive}. This leaves the ``overlap'' of
+groups across the sets of groups that was noted earlier. The
+\emph{Beautiful} level is not detected as being dissimilar from levels
+in two different sets and so gets two different letters.
+
+The beanplot (Figure \ref{fig:Figure3-23}) helps to clarify some of the
+reasons for this set of results. The detection of a difference between
+\emph{Average} and \emph{Unattractive} just barely occurs and the mean
+for \emph{Beautiful} is between the other two so it ends up not being
+detectably different from either one. This sort of overlap is actually a
+fairly common occurrence in these sorts of situations so be prepared a
+mixed set of letters for some levels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{old.par <-}\StringTok{ }\KeywordTok{par}\NormalTok{(}\DataTypeTok{mai=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\KeywordTok{beanplot}\NormalTok{(Years}\OperatorTok{~}\NormalTok{Attr, }\DataTypeTok{data=}\NormalTok{MockJury, }\DataTypeTok{log=}\StringTok{""}\NormalTok{, }\DataTypeTok{col=}\StringTok{"white"}\NormalTok{, }\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{)}
+\KeywordTok{text}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\FloatTok{5.3}\NormalTok{),}\StringTok{"ab"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{1.5}\NormalTok{)}
+\KeywordTok{text}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\FloatTok{5.1}\NormalTok{),}\StringTok{"a"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"green"}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{1.5}\NormalTok{)}
+\KeywordTok{text}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\FloatTok{6.8}\NormalTok{),}\StringTok{"b"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Chapter Summary}\label{section3-8}
 
@@ -7783,9 +7878,9 @@ called the Two-Way ANOVA.
 \section{Summary of important R code}\label{section3-9}
 
 The main components of R code used in this chapter follow with
-components to modify in red (in the digital version), remembering that
-any R packages mentioned need to be installed and loaded for this code
-to have a chance of working:
+components to modify in ALL CAPS, remembering that any R packages
+mentioned need to be installed and loaded for this code to have a chance
+of working:
 
 \begin{itemize}
 \item
@@ -7955,8 +8050,8 @@ and the impact of different amounts of water applied to the towels.
 
 \begin{itemize}
 \item
-  Predictors (Explanatory Variables): \textbf{A} : \texttt{Brand} (2
-  brands of interest, named \emph{B1} and \emph{B2}) and \textbf{B} :
+  Predictors (Explanatory Variables): \textbf{A}: \texttt{Brand} (2
+  brands of interest, named \emph{B1} and \emph{B2}) and \textbf{B}:
   Number of \texttt{Drops} of water (10, 20, 30 drops).
 \item
   Response: \emph{Time} to failure (in seconds) of a towel (\(y\)) with
@@ -8085,8 +8180,8 @@ the ``groups''. The data set is available from the course website using:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{pt<-}\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/pt.csv"}\NormalTok{)}
-\NormalTok{pt}\OperatorTok{$}\NormalTok{drops<-}\KeywordTok{factor}\NormalTok{(pt}\OperatorTok{$}\NormalTok{drops)}
+\NormalTok{pt <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/pt.csv"}\NormalTok{)}
+\NormalTok{pt}\OperatorTok{$}\NormalTok{drops <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(pt}\OperatorTok{$}\NormalTok{drops)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8099,7 +8194,7 @@ combinations of the variables, use the general formula of
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(mosaic)}
-\KeywordTok{tally}\NormalTok{(brand }\OperatorTok{~}\StringTok{ }\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
+\KeywordTok{tally}\NormalTok{(brand}\OperatorTok{~}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8130,7 +8225,7 @@ new set of rows with the standard deviations.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{favstats}\NormalTok{(responses }\OperatorTok{~}\StringTok{ }\NormalTok{brand }\OperatorTok{+}\StringTok{ }\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
+\KeywordTok{favstats}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{+}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -8165,7 +8260,7 @@ change across the levels of the other variable. Specifically, start with
 comparing the two brands for different amounts of water. Do the brands
 seem different? Certainly for 10 drops of water the two look different
 but not for 30 drops. We can also look for combinations of factors that
-produce the highest or lower responses in this display. It appears that
+produce the highest or lowest responses in this display. It appears that
 the time to failure is highest in the low water drop groups but as the
 water levels increase, the time to failure falls and the differences in
 the two brands seem to decrease. The fake data seem to have relatively
@@ -8181,8 +8276,9 @@ confidence in assessing these model assumptions.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(beanplot)}
-\KeywordTok{beanplot}\NormalTok{(responses }\OperatorTok{~}\StringTok{ }\NormalTok{brand}\OperatorTok{*}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt, }\DataTypeTok{side=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{col=}\KeywordTok{list}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{,}\StringTok{"white"}\NormalTok{),}
-         \DataTypeTok{xlab=}\StringTok{"Drops"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Time"}\NormalTok{, }\DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{,}\DataTypeTok{log=}\StringTok{""}\NormalTok{)}
+\KeywordTok{beanplot}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{*}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt, }\DataTypeTok{side=}\StringTok{"b"}\NormalTok{, }
+         \DataTypeTok{col=}\KeywordTok{list}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{,}\StringTok{"white"}\NormalTok{), }\DataTypeTok{xlab=}\StringTok{"Drops"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Time"}\NormalTok{, }
+         \DataTypeTok{method=}\StringTok{"jitter"}\NormalTok{, }\DataTypeTok{log=}\StringTok{""}\NormalTok{)}
 \KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"B1"}\NormalTok{,}\StringTok{"B2"}\NormalTok{), }\DataTypeTok{fill=}\KeywordTok{c}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{,}\StringTok{"white"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -8219,18 +8315,18 @@ The function allows a formula interface like
 
 
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{intplot}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{*}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
 \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf}
 \caption{\label{fig:Figure4-2}Interaction plot of the paper towel data with
 \texttt{Drops} on the x-axis.}
 \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{intplot}\NormalTok{(responses }\OperatorTok{~}\StringTok{ }\NormalTok{brand}\OperatorTok{*}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
-\end{Highlighting}
-\end{Shaded}
 
 Interaction plots can always be made two different ways by switching the
 order of the variables. Figure \ref{fig:Figure4-2} contains
@@ -8242,6 +8338,12 @@ Try both and decide on the one that you like best.
 
 
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{intplot}\NormalTok{(responses}\OperatorTok{~}\NormalTok{drops}\OperatorTok{*}\NormalTok{brand, }\DataTypeTok{data=}\NormalTok{pt)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
 \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf}
@@ -8249,18 +8351,12 @@ Try both and decide on the one that you like best.
 the x-axis.}
 \end{figure}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{intplot}\NormalTok{(responses }\OperatorTok{~}\StringTok{ }\NormalTok{drops}\OperatorTok{*}\NormalTok{brand, }\DataTypeTok{data=}\NormalTok{pt)}
-\end{Highlighting}
-\end{Shaded}
-
 The formula in this function builds on our previous notation and now we
-include both predictor variables with an ``*" between them. Using an
-asterisk between explanatory variables is one way of telling R to
-include an interaction between the variables. While the interaction may
-or may not be present, the interaction plot helps us to explore those
-potential differences.
+include both predictor variables with an ``\texttt{*}'' between them.
+Using an asterisk between explanatory variables is one way of telling R
+to include an interaction between the variables. While the interaction
+may or may not be present, the interaction plot helps us to explore
+those potential differences.
 
 There are a variety of aspects of the interaction plots to pay attention
 to. Initially, the question to answer is whether it appears that there
@@ -8288,7 +8384,7 @@ variables to extract from the model. With the presence of an
 interaction, it is complicated to summarize how each variable is
 affecting the response variable because their impacts change depending
 on the level of the other factor. And plots like the interaction plot
-provide us much useful information.
+provide us with useful information.
 
 If the lines are not parallel, then focus in on comparing the levels of
 one variable as the other variable changes. Remember that the definition
@@ -8505,12 +8601,15 @@ effects are:
   \begin{itemize}
   \item
     \(H_0\): No differences in means across levels of A in population,
-    given B in the model \(\Leftrightarrow\) All \(\tau_j\text{'s} = 0\)
-    in additive model.
+    given B in the model
+
+    \(\Leftrightarrow\) All \(\tau_j\text{'s} = 0\) in additive model.
   \item
     \(H_A\): Some difference in means across levels A in population,
-    given B in the model \(\Leftrightarrow\) At least one
-    \(\tau_j \ne 0\), in additive model.
+    given B in the model
+
+    \(\Leftrightarrow\) At least one \(\tau_j \ne 0\), in additive
+    model.
   \end{itemize}
 \item
   Main effect test for B:
@@ -8518,12 +8617,15 @@ effects are:
   \begin{itemize}
   \item
     \(H_0\): No differences in means across levels of B in population,
-    given A in the model \(\Leftrightarrow\) All
-    \(\gamma_k\text{'s} = 0\) in additive model.
+    given A in the model
+
+    \(\Leftrightarrow\) All \(\gamma_k\text{'s} = 0\) in additive model.
   \item
     \(H_A\): Some difference in means across levels B in population,
-    given A in the model \(\Leftrightarrow\) At least one
-    \(\gamma_k \ne 0\), in additive model.
+    given A in the model
+
+    \(\Leftrightarrow\) At least one \(\gamma_k \ne 0\), in additive
+    model.
   \end{itemize}
 \end{itemize}
 
@@ -8739,18 +8841,17 @@ appeared that Scenario 5 was the correct story since the lines were not
 parallel, but we need to know whether there is evidence to suggest that
 the interaction is ``real'' and we get that through the interaction
 hypothesis test. To fit the interaction model using \texttt{lm}, the
-general formulation is
-\texttt{lm(y\ \textasciitilde{}\ x1*x2,\ data=...)}. The order of the
-variables doesn't matter and the most important part of the model, to
-start with, relates to the interaction of the variables.
+general formulation is \texttt{lm(y\textasciitilde{}x1*x2,\ data=...)}.
+The order of the variables doesn't matter and the most important part of
+the model, to start with, relates to the interaction of the variables.
 
 The ANOVA table output shows the results for the interaction model
 obtained by running the \texttt{anova} function on the model called
 \texttt{m1}. Specifically, the test that
 \(H_0: \text{ All } \omega_{jk}\text{'s} = 0\) has a test statistic of
-\(F(2,24)=1.92\) (in bold in the output from the row with brands:drops)
-and a p-value of 0.17. So there is insufficient evidence to reject the
-null hypothesis of no interaction, with a 17\% chance we would observe a
+\(F(2,24)=1.92\) (in the output from the row with brands:drops) and a
+p-value of 0.17. So there is insufficient evidence to reject the null
+hypothesis of no interaction, with a 17\% chance we would observe a
 difference in the \(\omega_{jk}\text{'s}\) like we did or more extreme
 if the \(\omega_{jk}\text{'s}\) really were all 0. For the interaction
 model components, R presents them with a colon, \texttt{:}, between the
@@ -8775,9 +8876,9 @@ variable names.
 \end{verbatim}
 
 It is useful to display the estimates from this model and we can utilize
-\texttt{plot(allEffects(modelname))} to visualize the results for the
+\texttt{plot(allEffects(MODELNAME))} to visualize the results for the
 terms in our models. If we turn on the options for \texttt{grid=T},
-\texttt{multiline=T}, and \texttt{ci.\ style="bars"} we will get a more
+\texttt{multiline=T}, and \texttt{ci.style="bars"} we will get a more
 useful version of the basic ``effect plot'' for Two-Way ANOVA models
 with interaction. The results of the estimated interaction model are
 displayed in Figure \ref{fig:Figure4-6}, which looks very similar to our
@@ -8797,12 +8898,12 @@ In the absence of evidence to include the interaction, the model should
 be simplified to the additive model and the interpretation focused on
 each main effect, conditional on having the other variable in the model.
 To fit an additive model and not include an interaction, the model
-formula involves a ``+'' instead of a ``*" between the explanatory
-variables.
+formula involves a ``+'' instead of a ``\texttt{*}'' between the
+explanatory variables.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{m2<-}\KeywordTok{lm}\NormalTok{(responses }\OperatorTok{~}\StringTok{ }\NormalTok{brand }\OperatorTok{+}\StringTok{ }\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
+\NormalTok{m2<-}\KeywordTok{lm}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{+}\NormalTok{drops, }\DataTypeTok{data=}\NormalTok{pt)}
 \KeywordTok{anova}\NormalTok{(m2)}
 \end{Highlighting}
 \end{Shaded}
@@ -8989,14 +9090,12 @@ panel displays results for two brands and right panel for number of
 drops of water, each after controlling for the other.}
 \end{figure}
 
-\newpage
-
 \section{Guinea pig tooth growth analysis with Two-Way
 ANOVA}\label{section4-4}
 
 The effects of dosage and delivery method of ascorbic acid on Guinea Pig
 odontoblast growth was analyzed as a One-Way ANOVA in Section
-\ref{section3-4} by assessing evidence of any difference in the means of
+\ref{section3-5} by assessing evidence of any difference in the means of
 any combinations of dosage method (Vit C capsule vs Orange Juice) and
 three dosage amounts (0.5, 1, and 2 mg/day). Now we will consider the
 dosage and delivery methods as two separate variables and explore their
@@ -9015,11 +9114,11 @@ Figure \ref{fig:Figure4-8}.
 \begin{Highlighting}[]
 \KeywordTok{data}\NormalTok{(ToothGrowth)}
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{beanplot}\NormalTok{(len }\OperatorTok{~}\StringTok{ }\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{side=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{40}\NormalTok{),}
+\KeywordTok{beanplot}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{side=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{40}\NormalTok{),}
          \DataTypeTok{main=}\StringTok{"Beanplot"}\NormalTok{, }\DataTypeTok{col=}\KeywordTok{list}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"orange"}\NormalTok{), }\DataTypeTok{xlab=}\StringTok{"Dosage"}\NormalTok{,}
          \DataTypeTok{ylab=}\StringTok{"Tooth Growth"}\NormalTok{)}
 \KeywordTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"VC"}\NormalTok{,}\StringTok{"OJ"}\NormalTok{), }\DataTypeTok{fill=}\KeywordTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
-\KeywordTok{intplot}\NormalTok{(len }\OperatorTok{~}\StringTok{ }\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }
+\KeywordTok{intplot}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }
         \DataTypeTok{main=}\StringTok{"Interaction Plot"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{,}\DecValTok{40}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -9039,7 +9138,7 @@ table.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{TG1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dose,}\DataTypeTok{data=}\NormalTok{ToothGrowth)}
+\NormalTok{TG1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth)}
 \KeywordTok{Anova}\NormalTok{(TG1)}
 \end{Highlighting}
 \end{Shaded}
@@ -9135,22 +9234,17 @@ and \emph{Delivery method}.
   \textbf{Hypotheses:}
 
   \begin{itemize}
-  \tightlist
   \item
     \(H_0\): No interaction between \emph{Delivery method} and
     \emph{Dose} on odontoblast growth in population of guinea pigs
-  \end{itemize}
 
-  \(\Leftrightarrow\) All \(\omega_{jk}\text{'s}=0\).
-
-  \begin{itemize}
-  \tightlist
+    \(\Leftrightarrow\) All \(\omega_{jk}\text{'s}=0\).
   \item
     \(H_A\): Interaction between \emph{Delivery method} and \emph{Dose}
     on odontoblast growth in population of guinea pigs
-  \end{itemize}
 
-  \(\Leftrightarrow\) At least one \(\omega_{jk}\ne 0\).
+    \(\Leftrightarrow\) At least one \(\omega_{jk}\ne 0\).
+  \end{itemize}
 \item
   \textbf{Validity conditions:}
 
@@ -9183,7 +9277,7 @@ and \emph{Delivery method}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(TG2, }\DataTypeTok{pch=}\DecValTok{16}\NormalTok{,}\DataTypeTok{cex.main=}\FloatTok{0.75}\NormalTok{) }
+\KeywordTok{plot}\NormalTok{(TG2, }\DataTypeTok{pch=}\DecValTok{16}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -9203,19 +9297,12 @@ and \emph{Delivery method}.
       problem with this assumption.
     \end{itemize}
   \end{itemize}
-\end{enumerate}
-
-\newpage
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
 \item
-  \textbf{Calculate the test statistic for the Interaction test.}
+  \textbf{Calculate the test statistic for the interaction test.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{TG2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(len }\OperatorTok{~}\StringTok{ }\NormalTok{supp}\OperatorTok{*}\NormalTok{dosef, }\DataTypeTok{data=}\NormalTok{ToothGrowth)}
+\NormalTok{TG2 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dosef, }\DataTypeTok{data=}\NormalTok{ToothGrowth)}
 \KeywordTok{Anova}\NormalTok{(TG2) }
 \end{Highlighting}
 \end{Shaded}
@@ -9328,7 +9415,7 @@ the model summary for this model is provided:
 There are two \(\omega_{jk}\text{'s}\) in the results, related to
 modifying the estimates for doses of 1 (-0.68) and 2 (5.33) for the
 Vitamin C group. If you want to re-construct the fitted values from the
-model that are displayed in the Figure \ref{fig:Figure4-10}, you have to
+model that are displayed in Figure \ref{fig:Figure4-10}, you have to
 look for any coefficients that are ``turned on'' for a combination of
 levels of interest. For example, for the OJ group (solid line in Figure
 \ref{fig:Figure4-10}), the dosage of 0.5 mg/day has an estimate of an
@@ -9390,7 +9477,7 @@ move the letters up or down, here a value of 1 seemed to work.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{intplot}\NormalTok{(len }\OperatorTok{~}\StringTok{ }\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{cldshift=}\DecValTok{1}\NormalTok{,}
+\KeywordTok{intplot}\NormalTok{(len}\OperatorTok{~}\NormalTok{supp}\OperatorTok{*}\NormalTok{dose, }\DataTypeTok{data=}\NormalTok{ToothGrowth, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{cldshift=}\DecValTok{1}\NormalTok{,}
         \DataTypeTok{cld=}\NormalTok{T, }\DataTypeTok{main=}\StringTok{"Interaction Plot with CLD"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -9419,16 +9506,17 @@ continuous scale of attitudes about debt (\texttt{prodebt}: 1 = least
 favorable, 5 = most favorable). \texttt{prodebt} was derived as the
 average of a series of questions about debt with each question measured
 on an \textbf{\emph{ordinal}} 1 to 5 scale, with higher values
-corresponding to more positive responses about \textbf{going into debt}
-of various kinds. The ordered scale on surveys that try to elicit your
-opinions on topics with scales from 1 to 5 or 1 to 7 or even, sometimes,
-1 to 10 is called a \textbf{\emph{Likert scale}} \citep{Likert1932}. It
-is not a quantitative scale and really should be handled more carefully
-than taking an average of a set responses. That said, it is extremely
-common practice in social science research to treat ordinal responses as
-if they are quantitative and take the average of many of them to create
-a more continuous response variable like the one we are using here. If
-you continue your statistics explorations, you will see some better
+corresponding to more positive responses about
+\(\underline{\text{going into debt}}\) of various kinds. The ordered
+scale on surveys that try to elicit your opinions on topics with scales
+from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called a
+\textbf{\emph{Likert scale}} \citep{Likert1932}. It is not a
+quantitative scale and really should be handled more carefully than
+taking an average of a set responses. That said, it is extremely common
+practice in social science research to treat ordinal responses as if
+they are quantitative and take the average of many of them to create a
+more continuous response variable like the one we are using here. If you
+continue your statistics explorations, you will see some better
 techniques for analyzing responses obtained in this fashion. That said,
 the scale of the response is relatively easy to understand as an amount
 of willingness to go into debt on a scale from 1 to 5 with higher values
@@ -9478,18 +9566,18 @@ or 3 where a single main effect of interest is present.
 
 
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{intplot}\NormalTok{(prodebt}\OperatorTok{~}\NormalTok{cigbuy}\OperatorTok{*}\NormalTok{incomegp, }\DataTypeTok{data=}\NormalTok{debtc, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{), }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 \centering
 \includegraphics{04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf}
 \caption{\label{fig:Figure4-12}Interaction plot of \texttt{prodebt} by income group and
 buy cigarettes (0=no, 1=yes).}
 \end{figure}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{intplot}\NormalTok{(prodebt }\OperatorTok{~}\StringTok{ }\NormalTok{cigbuy}\OperatorTok{*}\NormalTok{incomegp, }\DataTypeTok{data=}\NormalTok{debtc, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{), }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 As in other situations, and especially with observational studies where
 a single large sample is analyzed, it is important to check for balance
@@ -9508,7 +9596,7 @@ cigarettes). We have a very unbalanced design with counts between 8 and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{tally}\NormalTok{(cigbuy }\OperatorTok{~}\StringTok{ }\NormalTok{incomegp, }\DataTypeTok{data=}\NormalTok{debtc)}
+\KeywordTok{tally}\NormalTok{(cigbuy}\OperatorTok{~}\NormalTok{incomegp, }\DataTypeTok{data=}\NormalTok{debtc)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9570,7 +9658,7 @@ inferences are possible because this is an observational study.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(debt1,}\DataTypeTok{cex.lab=}\FloatTok{0.75}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(debt1)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9588,50 +9676,38 @@ buy cigarettes/not interaction model.}
   focus!):}
 
   \begin{itemize}
-  \tightlist
   \item
     \(H_0\): No difference in means for \texttt{prodebt} for income
     groups in population, given cigarette buying in model
-  \end{itemize}
 
-  \(\Leftrightarrow\) All \(\tau_j\text{'s} = 0\) in additive model.
-
-  \begin{itemize}
-  \tightlist
+    \(\Leftrightarrow\) All \(\tau_j\text{'s} = 0\) in additive model.
   \item
     \(H_A\): Some difference in means for \texttt{prodebt} for income
     group in population, given cigarette buying in model
-  \end{itemize}
 
-  \(\Leftrightarrow\) Not all \(\tau_j\text{'s} = 0\) in additive model.
-
-  \begin{itemize}
-  \tightlist
+    \(\Leftrightarrow\) Not all \(\tau_j\text{'s} = 0\) in additive
+    model.
   \item
     \(H_0\): No difference in means for \texttt{prodebt} for cigarette
-    buying/not in population, given income group in model 
-  \end{itemize}
+    buying/not in population, given income group in model
 
-  \(\Leftrightarrow\) All \(\gamma_k\text{'s} = 0\) in additive model.
-
-  \begin{itemize}
-  \tightlist
+    \(\Leftrightarrow\) All \(\gamma_k\text{'s} = 0\) in additive model.
   \item
     \(H_A\): Some difference in means for \texttt{prodebt} for cigarette
     buying/not in population, given income group in model
-  \end{itemize}
 
-  \(\Leftrightarrow\) Not all \(\gamma_k\text{'s} = 0\) in additive
-  model.
+    \(\Leftrightarrow\) Not all \(\gamma_k\text{'s} = 0\) in additive
+    model.
+  \end{itemize}
 \item
   \textbf{Validity conditions -- discussed above but with new plots for
   the additive:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{debt1r<-}\KeywordTok{lm}\NormalTok{(prodebt}\OperatorTok{~}\NormalTok{incomegp}\OperatorTok{+}\NormalTok{cigbuy,}\DataTypeTok{data=}\NormalTok{debtc)}
+\NormalTok{debt1r <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(prodebt}\OperatorTok{~}\NormalTok{incomegp}\OperatorTok{+}\NormalTok{cigbuy, }\DataTypeTok{data=}\NormalTok{debtc)}
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(debt1r,}\DataTypeTok{cex.lab=}\FloatTok{0.75}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(debt1r)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9762,6 +9838,8 @@ left panel for income group and the right panel for buying cigarettes or
 not (1 for yes).}
 \end{figure}
 
+\newpage
+
 The estimated coefficients can also be interesting to interpret for the
 additive model. Here are the model summary coefficients:
 
@@ -9793,6 +9871,8 @@ cigarette buyers and non-buyers was estimated as
 this variable had a moderately large p-value in this model. The additive
 model-based estimates for all six combinations can be found in Table
 \ref{tab:Table4-3}.
+
+\newpage
 
 
 
@@ -9950,13 +10030,6 @@ ANOVA situation:}
     \ref{chapter7} This can help make the responses have similar
     variances or responses to be more normal, but sometimes not both.
   \end{itemize}
-\end{enumerate}
-
-\newpage
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
 \item
   If the interaction test has a small p-value, that is your main result.
   Focus on the interaction plot from (1) to fully understand the
@@ -10006,8 +10079,8 @@ each combination is used. Now the entire data set can be displayed:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ptR<-}\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/ptR.csv"}\NormalTok{)}
-\NormalTok{ptR}\OperatorTok{$}\NormalTok{dropsf<-}\KeywordTok{factor}\NormalTok{(ptR}\OperatorTok{$}\NormalTok{drops)}
+\NormalTok{ptR <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://www.math.montana.edu/courses/s217/documents/ptR.csv"}\NormalTok{)}
+\NormalTok{ptR}\OperatorTok{$}\NormalTok{dropsf <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(ptR}\OperatorTok{$}\NormalTok{drops)}
 \NormalTok{ptR}
 \end{Highlighting}
 \end{Shaded}
@@ -10042,8 +10115,7 @@ replication.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
-\KeywordTok{intplot}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{*}\NormalTok{dropsf,}\DataTypeTok{data=}\NormalTok{ptR,}\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{intplot}\NormalTok{(responses}\OperatorTok{~}\NormalTok{brand}\OperatorTok{*}\NormalTok{dropsf, }\DataTypeTok{data=}\NormalTok{ptR, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10074,11 +10146,12 @@ Warning messages in R output show up in red after you run functions that
 contain problems and are generally not a good thing, but can sometimes
 be ignored. In this case, the warning message is not needed -- there are
 no \(F\)-statistics or p-values in the results so we know there are some
-issues with the results. The bolded line is key here squares of 0.
-Without replication, there are no degrees of freedom left to estimate
-the residual error. My (Greenwood's) first statistics professor, Gordon
-Bril at Luther College, used to refer to this as ``shooting your load''
-by fitting too many terms in the model given the number of observations
+issues with the results. The \textbf{Residuals} line is key here --
+Residuals with 0 \emph{df} and sums of squares of 0. Without
+replication, there are no degrees of freedom left to estimate the
+residual error. My (Greenwood's) first statistics professor, Gordon Bril
+at Luther College, used to refer to this as ``shooting your load'' by
+fitting too many terms in the model given the number of observations
 available. Maybe this is a bit graphic but hopefully will help you
 remember the need for replication if you want to estimate interactions
 -- it did for me. Without replication of observations, we run out of
@@ -10097,9 +10170,11 @@ lines). So in this case, assuming no interaction is present is hard to
 justify. But if we proceed under this dangerous assumption, tests for
 the main effects can be developed.
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{norep1<-}\KeywordTok{lm}\NormalTok{(responses}\OperatorTok{~}\NormalTok{dropsf}\OperatorTok{+}\NormalTok{brand,}\DataTypeTok{data=}\NormalTok{ptR)}
+\NormalTok{norep1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(responses}\OperatorTok{~}\NormalTok{dropsf}\OperatorTok{+}\NormalTok{brand, }\DataTypeTok{data=}\NormalTok{ptR)}
 \KeywordTok{Anova}\NormalTok{(norep1)}
 \end{Highlighting}
 \end{Shaded}
@@ -10117,14 +10192,13 @@ the main effects can be developed.
 In the additive model, the last row of the ANOVA table that is called
 the \texttt{Residuals} row is really the interaction row from the
 interaction model ANOVA table. Neither main effect had a small p-value
-(\texttt{Drops}: \(F(2,2)=0.82, \text{ p-value}=0.55\) and
-\texttt{Brand}: \(F(1,2)=0.65, \text{ p-value}=0.51\)) in the additive
-model. To get small p-values with small sample sizes, the differences
-would need to be \textbf{very} large because the residual degrees of
-freedom have become very small. The term-plots in Figure
-\ref{fig:Figure4-18} show that the differences among the levels are
-small relative to the residual variability as seen in the error bars
-around each point estimate.
+(\emph{Drops}: \(F(2,2)=0.82, \text{ p-value}=0.55\) and \emph{Brand}:
+\(F(1,2)=0.65, \text{ p-value}=0.51\)) in the additive model. To get
+small p-values with small sample sizes, the differences would need to be
+\textbf{very} large because the residual degrees of freedom have become
+very small. The term-plots in Figure \ref{fig:Figure4-18} show that the
+differences among the levels are small relative to the residual
+variability as seen in the error bars around each point estimate.
 
 
 
@@ -10145,10 +10219,12 @@ with no replication.}
 Hopefully by pushing the limits there are two conclusions available from
 this section. First, replication is important, both in being able to
 perform tests for interactions and for having enough power to detect
-differences for the main effects. Second, dropping from the interaction
-model to additive model, the variability explained by the interaction
-term is pushed into the error term, whether replication is available or
-not.
+differences for the main effects. Second, when dropping from the
+interaction model to additive model, the variability explained by the
+interaction term is pushed into the error term, whether replication is
+available or not.
+
+\newpage
 
 \section{Chapter summary}\label{section4-7}
 
@@ -10213,8 +10289,8 @@ plots aided by the Tukey's HSD for determining which combinations of
 levels are detectably different. Others might suggest exploring the main
 effects tests even with interactions present. In some cases, those
 results are interesting but in others the results can be misleading and
-wanted to avoid trying to tell you when that might happen. Consider two
-scenarios, one where the main effects have large p-values but the
+we wanted to avoid trying to tell you when that might happen. Consider
+two scenarios, one where the main effects have large p-values but the
 interaction has a small p-value and the other where the main effects and
 the interaction all have small p-values. The methods discussed in this
 chapter allow us to effectively arrive at the interpretation of the
@@ -10239,14 +10315,14 @@ similar to those considered here.
 \section{Important R code}\label{section4-8}
 
 The main components of R code used in this chapter follow with
-components to modify in red, remembering that any R packages mentioned
-need to be installed and loaded for this code to have a chance of
-working:
+components to modify in ALL CAPS, remembering that any R packages
+mentioned need to be installed and loaded for this code to have a chance
+of working:
 
 \begin{itemize}
 \item
-  tally(\textcolor{red}{A}\textasciitilde{}\textcolor{red}{B},
-  data=\textcolor{red}{DATASETNAME})
+  \textbf{tally(\textcolor{red}{A}\textasciitilde{}\textcolor{red}{B},
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \item
@@ -10257,9 +10333,9 @@ working:
     and understand sample sizes in each combination.
   \end{itemize}
 \item
-  \textcolor{red}{DATASETNAME}\$\textcolor{red}{VARIABLENAME}
+  \textbf{\textcolor{red}{DATASETNAME}\$\textcolor{red}{VARIABLENAME}
   \texttt{\textless{}-}
-  factor(\textcolor{red}{DATASETNAME}\$\textcolor{red}{VARIABLENAME})
+  factor(\textcolor{red}{DATASETNAME}\$\textcolor{red}{VARIABLENAME})}
 
   \begin{itemize}
   \tightlist
@@ -10269,21 +10345,21 @@ working:
     categorical variable.
   \end{itemize}
 \item
-  intplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{A}*\textcolor{red}{B},
-  data=\textcolor{red}{DATASETNAME})
+  **intplot(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{A}*\textcolor{red}{B},
+  data=\textcolor{red}{DATASETNAME})**
 
   \begin{itemize}
   \item
     Download and install using:
-  \item
+
     \texttt{source("http://www.math.montana.edu/courses/s217/documents/intplot.R")}
   \item
     Provides interaction plot.
   \end{itemize}
 \item
-  \textcolor{red}{INTERACTIONMODELNAME} \texttt{\textless{}-}
+  **\textcolor{red}{INTERACTIONMODELNAME} \texttt{\textless{}-}
   lm(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{A}*\textcolor{red}{B},
-  data=\textcolor{red}{DATASETNAME})
+  data=\textcolor{red}{DATASETNAME})**
 
   \begin{itemize}
   \item
@@ -10294,9 +10370,9 @@ working:
     situations.
   \end{itemize}
 \item
-  \textcolor{red}{ADDITIVEMODELNAME} \texttt{\textless{}-}
+  \textbf{\textcolor{red}{ADDITIVEMODELNAME} \texttt{\textless{}-}
   lm(\textcolor{red}{Y}\textasciitilde{}\textcolor{red}{A}+\textcolor{red}{B},
-  data=\textcolor{red}{DATASETNAME})
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \item
@@ -10307,7 +10383,7 @@ working:
     unimportant using a test for the interaction.
   \end{itemize}
 \item
-  summary(\textcolor{red}{MODELNAME})
+  \textbf{summary(\textcolor{red}{MODELNAME})}
 
   \begin{itemize}
   \tightlist
@@ -10316,7 +10392,7 @@ working:
     coefficients, SEs, t-tests, and p-values.
   \end{itemize}
 \item
-  Anova(\textcolor{red}{MODELNAME})
+  \textbf{Anova(\textcolor{red}{MODELNAME})}
 
   \begin{itemize}
   \item
@@ -10328,7 +10404,7 @@ working:
     each term conditional on the other one.
   \end{itemize}
 \item
-  par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})
+  \textbf{par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})}
 
   \begin{itemize}
   \tightlist
@@ -10337,7 +10413,7 @@ working:
     and Normal Q-Q plot.
   \end{itemize}
 \item
-  plot(allEffects(\textcolor{red}{MODELNAME}))
+  \textbf{plot(allEffects(\textcolor{red}{MODELNAME}))}
 
   \begin{itemize}
   \item
@@ -10519,10 +10595,10 @@ the treatment lead to different improvement outcomes than the placebo?
 To directly assess the effects of the treatment, we want to display just
 the two variables of interest. \textbf{\emph{Stacked bar charts}}
 provide a method of displaying the response patterns (in
-\texttt{Improved}) across the levels of a predictor
-variable(\texttt{Treatment}) by displaying a bar for each predictor
-variable level and the proportions of responses in each category of the
-response in each of those groups. If the placebo is as effective as the
+\texttt{Improved}) across the levels of a predictor variable
+(\texttt{Treatment}) by displaying a bar for each predictor variable
+level and the proportions of responses in each category of the response
+in each of those groups. If the placebo is as effective as the
 treatment, then we would expect similar proportions of responses in each
 improvement category. A difference in the effectiveness would manifest
 in different proportions in the different improvement categories between
@@ -10708,16 +10784,17 @@ Comparing counts from the contingency table is useful, but comparing
 proportions in each category is better, especially when the sample sizes
 in the levels of the explanatory variable differ. Switching the formula
 used in the \texttt{tally} function formula to
-\texttt{\textasciitilde{}\ y\ \textbar{}\ x} and adding the
+\texttt{\textasciitilde{}\ y\textbar{}x} and adding the
 \texttt{format="proportion"} option provides the proportions in the
 response categories conditional on the category of the predictor (these
 are called \textbf{\emph{conditional proportions}} or the
 \textbf{\emph{conditional distribution}} of, here, \emph{Improved} on
 \emph{Treatment})\footnote{The vertical line, ``\texttt{\textbar{}}'',
   in \texttt{\textasciitilde{}\ y\textbar{}x} is available on most
-  keyboards on the same key as ``". It is the mathematical symbol that
-  means''conditional on" whatever follows.}. Note that they sum to 1.0
-in each level of x, \emph{placebo} or \emph{treated}:
+  keyboards on the same key as ``\texttt{\textbackslash{}}''. It is the
+  mathematical symbol that means ``conditional on'' whatever follows.}.
+Note that they sum to 1.0 in each level of x, \emph{placebo} or
+\emph{treated}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10874,7 +10951,7 @@ scenario.}\tabularnewline
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level 1}\strut
-\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level 2}\strut
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
@@ -10885,7 +10962,7 @@ Level 3}\strut
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level C}\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
 \textbf{Totals}\strut
 \end{minipage}\tabularnewline
 \midrule
@@ -10896,7 +10973,7 @@ Level C}\strut
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level 1}\strut
-\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level 2}\strut
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
@@ -10907,7 +10984,7 @@ Level 3}\strut
 \end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
 \textbf{Response\\
 Level C}\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
 \textbf{Totals}\strut
 \end{minipage}\tabularnewline
 \midrule
@@ -10915,38 +10992,38 @@ Level C}\strut
 \begin{minipage}[t]{0.06\columnwidth}\centering\strut
 \textbf{Group 1}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{11}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
-\(\rho_{12}\)\strut
+\(p_{11}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{13}\)\strut
+\(p_{12}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
+\(p_{13}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{1C}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\(p_{1C}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
 \(\boldsymbol{1.0}\)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.06\columnwidth}\centering\strut
 \textbf{Group 2}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{21}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
-\(\rho_{22}\)\strut
+\(p_{21}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{23}\)\strut
+\(p_{22}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
+\(p_{23}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{2C}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\(p_{2C}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
 \(\boldsymbol{1.0}\)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.06\columnwidth}\centering\strut
 \textbf{\ldots{}}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
 \ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
 \ldots{}\strut
@@ -10954,37 +11031,37 @@ Level C}\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
 \ldots{}\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
 \textbf{\ldots{}}\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.06\columnwidth}\centering\strut
 \textbf{Group R}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{R1}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
-\(\rho_{R2}\)\strut
+\(p_{R1}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{R3}\)\strut
+\(p_{R2}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
+\(p_{R3}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\rho_{RC}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\(p_{RC}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
 \(\boldsymbol{1.0}\)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.06\columnwidth}\centering\strut
 \textbf{Totals}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\boldsymbol{\rho_{\bullet 1}}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+\(\boldsymbol{p_{\bullet 1}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
 \(\boldsymbol{n_{\bullet 2}}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\boldsymbol{\rho_{\bullet 3}}\)\strut
+\(\boldsymbol{p_{\bullet 3}}\)\strut
 \end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
 \ldots{}\strut
 \end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
-\(\boldsymbol{\rho_{\bullet C}}\)\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\(\boldsymbol{p_{\bullet C}}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
 \(\boldsymbol{1.0}\)\strut
 \end{minipage}\tabularnewline
 \bottomrule
@@ -11068,8 +11145,8 @@ table, our inferences relate to whether there is a relationship or
 \textbf{\emph{association}} (that they are not independent) between the
 variables. This is related to whether the distributions of proportions
 match across rows in the table but is a more general question since we
-do not need to determine a variable to condition on that takes on the
-role of a predictor variable from the two variables of interest. In
+do not need to determine a variable to condition on, that takes on the
+role of a predictor variable, from the two variables of interest. In
 general, the hypotheses for an Independence test for variables \(x\) and
 \(y\) is:
 
@@ -11983,7 +12060,7 @@ because all were less than 2).}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{chisq.test}\NormalTok{(Arthtable)}\OperatorTok{$}\NormalTok{residuals}
-\KeywordTok{mosaicplot}\NormalTok{(Arthtable,}\DataTypeTok{shade=}\NormalTok{T)}
+\KeywordTok{mosaicplot}\NormalTok{(Arthtable, }\DataTypeTok{shade=}\NormalTok{T)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -12166,6 +12243,8 @@ this is an Independence test, the mosaic plot is the appropriate display
 of the results, which was provided in Figure \ref{fig:Figure5-5}. We
 will perform this test at the 1\% significance level.
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{electable <-}\StringTok{ }\KeywordTok{tally}\NormalTok{(}\OperatorTok{~}\NormalTok{PARTY}\OperatorTok{+}\NormalTok{VOTEF, }\DataTypeTok{data=}\NormalTok{election2)}
@@ -12320,8 +12399,8 @@ affiliation causing different voting patterns\footnote{Independence
   \begin{itemize}
   \tightlist
   \item
-    The parametric p-value is \textless{}2.2e-16 from the R output which
-    would be reported as \textless{}0.0001. This was based on a
+    The parametric p-value is \textless{} 2.2e-16 from the R output
+    which would be reported as \textless{} 0.0001. This was based on a
     \(\boldsymbol{\chi^2}\)-distribution with \((7-1)*(3-1) = 12\)
     degrees of freedom displayed in Figure \ref{fig:Figure5-15}. Note
     that the observed test statistic of 762.81 was off the plot to the
@@ -12418,6 +12497,13 @@ affiliation causing different voting patterns\footnote{Independence
     observed configuration was really far from the null hypothesis of no
     relationship between party status and voting.
   \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
 \item
   \textbf{Make a decision:}
 
@@ -12530,6 +12616,7 @@ categorically by applying the \texttt{factor} function.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(poLCA)}
 \KeywordTok{data}\NormalTok{(cheating) }\CommentTok{#Survey of students}
 \NormalTok{cheating}\OperatorTok{$}\NormalTok{LIEEXAM <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(cheating}\OperatorTok{$}\NormalTok{LIEEXAM)}
 \NormalTok{cheating}\OperatorTok{$}\NormalTok{LIEPAPER <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(cheating}\OperatorTok{$}\NormalTok{LIEPAPER)}
@@ -12584,7 +12671,7 @@ has categories of \emph{None}, \emph{ExamLie}, \emph{PaperLie}, and
 \emph{LieBoth}. The \texttt{copier} variable has categories of
 \emph{None}, \emph{PaperCheat}, \emph{ExamCheat}, and
 \emph{PaperExamCheat} (for doing both). The last category for
-\texttt{copier} (plotted as a peach(?) color) seems to mostly occur at
+\texttt{copier} (plotted as an orange color) seems to mostly occur at
 the top of the plot which is where the students who had lied to get out
 of things reside, so maybe there is a relationship between those two
 types of behaviors? On the other hand, for the students who have never
@@ -12912,6 +12999,8 @@ sample was taken from the population):
 The standardized residuals can help us more fully understand this result
 -- the mosaic plot only had one cell shaded and so wasn't needed here.
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{chisq.test}\NormalTok{(cheatlietable)}\OperatorTok{$}\NormalTok{residuals}
@@ -12949,7 +13038,7 @@ researcher is interested in whether the growth metric might differ
 between different levels of schools. Maybe it is easier or harder for
 elementary, middle, or high schools to attain growth. The researcher has
 a list of most of the schools in the state of each level that are using
-a data-base that the researcher has access to. In order to assess this
+a database that the researcher has access to. In order to assess this
 question, the researcher takes a stratified random sample\footnote{A
   stratified random sample involves taking a simpler random sample from
   each group or strata of the population. It is useful to make sure that
@@ -13070,6 +13159,8 @@ third 25\%, and highest 25\% by splitting the data at \(Q_1\), the
 Median, and \(Q_3\). In R, the \texttt{cut} function is available to
 turn a quantitative variable into a categorical variable. First, we can
 use the information from \texttt{favstats} to find the cut-points:
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13314,14 +13405,14 @@ table where you identified initial patterns.
 \section{Review of Important R commands}\label{section5-13}
 
 The main components of R code used in this chapter follow with
-components to modify in red where \texttt{y} is a response variable and
-\texttt{x} is a predictor are easily identified:
+components to modify in ALL CAPS where \texttt{y} is a response variable
+and \texttt{x} is a predictor are easily identified:
 
 \begin{itemize}
 \item
-  \textcolor{red}{TABLENAME} \textless{}-
+  \textbf{\textcolor{red}{TABLENAME} \textless{}-
   tally(\textasciitilde{}\textcolor{red}{x} + \textcolor{red}{y},
-  data=\textcolor{red}{DATASETNAME}, margins=F)
+  data=\textcolor{red}{DATASETNAME}, margins=F)}
 
   \begin{itemize}
   \item
@@ -13335,8 +13426,8 @@ components to modify in red where \texttt{y} is a response variable and
     totals.
   \end{itemize}
 \item
-  plot(\textcolor{red}{y}\textasciitilde{} \textcolor{red}{x},
-  data=\textcolor{red}{DATASETNAME})
+  \textbf{plot(\textcolor{red}{y}\textasciitilde{} \textcolor{red}{x},
+  data=\textcolor{red}{DATASETNAME})}
 
   \begin{itemize}
   \tightlist
@@ -13344,7 +13435,7 @@ components to modify in red where \texttt{y} is a response variable and
     Makes a stacked bar chart useful for homogeneity test situations.
   \end{itemize}
 \item
-  mosaicplot(\textcolor{red}{TABLENAME})
+  \textbf{mosaicplot(\textcolor{red}{TABLENAME})}
 
   \begin{itemize}
   \tightlist
@@ -13353,7 +13444,7 @@ components to modify in red where \texttt{y} is a response variable and
     independence test situations.
   \end{itemize}
 \item
-  chisq.test(\textcolor{red}{TABLENAME})
+  \textbf{chisq.test(\textcolor{red}{TABLENAME})}
 
   \begin{itemize}
   \tightlist
@@ -13363,7 +13454,7 @@ components to modify in red where \texttt{y} is a response variable and
     freedom.
   \end{itemize}
 \item
-  chisq.test(\textcolor{red}{TABLENAME})\$expected
+  \textbf{chisq.test(\textcolor{red}{TABLENAME})\$expected}
 
   \begin{itemize}
   \tightlist
@@ -13371,8 +13462,8 @@ components to modify in red where \texttt{y} is a response variable and
     Provides expected cell counts.
   \end{itemize}
 \item
-  pchisq(\textcolor{red}{X-SQUARED}, df=(\textcolor{red}{R}-
-  1)*(\textcolor{red}{C}- 1), lower.tail=F)
+  **pchisq(\textcolor{red}{X-SQUARED}, df=(\textcolor{red}{R} -
+  1)*(\textcolor{red}{C} - 1), lower.tail=F)**
 
   \begin{itemize}
   \item
@@ -13383,7 +13474,7 @@ components to modify in red where \texttt{y} is a response variable and
     permutation-based p-value.
   \end{itemize}
 \item
-  chisq.test(\textcolor{red}{TABLENAME})\$residuals\^{}2
+  \textbf{chisq.test(\textcolor{red}{TABLENAME})\$residuals\^{}2}
 
   \begin{itemize}
   \tightlist
@@ -13391,7 +13482,7 @@ components to modify in red where \texttt{y} is a response variable and
     Provides \(X^2\) contributions from each cell in table.
   \end{itemize}
 \item
-  chisq.test(\textcolor{red}{TABLENAME})\$residuals
+  \textbf{chisq.test(\textcolor{red}{TABLENAME})\$residuals}
 
   \begin{itemize}
   \tightlist
@@ -13399,7 +13490,7 @@ components to modify in red where \texttt{y} is a response variable and
     Provides standardized residuals.
   \end{itemize}
 \item
-  mosaicplot(\textcolor{red}{TABLENAME}, shade=T)
+  \textbf{mosaicplot(\textcolor{red}{TABLENAME}, shade=T)}
 
   \begin{itemize}
   \tightlist
@@ -13539,11 +13630,15 @@ making sure to address scope of inference.
 results. Specifically, in what way do the is/are preferences move away
 from the null hypothesis for people that care more about this?
 
-\begin{quote}
+\begin{longtable}[]{@{}l@{}}
+\toprule
 We might be fighting a losing battle on this particular word usage, but
-since we are in the group that cares a lot about this, we are going to
-keep trying\ldots{}
-\end{quote}
+since we\tabularnewline
+are in the group that cares a lot about this, we are
+going\tabularnewline
+to keep trying\ldots{}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \chapter{Correlation and Simple Linear Regression}\label{chapter6}
 
