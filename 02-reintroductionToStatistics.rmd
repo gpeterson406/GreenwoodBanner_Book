@@ -17,6 +17,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
+require(readr)
 require(beanplot)
 knitr::opts_chunk$set(cache = F,fig.width = 5, fig.height = 3.5,fig.pos='HT',
                       message=F,warning=F)
@@ -61,7 +62,7 @@ plot" to help us see the differences in the observations in the groups.
 
 Part of learning statistics is learning to correctly use the terminology, some of which is used colloquially
 differently than it is used in formal statistical settings. The most commonly
-"misused" term is ***data***. In statistical parlance, we want to note the plurality of
+"misused" statistical term is ***data***. In statistical parlance, we want to note the plurality of
 data. Specifically, ***datum*** is a single measurement, possibly on multiple random
 variables, and so it is appropriate to say that "**a datum is...**". 
 Once we move to discussing data, we are now referring to more than one 
@@ -71,7 +72,7 @@ to distinguish our use of the term "data" from its more
 colloquial^[You will more typically hear "data is" but that more often refers to
 information, sometimes even statistical summaries of data sets, than to
 observations collected as part of a study, suggesting the confusion of this
-term in the general public. We will explore a data set in Chapter 4 related to
+term in the general public. We will explore a data set in Chapter 5 related to
 perceptions of this issue collected by researchers at http://fivethirtyeight.com/.]
 usage that often involves treating it as singular. In a statistical setting
 "data" refers to measurements of our cases or units. When we summarize the
@@ -79,7 +80,7 @@ results of a study (say providing the mean and SD), that information is not
 "data". We used our data to generate that information. Sometimes we also use
 the term "data set" to refer to all our observations and this is a singular
 term to refer to the group of observations and this makes it really easy to
-make mistakes on the usage of this term. 
+make mistakes on the usage of "data"^[Either try to remember "data is a plural word" or replace "data" with "things" in your sentence and consider whether it sounds right]. 
 
 It is also really important to note that ***variables*** have to vary --
 if you measure the sex of your subjects but are only measuring females, then you do
@@ -104,7 +105,7 @@ researchers showed the participants in the study (men who volunteered from a
 prison) pictures of one of three young women. Each picture had previously been
 decided to be either beautiful, average, or unattractive by the researchers. 
 Each "juror" was randomly assigned to one of three levels of this factor (which
-is a categorical predictor or explanatory variable) and then each rated their
+is a categorical *predictor* or *explanatory* variable) and then each participant rated their
 picture on a variety of traits such as how warm or sincere the woman appeared. 
 Finally, they were told the women had committed a crime (also randomly assigned
 to either be told she committed a burglary or a swindle) and were asked to rate
@@ -113,7 +114,7 @@ will bypass some aspects of their research and just focus on differences in the
 sentence suggested among the three pictures. To get a sense of these data, 
 let's consider the first and last parts of the data set:
 
-(ref:tab2-1) First 5 and last 6 rows of the Mock Jury data set.
+(ref:tab2-1) First 5 and last 7 rows of the Mock Jury data set.
 
 ```{r Table2-1,echo=F,results="asis"}
 column.headers = c("Subject","Attr","Crime","Years","Serious","Independent","Sincere")
@@ -144,7 +145,7 @@ number of subjects in the sample and denote the population size (if
 available) with ***N***. Here, the sample size is ***n=114***. In
 this situation, we do not have a random sample from a population 
 (these were volunteers from the population of prisoners at the
-particular prison) so we cannot make inferences to a larger group. 
+particular prison) so we cannot make inferences from our sample to a larger group. 
 But we can assess whether there is a ***causal effect***^[As noted previously, we reserve the term "effect" for situations where random assignment allows us to consider causality as the reason for the differences in the response variable among levels of the explanatory variable, but this is only the case if we find evidence against the null hypothesis of no difference
 in the groups.]: if sufficient evidence is found to conclude that there is some difference in
 the responses across the treated groups, we can attribute those differences to
@@ -163,17 +164,17 @@ group of prisoners. If this had been an observational study (suppose that the
 prisoners could select one of the three pictures), then we would have to avoid
 any of the "causal" language that we can consider here because the pictures
 were not randomly assigned to the subjects. Without random assignment, the
-explanatory variable of picture choice could be ***confounded*** with another characteristic of prisoners that was related to which picture they selected and
+explanatory variable of picture choice could be ***confounded*** with  another characteristic of prisoners that was related to which picture they selected and
 the rating they provided. Confounding is not the only reason to avoid causal
 statements with non-random assignment but the inability to separate the effect
 of other variables (measured or unmeasured) from the differences we are
 observing means that our inferences in these situations need to be carefully
-stated. 
+stated to avoid implying causal effects. 
 
 Instead of loading this data set into R using the "Import Dataset" 
 functionality, we can load an R
 package that contains the data, making for easy access to this data set. The
-package called ``heplots`` [@R-heplots] contains a data set called MockJury 
+package called ``heplots`` [@R-heplots] contains a data set called ``MockJury`` 
 that contains the results of the study. We also rely on the R package called 
 ``mosaic`` [@R-mosaic] that was introduced previously. First (but only once), 
 you need to install both packages, which can
@@ -184,7 +185,7 @@ using the ``install.packages`` function with quotes around the package name:
 > install.packages("heplots")
 ```
 
-After making sure that both packages are installed, we use the ``require`` 
+\noindent After making sure that both packages are installed, we use the ``require`` 
 function around the package name (no quotes now!) to load the package, something that
 you need to do any time you want to use features of a package. 
 
@@ -194,10 +195,9 @@ require(mosaic)
 ```
 
 
-There will be some results of the loading process that may discuss loading other
-required packages. If the output says that it needs a package that is
+When you are loading a package, R might mention a need to install other packages. If the output says that it needs a package that is
 unavailable, then follow the same process noted above to install that package
-as well. 
+and then repeat trying to load the package you wanted. These are called package "dependencies" and are due to one package developer relying on functions that already exist in another package. 
 
 To load the data set that is available in an active package, we use the 
 ``data`` function. 
@@ -206,15 +206,17 @@ To load the data set that is available in an active package, we use the
 data(MockJury)
 ```
 
-Now there will be a data.frame called ``MockJury`` available for us to 
+Some data sets, like this one, will load in a different data set framework called a "data frame" (its class in R is "data.frame"). You can leave it in this format but for consistency of output, we will change it to a *tibble* using the ``as.tibble`` function in the code that follows. Now there will be a tibble called ``MockJury`` available for us to 
 analyze and some information about it in the **Environment** tab. Again, we 
 can find out more about the data set in a couple of ways. First, 
 we can use the ``View`` function to provide a spreadsheet type of display 
 in the upper left panel. Second, we can use the ``head`` and ``tail`` 
 functions to print out the beginning and end of the data set. Because 
-there are so many variables, it may wrap around to show all the columns. 
+there are so many variables, there will be information on some other variables that were not displayed at the bottom of the results of the ``head`` or ``tail`` results. 
 
 ```{r eval=F}
+require(tibble)
+MockJury<-as.tibble(MockJury)
 View(MockJury)
 head(MockJury)
 ```
@@ -240,7 +242,7 @@ variable that was measured.
 help(MockJury)
 ```
 
-The ``help`` function is also useful with functions in R to help you 
+\noindent The ``help`` function is also useful with functions in R to help you 
 understand options and, at the bottom of the help, 
 see examples of using the function. 
 
@@ -261,9 +263,9 @@ and ``Crime``) or the 5-number summary plus the mean for quantitative
 variables. If present, you would also get a count of missing values that are
 called "NAs" in R. For the first variable, called ``Attr`` in the data.frame 
 and that we might more explicitly name *Attractiveness*, we find counts of the 
-number of subjects shown each picture: $37/114$ viewed the 
+number of subjects shown each picture: $37$ out of $114$ viewed the 
 "Unattractive" picture, $38$ viewed "Average", and $39$ viewed "Beautiful". 
-We can also see that suggested prison sentences (data.frame variable 
+We can also see that suggested prison sentences (variable 
 ``Years``) ranged from 1 year to 15 years with a median of 3 years. 
 It seems that all the other variables except for *Crime* (type of crime 
 that they were told the pictured woman committed) contained responses 
@@ -275,7 +277,7 @@ the responses for the suggested sentences in *Years*. Figure \@ref(fig:Figure2-1
 contains the histogram 
 and boxplot of *Years*, ignoring any information on which picture the 
 "jurors" were shown. The calls to the two plotting functions are 
-enhanced slightly to add better labels.
+enhanced slightly to add better labels. 
 
 (ref:fig2-1) Histogram and boxplot of suggested sentences in years.
 
@@ -299,9 +301,8 @@ count of three and the boxplot only shows a single point at 15 which is
 actually three tied points at exactly 15 years plotted on top of each other (we
 call this "overplotting"). These three observations really seem to be the upper
 edge of the overall pattern of a strongly right skewed distribution, so even
-though they are flagged in the boxplot, we likely would not want to remove them
-from our data set. In real data sets, outliers are commonly encountered and the
-first step is to verify that they were not errors in recording. The next step
+though they are flagged in the boxplot, they really are not outside the pattern we observed so are not outliers. In real data sets, outliers are commonly encountered and the
+first step is to verify that they were not errors in recording (if so, fixing or removing them is easily justified). If they cannot be easily dismissed or fixed, the next step
 is to study their impact on the statistical analyses performed, potentially
 considering reporting results with and without the influential observation(s)
 in the results. If the analysis is unaffected by the "unusual" observations, 
@@ -310,20 +311,20 @@ results, then reporting both versions of results allows the reader to judge the
 impacts for themselves. It is important to remember that sometimes the outliers
 are the most interesting part of the data set. 
 
-Often when statisticians think of distributions, we think of the smooth underlying
+Often when statisticians think of distributions of data, we think of the smooth underlying
 shape that led to the data set that is being displayed in the histogram. 
 Instead of binning up observations and making bars in the histogram, we can
-estimate what is called a ***density curve *** as a smooth curve 
+estimate what is called a ***density curve*** as a smooth curve 
 that represents the observed distribution of the responses. Density curves can
 sometimes help us see features of the data sets more clearly. 
 
 To understand the density curve, it is useful to initially see 
-the histogram and density curve together. The density curve is scaled 
-so that the total area^[If you've taken calculus, you will know that the 
+the histogram and density curve together. The height of the density curve is scaled 
+so that the total area under the curve^[If you've taken calculus, you will know that the 
 curve is being constructed so that the integral from $-\infty$ to 
 $\infty$ is 1. If you don't know calculus, think of a rectangle with area 
 of 1 based on its height and width. These cover the same area but the top of the 
-region wiggles.] under the curve is 1. To make a comparable histogram, the 
+region wiggles.] is 1. To make a comparable histogram, the 
 y-axis needs to be scaled so that the histogram is also on the "density" 
 scale which makes the bar heights adjust so that the proportion of the 
 total data set in each bar is represented by the area in each bar 
@@ -361,8 +362,8 @@ were provided as whole years (1, 2, 3, ..., 15), we need to use a graphical
 technique called ***jittering*** to add a little noise^[Jittering typically 
 involves adding random variability to each observation that
 is uniformly distributed in a range determined based on the spacing of the
-observation. If you re-run the ``jitter`` function, the results will change. 
-For more details, type ``help(jitter)`` in R.] to each observation so all the
+observation. This means that if you re-run the ``jitter`` function, the results will change. 
+For more details, type ``help(jitter)`` in the console in Rstudio.] to each observation so all the
 observations at each year value do not 
 plot as a single line. In Figure \@ref(fig:Figure2-3), the added tick marks 
 on the x-axis show the approximate locations of the original observations. 
@@ -370,7 +371,7 @@ We can see how there are 3 observations at 15 (all were 15 and the noise
 added makes it possible to see them all). The limitations of the 
 histogram arise around the 10 year sentence
 area where there are many responses at 10 years and just one at both 9 and 11 years, 
-but the histogram bars sort of miss this that aspect of the data set. The
+but the histogram bars sort of miss this aspect of the data set. The
 density curve did show a small bump at 10 years. Density curves are, however, 
 not perfect and this one shows area for sentences less than 0 years which is
 not possible here. 
@@ -1052,7 +1053,7 @@ pdata(Tstar, Tobs, lower.tail=F)
 ```
 
 ```{r echo=F}
-pval = pdata(Tstar, Tobs, lower.tail=F)
+pval <- pdata(Tstar, Tobs, lower.tail=F)
 ```
 
 The proportion of `r pval` tells us that `r pval*1000` of the 1,000 permuted results 
@@ -1722,7 +1723,7 @@ we can take a look at the difference in the responses by groups based on the
 output and as displayed in Figure \@ref(fig:Figure2-15). 
 
 ```{r}
-s217 <- read.csv("http://www.math.montana.edu/courses/s217/documents/s217.csv")
+s217 <- read_csv("http://www.math.montana.edu/courses/s217/documents/s217.csv")
 require(mosaic)
 require(beanplot)
 mean(GPA~Sex, data=s217)
