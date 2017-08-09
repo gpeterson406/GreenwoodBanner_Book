@@ -214,12 +214,12 @@ The correlation coefficient, ***r***, is calculated as
 $$r=\frac{1}{n-1}\sum^n_{i=1}\left(\frac{x_i-\bar{x}}{s_x}\right)
 \left(\frac{y_i-\bar{y}}{s_y}\right),$$ 
 
-\noindent where $s_x$ and $s_y$ are the standard deviations of $x$ and $y$. This 
+where $s_x$ and $s_y$ are the standard deviations of $x$ and $y$. This 
 formula can also be written as
 
 $$r=\frac{1}{n-1}\sum^n_{i=1}z_{x_i}z_{y_i}$$
 
-\noindent where $z_{x_i}$ is the z-score (observation minus mean divided by 
+where $z_{x_i}$ is the z-score (observation minus mean divided by 
 standard deviation) for the $i^{th}$ observation on $x$ and $z_{y_i}$
 is the z-score for the $i^{th}$ observation on $y$. We won't directly
 use this formula, but its contents inform the behavior of ***r***.
@@ -288,7 +288,7 @@ within fields. Use this scale until you develop your own experience:
 
 * $0.9 < \left|\boldsymbol{r}\right|<1.0$: very strong linear relationship.  
 
-\noindent And again note that this scale only relates to the **linear** aspect of
+And again note that this scale only relates to the **linear** aspect of
 the relationship between the variables. 
 
 When we have linear relationships between two quantitative variables, 
@@ -1002,7 +1002,7 @@ regression model***:
 
 $$y_i = \beta_0 + \beta_1x_i+\varepsilon_i$$
 
-\noindent where:
+where:
 
 * $y_i$ is the observed response for the $i^{th}$ observation,
 
@@ -2118,7 +2118,7 @@ data=`r colFmt("DATASETNAME","red")`, smooth=F)**
     
     * Provides a scatter plot with a regression line.
     
-* **`r colFmt("MODELNAME","red")` <- lm(`r colFmt("y","red")`~`r colFmt("x","red")`,
+* **`r colFmt("MODELNAME","red")` ``<-`` lm(`r colFmt("y","red")`~`r colFmt("x","red")`,
 data=`r colFmt("DATASETNAME","red")`)**
 
     * Estimates a regression model using least squares.

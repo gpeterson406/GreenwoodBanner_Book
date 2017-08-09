@@ -57,7 +57,7 @@ $E(y_i) = \mu_{y_i} = \beta_0 + \beta_1x_i$. This uses the true regression line
 to define the model for the mean of the responses as a function of the value of
 the explanatory variable. 
 
-The other part of any statistical model is specifying a model for the
+\indent The other part of any statistical model is specifying a model for the
 variability around the mean. 
 There are two aspects to the variability to specify here -- the shape of the
 distribution and the spread of the distribution. This is where the 
@@ -69,7 +69,7 @@ regression model is
 $$y_i \sim N(\mu_{y_i},\sigma^2), \text{ with } 
 \mu_{y_i} = \beta_0 + \beta_1x_i,$$
 
-\noindent which can be read as "y follows a normal distribution
+which can be read as "y follows a normal distribution
 with mean mu-y and variance sigma-squared". This also implies that the random
 variability around the true mean, the errors, follow a normal distribution with
 mean 0 and that same variance, $\varepsilon_i \sim N(0,\sigma^2)$. The true 
@@ -83,7 +83,7 @@ of the regression output as discussed below so the formula is not heavily used
 here. This provides us with the three parameters that are estimated as part of
 our SLR model: $\beta_0, \beta_1,\text{ and } \sigma$.
 
-These definitions also formalize the assumptions implicit in the 
+\indent These definitions also formalize the assumptions implicit in the 
 regression model:
 
 1. The errors follow a normal distribution (***Normality assumption***).
@@ -100,7 +100,7 @@ techniques for checking these assumptions -- meeting these
 assumptions is fundamental to having a regression line that we trust and
 inferences from it that we also can trust. 
 
-To make this clearer, suppose that in the *Beers *and *BAC* study that 
+\indent To make this clearer, suppose that in the *Beers *and *BAC* study that 
 they had randomly assigned 20 students to consume each number of beers.
 We would expect some
 variation in the *BAC* for each group of 20 at each level of *Beers* but 
@@ -123,7 +123,7 @@ centered at the regression line.
 knitr::include_graphics("chapter7_files/image029small.png")
 ```
 
-Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
+\indent Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
 distribution of 20 subjects at each *Beer* level around the assumed true
 regression line with two different residual SEs of 0.02 and 0.06. The original
 BAC model has a residual SE of 0.02 but had many fewer observations at each 
@@ -154,7 +154,7 @@ points(y2_20~I(Beersnew+.05),ylim=c(0,0.25),pch=17,col="orange")
 legend("topleft",c("Residual SE=0.02","Residual SE=0.06"),pch=c(16,17),col=c("black","orange"),cex=.75)
 ```
 
-Along with getting the idea that regression models define normal 
+\indent Along with getting the idea that regression models define normal 
 distributions in the y-direction that are
 centered at the regression line, you can also get a sense of how variable
 samples from a normal distribution can appear. Each distribution of 20 subjects
@@ -164,7 +164,7 @@ different variances. This can help us to remember to not be too particular when
 assessing assumptions and allow for some variability in spreads and a few
 observations from the tails of the distribution to occasionally arise. 
 
-In sampling from the population, we expect some amount of variability 
+\indent In sampling from the population, we expect some amount of variability 
 of each estimator around its
 true value. This variability leads to the potential variability in estimated
 regression lines (think of a suite of potential estimated regression lines that
@@ -181,14 +181,16 @@ variation.
 knitr::include_graphics("chapter7_files/image034.png")
 ```
 
-This variability due to random sampling is something that needs to be
+\indent This variability due to random sampling is something that needs to be
 properly accounted for to take the **single** estimated regression line to
 make inferences about the true line and parameters based on the sample-based
 estimates. The next sections develop those inferential tools. 
 
 \newpage
 
-## Confidence Interval and Hypothesis tests for the slope and intercept	{#section7-2}
+\sectionmark{CI and Hypothesis tests for slope and intercept}
+
+## Confidence interval and hypothesis tests for the slope and intercept	{#section7-2}
 
 \sectionmark{CI and Hypothesis tests for slope and intercept}
 
@@ -200,7 +202,7 @@ any parametric confidence interval is
 
 $$\text{estimate} \mp t^*\text{SE}_{estimate},$$
 
-\noindent so we need to obtain the appropriate standard error for regression model
+so we need to obtain the appropriate standard error for regression model
 coefficients and the degrees of freedom to define the $t$-distribution
 to look up $t^*$. We will find the $\text{SE}_{b_0}$ and $\text{SE}_{b_1}$
 in the model summary. The degrees of freedom for the $t$-distribution
@@ -224,9 +226,9 @@ confidence interval***:
 knitr::include_graphics("chapter7_files/image045.png")
 ```
 
-> For a 1 ***[units of X]*** increase in **X**, we are ___ % confident 
+> For a 1 **[*units of X*]** increase in **X**, we are ___ % confident 
   that the **true change in the mean of** ***Y*** will be between **LL**
-  and **UL** ***[units of Y]***.
+  and **UL** **[*units of Y*]**.
 >
 
 In this interpretation, LL and UL are the calculated lower and upper 
@@ -240,13 +242,14 @@ of the response variable. The interpretation of the y-intercept CI is:
   ***[units of Y]***.
 >
 
-This is really only interesting if we'll see a method for generating CIs
+This is really only interesting if the value of $x=0$ is interesting --
+we'll see a method for generating CIs
 for the true mean at potentially more interesting values of $x$ in 
 Section \@ref(section7-7). To trust the results from these
 confidence intervals, all the regression validity conditions need to be met (or
 at least close to met). 
 
-The only hypothesis test of interest in this situation is for the slope
+\indent The only hypothesis test of interest in this situation is for the slope
 coefficient. To develop the hypotheses of interest in SLR, note the effect 
 of having $\beta_1=0$ in the mean of the regression equation,
 $\mu_{y_i} = \beta_0 + \beta_1x_i = \beta_0 + 0x_i = \beta_0$.
@@ -260,7 +263,7 @@ prediction for $y$ for every value of $x$. Thus
 
 $$\boldsymbol{H_0: \beta_1=0}$$
 
-\noindent is a test for **no linear relationship between** $\mathbf{x}$ **and** $\mathbf{y}$
+is a test for **no linear relationship between** $\mathbf{x}$ **and** $\mathbf{y}$
 **in the population**. The alternative of $\boldsymbol{H_A: \beta_1\ne 0}$
 that there is **some** linear relationship between $x$ and $y$ in the population,
 is our main test of interest in these situations. It is also possible to test
@@ -272,13 +275,13 @@ $t$-test statistic is generally
 
 $$t=\frac{b_i}{\text{SE}_{b_i}}$$
 
-\noindent with the main interest in the test for $\beta_1$ based on $b_1$ for now.
+with the main interest in the test for $\beta_1$ based on $b_1$ for now.
 The p-value would be calculated using the two-tailed area from the 
 $t_{n-2}$ distribution calculated using the ``pt`` function. The p-value 
 to test these hypotheses is also provided
 in the model summary as we will see below. 
 
-The greater than or
+\indent The greater than or
 less than alternatives can have interesting interpretations in certain
 situations. For example, the greater than alternative 
 $\left(\boldsymbol{H_A: \beta_1 > 0}\right)$ tests an alternative of a
@@ -297,18 +300,19 @@ reported p-value by 2**. If $t>0$ for $H_A:\beta_1>0$ or $t<0$
 for $H_A:\beta_1<0$ are not met, then the p-value would be greater than
 0.5 and it would be easiest to look it up directly using ``pt``.
 
-We can revisit a couple of examples for a last time with these ideas in 
+\indent We can revisit a couple of examples for a last time with these ideas in 
 hand to complete the analyses. 
 
-* For the *Beers, BAC* data, the 95% confidence for the true slope
-  coefficient, $\beta_1$, is
-  
-  $$\begin{array}{rl}
-  \boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
-  & \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
-  & \boldsymbol{= 0.01796 \mp 0.00515} \\
-  & \boldsymbol{\rightarrow (0.0128, 0.0231).}
-  \end{array}$$
+> For the *Beers, BAC* data, the 95% confidence for the true slope
+> coefficient, $\beta_1$, is
+>   
+ 
+      $$\begin{array}{rl}
+      \boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
+      & \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
+      & \boldsymbol{= 0.01796 \mp 0.00515} \\
+      & \boldsymbol{\rightarrow (0.0128, 0.0231).}
+      \end{array}$$
 
 You can find the components of this
 calculation in the model summary and from ``qt(0.975, df=n-2)`` which was 
@@ -343,7 +347,7 @@ range of potential impacts on the mean in the population. It also could be used
 to test the two-sided hypothesis test and would suggest that we should reject
 the null hypothesis since the confidence interval does not contain 0. 
 
-The width of the CI, loosely the precision of the estimated slope, is
+\indent The width of the CI, loosely the precision of the estimated slope, is
 impacted by the variability of
 the observations around the estimated regression line, the overall sample size, 
 and the positioning of the x-observations. Basically all those aspects relate
@@ -352,9 +356,9 @@ precision in the slope. For example, the more variability around the line that
 is present, the more uncertainty there is about the correct line to use 
 (Least Squares (LS) can
 still find an estimated line but there are other lines that might be "close" to
-its optimizing choice). Similarly, more observations help us a better estimate of
-the mean -- an idea that permeates all statistical methods. Finally, the
-location of x-values can impact the precision in a slope coefficient. We'll
+its optimizing choice). Similarly, more observations help us get a better 
+estimate of the mean -- an idea that permeates all statistical methods. Finally, 
+the location of x-values can impact the precision in a slope coefficient. We'll
 revisit this in the context of ***multi-collinearity*** in the next chapter,
 and often we have no control of x-values, but just note that different
 patterns of x-values can lead to different precision of estimated slope
@@ -367,7 +371,7 @@ interest similar to what was used in the *Beers* vs *BAC* study to provide
 the best distribution of values to discover the relationship across the 
 selected range of x-values.].
 
-For hypothesis testing, we will almost always stick with two-sided tests
+\indent For hypothesis testing, we will almost always stick with two-sided tests
 in regression modeling as it is a more conservative approach and does not require
 us to have an expectation of a direction for relationships *a priori*. In this
 example, the null hypothesis for the slope coefficient is that there is no
@@ -379,14 +383,14 @@ follows a $t(14)$ distribution. The model summary provides the calculation
 of the test statistic
 and the two-sided test p-value of $2.97\text{e-6} = 0.00000297$. So we 
 would just report
-p-value < 0. 0001. This suggests we should reject the null hypothesis and
+p-value < 0.0001. This suggests we should reject the null hypothesis and
 conclude that there is evidence at the 5% significance level of a linear
 relationship between *Beers* and *BAC* in the population. Because of the
 random assignment, we can also say that drinking beers causes changes in BAC
 but, because the sample was of volunteers, we cannot infer that these results
 would hold in the general population of OSU students or more generally. 
 
-There are also results for the y-intercept in the output. The 95% CI is 
+\indent There are also results for the y-intercept in the output. The 95% CI is 
 from -0.0398 to 0.0144, that the true mean *BAC* for a 0 beer consuming 
 subject is between
 -0.0398 to 0.01445. This is really not a big surprise but possibly is
@@ -399,14 +403,14 @@ far beyond the scope of observations. The y-intercept's main function in
 regression models is to be at the right level for the slope to "work" to make a
 line that describes the responses and thus is usually of lesser interest. 
 
-As a second example, we can revisit modeling the *Hematocrit* of female
+\indent As a second example, we can revisit modeling the *Hematocrit* of female
 Australian athletes as a function of *body fat %*. The sample size is $n=99$
 so the *df* are 97 in the analysis. In Chapter \@ref(chapter6), the 
 relationship between *Hematocrit* and *body fat %* for females appeared to 
 be a weak negative linear
 association. The 95% confidence interval for the slope is -0.187 to 0.0155. For
-a 1 % increase in body fat %, we are 95% confident that the change in the true
-mean Hematocrit is between -0.187 and 0.0155 % of blood. This suggests that we
+a 1% increase in body fat %, we are 95% confident that the change in the true
+mean Hematocrit is between -0.187 and 0.0155% of blood. This suggests that we
 would fail to reject the null hypothesis of no linear relationship at the 5%
 significance level because this CI contains 0 -- we can't reject the null that
 the true slope is 0. In fact the p-value is 0.0965 which is larger than 0.05
@@ -423,13 +427,13 @@ but certainly not strong evidence.
 ```{r warning=F,message=F}
 require(alr3)
 data(ais)
-aisR2<-ais[-c(56,166),c("Ht","Hc","Bfat","Sex")]
+aisR2 <- ais[-c(56,166), c("Ht","Hc","Bfat","Sex")]
 m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) # Results for Females 
 summary(m2)
 confint(m2)
 ```
 
-One more worked example is provided from the Montana fire data. In this 
+\indent One more worked example is provided from the Montana fire data. In this 
 example pay particular attention
 to how we are handling the units of the response variable, log-hectares, and to
 the changes to doing inferences at the 1% significance and 99% confidence
@@ -507,11 +511,11 @@ Interpretation of 99% CI for slope coefficient:
 * For a 1 degree F increase in *Temperature*, we are 99% confident that the 
 change in the true mean log-area burned is between 0.78 and 2.00 log(Hectares).
 
-* Another way to interpret this is:
+Another way to interpret this is:
 
-    * For a 1 degree F increase in *Temperature*, we are 99% confident that
-    the mean Area Burned will change by between 0.78 and 2.00 log(Hectares)
-    **in the population**.
+* For a 1 degree F increase in *Temperature*, we are 99% confident that
+the mean Area Burned will change by between 0.78 and 2.00 log(Hectares)
+**in the population**.
 
 * Also $R^2$ is 66.2%, which tells us that *Temperature* explains 66.2%
 of the variation in *log(Hectares) burned*. Or that the linear regression
@@ -539,7 +543,7 @@ provide regional, hemispheric, or even global average temperatures. Climate
 change research involves attempting to quantify the changes over time in these
 sorts of records. 
 
-These data were extracted from the National Oceanic and Atmospheric 
+\indent These data were extracted from the National Oceanic and Atmospheric 
 Administration's National Centers for Environmental Information's database
 (http://www.ncdc.noaa.gov/cdo-web/) and we will focus on the yearly
 average of the monthly averages of the daily maximum temperature (we can call
@@ -589,7 +593,7 @@ would suggest a less steep change before 1920, relatively linear change from
 leveling off after that point. There also appears to be one potential large outlier
 in the late 1930s. 
 
-We'll perform all 6+ steps of the hypothesis test for the slope coefficient 
+\indent We'll perform all 6+ steps of the hypothesis test for the slope coefficient 
 and add a confidence
 interval interpretation for this example. First, we have to decide on our
 significance level (5% is a typical choice), our hypotheses (the 2-sided test
@@ -602,6 +606,7 @@ even harder to ignore.]) and our test statistic, $t=\frac{b_1}{\text{SE}_{b_1}}$
 1. **Hypotheses for the slope coefficient test:**
 
 $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
+
 2. **Validity conditions:**
 
 * **Quantitative variables condition**
@@ -622,14 +627,14 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
     often the first one researchers fit in these situations and often is
     reasonably correct even in the presence of some autocorrelation. 
 
-    To assess the remaining conditions, we need to fit the regression model and use
-    the diagnostic plots in Figure \@ref(fig:Figure7-5) to aid our assessment:
+To assess the remaining conditions, we need to fit the regression model and use
+the diagnostic plots in Figure \@ref(fig:Figure7-5) to aid our assessment:
 
-    ```{r Figure7-5,fig.cap="Diagnostic plots of the Bozeman yearly temperature simple linear  regression model.",fig.height=5,fig.width=8}
-    temp1 <- lm(meanmax~Year, data=bozemantemps)
-    par(mfrow=c(2,2))
-    plot(temp1, add.smooth=F)
-    ```
+```{r Figure7-5,fig.cap="Diagnostic plots of the Bozeman yearly temperature simple linear  regression model.",fig.height=5,fig.width=8}
+temp1 <- lm(meanmax~Year, data=bozemantemps)
+par(mfrow=c(2,2))
+plot(temp1, add.smooth=F)
+```
 
 * **Linearity of relationship**
 
@@ -654,7 +659,7 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
 
     * Examining the Normal QQ-plot for violations of the normality 
     assumption shows only one real problem in the outlier from the 
-    32<sup>nd</sup> observation in the data set (1934)
+    32^nd^ observation in the data set (1934)
     which was flagged as a large outlier in the original scatterplot. We
     should be careful about inferences that assume normality and contain this
     point in the analysis. We might consider running the analysis with it and
@@ -686,9 +691,9 @@ $$H_0: \beta_1=0 \text{ vs } H_A: \beta_1 \ne 0$$
     the observed $x\text{'s}$ and most of these points follow the overall
     pattern fairly well.
 
-    So the main issues are with independence
-    of observations and one non-influential outlier that might be compromising our
-    normality assumption a bit. 
+So the main issues are with independence
+of observations and one non-influential outlier that might be compromising our
+normality assumption a bit. 
 
 3. **Calculate the test statistic:**
 
@@ -733,7 +738,7 @@ if the null hypothesis of no linear relationship is true is less than
     is an intriguing first step in a more complete analysis of changing climate in
     the area. 
 
-It is also good to report the percentage of variation that the model explains:
+\indent It is also good to report the percentage of variation that the model explains:
 *Year* explains 54.91% of the variation in yearly average maximum *Temperature*.
 If this value had been very
 small, we might discount the previous result. Since it is moderately large, 
@@ -742,7 +747,7 @@ quite a bit of the variation in yearly average maximum temperatures in Bozeman.
 Note that the percentage of variation explained would get much worse if we
 tried to analyze the monthly or original daily maximum temperature data. 
 
-Interpreting a confidence interval provides more useful information than the
+\indent Interpreting a confidence interval provides more useful information than the
 hypothesis test here --
 instead of just assessing evidence against the null hypothesis, we can actually
 provide our best guess at the true change in the mean of $y$ for a change in $x$. 
@@ -753,7 +758,7 @@ change in the true mean of the yearly average maximum *Temperatures* in Bozeman 
 confint(temp1)
 ```
 
-Sometimes the scale of the x-variable makes interpretation a little difficult,
+\indent Sometimes the scale of the x-variable makes interpretation a little difficult,
 so we can re-scale it
 to make it more interpretable. One option is to re-scale the variable and
 re-fit the regression model and the other (easier) option is to re-scale our
@@ -776,7 +781,7 @@ until digital instrumentation was installed) and that local trends are likely
 to vary around the global average change based on localized environmental
 conditions. 
 
-One issue that arises in local studies of climate change is that researchers 
+\indent One issue that arises in local studies of climate change is that researchers 
 often consider these sorts
 of tests at many locations and on many response variables (if I did the maximum
 temperature, why not also do the same analysis of the minimum temperature time
@@ -798,11 +803,11 @@ where you multiply all the p-values by the number of tests performed. It
 controls the chances of at least one error to be same as your Type I error rate
 for one test.]. 
 
-Along with the confidence interval, we can also plot the estimated model 
+\indent Along with the confidence interval, we can also plot the estimated model 
 (Figure \@ref(fig:Figure7-6) using a term-plot from the ``effects`` package
 (Fox, 2003). This is the same function we used for visualizing results
 in the ANOVA models and in its basic application you just need 
-``plot(allEffects(modelname))`` but we enhanced our version a little. In 
+``plot(allEffects(MODELNAME))`` but we enhanced our version a little. In 
 regression models, we get to see the regression line along with bounds for
 95% confidence intervals for the mean at every value of $x$ that was observed
 (explained in next section). Note that there is also a rugplot on the x-axis
@@ -821,7 +826,7 @@ plot(allEffects(temp1, xlevels=list(Year=bozemantemps$Year)),
      grid=T)
 ```
 
-If we extended the plot for the model to ``Year``=0, we could see the
+If we extended the plot for the model to ``Year`` = 0, we could see the
 reason that the y-intercept in this model is -47.4$^\circ F$. This is 
 obviously a large extrapolation for these data and provides a silly result.
 However, in paleoclimate data that goes back
@@ -841,7 +846,7 @@ summary(bozemantemps$Year2)
 ```
 
 The new estimated regression equation is
-$\widehat{\text{Temp}}_i = 52.34 + 0.052*\text{Year2}_i$. The slope and
+$\widehat{\text{Temp}}_i = 52.34 + 0.052\cdot\text{Year2}_i$. The slope and
 its test statistic are the same as in the previous model. The y-intercept 
 has changed dramatically with a 95% from 51.72$^\circ F$ to 52.96$^\circ F$
 for ``Year2``=0. But we know that ``Year2`` has a 0 value for 1901 because 
@@ -858,7 +863,7 @@ summary(temp2)
 confint(temp2)
 ```
 
-Ideally, we want to find a regression model that does not violate any 
+\indent Ideally, we want to find a regression model that does not violate any 
 assumptions, has a high $\mathbf{R^2}$ value, and a slope coefficient 
 with a small p-value. If any of these are not the case, then we are
 not completely satisfied with the regression and **should be suspicious
@@ -910,7 +915,7 @@ plot(meanmax~Year,data=d1,xlab="Year",ylab="Maximum Temperature",main="(d)")
 abline(lm(meanmax~Year,data=d1)$coefficients,lwd=2,col="red")
 ```
 
-Hopefully you can see that panel (c) contains the most clear linear 
+\indent Hopefully you can see that panel (c) contains the most clear linear 
 relationship among the choices. The plot in
 panel (c) is actually the real data set and pretty clearly presents itself as
 "different" from the other results. When we have small p-values, the real data
@@ -924,7 +929,7 @@ situation -- does our result look like it is different from what could have been
 observed just by chance if there were no linear relationship between $x$
 and $y$? It seems unlikely...
 
-Repeating this permutation process and tracking the estimated slope 
+\indent Repeating this permutation process and tracking the estimated slope 
 coefficients, as $T^*$, provides another method to obtain a p-value in 
 SLR applications. This could also be performed on the $t$-statistic for 
 the slope coefficient and would provide the same p-values but the sampling
@@ -942,12 +947,12 @@ set.seed(3456)
 Bozeman temperature linear regression model with bold vertical lines at 
 $\pm b_1=0.56$.
 
-```{r Figure7-8,fig.cap="(ref:fig7-8)",warning=F,message=F}
+```{r Figure7-8,fig.cap="(ref:fig7-8)",fig.height=5,fig.width=10}
 Tobs <- lm(meanmax~Year, data=bozemantemps)$coef[2]
 Tobs
 par(mfrow=c(1,2))
 B <- 1000
-Tstar <- matrix(NA,nrow=B)
+Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- lm(meanmax~shuffle(Year), data=bozemantemps)$coef[2]
 }
@@ -958,7 +963,7 @@ plot(density(Tstar), main="Density curve of Tstar", xlim=c(-1,1)*Tobs)
 abline(v=c(-1,1)*Tobs, col="red", lwd=3)
 ```
 
-One other interesting aspect of exploring the permuted data sets as in 
+\indent One other interesting aspect of exploring the permuted data sets as in 
 Figure \@ref(fig:Figure7-7) is that the outlier
 in the late 1930s "disappears" in the permuted data sets because there were
 many other observations that were that warm, just none that happened around
@@ -966,7 +971,7 @@ that time of the century in the real data set. This reinforces the evidence for
 changes over time that seem to be present in these data that old unusual years
 don't look unusual in more recent years. 
 
-The permutation approach can be useful in situations where the normality assumption
+\indent The permutation approach can be useful in situations where the normality assumption
 is compromised, but there are no influential points. In these situations, we
 might find more trustworthy p-values using permutations but only if we are
 working with an initial estimated regression equation that we generally trust. 
@@ -975,7 +980,7 @@ is actually measuring -- the chance of seeing something like what we saw, or
 more extreme, if the null is true. And the previous scatterplots show what the
 "by chance" versions of this relationship might look like. 
 
-In a similar situation where we want to focus on confidence intervals for slope
+\indent In a similar situation where we want to focus on confidence intervals for slope
 coefficients but are not completely comfortable with the normality assumption, 
 it is also possible to generate bootstrap confidence intervals by sampling with
 replacement from the data set. This idea was introduced in 
@@ -995,23 +1000,23 @@ set.seed(12345)
 temperature linear regression model with bold vertical lines delineating 95%
 confidence interval and observed slope of 0.52.
 
-```{r Figure7-9,fig.cap="(ref:fig7-9)",warning=F,message=F}
+```{r Figure7-9,fig.cap="(ref:fig7-9)",fig.height=5,fig.width=10}
 Tobs <- lm(meanmax~Year, data=bozemantemps)$coef[2]
 Tobs
 par(mfrow=c(1,2))
 B <- 1000
-Tstar <- matrix(NA,nrow=B)
+Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- lm(meanmax~Year, data=resample(bozemantemps))$coef[2]
 }
-quantiles <- qdata(Tstar, c(.025,.975))
+quantiles <- qdata(Tstar, c(0.025,0.975))
 quantiles
-hist(Tstar,labels=T)
-abline(v=Tobs,col="red",lwd=2)
-abline(v=quantiles$quantile,col="blue",lwd=3)
-plot(density(Tstar),main="Density curve of Tstar")
-abline(v=Tobs,col="red",lwd=2)
-abline(v=quantiles$quantile,col="blue",lwd=3)
+hist(Tstar, labels=T)
+abline(v=Tobs, col="red", lwd=2)
+abline(v=quantiles$quantile, col="blue", lwd=3)
+plot(density(Tstar), main="Density curve of Tstar")
+abline(v=Tobs, col="red", lwd=2)
+abline(v=quantiles$quantile, col="blue", lwd=3)
 ```
 
 ## Transformations part I: Linearizing relationships	{#section7-5}
@@ -1039,7 +1044,8 @@ of this and the next section), or
 3. Consider more advanced statistical models that can account for these issues 
 (the focus of additional statistics courses). 
 
-***Transformations*** involve applying a function to one or both variables. After 
+\indent ***Transformations*** involve applying a function to one or both 
+variables. After 
 applying this transformation, one hopes to have
 alleviated whatever issues encouraged its consideration. ***Linear transformation 
 functions***, of the form $z_{\text{new}}=a*x+b$, will never help us to fix
@@ -1062,17 +1068,16 @@ a 1 year increase, the slope coefficient is 0.052.
 (ref:fig7-10) Scatterplots of *Temperature* ($^\circ F$) versus *Year* (left)
 and *Temperature* ($^\circ C$) vs *Years* since 1901 (right).
 
-```{r Figure7-10,fig.cap="(ref:fig7-10)",echo=F,fig.width=5,fig.height=4}
+```{r Figure7-10,fig.cap="(ref:fig7-10)",echo=F,fig.width=10,fig.height=5}
 bozemantemps$meanmaxC <- (bozemantemps$meanmax - 32)*(5/9)
 temp3 <- lm(meanmaxC~Year2, data=bozemantemps)
 par(mfrow=c(1,2))
 plot(meanmax~Year,data=bozemantemps,xlab="Year",ylab="degrees F",
-     main="degrees F and Year",cex.main=0.75)
+     main="degrees F and Year")
 abline(lm(meanmax~Year,data=bozemantemps)$coefficients,lwd=2,col="steelblue")
 
 plot(meanmaxC~Year2,data=bozemantemps,xlab="Years since 1901",
-     ylab="degrees C",main="degrees C and Years since 1901",
-     cex.main=0.75)
+     ylab="degrees C",main="degrees C and Years since 1901")
 abline(temp3$coefficients,lwd=2,col="steelblue")
 ```
 
@@ -1084,10 +1089,11 @@ summary(temp3)
 ```
 
 
-***Nonlinear transformation functions*** are where we apply something more 
-complicated than this
+\indent ***Nonlinear transformation functions*** are where we apply 
+something more complicated than this
 shift and scaling, something like $y_{\text{new}}=f(y)$, where $f(\cdot)$ could be 
-a log or power of the original variable $y$. When we apply these sorts of transformations, 
+a log or power of the original variable $y$. When we apply these sorts of
+transformations, 
 interesting things can happen to our linear models and their problems. Some
 examples of transformations that are at least occasionally used for transforming
 the response variable are provided in Table \@ref(tab:Table7-1), ranging from taking 
@@ -1131,7 +1137,7 @@ situations, such as when measuring acidity (pH), noise (decibels), or
 earthquake size (Richter scale), the measurements are already on logarithmic
 scales.
 
-Actually, we have already analyzed data that benefited from a
+\indent Actually, we have already analyzed data that benefited from a
 ***log-transformation*** -- the *log-area burned* vs. *summer temperature*
 data for Montana. Figure \@ref(fig:Figure7-11) compares the
 relationship between these variables on the original hectares scale and the
@@ -1140,7 +1146,7 @@ log-hectares scale.
 (ref:fig7-11) Scatterplots of Hectares (a) and log-Hectares 
 (b) vs Temperature.
 
-```{r Figure7-11,fig.cap="(ref:fig7-11)",fig.height=4,fig.width=5}
+```{r Figure7-11,fig.cap="(ref:fig7-11)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
 plot(hectacres~Temperature, data=mtfires, main="(a)",
      ylab="Hectacres", pch=16)
@@ -1157,7 +1163,7 @@ situation previously. This shows at least one situation where a
 log-transformation of a response variable can linearize a relationship and
 reduce non-constant variance. 
 
-This transformation does not always work to "fix" curvilinear 
+\indent This transformation does not always work to "fix" curvilinear 
 relationships, in fact
 in some situations it can make the relationship more nonlinear. For example, 
 reconsider the relationship between tree diameter and tree height, which
@@ -1202,7 +1208,7 @@ scatterplot(log(height.m)~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
             main="log-Tree height vs tree diameter")
 ```
 
-All is not lost in this situation, we can consider two other potential 
+\indent All is not lost in this situation, we can consider two other potential 
 uses of the log-transformation
 and see if they can "fix" the relationship up a bit. One option is to apply the
 transformation to the explanatory variable (``y~log(x)``), displayed in 
@@ -1210,7 +1216,10 @@ Figure \@ref(fig:Figure7-14). If the distribution of the explanatory
 variable is right skewed (see the boxplot on
 the x-axis), then consider log-transforming the explanatory variable. This will
 often reduce the leverage of those most extreme observations which can be
-useful. 
+useful. In this situation, it also seems to have been quite successful at 
+linearizing the relationship, leaving some minor
+non-constant variance, but providing a big improvement from the relationship on
+the original scale. 
 
 (ref:fig7-14) Scatterplot of tree height versus log(tree diameter).
 
@@ -1219,12 +1228,7 @@ scatterplot(height.m~log(dbh.cm), data=ufc[-168,], smooth=T, spread=F,
             main="Tree height vs log-tree diameter")
 ```
 
-In this situation, it also seems to have been quite successful at 
-linearizing the relationship, leaving some minor
-non-constant variance, but providing a big improvement from the relationship on
-the original scale. 
-
-The other option, especially when everything else fails, is to apply the
+\indent The other option, especially when everything else fails, is to apply the
 log-transformation to
 both the explanatory and response variables (``log(y)~log(x)``), as
 displayed in Figure \@ref(fig:Figure7-15). For this example, the 
@@ -1242,7 +1246,7 @@ scatterplot(log(height.m)~log(dbh.cm), data=ufc[-168,], smooth=T,
             spread=F, main="log-Tree height vs log-tree diameter")
 ```
 
-Economists also like to use $\log(y)\sim \log(x)$ transformations. The 
+\indent Economists also like to use $\log(y)\sim \log(x)$ transformations. The 
 log-log transformation
 tends to linearize certain relationships and has specific interpretations in
 terms of Economics theory. The log-log transformation shows up in many
@@ -1253,7 +1257,7 @@ situation where transformations of both $x$ and $y$ are required and
 this double transformation seems to be quite successful in what 
 looks like an initially hopeless situation for our linear modeling approach. 
 
-Data were collected in 1988 on the rates of infant mortality 
+\indent Data were collected in 1988 on the rates of infant mortality 
 (infant deaths per 1,000
 live births) and gross domestic product (GDP) per capita (in 1998 US dollars)
 from $n=207$ countries. These data are available from the ``car`` package 
@@ -1282,7 +1286,7 @@ plot(infant.mortality~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="I
 plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(d) log-Infant Mortality vs log-GDP")
 ```
 
-Almost all nonlinear transformations assume that the variables are strictly
+\indent Almost all nonlinear transformations assume that the variables are strictly
 greater than 0. For example, consider what happens when we apply the 
 ``log``  function to 0 or a negative value in R:
 
@@ -1291,14 +1295,14 @@ log(-1)
 log(0)
 ```
 
-So be careful to think about the domain of the transformation function 
+\indent So be careful to think about the domain of the transformation function 
 before using transformations. For
 example, when using the log-transformation make sure that the data values are
 non-zero and positive or you will get some surprises when you go to fit your
 regression model to a data set with NaNs (not a number) and/or
 $-\infty\text{'s}$ in it. 
 
-Sometimes the log-transformations will not be entirely successful. If the
+\indent Sometimes the log-transformations will not be entirely successful. If the
 relationship is ***monotonic*** (strictly positive or strictly negative
 but not both), then possibly another stop
 on the ladder of transformations in Table \@ref(tab:Table7-1) might work.
@@ -1307,11 +1311,11 @@ is not monotonic, then it may be better to consider a more complex regression
 model that can accommodate the shape in the relationship or to split the data
 set in two so you can use SLR on each part. 
 
-Finally, remember that ``log`` in statistics and especially in R means the 
+\indent Finally, remember that ``log`` in statistics and especially in R means the 
 ***natural log*** (*ln* or log base *e* as you might see it elsewhere). In 
 these situations, applying ``log10`` function (which provides log base 10)
 to the variables would lead to very similar results, but readers may assume
-you used $\ln$ if you don't state that you used $log_10$. The main thing
+you used $\ln$ if you don't state that you used $log_{10}$. The main thing
 to remember to do is to be clear when communicating the version you are
 using. As an example, I (Greenwood) was working with researchers on a study
 [@Dieser2010] related to impacts of environmental
@@ -1319,11 +1323,15 @@ stresses on bacterial survival. The response variable was log-transformed
 counts and involved smoothed regression lines fit on this scale. I was using
 natural logs to fit the models and then shared the fitted values from the
 models and my collaborators back-transformed the results assuming that I had
-used $log_10$. We quickly resolved our differences once we discovered them but
+used $log_{10}$. We quickly resolved our differences once we discovered them but
 this serves as a reminder at how important communication is in group projects 
 -- we both said we were working with log-transformations and didn't know we
-defaulted to different bases. Generally, in statistics, it's safe to assume
+defaulted to different bases. 
+
+------------------------------------------------------------
+Generally, in statistics, it's safe to assume
 that everything is log base *e* unless otherwise specified. 
+------------------------------------------------------------
 
 ## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
 
@@ -1341,7 +1349,17 @@ explanatory variable, or both.
 
 **Scenario 1: log(y) vs x model:**
 
-First consider the $\log(y) \sim x$ situations where the estimated model
+```{r Figure7-17,fig.cap="(ref:fig7-17)",echo=F,fig.height=5,fig.width=10}
+par(mfrow=c(1,2))
+plot(loghectacres~Temperature,data=mtfires, main="(a)",ylab="log-Hectacres",pch=16,col="salmon")
+firem<-lm(loghectacres~Temperature,data=mtfires)
+abline(lm(loghectacres~Temperature,data=mtfires),lwd=2,col="darkred")
+plot(hectacres~Temperature,data=mtfires, main="(b)",ylab="Hectacres",pch=16,col="salmon")
+t1<-seq(from=53,to=60,length.out=30)
+lines(exp(firem$coef[1]+firem$coef[2]*t1)~t1,lwd=2,col="darkred")
+```
+
+\indent First consider the $\log(y) \sim x$ situations where the estimated model
 is of the form $\widehat{\log(y)} = b_0 + b_1x$. When only the response is
 *log*-transformed, some people call this a ***semi-log model***. But many
 researchers will use this model without any special considerations, as
@@ -1357,7 +1375,7 @@ to read in-line and ``exp()`` is the R function name to execute this calculation
 * $y=\exp(b_0)\exp(b_1x)$. *This is based on the rules for* ``exp()`` *where*
 $\exp(a+b)=\exp(a)\exp(b)$.
 
-* Now consider what happens if we increase $x$ 1 unit, going from $x$ 
+* Now consider what happens if we increase $x$ by 1 unit, going from $x$ 
 to $x+1$, providing a new predicted $y$ that we can call $y^*$:
 $y^*=\exp(b_0)\exp[b_1(x+1)]$
 
@@ -1368,10 +1386,11 @@ $y^*=\exp(b_0)\exp[b_1(x+1)]$
 $\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}$ *with* $\color{red}{\mathbf{y}}$,
 *the value for* $x$.
 
-So the difference in fitted values between $x$ and $x+1$ is to multiply the
+\indent So the difference in fitted values between $x$ and $x+1$ is to multiply the
 result for $x$ (that was predicting $\color{red}{\mathbf{y}}$) by 
 $\exp(b_1)$ to get to the predicted result for $x+1$ (called $y^*$).
-We can then use this result to form our ***log(y)~x slope interpretation***:
+We can then use this result to form our $\mathit{\boldsymbol{\log(y)\sim x}}$ 
+***slope interpretation***:
 for a 1 unit increase in $x$, we observe a multiplicative change of
 $\mathbf{exp(b_1)}$ in the response. When we compute a mean on logged variables
 that are symmetrically distributed (this should occur if our transformation was
@@ -1382,7 +1401,7 @@ medians instead of means, and we don't do this because
 we want to, we do it because it is result of modeling on the $\log(y)$ scale 
 if successful. 
 
-When we are working with regression equations, slopes can either be positive or
+\indent When we are working with regression equations, slopes can either be positive or
 negative and our interpretations change based on this result to either result
 in growth ($b_1>0$) or decay ($b_1<0$) in the responses as the explanatory
 variable is increased. As an example, consider $b_1=0.4$ and 
@@ -1422,8 +1441,8 @@ think about the results in terms of ***% change of the medians*** to make
 the scale of change more understandable. Some examples will help us see how
 these ideas can be used in applications. 
 
-For the area burned data set, the estimated regression model is
-$\log(\widehat{\text{hectares}})=-69.8+1.39\text{ Temp}$. On the
+\indent For the area burned data set, the estimated regression model is
+$\log(\widehat{\text{hectares}})=-69.8+1.39\cdot\text{ Temp}$. On the
 original scale, this implies that the model is 
 $\widehat{\text{hectares}}=\exp(-69.8)\exp(1.39\text{ Temp})$. 
 Figure \@ref(fig:Figure7-17) provides the $\log(y)$ scale version of 
@@ -1447,19 +1466,27 @@ to a $(4.01-1)*100 = 301\%$ increase in the median number of hectares burned.
 median on the original Hectares scale (b) for the area burned vs 
 temperature data. 
 
-```{r Figure7-17,fig.cap="(ref:fig7-17)",echo=F,message=F,warning=F}
-par(mfrow=c(1,2))
-plot(loghectacres~Temperature,data=mtfires, main="(a)",ylab="log-Hectacres",pch=16,col="salmon")
-firem<-lm(loghectacres~Temperature,data=mtfires)
-abline(lm(loghectacres~Temperature,data=mtfires),lwd=2,col="darkred")
-plot(hectacres~Temperature,data=mtfires, main="(b)",ylab="Hectacres",pch=16,col="salmon")
-t1<-seq(from=53,to=60,length.out=30)
-lines(exp(firem$coef[1]+firem$coef[2]*t1)~t1,lwd=2,col="darkred")
-```
-
 **Scenario 2: y vs log(x) model:**
 
-When only the explanatory variable is log-transformed, it has a 
+(ref:fig7-18) Plot of the observations and estimated SLR model 
+(mortality~ log(GDP)) (top) and implied model (bottom) for the 
+infant mortality data.
+
+```{r Figure7-18,fig.cap="(ref:fig7-18)",echo=F,fig.height=5,fig.width=10}
+data(UN)
+ID1<-lm(infant.mortality~log(gdp),data=UN)
+par(mfrow=c(1,2))
+
+plot(infant.mortality~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="Infant deaths/1000 births",main="(a) Infant Mortality vs log-GDP")
+abline(ID1$coef,lwd=2,col="slateblue4")
+
+plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
+
+gdp1<-seq(from=30,to=42416,length.out=100)
+lines(ID1$coef[1]+ID1$coef[2]*log(gdp1)~gdp1,lwd=2,col="slateblue4")
+```
+
+\indent When only the explanatory variable is log-transformed, it has a 
 different sort of
 impact on the regression model interpretation. Effectively we move the
 percentage change onto the x-scale and modify the first part of our slope
@@ -1494,28 +1521,10 @@ doubling of $x$, we expect a $b_1\log(2)$ change in the mean of $y$.
 Note that both interpretations are for the mean of the $y\text{'s}$
 since we haven't changed the $y\sim$ part of the model. 
 
-(ref:fig7-18) Plot of the observations and estimated SLR model 
-(mortality~ log(GDP)) (top) and implied model (bottom) for the 
-infant mortality data.
-
-```{r Figure7-18,fig.cap="(ref:fig7-18)",echo=F,warning=F,message=F}
-data(UN)
-ID1<-lm(infant.mortality~log(gdp),data=UN)
-par(mfrow=c(1,2))
-
-plot(infant.mortality~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="Infant deaths/1000 births",main="(a) Infant Mortality vs log-GDP")
-abline(ID1$coef,lwd=2,col="slateblue4")
-
-plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
-
-gdp1<-seq(from=30,to=42416,length.out=100)
-lines(ID1$coef[1]+ID1$coef[2]*log(gdp1)~gdp1,lwd=2,col="slateblue4")
-```
-
-While it is not a perfect model (no model is), let's consider the model
+\indent While it is not a perfect model (no model is), let's consider the model
 for *infant mortality* $\sim$ *log(GDP)* in order to practice the 
 interpretation using this type of model. This model was estimated to be
-$\widehat{\text{infantmortality}}=168.648-16.6\log(\text{GDP})$. The first
+$\widehat{\text{infantmortality}}=168.648-16.6\cdot\log(\text{GDP})$. The first
 (simplest) interpretation of the slope coefficient is: For a 1 log-dollar
 increase in GDP per capita, we expect infant
 mortality to change, on average, by -16.6 deaths/1000 births per log-dollar. The
@@ -1535,7 +1544,7 @@ summary(ID1)
 -16.6*log(2)
 ```
 
-It appears that our model does not fit too well and that there might be
+\indent It appears that our model does not fit too well and that there might be
 some non-constant variance so we
 should check the diagnostic plots (available in Figure \@ref(fig:Figure7-19))
 before we trust
@@ -1559,7 +1568,23 @@ normality, and curvature issues.
 
 **Scenario 3: log(y)~log(x) model**
 
-A final model combines log-transformations of both $x$ and $y$, combining the interpretations used in the previous two situations. This model is called the
+(ref:fig7-20) Plot of the observations and estimated SLR model 
+log(mortality) $\sim$ log(GDP) (left) and implied model (right) for the infant
+mortality data.
+
+```{r Figure7-20,fig.cap='(ref:fig7-20)',echo=F}
+par(mfrow=c(1,2))
+ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
+plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(a) log-Infant Mort. vs log-GDP",cex.main=1)
+abline(ID2$coef,lwd=2,col="slateblue3")
+
+plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
+
+gdp1<-seq(from=30,to=42416,length.out=100)
+lines(exp(ID2$coef[1]+ID2$coef[2]*log(gdp1))~gdp1,lwd=2,col="slateblue3")
+```
+
+\indent A final model combines log-transformations of both $x$ and $y$, combining the interpretations used in the previous two situations. This model is called the
 ***log-log model*** and in some areas is also called the ***power law model***.
 The power-law model is usually written as $y = \beta_0x^{\beta_1}+\varepsilon$,
 where $y$ is thought to be proportional to $x$ raised to an estimated power
@@ -1579,7 +1604,7 @@ for logs:* $\log(ab) = \log(a) + \log(b)$
 * $\log(y) = \log(\beta_0) + \beta_1\log(x)$ &nbsp; *Based on the rules
 for logs:* $\log(x^b) = b\log(x)$
 
-So other than $\log(\beta_0)$ in the model, this looks just like our 
+\indent So other than $\log(\beta_0)$ in the model, this looks just like our 
 regular SLR model with $x$
 and $y$ both log-transformed. The slope coefficient for $\log(x)$ is the 
 power coefficient in the original power law model and determines whether
@@ -1591,12 +1616,13 @@ to estimate these models [@Greenwood2002] but it is still a
 pretty powerful result to be able to estimate the coefficients in
 $(y=\beta_0x^{\beta_1})$ using SLR.
 
-We don't typically use
+\indent We don't typically use
 the previous ideas to interpret the typical log-log regression model, instead
 we combine our two previous interpretation techniques to generate our
 interpretation. We need to work out the mathematics of doubling $x$ and the
-changes in $y$ starting with the ***log(y)~log(x)*** ***model*** that we 
-would get out of fitting the SLR with both variables log-transformed:
+changes in $y$ starting with the $\mathit{\boldsymbol{\log(y)\sim \log(x)}}$
+***model*** that we would get out of fitting the SLR with both variables
+log-transformed:
 
 * $\log(y) = b_0 + b_1\log(x)$
 
@@ -1616,8 +1642,8 @@ $(x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})$ to $(2x,y^*)$ with
 So doubling $x$ leads to a multiplicative change in the median of $y$
 of $2^{b_1}$.
 
-Let's apply this idea
-to the GDP and infant mortality data where a $\log(x) \sim \log(y)$ transformation
+\indent Let's apply this idea to the GDP and infant mortality data where a 
+$\log(x) \sim \log(y)$ transformation
 actually made the resulting relationship look like it might meet the SLR
 assumptions. The regression line in Figure \@ref(fig:Figure7-20) actually looks 
 pretty good on both
@@ -1629,24 +1655,15 @@ ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
 summary(ID2)
 ```
 
-(ref:fig7-20) Plot of the observations and estimated SLR model 
-log(mortality) $\sim$ log(GDP) (left) and implied model (right) for the infant
-mortality data.
+(ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
 
-```{r Figure7-20,fig.cap='(ref:fig7-20)',echo=F}
-par(mfrow=c(1,2))
-
-plot(log(infant.mortality)~log(gdp),data=UN,pch=16,col="coral",xlab="log-GDP",ylab="log-Infant deaths/1000 births",main="(a) log-Infant Mort. vs log-GDP",cex.main=1)
-abline(ID2$coef,lwd=2,col="slateblue3")
-
-plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(b) Infant Mortality vs GDP")
-
-gdp1<-seq(from=30,to=42416,length.out=100)
-lines(exp(ID2$coef[1]+ID2$coef[2]*log(gdp1))~gdp1,lwd=2,col="slateblue3")
+```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,fig.height=5,fig.width=8}
+par(mfrow=c(2,2))
+plot(ID2)
 ```
 
-The estimated regression model is
-$\log(\widehat{\text{infantmortality}})=7.0452-0.493\log(\text{GDP})$.
+\indent The estimated regression model is
+$\log(\widehat{\text{infantmortality}})=7.0452-0.493\cdot\log(\text{GDP})$.
 The slope coefficient can be interpreted two ways.
 
 1. ***On the log-log scale:*** For a 1 log-dollar increase in *GDP*, we expect, on average,
@@ -1663,20 +1680,16 @@ the residuals are a little heavy (more spread out than a normal distribution)
 and there might still be a little pattern remaining in the residuals vs fitted. 
 There are no influential points to be concerned about in this situation.
 
-(ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
-
-```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,fig.height=5,fig.width=8}
-par(mfrow=c(2,2))
-plot(ID2)
-```
-
-While we will not revisit this at all except in the case-studies in Chapter \@ref(chapter9),
+\indent While we will not revisit this at all except in the case-studies 
+in Chapter \@ref(chapter9),
 log-transformations can be applied to the response variable in ONE and TWO-WAY
 ANOVA models when we are concerned about non-constant variance and
 non-normality issues. The remaining methods in this chapter return to SLR and assuming
 that the model assumptions have been met. In fact, the methods in Section \@ref(section7-7)
 are some of the most sensitive results to violations of the assumptions that we
 will explore.
+
+\sectionmark{Confidence intervals and prediction intervals}
 
 ## Confidence interval for the mean and prediction intervals for a new observation {#section7-7}
 
@@ -1706,7 +1719,7 @@ $\text{SE}_{\hat{\mu}_{\nu}}$, can be calculated as
 $$\text{SE}_{\hat{\mu}_{\nu}} 
 = \sqrt{\text{SE}^2_{b_1}(x_{\nu}-\bar{x})^2 + \frac{\hat{\sigma}^2}{n}}$$
 
-\noindent where $\hat{\sigma}^2$ is the squared residual standard error. This formula
+where $\hat{\sigma}^2$ is the squared residual standard error. This formula
 combines the variability in the slope estimate, $\text{SE}_{b_1}$, scaled
 based on the distance of $x_{\nu}$ from $\bar{x}$ and the variability
 around the regression line, $\hat{\sigma}^2$. Fortunately, we'll use R's
@@ -1722,13 +1735,14 @@ In application, these intervals get wider
 the further we go from the mean of the $x\text{'s}$. These have 
 interpretations that are exactly like those for the y-intercept: 
 
-* For an x-value of $\boldsymbol{x_{\nu}}$, we are __% confident that
-the true mean of **y** is between **LL**  and **UL** ***[units of y]***. 
+> For an x-value of $\boldsymbol{x_{\nu}}$, we are __% confident that
+the true mean of **y** is between **LL**  and **UL** **[*units of y*]**. 
+> 
 
 It is also useful to remember that this
 interpretation applies individually to every $x$ displayed in term-plots.
 
-* A second type of interval in this situation takes on a more challenging
+A second type of interval in this situation takes on a more challenging
 task -- to place an interval on where we think a new observation will fall,
 called a ***prediction interval*** (PI). This PI will need to be much wider
 than the CI for the mean since we need to account for both the uncertainty
@@ -1750,16 +1764,17 @@ The __% PI is calculated as
 
 $$\boldsymbol{\hat{y}_{\nu} \mp t^*_{n-2}}\textbf{SE}_{\boldsymbol{\hat{y}_{\nu}}}$$
 
-\noindent and interpreted as:
+and interpreted as:
 
-* We are __% sure that a new observation at $\boldsymbol{x_{\nu}}$ will be between
-**LL** and **UL** ***[units of y]***. Since 
-$\text{SE}_{\hat{y}_{\nu}} > \text{SE}_{\hat{\mu}_{\nu}}$, the **PI will always
-be wider than the CI**. Additionally, if either the SE for the slope or the 
-residual variance increases, both intervals would get
-wider. 
+> We are __% sure that a new observation at $\boldsymbol{x_{\nu}}$ will be between
+> **LL** and **UL** **[*units of y*]**. Since 
+> $\text{SE}_{\hat{y}_{\nu}} > \text{SE}_{\hat{\mu}_{\nu}}$, the **PI will always
+> be wider than the CI**. Additionally, if either the SE for the slope or the 
+> residual variance increases, both intervals would get
+> wider. 
+>
 
-As in confidence
+\indent As in confidence
 intervals, we assume that a 95% PI "succeeds" -- contains the new observation --
 in 95% of applications of the methods and fails the other 5% of the time. 
 Remember that for any interval estimate, the true value is either in the
@@ -1769,24 +1784,24 @@ responses these methods are very sensitive to violations of assumptions so we
 need to be especially certain that we have met the assumptions to trust these
 results will work as advertised (at the ***nominal*** (specified) level).
 
-There are two ways to explore CIs for the mean and PIs for a new observation.
+\indent There are two ways to explore CIs for the mean and PIs for a new observation.
 The first is to focus on a specific x-value of interest. The second is to 
 plot the results for all $x\text{'s}$. To do both of these, but especially
 to make plots, we want to learn to use the ``predict`` function. It can 
 either produce the estimate for a particular $x_{\nu}$ and the 
 $\text{SE}_{\hat{\mu}_{\nu}}$ or we can get it to directly calculate 
-the CI and PI. The first way to use it is ``predict(modelname, se.fit=T)``
+the CI and PI. The first way to use it is ``predict(MODELNAME, se.fit=T)``
 which will provide fitted values and $\text{SE}_{\hat{\mu}_{\nu}}$
 for all observed $x\text{'s}$. We can then use the 
 $\text{SE}_{\hat{\mu}_{\nu}}$ to calculate $\text{SE}_{\hat{y}_{\nu}}$
 and form our own PIs. If you want CIs, run 
-``predict(modelname, interval= "confidence")``; if you want PIs, run 
-``predict(modelname, interval="prediction")``. If you want to do 
+``predict(MODELNAME, interval= "confidence")``; if you want PIs, run 
+``predict(MODELNAME, interval="prediction")``. If you want to do 
 prediction at an x-value that was not in the original
 observations, add the option ``newdata=data.frame(XVARIABLENAME_FROM_ORIGINAL_MODEL=Xnu)``
 to the ``predict`` function call.
 
-Some examples of using the predict function follow^[I have suppressed 
+\indent Some examples of using the predict function follow^[I have suppressed 
 some of the plotting code in this and the last chapter to make
 "pretty" pictures - which you probably are happy to not see it until you want
 to make a pretty plot on your own. All the code used is available upon
@@ -1820,7 +1835,7 @@ predict(m1, newdata=data.frame(Beers=8), interval="confidence")
 predict(m1, newdata=data.frame(Beers=8), interval="prediction")
 ```
 
-Based on these results, we are 95% confident that the true mean *BAC*
+\indent Based on these results, we are 95% confident that the true mean *BAC*
 for 8 beers consumed is between 0.111 and 0.15 grams of alcohol per dL of
 blood. For a new student drinking 8 beers, we are 95% sure that the observed
 BAC will be between 0.083 and 0.179 g/dL. You can see from these results that
@@ -1836,7 +1851,7 @@ $\hat{\sigma}=0.02044$. So we just need the $t^*$ multiplier for 95%
 confidence and 14 *df*:
 
 ```{r}
-qt(.975, df=14) # t* multiplier for 95% CI or 95% PI
+qt(0.975, df=14) # t* multiplier for 95% CI or 95% PI
 ```
 
 The 95% CI for the true mean at $\boldsymbol{x_{\nu}=8}$ is then:
@@ -1861,7 +1876,7 @@ The 95% PI at $\boldsymbol{x_{\nu}=8}$ is
 0.131 + c(-1,1)*2.1448*0.0224
 ```
 
-These calculations are "fun" and informative but displaying these results
+\indent These calculations are "fun" and informative but displaying these results
 for all x-values is a bit more
 informative about the performance of the two types of intervals and for results
 we might expect in this application. The calculations we just performed provide
@@ -1899,7 +1914,20 @@ with a legend.
 (ref:fig7-22) Estimated SLR for BAC data with 95% confidence (dashed lines)
 and 95% prediction (lighter, dotted lines) intervals. 
 
-```{r Figure7-22,fig.cap="(ref:fig7-22)",warning=F,message=F}
+```{r Figure7-22,fig.cap="(ref:fig7-22)",fig.height=5,fig.width=10,echo=F}
+par(mfrow=c(1,1))
+plot(BAC~Beers, data=BB, xlab="Beers", ylab="BAC", pch=20, col="gold4",
+     main="Scatterplot of estimated regression line with 95% CI and PI")
+lines(beerf, BBCI$fit, col="blue", lwd=3)
+lines(beerf, BBCI$lwr, col="red", lty=2, lwd=3)
+lines(beerf, BBCI$upr, col="red", lty=2, lwd=3)
+lines(beerf, BBPI$lwr, col="grey", lty=3, lwd=3)
+lines(beerf, BBPI$upr, col="grey", lty=3, lwd=3)
+legend("topleft", c("Estimate","CI","PI"), lwd=3, lty=c(1,2,3),
+       col = c("blue","red","grey"))
+```
+
+```{r eval=F}
 par(mfrow=c(1,1))
 plot(BAC~Beers, data=BB, xlab="Beers", ylab="BAC", pch=20, col="gold4",
      main="Scatterplot of estimated regression line with 95% CI and PI")
@@ -1921,7 +1949,7 @@ also is widening slightly but not as clearly in this situation. The difference
 in widths in the two types of intervals becomes extremely clear when they are
 displayed together. 
 
-Similarly, the 95% CI and PIs for the Bozeman yearly average maximum
+\indent Similarly, the 95% CI and PIs for the Bozeman yearly average maximum
 temperatures in Figure \@ref(fig:Figure7-23) provide
 interesting information on the uncertainty in the estimated mean temperature
 over time. It is also interesting to explore how many of the observations fall
@@ -1935,7 +1963,7 @@ more than 95% of the observations used to make it.
 (ref:fig7-23) Estimated SLR for Bozeman temperature data with 95% confidence
 (dashed lines) and 95% prediction (lighter, dotted lines) intervals. 
 
-```{r Figure7-23,fig.cap="(ref:fig7-23)",echo=F,warning=F,message=F}
+```{r Figure7-23,fig.cap="(ref:fig7-23)",echo=F,fig.height=5,fig.width=10}
 temp1<-lm(meanmax~Year, data=bozemantemps)
  Yearf<-seq(from=1901,to=2014,length.out=75)
  
@@ -1953,7 +1981,7 @@ plot(meanmax~Year,data=bozemantemps,xlab="Year", ylab="degrees F",pch=20,col="da
 legend("topleft", c("Estimate", "CI","PI"),lwd=3,lty=c(1,2,3),col = c("blue", "red","grey"))
 ```
 
-We can also use these same methods to do a prediction for the year after the
+\indent We can also use these same methods to do a prediction for the year after the
 data set ended, 2015 and in 2050:
 
 ```{r}
@@ -1999,7 +2027,8 @@ with categorical variables in a regression setting -- but we actually fit
 linear models with categorical variables in Chapters \@ref(chapter3) and 
 \@ref(chapter4) so that isn't actually completely new either. 
 
-SLR is a simple (thus its name) tool for analyzing the relationship between two
+\indent SLR is a simple (thus its name) tool for analyzing the relationship 
+between two
 quantitative variables. It contains assumptions about the estimated regression
 line being reasonable and about the distribution of the responses around that
 line to do inferences for the population regression line. Our diagnostic plots
@@ -2019,68 +2048,68 @@ The main components of the R code used in this chapter follow with the
 components to modify in lighter and/or ALL CAPS text where ``y`` is a response variable, ``x`` is an
 explanatory variable, and the data are in ``DATASETNAME``. 
 
-* scatterplot(`r colFmt("y","red")`~`r colFmt("x","red")`,
-data=`r colFmt("DATASETNAME","red")`, smooth=F)
+* **scatterplot(`r colFmt("y","red")`~`r colFmt("x","red")`,
+data=`r colFmt("DATASETNAME","red")`, smooth=F)**
 
     * Requires the ``car`` package.
     
-    * Provides a scatter plot with a regression line.
+    * Provides a scatterplot with a regression line.
 
     * Turn on ``smooth=T`` to add a smoothing line to help detect 
     nonlinear relationships.
     
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("y","red")`~
-`r colFmt("x","red")`, data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` ``<-`` lm(`r colFmt("y","red")`~
+`r colFmt("x","red")`, data=`r colFmt("DATASETNAME","red")`)**
 
     * Estimates a regression model using least squares.
     
-* summary(`r colFmt("MODELNAME","red")`)
+* **summary(`r colFmt("MODELNAME","red")`)**
 
     * Provides parameter estimates and R-squared (used heavily in 
     Chapter \@ref(chapter8) as well).
     
-* par(mfrow=c(2, 2)); plot(`r colFmt("MODELNAME","red")`)
+* **par(mfrow=c(2, 2)); plot(`r colFmt("MODELNAME","red")`)**
 
     * Provides four regression diagnostic plots in one plot.
     
-* confint(`r colFmt("MODELNAME","red")`, level=0.95)
+* **confint(`r colFmt("MODELNAME","red")`, level=0.95)**
 
     * Provides 95% confidence intervals for the regression model coefficients.
     
     * Change ``level`` if you want other confidence levels.
     
-* plot(allEffects(`r colFmt("MODELNAME","red")`))
+* **plot(allEffects(`r colFmt("MODELNAME","red")`))**
     
     * Requires the ``effects`` package. 
 
     * Provides a term-plot of the estimated regression line with 95% confidence
     interval for the mean.
     
-* `r colFmt("DATASETNAME\\$logy","red")` <- log(`r colFmt("DATASETNAME\\$y","red")`)
+* **`r colFmt("DATASETNAME\\$log.y","red")` ``<-`` log(`r colFmt("DATASETNAME\\$y","red")`)**
 
-    * Creates a transformed variable called logy -- change this to be more
+    * Creates a transformed variable called log.y -- change this to be more
     specific to your "$y$" or "$x$".
     
-* predict(`r colFmt("MODELNAME","red")`, se.fit=T)
+* **predict(`r colFmt("MODELNAME","red")`, se.fit=T)**
 
     * Provides fitted values for all observed $x\text{'s}$ with SEs for the 
     mean.
 
-* predict(`r colFmt("MODELNAME","red")`, 
+* **predict(`r colFmt("MODELNAME","red")`, 
 newdata=data.frame(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
-interval="confidence")
+interval="confidence")**
 
     * Provides fitted value for a specific $x$ (XNEW) with CI for the mean.
     Replace ``x`` with name of  explanatory variable. 
 
-* predict(`r colFmt("MODELNAME","red")`, 
+* **predict(`r colFmt("MODELNAME","red")`, 
 newdata=data.frame(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
-interval="prediction")
+interval="prediction")**
 
     * Provides fitted value for a specific $x$ (XNEW) with PI for a new
     observation. Replace ``x`` with name of explanatory variable.
     
-* qt(0.975, df=`r colFmt("n","red")` - 2)
+* **qt(0.975, df=`r colFmt("n","red")` - 2)**
 
     * Gets the $t^*$ multiplier for making a 95% interval with $n-2$ replaced
     by the sample size -- 2.

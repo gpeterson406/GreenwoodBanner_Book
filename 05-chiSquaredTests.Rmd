@@ -1968,7 +1968,7 @@ The main components of R code used in this chapter follow with components
 to modify in lighter and/or ALL CAPS text where ``y`` is a response variable and ``x`` is a predictor 
 are easily identified:
 
-* **`r colFmt("TABLENAME","red")` <- tally(~`r colFmt("x","red")` +
+* **`r colFmt("TABLENAME","red")` ``<-`` tally(~`r colFmt("x","red")` +
 `r colFmt("y","red")`, data=`r colFmt("DATASETNAME","red")`, margins=F)**
     
     * This function requires that the ``mosaic `` package has been loaded.
@@ -2000,7 +2000,7 @@ are easily identified:
     * Provides expected cell counts. 
 
 * **pchisq(`r colFmt("X-SQUARED","red")`, 
-df=(`r colFmt("R","red")` - 1)*(`r colFmt("C","red")` - 1), lower.tail=F)**
+df=(`r colFmt("R","red")` - 1)``*``(`r colFmt("C","red")` - 1), lower.tail=F)**
 
     * Provides p-value from $\boldsymbol{\chi^2}$-distribution with 
     $(R-1)(C-1)$ degrees of freedom for observed test statistic.
