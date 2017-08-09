@@ -426,7 +426,7 @@ package, make sure it appears in the list in the **Packages** tab. If it
 doesn't, repeat the previous steps to install it. 
 
 After installing the package, we need to load it to make it active in a given work
-session. Go to the command prompt and type (or copy and paste) ``require(readr)`` :
+session. Go to the command prompt and type (or copy and paste) ``require(readr)`` or ``library(readr)``:
 
 ```
 > require(readr)
@@ -579,7 +579,7 @@ after the command prompt and hit enter for each line.
 
 Figure \@ref(fig:Figure4) shows the screen with the code used in this 
 section in the upper left panel, saved in
-a file called "Ch0.R", with the results of highlighting and executing the first
+a file called "CH0.R", with the results of highlighting and executing the first
 section of code using the "Run" button. 
 
 (ref:fig4) RStudio with highlighted code run.
@@ -590,7 +590,7 @@ knitr::include_graphics('chapter0_files/fig1.4.png')
 
 ##Basic summary statistics, histograms, and boxplots using R
 
-For the following material, you will need to install and load the ``mosaic`` [@R-mosaic]. 
+For the following material, you will need to install and load the ``mosaic`` package [@R-mosaic]. 
 
 ```
 > require(mosaic)
@@ -600,14 +600,14 @@ It provides a suite of enhanced functions to aid our initial explorations. With 
 save code, and the ``treadmill`` data set loaded, we can (finally!) start to
 summarize the results of the study. The ``treadmill`` object is what R calls a 
 ***tibble***^[Tibbles are R are objects that can contain both 
-categorical and quantitative variables on your n subjects with a name for each
+categorical and quantitative variables on your $n$ subjects with a name for each
 variable that is also the name of each column in a matrix. Each subject is a 
-row of the data set.] and contains columns corresponding to each variable in 
+row of the data set. The name (supposedly) is due to the way *table* sounds in the accent of a particularly influential developer at Rstudio who is from New Zealand.] and contains columns corresponding to each variable in 
 the spreadsheet. Every
 function in R will involve specifying the variable(s) of interest and how you
-want to use them. To access a particular variable (column) in a data.frame, you
-can use a $ between the data.frame name and the name of the variable of
-interest, generically as ``dataframename$variablename``. To identify the 
+want to use them. To access a particular variable (column) in a tibble, you
+can use a $ between the name of the tibble and the name of the variable of
+interest, generically as ``tibblename$variablename``. You can think of this as *tibblename's variablename* where the *'s* is replaced by the dollar sign. To identify the 
 ``RunTime`` variable here it would be ``treadmill$RunTime``. In the command line it would look like:
 
 ```
@@ -625,9 +625,9 @@ Just as in the previous section, we can generate summary statistics using functi
 > sd(treadmill$RunTime)
 [1] 1.387414
 ```
-And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
+\noindent And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
 mean and SD are only appropriate summaries if the distribution is roughly
-***symmetric*** (both sides of the distribution are approximately the same). The 
+***symmetric*** (both sides of the distribution are approximately the same shape and length). The 
 ``mosaic``  package provides a useful function called ``favstats`` that provides 
 the mean and SD as well as the ***5 number summary***: 
 the minimum (``min``), the first quartile (``Q1``, the 25^th^ percentile), 
@@ -650,7 +650,7 @@ and the best running at a 5.4 minute mile pace. The limited variation in the
 results suggests that the sample was obtained from a restricted group with
 somewhat common characteristics. When you explore the ages and weights of the
 subjects in the Practice Problems in Section \@ref(section1-6), you will get even more
-information about how similar all the subjects in this study were. 
+information about how similar all the subjects in this study were. Researchers often publish numerical summaries of this sort of demographic information to help readers understand the subjects that they studied and that their results might apply to.
 
 A graphical display of these results will help us to assess the shape 
 of the distribution of run times -- including considering the potential for the presence of a ***skew*** (whether the right or left tail of the distribution 
@@ -665,7 +665,7 @@ We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
 > hist(treadmill$RunTime)
 ```
 
-(ref:fig5) Histogram of Run Times #(minutes) of n=31 subjects in Treadmill study.
+(ref:fig5) Histogram of Run Times #(minutes) of $n$=31 subjects in Treadmill study.
 
 ```{r Figure5, fig.cap='(ref:fig5)',echo=F}
 old.par <- par(mai=c(0.5,0.5,0.5,0.5))
@@ -680,13 +680,13 @@ favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
 parts of this process in the screen grab in Figure \@ref(fig:Figure6). 
 
-(ref:fig6) RStudio while in the process of copying the histogram
+(ref:fig6) RStudio while in the process of copying the histogram.
 
 ```{r Figure6,echo=FALSE,fig.cap="(ref:fig6)",fig.width=6,fig.height=3.5}
 knitr::include_graphics('chapter0_files/image010.png')
 ```
 
-You can also directly save the figures as separate files using 
+\noindent You can also directly save the figures as separate files using 
 **Save as Image** or **Save as PDF**and then insert them into your word 
 processing documents. 
 
@@ -695,7 +695,7 @@ The function ``hist`` defaults into providing a histogram on the ***frequency***
 occur if we don't make any specific choices but we
 can override the default options if we desire. One option we can modify here is
 to add labels to the bars to be able to see exactly how many observations fell
-into each bar. Specifically, we can turn the ``labels`` option "on" by making it true ("T") by adding ``labels=T`` to the previous call to the ``hist`` function, separated by a comma: 
+into each bar. Specifically, we can turn the ``labels`` option "on" by making it true ("T") by adding ``labels=T`` to the previous call to the ``hist`` function, separated by a comma. Note that we will use the ``=`` sign only for changing options within functions.  
 
 ```
 > hist(treadmill$RunTime, labels=T)
@@ -734,7 +734,7 @@ what happened.]. Looking back at the summary statistics above, Q1=9.78 and Q3=11
 One observation (the maximum value of 14.03) is indicated as a potential outlier based on this result by being larger than Q3 $+1.5*$IQR, which was 13.505:
 
 ```
-11.27 + 1.5*IQR
+> 11.27 + 1.5*IQR
 [1] 13.505
 ```
 
@@ -781,15 +781,14 @@ work to get better labeled figures is often worth it. I guess the point is that
 "a picture is worth a thousand words" but in data visualization, that is only
 true if the reader can understand what is being displayed. It is also important
 to think about the quality of the information that is being displayed, 
-regardless of how pretty the graphic might be. 
+regardless of how pretty the graphic might be. So maybe it is better to say "a picture can be worth a thousand words" if it is well-labeled?
 
-All the previous results were created by running the R code and then "grabbing" the
-results from either the console or by copying the figure. There is another way
+All the previous results were created by running the R code and then copying the
+results from either the console or by copying the figure and then pasting the results into the typesetting program. There is another way
 to use RStudio where you can have it compile the results (both output and
 figures) directly into a document together with the code that generated it, 
 using what is called RMarkdown (http://shiny.rstudio.com/articles/rmarkdown.html). It adds some additional setup
-complexity we want to avoid for now but is what we used to do all the analyses
-that follow in the book. The main reason to mention this is that you will see a
+complexity we want to avoid for now but is basically what we used to prepare this book. The main reason to mention this is that you will see a
 change in formatting of the R code and output from here forward as you will no
 longer see the command prompt (">") with the code. The output will be
 flagged by having two "##"'s before it. For example, the summary statistics for
@@ -803,19 +802,16 @@ Statisticians (and other scientists) are starting to use these methods because t
 research" [@Gandrud2015] where all the code and output it produced are
 available in a single place. This allows different researchers to run and verify
 results or the original researchers to revisit their earlier work at a later
-date and recreate all their results. Scientific publications are currently
+date and recreate all their results exactly. Scientific publications are currently
 encouraging researchers to work in this way and may someday require it. In this
 book, we focus on the R code and show the results from running it, but you may
-want to consider exploring these alternative options. 
+want to consider exploring these alternative options. Ask your instructor to show you this way of working and see if you like it better than copying and pasting everything.
 
 Finally, when you are done with your work and attempt to exit out of RStudio, it will
-ask you to save your workspace. You do not need to do this and would be better
-served not to do this. If you are in the practice of saving your workspace, you
-will end up with tons of data.frames that open each time you use it and it will
-be harder to find and manage the ones you are currently working with. If you
-save your R code via the script window, you can re-create any results by simply
+ask you to save your workspace. ***DO NOT DO THIS!*** It will just create a cluttered workspace and could even cause you to get incorrect results.  If you
+save your R code (and edit it to only contain the parts of it that worked) via the script window, you can re-create any results by simply
 re-running that code. If you find that you have lots of "stuff" in your
-workspace, just run ``rm(list = ls())``. It will delete all the data sets from your workspace. 
+workspace because you accidently saved your workspace, just run ``rm(list = ls())``. It will delete all the data sets from your workspace. 
 
 ##Chapter summary
 
@@ -848,7 +844,7 @@ lighter and/or ALL CAPS  text (red in the online or digital version) will need
 to be customized to your particular application. The sub-bullet for each
 function will discuss the use of the function and pertinent options or packages
 required. You can use this as a guide to finding the function names and some
-hints about options that will help you to get the code to work or you can
+hints about options that will help you to get the code to work. You can also
 revisit the worked examples using each of the functions. 
 
 * `r colFmt("FILENAME","red")` ``<-`` **read.csv(**`r colFmt('"path to csv file/FILENAME.csv"','red')`**)**
@@ -857,7 +853,7 @@ revisit the worked examples using each of the functions.
 
 * `r colFmt("DATASETNAME","red")`**$**`r colFmt("VARIABLENAME","red")`
 
-    * To access a particular variable in a data.frame called DATASETNAME, use 
+    * To access a particular variable in a tibble called DATASETNAME, use 
     a $ and then the VARIABLENAME. 
 
 * **head(**`r colFmt("DATASETNAME","red")`**)**
@@ -895,24 +891,24 @@ revisit the worked examples using each of the functions.
 In each chapter, the last section contains some questions for you to complete
 to make sure you understood the
 material. You can download the code to answer questions 1.1 to 1.5 below at 
-http://www.math.montana.edu/courses/s217/documents/Ch0.Rmd. But to practice 
+http://www.math.montana.edu/courses/s217/documents/Ch1.Rmd. But to practice 
 learning R, it would be most useful for you to try to accomplish the requested tasks 
 yourself and then only refer to the provided R code if/when you struggle. 
 These questions provide a great venue to check your learning, often to see the
 methods applied to another data set, and for something to discuss in study groups,
-with your instructor, and/or at the Math Learning Center. 
+with your instructor, and at the Math Learning Center. 
 
 1.1. Read in the treadmill data set
-discussed above and find the mean and SD of the Ages (``Age`` variable) and Body
+discussed previously and find the mean and SD of the Ages (``Age`` variable) and Body
 Weights (``BodyWeight`` variable). In studies involving human subjects, it is 
 common to report a
 summary of characteristics of the subjects. Why does this matter? Think about
 how your interpretation of any study of the fitness of subjects would change if
-the mean age had been 20 years older or 35 years younger. 
+the mean age (same spread) had been 20 years older or 35 years younger. 
 
 1.2. How does knowing about the
 distribution of results for *Age* and *BodyWeight* help you understand the 
-results for the Run Times discussed above?
+results for the Run Times discussed previously?
 
 1.3. The mean and SD are most useful
 as summary statistics only if the distribution is relatively symmetric. Make a
@@ -924,7 +920,7 @@ ages does this study pertain to?
 1.4. The weight responses are in
 kilograms and you might prefer to see them in pounds. The conversion is
 lbs=2.205``*``kgs. Create a new variable in the ``treadmill``
-data.frame called *BWlb* using this code:
+tibble called *BWlb* using this code:
 
 ``treadmill$BWlb <- 2.205*treadmill$BodyWeight`` 
  
@@ -933,6 +929,6 @@ and find the mean and SD of the new variable (*BWlb*).
 1.5. Make histograms and boxplots of
 the original *BodyWeight* and new *BWlb* variables. Discuss aspects of the
 distributions that changed and those that remained the same with the
-transformation from kilograms to pounds. 
+transformation from kilograms to pounds. What does this tell you about changing the units of a variable in terms of its distribution?
 
 
