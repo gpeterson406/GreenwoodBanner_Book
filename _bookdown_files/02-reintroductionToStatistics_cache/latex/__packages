@@ -7,6 +7,7 @@ mosaicData
 Matrix
 mosaic
 knitr
-beanplot
 car
 heplots
+beanplot
+kableExtra

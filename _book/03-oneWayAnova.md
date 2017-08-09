@@ -46,12 +46,24 @@ To make this more concrete, we return to the original MockJury data, making
 side-by-side boxplots and beanplots (Figure \@ref(fig:Figure3-1)) as well 
 summarizing the sentences for the three groups using ``favstats``. 
 
+(ref:fig3-1) Boxplot and beanplot of the sentences (years) for the three 
+treatment groups.
+
 
 ```r
 require(heplots)
 require(mosaic)
 data(MockJury)
-favstats(Years~Attr, data=MockJury)
+par(mfrow=c(1,2))
+boxplot(Years~Attr,data=MockJury)
+require(beanplot)
+beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
+```
+
+![(\#fig:Figure3-1)(ref:fig3-1)](03-oneWayAnova_files/figure-latex/Figure3-1-1.pdf) 
+
+```r
+favstats(Years~Attr,data=MockJury)
 ```
 
 ```
@@ -59,19 +71,6 @@ favstats(Years~Attr, data=MockJury)
 ## 1    Beautiful   1  2      3  6.5  15 4.333333 3.405362 39       0
 ## 2      Average   1  2      3  5.0  12 3.973684 2.823519 38       0
 ## 3 Unattractive   1  2      5 10.0  15 5.810811 4.364235 37       0
-```
-
-(ref:fig3-1) Boxplot and beanplot of the sentences (years) for the three 
-treatment groups.
-
-![(\#fig:Figure3-1)(ref:fig3-1)](03-oneWayAnova_files/figure-latex/Figure3-1-1.pdf) 
-
-
-```r
-par(mfrow=c(1,2))
-boxplot(Years~Attr,data=MockJury)
-require(beanplot)
-beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
 ```
 
 There are slight differences in the sample sizes in the three groups with 37
@@ -559,8 +558,6 @@ the $\textbf{SS}_{\textbf{Total}} \mathbf{=} \textbf{SS}_\textbf{A} \mathbf{+} \
 
 
 
-![(\#fig:Figure3-4)(ref:fig3-4)](03-oneWayAnova_files/figure-latex/Figure3-4-1.pdf) 
-
 It may be easiest to understand the *sums of squares decomposition* by connecting 
 it to our permutation ideas. In a permutation situation, the total variation 
 ($SS_\text{Total}$) cannot change -- it is the same responses varying
@@ -601,6 +598,8 @@ for the real data (a) and three different permutations of the treatment labels
 to the same responses in (b), (c), and (d). Note that SSTotal is always the same 
 but the different amounts of variation associated with the means (SSA) or the 
 errors (SSE) changes in permutation.
+
+![(\#fig:Figure3-4)(ref:fig3-4)](03-oneWayAnova_files/figure-latex/Figure3-4-1.pdf) 
 
 To do a permutation test, we need to be able to calculate and extract the 
 $\text{SS}_A$ value. In the ANOVA table, it is in the first row and is the 
@@ -723,8 +722,6 @@ square was used; $F$-distributions are denoted by their degrees of freedom using
 the convention of $F$ (*numerator df*, *denominator df*). Some examples of 
 different $F$-distributions are displayed for you in Figure \@ref(fig:Figure3-6).
 
-\newpage
-
 The characteristics of the F-distribution can be summarized as:
 
 * Right skewed,
@@ -765,8 +762,6 @@ Total                $N-1$      $\text{SS}_{\text{Total}}$
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 Table: (\#tab:Table3-2) (ref:tab3-2)
-
-\newpage
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
 components. The output from R is similar although it does not provide the last row 
@@ -1221,6 +1216,19 @@ horizontal "=" signs in the grey bars that separate the different panels in
 RStudio.] (Figure \@ref(fig:Figure3-14)) and generate some summary statistics for 
 each group using ``favstats``. 
 
+(ref:fig3-14) Boxplot and beanplot of tooth growth responses for the six 
+treatment level combinations. 
+
+
+```r
+par(mfrow=c(1,2))
+boxplot(len~Treat, data=ToothGrowth, ylab="Tooth Growth in microns")
+beanplot(len~Treat, data=ToothGrowth, log="", col="yellow",
+         method="jitter", ylab="Tooth Growth in microns")
+```
+
+![(\#fig:Figure3-14)(ref:fig3-14)](03-oneWayAnova_files/figure-latex/Figure3-14-1.pdf) 
+
 
 ```r
 favstats(len~Treat, data=ToothGrowth)
@@ -1235,19 +1243,6 @@ favstats(len~Treat, data=ToothGrowth)
 ## 5   OJ.2 22.4 24.575  25.95 27.075 30.9 26.06 2.655058 10       0
 ## 6   VC.2 18.5 23.375  25.95 28.800 33.9 26.14 4.797731 10       0
 ```
-
-(ref:fig3-14) Boxplot and beanplot of tooth growth responses for the six 
-treatment level combinations. 
-
-
-```r
-par(mfrow=c(1,2))
-boxplot(len~Treat, data=ToothGrowth, ylab="Tooth Growth in microns")
-beanplot(len~Treat, data=ToothGrowth, log="", col="yellow",
-         method="jitter", ylab="Tooth Growth in microns")
-```
-
-![(\#fig:Figure3-14)(ref:fig3-14)](03-oneWayAnova_files/figure-latex/Figure3-14-1.pdf) 
 
 Figure \@ref(fig:Figure3-14) suggests that the mean tooth growth increases with 
 the dosage level and that OJ might lead to higher growth rates than VC except 
@@ -1538,8 +1533,6 @@ summary(m3)
 ```r
 plot(allEffects(m2))
 ```
-
-\sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
 ## Multiple (pair-wise) comparisons using Tukey's HSD and the compact letter display {#section3-6}
 
@@ -1917,6 +1910,15 @@ old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
+At the family-wise 5% significance level, there are no pairs that are detectably different 
+-- they all get the same letter of "a". Now we will produce results for the reader that
+thought a 10% significance was suitable for this application before seeing any
+of the results. We just need to change the confidence level or significance
+level that the CIs or tests are produced with inside the functions. For the ``confint``
+function, the ``level`` option is the confidence level and for the ``cld``, it is the 
+family-wise significance level. Note that 90% confidence corresponds to a 10% 
+significance level. 
+
 (ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
 
 
@@ -1960,54 +1962,20 @@ plot(confint(Tm2, level=.9))
 
 ![(\#fig:Figure3-22)(ref:fig3-22)](03-oneWayAnova_files/figure-latex/Figure3-22-1.pdf) 
 
-At the family-wise 5% significance level, there are no pairs that are detectably different 
--- they all get the same letter of "a". Now we will produce results for the reader that
-thought a 10% significance was suitable for this application before seeing any
-of the results. We just need to change the confidence level or significance
-level that the CIs or tests are produced with inside the functions. For the ``confint``
-function, the ``level`` option is the confidence level and for the ``cld``, it is the 
-family-wise significance level. Note that 90% confidence corresponds to a 10% 
-significance level. 
+With family-wise 10% significance and 90% confidence levels, the 
+*Unattractive* and *Average* picture groups are detected as being different but
+the *Average* group is not detected as different from *Beautiful* and 
+*Beautiful* is not detected to be different from *Unattractive*. This leaves the
+"overlap" of groups across the sets of groups that was noted earlier. The 
+*Beautiful* level is not detected as being dissimilar from levels in two 
+different sets and so gets two different letters. 
 
-
-```r
-confint(Tm2, level=0.9)
-```
-
-```
-## 
-## 	 Simultaneous Confidence Intervals
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lm(formula = Years ~ Attr, data = MockJury)
-## 
-## Quantile = 2.0738
-## 90% family-wise confidence level
-##  
-## 
-## Linear Hypotheses:
-##                               Estimate lwr     upr    
-## Average - Beautiful == 0      -0.3596  -2.0511  1.3318
-## Unattractive - Beautiful == 0  1.4775  -0.2255  3.1805
-## Unattractive - Average == 0    1.8371   0.1232  3.5510
-```
-
-```r
-cld(Tm2, level=0.1)
-```
-
-```
-##    Beautiful      Average Unattractive 
-##         "ab"          "a"          "b"
-```
-
-
-```r
-old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
-plot(confint(Tm2, level=.9))
-```
+The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons
+for this set of results. The detection of a difference between *Average* and
+*Unattractive* just barely occurs and the mean for *Beautiful* is between the 
+other two so it ends up not being detectably different from either one. This 
+sort of overlap is actually a fairly common occurrence in these sorts of 
+situations so be prepared a mixed set of letters for some levels. 
 
 (ref:fig3-23) Beanplot of sentences with compact letter display results from 10%
 family-wise significance level Tukey's HSD. *Average* and *Unattractive* picture
@@ -2025,30 +1993,6 @@ text(c(3), c(6.8),"b", col="red", cex=1.5)
 ```
 
 ![(\#fig:Figure3-23)(ref:fig3-23)](03-oneWayAnova_files/figure-latex/Figure3-23-1.pdf) 
-
-With family-wise 10% significance and 90% confidence levels, the 
-*Unattractive* and *Average* picture groups are detected as being different but
-the *Average* group is not detected as different from *Beautiful* and 
-*Beautiful* is not detected to be different from *Unattractive*. This leaves the
-"overlap" of groups across the sets of groups that was noted earlier. The 
-*Beautiful* level is not detected as being dissimilar from levels in two 
-different sets and so gets two different letters. 
-
-The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons
-for this set of results. The detection of a difference between *Average* and
-*Unattractive* just barely occurs and the mean for *Beautiful* is between the 
-other two so it ends up not being detectably different from either one. This 
-sort of overlap is actually a fairly common occurrence in these sorts of 
-situations so be prepared a mixed set of letters for some levels. 
-
-
-```r
-old.par <- par(mai=c(0.5,1,1,1))
-beanplot(Years~Attr, data=MockJury, log="", col="white", method="jitter")
-text(c(1), c(5.3),"ab", col="blue", cex=1.5)
-text(c(2), c(5.1),"a", col="green", cex=1.5)
-text(c(3), c(6.8),"b", col="red", cex=1.5)
-```
 
 ## Chapter Summary {#section3-8}
 
@@ -2081,7 +2025,7 @@ in what is called the Two-Way ANOVA.
 ## Summary of important R code {#section3-9}
 
 The main components of R code used in this chapter follow with components to 
-modify in ALL CAPS, remembering that any R packages mentioned 
+modify in red (in the digital version), remembering that any R packages mentioned 
 need to be installed and loaded for this code to have a chance of working:
 
 * **\textcolor{red}{MODELNAME} <- lm(\textcolor{red}{Y}~\textcolor{red}{X},

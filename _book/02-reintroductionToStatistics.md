@@ -2919,7 +2919,7 @@ doing diagnostics to help us assess how much those conditions are violated.
 ## Summary of important R code {#section2-11}
 
 The main components of R code used in this chapter follow with components to 
-modify in ALL CAPS, remembering that any R packages mentioned 
+modify in red (in the digital version), remembering that any R packages mentioned 
 need to be installed and loaded for this code to have a chance of working:
 
 * **summary(\textcolor{red}{DATASETNAME})**

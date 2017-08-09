@@ -52,8 +52,8 @@ a weight is placed on the towel held at the four corners. We are interested
 in studying the differences between brands and the impact of different amounts 
 of water applied to the towels. 
 
-* Predictors (Explanatory Variables): **A**: ``Brand`` (2 brands of interest, 
-named *B1* and *B2*) and **B**: Number of ``Drops`` of water (10, 20, 30 drops).
+* Predictors (Explanatory Variables): **A** : ``Brand`` (2 brands of interest, 
+named *B1* and *B2*) and **B** : Number of ``Drops`` of water (10, 20, 30 drops).
 
 * Response: *Time* to failure (in seconds) of a towel ($y$) with a weight 
 sitting in the middle of the towel. 
@@ -168,8 +168,8 @@ website using:
 
 
 ```r
-pt <- read.csv("http://www.math.montana.edu/courses/s217/documents/pt.csv")
-pt$drops <- factor(pt$drops)
+pt<-read.csv("http://www.math.montana.edu/courses/s217/documents/pt.csv")
+pt$drops<-factor(pt$drops)
 ```
 
 The data set contains five observations per combination of treatment levels as
@@ -180,7 +180,7 @@ order of ``x1`` and ``x2`` doesn't matter:
 
 ```r
 require(mosaic)
-tally(brand~drops, data=pt)
+tally(brand ~ drops, data=pt)
 ```
 
 ```
@@ -207,7 +207,7 @@ rows with the standard deviations.
 
 
 ```r
-favstats(responses~brand+drops, data=pt)
+favstats(responses ~ brand + drops, data=pt)
 ```
 
 ```
@@ -240,7 +240,7 @@ and whether those differences change across the levels of the other variable.
 Specifically, start with comparing the two brands for different amounts of water. 
 Do the brands seem different? Certainly for 10 drops of water the two look 
 different but not for 30 drops. We can also look for combinations of factors 
-that produce the highest or lowest responses in this display. It appears that 
+that produce the highest or lower responses in this display. It appears that 
 the time to failure is highest in the low water drop groups but as the water 
 levels increase, the time to failure falls and the differences in the two 
 brands seem to decrease. The fake data seem to have relatively similar 
@@ -256,9 +256,8 @@ model assumptions.
 
 ```r
 require(beanplot)
-beanplot(responses~brand*drops, data=pt, side="b", 
-         col=list("lightblue","white"), xlab="Drops", ylab="Time", 
-         method="jitter", log="")
+beanplot(responses ~ brand*drops, data=pt, side="b", col=list("lightblue","white"),
+         xlab="Drops", ylab="Time", method="jitter",log="")
 legend("topright", bty="n", c("B1","B2"), fill=c("lightblue","white"))
 ```
 
@@ -285,12 +284,12 @@ everything clear.
 
 (ref:fig4-2) Interaction plot of the paper towel data with ``Drops`` on the x-axis. 
 
+![(\#fig:Figure4-2)(ref:fig4-2)](04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf) 
+
 
 ```r
-intplot(responses~brand*drops, data=pt)
+intplot(responses ~ brand*drops, data=pt)
 ```
-
-![(\#fig:Figure4-2)(ref:fig4-2)](04-twoWayAnova_files/figure-latex/Figure4-2-1.pdf) 
 
 Interaction plots can always be made two different ways by switching the order 
 of the variables. Figure \@ref(fig:Figure4-2) contains ``Drops`` on the x-axis 
@@ -300,15 +299,15 @@ but not always. Try both and decide on the one that you like best.
 
 (ref:fig4-3) Interaction plot of paper towel data with ``Brand`` on the x-axis. 
 
-
-```r
-intplot(responses~drops*brand, data=pt)
-```
-
 ![(\#fig:Figure4-3)(ref:fig4-3)](04-twoWayAnova_files/figure-latex/Figure4-3-1.pdf) 
 
+
+```r
+intplot(responses ~ drops*brand, data=pt)
+```
+
 The formula in this function builds on our previous notation and now we include
-both predictor variables with an "``*``" between them. Using an asterisk between 
+both predictor variables with an "*" between them. Using an asterisk between 
 explanatory variables is one way of telling R to include an interaction between 
 the variables. While the interaction may or may not be present, the interaction 
 plot helps us to explore those potential differences. 
@@ -336,7 +335,7 @@ means across levels of a single variable except that there are results for two
 variables to extract from the model. With the presence of an interaction, it is
 complicated to summarize how each variable is affecting the response variable
 because their impacts change depending on the level of the other factor. And
-plots like the interaction plot provide us with useful information. 
+plots like the interaction plot provide us much useful information. 
 
 If the lines are not parallel, then
 focus in on comparing the levels of one variable as the other variable changes. 
@@ -517,26 +516,22 @@ in the model. Specifically, the hypotheses for the two main effects are:
 * Main effect test for A:
 
     * $H_0$: No differences in means across levels of A in population, 
-    given B in the model 
-    
-        $\Leftrightarrow$ All $\tau_j\text{'s} = 0$ in additive model. 
+    given B in the model $\Leftrightarrow$ All $\tau_j\text{'s} = 0$
+    in additive model. 
     
     * $H_A$: Some difference in means across levels A in population, 
-    given B in the model 
-    
-        $\Leftrightarrow$ At least one $\tau_j \ne 0$, in additive model. 
+    given B in the model $\Leftrightarrow$ At least one $\tau_j \ne 0$,
+    in additive model. 
 
 * Main effect test for B:
 
     * $H_0$: No differences in means across levels of B in population, 
-    given A in the model 
-    
-        $\Leftrightarrow$ All $\gamma_k\text{'s} = 0$ in additive model. 
+    given A in the model $\Leftrightarrow$ All $\gamma_k\text{'s} = 0$
+    in additive model. 
     
     * $H_A$: Some difference in means across levels B in population, 
-    given A in the model 
-    
-        $\Leftrightarrow$ At least one $\gamma_k \ne 0$, in additive model. 
+    given A in the model $\Leftrightarrow$ At least one $\gamma_k \ne 0$,
+    in additive model. 
     
 In order to test these effects (interaction in the interaction model and 
 main effects in the additive model), $F$-tests are developed using Sums of
@@ -616,7 +611,7 @@ that Scenario 5 was the correct
 story since the lines were not parallel, but we need to know whether there is
 evidence to suggest that the interaction is "real" and we get that through the 
 interaction hypothesis test. To fit the interaction model using ``lm``, 
-the general formulation is ``lm(y~x1*x2, data=...)``. The
+the general formulation is ``lm(y ~ x1*x2, data=...)``. The
 order of the variables doesn't matter and the most important part of the model,
 to start with, relates to the interaction of the variables. 
 
@@ -624,7 +619,7 @@ The ANOVA table output
 shows the results for the interaction model obtained by running the ``anova``
 function on the model called ``m1``. Specifically, the test that 
 $H_0: \text{ All } \omega_{jk}\text{'s} = 0$ has a
-test statistic of $F(2,24)=1.92$ (in the output from the row with 
+test statistic of $F(2,24)=1.92$ (in bold in the output from the row with 
 brands:drops) and a p-value of 0.17. So there is insufficient evidence to 
 reject the null hypothesis of no interaction, with a 17% chance we would 
 observe a difference in the $\omega_{jk}\text{'s}$ like we did or more
@@ -650,9 +645,9 @@ anova(m1)
 ```
 
 It is useful to display the estimates from this model and we can utilize
-``plot(allEffects(MODELNAME))`` to visualize the results for the terms 
+``plot(allEffects(modelname))`` to visualize the results for the terms 
 in our models. If we turn on the options for ``grid=T``, ``multiline=T``, 
-and ``ci.style="bars"`` we will get a more useful version of the basic 
+and ``ci. style="bars"`` we will get a more useful version of the basic 
 "effect plot" for Two-Way ANOVA
 models with interaction. The results of the estimated interaction model are
 displayed in Figure \@ref(fig:Figure4-6), which looks very similar to our 
@@ -668,11 +663,11 @@ In the absence of evidence to include the
 interaction, the model should be simplified to the additive model and the interpretation
 focused on each main effect, conditional on having the other variable in the
 model. To fit an additive model and not include an interaction, the model
-formula involves a "+" instead of a "``*``" between the explanatory variables. 
+formula involves a "+" instead of a "*" between the explanatory variables. 
 
 
 ```r
-m2<-lm(responses~brand+drops, data=pt)
+m2<-lm(responses ~ brand + drops, data=pt)
 anova(m2)
 ```
 
@@ -841,10 +836,12 @@ plot(allEffects(m2))
 
 ![(\#fig:Figure4-7)(ref:fig4-7)](04-twoWayAnova_files/figure-latex/Figure4-7-1.pdf) 
 
+\newpage
+
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
 
 The effects of dosage and delivery method of ascorbic acid on Guinea Pig 
-odontoblast growth was analyzed as a One-Way ANOVA in Section \@ref(section3-5)
+odontoblast growth was analyzed as a One-Way ANOVA in Section \@ref(section3-4)
 by assessing evidence of any difference in the
 means of any combinations of dosage method (Vit C capsule vs Orange Juice) and
 three dosage amounts (0.5, 1, and 2 mg/day). Now we will consider the dosage
@@ -860,11 +857,11 @@ Figure \@ref(fig:Figure4-8).
 ```r
 data(ToothGrowth)
 par(mfrow=c(1,2))
-beanplot(len~supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
+beanplot(len ~ supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
          main="Beanplot", col=list("white","orange"), xlab="Dosage",
          ylab="Tooth Growth")
 legend("bottomright", bty="n", c("VC","OJ"), fill=c("white","orange"))
-intplot(len~supp*dose, data=ToothGrowth, col=c(1,2), 
+intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), 
         main="Interaction Plot", ylim=c(-5,40))
 ```
 
@@ -881,7 +878,7 @@ following results fit the interaction model and provide an ANOVA table.
 
 
 ```r
-TG1 <- lm(len~supp*dose, data=ToothGrowth)
+TG1 <- lm(len~supp*dose,data=ToothGrowth)
 Anova(TG1)
 ```
 
@@ -971,12 +968,12 @@ tests and estimates for *Dose* and *Delivery method*.
     * $H_0$: No interaction between *Delivery method* and *Dose* on odontoblast
     growth in population of guinea pigs 
     
-        $\Leftrightarrow$ All $\omega_{jk}\text{'s}=0$.
+    $\Leftrightarrow$ All $\omega_{jk}\text{'s}=0$.
     
     * $H_A$: Interaction between *Delivery method* and *Dose* on odontoblast
     growth in population of guinea pigs 
     
-        $\Leftrightarrow$ At least one $\omega_{jk}\ne 0$.
+    $\Leftrightarrow$ At least one $\omega_{jk}\ne 0$.
     
 2. **Validity conditions:**
 
@@ -1000,7 +997,7 @@ tests and estimates for *Dose* and *Delivery method*.
         
         ```r
         par(mfrow=c(2,2))
-        plot(TG2, pch=16) 
+        plot(TG2, pch=16,cex.main=0.75) 
         ```
         
         ![(\#fig:Figure4-9)Diagnostic plots for the interaction model for Tooth         Growth.](04-twoWayAnova_files/figure-latex/Figure4-9-1.pdf) 
@@ -1009,12 +1006,14 @@ tests and estimates for *Dose* and *Delivery method*.
     
         * The QQ-Plot in Figure \@ref(fig:Figure4-9) does not suggest a 
         problem with this assumption. 
+        
+\newpage
 
-3. **Calculate the test statistic for the interaction test.**
+3. **Calculate the test statistic for the Interaction test.**
 
     
     ```r
-    TG2 <- lm(len~supp*dosef, data=ToothGrowth)
+    TG2 <- lm(len ~ supp*dosef, data=ToothGrowth)
     Anova(TG2) 
     ```
     
@@ -1106,7 +1105,7 @@ summary(TG2)
 There are two $\omega_{jk}\text{'s}$ in the results, related to modifying the 
 estimates for doses of 1 (-0.68) and 2
 (5.33) for the Vitamin C group. If you want to re-construct the fitted values
-from the model that are displayed in Figure \@ref(fig:Figure4-10), you have 
+from the model that are displayed in the Figure \@ref(fig:Figure4-10), you have 
 to look for any
 coefficients that are "turned on" for a combination of levels of interest. For
 example, for the OJ group (solid line in Figure \@ref(fig:Figure4-10)), the 
@@ -1158,7 +1157,7 @@ value of 1 seemed to work.
 
 
 ```r
-intplot(len~supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
+intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
         cld=T, main="Interaction Plot with CLD")
 ```
 
@@ -1183,8 +1182,8 @@ lowest, 5 = highest), and their score on a continuous scale of attitudes about
 debt (``prodebt``: 1 = least favorable, 5 = most favorable). ``prodebt``
 was derived as the average of a series of questions about debt with each
 question measured on an ***ordinal*** 1 to 5 scale, with higher values 
-corresponding to more positive responses about $\underline{\text{going into debt}}$
-of various kinds. The ordered scale on surveys that try to elicit your opinions on
+corresponding to more positive responses about **going into debt** of
+various kinds. The ordered scale on surveys that try to elicit your opinions on
 topics with scales from 1 to 5 or 1 to 7 or even, sometimes, 1 to 10 is called
 a ***Likert scale*** [@Likert1932]. It is not a quantitative scale and really 
 should be handled more carefully than taking an average of a set responses. That 
@@ -1239,12 +1238,12 @@ debtc <- na.omit(debt)
 (ref:fig4-12) Interaction plot of ``prodebt`` by income group and buy cigarettes 
 (0=no, 1=yes).
 
+![(\#fig:Figure4-12)(ref:fig4-12)](04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf) 
+
 
 ```r
-intplot(prodebt~cigbuy*incomegp, data=debtc, col=c(1,3), lwd=2)
+intplot(prodebt ~ cigbuy*incomegp, data=debtc, col=c(1,3), lwd=2)
 ```
-
-![(\#fig:Figure4-12)(ref:fig4-12)](04-twoWayAnova_files/figure-latex/Figure4-12-1.pdf) 
 
 As in other situations, and especially
 with observational studies where a single large sample is analyzed, it is
@@ -1262,7 +1261,7 @@ with counts between 8 and 51 in the different combinations.
 
 
 ```r
-tally(cigbuy~incomegp, data=debtc)
+tally(cigbuy ~ incomegp, data=debtc)
 ```
 
 ```
@@ -1321,7 +1320,7 @@ cigarettes/not interaction model.
 
 ```r
 par(mfrow=c(2,2))
-plot(debt1)
+plot(debt1,cex.lab=0.75)
 ```
 
 ![(\#fig:Figure4-13)(ref:fig4-13)](04-twoWayAnova_files/figure-latex/Figure4-13-1.pdf) 
@@ -1331,30 +1330,30 @@ plot(debt1)
     * $H_0$: No difference in means for ``prodebt`` for income groups in 
     population, given cigarette buying in model 
     
-        $\Leftrightarrow$ All $\tau_j\text{'s} = 0$ in additive model. 
+    $\Leftrightarrow$ All $\tau_j\text{'s} = 0$ in additive model. 
     
     * $H_A$: Some difference in means for ``prodebt`` for income group in 
     population, given cigarette buying in model 
     
-        $\Leftrightarrow$ Not all $\tau_j\text{'s} = 0$ in additive model. 
+    $\Leftrightarrow$ Not all $\tau_j\text{'s} = 0$ in additive model. 
     
     * $H_0$: No difference in means for ``prodebt`` for cigarette 
     buying/not in population, given income group in model </span>
 
-        $\Leftrightarrow$ All $\gamma_k\text{'s} = 0$ in additive model. 
+    $\Leftrightarrow$ All $\gamma_k\text{'s} = 0$ in additive model. 
     
     * $H_A$: Some difference in means for ``prodebt`` for cigarette 
     buying/not in population, given income group in model 
     
-        $\Leftrightarrow$ Not all $\gamma_k\text{'s} = 0$ in additive model. 
+    $\Leftrightarrow$ Not all $\gamma_k\text{'s} = 0$ in additive model. 
     
 2. **Validity conditions -- discussed above but with new plots for the additive:**
 
     
     ```r
-    debt1r <- lm(prodebt~incomegp+cigbuy, data=debtc)
+    debt1r<-lm(prodebt~incomegp+cigbuy,data=debtc)
     par(mfrow=c(2,2))
-    plot(debt1r)
+    plot(debt1r,cex.lab=0.75)
     ```
     
     ![(\#fig:Figure4-14)Diagnostic plot for ``prodebt`` by income group and buy   cigarettes/not](04-twoWayAnova_files/figure-latex/Figure4-14-1.pdf) 
@@ -1441,8 +1440,6 @@ plot(allEffects(debt1r))
 
 ![(\#fig:Figure4-15)(ref:fig4-15)](04-twoWayAnova_files/figure-latex/Figure4-15-1.pdf) 
 
-\newpage
-
 The estimated coefficients can also be
 interesting to interpret for the additive model. Here are the model summary coefficients:
 
@@ -1472,8 +1469,6 @@ $\hat{\gamma}_2=-0.106$ points for any income group, remember that this
 variable had a moderately
 large p-value in this model. The additive model-based estimates for all 
 six combinations can be found in Table \@ref(tab:Table4-3).
-
-\newpage
 
 (ref:tab4-3) Calculations to construct the estimates for all combinations
 of variables for the ``prodebt`` additive model.
@@ -1534,6 +1529,9 @@ normality and equal variance).
     Chapter \@ref(chapter7) This can help make the responses have similar 
     variances or responses to be more normal, but sometimes not both. 
 
+
+\newpage
+
 4. If the interaction test has a small p-value, that is your main result. Focus on
 the interaction plot from (1) to fully understand the results, adding Tukey's
 HSD results to see which means of the combinations of levels are detected as
@@ -1578,8 +1576,8 @@ the entire data set can be displayed:
 
 
 ```r
-ptR <- read.csv("http://www.math.montana.edu/courses/s217/documents/ptR.csv")
-ptR$dropsf <- factor(ptR$drops)
+ptR<-read.csv("http://www.math.montana.edu/courses/s217/documents/ptR.csv")
+ptR$dropsf<-factor(ptR$drops)
 ptR
 ```
 
@@ -1608,7 +1606,8 @@ plot.
 
 
 ```r
-intplot(responses~brand*dropsf, data=ptR, lwd=2)
+par(mfrow=c(1,1))
+intplot(responses~brand*dropsf,data=ptR,lwd=2)
 ```
 
 The next step would be to assess the
@@ -1638,7 +1637,7 @@ Warning messages in R output show up in red after you run functions that contain
 problems and are generally not a good thing, but can sometimes be ignored. In
 this case, the warning message is not needed -- there are no $F$-statistics or 
 p-values in the results so we know there are some issues with the results. The 
-**Residuals** line is key here -- Residuals with 0 *df* and sums of
+bolded line is key here
 squares of 0. Without replication, there are no degrees of freedom left to 
 estimate the residual error. My (Greenwood's) first statistics professor, 
 Gordon Bril at Luther College, used to refer to this as "shooting your load" by
@@ -1660,11 +1659,9 @@ two brands lines cross noticeably suggesting non-parallel lines). So in this
 case, assuming no interaction is present is hard to justify. But if we proceed
 under this dangerous assumption, tests for the main effects can be developed. 
 
-\newpage
-
 
 ```r
-norep1 <- lm(responses~dropsf+brand, data=ptR)
+norep1<-lm(responses~dropsf+brand,data=ptR)
 Anova(norep1)
 ```
 
@@ -1681,8 +1678,8 @@ Anova(norep1)
 In the additive model, the last row of the ANOVA table that is called the 
 ``Residuals`` row is really the interaction row from the interaction model 
 ANOVA table. Neither main effect had a small p-value 
-(*Drops*: $F(2,2)=0.82, \text{ p-value}=0.55$ and 
-*Brand*: $F(1,2)=0.65, \text{ p-value}=0.51$) in the additive model. To 
+(``Drops``: $F(2,2)=0.82, \text{ p-value}=0.55$ and 
+``Brand``: $F(1,2)=0.65, \text{ p-value}=0.51$) in the additive model. To 
 get small p-values with small sample sizes, the differences would need to be
 **very** large because the residual degrees of freedom have become very small.
 The term-plots in Figure \@ref(fig:Figure4-18) show that the
@@ -1702,12 +1699,10 @@ plot(allEffects(norep1))
 Hopefully by pushing the limits there
 are two conclusions available from this section. First, replication is
 important, both in being able to perform tests for interactions and for having
-enough power to detect differences for the main effects. Second, when dropping 
-from the interaction model to additive model, the variability explained by the
+enough power to detect differences for the main effects. Second, dropping from
+the interaction model to additive model, the variability explained by the
 interaction term is pushed into the error term, whether replication is
 available or not.
-
-\newpage
 
 ## Chapter summary	{#section4-7}
 
@@ -1752,7 +1747,7 @@ interactions to screen for "real" interactions and then interpret the
 interaction plots aided by the Tukey's HSD for determining which combinations
 of levels are detectably different. Others might suggest exploring the main
 effects tests even with interactions present. In some cases, those results are
-interesting but in others the results can be misleading and we wanted to avoid
+interesting but in others the results can be misleading and wanted to avoid
 trying to tell you when that might happen. Consider two scenarios, one where
 the main effects have large p-values but the interaction has a small p-value
 and the other where the main effects and the interaction all have small
@@ -1778,12 +1773,12 @@ to those considered here.
 ## Important R code	{#section4-8}
 
 The main components of R code used in this chapter follow with components to 
-modify in ALL CAPS, remembering that any R
+modify in red, remembering that any R
 packages mentioned need to be installed and loaded for this code to have a
 chance of working:
 
-* **tally(\textcolor{red}{A}~\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})**
+* tally(\textcolor{red}{A}~\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Requires the ``mosaic`` package be loaded. 
     
@@ -1791,25 +1786,25 @@ data=\textcolor{red}{DATASETNAME})**
     predictor variables A and B, used to check for balance and understand sample 
     sizes in each combination. 
     
-* **\textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME} ``<-`` 
-factor(\textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME})**
+* \textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME} ``<-`` 
+factor(\textcolor{red}{DATASETNAME}&#36;\textcolor{red}{VARIABLENAME})
 
     * Use the ``factor`` function on any numerically coded
     explanatory variable where the numerical codes represent levels of a
     categorical variable. 
     
-* **intplot(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})**
+* intplot(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
+data=\textcolor{red}{DATASETNAME})
 
     * Download and install using: 
     
-        ``source("http://www.math.montana.edu/courses/s217/documents/intplot.R")``
+    * ``source("http://www.math.montana.edu/courses/s217/documents/intplot.R")``
     
     * Provides interaction plot.
     
-* **\textcolor{red}{INTERACTIONMODELNAME} ``<-`` 
+* \textcolor{red}{INTERACTIONMODELNAME} ``<-`` 
 lm(\textcolor{red}{Y}~\textcolor{red}{A}*\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})**
+data=\textcolor{red}{DATASETNAME})
 
     * Fits the interaction model with main effects for A and B and an 
     interaction between them.
@@ -1817,9 +1812,9 @@ data=\textcolor{red}{DATASETNAME})**
     * This is the first model that should be fit in Two-Way ANOVA 
     modeling situations.
     
-* **\textcolor{red}{ADDITIVEMODELNAME} ``<-``
+* \textcolor{red}{ADDITIVEMODELNAME} ``<-``
 lm(\textcolor{red}{Y}~\textcolor{red}{A}+\textcolor{red}{B},
-data=\textcolor{red}{DATASETNAME})**
+data=\textcolor{red}{DATASETNAME})
 
     * Fits the additive model with only main effects for A and B but no 
     interaction between them.
@@ -1827,12 +1822,12 @@ data=\textcolor{red}{DATASETNAME})**
     * Should only be used if the interaction has been decided to be 
     unimportant using a test for the interaction.
     
-* **summary(\textcolor{red}{MODELNAME})**
+* summary(\textcolor{red}{MODELNAME})
 
     * Generates model summary information including the estimated model coefficients, 
     SEs, t-tests, and p-values. 
 
-* **Anova(\textcolor{red}{MODELNAME})**
+* Anova(\textcolor{red}{MODELNAME})
 
     * Requires the ``car`` package to be loaded.
     
@@ -1841,12 +1836,12 @@ data=\textcolor{red}{DATASETNAME})**
     when working with the additive model as it provides inferences for 
     each term conditional on the other one. 
 
-* **par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})**
+* par(mfrow=c(2,2)); plot(\textcolor{red}{MODELNAME})
 
     * Generates four diagnostic plots including the Residuals vs Fitted and 
     Normal Q-Q plot. 
     
-* **plot(allEffects(\textcolor{red}{MODELNAME}))**
+* plot(allEffects(\textcolor{red}{MODELNAME}))
     
     * Requires the ``effects`` package be loaded. 
 

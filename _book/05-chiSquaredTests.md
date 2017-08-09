@@ -122,7 +122,7 @@ lead to different improvement outcomes than the placebo?
 To directly assess the effects of the treatment, we
 want to display just the two variables of interest. ***Stacked bar charts***
 provide a method of displaying the response patterns (in ``Improved``) across 
-the levels of a predictor variable (``Treatment``) by displaying a bar for each
+the levels of a predictor variable(``Treatment``) by displaying a bar for each
 predictor variable level and the proportions of responses in each category of
 the response in each of those groups. If the placebo is as effective as the
 treatment, then we would expect similar proportions of responses in each
@@ -200,12 +200,12 @@ Table: (\#tab:Table5-1) (ref:tab5-1)
 Comparing counts from the contingency table is useful, but comparing proportions
 in each category is better, especially when the sample sizes in the levels of 
 the explanatory variable differ. Switching the formula used in the ``tally ``
-function formula to ``~ y|x`` and adding the ``format="proportion"``
+function formula to ``~ y | x`` and adding the ``format="proportion"``
 option provides the proportions in the response categories conditional on the 
 category of the predictor (these are
 called ***conditional proportions*** or the ***conditional distribution*** of, 
-here, *Improved* on *Treatment*)^[The vertical line, "``|``", in ``~ y|x``
-is available on most keyboards on the same key as "``\``". It is the mathematical 
+here, *Improved* on *Treatment*)^[The vertical line, "``|`` ", in ``~ y|x``
+is available on most keyboards on the same key as "\". It is the mathematical 
 symbol that means "conditional on" whatever follows.]. 
 Note that they sum to 1.0 in each level of x, *placebo* or *treated*:
 
@@ -332,20 +332,21 @@ produced by the ``tally`` function if you use the formula ``~y|x``.
 (ref:tab5-2) Table of conditional proportions in the Homogeneity testing scenario. 
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------
-  &nbsp;            **Response\                  **Response\                  **Response\              \             **Response\                  \         
-                     Level 1**                    Level 2**                    Level 3**            **...**           Level C**               **Totals**    
------------ ---------------------------- ---------------------------- ---------------------------- --------- ---------------------------- ------------------
-**Group 1**           $p_{11}$                     $p_{12}$                     $p_{13}$              ...              $p_{1C}$           $\boldsymbol{1.0}$
+------------------------------------------------------------------------------------------------------------------------------------------------------
+  &nbsp;           **Response\                 **Response\                 **Response\             \            **Response\                 \         
+                    Level 1**                   Level 2**                   Level 3**           **...**          Level C**              **Totals**    
+----------- -------------------------- ---------------------------- -------------------------- --------- -------------------------- ------------------
+**Group 1**        $\rho_{11}$                 $\rho_{12}$                 $\rho_{13}$            ...           $\rho_{1C}$         $\boldsymbol{1.0}$
 
-**Group 2**           $p_{21}$                     $p_{22}$                     $p_{23}$              ...              $p_{2C}$           $\boldsymbol{1.0}$
+**Group 2**        $\rho_{21}$                 $\rho_{22}$                 $\rho_{23}$            ...           $\rho_{2C}$         $\boldsymbol{1.0}$
 
-  **...**               ...                          ...                          ...                 ...                ...                   **...**      
+  **...**              ...                         ...                         ...                ...               ...                  **...**      
 
-**Group R**           $p_{R1}$                     $p_{R2}$                     $p_{R3}$              ...              $p_{RC}$           $\boldsymbol{1.0}$
+**Group R**        $\rho_{R1}$                 $\rho_{R2}$                 $\rho_{R3}$            ...           $\rho_{RC}$         $\boldsymbol{1.0}$
 
-**Totals**  $\boldsymbol{p_{\bullet 1}}$ $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{p_{\bullet 3}}$    ...    $\boldsymbol{p_{\bullet C}}$ $\boldsymbol{1.0}$
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Totals**  $\boldsymbol{\rho_{\bullet $\boldsymbol{n_{\bullet 2}}$ $\boldsymbol{\rho_{\bullet    ...    $\boldsymbol{\rho_{\bullet $\boldsymbol{1.0}$
+                       1}}$                                                    3}}$                                 C}}$                              
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Table: (\#tab:Table5-2) (ref:tab5-2)
 
@@ -410,9 +411,10 @@ table, our inferences relate to whether there is a relationship or
 ***association*** (that they are not independent) between the variables.
 This is related to whether the distributions of proportions match
 across rows in the table but is a more general question since we do not 
-need to determine a variable to condition on, that takes on the role 
-of a predictor variable, from the two variables of interest. In general,
-the hypotheses for an Independence test for variables $x$ and $y$ is:
+need to determine a variable to condition on that takes on the role 
+of a predictor variable from the two variables of interest. In general,
+the hypotheses for an
+Independence test for variables $x$ and $y$ is:
 
 
 * $\mathbf{H_0}$: **There is no relationship between** $\mathbf{x}$ **and**
@@ -1142,7 +1144,7 @@ because all were less than 2).
 
 ```r
 chisq.test(Arthtable)$residuals
-mosaicplot(Arthtable, shade=T)
+mosaicplot(Arthtable,shade=T)
 ```
 
 In this data set, the standardized residuals are all less than 2 in 
@@ -1286,8 +1288,6 @@ the mosaic plot is the appropriate display of the results,
 which was provided in Figure \@ref(fig:Figure5-5). We will perform this 
 test at the 1% significance level. 
 
-\newpage
-
 
 ```r
 electable <- tally(~PARTY+VOTEF, data=election2)
@@ -1389,6 +1389,7 @@ associational, depending on how the subjects ended up in the groups.].
     are 21 cells and many potential places for a calculation error if 
     performed by hand.
     
+
     
     ```r
     chisq.test(electable)
@@ -1406,8 +1407,8 @@ associational, depending on how the subjects ended up in the groups.].
     
 4. **Find the p-value:**
 
-    * The parametric p-value is < 2.2e-16 from the R output which 
-    would be reported as < 0.0001. This was based on a
+    * The parametric p-value is <2.2e-16 from the R output which 
+    would be reported as <0.0001. This was based on a
     $\boldsymbol{\chi^2}$-distribution with $(7-1)*(3-1) = 12$
     degrees of freedom displayed in Figure \@ref(fig:Figure5-15).
     Note that the observed test statistic of 762.81 was off the plot 
@@ -1476,7 +1477,6 @@ associational, depending on how the subjects ended up in the groups.].
     observed configuration was really far from the null
     hypothesis of no relationship between party status and voting. 
     
-\newpage
     
 5. **Make a decision:**
 
@@ -1574,7 +1574,6 @@ variables are treated categorically by applying the ``factor`` function.
 
 
 ```r
-require(poLCA)
 data(cheating) #Survey of students
 cheating$LIEEXAM <- factor(cheating$LIEEXAM)
 cheating$LIEPAPER <- factor(cheating$LIEPAPER)
@@ -1624,7 +1623,7 @@ variable, there are students who admitted to one of the two violations and some
 that did both. The ``liar`` variable has categories of *None*, *ExamLie*,
 *PaperLie*, and *LieBoth*. The ``copier`` variable has categories of *None*,
 *PaperCheat*, *ExamCheat*, and *PaperExamCheat* (for doing both). The last 
-category for ``copier`` (plotted as an orange color) seems to mostly occur at
+category for ``copier`` (plotted as a peach(?) color) seems to mostly occur at
 the top of the plot which is where the students who had lied to get out of things
 reside, so maybe there is a relationship between those two types of behaviors?
 On the other hand, for the students who have never lied, quite a few had
@@ -1868,8 +1867,6 @@ single sample was taken from the population):
 The standardized residuals can help us more fully understand this result 
 -- the mosaic plot only had one cell shaded and so wasn't needed here. 
 
-\newpage
-
 
 ```r
 chisq.test(cheatlietable)$residuals
@@ -1903,7 +1900,7 @@ possible!). Suppose that a researcher is interested in whether the growth
 metric might differ between different levels of schools. Maybe it is easier or
 harder for elementary, middle, or high schools to attain growth. The researcher
 has a list of most of the schools in the state of each level that are using a
-database that the researcher has access to. In order to assess this question, 
+data-base that the researcher has access to. In order to assess this question, 
 the researcher takes a stratified random sample^[A stratified random sample
 involves taking a simpler random sample from each group or strata of the
 population. It is useful to make sure that each group is represented at a 
@@ -2009,8 +2006,6 @@ responses into groups for the lowest 25%, second 25%, third 25%, and highest
 ``cut`` function is available to turn a
 quantitative variable into a categorical variable. First, we can use the
 information from ``favstats`` to find the cut-points:
-
-\newpage
 
 
 ```r
@@ -2230,11 +2225,11 @@ contingency table where you identified initial patterns.
 ## Review of Important R commands	{#section5-13}
 
 The main components of R code used in this chapter follow with components
-to modify in ALL CAPS where ``y`` is a response variable and ``x`` is a predictor 
+to modify in red where ``y`` is a response variable and ``x`` is a predictor 
 are easily identified:
 
-* **\textcolor{red}{TABLENAME} <- tally(~\textcolor{red}{x} +
-\textcolor{red}{y}, data=\textcolor{red}{DATASETNAME}, margins=F)**
+* \textcolor{red}{TABLENAME} <- tally(~\textcolor{red}{x} +
+\textcolor{red}{y}, data=\textcolor{red}{DATASETNAME}, margins=F)
     
     * This function requires that the ``mosaic `` package has been loaded.
 
@@ -2244,28 +2239,28 @@ are easily identified:
     * ``margins=T`` is used if want to display row, column, and 
     table totals. 
 
-* **plot(\textcolor{red}{y}~
-\textcolor{red}{x}, data=\textcolor{red}{DATASETNAME})**
+* plot(\textcolor{red}{y}~
+\textcolor{red}{x}, data=\textcolor{red}{DATASETNAME})
 
     * Makes a stacked bar chart useful for homogeneity test situations.
     
-* **mosaicplot(\textcolor{red}{TABLENAME})**
+* mosaicplot(\textcolor{red}{TABLENAME})
 
     * Makes a mosaic plot useful for finding patterns in the table 
     in independence test situations.
     
-* **chisq.test(\textcolor{red}{TABLENAME})**
+* chisq.test(\textcolor{red}{TABLENAME})
 
     * Provides $X^2$ and p-values based on the 
     $\boldsymbol{\chi^2}$-distribution with $(R-1)(C-1)$ degrees of 
     freedom.
     
-* **chisq.test(\textcolor{red}{TABLENAME})$expected**
+* chisq.test(\textcolor{red}{TABLENAME})$expected
 
     * Provides expected cell counts. 
 
-* **pchisq(\textcolor{red}{X-SQUARED}, 
-df=(\textcolor{red}{R} - 1)*(\textcolor{red}{C} - 1), lower.tail=F)**
+* pchisq(\textcolor{red}{X-SQUARED}, 
+df=(\textcolor{red}{R}- 1)*(\textcolor{red}{C}- 1), lower.tail=F)
 
     * Provides p-value from $\boldsymbol{\chi^2}$-distribution with 
     $(R-1)(C-1)$ degrees of freedom for observed test statistic.
@@ -2273,15 +2268,15 @@ df=(\textcolor{red}{R} - 1)*(\textcolor{red}{C} - 1), lower.tail=F)**
     * See Section \@ref(section5-5) for code related to finding a 
     permutation-based p-value. 
     
-* **chisq.test(\textcolor{red}{TABLENAME})$residuals^2**
+* chisq.test(\textcolor{red}{TABLENAME})$residuals^2
 
     * Provides $X^2$ contributions from each cell in table.
     
-* **chisq.test(\textcolor{red}{TABLENAME})$residuals**
+* chisq.test(\textcolor{red}{TABLENAME})$residuals
 
     * Provides standardized residuals.
     
-* **mosaicplot(\textcolor{red}{TABLENAME}, shade=T)**
+* mosaicplot(\textcolor{red}{TABLENAME}, shade=T)
 
     * Provides a mosaic plot with shading based on standardized residuals.
 
@@ -2411,8 +2406,8 @@ standardized residuals and discuss the results. Specifically, in what way do
 the is/are preferences move away from the null hypothesis for people that care
 more about this?
 
---------------------------------------------------------------------------------
-We might be fighting a losing battle on this particular word usage, but since we
-are in the group that cares a lot about this, we are going
-to keep trying...
---------------------------------------------------------------------------------
+
+> We might be fighting a losing battle on this particular word usage, but since we
+  are in the group that cares a lot about this, we are going
+  to keep trying...
+>

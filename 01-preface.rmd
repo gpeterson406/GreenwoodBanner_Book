@@ -314,7 +314,7 @@ plots that you make and requests for "Help" on specific functions.
 (ref:fig2) Initial RStudio layout.
 
 ```{r Figure2, echo=FALSE, fig.cap="(ref:fig2)"}
-knitr::include_graphics('chapter0_files/fig1.2.png')
+knitr::include_graphics('chapter0_files/image003.png')
 ```
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
@@ -499,7 +499,7 @@ code (``View(treadmill``)).
 (ref:fig3) RStudio with initial data set loaded.
 
 ```{r Figure3, echo=FALSE, fig.cap="(ref:fig3)"}
-knitr::include_graphics('chapter0_files/fig1.3.png')
+knitr::include_graphics('chapter0_files/image005.png')
 ```
 
 Just directly typing (or using) a line of code like this is actually the 
@@ -585,7 +585,7 @@ section of code using the "Run" button.
 (ref:fig4) RStudio with highlighted code run.
 
 ```{r Figure4, echo=FALSE, fig.cap="(ref:fig4)"}
-knitr::include_graphics('chapter0_files/fig1.4.png')
+knitr::include_graphics('chapter0_files/image006.png')
 ```
 
 ##Basic summary statistics, histograms, and boxplots using R
