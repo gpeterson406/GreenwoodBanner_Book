@@ -388,10 +388,10 @@ rug(jitter(MockJury$Years), col="blue", lwd=2)
 The graphical tools we've just discussed are going to help us move to comparing the
 distribution of responses across more than one group. We will have two displays
 that will help us make these comparisons. The simplest is 
-*the **side-by-side boxplot***, where a boxplot is displayed for each group 
+the ***side-by-side boxplot***, where a boxplot is displayed for each group 
 of interest using the same y-axis scaling. In R, we can use its ***formula*** notation to see if the response (``Years``) differs based on the group 
 (``Attr``) by using something like ``Y~X`` or, here, ``Years~Attr``. 
-We also need to tell R where to find the variables -- use the last option in the command, ``data=DATASETNAME`` , to inform R of the data.frame to look in 
+We also need to tell R where to find the variables -- use the last option in the command, ``data=DATASETNAME`` , to inform R of the tibble to look in 
 to find the variables. In this example, ``data=MockJury``. We will use 
 the formula and ``data=...`` options in almost every function we use
 from here forward. Figure \@ref(fig:Figure2-4) contains the side-by-side 
@@ -420,7 +420,7 @@ bell-shaped curve you encountered in introductory statistics? If not, you can
 see some at https://en.wikipedia.org/wiki/Normal_distribution] with mean 0 
 and standard deviation of 1. In the current situation, we could ask whether
 the ``Years`` variable seems like it may follow a normal distribution, in 
-other words, is $\text{Years}\sim N(\mu,\sigma)$? Since the responses are right
+other words, is $\text{Years}\sim N(\mu,\sigma^2)$? Since the responses are right
 skewed with some groups having outliers, it is not reasonable to assume that
 the *Years* variable for any of the three groups may follow a Normal 
 distribution (more later on the issues this creates!). Remember that 
