@@ -32,6 +32,15 @@ colFmt = function(x, color){
   else
     x
 }
+textItalicBold = function(x){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\emph{\\textbf{",x,"}}",sep="")
+  else if(outputFormat == 'html')
+    paste("<strong><em>",x,"</em></strong>",sep="")
+  else
+    x
+}
 ```
 
 
@@ -448,7 +457,6 @@ fire1 <- lm(loghectacres~Temperature, data=mtfires)
 summary(fire1)
 ```
 
-\newpage
 
 ```{r}
 confint(fire1, level=0.99)
@@ -513,12 +521,13 @@ $$\text{99}\% \text{ CI for } \beta_1: \boldsymbol{b_1 \mp
 t^*_{n-2}}\textbf{SE}_{\boldsymbol{b_1}} \rightarrow 1.39 \mp 2.831\bullet 0.217
 \rightarrow (0.78, 2.00)$$
 
-\newpage
 
 Interpretation of 99% CI for slope coefficient:
 
 * For a 1 degree F increase in *Temperature*, we are 99% confident that the 
 change in the true mean log-area burned is between 0.78 and 2.00 log(Hectares).
+
+\newpage
 
 Another way to interpret this is:
 
@@ -611,6 +620,8 @@ research wants to be accused of taking a ***liberal*** approach in their analyse
 change using ***conservative*** methods (methods that reject the null 
 hypothesis when it is true less often than stated), then their results are 
 even harder to ignore.]) and our test statistic, $t=\frac{b_1}{\text{SE}_{b_1}}$.
+
+\newpage
 
 1. **Hypotheses for the slope coefficient test:**
 
@@ -708,10 +719,14 @@ normality assumption a bit.
 
     $t=0.05244/0.00476 = 11.02$
     
+    \footnotesize
+    
     ```{r}
     summary(temp1)
     ```
 
+    \normalsize
+    
 4. Find the p-value:
 
 * From the model summary: p-value < 2e-16 or just <  0.0001
@@ -869,6 +884,11 @@ y-intercept CI matches the 95% CI for the true mean.
 ```{r}
 temp2 <- lm(meanmax~Year2, data=bozemantemps)
 summary(temp2)
+```
+
+
+
+```{r}
 confint(temp2)
 ```
 
@@ -1020,7 +1040,7 @@ for (b in (1:B)){
 }
 quantiles <- qdata(Tstar, c(0.025,0.975))
 quantiles
-hist(Tstar, labels=T, ylim=c(0,550))
+hist(Tstar, labels=T, ylim=c(0,450))
 abline(v=Tobs, col="red", lwd=2)
 abline(v=quantiles$quantile, col="blue", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
@@ -1053,9 +1073,8 @@ of this and the next section), or
 3. Consider more advanced statistical models that can account for these issues 
 (the focus of additional statistics courses). 
 
-\indent ***Transformations*** involve applying a function to one or both 
-variables. After 
-applying this transformation, one hopes to have
+\indent `r textItalicBold("Transformations")` involve applying a function to 
+one or both variables. After applying this transformation, one hopes to have
 alleviated whatever issues encouraged its consideration. ***Linear transformation 
 functions***, of the form $z_{\text{new}}=a*x+b$, will never help us to fix
 assumptions in regression situations; linear transformations change the scaling
@@ -1098,8 +1117,8 @@ summary(temp3)
 ```
 
 
-\indent ***Nonlinear transformation functions*** are where we apply 
-something more complicated than this
+\indent `r textItalicBold("Nonlinear transformation functions")`
+are where we apply something more complicated than this
 shift and scaling, something like $y_{\text{new}}=f(y)$, where $f(\cdot)$ could be 
 a log or power of the original variable $y$. When we apply these sorts of
 transformations, 
@@ -1381,6 +1400,8 @@ transformed-variables models, we need to try to "reverse" our transformation.
 If we exponentiate^[Note ``exp(x)`` is the same as $e^{(x)}$ but easier
 to read in-line and ``exp()`` is the R function name to execute this calculation.] both sides of $\log(y)=b_0 + b_1x$, we get:
 
+\newpage
+
 * $y=\exp(b_0 + b_1x)$, *which can be re-written as*
 
 * $y=\exp(b_0)\exp(b_1x)$. *This is based on the rules for* ``exp()`` *where*
@@ -1661,16 +1682,18 @@ pretty good on both
 the estimated log-log scale (panel a) and on the original scale (panel b) as it
 captures the severe nonlinearity in the relationship between the two variables.
 
-```{r}
-ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
-summary(ID2)
-```
-
 (ref:fig7-21) Diagnostic plots for the log-log infant mortality model.
 
 ```{r Figure7-21,fig.cap="(ref:fig7-21)",echo=F,fig.height=5,fig.width=8}
+ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
+summary(ID2)
 par(mfrow=c(2,2))
 plot(ID2)
+```
+
+```{r}
+ID2 <- lm(log(infant.mortality)~log(gdp), data=UN)
+summary(ID2)
 ```
 
 \indent The estimated regression model is
@@ -2053,6 +2076,8 @@ variables, especially when dealing with transformations, as this can lead to
 big changes in the results depending on which scale (original or transformed)
 the results are being interpreted on. 
 
+\newpage
+
 ## Important R code {#section7-9}
 
 The main components of the R code used in this chapter follow with the
@@ -2125,6 +2150,8 @@ interval="prediction")**
     * Gets the $t^*$ multiplier for making a 95% interval with $n-2$ replaced
     by the sample size -- 2.
    
+\newpage
+
 ## Practice problems	{#section7-10}
 
 We will continue with the treadmill data set introduced in Chapter 
