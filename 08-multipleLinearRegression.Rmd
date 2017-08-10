@@ -79,7 +79,7 @@ allows us to incorporate multiple predictors into a regression model.
 Geometrically, this is a way of relating many different dimensions (number of
 $x\text{'s}$) to what happened in a single response variable (one dimension). 
 
-We start with the same model as in SLR except now we allow $K$ different
+\indent We start with the same model as in SLR except now we allow $K$ different
 $x\text{'s}$:
 
 $$y_i = \beta_0 + \beta_1x_{1i} + \beta_2x_{2i}+ \ldots + \beta_Kx_{Ki}
@@ -91,7 +91,7 @@ y-intercept. The MLR model carries the same assumptions as an SLR model with a
 couple of slight tweaks specific to MLR (see Section \@ref(section8-2)
 for the details on the changes to the validity conditions). 
 
-We are able to use the
+\indent We are able to use the
 least squares criterion for estimating the regression coefficients in MLR, but
 the mathematics are beyond the scope of this course. The ``lm`` function takes
 care of finding the least squares coefficients using a very sophisticated
@@ -103,9 +103,9 @@ regression equation it returns is:
 
 $$\hat{y}_i = b_0 + b_1x_{1i} +b_2x_{2i}+\ldots+b_Kx_{Ki}$$
 
-\noindent where each $b_k$ estimates its corresponding parameter $\beta_k$.
+where each $b_k$ estimates its corresponding parameter $\beta_k$.
 
-An example of snow depths at some high elevation locations on a day in 
+\indent An example of snow depths at some high elevation locations on a day in 
 April provides a nice motivation for these methods. A random sample of 
 $n=25$ MT locations (from the population of $N=85$ at the time) were obtained 
 from the Natural Resources Conversation Service's website 
@@ -138,7 +138,7 @@ Higher temperatures seem to be associated with less snow - not a big surprise so
 far! There might be an outlier at an elevation of 7400 feet and a snow depth
 below 10 inches that we should explore further. 
 
-A new issue arises in attempting to build MLR models called  ***multicollinearity***. Again, it is a not surprise that temperature and
+\indent A new issue arises in attempting to build MLR models called  ***multicollinearity***. Again, it is a not surprise that temperature and
 elevation are correlated but that creates a
 problem if we try to put them both into a model to explain snow depth. Is it
 the elevation, temperature, or the combination of both that matters for getting
@@ -151,7 +151,8 @@ makes it difficult to disentangle the impacts of different predictor variables
 on the response when the predictors share information -- when they are
 correlated. 
 
-To get familiar with this example, we can start with fitting some potential SLR
+\indent To get familiar with this example, we can start with fitting some 
+potential SLR
 models and plotting the estimated models. Figure \@ref(fig:Figure8-2) contains
 the result for the SLR using *Elevation* and results for two temperature based
 models are in Figures \@ref(fig:Figure8-3a) and \@ref(fig:Figure8-3b).
@@ -174,9 +175,9 @@ Based on the model summaries provided below, the three estimated SLR models
 are:
 
 $$\begin{array}{rl}
-\widehat{\text{SnowDepth}}_i &= -72.006 + 0.0163\text{ Elevation}_i, \\
-\widehat{\text{SnowDepth}}_i &= 174.096 - 4.884\text{ MinTemp}_i,\text{ and} \\
-\widehat{\text{SnowDepth}}_i &= 122.672 - 2.284\text{ MaxTemp}_i.
+\widehat{\text{SnowDepth}}_i &= -72.006 + 0.0163\cdot\text{Elevation}_i, \\
+\widehat{\text{SnowDepth}}_i &= 174.096 - 4.884\cdot\text{MinTemp}_i,\text{ and} \\
+\widehat{\text{SnowDepth}}_i &= 122.672 - 2.284\cdot\text{MaxTemp}_i.
 \end{array}$$
 
 The plots of the estimated models reinforce
@@ -200,17 +201,17 @@ there was around a
 elevation. This helps make the slope coefficient of 0.0163 in the model more 
 easily understood.
 
-Remember that in SLR, the range of $x$ matters just as much 
+\indent Remember that in SLR, the range of $x$ matters just as much 
 as the units of $x$ in determining the practical importance and size of the slope
 coefficient. A value of 0.0163 looks small but is actually at the heart of a
 pretty good model for predicting snow depth. A one foot change of elevation is
 "tiny" here relative to changes in the response so the slope coefficient can be
 small and still amount to big changes in the predicted response across the range
 of values of $x$. If the *Elevation* had been recorded in thousands of feet,
-then the slope would have been $0.0163*1000=16.3$ inches in change in mean
+then the slope would have been $0.0163*1000=16.3$ inches change in mean
 *Snow Depth* for a 1000 foot increase in elevation. 
 
-The plots of the two estimated temperature models in 
+\indent The plots of the two estimated temperature models in 
 Figures \@ref(fig:Figure8-3a) and \@ref(fig:Figure8-3b) suggest a similar change
 in the responses over
 the range of observed temperatures. Those predictors range from 22$^\circ F$
@@ -221,7 +222,7 @@ greater proportion of the observed range of each predictor than a 1 unit (foot)
 increase in elevation, so these two variables will generate larger apparent
 magnitudes of slope coefficients. But having large slope coefficients is no
 guarantee of a good model -- in fact, the elevation model has the highest 
-$R^2$ value of these three models even though its slope coefficient looks tiny
+*R*^2^ value of these three models even though its slope coefficient looks tiny
 compared to the other models.
 
 (ref:fig8-3a) Plot of the estimated SLR model using Min Temp as predictor. 
@@ -263,7 +264,7 @@ summary(m2)
 summary(m3)
 ```
  
-Since all three variables look like they are potentially useful in predicting
+\indent Since all three variables look like they are potentially useful in predicting
 snow depth, we want to consider if an MLR model might explain more of the
 variability in *Snow Depth*. To fit an MLR model, we use the same general format
 as in other topics but with adding "``+``" between any additional 
@@ -277,7 +278,7 @@ Min Temp and Max Temp. Note that the x-axis ranges are different than those
 used in Figures \@ref(fig:Figure8-2), \@ref(fig:Figure8-3a) and
 \@ref(fig:Figure8-3b) for the comparable SLR models. 
 
-```{r Figure8-4,fig.cap="(ref:fig8-4)",fig.width=8,fig.height=4.5}
+```{r Figure8-4,fig.cap="(ref:fig8-4)",fig.width=10,fig.height=5}
 m4 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2)
 summary(m4)
 plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
@@ -285,14 +286,14 @@ plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
 
 Based on the output, the estimated MLR model is
 
-$$\widehat{\text{SnowDepth}}_i = -10.51 + 0.0123\text{ Elevation}_i
--0.505\text{ MinTemp}_i - 0.562\text{ MaxTemp}_i.$$
+$$\widehat{\text{SnowDepth}}_i = -10.51 + 0.0123\cdot\text{Elevation}_i
+-0.505\cdot\text{MinTemp}_i - 0.562\cdot\text{MaxTemp}_i.$$
 
 The direction of the estimated slope coefficients were similar but they 
 all changed in magnitude as compared to the respective SLRs, as seen in the
 estimated term-plots from the MLR model in Figure \@ref(fig:Figure8-4). 
 
-There are two ways to think about the changes from individual SLR slope
+\indent There are two ways to think about the changes from individual SLR slope
 coefficients to the similar MLR results. 
 
 1. Each term in the MLR is the result for estimating each
@@ -331,9 +332,9 @@ have heard or read about inferences from models that are dealing with this
 issue -- for example, medical studies often report the increased risk of death
 from some behavior or trait after controlling for sex, age, etc. In many
 research articles, it is becoming common practice to report the slope for a
-variable most of interest with it in the model alone (SLR) and in models after
-adjusting for the other variables that are expected to matter. These types of
-results are built with MLR or related multiple-predictor models like MLR. 
+variable that is of most interest with it in the model alone (SLR) and in models 
+after adjusting for the other variables that are expected to matter. These types
+of results are built with MLR or related multiple-predictor models like MLR. 
 
 ## Validity conditions in MLR	{#section8-2}
 
@@ -426,7 +427,7 @@ validity conditions. For MLR, they are similar to those for SLR:
         * The rules and interpretations for Cook's D are the same as in SLR
         (over 0.5 is possibly influential and over is definitely influential).
 
-While not a condition for use of the methods, a note about RA and RS is useful
+\indent While not a condition for use of the methods, a note about RA and RS is useful
 here in considering the scope of inference of any results. To make inferences
 about a population, we need to have a representative sample. If we have 
 randomly assigned levels of treatment variables(s), then we can make causal
@@ -555,14 +556,14 @@ The estimated *Snow Depth* for the *Northeast Entrance* site (observation 9)
 is found using the estimated model with
 
 $$\begin{array}{rl}
-\widehat{\text{SnowDepth}}_9 &= -10.51 + 0.0123\text{Elevation}_9 -
-0.505\text{MinTemp}_9 - 0.562\text{MaxTemp}_9 \\
+\widehat{\text{SnowDepth}}_9 &= -10.51 + 0.0123\cdot\text{Elevation}_9 -
+0.505\cdot\text{MinTemp}_9 - 0.562\cdot\text{MaxTemp}_9 \\
 & = -10.51 + 0.0123*\boldsymbol{7350} -0.505*\boldsymbol{28} - 
 0.562*\boldsymbol{45} \\
 & = 40.465 \text{ inches,}
 \end{array}$$
 
-\noindent but the observed snow depth was actually $y_9=11.2$ inches. The observed  ***residual*** is then
+but the observed snow depth was actually $y_9=11.2$ inches. The observed  ***residual*** is then
 
 $$e_9=y_9-\hat{y}_9 = 11.2-40.465 = -29.265 \text{ inches.}$$
 
@@ -577,9 +578,9 @@ reporting of amounts of snow on the ground...].
 11.2 - 40.465
 ```
 
-This point is being rated as influential (Cook's D $\approx$ 1) with a leverage
-of nearly 0.35 and a standardized residual (y-axis of Residuals vs. Leverage
-plot) of nearly -3. This suggests that even
+\indent This point is being rated as influential (Cook's D $\approx$ 1) with a
+leverage of nearly 0.35 and a standardized residual (y-axis of Residuals vs. 
+Leverage plot) of nearly -3. This suggests that even
 with this observation impacting/distorting the slope coefficients (that is what
 ***influence*** means), the model is still doing really poorly at fitting this
 observation. We'll drop it and re-fit the model in a second to see how the slopes
@@ -587,11 +588,11 @@ change. First, let's compare that result to what happened for data point 10
 ("Combination") which was just as high leverage but not identified as
 influential. 
 
-The estimated snow depth for "Combination" is </span>
+\indent The estimated snow depth for "Combination" is </span>
 
 $$\begin{array}{rl}
-\widehat{\text{SnowDepth}}_{10} &= -10.51 + 0.0123\text{Elevation}_{10} -
-0.505\text{MinTemp}_{10} - 0.562\text{MaxTemp}_{10} \\
+\widehat{\text{SnowDepth}}_{10} &= -10.51 + 0.0123\cdot\text{Elevation}_{10} -
+0.505\cdot\text{MinTemp}_{10} - 0.562\cdot\text{MaxTemp}_{10} \\
 & = -10.51 + 0.0123*\boldsymbol{5600} -0.505*\boldsymbol{28} - 
 0.562*\boldsymbol{36} \\
 & = 23.998 \text{ inches,}
@@ -611,26 +612,27 @@ on the model's estimated slope coefficients based on the small Cook's D value.
 14 - 23.998
 ```
 
-Note that any predictions using this model presume that it is trustworthy, but
+\indent Note that any predictions using this model presume that it is 
+trustworthy, but
 the large Cook's D on one observation suggests we should consider the model
 after removing that observation. We can re-run the model without the 
-9<sup>th</sup> observation using the data set ``snotel2[-9,]``. 
+9^th^ observation using the data set ``snotel2[-9,]``. 
 
 (ref:fig8-6) Term-plots for the MLR for Snow Depth based on Elevation, 
 Min Temp, and Max Temp with Northeast entrance observation removed from 
 data set (n=24).
 
-```{r Figure8-6,fig.cap="(ref:fig8-6)",fig.height=4.5, fig.width=8}
+```{r Figure8-6,fig.cap="(ref:fig8-6)",fig.height=5, fig.width=10}
 m5 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-9,])
 summary(m5)
 plot(allEffects(m5), main="MLR model with NE Ent. Removed")
 ```
 
-The estimated MLR model with $n=24$ after removing the influential 
+\indent The estimated MLR model with $n=24$ after removing the influential 
 "NE Entrance" observation is
 
-$$\widehat{\text{SnowDepth}}_i = -142.4 + 0.0214\text{ Elevation}_i
-+0.672\text{ MinTemp}_i +0.508\text{ MaxTemp}_i.$$
+$$\widehat{\text{SnowDepth}}_i = -142.4 + 0.0214\cdot\text{Elevation}_i
++0.672\cdot\text{MinTemp}_i +0.508\cdot\text{MaxTemp}_i.$$
 
 Something unusual has happened here: there is a positive slope for both
 temperature terms in Figure \@ref(fig:Figure8-6) that both
@@ -670,8 +672,8 @@ Exploring the results for this model assumes we trust it and, once again, we
 need to check diagnostics before getting too focused on any particular results
 from it. 
 
-The Residuals vs. Leverage diagnostic plot in Figure \@ref(fig:Figure8-7) for
-the model fit to the data set without NE Entrance (now $n=24$) reveals a new 
+\indent The Residuals vs. Leverage diagnostic plot in Figure \@ref(fig:Figure8-7) 
+for the model fit to the data set without NE Entrance (now $n=24$) reveals a new 
 point that is somewhat influential (point 22 in the data set has Cook's D 
 $\approx$ 0.5). It is for a location called "Bloody
 `r blackOut("Redact.")`^[The site name is redacted to protect
@@ -703,13 +705,22 @@ snotel2$Station <- as.factor(snotel2$Station)
 Min Temp and Max Temp with Northeast entrance observation removed from
 data set.
 
-```{r Figure8-7,fig.cap="(ref:fig8-7)",fig.height=5,fig.width=8}
+```{r Figure8-7,fig.cap="(ref:fig8-7)",fig.height=5,fig.width=10}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m5, sub.caption="Diagnostics for m5")
 ```
 
+(ref:fig8-8) Diagnostic plots for MLR for Snow Depth based on Elevation, 
+Min Temp and Max Temp with two observations removed ($n=23$). 
 
-This worry-some observation is located in the 22<sup>nd</sup> row of the
+```{r Figure8-8,fig.cap="(ref:fig8-8)",fig.height=5,fig.width=10,echo=F}
+m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
+summary(m6)
+par(mfrow=c(2,2), oma=c(0,0,2,0))
+plot(m6, sub.caption="Diagnostics for m6")
+```
+
+This worry-some observation is located in the 22^nd^ row of the
 original data set:
 
 ```{r}
@@ -721,10 +732,7 @@ With the removal of both the "Northeast Entrance" and "Bloody
 remaining. This model (``m6``) seems to contain residual diagnostics (Figure
 \@ref(fig:Figure8-8)) that are finally generally reasonable. 
 
-(ref:fig8-8) Diagnostic plots for MLR for Snow Depth based on Elevation, 
-Min Temp and Max Temp with two observations removed ($n=23$). 
-
-```{r Figure8-8,fig.cap="(ref:fig8-8)",fig.height=5,fig.width=8}
+```{r eval=F}
 m6 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
 summary(m6)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -737,7 +745,7 @@ due to few observations with fitted values around 30 happening to be well
 approximated by the model. The normality assumption is generally reasonable and
 no points seem to be overly influential on this model (finally!). 
 
-The term-plots (Figure \@ref(fig:Figure8-9)) show that the temperature slopes
+\indent The term-plots (Figure \@ref(fig:Figure8-9)) show that the temperature slopes
 are both positive although in this model *Max.Temp* seems to be more
 "important" than *Min.Temp*. We have ruled out individual
 influential points as the source of un-expected directions in slope coefficients
@@ -772,10 +780,10 @@ the term-plot starts at an elevation around 5000 feet and ends at an elevation
 around 8000 feet. To generate that line and CIs for the mean snow depth at
 different elevations, the MLR model of
 
-$$\widehat{\text{SnowDepth}}_i = -213.3 + 0.0269\text{ Elevation}_i
-+0.984\text{ MinTemp}_i +1.243\text{ MaxTemp}_i$$
+$$\widehat{\text{SnowDepth}}_i = -213.3 + 0.0269\cdot\text{Elevation}_i
++0.984\cdot\text{MinTemp}_i +1.243\cot\text{MaxTemp}_i$$
 
-\noindent is used, but we need to have "something" to put in for the two temperature
+is used, but we need to have "something" to put in for the two temperature
 variables to predict *Snow Depth* for different *Elevations*. The typical
 convention is to hold the "other" variables at their means to
 generate these plots. This tactic also provides a way of interpreting each
@@ -784,10 +792,11 @@ For a 1 foot increase in *Elevation*, we expect the mean *Snow Depth* to
 increase by 0.0269 inches, holding the minimum and maximum temperatures
 constant. More generally, the ***slope interpretation in an MLR*** is:
 
-* For a 1 ***[units of $\boldsymbol{x_k}$]*** increase in 
+> For a 1 **[*units of $\boldsymbol{x_k}$*]** increase in 
 $\boldsymbol{x_k}$, we expect the mean of $\boldsymbol{y}$ to change by
-$\boldsymbol{b_k}$ ***[units of y]***, after controlling for
+$\boldsymbol{b_k}$ **[*units of y*]**, after controlling for
 **[list of other explanatory variables in model]**. 
+> 
 
 To make this more concrete, we can recreate some points in the Elevation
 term-plot. To do this, we first need the mean of the "other" predictors, 
@@ -804,10 +813,10 @@ just *Elevation* given that we are holding *Min.Temp* and *Max.Temp* at their
 means:
 
 $$\begin{array}{rl}
-\widehat{\text{SnowDepth}}_i &= -213.3 + 0.0269\text{ Elevation}_i
+\widehat{\text{SnowDepth}}_i &= -213.3 + 0.0269\cdot\text{Elevation}_i
 +0.984*\boldsymbol{27.826} +1.243*\boldsymbol{36.391} \\
-&= -213.3 + 0.0269\text{ Elevation}_i + 27.38 + 45.23 \\
-&= \boldsymbol{-140.69 + 0.0269\textbf{ Elevation}_i}.
+&= -213.3 + 0.0269\cdot\text{Elevation}_i + 27.38 + 45.23 \\
+&= \boldsymbol{-140.69 + 0.0269\cdot\textbf{Elevation}_i}.
 \end{array}$$
 
 So at the means on the two temperature variables, 
@@ -837,8 +846,17 @@ term-plot's scaling.
 (ref:fig8-10) Term-plot for Elevation "by-hand", holding temperature 
 variables constant at their means. 
 
-```{r Figure8-10,fig.cap="(ref:fig8-10)",warning=F,message=F}
+```{r Figure8-10,fig.cap="(ref:fig8-10)",echo=F}
 par(mfrow=c(1,1))
+#Making own effect plot:
+elevs <- c(5000,6000,8000)
+snowdepths <- c(-6.19,20.71,74.51)
+plot(snowdepths~elevs, ylim=c(-20,90), cex=2, col="blue", pch=16,
+     main="Effect plot of elevation by hand")
+lines(snowdepths~elevs, col="red", lwd=2)
+```
+
+```{r eval=F}
 #Making own effect plot:
 elevs <- c(5000,6000,8000)
 snowdepths <- c(-6.19,20.71,74.51)
@@ -886,13 +904,13 @@ This exercise is useful to complete once to understand what is being displayed
 in term-plots but using the ``allEffects`` function makes getting these plots
 much easier. 
 
-There are two other model components of possible interest in this model. The 
+\indent There are two other model components of possible interest in this model. The 
 slope of 0.984 for *Min.Temp* suggests that for a 1$^\circ F$ increase in 
 *Minimum Temperature*, we expect a 0.984 inch change in the mean *Snow Depth*,
 after controlling for *Elevation* and *Max.Temp* at the sites. Similarly, the
 slope of 1.243 for the *Max.Temp* suggests that for a 1$^\circ F$ increase in
 *Maximum Temperature*, we expect a 1.243 inch change in the mean *Snow Depth*,
-holding *Elevation* and *Min.Temp*constant. Note that there are a variety of ways
+holding *Elevation* and *Min.Temp* constant. Note that there are a variety of ways
 to note that each term in an
 MLR is only a particular value given the other variables in the model. We can
 use words such as "holding the other variables constant" or "after adjusting
@@ -901,8 +919,9 @@ point is to find words that reflect that this single slope coefficient might be
 different if we had a different overall model and the only way to interpret it
 is conditional on the other model components. 
 
-Term-plots have a few general uses to enhance our regular slope interpretations.
-They can help us the model predicts over the range of each observed $x$. This can
+\indent Term-plots have a few general uses to enhance our regular slope
+interpretations. They can help us the model predicts over the range of each 
+observed $x$. This can
 help you to get a sense of the "practical" importance of each term. 
 Additionally, the term-plots show 95% confidence intervals for the mean response
 across the range of each variable, 
@@ -926,7 +945,7 @@ With more than one variable, we now have many potential models that we could
 consider. We could include only one of the predictors, all of them, or
 combinations of sets of the
 variables. For example, maybe the model that includes *Elevation* does not "need"
-both *Min.Temp*and *Max.Temp*? Or maybe the model isn't improved over an SLR
+both *Min.Temp* and *Max.Temp*? Or maybe the model isn't improved over an SLR
 with just *Elevation* as a predictor. Or maybe none of the predictors are
 "useful"? In this section, 
 we discuss some general model comparison issues and a metric that can be used
@@ -934,7 +953,7 @@ to pick among a suite of different models (often called a set of ***candidate
 models*** to reflect that they are all potentially interesting and we need to
 compare them and possibly pick one). 
 
-It is certainly possible the researchers may have an *a priori*
+\indent It is certainly possible the researchers may have an *a priori*
 reason to only consider a single model. For example, in a designed experiment
 where combinations of, say, three different predictors are randomly assigned, 
 the initial model with all three predictors may be sufficient to address all the
@@ -950,12 +969,12 @@ from the model. The assessment of "importance" using p-values will be discussed
 in Section \@ref(section8-6), but for now we will consider other reasons to pick
 one model over another. 
 
-There are some general reasons to choose a particular model:
+\indent There are some general reasons to choose a particular model:
 
 1. Diagnostics are better with one model compared to others.
 
 2. One model predicts/explains the responses better than the others 
-($\boldsymbol{R}^2$)).
+(***R***^2^)).
 
 3. *a priori* reasons to "use" a particular model, for example in a designed
 experiment or it includes variable(s) whose slopes need to be estimated to find
@@ -974,17 +993,17 @@ multiple testing issues previously, if you explore many versions of a model,
 maybe only keeping the best ones, this is very different from picking one model
 (and tests) *a priori* and just exploring that result. 
 
-As in SLR, we can use the $\boldsymbol{R}^2$ (the ***coefficient of
+\indent As in SLR, we can use the ***R***^2^ (the ***coefficient of
 determination***) to measure the percentage of the variation in the
 response variable that the model explains. In MLR, it is important to remember
-that $\boldsymbol{R}^2$ is now an overall
+that ***R***^2^ is now an overall
 measure for the model and not specific to a single variable. It is comparable to
 other models including those fit with only a single predictor (SLR). So to
 meet criterion (2), we could simply find the model with the largest
-$\boldsymbol{R}^2$ value, finding the model that explains the most variation in
+***R***^2^ value, finding the model that explains the most variation in
 the responses. 
 Unfortunately for this idea, when you add more "stuff" to a regression model
-(even "unimportant" predictors), the $\boldsymbol{R}^2$ will always go up. This
+(even "unimportant" predictors), the ***R***^2^ will always go up. This
 can be seen by considering 
 
 $$R^2 = \frac{\text{SS}_{\text{regression}}}{\text{SS}_{\text{total}}}\ 
@@ -997,18 +1016,18 @@ values better, not worse, the $\text{SS}_{\text{error}}$ will always go down
 if more predictors are added to the model. If $\text{SS}_{\text{error}}$
 goes down and $\text{SS}_{\text{total}}$ is fixed, then adding extra variables
 will always increase $\text{SS}_{\text{regression}}$ and, thus, increase 
-$\boldsymbol{R}^2$. This means that $\boldsymbol{R}^2$ is only useful for
+***R***^2^. This means that ***R***^2^ is only useful for
 selecting models when you are picking between two models of the same size
 (same number of predictors). So we mainly use it as a summary of model quality
 once we pick a model, not a method of picking among a set of candidate models.
-Remember that $\boldsymbol{R}^2$ continues to have the property of being between
+Remember that ***R***^2^ continues to have the property of being between
 0 and 1 (or 0% and 100%) and that value refers to the **proportion (percentage)
 of variation in the response explained by the model**, whether we are using it
 for SLR or MLR. 
 
-However, there is an adjustment to the $\boldsymbol{R}^2$ measure that makes it
+\indent However, there is an adjustment to the ***R***^2^ measure that makes it
 useful for selecting among models. The measure is called the ***adjusted***
-$\boldsymbol{R}^2$. The $\boldsymbol{R}^2_{\text{adjusted}}$ measure adds a
+***R***^2^. The $\boldsymbol{R}^2_{\text{adjusted}}$ measure adds a
 penalty for adding more variables to the model, providing the potential for this
 measure to decrease if the extra variables do not really benefit the model. The
 measure is calculated as
@@ -1017,14 +1036,14 @@ $$R^2_{\text{adjusted}} = 1 -
 \frac{\text{SS}_{\text{error}}/df_{\text{error}}}{\text{SS}_{\text{total}}/(N-1)}
 = 1 - \frac{\text{MS}_{\text{error}}}{\text{MS}_{\text{total}}},$$
 
-\noindent which incorporates the *degrees of freedom* for the model via the error 
+which incorporates the *degrees of freedom* for the model via the error 
 *degrees of freedom* which go
 down as the model complexity increases. This adjustment means that just
 adding extra useless variables (variables that do not explain very much extra
 variation) do not increase this measure. That makes this measure useful for
 model selection since it can help us to stop adding unimportant variables and
 find a "good" model among a set of candidates. Like the regular
-$\boldsymbol{R}^2$, larger values are better. The downside to
+***R***^2^, larger values are better. The downside to
 $\boldsymbol{R}^2_{\text{adjusted}}$ is that it **is no longer a percentage
 of variation in the response that is explained by the model**; it can be less
 than 0 and so has no interpretable scale. It is just "larger is better". It
@@ -1036,19 +1055,19 @@ $\boldsymbol{R}^2_{\text{adjusted}}$. You will want to interpret this new
 measure on a percentage scale, but do not do that. It is a just a measure to
 help you pick a model and that is all it is! 
 
-One other caveat in
+\indent One other caveat in
 model comparison is worth mentioning: make sure you are comparing models for
 the same responses. That may sound trivial and usually it is. But when there
 are missing values in the data set, especially on some explanatory variables
 and not others, it is important to be careful that the $y\text{'s}$ do not
 change between models you are comparing. This relates to our *Snow Depth*
 modeling because responses were being removed due to their influential nature.
-We can't compare $\boldsymbol{R}^2$ or $\boldsymbol{R}^2_{\text{adjusted}}$
+We can't compare ***R***^2^ or $\boldsymbol{R}^2_{\text{adjusted}}$
 for $n=25$ to a model when $n=23$ -- it isn't a fair comparison on
 either measure since they based on the total variability which is changing as
 the responses used change. 
 
-In the MLR (or SLR) model summaries, both the $\boldsymbol{R}^2$ and
+\indent In the MLR (or SLR) model summaries, both the ***R***^2^ and
 $\boldsymbol{R}^2_{\text{adjusted}}$
 are available. Make sure you are able to pick out the correct one. For the
 reduced data set ($n=23$) *Snow Depth* models, the pertinent part of the model
@@ -1060,7 +1079,7 @@ summary(m6)
 ```
 
 There is a value for $\large{\textbf{Multiple R-Squared}} \text{ of } 0.8535$,
-this is the $\boldsymbol{R}^2$ value and suggests that the model with
+this is the ***R***^2^ value and suggests that the model with
 *Elevation*, *Min* and *Max* temperatures explains 85.4% of the variation in 
 *Snow Depth*. The $\boldsymbol{R}^2_{\text{adjusted}}$ is 0.8304 and is
 available further to the right labeled as 
@@ -1069,13 +1088,14 @@ suite of different models for this same $n=23$ data set and found the following
 results in Table \@ref(tab:Table8-1). The top $\boldsymbol{R}^2_{\text{adjusted}}$
 model is the model with *Elevation* and *Max.Temp*, which beats out the model with
 all three variables on $\boldsymbol{R}^2_{\text{adjusted}}$. Note that the top
-$R^2$ model is the model with three predictors, but the most complicated model
+*R*^2^ model is the model with three predictors, but the most complicated model
 will always have that characteristic. 
 
 (ref:tab8-1) Model comparisons for Snow Depth data, sorted by model complexity.
 
 ```{r Table8-1,echo=F,results="asis"}
-columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;","$\\boldsymbol{K}$","$\\boldsymbol{R^2}$",
+columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",
+                   "$\\boldsymbol{K}$","$\\boldsymbol{R^2}$",
                    "$\\boldsymbol{R^2_{\\text{adjusted}}}$",
                    "$\\boldsymbol{R^2_{\\text{adjusted}}}$ **Rank**")
 row1 <- c("SD $\\sim$ Elevation",1,0.8087,0.7996,3)
@@ -1093,14 +1113,14 @@ pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table8-1) (ref:tab8-1)"
              justify=c("left","center","right","right","center"))
 ```
 
-The top model with *Elevation* and *Max.Temp* has an $\boldsymbol{R}^2$ of
+\indent The top model with *Elevation* and *Max.Temp* has an ***R***^2^ of
 0.8495, so we can say that the model with
 *Elevation* and *Maximum Temperature* explains 84.95% percent of the variation
 in *Snow Depth* and also that this model was selected based on the
 $\boldsymbol{R}^2_{\text{adjusted}}$. One of the important features of 
 $\boldsymbol{R}^2_{\text{adjusted}}$ available in this example -- adding
 variables often does not always increase its value even though 
-$\boldsymbol{R}^2$ does increase with **any** addition. In 
+***R***^2^ does increase with **any** addition. In 
 Section \@ref(section8-13) we consider a competitor for this model selection
 criterion that may "work" a bit better and be extendable into more complicated
 modeling situations; that measure is called the ***AIC***. 
@@ -1182,18 +1202,18 @@ regression models that can result in common mistakes.
     correlations among the predictors in the SNOTEL data set or visually displayed
     in Figure \@ref(fig:Figure8-12):
 
+    ```{r eval=F}
+    require(corrplot)
+    par(mfrow=c(1,1), oma=c(0,0,1,0))
+    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
+    round(cor(snotel2[-c(9,22),3:6]),2)
+    ```
+    
     ```{r Figure8-12,fig.cap="Plot of correlation matrix in the snow depth data set with influential points removed",fig.width=6.5,echo=F}
     require(corrplot)
     par(mfrow=c(1,1), oma=c(0,0,1,0))
     corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"),
                    tl.cex=0.75)
-    round(cor(snotel2[-c(9,22),3:6]),2)
-    ```
-    
-    ```{r eval=F}
-    require(corrplot)
-    par(mfrow=c(1,1), oma=c(0,0,1,0))
-    corrplot.mixed(cor(snotel2[-c(9,22),3:6]), col=c("black", "orange"))
     round(cor(snotel2[-c(9,22),3:6]),2)
     ```
     
@@ -1222,10 +1242,10 @@ regression models that can result in common mistakes.
     in the model using what are called ***Variance Inflation Factors*** (or 
     ***VIFs***). 
 
-**VIFs** provide a way to assess the multicollinearity in the MLR model that
+\indent **VIFs** provide a way to assess the multicollinearity in the MLR model that
 is caused by including specific variables. The amount of information that is
 shared between a single explanatory variable and the others can be found by
-regressing that variable on the others and calculating $\boldsymbol{R}^2$
+regressing that variable on the others and calculating ***R***^2^
 for that model. The code for this regression is something like:
 ``lm(X1~X2+X3+?+XK)``, which regresses *X1*on *X2* through *XK*. The 
 $1-\boldsymbol{R}^2$ from this regression is the amount of independent 
@@ -1273,15 +1293,15 @@ in the model. Similarly, the *Min.Temp* SE is 2.45 times larger and the
 multicollinearity in the model and that we need to be cautious in interpreting
 any slope coefficients from this model. 
 
-In order to see how the VIF is calculated for *Elevation*, we need to regress
-*Elevation* on *Min.Temp* and *Max.Temp*. Note that this model is only fit to
-find the percentage of variation in elevation explained by the temperature
+\indent In order to see how the VIF is calculated for *Elevation*, we need to 
+regress *Elevation* on *Min.Temp* and *Max.Temp*. Note that this model is only 
+fit to find the percentage of variation in elevation explained by the temperature
 variables. It ends up being 0.8775 -- so a high percentage of *Elevation* can be
 explained by the linear model using min and max temperatures. 
 
 ```{r}
 #VIF calc:
-elev1<-lm(Elevation~Min.Temp+Max.Temp,data=snotel2[-c(9,22),])
+elev1 <- lm(Elevation~Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
 summary(elev1)
 ```
 
@@ -1328,7 +1348,7 @@ given the other variables in the model. It is also possible to test for positive
 or negative slopes in the alternative, but this is rarely the first concern,
 especially when MLR slopes can occasionally come out in unexpected directions. 
 
-The test statistic for these hypotheses is 
+\indent The test statistic for these hypotheses is 
 $\boldsymbol{t=\dfrac{b_k}{\textbf{SE}_k}}$ and, if our assumptions are met,
 follows a $t$-distribution with $n-K-1$ *df* where $K$ is the number of
 predictor variables in the model. We perform the test for each slope
@@ -1383,7 +1403,7 @@ Similarly, we can test for *Elevation* after controlling for the *Maximum Temper
 
 $$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},$$
 
-\noindent given that *Max.Temp* is in the model.
+given that *Max.Temp* is in the model.
 
 $t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
 
@@ -1392,9 +1412,9 @@ suggest that there is a linear relationship between *Elevation* and
 *Snow Depth*, once we adjust for *Max.Temp* in the population of SNOTEL
 sites in Montana on this day. 
 
-There is one last test that is of dubious interest in almost every situation
--- to test that the y-intercept $(\boldsymbol{\beta_0})$ in an MLR is 0.
-This tests if the
+\indent There is one last test that is of dubious interest in almost every 
+situation -- to test that the y-intercept $(\boldsymbol{\beta_0})$ in an MLR 
+is 0. This tests if the
 true mean response is 0 when all the predictor variables are set to 0. I see
 researchers reporting this p-value frequently and it is possibly the most
 useless piece of information in the regression model summary. Sometimes less
@@ -1424,8 +1444,9 @@ Conclusion: There is sufficient evidence to suggest that the true mean
 uselessness of this test, think about the combination of $x\text{'s}$ -- is that
 even physically possible in Montana (or the continental US) in April? 
 
-Remember when testing slope coefficients in MLR, that if we fail to reject the
-null hypothesis, it does not mean that there is no relationship or even no linear
+\indent Remember when testing slope coefficients in MLR, that if we fail to 
+reject the null hypothesis, it does not mean that there is no relationship or
+even no linear
 relationship between the variables, but that there is no evidence of a linear
 relationship **once we account for the other variables in the model**. If you do
 not find a small p-value for a variable, you should
@@ -1439,10 +1460,10 @@ model. It also may mean that you don't know too much about its specific value.
 Confidence intervals will help us pin down where we think the true slope
 coefficient might be located, given the other variables in the model. 
 
-Confidence intervals provide the dual uses of inferences for the location of
-the true slope and whether the true slope seems to be different from 0. The
-confidence intervals here have our regular format of estimate $\mp$ margin
-of error. Like the previous tests, 
+\indent Confidence intervals provide the dual uses of inferences for the 
+location of the true slope and whether the true slope seems to be different 
+from 0. The confidence intervals here have our regular format of estimate 
+$\mp$ margin of error. Like the previous tests, 
 we work with $t$-distributions with $n-K-1$ degrees of freedom. Specifically
 the 95% confidence interval for slope coefficient $k$ is
 
@@ -1453,10 +1474,11 @@ controlling for the other variables in the model" for all the reasons
 discussed before. The general slope CI interpretation for predictor 
 $\boldsymbol{x_k}$ in an MLR is:
 
-* For a 1 **[unit of $\boldsymbol{x_k}$]** increase in $\boldsymbol{x_k}$, we
+> For a 1 **[*unit of $\boldsymbol{x_k}$*]** increase in $\boldsymbol{x_k}$, we
 are 95% confident that the true mean of $\boldsymbol{y}$ changes by between
-**LL** and **UL** **[units of $\boldsymbol{Y}$]** in the population, after
+**LL** and **UL** **[*units of $\boldsymbol{Y}$*]** in the population, after
 adjusting for the other $x\text{'s}$ **[list them!]**.
+> 
 
 We can either calculate these intervals as we have many times before or we can
 rely on the ``confint`` function to do this:
@@ -1472,10 +1494,11 @@ for a 1 foot increase in *Elevation*, we are 95% confident that the true mean
 *Snow Depth* will change by between 0.0175 and 0.0307 inches in the population,
 after adjusting for the *Maximum Temperature* of the sites. 
 
-## Overall F-test in Multiple Linear Regression	{#section8-7}
+## Overall F-test in multiple linear regression	{#section8-7}
 
-In the MLR summary, reported at the bottom of the output. For the model with
-*Elevation* and *Maximum Temperature*, the last row of the model summary is:
+In the MLR summary, there is an $F$-test and p-value reported at the bottom 
+of the output. For the model with *Elevation* and *Maximum Temperature*, the 
+last row of the model summary is:
 
 ```
 ## F-statistic: 56.43 on 2 and 20 DF,  p-value: 5.979e-09
@@ -1495,7 +1518,7 @@ comparison between a full and reduced model as follows:
 The reduced model estimates the same values for all $y\text{'s}$, 
 $\hat{y}_i=\bar{y}=b_0$ and corresponds to the null hypothesis of: 
 
-$\boldsymbol{H_0:}$ **No explanatory variables should be included in the model:** $\beta_1=\beta=2=\cdots=\beta_K=0$. 
+$\boldsymbol{H_0:}$ **No explanatory variables should be included in the model:** $\beta_1=\beta_2=\cdots=\beta_K=0$. 
 
 The full model corresponds to the alternative:
 
@@ -1505,7 +1528,7 @@ Note that $\beta_0$ is not set to 0 in the reduced model (under the null
 hypothesis) -- it becomes the true mean of $y$ for all values of the 
 $x\text{'s}$ since all the predictors are multiplied by coefficients of 0. 
 
-The test statistic to assess these hypotheses is 
+\indent The test statistic to assess these hypotheses is 
 $F = \text{MS}_{\text{model}}/\text{MS}_E$, which is assumed to follow an
 $F$-distribution with $K$ numerator *df* and $n-K-1$ denominator *df* under the
 null hypothesis. The output provides us with $F(2, 20)=56.43$ and a p-value 
@@ -1518,7 +1541,7 @@ interesting in the model, the moment you see this result, you want to know more
 about each predictor variable. If neither predictor variable is important, we
 will discover that in the $t$-tests for each coefficient and so our general recommendation is to start there. 
 
-The overall F-test, then, is really about testing whether there is something
+\indent The overall F-test, then, is really about testing whether there is something
 good in the model somewhere. And that certainly is important but it is also not
 too informative.  There is one situation where this test is really interesting,
 when there is only one predictor variable in the model (SLR). In that situation,
@@ -1543,7 +1566,7 @@ sample of all incoming students at a large university (more later). What
 potential issues would arise if a company was providing a data set to show the
 performance of their test and it was not based on a random sample? 
 
-We will proceed assuming they used good methods in developing their test 
+\indent We will proceed assuming they used good methods in developing their test 
 (there are sophisticated
 statistical models underlying the development of the SAT and GRE) and in
 obtaining a data set for testing out the performance of their tests that is at
@@ -1581,36 +1604,36 @@ the GPA data. Either way, we could remove it and note that our inferences for
 HSGPA do not extend above 4.0.] if that variable is going to be used (*HSGPA*
 was not used in the following models so the observation remains in the data). 
 
-In MLR, the modeling process is a bit more complex and often involves more than
-one model, so we will often avoid the 6+ steps in testing initially and try to
-generate a model we can use in that more specific process. In this case, the
-first model of interest using the two SAT percentiles,
+\indent In MLR, the modeling process is a bit more complex and often involves 
+more than one model, so we will often avoid the 6+ steps in testing initially 
+and try to generate a model we can use in that more specific process. In this 
+case, the first model of interest using the two SAT percentiles,
 
 $$\text{FYGPA}_i = \beta_0 + \beta_{\text{SATV}}\text{SATV}_i 
 + \beta_{\text{SATM}}\text{SATM}_i +\varepsilon_i,$$
 
-\noindent looks like it might be worth interrogating further so we can jump straight
+looks like it might be worth interrogating further so we can jump straight
 into considering the 6+ steps involved in hypothesis testing for the two slope
 coefficients. We will be using a 5% significance level and $t$-based
 inferences, assuming that we can trust the assumptions. 
 
-Note that this is not a randomized experiment but we can assume that it is
-representative of the students at that
+\indent Note that this is not a randomized experiment but we can assume that 
+it is representative of the students at that
 single university. We would not want to extend these inferences to other
 universities (who might be more or less selective) or to students who did not
 get into this university and, especially, not to students that failed to complete
 the first year. The second and third constraints point to a severe limitation
-in this research -- only students who were accepted, went to, and survived one
+in this research -- only students who were accepted, went to, and finished one
 year at this university could be studied. Lower SAT percentile students might
-not have been allowed in or may not have survived the first year and higher SAT
+not have been allowed in or may not have finished the first year and higher SAT
 students might have been attracted to other more prestigious institutions. So
 the scope of inference is just limited to students that were invited and chose
 to attend this institution and successfully completed one year of courses. It
 is hard to know if the SAT "works" when the inferences are so restricted in who
 they might apply to...
 
-The following code fits the model of interest, provides a model summary, and 
-the diagnostic plots, allowing us to consider the tests of interest:
+\indent The following code fits the model of interest, provides a model summary, 
+and the diagnostic plots, allowing us to consider the tests of interest:
 
 (ref:fig8-14) Diagnostic plots for the 
 $\text{FYGPA}\sim\text{ SATV }+\text{ SATM}$ model.
@@ -1759,8 +1782,8 @@ violated and so the inferences from our model should be relatively trustworthy.
 We could stop there, but just reporting the test results without quantifying
 the size of the effects is not fully satisfying. The estimated MLR model is
 
-$$\widehat{\text{FYGPA}}_i=0.00737+0.0254\text{SATV}_i
-+0.0224\text{SATM}_i.$$
+$$\widehat{\text{FYGPA}}_i=0.00737+0.0254\cdot\text{SATV}_i
++0.0224\cdot\text{SATM}_i.$$
 
 So for a 1 percent increase in the *SATV* percentile, we expect, on average,
 to get a 0.0254 point change in *GPA*, after controlling for *SATM* percentile.
@@ -1770,16 +1793,16 @@ percentile. While this is a correct interpretation of the slope coefficients,
 it is often easier to assess "practical" importance of the results by considering
 how much change this implies over the range of observed predictor values. 
 
-The term-plots (Figure \@ref(fig:Figure8-15)) provide a visualization of the
+\indent The term-plots (Figure \@ref(fig:Figure8-15)) provide a visualization of the
 "size" of the differences in the response variable explained by each predictor.
 The *SATV* term-plot shows that for the range of percentiles from around the
-30<sup>th</sup> percentile to the 70<sup>th</sup> percentile, the mean first 
+30^th^ percentile to the 70^th^ percentile, the mean first 
 year *GPA* is predicted to go from approximately 1.9 to 3.0. That is a pretty
 wide range of differences in GPAs across the range of observed percentiles.
 This looks like a pretty interesting and important change in the mean first
 year GPA across that range of different SAT percentiles. Similarly, the *SATM*
 term-plot shows that the *SATM* percentiles were observed to range between
-around the 30<sup>th</sup> percentile and 70<sup>th</sup> percentile and
+around the 30^th^ percentile and 70^th^ percentile and
 predict mean GPAs between 1.95 and 2.8. It seems that the SAT Verbal 
 percentiles produce slightly more impacts
 in the model, holding the other variable constant, but that both are important
@@ -1803,14 +1826,14 @@ require(effects)
 plot(allEffects(gpa1),ylim=c(1.7,3.1))
 ```
 
-These plots also inform the types of students attending this university and
+\indent These plots also inform the types of students attending this university and
 successfully completing the first year of school. This seems like a good, but
-maybe not great, institution with few students scoring over the 75<sup>th</sup>
+maybe not great, institution with few students scoring over the 75^th^
 percentile on either SAT Verbal or Math (at least that ended up in this data
 set). This result makes questions about their sampling mechanism re-occur as
 to who this data set might actually be representative of...
 
-The confidence intervals also help us pin down the uncertainty in each
+\indent The confidence intervals also help us pin down the uncertainty in each
 estimated slope coefficient. As always, the "easy" way to get 95% confidence
 intervals is using the ``confint`` function:
 
@@ -1829,16 +1852,16 @@ interval from 0.198 to 0.31 points and for *SATM* providing an interval from
 0.169 to 0.279. So a boost of 10% in either exam percentile likely results in a
 noticeable but not huge average *FYGPA* increase. 
 
-One final use of these methods is to do prediction and generate prediction
+\indent One final use of these methods is to do prediction and generate prediction
 intervals, which could be quite informative for a student considering going to
 this university who has a particular set of SAT scores. For example, suppose
 that the student is interested in the average *FYGPA* to expect with *SATV*
-at the 30<sup>th</sup> percentile and *SATM* at the 60<sup>th</sup> percentile.
+at the 30^th^ percentile and *SATM* at the 60^th^ percentile.
 The predicted mean value is
 
 $$\begin{array}{rl}
-\hat{\mu}_{\text{GPA}_i} &= 0.00737 + 0.0254\text{ SATV}_i 
-+ 0.0224\text{ SATM}_i \\
+\hat{\mu}_{\text{GPA}_i} &= 0.00737 + 0.0254\cdot\text{SATV}_i 
++ 0.0224\cdot\text{SATM}_i \\
 &= 0.00737 + 0.0254*30 + 0.0224*60 = 2.113
 \end{array}$$
 
@@ -1846,11 +1869,11 @@ This result and the 95% confidence interval for the mean student *GPA* at these
 scores can be found using the ``predict`` function as:
 
 ```{r}
-predict(gpa1,newdata=data.frame(SATV=30,SATM=60))
-predict(gpa1,newdata=data.frame(SATV=30,SATM=60),interval="confidence")
+predict(gpa1, newdata=data.frame(SATV=30,SATM=60))
+predict(gpa1, newdata=data.frame(SATV=30,SATM=60), interval="confidence")
 ```
 
-For students at the 30<sup>th</sup> percentile of *SATV* and 60<sup>th</sup>
+For students at the 30^th^ percentile of *SATV* and 60^th^
 percentile of *SATM*, we are 95% confident that the true mean first year GPA
 is between 1.98 and 2.24 points. For an individual student, we would want the 
 95% prediction interval:
@@ -1865,7 +1888,7 @@ very certain about the mean in this situation, there is a lot of uncertainty
 in the predictions for individual students. The PI is so wide as to almost 
 not be useful. 
 
-To support this difficulty in getting a precise prediction for a new student,
+\indent To support this difficulty in getting a precise prediction for a new student,
 review the original scatterplots: there is quite a bit of vertical variability
 in first year *GPA*s for each level of any of the predictors. The residual
 SE, $\hat{\sigma}$, is also informative in this regard -- 
@@ -1885,7 +1908,7 @@ their means.
 (ref:fig8-16) Term-plots for the $\text{FYGPA}\sim\text{SATV} + \text{SATM}$
 model with 95% PIs. 
 
-```{r Figure8-16,fig.cap="(ref:fig8-16)",warning=F,message=F}
+```{r Figure8-16,fig.cap="(ref:fig8-16)",fig.height=5,fig.width=10}
 #Remake effects plots with 95% PIs
 dv1 <- data.frame(SATV=seq(from=24,to=76,length.out=50), SATM=rep(54.4,50))
 dm1 <- data.frame(SATV=rep(48.93,50), SATM=seq(from=29,to=77,length.out=50))
@@ -1900,14 +1923,14 @@ par(mfrow=c(1,2))
 
 plot(dv1$SATV, mv1$fit, lwd=2, ylim=c(pv1$lwr[1],pv1$upr[50]), type="l",
      xlab="SATV Percentile", ylab="GPA", main="SATV Effect, CI and PI")
-lines(dv1$SATV ,mv1$lwr, col="red", lty=2, lwd=2)
+lines(dv1$SATV, mv1$lwr, col="red", lty=2, lwd=2)
 lines(dv1$SATV, mv1$upr, col="red", lty=2, lwd=2)
 lines(dv1$SATV, pv1$lwr, col="grey", lty=3, lwd=3)
 lines(dv1$SATV, pv1$upr, col="grey", lty=3, lwd=3)
 legend("topleft", c("Estimate", "CI","PI"), lwd=3, lty=c(1,2,3),
        col = c("black", "red","grey"))
 
-plot(dm1$SATM, mm1$fit, lwd=2, ylim=c(pm1$lwr[1], pm1$upr[50]), type="l",
+plot(dm1$SATM, mm1$fit, lwd=2, ylim=c(pm1$lwr[1],pm1$upr[50]), type="l",
      xlab="SATM Percentile", ylab="GPA", main="SATM Effect, CI and PI")
 lines(dm1$SATM, mm1$lwr, col="red", lty=2, lwd=2)
 lines(dm1$SATM, mm1$upr, col="red", lty=2, lwd=2)
@@ -1917,7 +1940,7 @@ lines(dm1$SATM, pm1$upr, col="grey", lty=3, lwd=3)
 
 \sectionmark{Different intercepts for different groups}
 
-## Different intercepts for different groups: MLR with Indicator variables	{#section8-9}
+## Different intercepts for different groups: MLR with indicator variables	{#section8-9}
 
 \sectionmark{Different intercepts for different groups}
 
@@ -1940,7 +1963,7 @@ similar data sets used 1 for males but the documentation on these data is a bit
 sparse. We can proceed with a small potential that all conclusions regarding
 differences in ``sex``  are in the wrong direction.]. 
 
-It appears that the slope for females might be larger (steeper) in this
+\indent It appears that the slope for females might be larger (steeper) in this
 relationship than it is for
 males. So increases in SAT Verbal percentiles for females might have more of an
 impact on the average first year GPA. We'll handle this sort of situation in
@@ -1950,7 +1973,7 @@ begin to handle these situations and explore creating models with the same
 slope coefficient for all groups but different y-intercepts. This material
 resembles what we did for the Two-Way ANOVA additive model. 
 
-These results contrast with Figure \@ref(fig:Figure8-18) for the relationship
+\indent These results contrast with Figure \@ref(fig:Figure8-18) for the relationship
 between first year college *GPA* and *SATM*
 percentile by sex of the students. The lines for the two groups appear to be
 mostly parallel and just seem to have different y-intercepts. We can use our
@@ -1973,7 +1996,7 @@ scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
             smooth=F, main="Scatterplot of GPA vs SATM by Sex")
 ```
 
-To fit one model to a data set that contain multiple groups, we need a way of
+\indent To fit one model to a data set that contain multiple groups, we need a way of
 entering categorical variable information in an MLR model. Regression models
 require quantitative predictor variables for the $x\text{'s}$ so we can't 
 directly enter the sex of the students into the regression model since it 
@@ -2014,8 +2037,6 @@ scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
             cex.main=1)
 ```
 
-\newpage
-
 The ``SEX `` row contains information that the linear model chose *MALE* as
 the baseline category and *FEMALE* as the deviation category since *MALE* does
 not show up in the output. To see what ``lm`` is doing for us when we give it a
@@ -2051,7 +2072,7 @@ was anything different from other quantitative predictors.
 Now we want to think about what this model means. We can write the estimated 
 model as
 
-$$\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i +
+$$\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\cdot\text{SATM}_i +
 0.313I_{\text{Female},i}.$$
 
 When we have a *male* observation, the indicator takes on a value of 0 so the 
@@ -2060,26 +2081,25 @@ When we have a *male* observation, the indicator takes on a value of 0 so the
 y-intercept. The following
 works this out step-by-step, simplifying the MLR into two SLRs:
 
-\newpage
 
 * Simplified model for *Males* (plug in a 0 for $I_{\text{Female}}$):
 
-    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i +
-    0.313*0 = 0.216 + 0.0386\text{ SATM}_i$
+    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\cdot\text{SATM}_i +
+    0.313*0 = 0.216 + 0.0386\cdot\text{SATM}_i$
 
 * Simplified model for *Females* (plug in a 1 for $I_{\text{Female}}$):
     
-    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\text{ SATM}_i + 0.313*1$
+    * $\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\cdot\text{SATM}_i + 0.313*1$
     
-    * $= 0.216 + 0.0386\text{ SATM}_i + 0.313$ (combine "like" terms to
+    * $= 0.216 + 0.0386\cdot\text{SATM}_i + 0.313$ (combine "like" terms to
     simplify the equation)
     
-    * $= 0.529 + 0.0386\text{ SATM}_i$
+    * $= 0.529 + 0.0386\cdot\text{SATM}_i$
     
 In this situation, we then end up with two SLR models that relate *SATM* to 
 *GPA*, one model for *males* 
-$(\widehat{\text{FYGPA}}_i= 0.216 + 0.0386\text{ SATM}_i)$ and one for *females*
-$(\widehat{\text{FYGPA}}_i= 0.529 + 0.0386\text{ SATM}_i)$. The only difference
+$(\widehat{\text{FYGPA}}_i= 0.216 + 0.0386\cdot\text{SATM}_i)$ and one for *females*
+$(\widehat{\text{FYGPA}}_i= 0.529 + 0.0386\cdot\text{SATM}_i)$. The only difference
 between these two models is in the y-intercept, with the *female* model's
 y-intercept shifted up from the *male* y-intercept by 0.313. And that is what
 adding indicator variables into models does in general^[This is true for 
@@ -2091,7 +2111,7 @@ for changing slopes by group too.] -- it shifts the intercept up or down from
 the baseline group (here selected as *males*) to get a new intercept for the
 deviation group (here *females*).
 
-To make this visually clearer, Figure \@ref(fig:Figure8-19) contains the
+\indent To make this visually clearer, Figure \@ref(fig:Figure8-19) contains the
 regression lines that were estimated for each
 group. For any *SATM*, the difference in the groups is the 0.313 coefficient from
 the ``SEXFEMALE`` or ``SEXINDICATOR`` row of the model summaries. For example,
@@ -2118,7 +2138,7 @@ abline(h=0.529+0.0386*50,lty=2,col="red")
 legend("topleft", c("Male", "Female"),lwd=c(2,3),lty=1,col = c("black", "red"))
 ```
 
-Remember that ``lm`` selects baseline categories typically based on the
+\indent Remember that ``lm`` selects baseline categories typically based on the
 alphabetical order of the levels of the categorical variable. Here, the ``SEX``
 variable started with a coding of 1 and 2 and retained that
 order even with the recoding of levels that we created to give it more explicit
@@ -2126,7 +2146,7 @@ names. Because we allow ``lm`` to create indicator variables for us, the main
 thing you need to do is explore the model summary and look for the hint at the
 baseline level that is not displayed after the name of the categorical variable. 
 
-We can also work out the impacts of adding an indicator variable to the model
+\indent We can also work out the impacts of adding an indicator variable to the model
 in general in the theoretical model with a single quantitative predictor $x_i$
 and indicator $I_i$. The model starts as
 
@@ -2168,7 +2188,7 @@ require(effects)
 plot(allEffects(SATSex1))
 ```
 
-The model summary and confidence intervals provide some potential interesting
+\indent The model summary and confidence intervals provide some potential interesting
 inferences in these models. Again, these are just applications of MLR methods
 we have already seen except that the definition of one of the variables is
 "different" using the indicator coding idea. For the same model, the ``SEX``
@@ -2230,22 +2250,16 @@ seems more prominent than differences in slopes.
 (ref:fig8-21) Scatterplot of post-treatment decibel tolerance (du2) vs
 pre-treatment tolerance (du1) by treatment level (4 groups). 
 
-```{r Figure8-21,fig.cap="(ref:fig8-21)",fig.height=4,fig.width=7,echo=F}
-require(heplots)
-data(Headache)
-scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
-            main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
-            legend.coords="topleft",cex.main=1,cex.leg=0.75)
-```
-
-```{r eval=F}
+```{r Figure8-21,fig.cap="(ref:fig8-21)",fig.height=5,fig.width=10}
 require(heplots)
 data(Headache)
 scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
             main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
             legend.coords="topleft")
 ```
-This data set contains a categorical variable with 4 levels. To go beyond two
+
+
+\indent This data set contains a categorical variable with 4 levels. To go beyond two
 groups, we have to add more than one indicator variable, defining three
 indicators to turn on (1) or off (0) for three of the levels of the variable
 with the same reference level used for all the indicators. For this example, 
@@ -2278,15 +2292,15 @@ pander(res1)
 ```
 
 
-When we fit the additive model of the form ``y~x+group``, the ``lm``
+\indent When we fit the additive model of the form ``y~x+group``, the ``lm``
 function takes the $\boldsymbol{J}$ categories and creates $\boldsymbol{J-1}$
 indicator variables. The baseline level is always handled in the intercept.
 The model will be of the form
 
 $$y_i=\beta_0 + \beta_1x_i +\beta_2I_{\text{Level}2,i}+\beta_3I_{\text{Level}3,i}
-+\cdots+\beta_{J-1}I_{\text{Level}J,i}+\varepsilon_i$$
++\cdots+\beta_{J}I_{\text{Level}J,i}+\varepsilon_i$$
 
-\noindent where the $I_{\text{CatName}J,i}\text{'s}$ are the different indicator variables. 
+where the $I_{\text{CatName}J,i}\text{'s}$ are the different indicator variables. 
 Note that each indicator variable gets a coefficient associated with it and is
 "turned on" whenever the $i^{th}$ observation is in that category. Only one of
 the $I_{\text{CatName}J,i}\text{'s}$ is a 1 for any observation, so the
@@ -2297,7 +2311,7 @@ between the grouping variable and the quantitative predictor. To be able to
 trust this model, we need to check that we do not need different slope
 coefficients for the groups as discussed in the next section. 
 
-For these types of models, it is always good to start with a plot of the data
+\indent For these types of models, it is always good to start with a plot of the data
 set with regression lines for each group -- assessing whether the lines look
 relatively parallel or not. In Figure \@ref(fig:Figure8-21), there are some
 differences in slopes -- we investigate that further in the next section. For
@@ -2311,34 +2325,34 @@ summary(head1)
 
 The complete estimated regression model is
 
-$$\widehat{\text{du2}}_i=0.809+0.837\text{ du1}_i+0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i}.$$
+$$\widehat{\text{du2}}_i=0.809+0.837\cdot\text{du1}_i +0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i}.$$
 
 For each group, the model simplifies to an SLR as follows:
 
 * For *T1* (baseline):
 
 $$\begin{array}{rl}
-\widehat{\text{du2}}_i &=0.809+0.837\text{ du1}_i+0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i} \\
-&= 0.809+0.837\text{ du1}_i+0.077*0+0.809*0-0.558*0 \\
-&= 0.809+0.837\text{ du1}_i
+\widehat{\text{du2}}_i &=0.809+0.837\cdot\text{du1}_i +0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i} \\
+&= 0.809+0.837\cdot\text{du1}_i+0.077*0+0.809*0-0.558*0 \\
+&= 0.809+0.837\cdot\text{du1}_i
 \end{array}$$
     
 * For *T2*:
 
 $$\begin{array}{rl}
-\widehat{\text{du2}}_i &=0.809+0.837\text{ du1}_i+0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i} \\
-&= 0.809+0.837\text{ du1}_i+0.077*1+0.809*0-0.558*0 \\
-&= 0.809+0.837\text{ du1}_i + 0.077 \\
-&= 0.886+0.837\text{ du1}_i
+\widehat{\text{du2}}_i &=0.809+0.837\cdot\text{du1}_i+0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i} \\
+&= 0.809+0.837\cdot\text{du1}_i+0.077*1+0.809*0-0.558*0 \\
+&= 0.809+0.837\cdot\text{du1}_i + 0.077 \\
+&= 0.886+0.837\cdot\text{du1}_i
 \end{array}$$
 
 * For *T3*:
 
-$$\widehat{\text{du2}}_i = 1.618 + 0.837\text{ du1}_i$$
+$$\widehat{\text{du2}}_i = 1.618 + 0.837\cdot\text{du1}_i$$
 
 * For *Control*:
 
-$$\widehat{\text{du2}}_i = 0.251 + 0.837\text{ du1}_i$$
+$$\widehat{\text{du2}}_i = 0.251 + 0.837\cdot\text{du1}_i$$
 
 To reinforce what this additive model is doing, Figure \@ref(fig:Figure8-22)
 displays the estimated regression lines for all four
@@ -2346,7 +2360,7 @@ groups, showing the shifts in the *y*-intercepts among the groups.
 
 (ref:fig8-22) Plot of estimated noise tolerance additive model.
 
-```{r Figure8-22,fig.cap="(ref:fig8-22)",echo=F}
+```{r Figure8-22,fig.cap="(ref:fig8-22)",echo=F, fig.height=5,fig.width=10}
 du1s<-seq(from=0.37,to=15.1,length.out=50)
 hdT1<-data.frame(du1=du1s,treatment=rep("T1",50))
 hdT2<-data.frame(du1=du1s,treatment=rep("T2",50))
@@ -2359,13 +2373,14 @@ lines(du1s,predict(head1,newdata=hdcontrol),lwd=2,col="blue",lty=3)
 legend("topleft",lwd=2,title="Groups",legend=c("T1","T2","T3","Control"),lty=c(2,1,2,3),col=c("black","red","green","blue"))
 ```
 
-The term-plot (Figure \@ref(fig:Figure8-23)) shifted up the most relative to
+\indent The term-plot (Figure \@ref(fig:Figure8-23)) shows how the *T3* group
+seems to have shifted up the most relative to
 the others and the *Control* group seems to be noticeably lower than the others,
 in the model that otherwise assumes that the same relationship holds between
 ``du1`` and ``du2`` for all the groups. After controlling for the *Treatment*
 group, for a 1 decibel increase in initial tolerances, we expect, on average,
 to obtain a 0.84 decibel change in the second tolerance measurement. The
-$\boldsymbol{R}^2$ shows that this is a decent model for the responses, with
+***R***^2^ shows that this is a decent model for the responses, with
 this model explaining 75.1% percent of the
 variation in the second decibel tolerance measure. We should check the
 diagnostic plots and VIFs to check for any issues -- all the diagnostics and
@@ -2380,9 +2395,9 @@ different in different groups, like linearity or non-constant variance.
 plot(allEffects(head1))
 ```
 
-The diagnostic plots in Figure \@ref(fig:Figure8-24) provides some indications
-of a few observations in the tails that deviate from a normal to having
-slightly heavier tails but
+\indent The diagnostic plots in Figure \@ref(fig:Figure8-24) provides some 
+indications of a few observations in the tails that deviate from a normal
+distribution to having slightly heavier tails but
 only one outlier is of real concern. There is a small indication of increasing
 variability as a function of the fitted values as both the Residuals vs. Fitted
 and Scale-Location plots show some fanning out for higher values but this is a
@@ -2396,7 +2411,7 @@ plot(head1,
      sub.caption="Plot of diagnostics for additive model with du1 and treatment for du2")
 ```
 
-The VIFs are different for categorical variables than for quantitative
+\indent The VIFs are different for categorical variables than for quantitative
 predictors in MLR. The 4 levels
 are combined in a measure called the ***generalized VIF (GVIF)***. For GVIFs,
 we only focus on the inflation of the SE scale (square root for 1 df effects
@@ -2414,11 +2429,11 @@ require(car)
 vif(head1)
 ```
 
-While there are inferences available in the model output, the tests for the
+\indent While there are inferences available in the model output, the tests for the
 indicator variables are not too informative since they only compare each group
 to the baseline. In Section \@ref(section8-12), we see how to use ANOVA 
 *F*-tests to help us ask general questions about including a predictor in the
-model. But we can compare adjusted $\boldsymbol{R}^2$ values with and without
+model. But we can compare adjusted ***R***^2^ values with and without
 *Treatment* to see if including the categorical variable was "worth
 it":
 
@@ -2427,8 +2442,8 @@ head1R <- lm(du2~du1, data=Headache)
 summary(head1R)
 ```
 
-The adjusted $\boldsymbol{R}^2$ in the model with both *Treatment* and *du1* is
-0.7404 and the adjusted $R^2$ for this reduced model with just *du1* is 0.7344,
+The adjusted ***R***^2^ in the model with both *Treatment* and *du1* is
+0.7404 and the adjusted *R*^2^ for this reduced model with just *du1* is 0.7344,
 suggesting the *Treatment* is useful. The next section
 provides a technique to be able to work with different slopes on the
 quantitative predictor for each group. Comparing those results to the results
@@ -2450,13 +2465,15 @@ the case. This should remind you a bit of the discussions of the additive and
 interacting models in the Two-way ANOVA material. The models, concerns, and
 techniques are very similar, but with the quantitative variable replacing one
 of the two categorical variables. As always, the scatterplot is a good first
-step to understanding whether we need the extra complexity that these models require. 
+step to understanding whether we need the extra complexity that these models 
+require. 
 
-A new example provides motivation for the consideration of different slopes and
+\indent A new example provides motivation for the consideration of different 
+slopes and
 intercepts. A study was performed to address whether the relationship between
 nonverbal IQs and
 reading accuracy differs between dyslexic and non-dyslexic students. Two groups
-of students were identified one group of *dyslexic* students was identified
+of students were identified, one group of *dyslexic* students was identified
 first (19 students) and then a group of gender and age similar student matches
 were identified (25 students) for a total sample size of $n=44$, provided in the
 ``dyslexic3`` data set from the ``smdata`` package [@R-smdata].
@@ -2474,9 +2491,9 @@ assign treatments to subjects. We still would avoid using "causal" language but
 this design is about as good as you can get when you are unable to randomly
 assign levels to subjects. 
 
-Using these data, we can explore the relationship between nonverbal IQ scores
-and reading accuracy, with reading accuracy measured as a proportion correct.
-The fact that there is an
+\indent Using these data, we can explore the relationship between nonverbal 
+IQ scores and reading accuracy, with reading accuracy measured as a proportion
+correct. The fact that there is an
 upper limit to the response variable attained by many students will cause
 complications below, but we can still learn something from our attempts to
 analyze these data using an MLR model. The scatterplot in
@@ -2506,7 +2523,8 @@ scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
             ylab="Reading score", data=dyslexic3, smooth=F,
             main="Plot of IQ vs Reading by dyslexia status")
 ```
-To allow for both different y-intercepts and slope coefficients on the
+
+\indent To allow for both different y-intercepts and slope coefficients on the
 quantitative predictor, we need to include a "modification" of the slope
 coefficient. This is performed using an ***interaction*** between the two
 predictor variables where we allow the impacts of one variable
@@ -2520,7 +2538,7 @@ interaction, which is
 $$y_i=\beta_0 + \beta_1x_i +\beta_2I_{\text{CatName},i} +
 \color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i,$$
 
-\noindent where the new component involves both the indicator and the quantitative
+where the new component involves both the indicator and the quantitative
 predictor variable. The $\color{red}{\boldsymbol{\beta_3}}$ coefficient will be
 found in a row of output with **both** variable names in it (with the indicator
 level name) with a colon between them (something like ``x:grouplevel``). As
@@ -2541,7 +2559,7 @@ and simplify the equations.
     quantitative slope coefficient.
         
         
-* For any observation in the second category $I_{\text{CatName},i}=0$, so
+* For any observation in the second category $I_{\text{CatName},i}=1$, so
 
     $$y_i=\beta_0+\beta_1x_i+\beta_2I_{\text{CatName},i}+
     \color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i$$
@@ -2575,26 +2593,26 @@ summary(dys_model)
 
 The estimated model can be written as  
 
-$$\widehat{\text{Score}}_i=0.876+0.058\text{ ZIQ}_i - 0.280I_{\text{Level }1,i}
--\color{red}{\boldsymbol{0.073}}I_{\text{Level }1,i}\text{ ZIQ}_i$$
+$$\widehat{\text{Score}}_i=0.876+0.058\cdot\text{ZIQ}_i - 0.280I_{\text{Level }1,i}
+-\color{red}{\boldsymbol{0.073}}I_{\text{Level }1,i}\cdot\text{ZIQ}_i$$
 
-\noindent and simplified for the two groups as:
+and simplified for the two groups as:
 
 * For the baseline (non-dyslexic, $I_{\text{Level}1,i}=0$) students:
 
-    $$\widehat{\text{Score}}_i=0.876+0.058\text{ ZIQ}_i$$
+    $$\widehat{\text{Score}}_i=0.876+0.058\cdot\text{ZIQ}_i$$
     
 * For the deviation (dyslexic, $I_{\text{Level1},i}=1$) students:
 
     $$\begin{array}{rl}
-    \widehat{\text{Score}}_i&=0.876+0.058\text{ ZIQ}_i - 0.280*1-
-    0.073*1\text{ ZIQ}_i \\
-    &=(0.876- 0.280) + (0.058-0.073)\text{ ZIQ}_i, \\
+    \widehat{\text{Score}}_i&=0.876+0.058\cdot\text{ZIQ}_i - 0.280*1-
+    0.073*1\cdot\text{ZIQ}_i \\
+    &=(0.876- 0.280) + (0.058-0.073)\cdot\text{ZIQ}_i, \\
     \end{array}$$
 
     which simplifies finally to:
     
-    $$\widehat{\text{Score}}_i=0.596+0.015\text{ ZIQ}_i$$
+    $$\widehat{\text{Score}}_i=0.596-0.015\cdot\text{ZIQ}_i$$
 
 * So the slope switched from 0.058 in the non-dyslexic students to -0.015 in
 the dyslexic students. The interpretations of these coefficients are outlined
@@ -2617,8 +2635,8 @@ slightly negative, showing that higher IQ's are related to lower reading
 accuracy. What we conclude from this is that we should not expect higher IQ's
 to show higher performance on a test like this. 
 
-Checking the assumptions is always recommended before getting focused on the
-inferences in the model. 
+\indent Checking the assumptions is always recommended before getting focused 
+on the inferences in the model. 
 When fitting models with multiple groups, it is possible to see "groups" in the
 fitted values and that is not a problem -- it is a feature of these models. You
 should look for issues in the residuals for each group but the residuals should
@@ -2646,7 +2664,7 @@ plot(dys_model,
      sub.caption="Plot of diagnostics for Dyslexia Interaction model")
 ```
 
-For these models, we have relaxed an earlier assumption that data were collected
+\indent For these models, we have relaxed an earlier assumption that data were collected
 from only one group. In
 fact, we are doing specific research that is focused on questions about the
 differences between groups. However, these models still make assumptions that, 
@@ -2712,13 +2730,13 @@ complicated of a model.
 plot(allEffects(dys_model), ci.style="bands", multiline=T)
 ```
 
-It certainly appears in the plots that IQ has a different impact on the mean
+\indent It certainly appears in the plots that IQ has a different impact on the mean
 score in the two groups (even though the p-value only provided marginal
 evidence). To
 reinforce the potential dangers of forcing the same slope for both groups, 
 consider the additive model for these data. Again, this just shifts one group
 off the other one, but both have the same slope. The following model summary
-and term-plots (Figure \@ref(fig:Figure8-29) suggest the potentially
+and term-plots (Figure \@ref(fig:Figure8-29)) suggest the potentially
 dangerous conclusion that
 can come from assuming a common slope when that might not be the case. 
 
@@ -2734,8 +2752,8 @@ This model provides no evidence that IQ is related to reading score for all
 students ($t_{41}=1.34$, p-value=0.188) but strong evidence of a difference in the
 y-intercepts ($t_{41}=-6.88$, p-value $<0.00001$). 
 
-Since the IQ term has a large p-value, then we could drop it from the model --
-leaving a model that only includes the grouping variable:
+\indent Since the IQ term has a large p-value, then we could drop it from the 
+model -- leaving a model that only includes the grouping variable:
 
 (ref:fig8-30) Term-plot for dyslexia status only model for reading scores.
 
@@ -2756,16 +2774,17 @@ for removal, possibly starting with the variable with the larger p-value,
 leaving a string of ever-simpler models possible if large p-values are continually
 encountered. 
 
-It is useful to note that the last model has returned us to the first model
-we encountered in Chapter \@ref(chapter2) where we were just comparing the means
-for two groups. 
+\indent It is useful to note that the last model has returned us to the first 
+model we encountered in Chapter \@ref(chapter2) where we were just comparing 
+the means for two groups. 
 However, the researchers probably were not seeking to make the discovery that
 dyslexic students have a tougher time than non-dyslexic students on a reading
 test but sometimes that is all that the data support. The key part of this
 sequence of decisions was how much evidence you think a p-value of 0.06
 contains...
 
-For more than two categories in a categorical variable, the model contains more
+\indent For more than two categories in a categorical variable, the model 
+contains more
 indicators to keep track of but uses the same ideas. We have to deal with
 modifying the deviation group so the task is onerous but relatively repetitive.
 The general model is:
@@ -2781,19 +2800,19 @@ Specific to the audible tolerance/headache data that had four groups. The model
 with an interaction present is
 
 $$\begin{array}{rl}
-\text{du2}_i = \beta_0 &+ \beta_1\text{ du1}_i + \beta_2I_{T2,i} +
+\text{du2}_i = \beta_0 &+ \beta_1\cdot\text{du1}_i + \beta_2I_{T2,i} +
 \beta_3I_{T3,i} + \beta_4I_{\text{Control},i} \\
-&+ \beta_5I_{T2,i}\text{ du1}_i + \beta_6I_{T3,i}\text{ du1}_i
-+ \beta_7I_{\text{Control},i}\text{ du1}_i+\varepsilon_i
+&+ \beta_5I_{T2,i}\cdot\text{du1}_i + \beta_6I_{T3,i}\cdot\text{du1}_i
++ \beta_7I_{\text{Control},i}\cdot\text{du1}_i+\varepsilon_i
 \end{array}$$
 
 Based on the following output, the estimated general regression model is
 
 $$\begin{array}{rl}
-\widehat{\text{du2}}_i = 1.33 &+ 0.733\text{ du1}_i - 0.236I_{T2,i} -
+\widehat{\text{du2}}_i = 1.33 &+ 0.733\cdot\text{du1}_i - 0.236I_{T2,i} -
 0.316I_{T3,i} - 1.091I_{\text{Control},i} \\
-&+ 0.066I_{T2,i}\text{ du1}_i + 0.199I_{T3,i}\text{ du1}_i
-+ 0.106I_{\text{Control},i}\text{ du1}_i
+&+ 0.066I_{T2,i}\cdot\text{du1}_i + 0.199I_{T3,i}\cdot\text{du1}_i
++ 0.106I_{\text{Control},i}\cdot\text{du1}_i
 \end{array}$$
 
 Then we could work out the specific equation for **each group** with
@@ -2801,11 +2820,11 @@ replacing their indicator variable in two places with 1s and the rest of
 the indicators with 0. For example, for the *Control* group:
 
 $$\begin{array}{rll}
-\widehat{\text{du2}}_i &= 1.33 &+ 0.733\text{ du1}_i - 0.236*0 - 0.316*0
+\widehat{\text{du2}}_i &= 1.33 &+ 0.733\cdot\text{du1}_i - 0.236*0 - 0.316*0
 - 1.091*1 \\
-&&+ 0.066*0*\text{ du1}_i + 0.199*0*\text{ du1}_i+ 0.106*1*\text{ du1}_i \\
-\widehat{\text{du2}}_i&=1.33&+0.733\text{ du1}_i - 1.091 + 0.106\text{ du1}_i \\
-\widehat{\text{du2}}_i&=0.239 &+ 0.839\text{ du1}_i
+&&+ 0.066*0*\text{du1}_i + 0.199*0*\text{du1}_i+ 0.106*1*\text{du1}_i \\
+\widehat{\text{du2}}_i&=1.33&+0.733\cdot\text{du1}_i - 1.091 + 0.106\cdot\text{du1}_i \\
+\widehat{\text{du2}}_i&=0.239 &+ 0.839\cdot\text{du1}_i
 \end{array}$$
 
 (ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
@@ -2820,7 +2839,7 @@ head2<-lm(du2~du1*treatment,data=Headache)
 summary(head2)
 ```
 
-Or we can let the term-plots (Figures \@ref(fig:Figure8-31) and 
+\indent Or we can let the term-plots (Figures \@ref(fig:Figure8-31) and 
 \@ref(fig:Figure8-32)) show us all four different simplified models. Here we
 can see that all the slopes "look" to be pretty similar. When the interaction
 model is fit and the results "look" like the additive model, there is a good
@@ -2847,7 +2866,7 @@ plot(allEffects(head2), x.var="du1", ci.style="bands")
 plot(allEffects(head2), x.var="du1", multiline=T, ci.style="bands")
 ```
 
-In situations with more than 2 levels, the $t$-tests for the interaction or
+\indent In situations with more than 2 levels, the $t$-tests for the interaction or
 changing y-intercepts are not informative for deciding if you really need
 different slopes or intercepts for all the groups. They only tell
 you if a specific group is potentially different from the baseline group and
@@ -2859,10 +2878,10 @@ $F$-tests for the interaction part of the model.
 
 \sectionmark{F-tests for MLR models with Q and C variables and interactions}
 
-For models with multi-category $(J-2)$ categorical variables we need a method
+For models with multi-category $(J>2)$ categorical variables we need a method
 for deciding if all the extra
 complexity present in the additive or interaction models is necessary. We can
-appeal to model selection methods such as the adjusted $\boldsymbol{R}^2$ that
+appeal to model selection methods such as the adjusted ***R***^2^ that
 focus on balancing model fit and complexity but interests often move to trying to
 decide if the differences are more extreme
 than we would expect by chance if there were no group differences in intercepts
@@ -2894,7 +2913,7 @@ model.
 knitr::include_graphics("chapter8_files/image299_small.png")
 ```
 
-If the initial interaction test suggests the interaction is important, then no
+\indent If the initial interaction test suggests the interaction is important, then no
 further refinement should be considered and that model should be explored (this
 was the same protocol suggested in the 2-WAY ANOVA situation, the other place
 where we considered interactions). If the interaction is not deemed important
@@ -2915,7 +2934,8 @@ model is the final model. Usually we will not have to delve deeply into this
 tree of models, but it is good to consider the potential paths that an analysis
 could involve before it is started. 
 
-To perform the first test (after checking that assumptions are met, of course),
+\indent To perform the first test (after checking that assumptions are met, of
+course),
 we can apply the ``Anova`` function from the ``car`` package to an interaction
 model^[We could also use the ``anova`` function to do this but using ``Anova``
 throughout this material provides the answers we want in the additive model and
@@ -2942,15 +2962,15 @@ summary output. The noise tolerance study, introduced in Section
 \@ref(section8-10), provides a situation for exploring the results in
 detail. 
 
-With the $J=4$ level categorical variable (*Treatment*), the model for the
+\indent With the $J=4$ level categorical variable (*Treatment*), the model for the
 second noise tolerance measurement (*du2*) as a function of the interaction 
 between *Treatment* and initial noise tolerance (*du1*) is
 
 $$\begin{array}{rl}
-\text{du2}_i = \beta_0 &+ \beta_1\text{ du1}_i + \beta_2I_{T2,i} +
+\text{du2}_i = \beta_0 &+ \beta_1\cdot\text{du1}_i + \beta_2I_{T2,i} +
 \beta_3I_{T3,i} + \beta_4I_{\text{Control},i} \\
-&+ \beta_5I_{T2,i}\text{ du1}_i + \beta_6I_{T3,i}\text{ du1}_i
-+ \beta_7I_{\text{Control},i}\text{ du1}_i+\varepsilon_i
+&+ \beta_5I_{T2,i}\cdot\text{du1}_i + \beta_6I_{T3,i}\cdot\text{du1}_i
++ \beta_7I_{\text{Control},i}\cdot\text{du1}_i+\varepsilon_i
 \end{array}$$
 
 We can re-write the previous hypotheses in one of two more specific ways:
@@ -2989,14 +3009,14 @@ at least one of the *Treatment* groups in the population.
 Anova(head2)
 ```
 
-Without evidence to support an interaction, we should consider both the
+\indent Without evidence to support an interaction, we should consider both the
 quantitative and categorical variables in an additive model. The ANOVA table
 for the additive model contains two interesting tests. One test is for the
 quantitative variable discussed previously. The other is for the categorical
 variable, assessing whether different y-intercepts are needed. The additive
 model here is
 
-$$\text{du2}_i = \beta_0 + \beta_1\text{ du1}_i + \beta_2I_{T2,i} +
+$$\text{du2}_i = \beta_0 + \beta_1\cdot\text{du1}_i + \beta_2I_{T2,i} +
 \beta_3I_{T3,i} + \beta_4I_{\text{Control},i} +\varepsilon_i.$$
 
 The hypotheses assessed in the ANOVA test for treatment are:
@@ -3037,7 +3057,7 @@ head1 <- lm(du2~du1+treatment, data=Headache)
 Anova(head1)
 ```
 
-In the same ANOVA table, there is a test for the *du1* effect. This tests 
+\indent In the same ANOVA table, there is a test for the *du1* effect. This tests 
 $H_0: \beta_1=0$ vs $H_A: \beta_1\ne 0$ in a model with different y-intercepts
 estimated for the different groups. If we remove this effect from the model, all
 we are left with is different
@@ -3055,7 +3075,7 @@ they are not important.
 There are a variety of techniques for selecting among a set of potential models 
 or refining an initially fit MLR
 model. Hypothesis testing can be used (in the case where we have nested models)
-or comparisons of adjusted $\boldsymbol{R}^2$
+or comparisons of adjusted ***R***^2^
 across different potential models (it is valid for nested or non-nested
 model comparisons). Diagnostics should play a role in the models considered and
 in selecting among models that might appear to be similar on a model comparison
@@ -3069,8 +3089,8 @@ won't even know if we are picking a "good" model, but just the best from a set
 of the candidate models. But we can study the general performance of methods
 using simulations where we know the true model and the AIC has some useful
 properties in identifying the correct model when it is in the candidate set of
-models. No such similar theory exists for the adjusted $\boldsymbol{R}^2$.]
-model than the ***adjusted*** $\boldsymbol{R}^2$. The measure is called the
+models. No such similar theory exists for the adjusted ***R***^2^.]
+model than the ***adjusted*** ***R***^2^. The measure is called the
 ***AIC*** (Akaike's An Information Criterion^[Most people now call this 
 Akaike's (pronounced **ah-kah-ee-kay**) Information Criterion, but he used the
 AIC nomenclature to mean An Information Criterion -- he was not so vain as to
@@ -3089,7 +3109,8 @@ on the log-scale, so negative values are possible and you should not be
 disturbed if you are comparing large magnitude negative numbers -- just pick the
 one with the smallest value. 
 
-The AIC is optimized (smallest) for a model that contains the optimal balance of
+\indent The AIC is optimized (smallest) for a model that contains the optimal 
+balance of
 simplicity of the
 model with quality of fit to the observations. Scientists are driven to
 different degrees by what is called the ***principle of parsimony***: that
@@ -3110,11 +3131,11 @@ the *log-likelihood*). More details of these components of the methods will be
 left for more advanced material -- we will focus on how to use and interpret
 these results. 
 
-There are some other facets of this discussion to keep in mind when comparing
+\indent There are some other facets of this discussion to keep in mind when comparing
 models. More complicated models always fit better (we saw this for the 
-$\boldsymbol{R}^2$ measure, as the proportion of variation explained always goes
+***R***^2^ measure, as the proportion of variation explained always goes
 up if more "stuff" is put into the model even if the "stuff" isn't useful). The
-AIC resembles the adjusted $\boldsymbol{R}^2$ in that it incorporates the count
+AIC resembles the adjusted ***R***^2^ in that it incorporates the count
 of the number of parameters estimated. This allows the AIC to make sure that
 enough extra variability is explained in the responses to justify making the
 model more complicated (increasing $m$). The optimal model on AIC has to balance
@@ -3126,13 +3147,13 @@ since the best fitting model is always the most complicated model considered.
 The top AIC model is the one that is estimated to be closest to the truth, 
 where the truth is still unknown...
 
-To help with interpreting the scale of AICs, they are often reported in a table
+\indent To help with interpreting the scale of AICs, they are often reported in a table
 sorted from smallest to largest values with the AIC and the "delta AIC" or,
 simply, $\Delta\text{AIC}$ reported. The 
 
 $$\Delta\text{AIC}=\text{AIC}_{\text{model}} - \text{AIC}_{\text{topModel}}$$
 
-\noindent and so provides a value of 0 for the top-ranked AIC model and a measure of how
+and so provides a value of 0 for the top-ranked AIC model and a measure of how
 much worse on the AIC scale the other models are. A rule of thumb is that a 2 
 unit difference on AICs $(\Delta\text{AIC}=2)$ is decent evidence of a
 difference in the models and more than 4 units $(\Delta\text{AIC}>4)$ is a
@@ -3189,7 +3210,7 @@ best model *according to AIC* among the set of models *you provided*.
 * Model assumptions need to be met to use AICs. They assume that the model is
 specified correctly up to possibly comparing different predictor variables. 
 
-When working with AICs, there are two options. Fit the models of interest and
+\indent When working with AICs, there are two options. Fit the models of interest and
 then run the ``AIC`` function on each model. This can be tedious, especially
 when we have many possible models to consider. We can make
 it easy to fit all the potential candidate models that are implied by a
@@ -3208,7 +3229,7 @@ know if any or all effects should be important. If you have more specific
 research questions, then you probably should try to focus on comparisons of models
 that help you directly answer those questions. 
 
-The ``dredge`` function provides an automated method of assessing all possible
+\indent The ``dredge`` function provides an automated method of assessing all possible
 simpler models based on an initial (full) model. It generates a table of AIC
 results, $\Delta\text{AICs}$, and also shows when various predictors are in or
 out of the model for all reduced models possible from an initial model. For
@@ -3218,28 +3239,29 @@ puts a "+" in the table to let you know that the term is in the models. Note
 that you must run the ``options(na.action = "na.fail")`` code to get ``dredge``
 to work. 
 
-To explore the AICs and compare their results to the adjusted $\boldsymbol{R}^2$
-that we used before for model selection, we can related results found in Section
-\@ref(section8-4) and \@ref(tab:Table8-1). In that situation we were considering
+\indent To explore the AICs and compare their results to the adjusted ***R***^2^
+that we used before for model selection, we can revisit the *Snow Depth* data set
+with related results found in Section \@ref(section8-4) and 
+Table \@ref(tab:Table8-1). In that situation we were considering
 a "full" model that included *Elevation*, *Min.Temp*, and *Max.Temp* as potential
 predictor variables after removing two influential points. And we considered all
 possible reduced models from that "full"^[We put quotes on "full" or sometimes
 call it "fullish" model because we could always add more to the model, like
 interactions or other explanatory variables. So we never have a full model but
 we do have our "most complicated that we are considering" model.] model. Note
-that the ``dredge`` output adds one more model that adjusted $\boldsymbol{R}^2$
+that the ``dredge`` output adds one more model that adjusted ***R***^2^
 can't consider -- the mean-only model that contains no predictor variables. In
 the following output it is the last model in the output (worst ranked on AIC).
 Including the mean-only model in these results helps us "prove" that there is
-support for having something in the model if we can clear better support for
+support for having something in the model if there is better support for
 other models than this simplest possible model. 
 
-In reading ``dredge`` output as it is constructed here, the models are sorted by
+\indent In reading ``dredge`` output as it is constructed here, the models are sorted by
 top to bottom AIC values (smallest AIC to largest). The column ``delta`` is for
 the $\Delta\text{AICs}$ and shows a 0 for the first row, which is the
 top-ranked AIC model. Here it is for the model with *Elevation*and *Max.Temp* but
 not including *Min.Temp*. This was also the top ranked model from adjusted
-$\boldsymbol{R}^2$, which is reproduced in the ``adjRsq`` column. The ``AIC``
+***R***^2^, which is reproduced in the ``adjRsq`` column. The ``AIC``
 is calculated using the previous formula based on the ``df`` and ``logLik``
 columns. The ``df`` is the most useful column for comparing models as it helps
 you see how complex each model is. For example, the top model used up 4
@@ -3253,10 +3275,11 @@ dredge(m6, rank="AIC",
        extra = c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))
 ```
 
-There are two models that are clearly favored over the others with 
+\indent There are two models that are clearly favored over the others with 
 $\Delta\text{AICs}$ for the model with *Elevation* and *Max.Temp* of 0 and for
 the model with all three predictors of 1.37. The $\Delta\text{AIC}$ for the
-third ranked model suggesting clear support for the top model over this. The
+third ranked model (contains just *Elevation*) is 3.51 suggesting clear support 
+for the top model over this. The
 difference between the second and third ranked models also provides relatively
 strong support for the more complex model over the model with just *Elevation*.
 And the mean-only model had a $\Delta\text{AIC}$ of nearly 40 -- suggesting
@@ -3265,7 +3288,8 @@ have pretty clear support for models that include the *Elevation* and *Max.Temp*
 variables (in both top models) and some support for also including the
 *Min.Temp*, but the top model did not require its inclusion. 
 
-We could add further explorations of the term-plots and confidence intervals for
+\indent We could add further explorations of the term-plots and confidence 
+intervals for
 the slopes from the
 top or, here, possibly top two models. We would not spend any time with
 p-values since we already used the AIC to assess importance of the model
@@ -3276,7 +3300,8 @@ that the *Elevation* and *Max.Temp* slopes change little with the inclusion of
 *Min.Temp* in moving from the top to second ranked model (0.02408 to 0.0286 and
 1.253 to 1.243). 
 
-This was an observational study and so we can't consider causal inferences here
+\indent This was an observational study and so we can't consider causal 
+inferences here
 as discussed previously. Generally, the use of AICs does not preclude making
 causal statements but if you have randomized assignment of levels of an
 explanatory variable, it is more philosophically consistent to use hypothesis
@@ -3285,7 +3310,7 @@ of a treatment on the subjects, it also makes sense to see if the differences
 created are beyond what you might expect by chance if the treatment didn't
 matter. 
 
-## Forced Expiratory Volume model selection using AICs	{#section8-14}
+## Forced expiratory volume model selection using AICs	{#section8-14}
 
 Researchers were interested in studying the effects of smoking by children on
 their lung development by measuring the forced expiratory volume (*FEV*,
@@ -3301,7 +3326,7 @@ might diminish lung development for older kids -- resulting in a
 potential interaction between *age* and *smoking*. The *sex* of the child might
 also matter and should be considered or at
 least controlled for since the response is a size-based measure. This creates
-the potential for including up to four variables (*age*, * height*, *sex*, and
+the potential for including up to four variables (*age*, *height*, *sex*, and
 *smoking status*) and possibly the interaction between *age* and *smoking status*.
 Initial explorations suggested that modeling the log-FEV would be more successful
 than trying to model the responses on the original scale. Figure 
@@ -3309,7 +3334,7 @@ than trying to model the responses on the original scale. Figure
 smokers than non-smokers and that there aren't very many smokers under 9 years
 old. 
 
-So we will start with a model that contains an *age* by *smoking* interaction
+\indent So we will start with a model that contains an *age* by *smoking* interaction
 and include *height* and *sex* as additive terms. We are not sure if any of
 these model components will be needed, so the simplest candidate model will be
 to remove all the predictors and just have a mean-only model (``FEV~1``). In
@@ -3345,12 +3370,12 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
             legend.coords="topleft")
 ```
 
-To get the needed results, start with the ***full model*** -- the most
+\indent To get the needed results, start with the ***full model*** -- the most
 complicated model you want to consider. It is good to check assumptions before
 considering reducing the model as they rarely get better in simpler models and
 the **AIC is only appropriate to use if the model assumptions are reasonably
 well-met**. As noted above, our full model for the *log(FEV)* values is
-specified as `log(FEV)~height+age*smoke+sex``. 
+specified as ``log(FEV)~height+age*smoke+sex``. 
 
 (ref:fig8-35) Diagnostics for the log(FEV) model that includes height, sex,
 and an interaction between age and smoking status (the full model). 
@@ -3368,7 +3393,8 @@ variance assumptions are reasonably well met. If we select a different
 model(s), we would want to check its diagnostics and make sure that the results
 do not look noticeably worse than these do. 
 
-The ``AIC`` function can be used to generate the AIC values for a single or set
+\indent The ``AIC`` function can be used to generate the AIC values for a 
+single or set
 of candidate models. It will also provide the model degrees of freedom used for
 each model. For example, suppose that the want to compare ``fm1 `` to a model
 without the interaction term in the model, called ``fm1R``. You need to fit both
@@ -3406,18 +3432,18 @@ first row of results is for a model with an intercept (``Int``), *age* (``age``)
 *smoking*, there are "``+``"s in the output row when they are included in that
 model but no coefficient since they are categorical variables. There is no
 interaction between *age* and *smoking* in the top ranked model. The top AIC
-model has an $\boldsymbol{R}^2=0.8106$, adjusted $\boldsymbol{R}^2$ of 0.8095,
+model has an $\boldsymbol{R}^2=0.8106$, adjusted ***R***^2^ of 0.8095,
 *model df*=6 (from an intercept, four slopes, and the residual variance),
 log-likelihood (``logLik``)=335.302, an AIC=-658.6 and $\Delta\text{AIC}$ of 0.00.
 The next best model adds the interaction between *age* and *smoking*, resulting
-in increases in the $\boldsymbol{R}^2$, adjusted $\boldsymbol{R}^2$, and
+in increases in the ***R***^2^, adjusted ***R***^2^, and
 *model df*, but increasing the AIC by 0.09 units $(\Delta\text{AIC}=0.09)$.
 This suggests that these two models are essentially equivalent on the AIC because
 the difference is so small. The simpler model is a little bit better on AIC so
 you could focus on it or on the slightly more complicated model -- but you should
 probably note that the evidence is equivocal for these two models. 
 
-The comparison to other potential models shows the strength of evidence in
+\indent The comparison to other potential models shows the strength of evidence in
 support of all the other model components. The intercept-only model is again the
 last in the list with the least support on AICs with a $\Delta\text{AIC}$
 of 1080.32, suggesting it is not worth considering in comparison with the top
@@ -3434,17 +3460,18 @@ these results present only marginal support for this model compared to the two
 top models. It is the simplest model of the top three but not close enough to
 be considered in detail. 
 
-This table also provides the opportunity to compare the model selection results
-from the adjusted $\boldsymbol{R}^2$ compared the AIC. The AIC favors the model
+\indent This table also provides the opportunity to compare the model selection
+results
+from the adjusted ***R***^2^ compared to the AIC. The AIC favors the model
 without an interaction between *age* and *smoking* whereas the adjusted
-$R^2$ favors the most complicated model considered here
+*R*^2^ favors the most complicated model considered here
 that included an *age* and *smoking* interaction. The AIC provides units that are
-more interpretable than adjusted $R^2$ even though the
+more interpretable than adjusted *R*^2^ even though the
 scale for the AIC is a bit mysterious as **distances from the unknown true
 model**. 
 
-The top AIC model (and possibly the other similar models) can then be explored
-in more detail. You should not then focus on hypothesis testing in this
+\indent The top AIC model (and possibly the other similar models) can then be 
+explored in more detail. You should not then focus on hypothesis testing in this
 model^[Hypothesis testing so permeates the use of statistics that even after
 using AICs many researchers are pressured to report p-values for model
 components. Some of this could be confusion caused when people first learned
@@ -3455,15 +3482,15 @@ intervals and term-plots are useful for describing the different
 model components and making inferences for the estimated sizes of differences
 in the population. These results should not be used for deciding if effects are
 "significant" when the models are selected using measures like the AIC or
-adjusted $R^2$. But you can discuss how there was support or
+adjusted *R*^2^. But you can discuss how there was support or
 evidence to include them in the model based on AIC comparisons. 
 
-In this situation, the top model is estimated to be
+\indent In this situation, the top model is estimated to be
 
-$$\log(\widehat{\text{FEV}})_i = -1.94 + 0.043\text{Height}_i+0.0234\text{Age}_i
+$$\log(\widehat{\text{FEV}})_i = -1.94 + 0.043\cdot\text{Height}_i+ 0.0234\cdot\text{Age}_i
 -0.046I_{\text{Smoker},i}+0.0293I_{\text{Male},i}$$
 
-\noindent based on the estimated coefficients provided below. Using these results and the
+based on the estimated coefficients provided below. Using these results and the
 term-plots (Figure \@ref(fig:Figure8-36)) we see that there are positive slopes
 for *Age* and *Height* on *log-FEV*, a negative coefficient for *smoking*
 (*Smoker*), and a positive coefficient for *sex* (*Males*), all after controlling
@@ -3490,20 +3517,19 @@ confint(fm1R)
 plot(allEffects(fm1R))
 ```
 
-Like any statistical method, the AIC works better with larger sample sizes and
+\indent Like any statistical method, the AIC works better with larger sample sizes and
 when the assumptions are met. It also will detect important variables in models
 more easily when the effects of the predictor variables are strong. Along with
 the AIC results, it is good to report the coefficients for your top estimated
 model(s), confidence intervals for the coefficients and/or term-plots, and 
-$R^2$. This provides a useful summary of the reasons for selecting
+*R*^2^. This provides a useful summary of the reasons for selecting
 the model(s), information on the importance of the terms within the model, and
-a measure of the variability explained by the model. The $R^2$ is not used to
+a measure of the variability explained by the model. The *R*^2^ is not used to
 select the model, but after selection can be a nice summary of model quality.
 For ``fm1R`` , the $R^2=0.8106$ suggesting that the selected model explains 
 81% of the variation in log-*FEV* values. 
 
-
-The AICs are a preferred modeling strategy in some areas such as Ecology. As
+\indent The AICs are a preferred modeling strategy in some areas such as Ecology. As
 with this and many other
 methods discussed in this book, it is sometimes as easy to find journal
 articles with mistakes in using statistical methods as it is to find papers
@@ -3542,8 +3568,8 @@ interpretations of each type of model. In Chapter \@ref(chapter9), case studies
 are used to review the different methods discussed with reminders of how to 
 identify and interpret the particular methods used.
 
-When you have to make modeling decisions, you should remember the main priorities
-in modeling. First, you need
+\indent When you have to make modeling decisions, you should remember the main
+priorities in modeling. First, you need
 to find a model that can address research questions of interest. Second, find a
 model that is trustworthy and has assumptions that are reasonably well met. 
 Third, report the logic and evidence that was used to identify and support the
@@ -3567,89 +3593,89 @@ response variable, ``x1``, ``x2``, ..., ``xK`` are quantitative
 explanatory variables, ``group``  is a categorical variable and the data are
 in ``DATASETNAME``. 
 
-* scatterplot(`r colFmt("y","red")`~`r colFmt("x1|group","red")`,
-data=`r colFmt("DATASETNAME","red")`, smooth=F)
+* **scatterplot(`r colFmt("y","red")`~`r colFmt("x1|group","red")`,
+data=`r colFmt("DATASETNAME","red")`, smooth=F)**
 
     * Requires the ``car`` package.
     
     * Provides a scatterplot with a regression line for each group. 
 
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("y","red")`~
-`r colFmt("x1+x2+...+xK","red")`, data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` ``<-`` lm(`r colFmt("y","red")`~
+`r colFmt("x1+x2+...+xK","red")`, data=`r colFmt("DATASETNAME","red")`)**
 
     * Estimates an MLR model using least squares with $K$ quantitative
     predictors. 
 
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("y","red")`~
-`r colFmt("x1*group","red")`, data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` ``<-`` lm(`r colFmt("y","red")`~
+`r colFmt("x1*group","red")`, data=`r colFmt("DATASETNAME","red")`)**
 
     * Estimates an interaction model between a quantitative and categorical
     variable, providing different slopes and intercepts for each group. 
 
-* `r colFmt("MODELNAME","red")` <- lm(`r colFmt("y","red")`~
-`r colFmt("x1+group","red")`, data=`r colFmt("DATASETNAME","red")`)
+* **`r colFmt("MODELNAME","red")` ``<-`` lm(`r colFmt("y","red")`~
+`r colFmt("x1+group","red")`, data=`r colFmt("DATASETNAME","red")`)**
 
     * Estimates an additive model with a quantitative and categorical 
     variable, providing different intercepts for each group.
     
-* summary(`r colFmt("MODELNAME","red")`)
+* **summary(`r colFmt("MODELNAME","red")`)**
 
-    * Provides parameter estimates, overall $F$-test, $\boldsymbol{R}^2$,
-    and adjusted $\boldsymbol{R}^2$. 
+    * Provides parameter estimates, overall $F$-test, ***R***^2^,
+    and adjusted ***R***^2^. 
 
-* par(mfrow=c(2, 2)); plot(`r colFmt("MODELNAME","red")`)
+* **par(mfrow=c(2, 2)); plot(`r colFmt("MODELNAME","red")`)**
 
     * Provides four regression diagnostic plots in one plot.
 
-* confint(`r colFmt("MODELNAME","red")`, level=0.95)
+* **confint(`r colFmt("MODELNAME","red")`, level=0.95)**
 
     * Provides 95% confidence intervals for the regression model coefficients.
     
     * Change ``level`` if you want other confidence levels.
 
-* plot(allEffects(`r colFmt("MODELNAME","red")`))
+* **plot(allEffects(`r colFmt("MODELNAME","red")`))**
     
     * Requires the ``effects`` package. 
     
     * Provides a plot of the estimated regression lines with 95% confidence
     interval for the mean. 
 
-* predict(`r colFmt("MODELNAME","red")`, se.fit=T)
+* **predict(`r colFmt("MODELNAME","red")`, se.fit=T)**
 
     * Provides fitted values for all observed $x\text{'s}$ with SEs for the 
     mean.
     
-* predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
+* **predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
 = `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
 `r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
-interval="confidence")
+interval="confidence")**
 
     * Provides fitted value for specific values of the quantitative predictors
     with CI for the mean. 
 
-* predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
+* **predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
 = `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
 `r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
-interval="prediction")
+interval="prediction")**
 
     * Provides fitted value for specific values of the quantitative predictors 
     with PI for a new observation. 
 
-* Anova(`r colFmt("MODELNAME","red")`)
+* **Anova(`r colFmt("MODELNAME","red")`)**
 
     * Requires the ``car`` package.
 
     * Use to generate ANOVA tables and $F$-tests useful when categorical
     variables are included in either the additive or interaction models. 
 
-* AIC(`r colFmt("MODELNAME\\_1","red")`, `r colFmt("MODELNAME\\_2","red")`)
+* **AIC(`r colFmt("MODELNAME\\_1","red")`, `r colFmt("MODELNAME\\_2","red")`)**
 
     * Use to get AIC results for two candidate models called ``MODELNAME_1``
     and ``MODELNAME_2``.
     
-* options(na.action = "na.fail")  
+* **options(na.action = "na.fail")  
 dredge(`r colFmt("FULL\\_MODELNAME","red")`, rank="AIC", extra=c("R^2", 
-adjRsq=function(x) summary(x)$adj.r.squared))
+adjRsq=function(x) summary(x)$adj.r.squared))**
 
     * Requires the ``MuMIn`` package.
 
@@ -3675,10 +3701,10 @@ tm1 <- lm(TreadMillOx~RunTime, data=treadmill)
 
 8.1. Fit the MLR that also includes the running pulse (``RunPulse``), the
 resting pulse (``RestPulse``), body weight (``BodyWeight``), and Age (``Age``)
-of the subjects using the following code. Report and interpret the $R^2$ for
+of the subjects using the following code. Report and interpret the *R*^2^ for
 this model. 
 
-8.2. Compare $R^2$ and the adjusted $R^2$ to the results for the SLR model
+8.2. Compare *R*^2^ and the adjusted *R*^2^ to the results for the SLR model
 that just had ``RunTime`` in the model. What do these results suggest?
 
 8.3. Interpret the estimated ``RunTime`` slope coefficients from the SLR model
@@ -3691,12 +3717,12 @@ multicollinearity noted in these results.
 the result. 
 
 8.6. Drop the variable with the largest p-value in the MLR model and re-fit 
-it. Compare the resulting $\boldsymbol{R}^2$ and adjusted $\boldsymbol{R}^2$
+it. Compare the resulting ***R***^2^ and adjusted ***R***^2^
 values to the others found previously. 
 
 8.7. Use the ``dredge`` function as follows to consider some other potential 
 reduced models and report the top two models according to adjusted 
-$\boldsymbol{R}^2$ values. What model had the highest $\boldsymbol{R}^2$?
+***R***^2^ values. What model had the highest ***R***^2^?
 Also discuss and compare the model selection results provided by the delta AICs
 here. 
 
@@ -3727,8 +3753,8 @@ scatterplot(TreadMillOx~RunTime|Ageb, data=treadmill, smooth=F, lwd=2)
 Based on the plot, do the lines look approximately parallel or not?
 
 8.10. Fit the MLR that contains a ``RunTime`` by ``Ageb`` interaction -- do not
-include any other variables. Compare the $\boldsymbol{R}^2$ and adjusted
-$\boldsymbol{R}^2$ results to previous models. 
+include any other variables. Compare the ***R***^2^ and adjusted
+***R***^2^ results to previous models. 
 
 8.11. Find and report the results for the $F$-test that assesses evidence
 relative to the need for different slope coefficients. 
