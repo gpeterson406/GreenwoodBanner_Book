@@ -237,9 +237,9 @@ on our previous interpretation of the slope coefficient, adding in the
 information about pinning down the true change (population change) in the mean
 of the response variable. The interpretation of the y-intercept CI is: 
 
-> For an ***x***  of 0 ***[units of X]***, we are 95% confident that
+> For an ***x***  of 0 **[*units of X*]**, we are 95% confident that
   the true mean of ***Y*** will be between **LL** and **UL**
-  ***[units of Y]***.
+  **[*units of Y*]**.
 >
 
 This is really only interesting if the value of $x=0$ is interesting --
@@ -307,12 +307,12 @@ hand to complete the analyses.
 > coefficient, $\beta_1$, is
 >   
  
-      $$\begin{array}{rl}
-      \boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
-      & \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
-      & \boldsymbol{= 0.01796 \mp 0.00515} \\
-      & \boldsymbol{\rightarrow (0.0128, 0.0231).}
-      \end{array}$$
+$$\begin{array}{rl}
+\boldsymbol{b_1 \mp t^*_{n-2}} \textbf{SE}_{\boldsymbol{b_1}}
+& \boldsymbol{= 0.01796 \mp 2.144787 * 0.002402} \\
+& \boldsymbol{= 0.01796 \mp 0.00515} \\
+& \boldsymbol{\rightarrow (0.0128, 0.0231).}
+\end{array}$$
 
 You can find the components of this
 calculation in the model summary and from ``qt(0.975, df=n-2)`` which was 
@@ -320,6 +320,8 @@ calculation in the model summary and from ``qt(0.975, df=n-2)`` which was
 7.48 in the model summary to
 make confidence intervals -- that is the test statistic used below. The related
 calculations are shown at the bottom of the following code:
+
+\newpage
 
 ```{r}
 m1 <- lm(BAC~Beers, data=BB)
@@ -444,6 +446,11 @@ mtfires <- read.csv("http://www.math.montana.edu/courses/s217/documents/climateR
 mtfires$loghectacres <- log(mtfires$hectacres)
 fire1 <- lm(loghectacres~Temperature, data=mtfires)
 summary(fire1)
+```
+
+\newpage
+
+```{r}
 confint(fire1, level=0.99)
 qt(0.995, df=21)
 ```
@@ -505,6 +512,8 @@ vary together that would not involve a direct connection between them.
 $$\text{99}\% \text{ CI for } \beta_1: \boldsymbol{b_1 \mp
 t^*_{n-2}}\textbf{SE}_{\boldsymbol{b_1}} \rightarrow 1.39 \mp 2.831\bullet 0.217
 \rightarrow (0.78, 2.00)$$
+
+\newpage
 
 Interpretation of 99% CI for slope coefficient:
 
@@ -1011,7 +1020,7 @@ for (b in (1:B)){
 }
 quantiles <- qdata(Tstar, c(0.025,0.975))
 quantiles
-hist(Tstar, labels=T)
+hist(Tstar, labels=T, ylim=c(0,550))
 abline(v=Tobs, col="red", lwd=2)
 abline(v=quantiles$quantile, col="blue", lwd=3)
 plot(density(Tstar), main="Density curve of Tstar")
@@ -1332,6 +1341,8 @@ defaulted to different bases.
 Generally, in statistics, it's safe to assume
 that everything is log base *e* unless otherwise specified. 
 ------------------------------------------------------------
+
+\sectionmark{Transformations part II: Impacts on SLR interpretations}
 
 ## Transformations part II: Impacts on SLR interpretations: log(y), log(x), & both log(y) & log(x)	{#section7-6}
 
