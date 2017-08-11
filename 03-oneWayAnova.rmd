@@ -353,7 +353,7 @@ pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table3-1) (ref:tab3-1)"
 ```
 
 \indent We can also visualize the results of our linear models using what are called
-***term-plots*** or ***effect-plots*** (from the ``effects`` package; @Fox2003,
+***term-plots*** or ***effect-plots*** (from the ``effects`` package;
 [@R-effects])
 as displayed in Figure \@ref(fig:Figure3-2). We don't want to use the word 
 "effect" for these model components unless we have random assignment in the study
@@ -956,7 +956,8 @@ result may lose some of its luster. In other words, if we consider the suite of
 three pair-wise differences (and the tests) implicit in comparing all of them, 
 we may need stronger evidence in the most different pair than a p-value of 0.033 to suggest overall differences. In this situation, the *Beautiful* and *Average* 
 groups are not that different from each other so their difference does not 
-contribute much to the overall $F$-test. In Section 3.5, we will revisit this topic and consider a method that is
+contribute much to the overall $F$-test. In Section \@ref(section3-5), we will 
+revisit this topic and consider a method that is
 statistically valid for performing all possible pair-wise comparisons that is also
 consistent with our overall test results. 
 

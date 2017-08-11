@@ -15,6 +15,7 @@ set.seed(3234)
 library(pander)
 require(mosaic)
 library(knitr)
+library(readr)
 knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT',
                       message=F,warning=F)
 options(show.signif.stars = FALSE)
