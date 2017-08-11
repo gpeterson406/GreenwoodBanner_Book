@@ -60,7 +60,7 @@ course, we will start to handle more complex situations (many explanatory
 variables) and will provide some tools for graphical explorations to complement
 the more sophisticated statistical models required to handle these situations. 
 
-##Overview of methods
+##Overview of methods {#section1-1}
 
 After you are introduced to basic statistical ideas, a wide array of statistical methods become
 available. The methods explored here focus on assessing (estimating and testing
@@ -77,8 +77,8 @@ important to retain a focus on how the appropriate statistical analysis depends
 on the research question and data collection process as well as the types of
 variables measured. 
 
-Figure \@ref(fig:Figure1) frames the topics we will discuss. Taking a broad vision of 
-the methods we will consider, 
+Figure \@ref(fig:Figure1-1) frames the topics we will discuss. Taking a broad
+vision of the methods we will consider, 
 there are basically two scenarios -- one when the response is quantitative and
 one when the response is categorical. Examples of quantitative responses we will
 see later involve *suggested jail sentence* (in years) and *body fat* (percentage). 
@@ -86,7 +86,8 @@ Examples of categorical variables include *improvement* (none, some, or marked)
 in a clinical trial or whether a student has turned in copied work 
 (never, done this on an exam or paper, or both). There are going to be some more
 nuanced aspects to all these analyses as the complexity of both sides of Figure
-\@ref(fig:Figure1) suggest, but note that near the bottom, each tree converges on a single
+\@ref(fig:Figure1-1) suggest, but note that near the bottom, each tree converges 
+on a single
 procedure, using a ***linear model*** for a quantitative response variable or 
 using a ***Chi-square test*** for a categorical response. After selecting the
 appropriate procedure and completing the necessary technical steps to get results
@@ -94,23 +95,23 @@ for a
 given data set, the final step involves assessing the scope of inference and
 types of conclusions that are appropriate based on the design of the study. 
 
-(ref:fig1) Flow chart of methods.
+(ref:fig1-1) Flow chart of methods.
 
-```{r Figure1, echo=FALSE, fig.cap ="(ref:fig1)"}
-knitr::include_graphics('chapter0_files/image002.png')
+```{r Figure1-1, echo=FALSE, fig.cap ="(ref:fig1-1)"}
+knitr::include_graphics('chapter1_files/image002.png')
 ```
 
 We will be spending most of the semester working on methods for quantitative
 response variables (the
-left side of Figure \@ref(fig:Figure1) is covered in Chapters \@ref(chapter2),
+left side of Figure \@ref(fig:Figure1-1) is covered in Chapters \@ref(chapter2),
 \@ref(chapter3), \@ref(chapter4), \@ref(chapter6), \@ref(chapter7), and
 \@ref(chapter8)), stepping
 over to handle the situation with a categorical response variable in Chapter \@ref(chapter5) (right side
-of Figure \@ref(fig:Figure1).
+of Figure \@ref(fig:Figure1-1)).
 Chapter \@ref(chapter9) contains case studies
 illustrating all the methods discussed previously, providing a final opportunity
 to explore additional examples that illustrate how finding a
-path through Figure \@ref(fig:Figure1) can lead to the appropriate analysis. 
+path through Figure \@ref(fig:Figure1-1) can lead to the appropriate analysis. 
 
 
 The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
@@ -164,7 +165,7 @@ subjects or by taking samples from separate populations, this is called a
 from a population and then obtain information on the levels of the explanatory
 variable for each
 subject. We will analyze these results using what is called a ***Chi-square Independence Test***. They both use the same test statistic but we use slightly different graphics and are testing different hypotheses in these two related
-situations. Figure \@ref(fig:Figure1) also shows that if we had a quantitative explanatory
+situations. Figure \@ref(fig:Figure1-1) also shows that if we had a quantitative explanatory
 variable and a categorical response that we would need to "bin" or create
 categories of responses from the quantitative variable to use the Chi-square
 testing methods. 
@@ -202,7 +203,7 @@ want to go with learning the software.
 All the methods you will learn require you to carefully consider how the data were collected, how that
 pertains to the population of interest, and how that impacts the inferences
 that can be made. The ***scope of inference*** from the bottom of Figure
-\@ref(fig:Figure1) is our shorthand term for remembering to think about two aspects
+\@ref(fig:Figure1-1) is our shorthand term for remembering to think about two aspects
 of the study -- ***random assignment*** and ***random sampling***. In a given
 situation, you need to use the description of the study to decide if the
 explanatory variable was randomly assigned to study units (this allows for ***causal inferences*** if differences are detected) or not (so no causal statements
@@ -236,7 +237,7 @@ situations where you are expected to be able to identify an appropriate
 analysis, do the calculations for a given data set, and then effectively
 communicate interpretations for the methods discussed here. 
 
-##Getting started in R
+##Getting started in R {#section1-2}
 
 You will need to download the statistical software package called R and an enhanced interface to R called
 RStudio [@RStudio]. They are open source and free to download and use
@@ -289,7 +290,7 @@ four years...]
  
 To get started, we can complete some basic tasks in R using the RStudio
 interface. When you open RStudio, you will see a screen like Figure 
-\@ref(fig:Figure2). The
+\@ref(fig:Figure1-2). The
 added annotation in this and the following screen-grabs is there to help you
 get initially oriented to the software interface. R is command-line software --
 meaning that most of the time you have to create code and then enter and execute
@@ -311,10 +312,10 @@ contains information on the "Packages" (additional code we will download and
 install to add functionality to R) that are available and is where you will see
 plots that you make and requests for "Help" on specific functions. 
 
-(ref:fig2) Initial RStudio layout.
+(ref:fig1-2) Initial RStudio layout.
 
-```{r Figure2, echo=FALSE, fig.cap="(ref:fig2)"}
-knitr::include_graphics('chapter0_files/fig1.2.png')
+```{r Figure1-2, echo=FALSE, fig.cap="(ref:fig1-2)"}
+knitr::include_graphics('chapter1_files/fig1.2.png')
 ```
 
 As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
@@ -435,7 +436,7 @@ session. Go to the command prompt and type (or copy and paste) ``require(readr)`
 With a data set converted to a CSV file and ``readr`` installed and loaded, we need to read the data set into the active workspace. There
 are two ways to do this, either using the point-and-click GUI in RStudio (click
 the "Import Dataset" button in the upper right "Environment" panel as
-indicated in Figure \@ref(fig:Figure2)) or modifying the ``read_csv`` 
+indicated in Figure \@ref(fig:Figure1-2)) or modifying the ``read_csv`` 
 function to find the file of interest. To practice this, you can 
 download an Excel (.xls) file from
 http://www.math.montana.edu/courses/s217/documents/treadmill.xls 
@@ -477,13 +478,13 @@ Find your file and click "**Import**". R will store the data set as an object wi
 as the .csv file. You could use another name as well, but it is 
 often easiest just to keep the data
 set name in R related to the original file name. You should see some text appear
-in the console (lower left panel) like in Figure \@ref(fig:Figure3). The text 
+in the console (lower left panel) like in Figure \@ref(fig:Figure1-3). The text 
 that is created
 will look something like the following -- if you had stored the file in a drive
 labeled D:, it would be:
 
 ```{r include=F}
-treadmill <- read_csv("chapter0_files/treadmill.csv")
+treadmill <- read_csv("chapter1_files/treadmill.csv")
 ```
 
 ```{r eval=F}
@@ -496,10 +497,10 @@ version of the data set in what looks like a
 spreadsheet will appear in the upper left window due to the second line of 
 code (``View(treadmill``)). 
 
-(ref:fig3) RStudio with initial data set loaded.
+(ref:fig1-3) RStudio with initial data set loaded.
 
-```{r Figure3, echo=FALSE, fig.cap="(ref:fig3)"}
-knitr::include_graphics('chapter0_files/fig1.3.png')
+```{r Figure1-3, echo=FALSE, fig.cap="(ref:fig1-3)"}
+knitr::include_graphics('chapter1_files/fig1.3.png')
 ```
 
 Just directly typing (or using) a line of code like this is actually the 
@@ -577,18 +578,18 @@ of code and hit the "Run" button^[You can also use Ctrl-R if you like hotkeys.] 
 in the console with results just like what you would obtain if you typed it
 after the command prompt and hit enter for each line. 
 
-Figure \@ref(fig:Figure4) shows the screen with the code used in this 
+Figure \@ref(fig:Figure1-4) shows the screen with the code used in this 
 section in the upper left panel, saved in
 a file called "CH0.R", with the results of highlighting and executing the first
 section of code using the "Run" button. 
 
-(ref:fig4) RStudio with highlighted code run.
+(ref:fig1-4) RStudio with highlighted code run.
 
-```{r Figure4, echo=FALSE, fig.cap="(ref:fig4)"}
-knitr::include_graphics('chapter0_files/fig1.4.png')
+```{r Figure1-4, echo=FALSE, fig.cap="(ref:fig1-4)"}
+knitr::include_graphics('chapter1_files/fig1.4.png')
 ```
 
-##Basic summary statistics, histograms, and boxplots using R
+##Basic summary statistics, histograms, and boxplots using R {#section1-3}
 
 For the following material, you will need to install and load the ``mosaic`` package [@R-mosaic]. 
 
@@ -659,15 +660,16 @@ is more spread out than the right tail) and ***outliers***
 (unusual observations). A ***histogram *** is a good place to start.
 Histograms display connected bars with counts of observations defining
 the height of bars based on a set of bins of values of the quantitative variable. 
-We will apply the ``hist`` function to the ``RunTime`` variable, which produces Figure \@ref(fig:Figure5). 
+We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
+Figure \@ref(fig:Figure1-5). 
 
 ```
 > hist(treadmill$RunTime)
 ```
 
-(ref:fig5) Histogram of Run Times #(minutes) of $n$=31 subjects in Treadmill study.
+(ref:fig1-5) Histogram of Run Times #(minutes) of $n$=31 subjects in Treadmill study.
 
-```{r Figure5, fig.cap='(ref:fig5)',echo=F}
+```{r Figure1-5, fig.cap='(ref:fig1-5)',echo=F}
 old.par <- par(mai=c(0.5,0.5,0.5,0.5))
 hist(treadmill$RunTime)
 ```
@@ -678,12 +680,12 @@ the plot, followed by **Copy to Clipboard** and clicking on the
 **Copy Plot** button. Then if you open your
 favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
-parts of this process in the screen grab in Figure \@ref(fig:Figure6). 
+parts of this process in the screen grab in Figure \@ref(fig:Figure1-6). 
 
-(ref:fig6) RStudio while in the process of copying the histogram.
+(ref:fig1-6) RStudio while in the process of copying the histogram.
 
-```{r Figure6,echo=FALSE,fig.cap="(ref:fig6)",fig.width=6,fig.height=3.5}
-knitr::include_graphics('chapter0_files/image010.png')
+```{r Figure1-6,echo=FALSE,fig.cap="(ref:fig1-6)",fig.width=6,fig.height=3.5}
+knitr::include_graphics('chapter1_files/image010.png')
 ```
 
 \noindent You can also directly save the figures as separate files using 
@@ -701,9 +703,9 @@ into each bar. Specifically, we can turn the ``labels`` option "on" by making it
 > hist(treadmill$RunTime, labels=T)
 ```
 
-(ref:fig7) Histogram of #Run Times with counts in bars labeled.
+(ref:fig1-7) Histogram of #Run Times with counts in bars labeled.
 
-```{r Figure7, fig.cap="(ref:fig7)",echo=F,fig.width=4,fig.height=2.75}
+```{r Figure1-7, fig.cap="(ref:fig1-7)",echo=F,fig.width=4,fig.height=2.75}
 hist(treadmill$RunTime, labels=T)
 ```
 
@@ -716,11 +718,11 @@ the data set by binning observations and it is hard to find the percentiles
 accurately from the plot. 
 
 When assessing outliers and skew, the ***boxplot*** 
-(or *Box and Whiskers* plot) can also be helpful (Figure \@ref(fig:Figure8)) to describe the 
+(or *Box and Whiskers* plot) can also be helpful (Figure \@ref(fig:Figure1-8)) to describe the 
 shape of the distribution as it displays the 5-number summary and will also indicate
 observations that are "far" above the middle of the observations. R's 
 ``boxplot`` function uses the standard rule to indicate an observation as a ***potential outlier*** if it falls more than 1.5 times the ***IQR*** 
-(Inter-Quartile Range, calculated as Q3-Q1) below Q1 or above Q3. The potential outliers are plotted with circles and the *Whiskers* (lines that extend from Q1 and Q3 typically to the minimum and maximum) are shortened to only go as far as
+(Inter-Quartile Range, calculated as Q3 -- Q1) below Q1 or above Q3. The potential outliers are plotted with circles and the *Whiskers* (lines that extend from Q1 and Q3 typically to the minimum and maximum) are shortened to only go as far as
 observations that are within $1.5*$IQR of the upper and lower quartiles. The *box* part of the boxplot is a box that goes from Q1 to Q3 and the median is displayed as a line somewhere inside the box^[The median, quartiles and whiskers sometimes occur at the same values when there are many tied observations. If you can't see all the 
 components of the boxplot, produce the numerical summary to help you understand 
 what happened.]. Looking back at the summary statistics above, Q1=9.78 and Q3=11.27, providing an IQR of:
@@ -743,9 +745,9 @@ distance from the median to the maximum. Additionally, the distance from Q1 to
 the median is smaller than the distance from the median to Q3. It is modest skew,
 but worth noting. 
 
-(ref:fig8) Boxplot of 1.5 mile Run Times.
+(ref:fig1-8) Boxplot of 1.5 mile Run Times.
 
-```{r Figure8, fig.cap="(ref:fig8)",echo=F,fig.width=4,fig.height=2.5}
+```{r Figure1-8, fig.cap="(ref:fig1-8)",echo=F,fig.width=4,fig.height=2.5}
 old.par <- par(mai=c(0.5,0.5,0.5,0.5))
 boxplot(treadmill$RunTime)
 ```
@@ -758,13 +760,13 @@ While the default boxplot is fine, it fails to provide good graphical labels,
 especially on the y-axis. Additionally, there is no title on the plot. The
 following code provides some enhancements to the plot by using the ``ylab`` and 
 ``main`` options in the call to ``boxplot``, with the results displayed in
-Figure \@ref(fig:Figure9). When we add text to plots, it will be contained within quotes and
+Figure \@ref(fig:Figure1-9). When we add text to plots, it will be contained within quotes and
 be assigned into the options ``ylab`` (for y-axis) or ``main``
 (for the title) here to put it into those locations. 
 
-(ref:fig9) Boxplot of Run Times with improved labels.
+(ref:fig1-9) Boxplot of Run Times with improved labels.
 
-```{r Figure9, fig.cap="(ref:fig9)",echo=F,fig.width=4,fig.height=2.5}
+```{r Figure1-9, fig.cap="(ref:fig1-9)",echo=F,fig.width=4,fig.height=2.5}
 old.par <- par(mai=c(0.5,0.5,0.75,0.5))
 boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)",cex.main=0.75,
         main="Boxplot of the Run Times of n=31 participants")
@@ -813,7 +815,7 @@ save your R code (and edit it to only contain the parts of it that worked) via t
 re-running that code. If you find that you have lots of "stuff" in your
 workspace because you accidently saved your workspace, just run ``rm(list = ls())``. It will delete all the data sets from your workspace. 
 
-##Chapter summary
+##Chapter summary {#section1-4}
 
 This chapter covered getting R and RStudio downloaded and some basics of working with
 R via RStudio. You should be able to read a data set into R and run some basic
@@ -835,7 +837,7 @@ summaries. We revisited the ideas of symmetry and skew. But the main point was
 really to get a start on using R to provide results you should be familiar with
 from your previous statistics experience(s). 
 
-##Important R Code
+##Important R code {#section1-5}
 
 To help you learn and use R, there is a section highlighting the most important 
 R code used near the end of each
@@ -886,7 +888,7 @@ revisit the worked examples using each of the functions.
 
 \newpage
 
-##Practice problems
+##Practice problems {#section1-6}
 
 In each chapter, the last section contains some questions for you to complete
 to make sure you understood the
