@@ -18,7 +18,7 @@ bibliography:
 - references.bib
 - packages.bib
 site: bookdown::bookdown_site
-biblio-style: apalike
+biblio-style: plainnat
 header-includes:
 - \usepackage{amsmath}
 - \usepackage{color}

@@ -154,7 +154,7 @@ when there are more than 2 groups. Specifically, we state the alternative as
 
 $$H_A: \text{ Not all } \mu_j \text{ are equal}$$
 
-\noindent or, in words, **at least one of the true means differs among the J groups**.
+or, in words, **at least one of the true means differs among the J groups**.
 You will be attracted to trying to say that all means are different in the 
 alternative but we do not put this strict a requirement in place to reject the 
 null hypothesis. The alternative model allows all the true group means to 
@@ -1645,12 +1645,13 @@ groups $j$ and $j'$, $\mu_j-\mu_{j'}$, for all pairs where $j \ne j'$, using
 $$(\bar{y}_j - \bar{y}_{j'}) \mp \frac{q^*}{\sqrt{2}}\sqrt{\text{MS}_E\left(\frac{1}{n_j}+
 \frac{1}{n_{j'}}\right)}$$
 
-\noindent where $\frac{q^*}{\sqrt{2}}\sqrt{\text{MS}_E\left(\frac{1}{n_j}+
-\frac{1}{n_{j'}}\right)}$ is the margin of error for the intervals. The distribution used
+where 
+$\frac{q^*}{\sqrt{2}}\sqrt{\text{MS}_E\left(\frac{1}{n_j}+\frac{1}{n_{j'}}\right)}$ 
+is the margin of error for the intervals. The distribution used
 to find the multiplier, $q^*$, for the confidence intervals is available in the 
 ``qtukey`` function and generally provides a slightly larger multiplier than the 
 regular $t^*$ from our two-sample $t$-based confidence interval discussed in
-Chapter \@ref(chapter2). The formula otherwise is very similar to the one used in Chapter \@ref(chapter2) with the SE for the difference in the means based on a measure of residual variance (here $MS_E$) times $\left(\frac{1}{n_j}+\frac{1}{n_{j'}\right)$ which weights the results based on the relative sample sizes in the groups. 
+Chapter \@ref(chapter2). The formula otherwise is very similar to the one used in Chapter \@ref(chapter2) with the SE for the difference in the means based on a measure of residual variance (here $MS_E$) times $\left(\frac{1}{n_j}+\frac{1}{n_{j'}}\right)$ which weights the results based on the relative sample sizes in the groups. 
 
 \indent We will use the ``confint``, ``cld``, and ``plot`` functions 
 applied to output from the ``glht`` function (all from the ``multcomp`` package; 

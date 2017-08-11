@@ -76,7 +76,9 @@ and only one takes in the value 1 (is "turned on") at a time for each response.
 We can then equate the general notation from Chapter \@ref(chapter8) with our
 specific One-Way ANOVA (Chapter \@ref(chapter3)) notation as follows:
 
-* $\alpha = \beta_0$:
+* For the baseline category:
+
+    $$\alpha = \beta_0$$
 
     * The mean for the baseline category was modeled using $\alpha$ which is
     the intercept term in the output that we called $\beta_0$ in the
@@ -86,14 +88,16 @@ specific One-Way ANOVA (Chapter \@ref(chapter3)) notation as follows:
 
     * From the One-Way ANOVA model:
     
-        * $\alpha + \tau_j$
+    $$\alpha + \tau_j$$
         
     * From the regression model where the only indicator variable that is 1
     is $I_{\text{Level }j,i}$:
     
-        * $\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} =  \beta_0 + \beta_{j-1}*1$
-        
-        * $= \beta_0 + \beta_{j-1}$
+    $$\begin{array}{rl}
+    &\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} \\
+    &=  \beta_0 + \beta_{j-1}*1\\ 
+    &= \beta_0 + \beta_{j-1}
+    \end{array}$$
         
     * So with intercepts being equal, $\beta_{j-1}=\tau_j$.
 
@@ -104,7 +108,7 @@ possible to equate our work in the Two-Way ANOVA interaction model,
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},$$
 
-\noindent with the regression notation from the MLR model with an interaction: 
+with the regression notation from the MLR model with an interaction: 
 
 $$\begin{array}{rc}
 y_i=&\beta_0 + \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level }3,i}
@@ -164,7 +168,7 @@ done in agricultural studies to control for systematic differences across the
 fields by making sure each treatment level is used in each area or ***block***
 of the field. 
 
-The three treatments involved different levels of N applied immediately after
+\indent The three treatments involved different levels of N applied immediately after
 snow melt, *Control* (no additional N -- just the naturally deposited 
 amount), 12.5 kg N $\text{ha}^{-1}\text{yr}^{-1}$ (*N12.5*), and 
 50 kg N $\text{ha}^{-1}\text{yr}^{-1}$ (*N50*). The researchers were 
@@ -187,7 +191,7 @@ beanplot(Massperha~Species+Treatment, data=gdn, side = "b",
 legend("topright", bty="n", c("HS", "PS"), fill=c("white","lightgreen"))
 ```
 
-The Two-WAY ANOVA model that contains a *species* by *treatment* interaction is
+\indent The Two-WAY ANOVA model that contains a *species* by *treatment* interaction is
 of interest (so this has a quantitative response variable of *biomass* and two
 categorical predictors of *species* and *treatment*)^[The researchers did not
 do this analysis so never directly addressed this research question although
@@ -247,7 +251,7 @@ models provide similar results here and include the *treatment* by *species*
 interaction we are going to explore, they just add to this basic model to
 account for these other issues. 
 
-Remember that **before using a *log*-transformation, you always must check
+\indent Remember that **before using a *log*-transformation, you always must check
 that the responses are strictly greater than 0:**:
 
 ```{r warning=F,message=F}
@@ -278,10 +282,9 @@ have an interaction present -- it is hard to tell visually sometimes. Again,
 fitting the interaction model and exploring the diagnostics is the best way to
 assess the success of the transformation applied. 
 
-The log(Mass per ha) version of the response variable has little issue with
+\indent The log(Mass per ha) version of the response variable has little issue with
 changing variability present in the residuals in Figure \@ref(fig:Figure9-6)
 with much more similar variation in the residuals across the fitted values. 
-
 The normality assumption is leaning towards a slight violation with too little
 variability in the right tail and so maybe a little bit of a left skew. This
 is only a minor issue and fixes the other big issue (clear non-constant 
@@ -308,7 +311,7 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m2, sub.caption="log-Massperha 2-WAY model")
 ```
 
-The researchers actually applied a $\log(y+1)$ transformation to all the 
+\indent The researchers actually applied a $\log(y+1)$ transformation to all the 
 variables. This was used because one of their many variables had a value of 0
 and so they added 1 to avoid analyzing a $-\infty$ response. This was not 
 needed for most of their variables because most did not attain the value 
@@ -321,7 +324,7 @@ that allow 0s in responses and still account for the violations of the linear
 model assumptions -- see a statistician or continue exploring more advanced
 statistical methods for ideas in this direction. 
 
-The term-plot in Figure \@ref(fig:Figure9-7) provides another display of the
+\indent The term-plot in Figure \@ref(fig:Figure9-7) provides another display of the
 results with some information on the results for each combination of the 
 species and treatments. Finding evidence that the treatments caused different
 results for the different species is a good first start. And it appears that 
@@ -343,7 +346,7 @@ plot(allEffects(m2), multiline=T, ci.style="bars")
 
 **Follow-up Pairwise Comparisons:**
 
-Given strong evidence of an interaction, many researchers would like more
+\indent Given strong evidence of an interaction, many researchers would like more
 details about the source of the differences. We can re-fit the model with a 
 unique mean for each combination of the two predictor variables, fitting a 
 One-Way ANOVA model (here with six levels) and using Tukey's HSD to provide 
@@ -352,7 +355,7 @@ groups corresponding to all combinations of *Species* (*HS*, *PS*) and
 treatment levels (*Control*, *N12.5*, and *N50*) provided in the new 
 variable ``SpTrt`` by the ``interaction`` function with new levels of 
 *HS.Control*, *PS.Control*, *HS.N12.5*, *PS.N12.5*, *HS.N50*, and *PS.N50*. The
-One-Way ANOVA $F$-test ($F(5,30)=23.96$, p-value$<0.0001$) suggests that there
+One-Way ANOVA $F$-test ($F(5,30)=23.96$, p-value $<0.0001$) suggests that there
 is evidence of some difference in the true mean log-biomass among the six
 treatment combinations. Note that the One-Way ANOVA table contains the test for
 at least one of those means being different from the others; the interaction
@@ -388,13 +391,13 @@ different. The following code creates the plot of these results using our
 (ref:fig9-8) Interaction plot for log-biomass with CLD from Tukey's HSD for all
 pairwise comparisons.
 
-```{r Figure9-8,fig.cap="(ref:fig9-8)"}
+```{r Figure9-8,fig.cap="(ref:fig9-8)",fig.height=5,fig.width=10}
 intplot(logMassperha~Species*Treatment, cld=T, cldshift=0.15,
         cldcol=c(2,3,4,5,6,8), data=gdn, lwd=2, 
         main="Interaction with CLD from Tukey's HSD on One-Way ANOVA")
 ```
 
-These results suggest that *HS-N50* is detectably different from all the other
+\indent These results suggest that *HS-N50* is detectably different from all the other
 groups (letter "a"). The rest of the story is more complicated since many of
 the sets contain overlapping groups in terms of detectable differences. Some 
 specific aspects of those results are most interesting. The mean log-biomasses
@@ -425,7 +428,7 @@ bright. 54 of the 60 colonies that were randomly assigned to one of the two
 treatments completed the experiment by making a choice between the two types of
 sites. The data set and some processing code follows. 
 
-The first question of interest is what type of analysis is appropriate here.
+\indent The first question of interest is what type of analysis is appropriate here.
 Once we recognize that there are two categorical variables being considered
 (*Treatment* group with two levels and *After* treatment choice with two levels
 *SmallBright* or *LargeDark*), then this is recognized as being within our
@@ -447,9 +450,7 @@ levels(sasakipratt$before) <- c("SmallBright","LargeDark")
 plot(after~group, data=sasakipratt)
 ```
 
-\newpage
-
-```{r warning=F,message=F}
+```{r}
 require(mosaic)
 tally(~group+after, data=sasakipratt)
 table1 <- tally(~group+after, data=sasakipratt, margins=F)
@@ -461,7 +462,7 @@ distribution of responses on *After* -- the rates of their choice of den types
 like those studied. The alternative is that there is some difference in the
 distributions of *After* between the *groups* in the population. 
 
-To use the Chi-square distribution to find a p-value for the $X^2$ statistic,
+\indent To use the Chi-square distribution to find a p-value for the $X^2$ statistic,
 we need all the expected cell counts to be larger than 5, so we should check 
 that. Note that in the following, the ``correct=F`` option is used to keep the
 function from slightly modifying the statistic used that occurs when overall 
@@ -488,7 +489,7 @@ the random assignment, we can say that the treatments caused differences in the
 colony choices. These results cannot be extended to ants beyond those being
 studied by these researchers because they were not randomly selected. 
 
-Further exploration of the standardized residuals can provide more insights in
+\indent Further exploration of the standardized residuals can provide more insights in
 some situations, although here they are similar for all the cells:
 
 ```{r warning=F,message=F}
@@ -528,9 +529,10 @@ of statistics if you continue exploring.
 modeling the diversity of *Sauropodomorphs* across $n=26$ "stage-level" time
 bins. Diversity is measured by the count of the number of different species
 that have been found in a particular level of fossils. Specifically, the counts
-in the *Sauropodomorphs* group were obtained fora stage between *Carnian* and
+in the *Sauropodomorphs* group were obtained for a stage between *Carnian* and
 *Maastrichtian*, with the first three stages in the *Triassic*, the next ten in
-the *Jurassic*, and the last eleven concerned about variation in sampling
+the *Jurassic*, and the last eleven in the *Cretaceous*. They were concerned 
+about variation in sampling
 efforts and the ability of paleontologists to find fossils across different
 stages creating a false impression of the changes in biodiversity over time.
 They first wanted to see if the species counts were related to factors such as
@@ -543,7 +545,7 @@ under-counted. They also measured the length of each stage (*Duration*) but did
 not consider it in their models since they want to reflect the diversity and
 longer stages would likely have higher diversity. 
 
-Their main goal was to develop a model that would **control for** the effects
+\indent Their main goal was to develop a model that would **control for** the effects
 of sampling efforts and allow them to perform inferences for whether the
 diversity was different between the *Triassic/Jurassic* (grouped together) and
 considered models that included two different versions of sampling effort
@@ -555,7 +557,7 @@ influential points. They explored a model just based on the *DBC*
 predictor^[This was not even close to their top AIC model so they made an odd
 choice.] and they analyzed the residuals from that model to see if the
 biodiversity was different in the *Cretaceous* or before, finding a 
-"p-value **>=** 0.0001" (I think they meant <0.0001^[I had students read this
+"p-value **>=** 0.0001" (I think they meant < 0.0001^[I had students read this
 paper in a class and one decided that this was a reasonable way to report small
 p-values -- it is WRONG. We are interested in how small a p-value might be and
 saying it is over a value is never useful.]). They were comparing the MLR
@@ -576,7 +578,7 @@ This presentation is intended get you some solid fundamentals to build on or a
 few intermediate tools to use if this is your last statistics training
 experience.]. 
 
-First, we start with a plot of the log-diversity vs the log-dinosaur bearing
+\indent First, we start with a plot of the log-diversity vs the log-dinosaur bearing
 collections by period. We can see fairly strong positive relationships between
 the log amounts of collections and species found with potentially similar
 slopes for the two periods but what look like different intercepts. Especially
@@ -588,7 +590,7 @@ variables.
 
 (ref:fig9-10) Scatterplot of log-biodiversity vs log-DBCs by TJK.
 
-```{r Figure9-10,fig.cap="(ref:fig9-10)",echo=F}
+```{r Figure9-10,fig.cap="(ref:fig9-10)",echo=F,fig.height=5,fig.width=10}
 bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
 bm2 <- bm[,-c(9:10)]
 require(psych)
@@ -598,41 +600,28 @@ bm$logDBCs <- log(bm$DBCs)
 bm$logDBFs <- log(bm$DBFs)
 bm$TJK <- factor(bm$TJK)
 require(car)
-scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F, cex.main=0.75,cex.leg=0.5,
+scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F,
             main="Scatterplot of log-diversity vs log-DBCs by period", lwd=2,
             legend.coords="topleft")
 ```
 
-```{r eval=F}
-bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
-bm2 <- bm[,-c(9:10)]
-require(psych)
-pairs.panels(bm2, ellipses=F)
-bm$logSpecies <- log(bm$Species)
-bm$logDBCs <- log(bm$DBCs)
-bm$logDBFs <- log(bm$DBFs)
-bm$TJK <- factor(bm$TJK)
-require(car)
-scatterplot(logSpecies~logDBCs|TJK, data=bm, smooth=F,
-            main="Scatterplot of log-diversity vs log-DBCs by period", lwd=2)
-```
-The following results will allow us to explore models similar to theirs. One
+\indent The following results will allow us to explore models similar to theirs. One
 "full" model they considered is:
 
-$$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i 
+$$\log{(\text{count})}_i=\beta_0 + \beta_1\cdot\log{(\text{DBC})}_i 
 + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-\noindent which was compared to 
+which was compared to 
 
-$$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i 
+$$\log{(\text{count})}_i=\beta_0 + \beta_1\cdot\log{(\text{DBF})}_i 
 + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-\noindent as well as the simpler models that each suggests:
+as well as the simpler models that each suggests:
 
 $$\begin{array}{rl}
-\log{(\text{count})}_i &=\beta_0 + \beta_1\log{(\text{DBC})}_i 
+\log{(\text{count})}_i &=\beta_0 + \beta_1\cdot\log{(\text{DBC})}_i 
 + \varepsilon_i, \\
-\log{(\text{count})}_i &=\beta_0 + \beta_1\log{(\text{DBF})}_i
+\log{(\text{count})}_i &=\beta_0 + \beta_1\cdot\log{(\text{DBF})}_i
 + \varepsilon_i, \\
 \log{(\text{count})}_i &=\beta_0 + \beta_2I_{\text{TJK},i} 
 + \varepsilon_i, \text{ and} \\
@@ -660,9 +649,9 @@ dredge(bd2, rank="AIC",
 ```
 
 The top AIC model is 
-$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$ 
+$\log{(\text{count})}_i=\beta_0 + \beta_1\cdot\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$ 
 with an AIC of 33.3. The next best
-model was $\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$ 
+model was $\log{(\text{count})}_i=\beta_0 + \beta_1\cdot\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$ 
 with an AIC of 36.8, so 3.5 AIC units worse than the top model. We put these
 two runs of results together in Table \@ref(tab:Table9-1), re-computing all the
 AICs based on the top model from the first full model considered. 
@@ -674,10 +663,10 @@ columnHeaders <- c("**Model**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
                    "**R^2^**", "**adj R^2^**&nbsp;",
                    "**df**","**logLik**&nbsp;","**AIC**",
                    "$\\BD$**AIC**")
-cell11 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
-cell21 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
-cell31 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBC})_i + \\varepsilon_i$"
-cell41 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\log(\\text{DBF})_i + \\varepsilon_i$"
+cell11 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\cdot\\log(\\text{DBC})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
+cell21 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\cdot\\log(\\text{DBF})_i + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
+cell31 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\cdot\\log(\\text{DBC})_i + \\varepsilon_i$"
+cell41 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_1\\cdot\\log(\\text{DBF})_i + \\varepsilon_i$"
 cell51 <- "$\\log(\\text{count})_i=\\beta_0 + \\varepsilon_i$"
 cell61 <- "$\\log(\\text{count})_i=\\beta_0 + \\beta_2I_{\\text{TJK},i} + \\varepsilon_i$"
 
@@ -704,7 +693,7 @@ distinctly benefit from the inclusion of *TJK*. This suggests that after
 controlling for the sampling effort, either through *DBC* or *DBF*, the
 differences in the stages captured by *TJK* can be more clearly observed. 
 
-So the top model in our (correct) results^[They also had an error in their AIC
+\indent So the top model in our (correct) results^[They also had an error in their AIC
 results that is difficult to explain here but was due to an un-careful usage of
 the results from the more advanced models that account for autocorrelation,
 which seems to provide the proper ranking of models (*that they ignored*) but
@@ -721,7 +710,7 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(bd1)
 ```
 
-The constant variance and assessment of influence do not suggest any real
+\indent The constant variance and assessment of influence do not suggest any real
 problems. The normality assumption is possibly violated but shows lighter
 tails than expected from a normal distribution and so should cause few
 problems with inferences (we would be looking for an answer of "yes, there is a
@@ -731,7 +720,7 @@ because..."). The other assumption that **is violated for all our models** is
 that the observations are independent. Between neighboring stages in time,
 there would likely be some sort of relationship in the biodiversity so
 we should not assume that the observations are independent (this is a
-***timeseries*** of observations). The authors acknowledged this issue but
+***time series*** of observations). The authors acknowledged this issue but
 unskillfully attempted to deal with it. Because an interaction was not 
 considered in any of the models, there also is an assumption that the results
 are parallel enough for the two groups. The scatterplot in Figure 
@@ -751,15 +740,15 @@ strikePVal = function(){
 }
 ```
 
-Ignoring the violation of the independence assumption, we are otherwise ok to
+\indent Ignoring the violation of the independence assumption, we are otherwise ok to
 explore the model more and see what it tells us about biodiversity of
 *Sauropodomorphs*. The top model is estimated to be
-$\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\log{(\text{DBC})}_i -0.75I_{\text{TJK},i}$. 
+$\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\cdot\log{(\text{DBC})}_i -0.75I_{\text{TJK},i}$. 
 This suggests that for the early observations (*TJK*=0), the model is
-$\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\log{(\text{DBC})}_i$
+$\log{(\widehat{\text{count}})}_i=-1.089 + 0.724\cdot\log{(\text{DBC})}_i$
 and for the Cretaceous period (*TJK*=1), the model is
-$\log{(\widehat{\text{count}})}_i=-1.089 + -0.75+0.724\log{(\text{DBC})}_i$
-which simplifies to $\log{(\widehat{\text{count}})}_i=-1.84 + 0.724\log{(\text{DBC})}_i$. This suggests that the sampling efforts
+$\log{(\widehat{\text{count}})}_i=-1.089 + -0.75+0.724\cdot\log{(\text{DBC})}_i$
+which simplifies to $\log{(\widehat{\text{count}})}_i=-1.84 + 0.724\cdot\log{(\text{DBC})}_i$. This suggests that the sampling efforts
 have the same effect on all observations and having an increase in *logDBCs*
 is associated with increases in the mean *log-biodiversity*. Specifically, for 
 a 1 log-count increase in the *log-DBCs*, we expect, on average, to have a 
@@ -780,7 +769,7 @@ log-sampling effort in each stage.
 summary(bd1)
 ```
 
-Their study shows some interesting contrasts between methods. They tried to use
+\indent Their study shows some interesting contrasts between methods. They tried to use
 AIC-based model selection methods across all the models but then used p-values
 to really make their final conclusions. This presents a philosophical
 inconsistency that bothers some more than others but should bother everyone. 
@@ -790,11 +779,11 @@ the direct comparison of
 
 $$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBC})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i$$
 
-\noindent to 
+to 
 
-$$\log{(\text{count})}_i=\beta_0 + \beta_1\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i,$$
+$$\log{(\text{count})}_i=\beta_0 + \beta_1\cdot\log{(\text{DBF})}_i + \beta_2I_{\text{TJK},i} + \varepsilon_i,$$
 
-\noindent exploring whether *DBC* or *DBF* is the "better" with *TJK* in the model. There
+exploring whether *DBC* or *DBF* is the "better" with *TJK* in the model. There
 is no hypothesis test to compare these two models because one is not ***nested***
 in the other -- **it is not possible to get from one model to the other by 
 setting one or more slope coefficients to 0 so we can't test our way from one
@@ -805,7 +794,7 @@ further refinement is suggested/possible for the model with *DBC* and *TJK*. Thi
 would provide the direct inferences that they probably want and are trying to
 obtain from AICs along with p-values in their paper.
 
-Finally, their results would actually be more valid if they had used a set of
+\indent Finally, their results would actually be more valid if they had used a set of
 statistical methods designed for modeling responses that are counts of events
 or things, especially those whose measurements change as a function of sampling
 effort; models called ***Poisson rate models*** would be ideal for their
@@ -837,7 +826,7 @@ questions and data collection needs, is to **make a fake data set and analyze
 it**. With this sort of preparation, many issues can be avoided. Remember to 
 think about reasons why assumptions of your proposed method might be violated.
 
-You are now **armed** and a bit **dangerous** with statistical methods. If
+\indent You are now **armed** and a bit **dangerous** with statistical methods. If
 you go to use them, remember the fundamentals and find the story in the data. 
 After deciding on any research questions of interest, graph the data and make
 sure that the statistical methods will give you results that make some sense

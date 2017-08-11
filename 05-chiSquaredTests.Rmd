@@ -305,7 +305,7 @@ samples or subjects assigned to R groups. Independence testing involves a
 single random sample and measurements on two categorical variables. 
 
 ```{r Figure5-3,fig.cap="(ref:fig5-3)",echo=F}
-knitr::include_graphics('chapter4_files/image027.png')
+knitr::include_graphics('chapter5_files/image027.png')
 ```
 
 You will discover that the test statistics are the same for both methods, 
