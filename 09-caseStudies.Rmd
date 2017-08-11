@@ -76,7 +76,9 @@ and only one takes in the value 1 (is "turned on") at a time for each response.
 We can then equate the general notation from Chapter \@ref(chapter8) with our
 specific One-Way ANOVA (Chapter \@ref(chapter3)) notation as follows:
 
-* $\alpha = \beta_0$:
+* For the baseline category:
+
+    $$\alpha = \beta_0$$
 
     * The mean for the baseline category was modeled using $\alpha$ which is
     the intercept term in the output that we called $\beta_0$ in the
@@ -86,14 +88,16 @@ specific One-Way ANOVA (Chapter \@ref(chapter3)) notation as follows:
 
     * From the One-Way ANOVA model:
     
-        * $\alpha + \tau_j$
+    $$\alpha + \tau_j$$
         
     * From the regression model where the only indicator variable that is 1
     is $I_{\text{Level }j,i}$:
     
-        * $\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} =  \beta_0 + \beta_{j-1}*1$
-        
-        * $= \beta_0 + \beta_{j-1}$
+    $$\begin{array}{rl}
+    &\beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} + \cdots + \beta_JI_{\text{Level }J,i} \\
+    &=  \beta_0 + \beta_{j-1}*1\\ 
+    &= \beta_0 + \beta_{j-1}
+    \end{array}$$
         
     * So with intercepts being equal, $\beta_{j-1}=\tau_j$.
 
@@ -446,9 +450,7 @@ levels(sasakipratt$before) <- c("SmallBright","LargeDark")
 plot(after~group, data=sasakipratt)
 ```
 
-\newpage
-
-```{r warning=F,message=F}
+```{r}
 require(mosaic)
 tally(~group+after, data=sasakipratt)
 table1 <- tally(~group+after, data=sasakipratt, margins=F)
