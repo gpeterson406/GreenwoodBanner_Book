@@ -951,7 +951,7 @@ and *Unattractive* with a $\text{p-value}\approx 0.03$? I selected the two group
 to compare in Chapter \@ref(chapter2) because they were furthest apart.
 "Cherry-picking" the comparison that is likely to be most different creates a 
 false sense of the real situation and inflates the Type I error rate because of 
-the selection^[This fits with a critique of p-value usage called p-hacking -- where researchers search across many results and only report their biggest differences.]. If the entire suite of pairwise comparisons are considered, this 
+the selection^[This fits with a critique of p-value usage called p-hacking or publication bias -- where researchers search across many results and only report their biggest differences. This biases the results to detecting results more than they should be and then when other researchers try to repeat the same studies, they fail to find similar results.]. If the entire suite of pairwise comparisons are considered, this 
 result may lose some of its luster. In other words, if we consider the suite of 
 three pair-wise differences (and the tests) implicit in comparing all of them, 
 we may need stronger evidence in the most different pair than a p-value of 0.033 to suggest overall differences. In this situation, the *Beautiful* and *Average* 
@@ -963,7 +963,7 @@ consistent with our overall test results.
 
 ## ANOVA model diagnostics including QQ-plots {#section3-4}
 
-The requirements for a One-Way ANOVA $F$-test are similar to those discussed in 
+\indent The requirements for a One-Way ANOVA $F$-test are similar to those discussed in 
 Chapter \@ref(chapter2), except that there are now $J$ groups instead of only 2.
 Specifically, the linear model assumes:
 
@@ -973,8 +973,7 @@ Specifically, the linear model assumes:
 
 3. **Normal distributions**. 
 
-For assessing equal variances across the groups, it is best to use plots to 
-assess this. We can use boxplots and beanplots to compare the spreads of the 
+\indent For assessing equal variances across the groups, it is best to use plots to  assess this. We can use boxplots and beanplots to compare the spreads of the 
 groups, which were provided in Figure \@ref(fig:Figure3-1). The range and IQRs 
 should be relatively similar across the groups if you do not find evidence of a 
 problem with this assumption. You should start with noting how clear or big the
@@ -984,7 +983,7 @@ equal in the populations. In addition to our direct plotting, there are some
 diagnostic plots available from the ``lm`` function that can help us more
 clearly assess potential violations of the previous assumptions.
 
-We can obtain a suite of four diagnostic plots by using the ``plot`` function on 
+\indent We can obtain a suite of four diagnostic plots by using the ``plot`` function on 
 any linear model object that we have fit. To get all the plots together in four 
 panels we need to add the ``par(mfrow=c(2,2))`` command to tell R to make a graph
 with 4 panels^[We have been using this function quite a bit to make multi-panel 
@@ -998,19 +997,18 @@ par(mfrow=c(2,2))
 plot(lm2, pch=16)
 ```
 
-There are two plots in Figure \@ref(fig:Figure3-9) with useful information for the
-equal variance assumption. The "Residuals vs Fitted" panel in the top left displays 
-the residuals $(e_{ij} = y_{ij}-\hat{y}_{ij})$ on the y-axis and the fitted values
+There are two plots in Figure \@ref(fig:Figure3-9) with useful information for assessing the
+equal variance assumption. The "Residuals vs Fitted" panel in the top left panel displays  the residuals $(e_{ij} = y_{ij}-\hat{y}_{ij})$ on the y-axis and the fitted values
 $(\hat{y}_{ij})$ on the x-axis. This allows you to see if the variability of the
-observations differs across the groups as a function of the mean of the groups 
-because all the observations in the same group get the same fitted value, the 
+observations differs across the groups as a function of the mean of the groups, 
+because all the observations in the same group get the same fitted value -- the 
 mean of the group. In this plot, the points seem to have fairly similar spreads 
 at the fitted values for the three groups with fitted values of 4, 4.3, and 6. 
 The "Scale-Location" plot in the lower left panel has the same x-axis but the 
 y-axis contains the square-root of the absolute value of the standardized 
 residuals. The absolute value transforms all the residuals into a magnitude 
 scale (removing direction) and the square-root helps you see differences in
-variability more accurately. The standardization scales them to have a variance 
+variability more accurately. The standardization scales the residuals to have a variance 
 of 1 so help you in other displays to get a sense of how many standard deviations 
 you are away from the mean in the residual distribution. The visual assessment is
 similar in the two plots -- you want to consider whether it appears that the 
@@ -1021,30 +1019,30 @@ violation of the constant variance assumption. Remember that some variation
 across the groups is expected and is OK, but large differences in spreads are problematic for all the procedures that involve linear models. When discussing 
 these results, you want to discuss how clearly the differences in variation are 
 and whether that *shows a clear violation of the assumption* of equal variance 
-for all observations. Like in hypothesis testing, you can't prove that you've 
+for all observations. Like in hypothesis testing, you can't prove that you can never prove that you've 
 met assumptions based on a plot "looking OK", but you can say that there is no 
 clear evidence that the assumption is violated! 
 
-(ref:fig3-9) Default diagnostic plots for the linear model.
+(ref:fig3-9) Default diagnostic plots for the Mock Jury full linear model.
 
 ```{r Figure3-9,fig.cap="(ref:fig3-9)",echo=F,fig.width=8,fig.height=5}
 par(mfrow=c(2,2))
 plot(lm2, pch=16)
 ```
 
-The linear model assumes that all the random errors ($\varepsilon_{ij}$) follow a 
+\indent The linear model also assumes that all the random errors ($\varepsilon_{ij}$) follow a 
 normal distribution. To gain insight into the validity of this assumption, we 
 can explore the original observations as displayed in the beanplots, mentally
 subtracting off the differences in the means and focusing on the shapes of the
 distributions of observations in each group. These plots are especially good for
-assessing whether there is there a skew or outliers present in each group. If so, 
+assessing whether there is a skew or outliers present in each group. If so, 
 by definition, the normality assumption is violated. But our assumption is 
 about the distribution of all the errors after removing the differences 
 in the means and so we want an overall assessment technique to understand how
 reasonable our assumption is overall for our model. The residuals from the entire
 model provide us with estimates of the random errors and if the normality 
 assumption is met, then the residuals all-together should approximately follow a
-normal distribution. The ***Normal Q-Q Plot*** in upper right panel of 
+normal distribution. The ***Normal Q-Q Plot*** in the upper right panel of 
 Figure \@ref(fig:Figure3-9) is a direct visual assessment of how well our 
 residuals match what we would expect from a normal distribution. Outliers, skew, 
 heavy and light-tailed aspects of distributions (all violations of normality) 
@@ -1054,7 +1052,7 @@ histograms and/or density plots of the residuals and to see how that maps into
 this new display. We can obtain the residuals from the linear model using the 
 ``residuals`` function on any linear model object. 
 
-(ref:fig3-10) Histogram and density curve of the linear model raw residuals. 
+(ref:fig3-10) Histogram and density curve of the linear model raw residuals from the Mock Jury linear model. 
 
 ```{r Figure3-10, fig.cap="(ref:fig3-10)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
@@ -1065,18 +1063,18 @@ plot(density(eij), main="Density plot of residuals", ylab="Density",
 ```
 
 Figure \@ref(fig:Figure3-10) shows that there is a right skew present in the 
-residuals for the prisoner rating data model that accounted for different 
-means in the three groups, which is consistent with the initial assessment of 
+residuals for the model for the prisoner ratings that accounted for different 
+means in the three picture groups, which is consistent with the initial assessment of 
 some right skew in the plots of observations in each group.
 
-A Quantile-Quantile plot (***QQ-plot***) shows the "match" of an observed 
+\indent A Quantile-Quantile plot (***QQ-plot***) shows the "match" of an observed 
 distribution with a theoretical distribution, almost always the normal
 distribution. They are also known as Quantile Comparison, Normal Probability, 
 or Normal Q-Q plots, with the last two names being specific to comparing
 results to a normal distribution. In this version^[Along with multiple names,
 there is variation of what is plotted on the x and y axes and the scaling of 
 the values plotted, increasing the challenge of interpreting QQ-plots. We are
-consistent about the x and y axis choices but different functions that make 
+consistent about the x and y axis choices throughout this book but different functions that make 
 these plots in R do switch the axes.], the QQ-plots display the value of 
 observed percentiles in the residual distribution on the y-axis versus the 
 percentiles of a theoretical normal distribution on the x-axis. If the 
@@ -1090,8 +1088,7 @@ a normal distribution". It is best to be specific about the type of deviation
 you are detecting. And to do that, we need to practice interpreting some
 QQ-plots. 
 
-The QQ-plot of the linear model residuals from Figure \@ref(fig:Figure3-9) is
-extracted and enhanced it a little to make Figure \@ref(fig:Figure3-11) so we 
+\indent The QQ-plot of the linear model residuals from Figure \@ref(fig:Figure3-9) is extracted and enhanced it a little to make Figure \@ref(fig:Figure3-11) so we 
 can just focus on it. We know from looking at the histogram that this is a 
 slightly right skewed distribution. The QQ-plot places the observed ***standardized***^[Here this means re-scaled so that they should have similar 
 scaling to a standard normal with mean 0 and standard deviation 1. This does 
@@ -1111,14 +1108,14 @@ If you go back to the histogram you can see that the smallest residuals are all
 stacked up and do not spread out like the left tail of a normal distribution 
 should. In the right tail (positive) residuals, there is also a systematic 
 lifting from the 1-1 line to larger values in the residuals than the normal 
-would generate. For example, the point labeled as "82" (the 82^nd^
+would generate. For example, the point labeled as "82" in Figure \@ref(fig:Figure3-9)  (the 82^nd^
 observation in the data set) has a value of 3 in residuals but should actually 
 be smaller (maybe 2.5) if the distribution was normal. Put together, this pattern 
 in the QQ-plot suggests that the left tail is too compacted (too short) and 
 the right tail is too spread out -- this is the right skew we identified from the
 histogram and density curve! 
 
-(ref:fig3-11) QQ-plot of residuals from linear model.
+(ref:fig3-11) QQ-plot of residuals from Mock Jury linear model.
 
 
 ```{r Figure3-11,fig.cap="(ref:fig3-11)",echo=F,fig.height=3,fig.width=6}
@@ -1130,14 +1127,14 @@ plot(density(eij), main="Density plot of residuals", ylab="Density",
 ```
 
 
-Generally, when both tails deviate on the same side of the line (forming a 
+\indent Generally, when both tails deviate on the same side of the line (forming a 
 sort of quadratic curve, especially in more extreme cases), that is evidence 
 of a skew. To see some different potential shapes in QQ-plots, six different 
 data sets are displayed in Figures \@ref(fig:Figure3-12) and \@ref(fig:Figure3-13).
 In each row, a QQ-plot and associated density curve are displayed. If the points 
 are both above the 1-1 line in the lower and upper tails as in 
 Figure \@ref(fig:Figure3-12)(a), then the pattern is a right skew, here even more
-extreme than in the real data set. If the points are below the 1-1 line in both
+extreme than in the previous real data set. If the points are below the 1-1 line in both
 tails as in Figure \@ref(fig:Figure3-12)(c), then the pattern is identified as a 
 left skew. Skewed residual distributions (either direction) are problematic for 
 models that assume normally distributed responses but not necessarily for our
@@ -1155,7 +1152,7 @@ variability in the results. The opposite pattern with the left tail above the
 line and the right tail below the line suggests less spread (***lighter-tailed***)
 than a normal as in Figure \@ref(fig:Figure3-12)(g) and (h). This pattern is
 relatively harmless and you can proceed with methods that assume normality safely 
-as they will just be a little conservative. 
+as they will just be a little conservative. For any of the patterns, you would not a potential violation of the normality assumption and then proceed to describe the type of violation and how clear or extreme it seems to be.
 
 (ref:fig3-12) QQ-plots and density curves of four simulated distributions with
 different shapes. 
@@ -1184,7 +1181,7 @@ qqPlot(y4,main="(g) QQ-Plot of y4",envelope=F,pch=19,cex=1.3)
 plot(density(y4),xlab="y4",ylab='Density',main="(h) Density plot of y4",col="blue",xlim=c(-6.5,6.5))
 ```
 
-Finally, to help you calibrate expectations for data that are actually normally
+\indent Finally, to help you calibrate expectations for data that are actually normally
 distributed, two data sets simulated from normal distributions are displayed in 
 Figure \@ref(fig:Figure3-13). Note how neither follows the line exactly but 
 that the overall pattern matches fairly well. **You have to allow for some
@@ -1192,10 +1189,9 @@ variation from the line in real data sets** and focus on when there are really
 noticeable issues in the distribution of the residuals such as those
 displayed above. Again, you will never be able to prove that you have normally
 distributed residuals even if the residuals are all exactly on the line, but if
-you see QQ-plots as in Figure \@ref(fig:Figure3-12) you can encounter 
-situations that provide evidence of clear violations of the normality assumption. 
+you see QQ-plots as in Figure \@ref(fig:Figure3-12) you can determine that there is clear evidence of violations of the normality assumption. 
 
-(ref:fig3-13) Two more simulated data sets, generated from normal distributions.
+(ref:fig3-13) Two more simulated data sets, both generated from normal distributions.
 
 ```{r Figure3-13,fig.cap="(ref:fig3-13)",echo=F,fig.width=6}
 par(mfrow=c(2,2))
@@ -1213,12 +1209,12 @@ qqPlot(y6,main="(k) QQ-Plot of y6",envelope=F,pch=19,cex=1.3)
 plot(density(y6),xlab="y6",ylab='Density',main="(l) Density plot of y6",col="blue",xlim=c(-6.5,6.5))
 ```
 
-The last issues with assessing the assumptions in an ANOVA relates to 
+\indent The last issues with assessing the assumptions in an ANOVA relates to 
 situations where the methods are more or less ***resistant***^[A resistant 
 procedure is one that is not severely impacted by a particular violation of an
-assumption. For example, the median is resistant to the impact of an outlier.]
-to violations of assumptions. For reasons beyond the scope of this book, the
-parametric ANOVA F-test is more resistant to violations of the assumptions of
+assumption. For example, the median is resistant to the impact of an outlier. But the mean is not a resistant measure as changing the value of a single point changes the mean.]
+to violations of assumptions. In simulation studies of the performance of the $F$-test, researchers have found that the
+parametric ANOVA $F$-test is more resistant to violations of the assumptions of
 the normality and equal variance assumptions if the design is balanced. A 
 ***balanced design*** occurs when each group is measured the same number of 
 times. The resistance decreases as the data set becomes less balanced, as the 
@@ -1245,7 +1241,7 @@ tells us that the $F$-test should have some resistance to violations of
 assumptions. This nearly balanced design, and the moderate sample size 
 (over 37 per group is considered a good but not large sample), make the 
 parametric and nonparametric approaches provide similar results in this data 
-set even in the presence of the skewed residual error distribution. 
+set even in the presence of the skewed residual error distribution that presents a violation to the assumptions of the parametric procedure. 
 
 
 
@@ -1262,24 +1258,26 @@ one of the six different treatment combinations possible
 (OJ at 0.5 mg, OJ at 1 mg, OJ at 2 mg, VC at 0.5 mg, VC at 1 mg, and VC at 2 mg). 
 The animals were treated similarly otherwise and we can assume lived in
 separate cages and only one observation was taken for each guinea pig, so we
-can assume the observations are independent. We need to create a variable that
+can assume the observations are independent^[A violation of the independence assumption could have easily been created if they measured cells in two locations on each guinea pig or took measurements over time on each one.]. We need to create a variable that
 combines the levels of delivery type (OJ, VC) and the dosages (0.5, 1, and 2)
 to use our One-Way ANOVA on the six levels. The ``interaction`` function can be 
 used create a new variable that is based on combinations of the levels of other
-variables. Here a new variable is created in the ``ToothGrowth`` data.frame that 
-we called ``Treat`` that provides a six-level grouping variable for our One-Way 
+variables. Here a new variable is created in the ``ToothGrowth`` tibble that 
+we called ``Treat`` using the ``interaction`` function that provides a six-level grouping variable for our One-Way 
 ANOVA to compare the combinations of treatments. To get a sense of the pattern of
 observations in the data set, the counts in ``supp`` (supplement type) and 
-``dose`` are provided. 
+``dose`` are provided and then the counts in the new categorical explanatory variable, ``Treat``. 
 
 ```{r}
 data(ToothGrowth) #Available in Base R
+require(tibble)
+ToothGrowth<-as.tibble(ToothGrowth) #Convert data.frame to tibble
 require(mosaic)
 tally(~supp, data=ToothGrowth) #Supplement Type (VC or OJ)
 tally(~dose, data=ToothGrowth) #Dosage level
 
 #Creates a new variable Treat with 6 levels
-ToothGrowth$Treat=with(ToothGrowth, interaction(supp, dose)) 
+ToothGrowth$Treat<-with(ToothGrowth, interaction(supp, dose)) 
 
 #New variable that combines supplement type and dosage
 tally(~Treat, data=ToothGrowth) 
@@ -1289,7 +1287,7 @@ The ``tally`` function helps us to check for balance; this is a balanced design
 because the same number of guinea pigs ($n_j=10 \text{ for } j=1, 2,\ldots, 6$) 
 were measured in each treatment combination. 
 
-With the variable ``Treat`` prepared, the first task is to visualize the results 
+\indent With the variable ``Treat`` prepared, the first task is to visualize the results 
 using boxplots and beanplots^[Note that to see all the group labels in the plot 
 when making the figure, you have to widen the plot window before copying the 
 figure out of R. You can resize the plot window using the small vertical and
@@ -1301,30 +1299,30 @@ each group using ``favstats``.
 favstats(len~Treat, data=ToothGrowth)
 ```
 
-(ref:fig3-14) Boxplot and beanplot of tooth growth responses for the six 
+(ref:fig3-14) Boxplot and beanplot of odontoblast growth responses for the six 
 treatment level combinations. 
 
 ```{r Figure3-14, fig.cap="(ref:fig3-14)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-boxplot(len~Treat, data=ToothGrowth, ylab="Tooth Growth in microns")
+boxplot(len~Treat, data=ToothGrowth, ylab="Odontoblast Growth in microns")
 beanplot(len~Treat, data=ToothGrowth, log="", col="yellow",
-         method="jitter", ylab="Tooth Growth in microns")
+         method="jitter", ylab="Odontoblast Growth in microns")
 ```
 
-Figure \@ref(fig:Figure3-14) suggests that the mean tooth growth increases with 
+\indent Figure \@ref(fig:Figure3-14) suggests that the mean tooth growth increases with 
 the dosage level and that OJ might lead to higher growth rates than VC except 
 at a dosage of 2 mg/day. The variability around the means looks to be small 
 relative to the differences among the means, so we should expect a small 
 p-value from our $F$-test. The design is balanced as noted above ($n_j=10$ 
 for all six groups) so the methods are some what resistant to impacts from
-non-normality and non-constant variance. There is some suggestion of 
+non-normality and non-constant variance but we should still assess the patterns in the plots. There is some suggestion of 
 non-constant variance in the plots but this will be explored
 further below when we can remove the difference in the means and combine all
 the residuals together. There might be some skew in the responses in some of
-the groups but there are only 10 observations per group so skew in the boxplots
+the groups but there are only 10 observations per group so visual evidence of skew in the boxplots and beanplots 
 could be generated by impacts of very few of the observations.
 
-Now we can apply our 6+ steps for performing a hypothesis test with these
+\indent Now we can apply our 6+ steps for performing a hypothesis test with these
 observations. The initial step is deciding on the claim to be assessed and the 
 test statistic to use. This is a six group situation with a quantitative 
 response, identifying it as a One-Way ANOVA where we want to test a null 
@@ -1355,7 +1353,7 @@ start. We will use a 5% significance level.
         "clustering" of observations would present a potential violation of the
         independence assumption. If the experiment had the animals in separate 
         cages, there is no clear dependency in the design of the study and we can
-        assume that there is no problem with this assumption. 
+        assume^[In working with researchers on hundreds of projects, our experience has been that we often require many conversations to discover all the potential sources of issues in data sets, especially related to assessing independence of the observations.] that there is no problem with this assumption. 
         
     * Constant variance:
     
@@ -1364,7 +1362,7 @@ start. We will use a 5% significance level.
         size was small in each group. We need to fit the linear model to get 
         the other diagnostic plots to make an overall assessment. 
 
-        ```{r Figure3-15,fig.cap="Diagnostic plots for the toothgrowth model.",fig.height=5,fig.width=8}
+        ```{r Figure3-15,fig.cap="Diagnostic plots for the odontoblast growth model.",fig.height=5,fig.width=8}
         m2<-lm(len~Treat,data=ToothGrowth)
         par(mfrow=c(2,2))
         plot(m2,pch=16)
@@ -1378,7 +1376,7 @@ start. We will use a 5% significance level.
         this alternative scaling.
         
         * Put together, the evidence for non-constant variance is not that strong and we can
-        assume that there is at least not a major problem with this assumption. 
+        proceed comfortable that there is at least not a major problem with this assumption. 
         
     * Normality of residuals:
     
@@ -1405,20 +1403,19 @@ start. We will use a 5% significance level.
     ANOVA table as ``< 2e-16``. First, note that this is in scientific notation 
     that is a compact way of saying that the p-value here is $2.2*10^{-16}$ or
     0.00000000000000022. When you see ``2.2e-16`` in R output, it also means
-    that the calculation is at the numerical precision     of the computer. 
+    that the calculation is at the numerical precision limits of the computer. 
     What R is really trying to report is that this is a very small number. 
     **When you encounter p-values that are smaller than 0.0001, you should just
     report that the p-value < 0.0001** Do not report that it is 0 as this gives 
     the false impression that there is no chance of the result occurring when 
     it is just a really small probability. This p-value came from an $F(5,54)$
-    distribution (the distribution of the test statistic if the null hypothesis
+    distribution (this is the distribution of the test statistic if the null hypothesis
     is true). 
     
-    * The nonparametric approach is not too hard so we can compare the two approaches here 
-    as well:
+    * The nonparametric approach is not too hard so we can compare the two approaches here  as well:
     
     
-    ```{r Figure3-16, fig.cap="Histogram and density curve of permutation distribution for $F$-statistic for tooth growth data. Observed test statistic in bold, vertical line at 41.56."}
+    ```{r Figure3-16, fig.cap="Histogram and density curve of permutation distribution for $F$-statistic for odontoblast growth data. Observed test statistic in bold, vertical line at 41.56."}
     Tobs <- anova(lm(len~Treat,data=ToothGrowth))[1,4]; Tobs
     par(mfrow=c(1,2))
     B <- 1000
@@ -1434,7 +1431,7 @@ start. We will use a 5% significance level.
     ```
     
     * **The permutation p-value was reported as 0. This should be reported as 
-    p-value < 0.001** since we did 1000 permutations and found that none of the
+    p-value < 0.001** since we did 1,000 permutations and found that none of the
     permuted $F$-statistics, $F^*$, were larger than the observed $F$-statistic
     of 41.56. The permuted results do not exceed 6 as seen in Figure 
     \@ref(fig:Figure3-16), so the observed result is *really unusual* relative 
@@ -1443,13 +1440,13 @@ start. We will use a 5% significance level.
     
 5. **Make a decision**:
 
-    * Reject $H_0$ since the p-value is less than 5%. 
+    * Reject $H_0$ since the p-value is very small. 
     
-6. **Write a conclusion**:
+6. **Write a conclusion and do scope of inference**:
 
-    * There is evidence at the 5% significance level that the different treatments 
+    * There is strong evidence that the different treatments 
     (combinations of OJ/VC and dosage levels) **cause some** difference in the  **true**
-    mean tooth growth for **these** guinea pigs. 
+    mean odontoblast growth for **these** guinea pigs. 
     
         * We can make the causal statement of the treatment causing differences 
         because the treatments were randomly assigned but these inferences only 
@@ -1467,11 +1464,11 @@ start. We will use a 5% significance level.
         the means differ. In fact, if you look back at Figure 
         \@ref(fig:Figure3-14), the means for the 2 mg dosages look almost the 
         same so we will have a tough time arguing that all groups differ. The 
-        $F$-test is about finding evidence of some means. The next section will
+        $F$-test is about finding evidence of some difference *somewhere* among the true means.  The next section will
         provide some additional tools to get more specific about the source of 
-        those detected differences. 
+        those detected differences and allow us to get at estimates of the differences we observed to complete our interpretation. 
         
-Before we leave this example, we should revisit our model estimates and 
+\indent Before we leave this example, we should revisit our model estimates and 
 interpretations. The default model parameterization uses reference-coding. 
 Running the model ``summary`` function on ``m2`` provides the estimated 
 coefficients:
@@ -1509,7 +1506,7 @@ direct comparisons of groups are likely of interest to researchers involved in
 studying the impacts of these supplements on tooth growth and the next section 
 will show us how to do that (correctly!).
 
-The reference-coding is still going to feel a little uncomfortable so the comparison
+\indent The reference-coding is still going to feel a little uncomfortable so the comparison
 to the cell-means model and exploring the effect plot can help to reinforce
 that both models patch together the same estimated means for each group. For
 example, we can find our estimate of 7.98 microns for the VC0.5 group in the
@@ -1522,7 +1519,7 @@ m3 <- lm(len~Treat-1, data=ToothGrowth)
 summary(m3)
 ```
 
-(ref:fig3-17) Effect plot of the One-Way ANOVA model for the toothgrowth data.
+(ref:fig3-17) Effect plot of the One-Way ANOVA model for the odontoblast growth data.
 
 ```{r Figure3-17, fig.cap="(ref:fig3-17)",fig.height=3,fig.width=4,echo=F}
 par(mfrow=c(1,1))
@@ -1539,14 +1536,14 @@ plot(allEffects(m2))
 
 \sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
-With evidence that the true means are likely not all equal, many researchers 
+\indent With evidence that the true means are likely not all equal, many researchers 
 want to know which groups show evidence of differing from one another. This 
 provides information on the source of the overall difference that was 
 detected and detailed information on which groups differed from one another. 
 Because this is a shot-gun/unfocused sort of approach, some people think it 
 is an over-used procedure. Others feel that
 it is an important method of addressing detailed questions about group
-comparisons in a valid way. For example, we might want to know if OJ is
+comparisons in a valid and safe way. For example, we might want to know if OJ is
 different from VC *at the 0.5 mg/day* dosage level and these methods will allow 
 us to get an answer to this sort of question.
 It also will test for differences between the OJ.0.5 and VC.2 groups
@@ -1561,12 +1558,11 @@ method^[When this procedure is used with unequal group sizes it is also sometime
 called Tukey-Kramer's method.]. The name suggests that not using it could lead to a 
 dishonest answer and that it will give you an honest result. It is more that if you don't 
 do some sort of correction for all the tests you are performing, you might find some ***spurious***^[We often use "spurious" to describe falsely rejected null hypotheses, but 
-there are also called false detections.] results. There are other methods that could be used 
+they are also called false detections.] results. There are other methods that could be used 
 to do a similar correction and also provide "honest" inferences; we are just going to learn 
 one of them. 
 
-Generally, the general challenge in this situation is that if you perform many tests at the 
-same time, you inflate the Type I error rate. We can define the ***family-wise error rate***
+\indent Generally, the challenge in this situation is that if you perform many tests at the same time (instead of just one test), you inflate the Type I error rate. We can define the ***family-wise error rate***
 as the probability that at least one error is made on a set of tests or, more
 compactly, Pr(At least 1 error is made) where Pr() is the probability of an
 event occurring. The family-wise error is meant to capture the overall
@@ -1585,7 +1581,7 @@ $$\begin{array}{ll}
 \end{array}$$
 
 Figure \@ref(fig:Figure3-18) shows how the probability of having at least one 
-false detection grows rapidly with the number of tests. The plot stops at 100
+false detection grows rapidly with the number of tests, $m$. The plot stops at 100
 tests since it is effectively a 100% chance of at least one false detection. 
 It might seem like doing 100 tests is a lot, but in Genetics research it is 
 possible to consider situations where millions of tests are
@@ -1595,24 +1591,24 @@ it is really likely to be a real result and will show up as a difference in the
 next data set they collect.^[Many researchers are now collecting multiple data 
 sets to use in a single study and using one data set to identify interesting 
 results and then using a validation or test data set that they withheld from 
-initial analysis to verify that the first results are also present in that 
-second data set.] 
+initial analysis to try to verify that the first results are also present in that 
+second data set. This also has problems but the only way to develop an understanding of a process is to look across a suite of studies and learn from that accumulation of evidence.] 
 
 (ref:fig3-18) Plot of family-wise error rate as the number of tests performed 
 increases. Dashed line indicates 0.05. 
 
 ```{r Figure3-18, fig.cap="(ref:fig3-18)",echo=F,warning=F,message=F}
-m=1:100
-pr=1-.95^m
+m<-1:100
+pr<-1-.95^m
 plot(m,pr,type="l",col="blue",xlab="# of Tests",ylab="Probability of at least one Type I error",lwd=2)
 abline(h=.05,lty=2,col="red")
 ```
 
-In pair-wise comparisons between all the pairs of means in a One-Way ANOVA, the number of 
+\indent In pair-wise comparisons between all the pairs of means in a One-Way ANOVA, the number of 
 tests is based on the number of pairs. We can calculate the number of tests using 
 $J$ choose 2, $\begin{pmatrix}J\\2\end{pmatrix}$, to get the number of unique pairs of 
 size 2 that we can make out of $J$ individual treatment levels. We don't need to 
-explore the combinatorics formula for this, as the ``choose`` function can give us the 
+explore the combinatorics formula for this, as the ``choose`` function in R can give us the 
 answers:
 
 ```{r}
@@ -1623,8 +1619,7 @@ choose(6,2)
 ```
 
 So if you have three groups (prisoner rating study), there are 3 unique pairs to 
-compare. For six groups, like in the guinea pig study, we have to consider 15 tests 
-to compare all the unique pairs of groups. 15 tests seems like enough that we 
+compare. For six groups, like in the guinea pig study, we have to consider 15 tests  to compare all the unique pairs of groups. 15 tests seems like enough that we 
 should be worried about inflated family-wise error rates. Fortunately, the 
 Tukey's HSD method controls the family-wise error rate at your specified level 
 (say 0.05) across any number of pair-wise comparisons. This means that the 
@@ -1633,7 +1628,7 @@ significance level, often 5%. To do this, each test must use a slightly more
 conservative cut-off than if just one test is performed and the procedure helps 
 us figure out how much more conservative we need to be. 
 
-Tukey's HSD starts with focusing on the difference between the groups with the 
+\indent Tukey's HSD starts with focusing on the difference between the groups with the 
 largest and smallest means ($\bar{y}_{max}-\bar{y}_{min}$). If 
 $(\bar{y}_{max}-\bar{y}_{min}) \le \text{Margin of Error}$
 for the difference in the means, then all other pairwise differences, say
@@ -1655,30 +1650,30 @@ $$(\bar{y}_j - \bar{y}_{j'}) \mp \frac{q^*}{\sqrt{2}}\sqrt{\text{MS}_E\left(\fra
 to find the multiplier, $q^*$, for the confidence intervals is available in the 
 ``qtukey`` function and generally provides a slightly larger multiplier than the 
 regular $t^*$ from our two-sample $t$-based confidence interval discussed in
-Chapter \@ref(chapter2). We will use the ``confint``, ``cld``, and ``plot`` functions 
+Chapter \@ref(chapter2). The formula otherwise is very similar to the one used in Chapter \@ref(chapter2) with the SE for the difference in the means based on a measure of residual variance (here $MS_E$) times $\left(\frac{1}{n_j}+\frac{1}{n_{j'}\right)$ which weights the results based on the relative sample sizes in the groups. 
+
+\indent We will use the ``confint``, ``cld``, and ``plot`` functions 
 applied to output from the ``glht`` function (all from the ``multcomp`` package; 
 @Hothorn2008, [@R-multcomp]) to easily get the required comparisons from our 
 ANOVA model. Unfortunately, its code format is a little complicated -- but there are 
 just two places to modify the code, by including the model name and after ``mcp`` 
-(stands for multiple comparisons) in the ``linfct`` option, you need to include the
+(stands for *multiple comparisons*) in the ``linfct`` option, you need to include the
 explanatory variable name as ``VARIABLENAME="Tukey"``. The last part is to get the 
-TukeyHSD multiple comparisons run on our explanatory variable. Once we obtain the
-intervals, we can use them to test $H_0: \mu_j = \mu_{j'} \text{ vs } HA: \mu_j \ne \mu{j'}$ 
+Tukey HSD multiple comparisons run on our explanatory variable. Once we obtain the
+intervals, we can use them to test $H_0: \mu_j = \mu_{j'} \text{ vs } H_A: \mu_j \ne \mu_{j'}$ 
 by assessing whether 0 is in the confidence interval for each pair. If 0 is in the 
 interval, then there is no evidence of a difference for that pair. If 0 is not in the 
 interval, then we reject $H_0$ and have evidence *at the specified family-wise significance
 level* of a difference for that pair. You will see a switch to using the
 word "detection" to describe rejected null hypotheses of no difference as it
-can help to write up these results. The following code provides the numerical
-and graphical^[The plot of results usually contains all the labels of groups but if 
-the labels are long or there many groups, sometimes the row labels are hard to see 
-even with re-sizing the plot to make it taller in RStudio. The numerical output is
+can help to compactly write up these results. The following code provides the numerical
+and graphical^[The plot of results usually contains all the labels of groups but if  the labels are long or there many groups, sometimes the row labels are hard to see  even with re-sizing the plot to make it taller in RStudio. The numerical output is
 useful as a guide to help you read the plot.] results of applying Tukey's HSD
 to the linear model for the Guinea Pig data:
 
 (ref:fig3-19) Graphical display of pair-wise comparisons from Tukey's HSD for the 
 Guinea Pig data. Any confidence intervals that do not contain 0 provide evidence 
-of a difference in the groups.
+of a difference in the pair of groups.
 
 ```{r Figure3-19, fig.cap="(ref:fig3-19)", fig.height=5,fig.width=10}
 require(multcomp)
@@ -1688,9 +1683,9 @@ old.par <- par(mai=c(1,2,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
-Figure \@ref(fig:Figure3-19) contains confidence intervals for the difference in 
+\indent Figure \@ref(fig:Figure3-19) contains confidence intervals for the difference in 
 the means for all 15 pairs of groups. For example, the first row in the plot contains 
-the confidence interval OJ.0.5). In the numerical output, you can find that this 95% 
+the confidence interval for comparing VC.0.5 and OJ.0.5 (VC.0.5 **minus** OJ.0.5). In the numerical output, you can find that this 95% 
 family-wise confidence interval goes from -10.05 to -0.45 microns (``lwr`` and 
 ``upr`` in the numerical output provide the CI endpoints). This interval does not 
 contain 0 since its upper end point is -0.45 microns and so we can now say that 
@@ -1700,7 +1695,7 @@ in the true mean tooth growth between VC.0.5 and OJ.0.5 (VC.0.5-OJ.0.5) is betwe
 -10.05 and -0.45 microns, after adjusting for comparing all the pairs of groups. 
 But there are fourteen more similar intervals...
 
-If you put all these pair-wise tests together, you can generate an overall 
+\indent If you put all these pair-wise tests together, you can generate an overall 
 interpretation of Tukey's HSD results that discusses sets of groups that 
 are not detectably different from one another and those groups that were 
 distinguished from other sets of groups. To do this, start with listing 
@@ -1708,17 +1703,16 @@ out the groups that are not detectably different (CIs contain 0), which,
 here, only occurs for four of the pairs. The CIs that contain 0 are for the 
 pairs VC.1 and OJ.0.5, OJ.2 and OJ.1, VC.2 and OJ.1, and, finally, VC.2 and 
 OJ.2. So VC.2, OJ.1, and OJ.2 are all not detectably different from each 
-other and VC.1 and OJ.0.5 are also not detectably different. If you look carefully, 
-VC.0.5 is detected as different from every other group. So there are basically 
+other and VC.1 and OJ.0.5 are also not detectably different. If you look carefully,  VC.0.5 is detected as different from every other group. So there are basically 
 three sets of groups that can be grouped together as "similar": VC.2, OJ.1, 
 and OJ.2; VC.1 and OJ.0.5; and VC.0.5. Sometimes groups overlap with some 
 levels not being detectably different from other levels that belong to 
 different groups and the story is not as clear as it is in this case. An 
 example of this sort of overlap is seen in the next section. 
 
-There is a method that many researchers use to more efficiently generate and 
+\indent There is a method that many researchers use to more efficiently generate and 
 report these sorts of results that is called a ***compact letter display*** 
-(CLD, @Piepho2004). The ``cld`` function can be applied to the results from 
+(CLD, @Piepho2004)^[Note that this method is implemented slightly differently than we explain here in some software packages so if you see this in a journal article, read the discussion carefully.]. The ``cld`` function can be applied to the results from 
 ``glht`` to generate the CLD that we can use to provide a "simple" summary of 
 the sets of groups. In this discussion, we define a **set as a union of different
 groups that can contain one or more members** and the member of these groups are 
@@ -1740,22 +1734,9 @@ OJ.0.5 and VC.1, and the "c" set contains OJ.1, OJ.2, and VC.2. These are exactl
 the groups of treatment levels that we obtained by going through all fifteen 
 pairwise results. 
 
-One benefit of this work is that the CLD letters can be added to a beanplot to 
+\indent One benefit of this work is that the CLD letters can be added to a plot (such as the beanplot) to 
 help fully report the results and understand the sorts of differences Tukey's 
-HSD detected. 
-
-(ref:fig3-20) Beanplot of tooth growth by group with Tukey's HSD compact 
-letter display.
-
-```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=6}
-old.par <- par(mai=c(1,1,1,1))
-beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
-text(c(2),c(10),"a",col="blue",cex=1.5)
-text(c(1,4),c(15,18),"b",col="red",cex=1.5)
-text(c(3,5,6),c(25,28,28),"c",col="green",cex=1.5)
-```
-
-The lines with text in them are involved in placing text on the figure but are 
+HSD detected. The lines with ``text`` in them are involved in placing text on the figure but are 
 something you could do in image editing software just as easily. 
 Figure \@ref(fig:Figure3-20) enhances the discussion by showing that the 
 "`r colFmtBold("a","blue")`" group with VC.0.5 had the lowest average tooth 
@@ -1766,10 +1747,21 @@ we are not able to prove that its true mean is any higher
 than the other groups labeled with "`r colFmtBold("c","green")`". Hopefully the 
 ease of getting to the story of the Tukey's HSD results from a plot like this 
 explains why it is common to report results using these methods instead of 
-reporting 15 confidence intervals. 
+reporting 15 confidence intervals for all the pair-wise differences. 
+
+(ref:fig3-20) Beanplot of odontoblast growth by group with Tukey's HSD compact 
+letter display.
+
+```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=6}
+old.par <- par(mai=c(1,1,1,1))
+beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
+text(c(2),c(10),"a",col="blue",cex=1.5)
+text(c(1,4),c(15,18),"b",col="red",cex=1.5)
+text(c(3,5,6),c(25,28,28),"c",col="green",cex=1.5)
+```
 
 
-There are just a couple of other details to mention on this set of methods. First, 
+\indent There are just a couple of other details to mention on this set of methods. First, 
 note that we interpret the set of confidence intervals simultaneously: We are
 95% confident that **ALL** the intervals contain the respective differences in 
 the true means (this is a ***family-wise interpretation***). These intervals are 
@@ -1777,7 +1769,7 @@ adjusted from our regular 2 sample $t$ intervals from Chapter \@ref(chapter2)
 to allow this stronger interpretation. Specifically, 
 they are wider. Second, if sample sizes are unequal in the groups, Tukey's HSD
 is conservative and provides a family-wise error rate that is lower than the
-nominal (or specified) level. In other words, it fails less often than expected
+*nominal* (or specified) level. In other words, it fails less often than expected
 and the intervals provided are a little wider than needed, containing all the
 pairwise differences at higher than the nominal confidence level of (typically)
 95%. Third, this is a parametric approach and violations of normality and
@@ -1787,7 +1779,7 @@ problem are also possible, but will not be considered here.
 
 ## Pair-wise comparisons for Prisoner Rating data {#section3-7}
 
-In our previous work with the prisoner rating data, the overall ANOVA test
+\indent In our previous work with the prisoner rating data, the overall ANOVA test
 provided only marginal evidence of some difference in the true means across the
 three groups with a p-value=0.067. Tukey's HSD does not require you 
 to find a small p-value from your overall $F$-test to employ the methods 
@@ -1801,7 +1793,7 @@ sake of completeness, we can find the pair-wise comparison results at our
 typical 95% family-wise confidence level in this situation, with the three
 confidence intervals displayed in Figure \@ref(fig:Figure3-21). 
 
-(ref:fig3-21) Tukey's HSD confidence interval results at the 95% family-wise confidence level.
+(ref:fig3-21) Tukey's HSD confidence interval results at the 95% family-wise confidence level for the Mock Jury linear model.
 
 ```{r Figure3-21,fig.cap="(ref:fig3-21)",fig.height=4,echo=F}
 lm2 <- lm(Years~Attr, data=MockJury)
@@ -1827,7 +1819,7 @@ old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(Tm2)
 ```
 
-(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals.
+(ref:fig3-22) Tukey's HSD 90% family-wise confidence intervals for the Mock Jury linear model.
 
 ```{r Figure3-22, fig.cap="(ref:fig3-22)",fig.height=4}
 confint(Tm2, level=0.9)
@@ -1836,7 +1828,7 @@ old.par <- par(mai=c(1,2.5,1,1)) #Makes room on the plot for the group names
 plot(confint(Tm2, level=.9))
 ```
 
-At the family-wise 5% significance level, there are no pairs that are detectably different 
+\indent At the family-wise 5% significance level, there are no pairs that are detectably different 
 -- they all get the same letter of "a". Now we will produce results for the reader that
 thought a 10% significance was suitable for this application before seeing any
 of the results. We just need to change the confidence level or significance
@@ -1877,7 +1869,7 @@ the *Average* group is not detected as different from *Beautiful* and
 *Beautiful* level is not detected as being dissimilar from levels in two 
 different sets and so gets two different letters. 
 
-The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons
+\indent The beanplot (Figure \@ref(fig:Figure3-23)) helps to clarify some of the reasons
 for this set of results. The detection of a difference between *Average* and
 *Unattractive* just barely occurs and the mean for *Beautiful* is between the 
 other two so it ends up not being detectably different from either one. This 
@@ -1896,8 +1888,7 @@ text(c(3), c(6.8),"b", col="red", cex=1.5)
 
 In this chapter, we explored methods for comparing a quantitative response across 
 $J$ groups ($J \ge 2$), with what is called the One-Way ANOVA procedure. The initial 
-test is based on assessing evidence against a null hypothesis of no
-groups. There are two different methods for estimating these One-Way ANOVA models: 
+test is based on assessing evidence against a null hypothesis of no difference in the true means for the $J$ groups. There are two different methods for estimating these One-Way ANOVA models: 
 the cell-means model and the reference-coded versions of the model. 
 There are times when either model will be preferred, but for the rest of the text, 
 the reference coding is used (sorry!). The ANOVA $F$-statistic, often presented with 
@@ -1912,7 +1903,7 @@ results. It appears that the effect of *dosage* changes as a function of the
 *delivery method* (OJ, VC) because the size of the differences between OJ and VC
 change for different dosages. These methods can't directly assess the question
 of whether the effect of delivery method is the same or not across the
-different dosages. In chapter \@ref(chapter4), the two variables, *Dosage* and 
+different dosages. In Chapter \@ref(chapter4), the two variables, *Dosage* and 
 *Delivery method* are modeled as two separate variables so we can consider their 
 effects both separately and together. This allows more refined hypotheses, such as 
 *Is the effect of delivery method the same for all dosages?*, to be tested. This 
@@ -1989,6 +1980,8 @@ load the data set and learn more about the study, use the following code:
 ```
 require(multcomp)
 data(cholesterol)
+require(tibble)
+cholesterol<-as.tibble(cholesterol)
 help(cholesterol)
 ```
 
