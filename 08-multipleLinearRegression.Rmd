@@ -257,14 +257,16 @@ plot(allEffects(m3, xlevels=list(Max.Temp=snotel2$Max.Temp)),
      main="SLR: Effect of Max Temp")
 ```
 
-\newpage
+\small
 
 ```{r}
 summary(m1)
 summary(m2)
 summary(m3)
 ```
- 
+
+\normalsize
+
 \indent Since all three variables look like they are potentially useful in predicting
 snow depth, we want to consider if an MLR model might explain more of the
 variability in *Snow Depth*. To fit an MLR model, we use the same general format
@@ -284,6 +286,8 @@ m4 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2)
 summary(m4)
 plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
 ```
+
+\newpage
 
 Based on the output, the estimated MLR model is
 
@@ -355,7 +359,7 @@ validity conditions. For MLR, they are similar to those for SLR:
     implies that we also have independent random errors.
     
     * This is not an assumption about the predictor variables!
-    
+
 * **Linearity of relationship (**`r colFmtBold("NEW VERSION FOR MLR!","red")`**):**
 
     * Linearity is assumed between the response variable and **each**
@@ -481,6 +485,8 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m4, sub.caption="Diagnostics for m4")
 ```
 
+\newpage
+
 * **Linearity of relationship (**`r colFmtBold("NEW VERSION FOR MLR!","red")`**):**
 
     * Make plots of the response versus each explanatory variable:
@@ -576,6 +582,11 @@ reporting of amounts of snow on the ground...].
 
 ```{r}
 -10.51 + 0.0123*7350 - 0.505*28 - 0.562*45
+```
+
+\newpage
+
+```{r}
 11.2 - 40.465
 ```
 
@@ -619,13 +630,17 @@ the large Cook's D on one observation suggests we should consider the model
 after removing that observation. We can re-run the model without the 
 9^th^ observation using the data set ``snotel2[-9,]``. 
 
+```{r}
+m5 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-9,])
+summary(m5)
+```
+
+
 (ref:fig8-6) Term-plots for the MLR for Snow Depth based on Elevation, 
 Min Temp, and Max Temp with Northeast entrance observation removed from 
 data set (n=24).
 
 ```{r Figure8-6,fig.cap="(ref:fig8-6)",fig.height=5, fig.width=10}
-m5 <- lm(Snow.Depth~Elevation+Min.Temp+Max.Temp, data=snotel2[-9,])
-summary(m5)
 plot(allEffects(m5), main="MLR model with NE Ent. Removed")
 ```
 
@@ -720,6 +735,8 @@ summary(m6)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m6, sub.caption="Diagnostics for m6")
 ```
+
+\newpage
 
 This worry-some observation is located in the 22^nd^ row of the
 original data set:
@@ -1300,11 +1317,15 @@ fit to find the percentage of variation in elevation explained by the temperatur
 variables. It ends up being 0.8775 -- so a high percentage of *Elevation* can be
 explained by the linear model using min and max temperatures. 
 
+\small
+
 ```{r}
 #VIF calc:
 elev1 <- lm(Elevation~Min.Temp+Max.Temp, data=snotel2[-c(9,22),])
 summary(elev1)
 ```
+
+\normalsize
 
 Using this result, we can calculate
 
@@ -2911,7 +2932,7 @@ model.
 (ref:fig8-33) Diagram of models to consider in an interaction model. 
 
 ```{r Figure8-33,fig.cap="(ref:fig8-33)",echo=F,warning=F,message=F}
-knitr::include_graphics("chapter8_files/image299_small.png")
+knitr::include_graphics("chapter8_files/nestedModelTree_medium.png")
 ```
 
 \indent If the initial interaction test suggests the interaction is important, then no
@@ -3584,6 +3605,8 @@ variables are removed, the evidence (reason) for those removals should be
 provided. Because of multicollinearity in models, you should never remove more 
 than one quantitative predictor at a time or else you could remove two variables
 that are important but were "hiding" when both were included in the model.
+
+\newpage
 
 ## Important R code	{#section8-16}
 

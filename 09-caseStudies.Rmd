@@ -71,8 +71,6 @@ $$y_i = \beta_0 + \beta_1I_{\text{Level }2,i} + \beta_2I_{\text{Level }3,i} +
 knitr::include_graphics("chapter9_files/image002.png")
 ```
 
-\newpage
-
 We now know how the indicator variables are either 0 or 1 for each observation
 and only one takes in the value 1 (is "turned on") at a time for each response.
 We can then equate the general notation from Chapter \@ref(chapter8) with our
@@ -127,7 +125,7 @@ indicator approach to fit the model. The Two-Way ANOVA notation helped us
 distinguish which coefficients related to main effects and the interaction, 
 something that the regression notation doesn't make clear. 
 
-In the following three sections, you will have one more chance to see
+\indent In the following three sections, you will have one more chance to see
 applications of the methods considered here. The data sets are taken directly 
 from published research articles, so you can see the potential utility of the
 methods we've been discussing for handling real problems. They are focused on
@@ -410,6 +408,8 @@ results for the two species were not detectably different. Further explorations
 of the sizes of the differences that can be extracted from selected confidence
 intervals in the Tukey's HSD results printed above. 
 
+\sectionmark{Ants learn to rely on more informative attributes}
+
 ## Ants learn to rely on more informative attributes during decision-making	{#section9-3}
 
 \sectionmark{Ants learn to rely on more informative attributes}
@@ -517,6 +517,8 @@ for the colonies previous selection. Their conclusions were similar to those
 found with our simpler analysis. Logistic regression models are a special case
 of what are called generalized linear models and are a topic for the next level
 of statistics if you continue exploring.
+
+\sectionmark{understanding vertebrate diversification in deep time}
 
 ## Multi-variate models are essential for understanding vertebrate diversification in deep time	{#section9-4}
 
