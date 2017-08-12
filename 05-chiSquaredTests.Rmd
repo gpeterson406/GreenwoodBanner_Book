@@ -39,7 +39,7 @@ colFmt = function(x, color){
 
 ## Situation, contingency tables, and plots	{#section5-1}
 
-In this chapter, the focus shifts briefly from analyzing quantitative 
+\indent In this chapter, the focus shifts briefly from analyzing quantitative 
 response variables to methods
 for handling categorical response variables. This is important because in some
 situations it is not possible to measure the response variable quantitatively. 
@@ -53,10 +53,10 @@ the responses such as those follow a normal distribution since they are
 more importantly, 
 the difference between *no improvement* and *some improvement* is not 
 necessarily the same as the difference between *some* and *marked improvement*. 
-If it is treated numerically, then the differences are assumed to be the same
+If it is treated numerically, then the differences between levels are assumed to be the same
 unless a different coding scheme is used (say 1, 2, and 5). It is better to
 treat these types of responses as being in one of the three categories and use
-statistical methods that don't make unreasonable assumptions about what the
+statistical methods that don't make unreasonable and arbitrary assumptions about what the
 numerical coding might mean. The study being performed here involved subjects
 randomly assigned to either a treatment or a placebo (control) group and we
 want to address research questions similar to those considered in 
@@ -67,13 +67,13 @@ of the groups and we used 2-sample mean or ANOVA hypotheses and tests. With
 categorical responses, the focus is on the probabilities of getting responses in
 each category and whether they differ among the groups. 
 
-We start with some useful summary techniques, both numerical and graphical, 
+\indent We start with some useful summary techniques, both numerical and graphical, 
 applied to some examples of
 studies these methods can be used to analyze. Graphical techniques provide
 opportunities for assessing specific patterns in variables, relationships
 between variables, and for generally understanding the responses obtained. 
 There are many different types of plots and each can enhance certain features
-of data. We will start with a "fun" display, called a tableplot, to help us
+of data. We will start with a "fun" display, called a *tableplot*, to help us
 understand some aspects of the results from a double-blind randomized clinical
 trial investigating a treatment for rheumatoid arthritis that has the
 categorical response variable introduced previously. These data are available
@@ -84,18 +84,18 @@ along with the ``Treatment`` status (*Treated*, *Placebo*) and whether the
 patients' arthritis symptoms ``Improved`` (with levels of *None*, *Some*, 
 and *Marked*). 
 
-The ``tableplot`` function from the ``tabplot`` package [@R-tabplot]
+\indent The ``tableplot`` function from the ``tabplot`` package [@R-tabplot]
 displays bars for each response in a row^[In larger data sets, 
 multiple subjects are displayed in each row as proportions of
 the rows in each category.] based on the 
 category of responses or as a bar with the height corresponding
-the value of quantitative variables. It also plots a red cell if the
+the value of quantitative variables^[Quantitative variables are displayed with boxplot-like bounds to describe the variability in the variable for that row of responses if for larger data sets.]. It also plots a red cell if the
 observations were missing on a particular variable. The plot can be obtained
 simply as ``tableplot(DATASETNAME)``. But when using ``tableplot``, we may 
-not want to display everything in the data.frame and often just select some 
+not want to display everything in the tibble and often just select some 
 of the variables. We use ``Treatment``, ``Improved``, ``Sex``, and ``Age``
 in the ``select=...`` option with a ``c()`` and commas between the names of 
-the variables we want to display. The first one in the list is also the one that
+the variables we want to display as shown below. The first one in the list is also the one that
 the data are sorted based on. 
 
 (ref:fig5-1) Table plot of the arthritis data set.
@@ -103,12 +103,14 @@ the data are sorted based on.
 ```{r Figure5-1,fig.cap="(ref:fig5-1)", fig.height=5,fig.width=10}
 require(vcd)
 data(Arthritis) #Double-blind clinical trial with treatment and control groups
+require(tibble)
+Arthritis<-as.tibble(Arthritis)
 #Homogeneity example
 require(tabplot)
 tableplot(Arthritis,select=c(Treatment,Improved,Sex,Age))
 ```
 
-The first thing we can gather from Figure \@ref(fig:Figure5-1) is that there 
+\indent The first thing we can gather from Figure \@ref(fig:Figure5-1) is that there 
 are no red cells so there were no missing
 observations in the data set. Missing observations regularly arise in real
 studies when observations are not obtained for many different reasons and it is
@@ -120,9 +122,9 @@ group and more blue (*None*) responses in the placebo group.
 This sort of plot also helps us to simultaneously consider the role of other
 variables in the observed responses. You can see the sex of each subject in the
 vertical panel for ``Sex`` and it seems
-that there is a relatively reasonable mix of males and females in the
+that there is a relatively balanced mix of males and females in the
 treatment/placebo groups. Quantitative variables are also displayed with
-horizontal bars corresponding to the responses. From the panel for 
+horizontal bars corresponding to the responses (the x-axis provides the units of the responses, here in years). From the panel for 
 ``Age``, we can see that the ages of subjects ranged from the 20s to 70s 
 and that there is no clear difference in
 the ages between the treated and placebo groups. If, for example, all the male
@@ -130,13 +132,13 @@ subjects had ended up being randomized into the treatment group, then we might
 have worried about whether sex and treatment were confounded and whether any
 differences in the responses might be due to sex instead of the treatment. The
 random assignment of treatment/placebo to the subjects appears to have been
-successful here with the ages and sexes appearing to be well-mixed among the
-two treatment groups. The main benefit of this sort of plot is the ability to
+successful here in generating a mix of ages and sexes among the
+two treatment groups^[While randomization is typically useful in trying to "equalize" the composition of groups, a possible randomization of subjects to the groups is to put all the males into the treatment group. Sometimes we add additional constraints to randomization of subjects to treatments to guarantee that we don't get stuck with an unusual and highly unlikely assignment like that. It is important at least to check the demographics of different treatment groups to see if anything odd occurred.]. The main benefit of this sort of plot is the ability to
 visualize more than two categorical variables simultaneously. But now we want
 to focus more directly on the researchers' main question -- does the treatment
 lead to different improvement outcomes than the placebo?
 
-To directly assess the effects of the treatment, we
+\indent To directly assess the effects of the treatment, we
 want to display just the two variables of interest. ***Stacked bar charts***
 provide a method of displaying the response patterns (in ``Improved``) across 
 the levels of a predictor variable (``Treatment``) by displaying a bar for each
@@ -472,6 +474,7 @@ level of one variable is not informative about the level of the other variable.
 ```{r}
 require(poLCA)
 data(election) #2000 Survey
+election<-as.tibble(election)
 # Subset variables and remove missing values
 election2 <- na.omit(election[,c("PARTY","VOTE3")])
 election2$VOTEF <- factor(election2$VOTE3)
@@ -1185,9 +1188,6 @@ from 1 to 7 with higher values related to higher educational attainment. Sex
 code 1 is for male and 2 is for female.
 
 ```{r Figure5-13,fig.cap="(ref:fig5-13)", fig.height=5,fig.width=10}
-require(poLCA)
-data(election) #2000 Survey 
-require(tabplot)
 election$VOTEF <- factor(election$VOTE3)
 election$PARTY <- factor(election$PARTY)
 election$EDUC <- factor(election$EDUC)
@@ -1457,6 +1457,7 @@ variables are treated categorically by applying the ``factor`` function.
 ```{r Figure5-18,fig.cap="(ref:fig5-18)"}
 require(poLCA)
 data(cheating) #Survey of students
+cheating<-as.tibble(cheating)
 cheating$LIEEXAM <- factor(cheating$LIEEXAM)
 cheating$LIEPAPER <- factor(cheating$LIEPAPER)
 cheating$FRAUD <- factor(cheating$FRAUD)
@@ -1731,6 +1732,8 @@ levels. There are also a few schools flagged as being possible outliers.
 ```{r}
 require(survey)
 data(api)
+apistrat<-as.tibble(apistrat)
+apipop<-as.tibble(apipop)
 tally(~stype, data=apipop) #Population counts
 tally(~stype, data=apistrat) #Sample counts
 ```
@@ -2111,20 +2114,22 @@ correct usage*, (``isare``), *have you thought about this issue*
 code loads their data set after missing responses were removed, does a
 little re-ordering of factor levels to help make the results easier to 
 understand, and makes a tableplot to get a general sense of the results 
-including information on the respondents' gender, age, income, and education
-(or just look at the cover of the book). 
+including information on the respondents' gender, age, income, and education. 
 
 ```
-csd<- read.csv("http://www.math.montana.edu/courses/s217/documents/csd.csv")
+csd<- read_csv("http://www.math.montana.edu/courses/s217/documents/csd.csv")
 require(tabplot)
+csd$careabout<-factor(csd$careabout) #Need to make it explicit that these are factor variables
 csd$careabout <- factor(csd$careabout,
-                    levels=levels(csd$careabout)[c(1,4,3,2)])
+                    levels=levels(csd$careabout)[c(1,4,3,2)]) #Reorders factor levels to be in "correct" order
+csd$Education <- factor(csd$Education)
 csd$Education <- factor(csd$Education,
                     levels=levels(csd$Education)[c(4,3,5,1,2)])
+csd$Household.Income <- factor(csd$Household.Income)
 csd$Household.Income <- factor(csd$Household.Income,
                     levels=levels(csd$Household.Income)[c(1,4,5,6,2,3)])
 tableplot(csd[,c("isare","careabout","thoughtabout","Gender",
-                 "Age","Household.Income","Education")])
+                 "Age","Household.Income","Education")],sortCol=careabout) #Sorts plot by careabout responses
 ```
 
 5.8. If we are interested in the variables ``isare`` and ``careabout``,

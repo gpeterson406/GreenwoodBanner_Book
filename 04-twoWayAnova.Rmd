@@ -895,7 +895,7 @@ supporting a changing effect on odontoblast growth of dosage based on the delive
 method in the Guinea Pigs that were assigned. 
 
 \indent Any similarities between this correct
-result and the previous WRONG result are coincidence. I (Greenwood) once
+result and the previous WRONG result are coincidence. I once
 attended a Master's thesis defense where the results from a similar model were not as
 expected (small p-values in places they didn't expect and large p-values in
 places where they thought differences existed). During the presentation, the student
@@ -1518,7 +1518,7 @@ this case, the warning message is not needed -- there are no $F$-statistics or
 p-values in the results so we know there are some issues with the results. The 
 **Residuals** line is key here -- Residuals with 0 *df* and sums of
 squares of 0. Without replication, there are no degrees of freedom left to 
-estimate the residual error. My (Greenwood's) first statistics professor, 
+estimate the residual error. My first statistics professor, 
 Gordon Bril at Luther College, used to refer to this as "shooting your load" by
 fitting too many terms in the model given the number of observations available. 
 Maybe this is a bit graphic but hopefully will help you remember the need for
