@@ -14,6 +14,8 @@ header-includes:
 ```{r echo=F,warning=F,message=F}
 set.seed(5678)
 library(pander)
+require(readr)
+require(curl)
 require(mosaic)
 library(knitr)
 knitr::opts_chunk$set(cache = T,fig.height=3.5,fig.width=6,fig.pos='HT',
@@ -37,7 +39,7 @@ colFmt = function(x, color){
 
 ## Relationships between two quantitative variables	{#section6-1}
 
-The independence test in Chapter \@ref(chapter5) provided a technique for assessing evidence of a
+\indent The independence test in Chapter \@ref(chapter5) provided a technique for assessing evidence of a
 relationship between two categorical variables. The terms ***relationship*** and ***association***
 are synonyms that, in statistics, imply that values on one variable tend to occur more often with
 some other values of the other variable or that knowing
@@ -63,7 +65,7 @@ between variables. "Correlation" is used colloquially as a synonym for
 relationship but we will work to reserve it for its more specialized usage here
 to refer to the linear relationship.
 
-Assessing and then modeling relationships between quantitative variables drives
+\indent Assessing and then modeling relationships between quantitative variables drives
 the rest of the chapters, 
 so we should get started with some motivating examples to start to think about
 what relationships between quantitative variables "look like"... To motivate
@@ -96,7 +98,7 @@ increase in the explanatory variable. You could also use the *BAC* calculator an
 the models that we are going to develop to pick a total number of beers you
 will consume and get a predicted *BAC*.
 
-Before we get to the specifics of this model and how we measure correlation, we 
+\indent Before we get to the specifics of this model and how we measure correlation, we 
 should explore the relationship between ``Beers`` and ``BAC`` in a scatterplot. 
 Figure \@ref(fig:Figure6-1) shows a ***scatterplot*** of the results that display 
 the expected positive relationship. Scatterplots display the response pairs for 
@@ -125,7 +127,8 @@ set.seed(5678)
 (ref:fig6-1) Scatterplot of *Beers* consumed versus *BAC*.
 
 ```{r Figure6-1,fig.cap="(ref:fig6-1)",warning=F,message=F}
-BB <- read.csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
+require(readr)
+BB <- read_csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
 plot(BAC~Beers, data=BB)
 ```
 
@@ -161,7 +164,7 @@ This might suggest that observations from two populations, say males and females
 were combined but the relationship between the two quantitative variables
 might be different for the two groups.
  
-Going back to Figure \@ref(fig:Figure6-1) it appears that there is a 
+\indent Going back to Figure \@ref(fig:Figure6-1) it appears that there is a 
 moderately strong linear
 relationship between ``Beers`` and ``BAC`` -- not weak but with some variability
 around what appears to be a straight-line relationship. There might even be a
@@ -180,7 +183,7 @@ amount, and (3) whether subjects were asked to show up to the study with *BAC*s
 of 0. We also don't know the alcohol concentration of the beer consumed or
 volume. But it is still a fun example to start these methods with...
 
-In making scatterplots, there is always a choice of a variable for the 
+\indent In making scatterplots, there is always a choice of a variable for the 
 x-axis and the y-axis. It is our
 convention to put explanatory or independent variables (the ones used to
 explain or predict the responses) on the x-axis. In studies where the subjects are
@@ -193,7 +196,8 @@ switched which axes and implication of which variable explains which.
    
 ## Estimating the correlation coefficient	{#section6-2}
 
-In terms of quantifying relationships between variables, we start with 
+
+\indent In terms of quantifying relationships between variables, we start with 
 the correlation coefficient, a
 measure that is the same regardless of your choice of which variable is
 considered explanatory or response. We measure the strength and direction of
@@ -209,7 +213,7 @@ variables), but we will not consider them here.
 
 \newpage
 
-The correlation coefficient, ***r***, is calculated as
+\indent The correlation coefficient, ***r***, is calculated as
 
 $$r=\frac{1}{n-1}\sum^n_{i=1}\left(\frac{x_i-\bar{x}}{s_x}\right)
 \left(\frac{y_i-\bar{y}}{s_y}\right),$$ 
@@ -245,11 +249,11 @@ x<-seq(from=0,to=20,length.out=20)
 y<-(x-mean(x))^2
 x<-c(x,5,15)
 y<-c(y,220,220)
-plot(x,y,col='blue',main="r=0")
+plot(x,y,col='skyblue',main="r=0",pch=16)
 ```
 
  
-There are some conditions for trusting the results that the 
+\indent There are some conditions for trusting the results that the 
 correlation coefficient provides:
 
 1. Two quantitative variables measured. 
@@ -273,7 +277,7 @@ correlation coefficient provides:
     with and without outliers to see how they influence the estimated 
     correlation. 
 
-The correlation coefficient is dimensionless but larger magnitude values
+\indent The correlation coefficient is dimensionless but larger magnitude values
 (closer to -1 OR 1) mean stronger linear relationships. A rough interpretation
 scale based on experiences working with correlations follows, but this varies
 between fields and types of research and variables measured. It depends on the
@@ -291,7 +295,7 @@ within fields. Use this scale until you develop your own experience:
 And again note that this scale only relates to the **linear** aspect of
 the relationship between the variables. 
 
-When we have linear relationships between two quantitative variables, 
+\indent When we have linear relationships between two quantitative variables, 
 $x$ and $y$, we can obtain estimated correlations from the ``cor``
 function either using ``y~x`` or by running the ``cor`` function^[This 
 interface with the ``cor`` function only works after you load the 
@@ -316,7 +320,7 @@ become skillful in using the correlation coefficient. Some additional
 complications arise in more complicated studies as the next example
 demonstrates. 
 
-@Gude2009 explored the relationship 
+\indent @Gude2009 explored the relationship 
 between average summer
 temperature (degrees F) and area burned (natural log of hectares^[The 
 natural log ($\log_e$ or $\ln$) is used in statistics so much that the
@@ -344,36 +348,33 @@ variables measured here (remembering that the full story might require
 measuring even more!): log-area burned versus temperature, temperature versus
 year, and log-area burned versus year. 
 
-With more than two variables, we can use the ``cor`` function on all the 
+\indent With more than two variables, we can use the ``cor`` function on all the 
 variables and end up getting a matrix of correlations or, simply, the
-***correlation matrix***. 
-
-```{r}
-mtfires <- read.csv("http://www.math.montana.edu/courses/s217/documents/climateR2.csv")
-# natural log transformation of area burned
-mtfires$loghectacres <- log(mtfires$hectacres) 
-
-#Cuts the original hectacres data so only log-scale version in data.frame
-mtfiresR <- mtfires[,-3] 
-cor(mtfiresR)
-```
-
-If you triangulate the row and column labels, that cell provides the correlation
-between that pair of variables. For example, in the first row (``Year``) 
-and the last column (``loghectacres``), you can find that the correlation
+***correlation matrix***. If you triangulate the row and column labels, that cell provides the correlation between that pair of variables. For example, in the first row (``Year``) 
+and the last column (``loghectares``), you can find that the correlation
 coefficient is ***r***=0.362. Note the symmetry in the matrix around the 
 diagonal of 1's -- this further illustrates that correlation between 
 $x$ and $y$ does not depend on which variable is viewed as the "response".
 The estimated correlation
 between ``Temperature`` and ``Year`` is -0.004 and the correlation between
-``loghectacres`` (*log-hectares burned*) and ``Temperature`` is 0.81. So 
+``loghectares`` (*log-hectares burned*) and ``Temperature`` is 0.81. So 
 ``Temperature`` has almost no linear
 change over time. And there is a strong linear relationship between 
-``loghectacres`` and ``Temperature``. So it appears that temperatures may 
+``loghectares`` and ``Temperature``. So it appears that temperatures may 
 be related to log-area burned but that the trend over time in both is less 
 clear (at least the linear trends). 
 
-The correlation matrix alone is misleading -- we need to explore scatterplots 
+```{r}
+mtfires <- read_csv("http://www.math.montana.edu/courses/s217/documents/climateR2.csv")
+# natural log transformation of area burned
+mtfires$loghectares <- log(mtfires$hectares) 
+
+#Cuts the original hectares data so only log-scale version in data.frame
+mtfiresR <- mtfires[,-3] 
+cor(mtfiresR)
+```
+
+\indent The correlation matrix alone is misleading -- we need to explore scatterplots 
 to check for nonlinear
 relationships, outliers, and clustering of observations that may be distorting
 the numerical measure of the linear relationship. The ``pairs.panels``
@@ -403,7 +404,7 @@ require(psych)
 pairs.panels(mtfiresR, ellipses=F, scale=T, smooth=F, col=0)
 ```
 
-As one more example, the Australian Institute of Sport collected data 
+\indent As one more example, the Australian Institute of Sport collected data 
 on 102 male and 100 female athletes that are available in the ``ais``
 data set from the ``alr3`` package (@R-alr3, @Weisberg2005). They measured a 
 variety of variables including the athlete's Hematocrit (``Hc``, 
@@ -457,7 +458,7 @@ aisR2 <- aisR[-c(56,166),] #Removes observations in rows 56 and 166
 pairs.panels(aisR2, scale=T, ellipse=F, smooth=F, col=0)
 ```
 
-After removing these two unusual observations, the relationships between 
+\indent After removing these two unusual observations, the relationships between 
 the variables are more obvious (Figure \@ref(fig:Figure6-5)). There is a 
 moderate strength, relatively linear relationship between *Height* and 
 *Hematocrit*. There is almost no relationship between *Height* and 
@@ -469,7 +470,7 @@ body fat percentage seems to
 level off. Interestingly, it ended up that removing those two outliers had only
 minor impacts on the estimated correlations -- this will not always be the case. 
 
-Sometimes we want to just be able to focus on the correlations, assuming 
+\indent Sometimes we want to just be able to focus on the correlations, assuming 
 we trust that
 the correlation is a reasonable description of the results between the
 variables. To make it easier to see patterns of positive and negative
@@ -491,7 +492,7 @@ corrplot.mixed(cor(aisR2), col=c("black", "orange"))
 
 ## Relationships between variables by groups	{#section6-3}
 
-In assessing the relationship
+\indent In assessing the relationship
 between variables, incorporating information from a third variable can often
 enhance the information gathered by either showing that the relationship
 between the first two variables is the same across levels of the other variable
@@ -504,7 +505,7 @@ built with male and female athletes. For some characteristics, the
 relationships might be the same for both sexes but for others, there are likely
 some physiological differences to consider. 
 
-We could continue to use the ``plot`` function here, but it would require 
+\indent We could continue to use the ``plot`` function here, but it would require 
 additional lines of code to add these extra features. The ``scatterplot``
 function from the ``car`` package (Fox and Weisberg, 2011) makes it easy 
 to incorporate information from an
@@ -535,7 +536,7 @@ scatterplot(Hc~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Height vs Hematocrit by Sex")
 ```
 
-Adding the grouping information really changes the impressions of the relationship
+\indent Adding the grouping information really changes the impressions of the relationship
 between *Height* and *Hematocrit* -- within each sex, there is little relationship 
 between the two variables. The overall relationship is of
 moderate strength and positive but the subgroup relationships are weak at best. 
@@ -544,7 +545,7 @@ that had different means in both the $x$ and $y$ directions. Men have higher
 mean heights and hematocrit values than women and putting them together in one
 large group creates the misleading overall relationship. 
 
-To get the correlation coefficients by groups, we can subset the data set using a
+\indent To get the correlation coefficients by groups, we can subset the data set using a
 logical inquiry on the ``Sex`` variable in the updated ``aisR2`` data set, using 
 ``Sex==0`` to get the male subjects only and ``Sex==1`` for the female subjects, 
 then running the ``cor`` function on each version of the data set:
@@ -564,7 +565,7 @@ very misleading. It also emphasizes the importance of exploring for potential
 subgroups in the data set -- these two groups were not obvious in the initial
 plot, but with added information the real story became clear. 
 
-For the *Body Fat* vs *Hematocrit* results in Figure \@ref(fig:Figure6-8), with
+\indent For the *Body Fat* vs *Hematocrit* results in Figure \@ref(fig:Figure6-8), with
 an overall correlation of $\boldsymbol{r}=-0.54$, the subgroup correlations
 show weaker relationships that also appear to be in different directions 
 ($\boldsymbol{r}=0.13$ for men and $\boldsymbol{r}=-0.17$ for women). This 
@@ -590,7 +591,7 @@ scatterplot(Hc~Bfat|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Body Fat vs Hematocrit by Sex")
 ```
 
-One final exploration for these data involves the *body fat *and *height* relationship 
+\indent One final exploration for these data involves the *body fat *and *height* relationship 
 displayed in Figure \@ref(fig:Figure6-9). This relationship shows an even greater
 disparity between overall and subgroup results. The overall relationship is
 characterized as a weak negative relationship $(\boldsymbol{r}=-0.20)$ that 
@@ -622,7 +623,7 @@ scatterplot(Bfat~Ht|Sex, data=aisR2, pch=c(3,21), reg.line=F, smoother=F,
             boxplots="xy", main="Scatterplot of Height vs Body Fat by Sex")
 ```
 
-In each of these situations, the sex of the athletes has the potential to cause misleading
+\indent In each of these situations, the sex of the athletes has the potential to cause misleading
 conclusions if ignored. There are two ways that this could occur -- if we did
 not measure it then we would have no hope to account for it OR we could have
 measured it but not adjusted for it in our results, as I did initially. We
@@ -641,7 +642,7 @@ system being studied or a lack of
 resources to measure these variables. And sometimes the two variables cannot be
 separated even if they are measured... 
 
-To help think about confounding and lurking variables, consider the following 
+\indent To help think about confounding and lurking variables, consider the following 
 situation. On many
 highways, such as Highway 93 in Montana and north into Canada, recent
 construction efforts have been involved in creating safe passages for animals
@@ -673,7 +674,7 @@ studies.
 
 ## Inference for the correlation coefficient (Optional Section)	{#section6-4}
 
-We used bootstrapping briefly in
+\indent We used bootstrapping briefly in
 Chapter \@ref(chapter2) to generate nonparametric confidence intervals based 
 on the middle
 95% of the bootstrapped version of the statistic. Remember that bootstrapping
@@ -685,7 +686,7 @@ particularly useful for making confidence intervals where the distribution of
 the statistic may not follow a named distribution. This is the case for the
 correlation coefficient which we will see shortly. 
 
-The correlation is an interesting
+\indent The correlation is an interesting
 summary but it is also an estimator of a population parameter called $\rho$
 (the symbol rho), which is the ***population correlation coefficient***. When 
 $\rho = 1$, we have a perfect positive linear relationship in the population; 
@@ -705,7 +706,7 @@ hypothesis since 0 is in the interval of our likely values for $\rho$. If
 the confidence interval does not contain 0, then we can reject the null 
 hypothesis. 
 
-The *beers* and *BAC* example seemed to provide a strong relationship with
+\indent The *beers* and *BAC* example seemed to provide a strong relationship with
 $\boldsymbol{r}=0.89$. As correlations approach -1 or 1, the sampling becomes 
 more and more skewed. This certainly shows up in the bootstrap distribution 
 that the following code produces (Figure \@ref(fig:Figure6-10)). Remember that
@@ -749,7 +750,7 @@ confident that the true correlation between *Beers* and *BAC* in all OSU student
 like those that volunteered is between 0.75 and 0.96. Note that there are no units
 on the correlation coefficient. 
 
-We can also use this confidence interval to test for a linear relationship between
+\indent We can also use this confidence interval to test for a linear relationship between
 these variables. 
 
 * $\boldsymbol{H_0:\rho=0:}$ **There is no linear relationship between *Beers*
@@ -759,7 +760,7 @@ and *BAC* in the population.**
 *Beers* and *BAC* in the population.**
 
 
-The 95% confidence level corresponds to a 5% significance level test. The 95% CI is
+\indent The 95% confidence level corresponds to a 5% significance level test. The 95% CI is
 from 0.75 to 0.96, which does not contain 0, so we can reject the null
 hypothesis. We conclude that there is strong evidence to conclude that there is
 a linear relationship between *Beers* and *BAC* in OSU students. We'll revisit this
@@ -768,7 +769,7 @@ specific conclusions about this relationships. For these inferences to be
 accurate, we need to be able to trust that the sample correlation is reasonable
 for characterizing the relationship between these variables. 
 
-In this situation with randomly assigned levels of $x$ and a rejected null 
+\indent In this situation with randomly assigned levels of $x$ and a rejected null 
 hypothesis of no relationship, we can further conclude that changing beer 
 consumption **causes** changes in the *BAC*. This is a much stronger conclusion
 than we can typically make based on correlation coefficients. Correlations and
@@ -782,7 +783,7 @@ the details of the study suggest otherwise.
 
 ## Are tree diameters related to tree heights?	{#section6-5}
 
-In a study at the Upper Flat Creek
+\indent In a study at the Upper Flat Creek
 study area in the University of Idaho Experimental Forest, a random sample of 
 $n=336$ trees was selected from the forest, with measurements recorded on Douglas 
 Fir, Grand Fir, Western Red
@@ -815,7 +816,7 @@ recording error.
 ufc[168,]
 ```
 
-With the outlier in the data set, the correlation is 0.77 and without it, the
+\indent With the outlier in the data set, the correlation is 0.77 and without it, the
 correlation increases to 0.79. The removal does not create a big change because
 the data set is relatively large and the *diameter* value is close to the mean of the 
 $x\text{'s}$^[Observations at the edge of the $x\text{'s}$ will be called high 
@@ -830,7 +831,7 @@ cor(dbh.cm~height.m, data=ufc[-168,])
 
 $$\underline{\textbf{If you skipped Section 6.4, you can skip the rest of this section:}}$$ 
 
-With the outlier included, the bootstrap 95% confidence interval goes from 0.702 to
+\indent With the outlier included, the bootstrap 95% confidence interval goes from 0.702 to
 0.820 -- we are 95% confident that the true correlation between *diameter* and *height*
 in the population of trees is between 0.702 and 0.820. When
 the outlier is dropped from the data set, the 95% bootstrap CI is 0.752 to 0.827, 
@@ -909,7 +910,7 @@ abline(v=quantiles$quantile, col="blue", lty=2, lwd=3)
 
 ## Describing relationships with a regression model	{#section6-6}
 
-When the relationship appears to
+\indent When the relationship appears to
 be relatively linear, it makes sense to estimate and then interpret a line to
 represent the relationship between the variables. This line is called a 
 ***regression line*** and involves finding a line that best fits (explains 
@@ -940,7 +941,7 @@ abline(v=1:9, col="grey")
 abline(h=c(0.05914,0.0771), col="blue", lty=2, lwd=2)
 ```
 
-The equation for a line is $y=a+bx$, or maybe $y=mx+b$. In the version 
+\indent The equation for a line is $y=a+bx$, or maybe $y=mx+b$. In the version 
 $mx+b$ you learned that $m$ is a slope coefficient that relates a 
 change in $x$ to changes in $y$ and that $b$ is a y-intercept (the 
 value of $y$ when $x$ is 0). In Figure \@ref(fig:Figure6-13), some extra
@@ -962,7 +963,7 @@ prediction below 0 -- an impossible value for *BAC*. If the
 y-intercept were positive, it would suggest that the students
 showed up to the experiment after having already had some drink(s). 
 
-The numbers reported were very
+\indent The numbers reported were very
 accurate because we weren't using the plot alone to generate the 
 values -- we
 were using a statistical method and R to estimate the equation to 
@@ -997,7 +998,7 @@ perfect fit of the line to the observations distinguishes statistical equations
 from those you learned in math classes. The equations work the same, but we
 have to modify interpretations of the coefficients to reflect this. 
 
-We also tie this estimated model to a theoretical or ***population 
+\indent We also tie this estimated model to a theoretical or ***population 
 regression model***: 
 
 $$y_i = \beta_0 + \beta_1x_i+\varepsilon_i$$
@@ -1031,7 +1032,7 @@ $b_0$ and $b_1$
 are the statistics that try to estimate the true population parameters 
 $\beta_0$ and $\beta_1$, respectively.
 
-To get estimated regression coefficients, we use the ``lm`` function
+\indent To get estimated regression coefficients, we use the ``lm`` function
 and our standard ``lm(y~x, data=...)`` setup. This is the same function 
 used to estimate our ANOVA models and much of this
 will look familiar. In fact, the ties between ANOVA and regression are 
@@ -1066,7 +1067,7 @@ $\boldsymbol{x}$ **and** $\boldsymbol{y}$**, you need to define**
 $\boldsymbol{x}$ **and** $\boldsymbol{y}$ **or else these equations are not 
 clearly defined.**
 
-There is a general interpretation
+\indent There is a general interpretation
 for the slope coefficient that you will need to master. In general, we
 interpret the slope coefficient as:
 
@@ -1085,7 +1086,7 @@ predictor variable.
 knitr::include_graphics("chapter6_files/image047.png")
 ```
 
-Applied to this problem, for each additional 1 beer consumed, we expect 
+\indent Applied to this problem, for each additional 1 beer consumed, we expect 
 a 0.018 gram per dL change in the *BAC* *on average*. Using "change" in 
 the interpretation for what happened in the response 
 allows you to use the same template for the interpretation even with
@@ -1120,7 +1121,7 @@ note if it is outside of the region where we had observations on the
 explanatory variable. Another example is useful for practicing how to do these
 interpretations. 
 
-In the Australian Athlete data, we
+\indent In the Australian Athlete data, we
 saw a weak negative relationship between *Body Fat* (% body weight that 
 is fat) and *Hematocrit* (% red blood cells in the blood). The scatterplot 
 in Figure \@ref(fig:Figure6-15) shows just the
@@ -1152,7 +1153,7 @@ continue to follow a linear relationship.
 
 ## Least Squares Estimation	{#section6-7}
 
-The previous results used the ``lm`` function as a "black box" to generate
+\indent The previous results used the ``lm`` function as a "black box" to generate
 the estimated coefficients. The lines produced probably look reasonable but you
 could imagine drawing other lines that might look equally plausible. Because we
 are interested in explaining variation in the response variable, we want a
@@ -1169,7 +1170,7 @@ residuals is called the ***least squares estimation*** and provides us a
 reasonable method for finding the "best" estimated regression line of all 
 the possible choices. 
 
-For the *Beers* vs *BAC* data, Figure \@ref(fig:Figure6-16) shows the 
+\indent For the *Beers* vs *BAC* data, Figure \@ref(fig:Figure6-16) shows the 
 result of a search for the optimal slope coefficient between values of 0 and 
 0.03. The plot shows how the sum of
 the squared residuals was minimized for the value that ``lm`` returned at 
@@ -1195,7 +1196,7 @@ plot(s1,ss1,type="l",col="blue",lwd=2,xlab="Possible Slope Coefficients",
 abline(v=0.01796,col="red")
 ```
 
-Sometimes it is helpful to have a
+\indent Sometimes it is helpful to have a
 go at finding the estimates yourself. If you install and load the ``tigerstats``
 [@R-tigerstats] and ``manipulate`` [@R-manipulate] packages in R-studio 
 and then run ``FindRegLine()``, you get
@@ -1228,7 +1229,7 @@ line and produced a smaller sum of squared residuals than the guessed thinner
 knitr::include_graphics("chapter6_files/image063.png")
 ```
 
-It ends up that the least squares
+\indent It ends up that the least squares
 criterion does not require a search across coefficients or trial and error --
 there are some "simple" equations available for calculating the estimates of
 the y-intercept and slope:
@@ -1256,7 +1257,7 @@ also imply that **the regression line ALWAYS goes through the point**
 $\boldsymbol{(\bar{x},\bar{y}).}$ It provides a sort of anchor point
 for all regression lines. 
 
-For one more example, we can
+\indent For one more example, we can
 revisit the Montana wildfire areas burned (log-hectares) and the average summer
 temperature (degrees F), which had $\boldsymbol{r}=0.81$. The interpretations of the
 different parts of the regression model follow the least squares estimation 
@@ -1265,7 +1266,7 @@ provided by ``lm``:
 \newpage
 
 ```{r}
-fire1 <- lm(loghectacres~Temperature, data=mtfires)
+fire1 <- lm(loghectares~Temperature, data=mtfires)
 summary(fire1)
 ```
 
@@ -1290,7 +1291,7 @@ $\underline{change}$ in log(Hectares) burned.
 * Y-intercept Interpretation: If temperature were 0 degrees F, we would 
 expect -69.78 log(Hectares) burned **on average**. 
 
-One other use of regression equations is for prediction. It is a trivial
+\indent One other use of regression equations is for prediction. It is a trivial
 exercise (or maybe not -- we'll see when you try it!) to plug an x-value of
 interest into the regression equation and get an estimate for $y$ at that $x$.
 Basically, the regression lines displayed in the scatterplots show the 
@@ -1309,21 +1310,21 @@ cancelDegrees = function(){
   outputFormat = opts_knit$get("rmarkdown.pandoc.to")
   if(outputFormat == 'latex') 
       paste("$$\\begin{array}{rl} \\\\ \\widehat{\\log(\\text{Ha})}",
-          "&= -69.78\\text{ log-hectacres }",
-          "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
+          "&= -69.78\\text{ log-hectares }",
+          "+ 1.39\\text{ log-hectares}/^\\circ \\text{F}",
           "\\bullet 59^\\circ\\text{F} \\\\",
-          "&= -69.78\\text{ log-hectacres } +",
-          "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
+          "&= -69.78\\text{ log-hectares } +",
+          "1.39\\text{ log-hectares}/\\cancel{^\\circ \\text{F}}",
           "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
           "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
   
   else if(outputFormat == 'html') 
     paste("$$\\begin{array}{rl} \\\\ \\require{cancel} \\widehat{\\log(\\text{Ha})}",
-          "&= -69.78\\text{ log-hectacres }",
-          "+ 1.39\\text{ log-hectacres}/^\\circ \\text{F}",
+          "&= -69.78\\text{ log-hectares }",
+          "+ 1.39\\text{ log-hectares}/^\\circ \\text{F}",
           "\\bullet 59^\\circ\\text{F} \\\\",
-          "&= -69.78\\text{ log-hectacres } +",
-          "1.39\\text{ log-hectacres}/\\cancel{^\\circ \\text{F}}",
+          "&= -69.78\\text{ log-hectares } +",
+          "1.39\\text{ log-hectares}/\\cancel{^\\circ \\text{F}}",
           "\\bullet 59\\cancel{^\\circ \\text{F}} \\\\",
           "&= 12.23 \\text{ log-hectares} \\\\ \\end{array}$$", sep="")
 }
@@ -1334,7 +1335,7 @@ cancelDegrees = function(){
 We did not observe any summers at exactly $x=59$ but did observe some 
 nearby and this result seems relatively reasonable. 
 
-Now suppose someone asks you to use this equation for predicting 
+\indent Now suppose someone asks you to use this equation for predicting 
 $\text{Temperature} = 65^\circ F$. We can run that through the equation:
 $-69.78 + 1.39*65 = 20.57$ log-hectares but can we trust this prediction? We did
 not observe any summers over 60 degrees F so we are now predicting outside the
@@ -1346,13 +1347,13 @@ equation -- between 54 and 60 degrees F.
 estimated regression line. 
 
 ```{r Figure6-18,fig.cap="(ref:fig6-18)",warning=F,message=F}
-scatterplot(loghectacres~Temperature, data=mtfires, smoother=T,
+scatterplot(loghectares~Temperature, data=mtfires, smoother=T,
             main="Scatterplot with regression line for Area burned vs Temperature")
 ```
 
 ## Measuring the strength of regressions: R^2^ {#section6-8}
 
-At the beginning of the chapter, 
+\indent At the beginning of the chapter, 
 we used the correlation coefficient to measure the strength and direction of
 the linear relationship. The regression line provides an even more detailed
 description of the direction of the linear relationship than the correlation
@@ -1369,13 +1370,13 @@ line is a useful but incomplete characterization of relationships between
 variables -- we need a measure of strength of the relationship to go with the
 equation. 
 
-We could use the correlation coefficient, ***r***, again to characterize
+\indent We could use the correlation coefficient, ***r***, again to characterize
 strength but it is somewhat redundant to report a measure that contains 
 direction information. It also will not extend to multiple
 regression models where we have more than one predictor variable in the same
 model. 
 
-In regression models, we use the ***coefficient of determination*** 
+\indent In regression models, we use the ***coefficient of determination*** 
 (symbol: **R^2^**) to accompany our regression line and describe
 the strength of the relationship. It can either be
 scaled between 0 and 1 or 0 to 100% and has "units" of the proportion or
@@ -1426,7 +1427,7 @@ the model explains as
 $$\boldsymbol{R^2}=\frac{\text{SS}_\text{regression}}{\text{SS}_\text{Total}}
 =1 - \frac{\text{SS}_\text{error}}{\text{SS}_\text{Total}}.$$ 
 
-It also ends up that the
+\indent It also ends up that the
 coefficient of determination for models with one predictor is the correlation
 coefficient (***r***) squared ($\boldsymbol{R^2} = \boldsymbol{r^2}$). So we can
 quickly find coefficients of determination if we know correlations in simple
@@ -1456,7 +1457,7 @@ In this output, be careful because there is another related quantity called
 is not a measure of the strength of the
 relationship but will be useful. 
 
-We could also revisit the ANOVA
+\indent We could also revisit the ANOVA
 table for this model to verify the source of the **R^2^** of 0.80 
 based on $\text{SS}_\text{regression}= 0.02337$ and 
 $\text{SS}_\text{Total} = 0.02337+0.00585$. This provides 0.80 from 
@@ -1469,7 +1470,7 @@ SSregression <- 0.0233753
 SSregression/SStotal
 ```
 
-In Figure \@ref(fig:Figure6-19), there are three
+\indent In Figure \@ref(fig:Figure6-19), there are three
 examples with the same regression model, but different strengths of
 relationships. In the real data set $\boldsymbol{R^2} = 80\%$. For the first
 fake data set (middle panel), the **R^2^** drops to $13.8\%$ and for
@@ -1479,7 +1480,7 @@ each model is at explaining the responses. We can revisit some of our previous
 models to get a little more practice with using this summary of strength or quality
 of regression models. 
 
-For the Montana fire data, $\boldsymbol{R^2}=66.2\%$. So the proportion of
+\indent For the Montana fire data, $\boldsymbol{R^2}=66.2\%$. So the proportion of
 variation of log-area burned that is explained by average summer temperature
 is 0.662. This is "good" but also
 leaves quite a bit of unexplained variation in the responses. There is a long
@@ -1489,11 +1490,11 @@ response variable (log(area burned)) in the interpretation -- this is because we
 would get a much different answer if area burned vs temperature was considered. 
 
 ```{r}
-fire1 <- lm(loghectacres~Temperature, data=mtfires)
+fire1 <- lm(loghectares~Temperature, data=mtfires)
 summary(fire1)
 ```
 
-For the model for female Australian athletes that used *Body fat* to 
+\indent For the model for female Australian athletes that used *Body fat* to 
 explain *Hematocrit*, the estimated regression model was
 $\widehat{\text{Hc}}_i = 42.014 - 0.085\cdot\text{BodyFat}_i$ and
 $\boldsymbol{r} = -0.168$. The coefficient of determination is
@@ -1510,7 +1511,7 @@ summary(m2)
 
 ## Outliers: leverage and influence	{#section6-9}
 
-In the review of correlation, we
+\indent In the review of correlation, we
 loosely considered the impacts of outliers on the correlation. We removed
 unusual points to see both the visual changes (in the scatterplot) as well as
 changes in the correlation coefficient in Figures \@ref(fig:Figure6-4)
