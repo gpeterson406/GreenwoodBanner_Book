@@ -53,7 +53,7 @@ blackOut = function(x){
 
 ## Going from SLR to MLR {#section8-1}
 
-In many situations, especially in observational studies, it is unlikely that
+\indent In many situations, especially in observational studies, it is unlikely that
 the system is simple enough to be characterized
 by a single predictor variable. In experiments, if we randomly assign levels of
 a predictor variable we can assume that the impacts of other variables cancel
@@ -126,7 +126,7 @@ some preliminary assessment of the pairwise relationships.
 (ref:fig8-1) Scatterplot matrix of the SNOTEL data.
 
 ```{r Figure8-1,fig.cap="(ref:fig8-1)",fig.height=5,fig.width=7}
-snotel_s <- read.csv("http://www.math.montana.edu/courses/s217/documents/snotel_s.csv")
+snotel_s <- read_csv("http://www.math.montana.edu/courses/s217/documents/snotel_s.csv")
 snotel2 <- snotel_s[,c(1:2,4:6,3)] #Reorders columns for nicer pairs.panel display
 require(psych)
 pairs.panels(snotel2[,-c(1:2)], ellipse=F,
@@ -904,7 +904,7 @@ temperatures held constant that is stored in ``newdata1``.
 
 ```{r}
 elevs <- seq(from=5000, to=8000, length.out=30)
-newdata1 <- data.frame(Elevation=elevs, Min.Temp=rep(27.826,30),
+newdata1 <- tibble(Elevation=elevs, Min.Temp=rep(27.826,30),
                        Max.Temp=rep(36.3913,30))
 newdata1
 ```
@@ -1124,7 +1124,7 @@ row5 <- c("SD $\\sim$ Elevation + Max.Temp",2,0.8495,0.8344,1)
 row6 <- c("SD $\\sim$ Min.Temp + Max.Temp",2,0.6308,0.5939,6)
 row7 <- c("SD $\\sim$ Elevation + Min.Temp + Max.Temp",3,0.8535,0.8304,2)
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=5,byrow=T)
-m <- as.data.frame(x)
+m <- as.tibble(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table8-1) (ref:tab8-1)",
              split.table = 300,
@@ -1891,8 +1891,8 @@ This result and the 95% confidence interval for the mean student *GPA* at these
 scores can be found using the ``predict`` function as:
 
 ```{r}
-predict(gpa1, newdata=data.frame(SATV=30,SATM=60))
-predict(gpa1, newdata=data.frame(SATV=30,SATM=60), interval="confidence")
+predict(gpa1, newdata=tibble(SATV=30,SATM=60))
+predict(gpa1, newdata=tibble(SATV=30,SATM=60), interval="confidence")
 ```
 
 For students at the 30^th^ percentile of *SATV* and 60^th^
@@ -1901,7 +1901,7 @@ is between 1.98 and 2.24 points. For an individual student, we would want the
 95% prediction interval:
 
 ```{r}
-predict(gpa1,newdata=data.frame(SATV=30,SATM=60),interval="prediction")
+predict(gpa1,newdata=tibble(SATV=30,SATM=60),interval="prediction")
 ```
 
 For a student with *SATV*=30 and *SATM*=60, we are 95% sure that their first
@@ -1932,14 +1932,14 @@ model with 95% PIs.
 
 ```{r Figure8-16,fig.cap="(ref:fig8-16)",fig.height=5,fig.width=10}
 #Remake effects plots with 95% PIs
-dv1 <- data.frame(SATV=seq(from=24,to=76,length.out=50), SATM=rep(54.4,50))
-dm1 <- data.frame(SATV=rep(48.93,50), SATM=seq(from=29,to=77,length.out=50))
+dv1 <- tibble(SATV=seq(from=24,to=76,length.out=50), SATM=rep(54.4,50))
+dm1 <- tibble(SATV=rep(48.93,50), SATM=seq(from=29,to=77,length.out=50))
 
-mv1 <- data.frame(predict(gpa1, newdata=dv1, interval="confidence"))
-pv1 <- data.frame(predict(gpa1, newdata=dv1, interval="prediction"))
+mv1 <- as.tibble(predict(gpa1, newdata=dv1, interval="confidence"))
+pv1 <- as.tibble(predict(gpa1, newdata=dv1, interval="prediction"))
 
-mm1 <- data.frame(predict(gpa1, newdata=dm1, interval="confidence"))
-pm1 <- data.frame(predict(gpa1, newdata=dm1, interval="prediction"))
+mm1 <- as.tibble(predict(gpa1, newdata=dm1, interval="confidence"))
+pm1 <- as.tibble(predict(gpa1, newdata=dm1, interval="prediction"))
 
 par(mfrow=c(1,2))
 
@@ -2068,7 +2068,7 @@ for the first 10 observations:
 
 ```{r}
 satGPA$SEXINDICATOR <- as.numeric(satGPA$SEX=="FEMALE")
-head(data.frame(SEX=satGPA$SEX, SEXINDICATOR=satGPA$SEXINDICATOR), 10)
+head(tibble(SEX=satGPA$SEX, SEXINDICATOR=satGPA$SEXINDICATOR), 10)
 ```
 
 We can define the indicator variable more generally by calling it
@@ -2307,7 +2307,7 @@ Headache$treatment<-factor(Headache$treatment)
 head1<-lm(du2~du1+treatment,data=Headache)
 dummies<-model.matrix(head1)[,c(3:5)]
 colnames(dummies)<-c("I_T2", "I_T3","I_Control")
-res1<-data.frame(Treatment=Headache$treatment,dummies)[1:17,]
+res1<-as.tibble(Treatment=Headache$treatment,dummies)[1:17,]
 #res1
 emphasize.strong.rows(c(1,2,7,16))
 pander(res1)
@@ -2384,10 +2384,10 @@ groups, showing the shifts in the *y*-intercepts among the groups.
 
 ```{r Figure8-22,fig.cap="(ref:fig8-22)",echo=F, fig.height=5,fig.width=10}
 du1s<-seq(from=0.37,to=15.1,length.out=50)
-hdT1<-data.frame(du1=du1s,treatment=rep("T1",50))
-hdT2<-data.frame(du1=du1s,treatment=rep("T2",50))
-hdT3<-data.frame(du1=du1s,treatment=rep("T3",50))
-hdcontrol<-data.frame(du1=du1s,treatment=rep("Control",50))
+hdT1<-tibble(du1=du1s,treatment=rep("T1",50))
+hdT2<-tibble(du1=du1s,treatment=rep("T2",50))
+hdT3<-tibble(du1=du1s,treatment=rep("T3",50))
+hdcontrol<-tibble(du1=du1s,treatment=rep("Control",50))
 plot(du1s,predict(head1,newdata=hdT1),lwd=2,lty=2,ylim=c(0,16),type="l",xlab="DU1",ylab="DU2",main="Plot of additive estimated regression model")
 lines(du1s,predict(head1,newdata=hdT2),lwd=2,col="red")
 lines(du1s,predict(head1,newdata=hdT3),lwd=2,col="green",lty=2)
@@ -2474,7 +2474,7 @@ all the groups had the same slope coefficient for the quantitative variable.
 
 ## Different slopes and different intercepts	{#section8-11}
 
-Sometimes researchers are specifically interested in whether the slopes vary
+\indent Sometimes researchers are specifically interested in whether the slopes vary
 across groups or the regression lines in the scatterplot for the different
 groups may not look parallel or it may just be hard to tell visually if there
 really is a difference in the slopes. Unless you are **very sure** that there
@@ -2541,6 +2541,7 @@ scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
 ```{r eval=F}
 require(smdata)
 data("dyslexic3")
+dyslexic3<-as.tibble(dyslexic3)
 scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
             ylab="Reading score", data=dyslexic3, smooth=F,
             main="Plot of IQ vs Reading by dyslexia status")
@@ -3369,6 +3370,7 @@ involved in the interaction if we don't need the interaction.
 ```{r Figure8-34,fig.cap="(ref:fig8-34)",echo=F,fig.height=4,fig.width=7}
 require(coneproj)
 data(FEV)
+FEV<-as.tibble(FEV)
 FEV$sex <- factor(FEV$sex)
 levels(FEV$sex) <- c("Female","Male")
 FEV$smoke <- factor(FEV$smoke)
@@ -3382,6 +3384,7 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
 ```{r eval=F}
 require(coneproj)
 data(FEV)
+FEV<-as.tibble(FEV)
 FEV$sex <- factor(FEV$sex)
 levels(FEV$sex) <- c("Female","Male")
 FEV$smoke <- factor(FEV$smoke)
@@ -3573,7 +3576,7 @@ study where no clear knowledge exists about useful models to consider.
 
 ## Chapter summary	{#section8-15}
 
-This chapter explored the most complicated models we're
+\indent This chapter explored the most complicated models we're
 going to explore. MLR models can incorporate features of SLR and ANOVAs. The
 MLR's used in this chapter highlight the flexibility of the linear modeling
 framework to move from two-sample mean models to multi-predictor models with
@@ -3610,7 +3613,7 @@ that are important but were "hiding" when both were included in the model.
 
 ## Important R code	{#section8-16}
 
-There is very little "new" R code in this chapter since all these methods were 
+\indent There is very little "new" R code in this chapter since all these methods were 
 either used in the ANOVA or SLR chapters. The models are more complicated but 
 are built off of methods from previous chapters. In this code, ``y`` is a 
 response variable, ``x1``, ``x2``, ..., ``xK`` are quantitative 
@@ -3669,7 +3672,7 @@ data=`r colFmt("DATASETNAME","red")`, smooth=F)**
     * Provides fitted values for all observed $x\text{'s}$ with SEs for the 
     mean.
     
-* **predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
+* **predict(`r colFmt("MODELNAME","red")`, newdata=tibble(`r colFmt("x1","red")`
 = `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
 `r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
 interval="confidence")**
@@ -3677,7 +3680,7 @@ interval="confidence")**
     * Provides fitted value for specific values of the quantitative predictors
     with CI for the mean. 
 
-* **predict(`r colFmt("MODELNAME","red")`, newdata=data.frame(`r colFmt("x1","red")`
+* **predict(`r colFmt("MODELNAME","red")`, newdata=tibble(`r colFmt("x1","red")`
 = `r colFmt("X1\\_NEW","red")`, `r colFmt("x2","red")` = `r colFmt("X2\\_NEW","red")`, 
 `r colFmt("...","red")`, `r colFmt("xK","red")` = `r colFmt("XK\\_NEW","red")`, 
 interval="prediction")**
@@ -3718,7 +3721,7 @@ combined prediction built using a few variables using the MLR techniques. The
 following code will get us re-started in this situation. 
 
 ```
-treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
+treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
                       header=T)
 tm1 <- lm(TreadMillOx~RunTime, data=treadmill)
 ```

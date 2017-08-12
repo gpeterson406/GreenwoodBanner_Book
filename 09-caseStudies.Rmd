@@ -147,7 +147,9 @@ from earlier in the book.
 (ref:fig9-2) Beanplot of biomass responses by treatment and species. 
 
 ```{r Figure9-2,fig.cap="(ref:fig9-2)",echo=F}
-gdn <- read.csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
+gdn <- read_csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
+gdn$Species<-factor(gdn$Species)
+gdn$Treatment<-factor(gdn$Treatment)
 require(beanplot)
 beanplot(Massperha~Species+Treatment, data=gdn, side = "b", 
          col=list("white","lightgreen"), xlab="Treatment", ylab="Biomass")
@@ -184,7 +186,9 @@ groups, especially with much more variability in the *control* treatment level
 and more variability in the *PS* responses than for the *HS* responses. 
 
 ```{r eval=F}
-gdn <- read.csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
+gdn <- read_csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
+gdn$Species<-factor(gdn$Species)
+gdn$Treatment<-factor(gdn$Treatment)
 require(beanplot)
 beanplot(Massperha~Species+Treatment, data=gdn, side = "b", 
          col=list("white","lightgreen"), xlab="Treatment", ylab="Biomass")
@@ -440,7 +444,7 @@ of differences in the patterns of responses.
 (ref:fig9-9) Stacked bar chart for Ant Colony results.
 
 ```{r Figure9-9,fig.cap="(ref:fig9-9)"}
-sasakipratt <- read.csv("http://www.math.montana.edu/courses/s217/documents/sasakipratt.csv")
+sasakipratt <- read_csv("http://www.math.montana.edu/courses/s217/documents/sasakipratt.csv")
 sasakipratt$group <- factor(sasakipratt$group)
 levels(sasakipratt$group) <- c("Light","Entrance")
 sasakipratt$after <- factor(sasakipratt$after)
@@ -591,7 +595,7 @@ variables.
 (ref:fig9-10) Scatterplot of log-biodiversity vs log-DBCs by TJK.
 
 ```{r Figure9-10,fig.cap="(ref:fig9-10)",echo=F,fig.height=5,fig.width=10}
-bm <- read.csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
+bm <- read_csv("http://www.math.montana.edu/courses/s217/documents/bensonmanion.csv")
 bm2 <- bm[,-c(9:10)]
 require(psych)
 #pairs.panels(bm2, ellipses=F)
@@ -678,7 +682,7 @@ row5 <- c(cell51,0,0,2,-23.956,51.9,18.6)
 row6 <- c(cell61,0.0048,-0.0366,3,-23.893,53.8,20.5)
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6),ncol = 7, byrow = T)
-m <- as.data.frame(x)
+m <- as.tibble(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table9-1) (ref:tab9-1)",
              split.table = 300,

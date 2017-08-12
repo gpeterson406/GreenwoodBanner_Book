@@ -13,6 +13,7 @@ header-includes:
 ```{r echo=F,warning=F,message=F}
 set.seed(5678)
 library(pander)
+require(readr)
 require(mosaic)
 library(knitr)
 knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT',warning=F,
@@ -46,7 +47,7 @@ textItalicBold = function(x){
 
 ## Model	{#section7-1}
 
-In Chapter \@ref(chapter6), we learned how to estimate and interpret 
+\indent In Chapter \@ref(chapter6), we learned how to estimate and interpret 
 correlations and regression
 equations with a single predictor variable (***simple linear regression*** 
 or SLR). We carefully explored the variety of things that could go wrong and
@@ -142,7 +143,7 @@ BAC model has a residual SE of 0.02 but had many fewer observations at each
 standard errors (0.02 and 0.06).
 
 ```{r Figure7-2,fig.cap="(ref:fig7-2)",echo=F,fig.height=4}
-BB<- read.csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
+BB<- read_csv("http://www.math.montana.edu/courses/s217/documents/beersbac.csv")
 m1<-lm(BAC~Beers,data=BB)
 par(mfrow=c(1,1))
 set.seed(3456)
@@ -438,6 +439,8 @@ but certainly not strong evidence.
 ```{r warning=F,message=F}
 require(alr3)
 data(ais)
+require(tibble)
+ais<-as.tibble(ais)
 aisR2 <- ais[-c(56,166), c("Ht","Hc","Bfat","Sex")]
 m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) # Results for Females 
 summary(m2)
@@ -451,9 +454,9 @@ the changes to doing inferences at the 1% significance and 99% confidence
 levels, and where you can find the needed results in the following output:
 
 ```{r}
-mtfires <- read.csv("http://www.math.montana.edu/courses/s217/documents/climateR2.csv")
-mtfires$loghectacres <- log(mtfires$hectacres)
-fire1 <- lm(loghectacres~Temperature, data=mtfires)
+mtfires <- read_csv("http://www.math.montana.edu/courses/s217/documents/climateR2.csv")
+mtfires$loghectares <- log(mtfires$hectares)
+fire1 <- lm(loghectares~Temperature, data=mtfires)
 summary(fire1)
 ```
 
@@ -573,7 +576,7 @@ F from 1901 to 2014.
 Bozeman from 1900 to 2014.
 
 ```{r Figure7-4,fig.cap="(ref:fig7-4)",error=F,message=F,fig.height=5,fig.width=8}
-bozemantemps <- read.csv("http://www.math.montana.edu/courses/s217/documents/BozemanMeanMax.csv")
+bozemantemps <- read_csv("http://www.math.montana.edu/courses/s217/documents/BozemanMeanMax.csv")
 summary(bozemantemps)
 length(bozemantemps$Year) #Some years are missing (1905, 1906, 1948, 1950,1995)
 require(car)
@@ -1145,7 +1148,7 @@ row6 <- c("$-1$","$y^{-1}=1/y$","for ratios")
 row7 <- c("$-2$","$y^{-2}=1/y^2$","seldom used")
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=3,byrow=T)
-m <- as.data.frame(x)
+m <- as.tibble(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table7-1) (ref:tab7-1)",
              split.table = 300, justify="left")
@@ -1176,16 +1179,16 @@ log-hectares scale.
 
 ```{r Figure7-11,fig.cap="(ref:fig7-11)",fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-plot(hectacres~Temperature, data=mtfires, main="(a)",
-     ylab="Hectacres", pch=16)
-plot(loghectacres~Temperature, data=mtfires, main="(b)",
-     ylab="log-Hectacres", pch=16)
+plot(hectares~Temperature, data=mtfires, main="(a)",
+     ylab="Hectares", pch=16)
+plot(loghectares~Temperature, data=mtfires, main="(b)",
+     ylab="log-Hectares", pch=16)
 ```
 
 The left panel in Figure \@ref(fig:Figure7-11) displays a relationship
 that would be hard fit using SLR -- it has a curve and the
 variance is increasing with increasing temperatures. With a 
-log-transformation of *Hectacres*, the relationship appears to be relatively
+log-transformation of *Hectares*, the relationship appears to be relatively
 linear and have constant variance. We considered regression models for this
 situation previously. This shows at least one situation where a
 log-transformation of a response variable can linearize a relationship and
@@ -1204,6 +1207,7 @@ information with the response variable (height) log-transformed.
 ```{r eval=F}
 require(spuRs) # install.packages("spuRs")
 data(ufc)
+ufc<-as.tibble(ufc)
 require(car)
 scatterplot(height.m~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
             main="Tree height vs tree diameter")
@@ -1216,6 +1220,7 @@ scatterplot(log(height.m)~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
 ```{r Figure7-12,fig.cap="(ref:fig7-12)",echo=F}
 require(spuRs) # install.packages("spuRs")
 data(ufc)
+ufc<-as.tibble(ufc)
 require(car)
 scatterplot(height.m~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
             main="Tree height vs tree diameter")
@@ -1304,6 +1309,7 @@ different combinations of log-transformations.
 ```{r Figure7-16,fig.cap="(ref:fig7-16)",echo=F,fig.height=5,fig.width=8}
 require(car)
 data(UN)
+UN<-as.tibble(UN)
 par(mfrow=c(2,2))
 plot(infant.mortality~gdp,data=UN,pch=16,col="coral",xlab="GDP",ylab="Infant deaths/1000 births",main="(a) Infant Mortality vs GDP")
 
@@ -1381,10 +1387,10 @@ explanatory variable, or both.
 
 ```{r Figure7-17,fig.cap="(ref:fig7-17)",echo=F,fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-plot(loghectacres~Temperature,data=mtfires, main="(a)",ylab="log-Hectacres",pch=16,col="salmon")
-firem<-lm(loghectacres~Temperature,data=mtfires)
-abline(lm(loghectacres~Temperature,data=mtfires),lwd=2,col="darkred")
-plot(hectacres~Temperature,data=mtfires, main="(b)",ylab="Hectacres",pch=16,col="salmon")
+plot(loghectares~Temperature,data=mtfires, main="(a)",ylab="log-Hectares",pch=16,col="salmon")
+firem<-lm(loghectares~Temperature,data=mtfires)
+abline(lm(loghectares~Temperature,data=mtfires),lwd=2,col="darkred")
+plot(hectares~Temperature,data=mtfires, main="(b)",ylab="Hectares",pch=16,col="salmon")
 t1<-seq(from=53,to=60,length.out=30)
 lines(exp(firem$coef[1]+firem$coef[2]*t1)~t1,lwd=2,col="darkred")
 ```
@@ -1505,7 +1511,6 @@ temperature data.
 infant mortality data.
 
 ```{r Figure7-18,fig.cap="(ref:fig7-18)",echo=F,fig.height=5,fig.width=10}
-data(UN)
 ID1<-lm(infant.mortality~log(gdp),data=UN)
 par(mfrow=c(1,2))
 
@@ -1570,7 +1575,6 @@ the SLR model was fit (panel a) and the other on the original x-scale (panel b)
 that matches these last interpretations. 
 
 ```{r warning=F,message=F}
-data(UN)
 ID1 <- lm(infant.mortality~log(gdp), data=UN)
 summary(ID1)
 -16.6*log(2)
@@ -1832,7 +1836,7 @@ and form our own PIs. If you want CIs, run
 ``predict(MODELNAME, interval= "confidence")``; if you want PIs, run 
 ``predict(MODELNAME, interval="prediction")``. If you want to do 
 prediction at an x-value that was not in the original
-observations, add the option ``newdata=data.frame(XVARIABLENAME_FROM_ORIGINAL_MODEL=Xnu)``
+observations, add the option ``newdata=tibble(XVARIABLENAME_FROM_ORIGINAL_MODEL=Xnu)``
 to the ``predict`` function call.
 
 \indent Some examples of using the predict function follow^[I have suppressed 
@@ -1849,7 +1853,7 @@ for 8 beers:
 
 ```{r}
 m1 <- lm(BAC~Beers, data=BB)
-predict(m1, newdata=data.frame(Beers=8))
+predict(m1, newdata=tibble(Beers=8))
 ```
 
 By turning on the ``se.fit=T`` option, we also get the SE for the 
@@ -1857,7 +1861,7 @@ confidence interval and degrees of freedom. Note that elements returned
 are labelled as ``$fit``, ``$se.fit``, etc. 
 
 ```{r}
-predict(m1, newdata=data.frame(Beers=8), se.fit=T)
+predict(m1, newdata=tibble(Beers=8), se.fit=T)
 ```
 
 Instead of using the components of the intervals to
@@ -1865,8 +1869,8 @@ make them, we can also directly request the CI or PI using the
 ``interval=...`` option, as in the following two lines of code. 
 
 ```{r}
-predict(m1, newdata=data.frame(Beers=8), interval="confidence")
-predict(m1, newdata=data.frame(Beers=8), interval="prediction")
+predict(m1, newdata=tibble(Beers=8), interval="confidence")
+predict(m1, newdata=tibble(Beers=8), interval="prediction")
 ```
 
 \indent Based on these results, we are 95% confident that the true mean *BAC*
@@ -1929,7 +1933,7 @@ Now we can call the ``predict`` function at all these values stored in
 ``beerf`` to get the CIs for all these *Beers* values:
 
 ```{r}
-BBCI <- data.frame(predict(m1, newdata=data.frame(Beers=beerf),
+BBCI <- as.tibble(predict(m1, newdata=tibble(Beers=beerf),
                            interval="confidence"))
 head(BBCI)
 ```
@@ -1937,7 +1941,7 @@ head(BBCI)
 And the PIs:
 
 ```{r}
-BBPI <- data.frame(predict(m1, newdata=data.frame(Beers=beerf),
+BBPI <- as.tibble(predict(m1, newdata=tibble(Beers=beerf),
                            interval="prediction"))
 head(BBPI)
 ```
@@ -2001,9 +2005,9 @@ more than 95% of the observations used to make it.
 temp1<-lm(meanmax~Year, data=bozemantemps)
  Yearf<-seq(from=1901,to=2014,length.out=75)
  
-TCI<-data.frame(predict(temp1,newdata= data.frame(Year=Yearf),interval="confidence"))
+TCI<-as.tibble(predict(temp1,newdata= tibble(Year=Yearf),interval="confidence"))
 #head(TCI)
-TPI<-data.frame(predict(temp1,newdata=data.frame(Year=Yearf),interval="prediction"))
+TPI<-as.tibble(predict(temp1,newdata=tibble(Year=Yearf),interval="prediction"))
 #head(TPI)
 
 plot(meanmax~Year,data=bozemantemps,xlab="Year", ylab="degrees F",pch=20,col="darkgreen", main="Scatterplot of estimated regression line with 95% CI and PI")
@@ -2019,10 +2023,10 @@ legend("topleft", c("Estimate", "CI","PI"),lwd=3,lty=c(1,2,3),col = c("blue", "r
 data set ended, 2015 and in 2050:
 
 ```{r}
-predict(temp1, newdata=data.frame(Year=2015), interval="confidence")
-predict(temp1, newdata=data.frame(Year=2015), interval="prediction")
-predict(temp1, newdata=data.frame(Year=2050), interval="confidence")
-predict(temp1, newdata=data.frame(Year=2050), interval="prediction")
+predict(temp1, newdata=tibble(Year=2015), interval="confidence")
+predict(temp1, newdata=tibble(Year=2015), interval="prediction")
+predict(temp1, newdata=tibble(Year=2050), interval="confidence")
+predict(temp1, newdata=tibble(Year=2050), interval="prediction")
 ```
 
 These results tell us that we are 95% confident that the true mean yearly
@@ -2132,14 +2136,14 @@ data=`r colFmt("DATASETNAME","red")`, smooth=F)**
     mean.
 
 * **predict(`r colFmt("MODELNAME","red")`, 
-newdata=data.frame(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
+newdata=tibble(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
 interval="confidence")**
 
     * Provides fitted value for a specific $x$ (XNEW) with CI for the mean.
     Replace ``x`` with name of  explanatory variable. 
 
 * **predict(`r colFmt("MODELNAME","red")`, 
-newdata=data.frame(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
+newdata=tibble(`r colFmt("x","red")` = `r colFmt("XNEW","red")`),
 interval="prediction")**
 
     * Provides fitted value for a specific $x$ (XNEW) with PI for a new
@@ -2160,7 +2164,7 @@ Chapter \@ref(chapter6). The following code will get you back to where we
 stopped at the end of Chapter \@ref(chapter6):
 
 ```
-treadmill <- read.csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
+treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
                       header=T)
 plot(TreadMillOx~RunTime, data=treadmill)
 tm <- lm(TreadMillOx~RunTime, data=treadmill)
