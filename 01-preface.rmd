@@ -837,7 +837,7 @@ summaries. We revisited the ideas of symmetry and skew. But the main point was
 really to get a start on using R to provide results you should be familiar with
 from your previous statistics experience(s). 
 
-##Important R code {#section1-5}
+## Summary of important R code {#section1-5}
 
 To help you learn and use R, there is a section highlighting the most important 
 R code used near the end of each

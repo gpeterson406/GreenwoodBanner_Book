@@ -1969,7 +1969,7 @@ contingency table where you identified initial patterns and help to tell the sto
 
 \newpage
 
-## Review of important R commands	{#section5-13}
+## Summary of important R commands	{#section5-13}
 
 The main components of R code used in this chapter follow with components
 to modify in lighter and/or ALL CAPS text where ``y`` is a response variable and ``x`` is a predictor 

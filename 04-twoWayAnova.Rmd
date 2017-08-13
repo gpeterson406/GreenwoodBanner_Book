@@ -1647,7 +1647,7 @@ to those considered here, so the better you understand these models, the easier 
 
 \newpage
 
-## Important R code	{#section4-8}
+## Summary of important R code	{#section4-8}
 
 The main components of R code used in this chapter follow with components to 
 modify in lighter and/or ALL CAPS text, remembering that any R

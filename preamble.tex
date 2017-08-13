@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{url}
+\usepackage{makeidx}
 
 \newgeometry{inner=1.25in,outer=0.75in,top=1in,bottom=1in}
 
@@ -65,3 +66,10 @@
 \includegraphics{titlepage.pdf}
 \end{titlepage}
 }
+
+% Uncomment below to make an index (only for pdf version).
+% You will also need to add appendix.tex to the _output.yml file after 
+% after_body:
+% Will also need to figure out how to make the bookmark jump to the Index
+% and not the Bibliography in the pdf file
+%\makeindex

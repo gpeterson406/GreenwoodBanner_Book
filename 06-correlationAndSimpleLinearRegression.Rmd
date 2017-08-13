@@ -117,7 +117,9 @@ quantitative explanatory variable into the linear model (somewhat like in the
 2-Way ANOVA). Some of this variability might be hard or impossible to explain
 regardless of the other variables available and is considered unexplained variation
 and goes into the residual errors in our models, just like in the ANOVA models. 
-To make scatterplots as in Figure \@ref(fig:Figure6-1), you can simply^[I added ``pch=16,col=30`` to fill in the default circles and make the points in something other than black, an entirely unnecessary addition here.] use 
+To make scatterplots as in Figure \@ref(fig:Figure6-1), you can simply^[I added 
+``pch=16, col=30`` to fill in the default circles and make the points in something 
+other than black, an entirely unnecessary addition here.] use 
 ``plot(y~x, data=...)``.
 
 ```{r echo=F}
@@ -394,7 +396,6 @@ relationship. In terms of the underlying climate process, it suggests a
 decrease in summer temperatures between 1985 and 1995 and then an increase in
 the second half of the data set. 
 
-\newpage
 
 (ref:fig6-3) Scatterplot matrix of Montana fires data. 
 
@@ -418,13 +419,12 @@ based on the other variables, but for now the associations are of interest.
 require(alr3)
 data(ais)
 require(tibble)
-ais<-as.tibble(ais)
+ais <- as.tibble(ais)
 aisR <- ais[,c("Ht","Hc","Bfat")]
 summary(aisR)
 pairs.panels(aisR, scale=T, ellipse=F, smooth=F, col=0)
 ```
 
-\newpage
 
 ```{r}
 cor(aisR)
@@ -560,7 +560,8 @@ These results show that $\boldsymbol{r}=-0.05$ for *Height* and *Hematocrit*
 for *males* and $\boldsymbol{r}=0.03$ for *females*. The first suggests a 
 very weak negative linear
 relationship and the second suggests a very weak positive linear relationship. 
-The correlation when the two groups were combined (and group information was ignored!) was that $\boldsymbol{r}=0.37$. So one
+The correlation when the two groups were combined (and group information was 
+ignored!) was that $\boldsymbol{r}=0.37$. So one
 conclusion here is that correlations on data sets that contain groups can be
 very misleading (if the groups are ignored). It also emphasizes the importance of exploring for potential
 subgroups in the data set -- these two groups were not obvious in the initial
@@ -672,7 +673,7 @@ studies the observed combinations of variables are uncontrollable. This is why
 we need to employ additional caution in interpreting results from observational
 studies. 
 
-## Inference for the correlation coefficient (Optional Section)	{#section6-4}
+## Inference for the correlation coefficient (Optional section)	{#section6-4}
 
 We used bootstrapping briefly in
 Chapter \@ref(chapter2) to generate nonparametric confidence intervals based 
@@ -799,10 +800,10 @@ by type of tree.
 
 (ref:fig6-11) Scatterplot of tree heights (m) vs tree diameters (cm).
 
-```{r Figure6-11,fig.cap="(ref:fig6-11)",warning=F,message=F}
+```{r Figure6-11,fig.cap="(ref:fig6-11)"}
 require(spuRs) #install.packages("spuRs")
 data(ufc)
-ufc<-as.tibble(ufc)
+ufc <- as.tibble(ufc)
 scatterplot(height.m~dbh.cm, data=ufc, smooth=F, reg.line=F)
 ```
 
@@ -812,6 +813,8 @@ in the data set, but none of the other trees with this diameter had heights
 under 15 m. It ends up that the likely outlier is in observation number 168 and
 because it is so unusual it likely corresponds to either a damaged tree or a
 recording error. 
+
+\newpage
 
 ```{r}
 ufc[168,]
@@ -967,7 +970,7 @@ really know what the ``BAC`` might be at this value. We have to
 use our line to ***predict*** this value. This ends up providing a 
 prediction below 0 -- an impossible value for *BAC*. If the 
 y-intercept were positive, it would suggest that the students
-s has a *BAC* over 0 even without drinking. 
+has a *BAC* over 0 even without drinking. 
 
 \indent The numbers reported were very
 accurate because we weren't using the plot alone to generate the 
@@ -1136,7 +1139,7 @@ using the ``lm`` function:
 
 (ref:fig6-15) Scatterplot of Hematocrit versus Body Fat for female athletes. 
 
-```{r Figure6-15,fig.cap="(ref:fig6-15)",warning=F,message=F}
+```{r Figure6-15,fig.cap="(ref:fig6-15)"}
 aisR2 <- ais[-c(56,166), c("Ht","Hc","Bfat","Sex")]
 m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Results for Females 
 summary(m2)
@@ -1268,12 +1271,11 @@ temperature (degrees F), which had $\boldsymbol{r}=0.81$. The interpretations of
 different parts of the regression model follow the least squares estimation 
 provided by ``lm``:
 
-\newpage
-
 ```{r}
 fire1 <- lm(loghectares~Temperature, data=mtfires)
 summary(fire1)
 ```
+
 
 * Regression Equation (Completely Specified):
 
@@ -1493,10 +1495,14 @@ response unexplained. Note that we were careful about using the scaling of the
 response variable (log(area burned)) in the interpretation -- this is because we
 would get a much different answer if area burned vs temperature was considered. 
 
+\small
+
 ```{r}
 fire1 <- lm(loghectares~Temperature, data=mtfires)
 summary(fire1)
 ```
+
+\normalsize
 
 \indent For the model for female Australian athletes that used *Body fat* to 
 explain *Hematocrit*, the estimated regression model was
@@ -1508,10 +1514,14 @@ regression model with over 97% of the variation in *Hematocrit* unexplained
 by this model. The scatterplot showed a fairly weak relationship but this
 provides numerical and interpretable information that drives that point home. 
 
+\small
+
 ```{r}
 m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) #Results for Females
 summary(m2)
 ```
+
+\normalsize
 
 ## Outliers: leverage and influence	{#section6-9}
 
@@ -1850,7 +1860,9 @@ examples:
         par(mfrow=c(2,2))
         plot(m1, add.smooth=F, main="Beers vs BAC")
         ```
-        
+    
+    \newpage
+    
     * Linearity, constant variance from Residuals vs Fitted:
     
         * We previously have identified a potentially influential 
@@ -1989,9 +2001,9 @@ waiting time based on duration of prior eruption.
 ```{r Figure6-24,fig.cap="(ref:fig6-24)",fig.height=4,fig.width=6}
 require(MASS)
 data(geyser)
-geyser<-as.tibble(geyser)
-G2 <- tibble(Waiting=geyser$waiting[-1],
-                 Duration=geyser$duration[-299]) #Aligns the duration with time to next eruption
+geyser <- as.tibble(geyser)
+#Aligns the duration with time to next eruption
+G2 <- tibble(Waiting=geyser$waiting[-1], Duration=geyser$duration[-299]) 
 scatterplot(Waiting~Duration, data=G2, spread=F)
 ```
 
@@ -2088,7 +2100,7 @@ look similar. People still like to distinguish among the different types of
 situations, but the underlying ***linear models*** are actually exactly the 
 same...
 
-## Important R code	{#section6-13}
+## Summary of important R code	{#section6-13}
 
 The main components of the R code used in this chapter follow with the 
 components to modify in lighter and/or ALL CAPS text where ``y`` is a response variable, 
