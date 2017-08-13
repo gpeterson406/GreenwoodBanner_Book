@@ -365,7 +365,7 @@ technique called ***jittering*** to add a little noise^[Jittering typically
 involves adding random variability to each observation that
 is uniformly distributed in a range determined based on the spacing of the
 observation. This means that if you re-run the ``jitter`` function, the results will change. 
-For more details, type ``help(jitter)`` in the console in Rstudio.] to each observation so all the
+For more details, type ``help(jitter)`` in the console in RStudio.] to each observation so all the
 observations at each year value do not 
 plot as a single line. In Figure \@ref(fig:Figure2-3), the added tick marks 
 on the x-axis show the approximate locations of the original observations. 
@@ -818,7 +818,7 @@ diffmean(Years~PermutedAttr, data=Perm1)
 ```
 
 (ref:fig2-8) Boxplots of Years responses versus actual treatment groups and 
-permuted groups. Note how the responses are the same but that they are shuffled between the two groups differently in the permutated data set.
+permuted groups. Note how the responses are the same but that they are shuffled between the two groups differently in the permuted data set.
 
 
 ```{r Figure2-8, fig.cap="(ref:fig2-8)",echo=F, fig.width=7}
@@ -1489,7 +1489,7 @@ or not), we want to make the conclusions specific to the problem of interest.
 If we reject $H_0$, then we can conclude that there was sufficient evidence at 
 the $\alpha$-level that the null hypothesis is wrong (and the results point in 
 the direction of the alternative). If we fail to reject $H_0$ (FTR $H_0$), then 
-wecan conclude that there was insufficient evidence at the $\alpha$-level to say 
+we can conclude that there was insufficient evidence at the $\alpha$-level to say 
 that the null hypothesis is wrong. We are **NOT** saying that the null is 
 correct and we **NEVER** accept the null hypothesis. We just failed to find 
 enough evidence to say it's wrong. If we find sufficient evidence to reject the 
@@ -2192,7 +2192,7 @@ abline(v=quantiles$quantile, col="blue", lwd=3)
 
 \indent Although confidence intervals can exist without referencing hypotheses,
 we can 
-revisit our previous hypotheses and see waht this confidence interval tells
+revisit our previous hypotheses and see what this confidence interval tells
 us about the test of $H_0: \mu_\text{Unattr} = \mu_\text{Avg}$. This null 
 hypothesis is equivalent to testing $H_0: \mu_\text{Unattr} - \mu_\text{Avg} = 0$,
 that the difference 

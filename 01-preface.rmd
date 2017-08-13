@@ -264,7 +264,7 @@ from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
 You will have two downloading activities to complete before you can do anything
-more than read this book^[I recorded a video that walks through getting R and Rstudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching youtube for "How to install R and Rstudio".
+more than read this book^[I recorded a video that walks through getting R and Rstudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching YouTube for "How to install R and Rstudio".
 ]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that
@@ -414,7 +414,7 @@ this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
 directly into R that we will explore later.]. 
 
-The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or Rstudio. To get acccess to the packages, first "install" (basically
+The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or RStudio. To get access to the packages, first "install" (basically
 download) and then "load" the package. To install an R package, go to the **Packages** tab in the lower right panel of
 RStudio. Click on the **Install** button and then type in the name of the package in
 the box (here type in ``readr``). RStudio will try to auto-complete the package name
@@ -574,7 +574,7 @@ edit code -- then save the file as something like "MyFileName.R" in your preferr
 Saving your code will mean that you can return to where you
 were working last by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
-of code and hit the "Run" button^[You can also use Ctrl-R if you like hotkeys.] on the upper part of the panel. It will appear
+of code and hit the "Run" button^[You can also use Ctrl-R if you like hot keys.] on the upper part of the panel. It will appear
 in the console with results just like what you would obtain if you typed it
 after the command prompt and hit enter for each line. 
 
@@ -603,7 +603,7 @@ summarize the results of the study. The ``treadmill`` object is what R calls a
 ***tibble***^[Tibbles are R are objects that can contain both 
 categorical and quantitative variables on your $n$ subjects with a name for each
 variable that is also the name of each column in a matrix. Each subject is a 
-row of the data set. The name (supposedly) is due to the way *table* sounds in the accent of a particularly influential developer at Rstudio who is from New Zealand.] and contains columns corresponding to each variable in 
+row of the data set. The name (supposedly) is due to the way *table* sounds in the accent of a particularly influential developer at RStudio who is from New Zealand.] and contains columns corresponding to each variable in 
 the spreadsheet. Every
 function in R will involve specifying the variable(s) of interest and how you
 want to use them. To access a particular variable (column) in a tibble, you
@@ -789,7 +789,7 @@ All the previous results were created by running the R code and then copying the
 results from either the console or by copying the figure and then pasting the results into the typesetting program. There is another way
 to use RStudio where you can have it compile the results (both output and
 figures) directly into a document together with the code that generated it, 
-using what is called RMarkdown (http://shiny.rstudio.com/articles/rmarkdown.html). It adds some additional setup
+using what is called R Markdown (http://shiny.rstudio.com/articles/rmarkdown.html). It adds some additional setup
 complexity we want to avoid for now but is basically what we used to prepare this book. The main reason to mention this is that you will see a
 change in formatting of the R code and output from here forward as you will no
 longer see the command prompt (">") with the code. The output will be
@@ -813,7 +813,7 @@ Finally, when you are done with your work and attempt to exit out of RStudio, it
 ask you to save your workspace. ***DO NOT DO THIS!*** It will just create a cluttered workspace and could even cause you to get incorrect results.  If you
 save your R code (and edit it to only contain the parts of it that worked) via the script window, you can re-create any results by simply
 re-running that code. If you find that you have lots of "stuff" in your
-workspace because you accidently saved your workspace, just run ``rm(list = ls())``. It will delete all the data sets from your workspace. 
+workspace because you accidentally saved your workspace, just run ``rm(list = ls())``. It will delete all the data sets from your workspace. 
 
 ##Chapter summary {#section1-4}
 

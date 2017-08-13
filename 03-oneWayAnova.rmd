@@ -279,7 +279,7 @@ cell-means coding. Generally, this looks like ``lm(Y~X-1, data=datasetname).``
 Once we fit a model in R, the ``summary`` function run on the model provides a
 useful "summary" of the model coefficients and a suite of other potentially
 interesting information. For the moment, we will focus on the estimated model
-coefficeints, so only those lines are output. When fitting this version
+coefficients, so only those lines are output. When fitting this version
 of the One-Way ANOVA model, 
 you will find a row of output for each group relating the $\mu_j\text{'s}$.
 The output contains columns for an estimate (``Estimate``), standard error 
