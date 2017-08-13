@@ -46,6 +46,8 @@ The development of this text was initially supported with funding from Montana S
 
 This is Version 4.0 of the book. The newest version of the text was created by Greta Linse of Great Lines Writing and Consulting Services (https://www.greatlineswriting.com/) who ported the book into Rstudio's bookdown format and tried to edit and improve the writing in the text. Any remaining errors are the responsibility of Mark Greenwood. The first chapters of the book were developed during Fall 2013 and the text has continually evolved since its creation. In Version 4.0, we adopt "tibbles" and update some of our discussion of hypothesis testing to reflect the newest thinking in the statistics education community. As a field, we are transitioning from fixed alpha, null hypothesis significance testing, to graded interpretations of evidence available from p-values. This update tries to further refine the presentation of interpretations of hypothesis testing results.
 
+\newpage
+
 We have made every attempt to keep costs for the book as low as possible by making it possible for most pages to be printed in black and white. The printed text is available from the Montana State University Bookstore. The text (in full color and with dynamic links) is also available as a free digital download from Montana State University’s ScholarWorks repository at https://scholarworks.montana.edu/xmlui/handle/1/2999. 
 
 Enjoy your journey from introductory to intermediate statistics!
