@@ -48,9 +48,9 @@ GreenwoodBanner.pdf
 GreenwoodBanner.tex
 # Exceptions #
 ##############
-!pdf_cover.tex
+!cover.tex
 !titlepage.tex
-!pdf_cover.pdf
+!cover.pdf
 !titlepage.pdf
 *.pdf
 *.pdf
