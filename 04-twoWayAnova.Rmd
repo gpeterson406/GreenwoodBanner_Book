@@ -48,7 +48,7 @@ colFmtBold = function(x, color){
 
 ## Situation {#section4-1}
 
-\indent In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory
+In this chapter, we extend the One-Way ANOVA to situations with two factors or categorical explanatory
 variables in a method that is generally called the ***Two-Way ANOVA***. This 
 allows researchers to simultaneously study two variables that might
 explain variability in the responses and explore whether the impacts of one
@@ -90,7 +90,7 @@ sitting in the middle of the towel.
 
 ## Designing a two-way experiment and visualizing results	{#section4-2}
 
-\indent Ideally, we want to randomly assign the levels of each factor so that we can 
+Ideally, we want to randomly assign the levels of each factor so that we can 
 attribute causality to any detected effects and to reduce the chances of 
 *confounding*. Because there are two factors, we would need to design a random 
 assignment scheme to select the levels of both variables. For example, we could 
@@ -223,6 +223,8 @@ In the output, the first row contains summary information for the
 sample size in the ``n`` column, although here it rolled into a new set of 
 rows with the standard deviations of each combination. 
 
+\newpage
+
 ```{r}
 favstats(responses~brand+drops, data=pt)
 ```
@@ -327,7 +329,7 @@ complicated to summarize how each variable is affecting the response variable
 because their impacts change depending on the level of the other factor. And
 plots like the interaction plot provide us with useful information. 
 
-If the lines are not parallel, then
+\indent If the lines are not parallel, then
 focus in on comparing the levels of one variable as the other variable changes. 
 Remember that the definition of an interaction is that the differences among
 levels of one variable depends on the level of the other variable being
@@ -447,7 +449,7 @@ of the model to detect differences, in this case of an interaction.
 
 ## Two-Way ANOVA models and hypothesis tests	{#section4-3}
 
-\indent To assess interactions with two
+To assess interactions with two
 variables, we need to fully describe models for the additive and interaction
 scenarios and then develop a method for assessing evidence of the need for
 different aspects of the models. First, we need to define the notation for
@@ -471,7 +473,7 @@ Two-Way ANOVA model. We start with the ***Two-Way ANOVA interaction model***:
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \omega_{jk} + \varepsilon_{ijk},$$
 
-\noindent where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
+where $\alpha$ is the baseline group mean (for level 1 of A **and** level 1 of B),
 $\tau_j$ is the deviation for the ***main effect*** of A from the baseline
 for levels $2,\ldots,J$, $\gamma_k$ (gamma $k$) is the deviation for the main 
 effect of B from the baseline for levels $2,\ldots,K$, and $\omega_{jk}$ 
@@ -490,7 +492,7 @@ between them. The ***additive Two-Way model*** is
 
 $$y_{ijk} = \alpha + \tau_j + \gamma_k + \varepsilon_{ijk},$$
 
-\noindent where each component is defined as in the interaction model. The difference between
+where each component is defined as in the interaction model. The difference between
 the interaction and additive models is setting all the $\omega_{jk}\text{'s}$
 to 0 that are present in the interaction model. When we set parameters to 0 in
 models it removes them from the model. Setting parameters to 0 is how we will develop
@@ -661,7 +663,7 @@ model components, R presents them with a colon, ``:``, between the variable
 names.
 
 ```{r}
-m1<-lm(responses ~ brand*drops, data=pt)
+m1 <- lm(responses~brand*drops, data=pt)
 anova(m1)
 ```
 
@@ -690,7 +692,12 @@ model. To fit an additive model and not include an interaction, the model
 formula involves a "+" instead of a "``*``" between the explanatory variables. 
 
 ```{r}
-m2<-lm(responses~brand+drops, data=pt)
+m2 <- lm(responses~brand+drops, data=pt)
+```
+
+\newpage
+
+```{r}
 anova(m2)
 ```
 
@@ -703,8 +710,8 @@ $\text{SS}_{\text{Total}}$ is the same (20.6544). In the interaction model,
 $$\begin{array}{rl}
 \text{SS}_{\text{Total}} & = \text{SS}_{\text{brand}} + \text{SS}_{\text{drops}}
 + \text{SS}_{\text{brand:drops}} + \text{SS}_{\text{E}}\\
-& = 4.3322 + 4.8581 + 1.5801 + 9.8840.\\
-& = 20.6544\\
+& = 4.3322 + 4.8581 + 1.5801 + 9.8840\\
+& = 20.6544.\\
 \end{array}$$
 
 In the additive model, the variability that was attributed to the interaction term
@@ -815,7 +822,7 @@ plot(allEffects(m2))
 
 ## Guinea pig tooth growth analysis with Two-Way ANOVA	{#section4-4}
 
-\indent The effects of dosage and delivery method of ascorbic acid on Guinea Pig 
+The effects of dosage and delivery method of ascorbic acid on Guinea Pig 
 odontoblast growth was analyzed as a One-Way ANOVA in Section \@ref(section3-5)
 by assessing evidence of any difference in the
 means of any combinations of dosage method (Vit C capsule vs Orange Juice) and
@@ -843,7 +850,7 @@ intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2),
 ```{r eval=F}
 data(ToothGrowth)
 require(tibble)
-ToothGrowth<-as.tibble(ToothGrowth)
+ToothGrowth <- as.tibble(ToothGrowth)
 par(mfrow=c(1,2))
 beanplot(len~supp*dose, data=ToothGrowth, side="b", ylim=c(-5,40),
          main="Beanplot", col=list("white","orange"), xlab="Dosage",
@@ -884,8 +891,8 @@ model. The re-run of the ANOVA table provides the correct analysis and the
 expected $df$ for the two rows of output involving ``dosef``:
 
 ```{r}
-ToothGrowth$dosef<-factor(ToothGrowth$dose)
-TG2 <- lm(len ~ supp*dosef, data=ToothGrowth)
+ToothGrowth$dosef <- factor(ToothGrowth$dose)
+TG2 <- lm(len~supp*dosef, data=ToothGrowth)
 Anova(TG2)
 ```
 
@@ -933,6 +940,8 @@ tests and estimates for *Dose* and *Delivery method*.
     
         $\Leftrightarrow$ All $\omega_{jk}\text{'s}=0$.
     
+    \newpage
+
     * $H_A$: Interaction between *Delivery method* and *Dose* on odontoblast
     growth in population of guinea pigs 
     
@@ -1057,10 +1066,6 @@ plot(allEffects(TG2), grid=T, multiline=T, ci.style="bars",cex=1)
 
 ```{r Figure4-11,fig.cap="(ref:fig4-11)",echo=F,fig.height=5,fig.width=10}
 par(mfrow=c(1,1))
-#old.par <- par(mai=c(0.85,1,0.5,1))
-#intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
-#        cld=T, main="Interaction Plot with CLD",x.leg=2.5,y.leg=15,
-#        cex.main=1,cex.lab=0.75,cex.axis=0.75)
 intplot(len ~ supp*dose, data=ToothGrowth, col=c(1,2), cldshift=1,
         cld=T, main="Interaction Plot with CLD")
 ```
@@ -1152,7 +1157,7 @@ interest is present.
 require(faraway)
 data(debt)
 require(tibble)
-debt<-as.tibble(debt)
+debt <- as.tibble(debt)
 debt$incomegp <- factor(debt$incomegp)
 debt$cigbuy <- factor(debt$cigbuy)
 debtc <- na.omit(debt)
@@ -1179,6 +1184,8 @@ barely have enough information to proceed (the smallest $n_{jk}$ is 8 for
 income group 4 that buys cigarettes). We have a very unbalanced design
 with counts between 8 and 51 in the different combinations. 
 
+\newpage
+
 ```{r}
 tally(cigbuy~incomegp, data=debtc)
 ```
@@ -1194,7 +1201,7 @@ the assumptions to make sure we can trust this initial test.
 
 ```{r}
 require(car)
-debt1 <- lm(prodebt ~ incomegp*cigbuy, data=debtc)
+debt1 <- lm(prodebt~incomegp*cigbuy, data=debtc)
 Anova(debt1)
 ```
 
@@ -1228,11 +1235,13 @@ plot(debt1)
     population, given cigarette buying in model 
     
         $\Leftrightarrow$ All $\tau_j\text{'s} = 0$ in additive model. 
-    
+
     * $H_A$: Some difference in means for ``prodebt`` for income group in 
     population, given cigarette buying in model 
     
         $\Leftrightarrow$ Not all $\tau_j\text{'s} = 0$ in additive model. 
+    
+    \newpage
     
     * $H_0$: No difference in means for ``prodebt`` for cigarette 
     buying/not in population, given income group in model </span>
@@ -1264,6 +1273,8 @@ plot(debt1)
     
         * The QQ-Plot in Figure \@ref(fig:Figure4-14) does not suggest 
         a problem with this assumption. 
+
+\newpage
 
 3. **Calculate the test statistic for the two main effect tests.**
 
@@ -1320,8 +1331,6 @@ panel for income group and the right panel for buying cigarettes or not
 plot(allEffects(debt1r))
 ```
 
-\newpage
-
 \indent The estimated coefficients can also be
 interesting to interpret for the additive model. Here are the model summary coefficients:
 
@@ -1340,8 +1349,6 @@ $\hat{\gamma}_2=-0.106$ points for any income group, remember that this
 variable had a moderately
 large p-value in this model. The additive model-based estimates for all 
 six combinations can be found in Table \@ref(tab:Table4-3).
-
-\newpage
 
 (ref:tab4-3) Calculations to construct the estimates for all combinations
 of variables for the ``prodebt`` additive model.
@@ -1404,6 +1411,8 @@ intplot(jitter(fitted(debt1r))~incomegp*cigbuy,data=debtc,lwd=2,
         main="(b)",ylab="Mean of ProDebt",xlim=c(0.8,3),cex.leg=0.75)
 ```
 
+\newpage
+
 **In general, we proceed through the following steps in any 2-WAY ANOVA situation:**
 
 1. Make an interaction plot. 
@@ -1444,7 +1453,7 @@ hypothesis testing protocol should be engaged and a story based on the final res
 
 ## Pushing Two-Way ANOVA to the limit: Un-replicated designs	{#section4-6}
 
-\indent In some situations, it is too expensive
+In some situations, it is too expensive
 to replicate combinations of treatments and only one observation at each
 combination of the two explanatory variables, A and B, is possible. In these
 situations, even though we have information about all combinations of A and B, 
@@ -1538,7 +1547,6 @@ two brands lines cross noticeably suggesting non-parallel lines). So in this
 case, assuming no interaction is present is hard to justify. But if we proceed
 under this dangerous and untestable assumption, tests for the main effects can be developed. 
 
-\newpage
 
 ```{r}
 norep1 <- lm(responses~dropsf+brand, data=ptR)
@@ -1571,11 +1579,10 @@ from the interaction model to additive model, the variability explained by the
 interaction term is pushed into the error term, whether replication is
 available or not.
 
-\newpage
 
 ## Chapter summary	{#section4-7}
 
-\indent In this chapter, methods for handling two different categorical predictors 
+In this chapter, methods for handling two different categorical predictors 
 in the same model with a
 continuous response were developed. The methods build on techniques from
 Chapter \@ref(chapter3) for the One-Way ANOVA and there are connections 
@@ -1638,6 +1645,8 @@ then eventually incorporating both categorical and quantitative predictor
 variables. The methods in Chapter \@ref(chapter8) are actually quite similar 
 to those considered here, so the better you understand these models, the easier that material will be master. 
 
+\newpage
+
 ## Important R code	{#section4-8}
 
 The main components of R code used in this chapter follow with components to 
@@ -1661,7 +1670,7 @@ factor(`r colFmt("DATASETNAME","red")`&#36;`r colFmt("VARIABLENAME","red")`)**
     explanatory variable where the numerical codes represent levels of a
     categorical variable. 
     
-* **intplot(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
+* **intplot(`r colFmt("Y","red")`~`r colFmt("A","red")```*```r colFmt("B","red")`,
 data=`r colFmt("DATASETNAME","red")`)**
 
     * Download and install using: 
@@ -1671,7 +1680,7 @@ data=`r colFmt("DATASETNAME","red")`)**
     * Provides interaction plot.
     
 * **`r colFmt("INTERACTIONMODELNAME","red")` ``<-`` 
-lm(`r colFmt("Y","red")`~`r colFmt("A","red")`*`r colFmt("B","red")`,
+lm(`r colFmt("Y","red")`~`r colFmt("A","red")```*```r colFmt("B","red")`,
 data=`r colFmt("DATASETNAME","red")`)**
 
     * Fits the interaction model with main effects for A and B and an 
@@ -1715,7 +1724,6 @@ data=`r colFmt("DATASETNAME","red")`)**
 
     * Plots the results from the estimated model.
 
-\newpage
 
 ## Practice problems	{#section4-9}
 
