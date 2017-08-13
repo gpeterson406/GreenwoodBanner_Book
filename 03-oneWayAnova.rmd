@@ -89,7 +89,6 @@ require(heplots)
 require(mosaic)
 data(MockJury)
 par(mfrow=c(1,2))
-#old.par <- par(mar=c(0.75,1,0.5,0.5))
 boxplot(Years~Attr,data=MockJury)
 require(beanplot)
 beanplot(Years~Attr,data=MockJury,log="",col="bisque",method="jitter")
@@ -414,7 +413,7 @@ estimate the grand or overall mean.
 
 ## One-Way ANOVA Sums of Squares, Mean Squares, and F-test {#section3-3}
 
-\indent The previous discussion showed two ways of parameterizing models for the 
+The previous discussion showed two ways of parameterizing models for the 
 One-Way ANOVA model and getting estimates from output but still hasn't 
 addressed how to assess evidence related to whether the observed differences 
 in the means among the groups is "real". In this section, we develop what is 
@@ -454,19 +453,19 @@ in columns of plot.
 
 ```{r Figure3-3, fig.cap="(ref:fig3-3)", echo=F,fig.width=6}
 set.seed(98876)
-e1<-rnorm(40)
-x1<-rep(c("A","B","C","D"),10)
-mean1<-rep(c(5,6,4,4.5),10)
-mean2<-rep(c(13,7,10,4),10)
+e1 <- rnorm(40)
+x1 <- rep(c("A","B","C","D"),10)
+mean1 <- rep(c(5,6,4,4.5),10)
+mean2 <- rep(c(13,7,10,4),10)
 
-y1<-0.5*e1+mean1
-y2<-2*e1+mean1
+y1 <- 0.5*e1+mean1
+y2 <- 2*e1+mean1
 
-y3<-0.5*e1+mean2
-y4<-2*e1+mean2
+y3 <- 0.5*e1+mean2
+y4 <- 2*e1+mean2
 
 par(mfrow=c(2,2))
-old.par<- par(mai=c(0.5,0.3,0.3,0.3))
+old.par <-  par(mai=c(0.5,0.3,0.3,0.3))
 beanplot(y2~x1,ylab="",main="Scenario 1",ylim=c(0,20),method="jitter",col="orange")
 beanplot(y1~x1,ylab="",main="Scenario 2",ylim=c(0,20),method="jitter",col="red")
 
@@ -536,7 +535,7 @@ what is called an ***ANOVA table***. The ANOVA table is generated using the
 ``anova`` function applied to the reference-coded model, ``lm2`` :
 
 ```{r}
-lm2<-lm(Years~Attr, data=MockJury)
+lm2 <- lm(Years~Attr, data=MockJury)
 anova(lm2)
 ```
 
@@ -554,35 +553,35 @@ the $\textbf{SS}_{\textbf{Total}} \mathbf{=} \textbf{SS}_\textbf{A} \mathbf{+} \
 ```{r echo=F}
 #Permutation approaches to an F-test:
 set.seed(4321)
-orig_anova <- anova(lm(Years~Attr,data=MockJury))
-orig_SSA <- round(orig_anova[1,2],1)
-orig_SSE <- round(orig_anova[2,2],1)
+orig_anova <- anova(lm(Years~Attr, data=MockJury))
+orig_SSA <- round(orig_anova[1,2], 1)
+orig_SSE <- round(orig_anova[2,2], 1)
 orig_SST <- orig_SSA + orig_SSE
-orig_pval <- round(orig_anova[1,5],3)
-MockJuryP1<-MockJury
-MockJuryP1$Attr<-shuffle(MockJuryP1$Attr)
-MJP1_anova <- anova(lm(Years~Attr,data=MockJuryP1))
-MJP1_SSA <- round(MJP1_anova[1,2],1)
-MJP1_SSE <- round(MJP1_anova[2,2],1)
+orig_pval <- round(orig_anova[1,5], 3)
+MockJuryP1 <- MockJury
+MockJuryP1$Attr <- shuffle(MockJuryP1$Attr)
+MJP1_anova <- anova(lm(Years~Attr, data=MockJuryP1))
+MJP1_SSA <- round(MJP1_anova[1,2], 1)
+MJP1_SSE <- round(MJP1_anova[2,2], 1)
 MJP1_SST <- MJP1_SSA + MJP1_SSE
-MockJuryP2<-MockJury
-MockJuryP2$Attr<-shuffle(MockJuryP2$Attr)
-MJP2_anova <- anova(lm(Years~Attr,data=MockJuryP2))
-MJP2_SSA <- round(MJP2_anova[1,2],1)
-MJP2_SSE <- round(MJP2_anova[2,2],1)
+MockJuryP2 <- MockJury
+MockJuryP2$Attr <- shuffle(MockJuryP2$Attr)
+MJP2_anova <- anova(lm(Years~Attr, data=MockJuryP2))
+MJP2_SSA <- round(MJP2_anova[1,2], 1)
+MJP2_SSE <- round(MJP2_anova[2,2], 1)
 MJP2_SST <- MJP2_SSA + MJP2_SSE
-MockJuryP3<-MockJury
-MockJuryP3$Attr<-shuffle(MockJuryP3$Attr)
-MJP3_anova <- anova(lm(Years~Attr,data=MockJuryP3))
-MJP3_SSA <- round(MJP3_anova[1,2],1)
-MJP3_SSE <- round(MJP3_anova[2,2],1)
+MockJuryP3 <- MockJury
+MockJuryP3$Attr <- shuffle(MockJuryP3$Attr)
+MJP3_anova <- anova(lm(Years~Attr, data=MockJuryP3))
+MJP3_SSA <- round(MJP3_anova[1,2], 1)
+MJP3_SSE <- round(MJP3_anova[2,2], 1)
 MJP3_SST <- MJP3_SSA + MJP3_SSE
 minSSA <- min(MJP1_SSA, MJP2_SSA, MJP3_SSA)
 maxSSA <- max(MJP1_SSA, MJP2_SSA, MJP3_SSA)
 ```
 
 ```{r Figure3-4, fig.cap="(ref:fig3-4)",echo=F,fig.width=6}
-Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]
+Tobs <- anova(lm(Years~Attr, data=MockJury))[1,2]
 par(mfrow=c(2,2))
 old.par <- par(mai=c(0.5,0.3,0.3,0.3))
 require(gplots)
@@ -664,13 +663,14 @@ but the different amounts of variation associated with the means (``SSA``) or th
 errors (``SSE``) changes in permutation.
 
 \indent To do a permutation test, we need to be able to calculate and extract the 
-$\text{SS}_A$ value. In the ANOVA table, it is the second number in the first row;  we can use the bracket, ``[,]``, referencing to extract that 
+$\text{SS}_A$ value. In the ANOVA table, it is the second number in the first row;
+we can use the bracket, ``[,]``, referencing to extract that 
 number from the ANOVA table that ``anova`` produces with 
 ``anova(lm(Years~Attr, data=MockJury))[1, 2]``. We'll store the observed value
 of $\text{SS}_A$ in ``Tobs``, reusing some ideas from Chapter \@ref(chapter2). 
 
 ```{r}
-Tobs <- anova(lm(Years~Attr,data=MockJury))[1,2]; Tobs
+Tobs <- anova(lm(Years~Attr, data=MockJury))[1,2]; Tobs
 ```
 
 The following code performs the permutations ``B=1,000`` times using the 
@@ -684,10 +684,10 @@ value of $\text{SS}_A$ provides an estimate of the p-value.
 
 ```{r Figure3-5,fig.cap="(ref:fig3-5)",echo=F,fig.height=5,fig.width=10}
 par(mfrow=c(1,2))
-B<- 1000
-Tstar<-matrix(NA,nrow=B)
+B <- 1000
+Tstar <- matrix(NA,nrow=B)
 for (b in (1:B)){
-  Tstar[b]<-anova(lm(Years~shuffle(Attr),data=MockJury))[1,2]
+  Tstar[b] <- anova(lm(Years~shuffle(Attr),data=MockJury))[1,2]
   }
 hist(Tstar,labels=T,ylim=c(0,550))
 abline(v=Tobs,col="red",lwd=3)
@@ -717,11 +717,11 @@ as before, except only for the area to the right of the observed result. We know
 that ``Tobs`` will always be positive so no absolute values are required here. 
 
 ```{r}
-pdata(Tstar,Tobs,lower.tail=F)
+pdata(Tstar, Tobs, lower.tail=F)
 ```
 
 ```{r echo=F}
-x <- pdata(Tstar,Tobs,lower.tail=F)
+x <- pdata(Tstar, Tobs, lower.tail=F)
 ```
 
 This provides a permutation-based p-value of `r x` and suggests marginal evidence
@@ -765,7 +765,7 @@ means around the grand mean.
 the variation of the errors around the group means.
 
 \indent These results are put together using a ratio to define the ***ANOVA F-statistic***
-(also called the ***F-ratio*** ) as 
+(also called the ***F-ratio*** ) as: 
 
 $$F=\text{MS}_A/\text{MS}_{\text{Error}}.$$
 
@@ -784,8 +784,6 @@ square was used; $F$-distributions are denoted by their degrees of freedom using
 the convention of $F$ (*numerator df*, *denominator df*). Some examples of 
 different $F$-distributions are displayed for you in Figure \@ref(fig:Figure3-6).
 
-\newpage 
-
 \indent The characteristics of the F-distribution can be summarized as:
 
 * Right skewed,
@@ -803,7 +801,7 @@ is $F(6, 111)$. P-values are found using the areas to the right of the observed
 $F$-statistic value in all F-distributions. 
 
 ```{r Figure3-6,fig.cap="(ref:fig3-6)",echo=F,fig.height=4.25}
-x<-seq(from=0,to=6,length.out=50)
+x <- seq(from=0,to=6, length.out=50)
 par(mfrow=c(2,2))
 old.par <- par(mai=c(0.5,0.3,0.3,0.3))
 plot(x,df(x,df1=2,df2=111),type="l",ylab="Density",xlab="F",
@@ -820,7 +818,7 @@ plot(x,df(x,df1=6,df2=111),type="l",ylab="Density",xlab="F",
 ```
 
 \indent Now we are ready to discuss an ANOVA table since we know about each of its 
-components. Note the general format of the ANOVA table is in Table \@ref(tab:tab3-2)^[Make sure you can work 
+components. Note the general format of the ANOVA table is in Table \@ref(tab:Table3-2)^[Make sure you can work 
 from left to right and up and down to fill in the ANOVA table given just the 
 necessary information to determine the other components -- there is always a 
 question like this on the exam...]:
@@ -841,8 +839,6 @@ colnames(x) <- columnHeaders
 pandoc.table(x, keep.line.breaks = TRUE,caption="(\\#tab:Table3-2) (ref:tab3-2)",
              split.table = Inf, justify="left")
 ```
-
-\newpage
 
 The table is oriented to help you reconstruct the $F$-ratio from each of its
 components. The output from R is similar although it does not provide the last row 
@@ -886,7 +882,7 @@ output:
 ```{r}
 Tobs <- anova(lm(Years~Attr, data=MockJury))[1,4]; Tobs
 B <- 1000
-Tstar <- matrix(NA,nrow=B)
+Tstar <- matrix(NA, nrow=B)
 for (b in (1:B)){
   Tstar[b] <- anova(lm(Years~shuffle(Attr), data=MockJury))[1,4]
 }
@@ -937,12 +933,12 @@ situations, the correspondence will not be quite so close.
 
 ```{r Figure3-8,fig.cap="(ref:fig3-8)",echo=F,fig.height=3}
 par(mfrow=c(1,1))
-plot(density(Tstar),xlab="F-values",ylab="Density",
+plot(density(Tstar), xlab="F-values", ylab="Density",
      main="Comparison of permutation and F(2,111) distributions",
-     lwd=2,xlim=c(0,9),cex.main=0.75)
-x<-seq(from=0,to=9,length.out=50)
-lines(x,df(x,df1=2,df2=111),col="red",lwd=2,lty=2)
-legend("right",legend=c("Permutation distribution","F(2,111)"),col=c("black","red"),lty=c(1,2),lwd=2,cex=0.5)
+     lwd=2, xlim=c(0,9), cex.main=0.75)
+x <- seq(from=0,to=9, length.out=50)
+lines(x, df(x,df1=2,df2=111), col="red", lwd=2, lty=2)
+legend("right", legend=c("Permutation distribution","F(2,111)"), col=c("black","red"), lty=c(1,2), lwd=2, cex=0.5)
 ```
 
 \indent So how can we rectify this result ($\text{p-value}\approx 0.06$) and the 
@@ -956,14 +952,14 @@ result may lose some of its luster. In other words, if we consider the suite of
 three pair-wise differences (and the tests) implicit in comparing all of them, 
 we may need stronger evidence in the most different pair than a p-value of 0.033 to suggest overall differences. In this situation, the *Beautiful* and *Average* 
 groups are not that different from each other so their difference does not 
-contribute much to the overall $F$-test. In Section \@ref(section3-5), we will 
+contribute much to the overall $F$-test. In Section \@ref(section3-6), we will 
 revisit this topic and consider a method that is
 statistically valid for performing all possible pair-wise comparisons that is also
 consistent with our overall test results. 
 
 ## ANOVA model diagnostics including QQ-plots {#section3-4}
 
-\indent The requirements for a One-Way ANOVA $F$-test are similar to those discussed in 
+The requirements for a One-Way ANOVA $F$-test are similar to those discussed in 
 Chapter \@ref(chapter2), except that there are now $J$ groups instead of only 2.
 Specifically, the linear model assumes:
 
@@ -1019,7 +1015,7 @@ violation of the constant variance assumption. Remember that some variation
 across the groups is expected and is OK, but large differences in spreads are problematic for all the procedures that involve linear models. When discussing 
 these results, you want to discuss how clearly the differences in variation are 
 and whether that *shows a clear violation of the assumption* of equal variance 
-for all observations. Like in hypothesis testing, you can't prove that you can never prove that you've 
+for all observations. Like in hypothesis testing, you can never prove that you've 
 met assumptions based on a plot "looking OK", but you can say that there is no 
 clear evidence that the assumption is violated! 
 
@@ -1152,7 +1148,9 @@ variability in the results. The opposite pattern with the left tail above the
 line and the right tail below the line suggests less spread (***lighter-tailed***)
 than a normal as in Figure \@ref(fig:Figure3-12)(g) and (h). This pattern is
 relatively harmless and you can proceed with methods that assume normality safely 
-as they will just be a little conservative. For any of the patterns, you would not a potential violation of the normality assumption and then proceed to describe the type of violation and how clear or extreme it seems to be.
+as they will just be a little conservative. For any of the patterns, you would 
+note a potential violation of the normality assumption and then proceed to 
+describe the type of violation and how clear or extreme it seems to be.
 
 (ref:fig3-12) QQ-plots and density curves of four simulated distributions with
 different shapes. 
@@ -1162,21 +1160,21 @@ different shapes.
 require(car)
 par(mfrow=c(4,2))
 #Right skew
-y1<-scale(rf(75,df1=3,df2=8))
+y1 <- scale(rf(75,df1=3,df2=8))
 qqPlot(y1,main="(a) QQ-Plot of y1",envelope=F,pch=19,cex=1.3)
 plot(density(y1),xlab="y1",ylab='Density',main="(b) Density plot of y1",col="blue",xlim=c(-6.5,6.5))
 #Left Skew
-y2<-scale(-rf(75,df1=3,df2=8))
+y2 <- scale(-rf(75,df1=3,df2=8))
 qqPlot(y2,main="(c) QQ-Plot of y2",envelope=F,pch=19,cex=1.3)
 plot(density(y2),xlab="y2",ylab='Density',main="(d) Density plot of y2",col="blue",xlim=c(-6.5,6.5))
 
 #t(2)
-y3<-scale(rt(75,df=4))
+y3 <- scale(rt(75,df=4))
 qqPlot(y3,main="(e) QQ-Plot of y3",envelope=F,pch=19,cex=1.3)
 plot(density(y3),xlab="y3",ylab='Density',main="(f) Density plot of y3",col="blue",xlim=c(-6.5,6.5))
 
 #Uniform
-y4<-scale(runif(75,0,1))
+y4 <- scale(runif(75,0,1))
 qqPlot(y4,main="(g) QQ-Plot of y4",envelope=F,pch=19,cex=1.3)
 plot(density(y4),xlab="y4",ylab='Density',main="(h) Density plot of y4",col="blue",xlim=c(-6.5,6.5))
 ```
@@ -1198,13 +1196,13 @@ par(mfrow=c(2,2))
 old.par <- par(mai=c(0.75,0.5,0.5,0.5))
 #One normal example
 
-y5<-scale(rnorm(75))
+y5 <- scale(rnorm(75))
 qqPlot(y5,main="(i) QQ-Plot of y5",envelope=F,pch=19,cex=1.3)
 plot(density(y5),xlab="y5",ylab='Density',main="(j) Density plot of y5",col="blue",xlim=c(-6.5,6.5))
 
 
 #Another normal example
-y6<-scale(rnorm(75))
+y6 <- scale(rnorm(75))
 qqPlot(y6,main="(k) QQ-Plot of y6",envelope=F,pch=19,cex=1.3)
 plot(density(y6),xlab="y6",ylab='Density',main="(l) Density plot of y6",col="blue",xlim=c(-6.5,6.5))
 ```
@@ -1271,13 +1269,13 @@ observations in the data set, the counts in ``supp`` (supplement type) and
 ```{r}
 data(ToothGrowth) #Available in Base R
 require(tibble)
-ToothGrowth<-as.tibble(ToothGrowth) #Convert data.frame to tibble
+ToothGrowth <- as.tibble(ToothGrowth) #Convert data.frame to tibble
 require(mosaic)
 tally(~supp, data=ToothGrowth) #Supplement Type (VC or OJ)
 tally(~dose, data=ToothGrowth) #Dosage level
 
 #Creates a new variable Treat with 6 levels
-ToothGrowth$Treat<-with(ToothGrowth, interaction(supp, dose)) 
+ToothGrowth$Treat <- with(ToothGrowth, interaction(supp, dose)) 
 
 #New variable that combines supplement type and dosage
 tally(~Treat, data=ToothGrowth) 
@@ -1363,7 +1361,7 @@ start. We will use a 5% significance level.
         the other diagnostic plots to make an overall assessment. 
 
         ```{r Figure3-15,fig.cap="Diagnostic plots for the odontoblast growth model.",fig.height=5,fig.width=8}
-        m2<-lm(len~Treat,data=ToothGrowth)
+        m2 <- lm(len~Treat, data=ToothGrowth)
         par(mfrow=c(2,2))
         plot(m2,pch=16)
         ```
@@ -1375,8 +1373,9 @@ start. We will use a 5% significance level.
         with the smallest fitted value but the spread of the groups looks fairly similar in
         this alternative scaling.
         
-        * Put together, the evidence for non-constant variance is not that strong and we can
-        proceed comfortable that there is at least not a major problem with this assumption. 
+        * Put together, the evidence for non-constant variance is not that strong 
+        and we can proceed comfortably that there is at least not a major problem 
+        with this assumption. 
         
     * Normality of residuals:
     
@@ -1416,7 +1415,7 @@ start. We will use a 5% significance level.
     
     
     ```{r Figure3-16, fig.cap="Histogram and density curve of permutation distribution for $F$-statistic for odontoblast growth data. Observed test statistic in bold, vertical line at 41.56."}
-    Tobs <- anova(lm(len~Treat,data=ToothGrowth))[1,4]; Tobs
+    Tobs <- anova(lm(len~Treat, data=ToothGrowth))[1,4]; Tobs
     par(mfrow=c(1,2))
     B <- 1000
     Tstar <- matrix(NA, nrow=B)
@@ -1536,7 +1535,7 @@ plot(allEffects(m2))
 
 \sectionmark{Multiple (pair-wise) comparisons using Tukey's HSD and CLD}
 
-\indent With evidence that the true means are likely not all equal, many researchers 
+With evidence that the true means are likely not all equal, many researchers 
 want to know which groups show evidence of differing from one another. This 
 provides information on the source of the overall difference that was 
 detected and detailed information on which groups differed from one another. 
@@ -1598,8 +1597,8 @@ second data set. This also has problems but the only way to develop an understan
 increases. Dashed line indicates 0.05. 
 
 ```{r Figure3-18, fig.cap="(ref:fig3-18)",echo=F,warning=F,message=F}
-m<-1:100
-pr<-1-.95^m
+m <- 1:100
+pr <- 1-.95^m
 plot(m,pr,type="l",col="blue",xlab="# of Tests",ylab="Probability of at least one Type I error",lwd=2)
 abline(h=.05,lty=2,col="red")
 ```
@@ -1668,7 +1667,7 @@ interval, then we reject $H_0$ and have evidence *at the specified family-wise s
 level* of a difference for that pair. You will see a switch to using the
 word "detection" to describe rejected null hypotheses of no difference as it
 can help to compactly write up these results. The following code provides the numerical
-and graphical^[The plot of results usually contains all the labels of groups but if  the labels are long or there many groups, sometimes the row labels are hard to see  even with re-sizing the plot to make it taller in RStudio. The numerical output is
+and graphical^[The plot of results usually contains all the labels of groups but if the labels are long or there many groups, sometimes the row labels are hard to see  even with re-sizing the plot to make it taller in RStudio. The numerical output is
 useful as a guide to help you read the plot.] results of applying Tukey's HSD
 to the linear model for the Guinea Pig data:
 
@@ -1755,7 +1754,7 @@ letter display.
 
 ```{r Figure3-20, fig.cap="(ref:fig3-20)",echo=F,fig.width=10,fig.height=6}
 old.par <- par(mai=c(1,1,1,1))
-beanplot(len~Treat,data=ToothGrowth,log="",col="white",method="jitter")
+beanplot(len~Treat, data=ToothGrowth, log="", col="white", method="jitter")
 text(c(2),c(10),"a",col="blue",cex=1.5)
 text(c(1,4),c(15,18),"b",col="red",cex=1.5)
 text(c(3,5,6),c(25,28,28),"c",col="green",cex=1.5)
@@ -1780,7 +1779,7 @@ problem are also possible, but will not be considered here.
 
 ## Pair-wise comparisons for Prisoner Rating data {#section3-7}
 
-\indent In our previous work with the prisoner rating data, the overall ANOVA test
+In our previous work with the prisoner rating data, the overall ANOVA test
 provided only marginal evidence of some difference in the true means across the
 three groups with a p-value=0.067. Tukey's HSD does not require you 
 to find a small p-value from your overall $F$-test to employ the methods 
@@ -1840,6 +1839,11 @@ significance level.
 
 ```{r}
 confint(Tm2, level=0.9)
+```
+
+\newpage
+
+```{r}
 cld(Tm2, level=0.1)
 ```
 
@@ -1885,7 +1889,7 @@ text(c(2), c(5.1),"a", col="green", cex=1.5)
 text(c(3), c(6.8),"b", col="red", cex=1.5)
 ```
 
-## Chapter Summary {#section3-8}
+## Chapter summary {#section3-8}
 
 In this chapter, we explored methods for comparing a quantitative response across 
 $J$ groups ($J \ge 2$), with what is called the One-Way ANOVA procedure. The initial 
@@ -1982,7 +1986,7 @@ load the data set and learn more about the study, use the following code:
 require(multcomp)
 data(cholesterol)
 require(tibble)
-cholesterol<-as.tibble(cholesterol)
+cholesterol <- as.tibble(cholesterol)
 help(cholesterol)
 ```
 
