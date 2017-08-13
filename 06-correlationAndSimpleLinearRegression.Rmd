@@ -927,9 +927,14 @@ detectable in the story because (1) it was randomly assigned to subjects and
 (2) basic science supports beer consumption amount being an explanatory
 variable for *BAC*. In some situations, this will not be so clear, but look for
 random assignment or scientific logic to guide your choices of variables as
-explanatory or response^[Even with clear scientific logic, we sometimes make choices to flip the model directions to facilitate different types of analyses. In Vsevolozhskaya et al. (2014) we looked at genomic differences based on obesity groups, even though we were really interested in exploring how gene-level differences explained differences in obesity.]. Regression lines are actually provided by default in
-the ``scatterplot`` function with the ``reg.line=T`` option or just omitting
-``reg.line=F`` from the previous versions of the code since it is a default option to provide the lines. 
+explanatory or response^[Even with clear scientific logic, we sometimes make choices
+to flip the model directions to facilitate different types of analyses. In 
+@Vsevol2014 we looked at genomic differences based on obesity groups, even 
+though we were really interested in exploring how gene-level differences 
+explained differences in obesity.]. Regression lines are actually provided by 
+default in the ``scatterplot`` function with the ``reg.line=T`` option or just 
+omitting ``reg.line=F`` from the previous versions of the code since it is a 
+default option to provide the lines. 
 
 (ref:fig6-13) Scatterplot with estimated regression line for the *Beers* and 
 *BAC* data. Horizontal dashed lines for the predicted BAC for 4 and 5 beers consumed.
