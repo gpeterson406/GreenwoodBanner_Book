@@ -3611,7 +3611,7 @@ that are important but were "hiding" when both were included in the model.
 
 \newpage
 
-## Important R code	{#section8-16}
+## Summary of important R code	{#section8-16}
 
 \indent There is very little "new" R code in this chapter since all these methods were 
 either used in the ANOVA or SLR chapters. The models are more complicated but 

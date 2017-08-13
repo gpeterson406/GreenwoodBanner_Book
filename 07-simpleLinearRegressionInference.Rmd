@@ -2077,7 +2077,7 @@ the results are being interpreted on.
 
 \newpage
 
-## Important R code {#section7-9}
+## Summary of important R code {#section7-9}
 
 The main components of the R code used in this chapter follow with the
 components to modify in lighter and/or ALL CAPS text where ``y`` is a response variable, ``x`` is an
