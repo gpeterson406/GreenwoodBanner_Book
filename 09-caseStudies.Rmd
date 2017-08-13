@@ -18,6 +18,7 @@ library(pander)
 require(mosaic)
 library(knitr)
 library(readr)
+require(tibble)
 knitr::opts_chunk$set(cache = T,fig.height=3.5,fig.width=6,fig.pos='HT',warning=F,
                       message=F)
 options(show.signif.stars = FALSE)
@@ -682,7 +683,7 @@ row5 <- c(cell51,0,0,2,-23.956,51.9,18.6)
 row6 <- c(cell61,0.0048,-0.0366,3,-23.893,53.8,20.5)
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6),ncol = 7, byrow = T)
-m <- as.tibble(x)
+m <- as.data.frame(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table9-1) (ref:tab9-1)",
              split.table = 300,

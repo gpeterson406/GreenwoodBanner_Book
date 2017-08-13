@@ -16,6 +16,7 @@ library(pander)
 require(readr)
 require(mosaic)
 library(knitr)
+require(tibble)
 knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT',warning=F,
                       message=F)
 options(show.signif.stars = FALSE)
@@ -1148,7 +1149,7 @@ row6 <- c("$-1$","$y^{-1}=1/y$","for ratios")
 row7 <- c("$-2$","$y^{-2}=1/y^2$","seldom used")
 
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=3,byrow=T)
-m <- as.tibble(x)
+m <- as.data.frame(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table7-1) (ref:tab7-1)",
              split.table = 300, justify="left")

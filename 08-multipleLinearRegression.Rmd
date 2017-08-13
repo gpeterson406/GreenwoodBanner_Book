@@ -16,6 +16,7 @@ library(pander)
 require(mosaic)
 library(knitr)
 library(readr)
+require(tibble)
 knitr::opts_chunk$set(cache = F,fig.height=3.5,fig.width=6,fig.pos='HT',
                       message=F,warning=F)
 options(show.signif.stars = FALSE)
@@ -1124,7 +1125,7 @@ row5 <- c("SD $\\sim$ Elevation + Max.Temp",2,0.8495,0.8344,1)
 row6 <- c("SD $\\sim$ Min.Temp + Max.Temp",2,0.6308,0.5939,6)
 row7 <- c("SD $\\sim$ Elevation + Min.Temp + Max.Temp",3,0.8535,0.8304,2)
 x <- matrix(c(row1,row2,row3,row4,row5,row6,row7),ncol=5,byrow=T)
-m <- as.tibble(x)
+m <- as.data.frame(x)
 colnames(m) <- columnHeaders
 pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table8-1) (ref:tab8-1)",
              split.table = 300,
@@ -2302,12 +2303,11 @@ indicators stay at 0.
 
 
 ```{r echo=F}
-require(pander)
 Headache$treatment<-factor(Headache$treatment)
 head1<-lm(du2~du1+treatment,data=Headache)
 dummies<-model.matrix(head1)[,c(3:5)]
 colnames(dummies)<-c("I_T2", "I_T3","I_Control")
-res1<-as.tibble(Treatment=Headache$treatment,dummies)[1:17,]
+res1<-as.data.frame(Treatment=Headache$treatment,dummies)[1:17,]
 #res1
 emphasize.strong.rows(c(1,2,7,16))
 pander(res1)

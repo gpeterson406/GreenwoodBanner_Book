@@ -1770,7 +1770,7 @@ Anova(m1)
 plot(m1, which=2)
 ```
 
-\item One way to get around the normality assumption is to use a method 
+\indent One way to get around the normality assumption is to use a method 
 that does not assume the responses
 follow a normal distribution. If we ***bin*** or cut the quantitative response
 variable into a set of ordered categories and apply a Chi-square test, we can
