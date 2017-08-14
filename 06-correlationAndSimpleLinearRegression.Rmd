@@ -1206,7 +1206,7 @@ abline(v=0.01796,col="red")
 
 \indent Sometimes it is helpful to have a
 go at finding the estimates yourself. If you install and load the ``tigerstats``
-[@R-tigerstats] and ``manipulate`` [@R-manipulate] packages in R-studio 
+[@R-tigerstats] and ``manipulate`` [@R-manipulate] packages in RStudio 
 and then run ``FindRegLine()``, you get
 a chance to try to find the optimal slope and intercept for a fake data set. 
 Click on the "sprocket" icon in the upper left of the plot and you will see

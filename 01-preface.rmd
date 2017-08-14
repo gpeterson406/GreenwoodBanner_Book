@@ -264,7 +264,7 @@ from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
 You will have two downloading activities to complete before you can do anything
-more than read this book^[I recorded a video that walks through getting R and Rstudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching YouTube for "How to install R and Rstudio".
+more than read this book^[I recorded a video that walks through getting R and RStudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching YouTube for "How to install R and RStudio".
 ]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
 and click on the "**Download R for...**" button that

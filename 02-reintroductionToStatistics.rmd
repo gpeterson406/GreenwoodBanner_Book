@@ -179,7 +179,7 @@ package called ``heplots`` [@R-heplots] contains a data set called ``MockJury``
 that contains the results of the study. We also rely on the R package called 
 ``mosaic`` [@R-mosaic] that was introduced previously. First (but only once), 
 you need to install both packages, which can
-be done either using the Packages tab in the lower right panel of R-studio or
+be done either using the Packages tab in the lower right panel of RStudio or
 using the ``install.packages`` function with quotes around the package name:
 
 ```r
