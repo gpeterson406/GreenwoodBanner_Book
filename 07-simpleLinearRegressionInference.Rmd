@@ -65,7 +65,10 @@ a random variable is statistically denoted as $E(y_i)$, the
 response variable in a simple linear model is specified by 
 $E(y_i) = \mu_{y_i} = \beta_0 + \beta_1x_i$. This uses the true regression line
 to define the model for the mean of the responses as a function of the value of
-the explanatory variable^[We can also write this as $E(y_i|x_i) = \mu\{y_i|x_i\} = \beta_0 + \beta_1x_i, which is the notation you will see if you continue into the *Methods of Data Analysis I* course. We will use notation that is consistent with how we originally introduced the methods.]. 
+the explanatory variable^[We can also write this as 
+$E(y_i|x_i) = \mu\{y_i|x_i\} = \beta_0 + \beta_1x_i$, which is the notation you 
+will see if you continue into the *Methods of Data Analysis I* course. We will 
+use notation that is consistent with how we originally introduced the methods.]. 
 
 \indent The other part of any statistical model is specifying a model for the
 variability around the mean. 
@@ -124,7 +127,8 @@ make this assumption or assess it, but the plots below show you what this could
 look like. The sketch in Figure \@ref(fig:Figure7-1) attempts to show 
 the idea of normal
 distributions that are centered at the true regression line, all with the same
-shape and variance that is an assumption of the regression model. \indent Figure \@ref(fig:Figure7-2) contains simulated realizations from a normal
+shape and variance that is an assumption of the regression model. Figure
+\@ref(fig:Figure7-2) contains simulated realizations from a normal
 distribution of 20 subjects at each *Beer* level around the assumed true
 regression line with two different residual SEs of 0.02 and 0.06. The original
 BAC model has a residual SE of 0.02 but had many fewer observations at each 
@@ -181,7 +185,7 @@ Figure \@ref(fig:Figure7-3) contains the true regression line (bold, red)
 and realizations of the
 estimated regression line in simulated data based on results similar to the
 real data set. This variability due to random sampling is something that needs to be
-properly accounted for to take the **single** estimated regression line to
+properly accounted for to use the **single** estimated regression line to
 make inferences about the true line and parameters based on the sample-based
 estimates. The next sections develop those inferential tools. 
 
@@ -330,8 +334,6 @@ calculation in the model summary and from ``qt(0.975, df=n-2)`` which was
 make confidence intervals -- that is the test statistic used below. The related
 calculations are shown at the bottom of the following code:
 
-\newpage
-
 ```{r}
 m1 <- lm(BAC~Beers, data=BB)
 summary(m1)
@@ -432,11 +434,11 @@ the evidence against the null hypothesis here. For this reason, we sometimes
 interpret this sort of marginal result as having some or marginal evidence against the null
 but certainly would never say that this presents strong evidence. 
 
-```{r warning=F,message=F}
+```{r}
 require(alr3)
 data(ais)
 require(tibble)
-ais<-as.tibble(ais)
+ais <- as.tibble(ais)
 aisR2 <- ais[-c(56,166), c("Ht","Hc","Bfat","Sex")]
 m2 <- lm(Hc~Bfat, data=aisR2[aisR2$Sex==1,]) # Results for Females 
 summary(m2)
@@ -491,7 +493,7 @@ Test statistic: $t = 1.39/0.217 = 6.41$
 
 * Assuming the null hypothesis to be true (no linear relationship), the 
 $t$-statistic follows a $t$-distribution with $n-2 = 23-2=21$ degrees of 
-freedom (or simply $t_21$). 
+freedom (or simply $t_{21}$). 
 
 p-value:
 
@@ -526,8 +528,6 @@ Interpretation of 99% CI for slope coefficient:
 * For a 1 degree F increase in *Temperature*, we are 99% confident that the 
 change in the true mean log-area burned is between 0.78 and 2.00 log(Hectares).
 
-\newpage
-
 Another way to interpret this is:
 
 * For a 1 degree F increase in *Temperature*, we are 99% confident that
@@ -555,7 +555,7 @@ something that we are all too familiar with in our part of the country ^[See
 http://fivethirtyeight.com/features/which-city-has-the-most-unpredictable-weather/
 for an interesting discussion of
 weather variability where Great Falls, MT had a very high rating on
-"unpredictability"]. Often the local information is aggregated further to
+"unpredictability".]. Often the local information is aggregated further to
 provide regional, hemispheric, or even global average temperatures. Climate
 change research involves attempting to quantify the changes over time in these
 sorts of records. 
@@ -614,8 +614,6 @@ research wants to be accused of taking a ***liberal*** approach in their analyse
 change using ***conservative*** methods (methods that reject the null 
 hypothesis when it is true less often than stated), then their results are 
 even harder to ignore.]) and our test statistic, $t=\frac{b_1}{\text{SE}_{b_1}}$.
-
-\newpage
 
 1. **Hypotheses for the slope coefficient test:**
 
@@ -683,6 +681,8 @@ plot(temp1, add.smooth=F)
     model without this point would only result in slightly changing the SEs
     and not the slopes. 
 
+\newpage
+
 * **No influential points:**
 
     * There are no influential points displayed in the Residuals vs 
@@ -713,14 +713,11 @@ normality assumption a bit.
 
     $t=0.05244/0.00476 = 11.02$
     
-    \footnotesize
-    
     ```{r}
     summary(temp1)
     ```
 
-    \normalsize
-    
+
 4. Find the p-value:
 
 * From the model summary: p-value < 2e-16 or just <  0.0001
@@ -910,7 +907,7 @@ evidence of a linear relationship between ``Year`` and ``Temperature``?
 ``Year``, three of which are permutations of the Year variable relative 
 to the Temperatures.
 
-```{r Figure7-7,fig.cap="(ref:fig7-7)",echo=F,fig.height=5,fig.width=8}
+```{r Figure7-7,fig.cap="(ref:fig7-7)",echo=F,fig.height=4,fig.width=8}
 set.seed(1667)
 
 par(mfrow=c(2,2))
@@ -1197,7 +1194,7 @@ information with the response variable (height) log-transformed.
 ```{r eval=F}
 require(spuRs) # install.packages("spuRs")
 data(ufc)
-ufc<-as.tibble(ufc)
+ufc <- as.tibble(ufc)
 require(car)
 scatterplot(height.m~dbh.cm, data=ufc[-168,], smooth=T, spread=F,
             main="Tree height vs tree diameter")
@@ -1373,6 +1370,8 @@ back to the original scale of the variables. It ends up that
 depending on whether the *log* was applied to the response variable, the
 explanatory variable, or both.
 
+\newpage
+
 **Scenario 1: log(y) vs x model:**
 
 ```{r Figure7-17,fig.cap="(ref:fig7-17)",echo=F,fig.height=5,fig.width=10}
@@ -1395,8 +1394,6 @@ understand the properties and eventually the interpretation of
 transformed-variables models, we need to try to "reverse" our transformation. 
 If we exponentiate^[Note ``exp(x)`` is the same as $e^{(x)}$ but easier
 to read in-line and ``exp()`` is the R function name to execute this calculation.] both sides of $\log(y)=b_0 + b_1x$, we get:
-
-\newpage
 
 * $\exp(\log(y))=\exp(b_0 + b_1x)$, *which is*
 
@@ -1566,7 +1563,7 @@ GDP. Both versions of the model are displayed in Figure \@ref(fig:Figure7-18)
 the SLR model was fit (panel a) and the other on the original x-scale (panel b)
 that matches these last interpretations. 
 
-```{r warning=F,message=F}
+```{r}
 ID1 <- lm(infant.mortality~log(gdp), data=UN)
 summary(ID1)
 -16.6*log(2)
@@ -1718,6 +1715,8 @@ non-normality issues^[This transformation could not be applied directly to the e
 that the model assumptions have been met. In fact, the methods in Section \@ref(section7-7)
 are some of the most sensitive results to violations of the assumptions that we
 will explore.
+
+\newpage
 
 \sectionmark{Confidence intervals and prediction intervals}
 
@@ -2034,6 +2033,8 @@ Note that up to 2014, no values of this response had been observed above 60$^\ci
 persists. It is also
 easy to criticize the use of this model for 2050 because of its extreme amount
 of extrapolation. 
+
+\newpage
 
 ## Chapter summary {#section7-8}
 
