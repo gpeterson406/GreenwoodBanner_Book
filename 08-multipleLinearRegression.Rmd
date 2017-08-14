@@ -54,7 +54,7 @@ blackOut = function(x){
 
 ## Going from SLR to MLR {#section8-1}
 
-\indent In many situations, especially in observational studies, it is unlikely that
+In many situations, especially in observational studies, it is unlikely that
 the system is simple enough to be characterized
 by a single predictor variable. In experiments, if we randomly assign levels of
 a predictor variable we can assume that the impacts of other variables cancel
@@ -76,7 +76,7 @@ to explain incomes would likely require more than one predictor variable and we
 wouldn't be able to explain all the variability in the responses just based on
 gender and education level, but a model using those variables might still
 provide some useful information about each component and about age impacts on
-income after we adjust (control for) sex and education. The extension to MLR
+income after we adjust (control) for sex and education. The extension to MLR
 allows us to incorporate multiple predictors into a regression model.
 Geometrically, this is a way of relating many different dimensions (number of
 $x\text{'s}$) to what happened in a single response variable (one dimension). 
@@ -124,7 +124,7 @@ code loads the data set and makes the scatterplot matrix
 (Figure \@ref(fig:Figure8-1)) to allow
 some preliminary assessment of the pairwise relationships. 
 
-(ref:fig8-1) Scatterplot matrix of the SNOTEL data.
+(ref:fig8-1) Scatterplot matrix of data from a sample of SNOTEL sites in April on four variables.
 
 ```{r Figure8-1,fig.cap="(ref:fig8-1)",fig.height=5,fig.width=7}
 snotel_s <- read_csv("http://www.math.montana.edu/courses/s217/documents/snotel_s.csv")
@@ -164,7 +164,7 @@ causation (snow can't change elevation but elevation could be the driver of
 snow deposition and retention). 
 
 (ref:fig8-2) Plot of estimated
-SLR model for Snow Depth with Elevation as the predictor.
+SLR model for Snow Depth with only Elevation as the predictor.
 
 ```{r Figure8-2,fig.cap="(ref:fig8-2)",echo=F,fig.height=3,fig.width=5}
 require(effects)
@@ -182,10 +182,10 @@ $$\begin{array}{rl}
 \widehat{\text{SnowDepth}}_i &= 122.672 - 2.284\cdot\text{MaxTemp}_i.
 \end{array}$$
 
-The plots of the estimated models reinforce
+The term-plots of the estimated models reinforce
 our expected results, showing a positive change in *Snow Depth* for higher
 *Elevations* and negative impacts for increasing temperatures on *Snow Depth*.
-These plots are made across the observed range^[Sometimes the effects plots 
+These plots are made across the observed range^[Sometimes the ``effects`` plots 
 ignores the edge explanatory observations with the
 default display. Always check the original variable summaries when considering
 the range of observed values. The code modifications used to make these plots
@@ -221,13 +221,13 @@ to 34$^\circ F$ (minimum temperature) and from 26$^\circ F$ to 50$^\circ F$
 (maximum temperature). This tells us a 1$^\circ F$ increase in either 
 temperature is a
 greater proportion of the observed range of each predictor than a 1 unit (foot)
-increase in elevation, so these two variables will generate larger apparent
+increase in elevation, so the two temperature variables will generate larger apparent
 magnitudes of slope coefficients. But having large slope coefficients is no
 guarantee of a good model -- in fact, the elevation model has the highest 
 *R*^2^ value of these three models even though its slope coefficient looks tiny
 compared to the other models.
 
-(ref:fig8-3a) Plot of the estimated SLR model using Min Temp as predictor. 
+(ref:fig8-3a) Plot of the estimated SLR model using only Min Temp as predictor. 
 
 ```{r Figure8-3a,fig.cap="(ref:fig8-3a)",echo=F,fig.height=3,fig.width=5}
 m2 <- lm(Snow.Depth~Min.Temp, data=snotel2)
@@ -235,9 +235,7 @@ plot(allEffects(m2, xlevels=list(Min.temp=snotel2$Min.Temp)),
      main="SLR: Effect of Min Temp")
 ```
 
-(ref:fig8-3b) Plot of the estimated SLR model using Max Temp as predictor.
-Note that each of these results (from this plot and from \@ref(fig:Figure8-3a)
-are from models with a single predictor variable.
+(ref:fig8-3b) Plot of the estimated SLR model using only Max Temp as predictor.
 
 ```{r Figure8-3b,fig.cap="(ref:fig8-3b)",echo=F,fig.height=3,fig.width=5}
 m3 <- lm(Snow.Depth~Max.Temp, data=snotel2)
@@ -304,9 +302,9 @@ coefficients to the similar MLR results.
 
 1. Each term in the MLR is the result for estimating each
 slope after controlling for the other two variables (and we will always
-use this interpretation any time we interpret MLR effects). For example, 
-"corrected for" or "adjusted for" the variability that is explained by the
-temperature variables. 
+use this interpretation any time we interpret MLR effects). For the elevation slope, 
+we will need to say that the slope coefficient is "corrected for" or "adjusted for" the variability that is explained by the
+temperature variables in the model. 
 
 2. Because of multicollinearity in the predictors, the
 variables might share information that is useful for explaining the
@@ -431,7 +429,7 @@ validity conditions. For MLR, they are similar to those for SLR:
     influence of each observation.
     
         * The rules and interpretations for Cook's D are the same as in SLR
-        (over 0.5 is possibly influential and over is definitely influential).
+        (over 0.5 is possibly influential and over 1 is definitely influential).
 
 \indent While not a condition for use of the methods, a note about RA and RS is useful
 here in considering the scope of inference of any results. To make inferences
@@ -464,14 +462,13 @@ For the *Snow Depth* data, the conditions can be assessed as:
     people would find it to be reasonable to assume that the sites are 
     independent of one another but others would be worried that sites closer
     together in space might be more similar than they are to far-away 
-    observations (this is called ***spatial correlation***). I (Greenwood) have
+    observations (this is called ***spatial correlation***). I have
     been in a heated discussion with statistics colleagues about whether
     spatial dependency should be considered or if it is valid to ignore it in
     this sort of situation. It is certainly possible to be concerned about
     independence of observations here but it takes more advanced statistical
-    methods to actually assess whether there is spatial dependency in these data
-    and even in those models, the first task would be to fit this sort of model
-    and then explore the results. 
+    methods to actually assess whether there is spatial dependency in these data. Even if you were going to pursue models that incorporate spatial correlations, the first task would be to fit this sort of model
+    and then explore the results. When data are collected across space, you should note that there might be some sort of spatial dependency that *could* violate the independence assumption.
     
 We need our diagnostic plots to assess the remaining assumptions. The same code
 as before will provide diagnostic plots. There is some extra code 
@@ -479,7 +476,7 @@ as before will provide diagnostic plots. There is some extra code
 is being displayed since we have so many to discuss here.
 
 (ref:fig8-5) Diagnostic plots for model m4: 
-$\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}$
+$\text{Snow.Depth}\sim \text{Elevation} + \text{Min.Temp} + \text{Max.Temp}$.
 
 ```{r Figure8-5,fig.cap="(ref:fig8-5)",fig.height=5,fig.width=8}
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -523,11 +520,11 @@ plot(m4, sub.caption="Diagnostics for m4")
     values, this is more an artifact of having a smaller data set with a couple
     of moderate outliers that fell in the same range of fitted values and maybe
     a little bit of missed curvature. So there is not too much of an issue with
-    this condition. 
+    this condition.
     
 * **Normality of residuals:**
 
-    * The residuals are quite good in the QQ-plot, showing only a little 
+    * The residuals match the normal distribution fairly closely the QQ-plot, showing only a little 
     deviation for observation 9 from a normal distribution and that deviation 
     is extremely minor. Certainly no evidence of a violation of the normality
     assumption here. 
@@ -701,7 +698,7 @@ leverage of nearly 0.2 and a standardized residual of nearly -3.
 This point did not show up as influential in the original version of the data
 set with the same model but it is now. It also shows up as a potential outlier. 
 As we did before, we can explore it a bit by comparing the model predicted snow
-depth to the observed snow depth. The predicted snow depth for this site is
+depth to the observed snow depth. The predicted snow depth for this site (see output below for variable values) is
 
 $$\widehat{\text{SnowDepth}}_{22} = -142.4 + 0.0214*\boldsymbol{7550}
 +0.672*\boldsymbol{26} +0.508*\boldsymbol{39} = 56.45 \text{ inches.}$$
@@ -710,7 +707,7 @@ The observed snow depth was 27.2 inches, so the estimated residual is -39.25
 inches. Again, this point is potentially influential and an outlier.
 Additionally, our model contains results that are not what we would have
 expected *a priori*, so it is not unreasonable to consider removing this
-observation to be able to work towards a model that fully trustworthy. 
+observation to be able to work towards a model that is fully trustworthy. 
 
 ```{r echo=F}
 snotel2$Station <- as.character(snotel2$Station)
@@ -800,7 +797,7 @@ around 8000 feet. To generate that line and CIs for the mean snow depth at
 different elevations, the MLR model of
 
 $$\widehat{\text{SnowDepth}}_i = -213.3 + 0.0269\cdot\text{Elevation}_i
-+0.984\cdot\text{MinTemp}_i +1.243\cot\text{MaxTemp}_i$$
++0.984\cdot\text{MinTemp}_i +1.243\cdot\text{MaxTemp}_i$$
 
 is used, but we need to have "something" to put in for the two temperature
 variables to predict *Snow Depth* for different *Elevations*. The typical
@@ -817,7 +814,7 @@ $\boldsymbol{b_k}$ **[*units of y*]**, after controlling for
 **[list of other explanatory variables in model]**. 
 > 
 
-To make this more concrete, we can recreate some points in the Elevation
+\indent To make this more concrete, we can recreate some points in the Elevation
 term-plot. To do this, we first need the mean of the "other" predictors, 
 *Min.Temp* and *Max.Temp*. 
 
@@ -826,8 +823,8 @@ mean(snotel2[-c(9,22),]$Min.Temp)
 mean(snotel2[-c(9,22),]$Max.Temp)
 ```
 
-We can put these values into the MLR equation and simplify the equation, to
-an equation that is just in terms of
+We can put these values into the MLR equation and simplify it by combining like terms, to
+an equation that is in terms of
 just *Elevation* given that we are holding *Min.Temp* and *Max.Temp* at their
 means:
 
@@ -889,7 +886,7 @@ define the line but need a denser grid of elevations if we want to add the 95%
 CIs for the true mean snow depth across the different elevations since they
 vary as a function of the distance from the mean of the explanatory variables. 
 
-To get the associated 95% CIs, we could return to using the ``predict``
+\indent To get the associated 95% CIs, we could return to using the ``predict``
 function for the MLR, again holding the temperatures at their
 mean values. The ``predict`` function is sensitive and needs the same variable
 names as used in the original model fitting to work. First we create a "new"
@@ -933,13 +930,13 @@ holding *Elevation* and *Min.Temp* constant. Note that there are a variety of wa
 to note that each term in an
 MLR is only a particular value given the other variables in the model. We can
 use words such as "holding the other variables constant" or "after adjusting
-for the other variables" or "controlling for the other variables". The main
+for the other variables" or "in a model with...". The main
 point is to find words that reflect that this single slope coefficient might be
 different if we had a different overall model and the only way to interpret it
 is conditional on the other model components. 
 
 \indent Term-plots have a few general uses to enhance our regular slope
-interpretations. They can help us the model predicts over the range of each 
+interpretations. They can help us assess how much change in the mean of $y$ the model predicts over the range of each 
 observed $x$. This can
 help you to get a sense of the "practical" importance of each term. 
 Additionally, the term-plots show 95% confidence intervals for the mean response
@@ -953,7 +950,7 @@ that the relationships are really linear between the predictor and response
 variable being displayed. The model **forces** the relationship to be linear
 even if that is not the real functional form. **Term-plots are not diagnostics
 for the model, they are summaries of the model you assumed was correct!**
-Any time we do linear regression, all of our inferences are contingent upon the
+Any time we do linear regression, the inferences are contingent upon the
 model we chose. We know our model is not
 perfect, but we hope that it helps us learn something about our research
 question(s). 
@@ -993,7 +990,7 @@ one model over another.
 1. Diagnostics are better with one model compared to others.
 
 2. One model predicts/explains the responses better than the others 
-(***R***^2^)).
+(***R***^2^).
 
 3. *a priori* reasons to "use" a particular model, for example in a designed
 experiment or it includes variable(s) whose slopes need to be estimated to find
@@ -1132,12 +1129,12 @@ pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table8-1) (ref:tab8-1)"
              justify=c("left","center","right","right","center"))
 ```
 
-\indent The top model with *Elevation* and *Max.Temp* has an ***R***^2^ of
+\indent The top adjusted ***R***^2^ model contained *Elevation* and *Max.Temp* and has an ***R***^2^ of
 0.8495, so we can say that the model with
 *Elevation* and *Maximum Temperature* explains 84.95% percent of the variation
 in *Snow Depth* and also that this model was selected based on the
 $\boldsymbol{R}^2_{\text{adjusted}}$. One of the important features of 
-$\boldsymbol{R}^2_{\text{adjusted}}$ available in this example -- adding
+$\boldsymbol{R}^2_{\text{adjusted}}$ is available in this example -- adding
 variables often does not always increase its value even though 
 ***R***^2^ does increase with **any** addition. In 
 Section \@ref(section8-13) we consider a competitor for this model selection
@@ -1261,12 +1258,12 @@ regression models that can result in common mistakes.
     in the model using what are called ***Variance Inflation Factors*** (or 
     ***VIFs***). 
 
-\indent **VIFs** provide a way to assess the multicollinearity in the MLR model that
+\indent  **VIFs** provide a way to assess the multicollinearity in the MLR model that
 is caused by including specific variables. The amount of information that is
 shared between a single explanatory variable and the others can be found by
 regressing that variable on the others and calculating ***R***^2^
 for that model. The code for this regression is something like:
-``lm(X1~X2+X3+?+XK)``, which regresses *X1*on *X2* through *XK*. The 
+``lm(X1~X2+X3+...+XK)``, which regresses *X1*on *X2* through *XK*. The 
 $1-\boldsymbol{R}^2$ from this regression is the amount of independent 
 information in *X1* that is not explained by the other variables in the model.
 The VIF for each variable is defined using this quantity as
@@ -1284,10 +1281,10 @@ This is the most useful scale to understand VIFs even though the rules of thumb
 are on the original scale. An example will show how to easily get these results
 and where the results come from. 
 
-In general, the easy way to obtain VIFs is using the ``vif`` function from the
+\indent In general, the easy way to obtain VIFs is using the ``vif`` function from the
 ``car`` package (Fox, 2003). It has the advantage of also providing a reasonable
 result when we include categorical variables in models 
-(Sections \@ref(section8-9) and \@ref(section8-11)). We apply the ``vif``
+(Sections \@ref(section8-9) and \@ref(section8-11)) over some other sources of this information in R. We apply the ``vif``
 function directly to a model of interest and it generates values for each explanatory variable. 
 
 ```{r message=F,warning=F}
@@ -1310,7 +1307,7 @@ times larger than it should be because of multicollinearity with other variables
 in the model. Similarly, the *Min.Temp* SE is 2.45 times larger and the
 *Max.Temp* SE is 1.83 times larger. All of this generally suggests issues with
 multicollinearity in the model and that we need to be cautious in interpreting
-any slope coefficients from this model. 
+any slope coefficients from this model because they all being impacted by shared information in the predictor variables. 
 
 \indent In order to see how the VIF is calculated for *Elevation*, we need to 
 regress *Elevation* on *Min.Temp* and *Max.Temp*. Note that this model is only 
@@ -1349,13 +1346,13 @@ We have been deliberately vague about what an important variable is up to this
 point, and chose to focus on some bigger modeling issues. We now turn our
 attention to one
 of the most common tasks in any basic statistical model -- assessing whether a
-particular result is more unusual than we would expect by chance. All the
+particular result is more unusual than we would expect by chance. The
 previous discussions of estimation in MLR models informs our interpretations of
 of the tests. The $t$-tests for slope coefficients are based on our standard
 recipe -- take the estimate, divide it by its standard error and then, assuming
 the statistic follows a $t$-distribution under the null hypothesis, find a
 p-value. This tests whether each true slope coefficient, $\beta_k$, is 0 or not,
-in a model that contains all the other variables. Again, sometimes we say
+in a model that contains the other variables. Again, sometimes we say
 "after adjusting for" the other $x\text{'s}$ or
 "conditional on" the other $x\text{'s}$ in the model or "after allowing for"...
 as in the slope coefficient interpretations above. The main point is that 
@@ -1375,8 +1372,7 @@ especially when MLR slopes can occasionally come out in unexpected directions.
 $\boldsymbol{t=\dfrac{b_k}{\textbf{SE}_k}}$ and, if our assumptions are met,
 follows a $t$-distribution with $n-K-1$ *df* where $K$ is the number of
 predictor variables in the model. We perform the test for each slope
-coefficient, but the test is conditional on all
-the other variables in the model -- the order the variables are fit in does
+coefficient, but the test is conditional on the other variables in the model -- the order the variables are fit in does
 **not** change $t$-test results. For the *Snow Depth* example with **Elevation**
 and *Maximum Temperature* as predictors, the pertinent output is in the four
 columns of the ***Coefficient table*** that is the first part of the model
@@ -1409,28 +1405,28 @@ using ``pt``:
 2*pt(2.327, df=20, lower.tail=F)
 ```
 
-The decision here would probably be to reject $H_0$. The chance of observing a
+The chance of observing a
 slope for *Max.Temp* as extreme or more extreme than assuming there really is no
 linear relationship between *Max.Temp* and *Snow Depth* (in a model with
-*Elevation*), is about 3%. 
+*Elevation*), is about 3% so this presents moderate evidence against the null hypothesis, in favor of retaining this term in the model. 
 
-Conclusion: There is sufficient evidence to suggest that there is a linear
+Conclusion: There is moderate evidence to suggest that there is a linear
 relationship between *Max.Temp* and *Snow Depth*, once we account for
-*Elevation*, in the population of snotel sites in Montana on this day. Because
+*Elevation*, in the population of SNOTEL sites in Montana on this day. Because
 we cannot randomly assign the temperatures to sites, we cannot conclude that
 temperature causes changes in the snow depth -- in fact it might even be
 possible for a location to have different temperatures because of different
 snow depths. 
 
-Similarly, we can test for *Elevation* after controlling for the *Maximum Temperature*:
+\indent Similarly, we can test for *Elevation* after controlling for the *Maximum Temperature*:
 
 $$\boldsymbol{H_0: \beta_{\textbf{Elevation}}=0 \textbf{ vs } H_A: \beta_{\textbf{Elevation}}\ne 0},$$
 
-given that *Max.Temp* is in the model.
+given that *Max.Temp* is in the model:
 
 $t=7.613$ ($df=20$) with a p-value of $0.00000025$ or just $<0.00001$.
 
-Decision: Reject $H_0$ and conclude that there is sufficient evidence to
+So there is strong evidence to
 suggest that there is a linear relationship between *Elevation* and 
 *Snow Depth*, once we adjust for *Max.Temp* in the population of SNOTEL
 sites in Montana on this day. 
@@ -1448,20 +1444,17 @@ predictors are set to 0 is different from 0, this test should not be reported
 or, if reported, is certainly not very interesting^[There are some social
 science models where the model is fit with the mean subtracted from each 
 predictor so all have mean 0 and the precision of the y-intercept is 
-interesting. But even in these models, the test the y-intercept being 0 is 
+interesting. But even in these models, the test for the y-intercept being 0 is 
 rarely of interest.]. But we should at least go through the motions on this 
-test once so you don't make the same mistakes. 
+test once so you don't make the same mistakes: 
 
 $\boldsymbol{H_0: \beta_0=0 \textbf{ vs } H_A: \beta_0\ne 0}$ in a model with
-*Elevation* and *Maximum Temperature*
+*Elevation* and *Maximum Temperature*.
 
 $t=-4.269$, with an assumption that the test statistic follows a 
 $t_{20}$-distribution under the null hypothesis, and the p-value $= 0.000375$. 
 
-Decision: Reject $H_0$
-
-
-Conclusion: There is sufficient evidence to suggest that the true mean 
+There is strong evidence to suggest that the true mean 
 *Snow Depth* is different from 0 when the *Maximum Temperature* is 0 and the
 *Elevation* is 0 in the population of SNOTEL sites. To reinforce the general
 uselessness of this test, think about the combination of $x\text{'s}$ -- is that
@@ -1481,7 +1474,7 @@ interpretation isn't as heavy as if the term had a small p-value -- you should
 remember that you can't prove that coefficient is different from 0 in that
 model. It also may mean that you don't know too much about its specific value. 
 Confidence intervals will help us pin down where we think the true slope
-coefficient might be located, given the other variables in the model. 
+coefficient might be located, given the other variables in the model, and so are usually pretty interesting to report. 
 
 \indent Confidence intervals provide the dual uses of inferences for the 
 location of the true slope and whether the true slope seems to be different 
@@ -1493,7 +1486,7 @@ the 95% confidence interval for slope coefficient $k$ is
 $$\boldsymbol{b_k \mp t^*_{n-K-1}\textbf{SE}_{b_k}}.$$
 
 The interpretation is the same as in SLR with the additional tag of "after
-controlling for the other variables in the model" for all the reasons
+controlling for the other variables in the model" for the reasons
 discussed before. The general slope CI interpretation for predictor 
 $\boldsymbol{x_k}$ in an MLR is:
 
@@ -1503,7 +1496,7 @@ are 95% confident that the true mean of $\boldsymbol{y}$ changes by between
 adjusting for the other $x\text{'s}$ **[list them!]**.
 > 
 
-We can either calculate these intervals as we have many times before or we can
+We can either calculate these intervals as we have many times before or
 rely on the ``confint`` function to do this:
 
 ```{r}
@@ -1556,7 +1549,7 @@ $F = \text{MS}_{\text{model}}/\text{MS}_E$, which is assumed to follow an
 $F$-distribution with $K$ numerator *df* and $n-K-1$ denominator *df* under the
 null hypothesis. The output provides us with $F(2, 20)=56.43$ and a p-value 
 of $5.979*10^{-9}$ (p-value $<0.00001$)
-and enough evidence to reject the null hypothesis. Thus, there is evidence that
+and strong evidence against the null hypothesis. Thus, there is strong evidence that
 at least one of the two slope coefficients (*Max.Temp*'s or *Elevation*'s) is
 different from 0 in the population of SNOTEL sites in Montana on this date.
 While this test is a little bit interesting and a good indicator of something
@@ -1599,7 +1592,7 @@ university. They provided information on the *Sex* (``sex``) of the students
 even be displayed in a plot with correlations?), *SAT Verbal* (``SATV``)
 and *Math* (``SATM``) percentiles (these are not the scores but the ranking
 percentile that each score translated to in a particular year),
-*High School GPA* (``HSGPA``), and *First Year* (of college) *GPA* ``FYGPA``
+*High School GPA* (``HSGPA``), and *First Year* of college *GPA* (``FYGPA``).
 Our interests here are in whether the two SAT percentiles are (together?)
 related to the first year college GPA, describing the size of their impacts
 and assessing the predictive potential of SAT-based measures for first year in
@@ -1611,6 +1604,8 @@ addressed with these data but this will keep us focused.
 ```{r Figure8-13,fig.cap="(ref:fig8-13)",fig.height=5,fig.width=7}
 require(openintro)
 data(satGPA)
+require(tibble)
+satGPA<-as.tibble(satGPA)
 require(psych)
 pairs.panels(satGPA[,-4], ellipse=F, col="red", lwd=2)
 ```
@@ -1622,7 +1617,7 @@ first year of college results but its correlation is not that strong. Maybe
 together in a model the SAT percentiles can also be useful... Also note that
 plot shows an odd *HSGPA* of 4.5 that probably should be removed^[Either
 someone had a weighted GPA with bonus points, or more likely here, there
-was a coding error in the data set since only one observations was over 4.0 in
+was a coding error in the data set since only one observation was over 4.0 in
 the GPA data. Either way, we could remove it and note that our inferences for
 HSGPA do not extend above 4.0.] if that variable is going to be used (*HSGPA*
 was not used in the following models so the observation remains in the data). 
@@ -1637,7 +1632,7 @@ $$\text{FYGPA}_i = \beta_0 + \beta_{\text{SATV}}\text{SATV}_i
 
 looks like it might be worth interrogating further so we can jump straight
 into considering the 6+ steps involved in hypothesis testing for the two slope
-coefficients. We will be using a 5% significance level and $t$-based
+coefficients. We will use $t$-based
 inferences, assuming that we can trust the assumptions. 
 
 \indent Note that this is not a randomized experiment but we can assume that 
@@ -2013,6 +2008,7 @@ subset the data set and do two analyses, but that approach will not allow us
 to assess whether things are "really" different between the two groups. 
 
 ```{r eval=F}
+require(car)
 scatterplot(FYGPA~SATV|sex, lwd=3, data=satGPA, spread=F,
             smooth=F, main="Scatterplot of GPA vs SATV by Sex")
 scatterplot(FYGPA~SATM|sex, lwd=3, data=satGPA, spread=F,
