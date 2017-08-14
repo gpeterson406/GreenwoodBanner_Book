@@ -233,9 +233,10 @@ true slope. This sketch informs an ***interpretation of the slope coefficient
 confidence interval***:
 
 
-(ref:fig7-3b) Graphic illustrating the confidence interval for a slope coefficient for a 1 unit increase in $x$.
+(ref:fig7-3b) Graphic illustrating the confidence interval for a slope 
+coefficient for a 1 unit increase in $x$.
 
-```{r Figure7-3b,echo=F,message=F,warning=F,fig.align="center"}
+```{r Figure7-3b,fig.cap="(ref:fig7-3b)",echo=F}
 knitr::include_graphics("chapter7_files/image045.png")
 ```
 
@@ -680,8 +681,6 @@ plot(temp1, add.smooth=F)
     normality assumption. The next check reassures us that re-running the
     model without this point would only result in slightly changing the SEs
     and not the slopes. 
-
-\newpage
 
 * **No influential points:**
 
