@@ -50,6 +50,15 @@ blackOut = function(x){
   else if(outputFormat == 'html')
     paste("$\\require{color}\\colorbox{black}{",x,"}$",sep="")
 }
+textItalicBold = function(x){
+  outputFormat = opts_knit$get("rmarkdown.pandoc.to")
+  if(outputFormat == 'latex')
+    paste("\\emph{\\textbf{",x,"}}",sep="")
+  else if(outputFormat == 'html')
+    paste("<strong><em>",x,"</em></strong>",sep="")
+  else
+    x
+}
 ```
 
 ## Going from SLR to MLR {#section8-1}
@@ -711,7 +720,7 @@ observation to be able to work towards a model that is fully trustworthy.
 
 ```{r echo=F}
 snotel2$Station <- as.character(snotel2$Station)
-snotel2$Station[snotel2$Station=="Bloody Dick "] <- "Bloody [Redact.] "
+snotel2$Station[snotel2$Station=="Bloody Dick"] <- "Bloody [Redact.]"
 snotel2$Station <- as.factor(snotel2$Station)
 ```
 
@@ -1258,7 +1267,7 @@ regression models that can result in common mistakes.
     in the model using what are called ***Variance Inflation Factors*** (or 
     ***VIFs***). 
 
-\indent  **VIFs** provide a way to assess the multicollinearity in the MLR model that
+\indent  `r textItalicBold("VIFs")` provide a way to assess the multicollinearity in the MLR model that
 is caused by including specific variables. The amount of information that is
 shared between a single explanatory variable and the others can be found by
 regressing that variable on the others and calculating ***R***^2^
