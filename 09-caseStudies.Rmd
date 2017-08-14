@@ -190,8 +190,8 @@ and more variability in the *PS* responses than for the *HS* responses.
 
 ```{r eval=F}
 gdn <- read_csv("http://www.math.montana.edu/courses/s217/documents/gundalebachnordin_2.csv")
-gdn$Species<-factor(gdn$Species)
-gdn$Treatment<-factor(gdn$Treatment)
+gdn$Species <- factor(gdn$Species)
+gdn$Treatment <- factor(gdn$Treatment)
 require(beanplot)
 beanplot(Massperha~Species+Treatment, data=gdn, side = "b", 
          col=list("white","lightgreen"), xlab="Treatment", ylab="Biomass")
@@ -261,7 +261,7 @@ account for these other issues.
 \indent Remember that **before using a *log*-transformation, you always must check
 that the responses are strictly greater than 0**:
 
-```{r warning=F,message=F}
+```{r}
 summary(gdn$Massperha)
 ```
 
@@ -474,14 +474,14 @@ that. Note that in the following, the ``correct=F`` option is used to keep the
 function from slightly modifying the statistic used that occurs when overall 
 sample sizes are small. 
 
-```{r warning=F,message=F}
+```{r}
 chisq.test(table1, correct=F)$expected
 ```
 
 Our expected cell count condition is met, so we can proceed to explore the 
 results of the test:
 
-```{r warning=F,message=F}
+```{r}
 chisq.test(table1, correct=F)
 ```
 
@@ -498,8 +498,8 @@ studied by these researchers because they were not randomly selected.
 \indent Further exploration of the standardized residuals can provide more insights in
 some situations, although here they are similar for all the cells:
 
-```{r warning=F,message=F}
-chisq.test(table1,correct=F)$residuals
+```{r}
+chisq.test(table1, correct=F)$residuals
 ```
 
 When all the standardized residual contributions are similar, that suggests
@@ -638,7 +638,7 @@ Both versions of the models (based on *DBF* or *DBC*) start with an MLR model
 with a quantitative variable and two slopes. We can obtain some of the needed
 model selection results from the first full model using:
 
-```{r warning=F,message=F}
+```{r}
 bd1 <- lm(logSpecies~logDBCs+TJK, data=bm)
 require(MuMIn)
 options(na.action = "na.fail")
@@ -648,7 +648,7 @@ dredge(bd1, rank="AIC",
 
 And from the second model:
 
-```{r warning=F,message=F}
+```{r}
 bd2 <- lm(logSpecies~logDBFs+TJK, data=bm)
 dredge(bd2, rank="AIC",
        extra=c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))
@@ -704,7 +704,8 @@ the results from the more advanced models that account for autocorrelation,
 which seems to provide the proper ranking of models (*that they ignored*) but
 did not provide the correct differences among models.] suggests that 
 *log(DBC)* is important as well as different intercepts for the two periods. We can interrogate
-this model further but we should checked the diagnostics (Figure \@ref(fig:Figure9-11)) and consider our model
+this model further but we should check the diagnostics (Figure
+\@ref(fig:Figure9-11)) and consider our model
 assumptions first as AICs are not valid if the model assumptions are not met. 
 
 (ref:fig9-11) Diagnostic plots for the top AIC model.
@@ -769,7 +770,7 @@ suggests $\exp(-0.76)=0.47$ times (53% drop in) the median biodiversity count
 per stage for Cretaceous versus the prior time period, after correcting for
 log-sampling effort in each stage. 
 
-```{r warning=F,message=F}
+```{r}
 summary(bd1)
 ```
 
