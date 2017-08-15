@@ -300,7 +300,7 @@ plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
 Based on the output, the estimated MLR model is
 
 $$\widehat{\text{SnowDepth}}_i = -10.51 + 0.0123\cdot\text{Elevation}_i
--0.505\cdot\text{MinTemp}_i - 0.562\cdot\text{MaxTemp}_i.$$
+-0.505\cdot\text{MinTemp}_i - 0.562\cdot\text{MaxTemp}_i\ .$$
 
 The direction of the estimated slope coefficients were similar but they 
 all changed in magnitude as compared to the respective SLRs, as seen in the
@@ -655,7 +655,7 @@ plot(allEffects(m5), main="MLR model with NE Ent. Removed")
 "NE Entrance" observation is
 
 $$\widehat{\text{SnowDepth}}_i = -142.4 + 0.0214\cdot\text{Elevation}_i
-+0.672\cdot\text{MinTemp}_i +0.508\cdot\text{MaxTemp}_i.$$
++0.672\cdot\text{MinTemp}_i +0.508\cdot\text{MaxTemp}_i\ .$$
 
 Something unusual has happened here: there is a positive slope for both
 temperature terms in Figure \@ref(fig:Figure8-6) that both
@@ -1034,7 +1034,7 @@ can be seen by considering
 $$R^2 = \frac{\text{SS}_{\text{regression}}}{\text{SS}_{\text{total}}}\ 
 \text{ where }\  \text{SS}_{\text{regression}} = \text{SS}_{\text{total}}
 - \text{SS}_{\text{error}}\ 
-\text{ and }\  \text{SS}_{\text{error}} = \Sigma(y-\hat{y})^2.$$
+\text{ and }\  \text{SS}_{\text{error}} = \Sigma(y-\hat{y})^2\ .$$
 
 Because adding extra variables to a linear model will only make the fitted
 values better, not worse, the $\text{SS}_{\text{error}}$ will always go down
@@ -1492,7 +1492,7 @@ $\mp$ margin of error. Like the previous tests,
 we work with $t$-distributions with $n-K-1$ degrees of freedom. Specifically
 the 95% confidence interval for slope coefficient $k$ is
 
-$$\boldsymbol{b_k \mp t^*_{n-K-1}\textbf{SE}_{b_k}}.$$
+$$\boldsymbol{b_k \mp t^*_{n-K-1}\textbf{SE}_{b_k}}\ .$$
 
 The interpretation is the same as in SLR with the additional tag of "after
 controlling for the other variables in the model" for the reasons
@@ -1674,11 +1674,11 @@ plot(gpa1, sub.caption="Diagnostics for GPA model with SATV and SATM")
 
 1. Hypotheses of interest:
 
-    * $H_0: \beta_{SATV}=0$ given *SATM* in the model vs $H_0: \beta_{SATV}\ne 0$
-    given *SATM* in the model.
+    * $H_0: \beta_\text{SATV}=0$ given *SATM* in the model vs 
+    $H_A: \beta_\text{SATV}\ne 0$ given *SATM* in the model.
     
-    * $H_0: \beta_{SATM}=0$ given *SATV* in the model vs $H_0: \beta_{SATM}\ne 0$
-    given *SATV* in the model.
+    * $H_0: \beta_\text{SATM}=0$ given *SATV* in the model vs 
+    $H_A: \beta_\text{SATM}\ne 0$ given *SATV* in the model.
 
 2. Validity conditions:
 
@@ -1788,14 +1788,16 @@ violated and so the inferences from our model should be relatively trustworthy.
 6. Conclusions and Scope of Inference:
 
     * For *SATV*: There is strong evidence to reject the null hypothesis of 
-    no linear relationship between *SATV* and *FYGPA* ($t_997=8.88$, p-value<0.0001) and conclude that, in 
+    no linear relationship between *SATV* and *FYGPA* ($t_{997}=8.88$,
+    p-value < 0.0001) and conclude that, in 
     fact, there is a linear relationship between *SATV* percentile and the 
     first year of college *GPA*, after controlling for the *SATM* percentile, 
     in the population of students that completed their first year at this
     university.
     
     * For *SATM*: There is strong evidence to reject the null hypothesis of
-    no linear relationship between *SATM* and *FYGPA* ($t_997=8.04$, p-value<0.0001)and conclude that, in
+    no linear relationship between *SATM* and *FYGPA* ($t_{997}=8.04$,
+    p-value < 0.0001)and conclude that, in
     fact, there is a linear relationship between *SATM* percentile and the
     first year of college *GPA*, after controlling for the *SATV* percentile,
     in the population of students that completed their first year at this
@@ -1810,7 +1812,7 @@ violated and so the inferences from our model should be relatively trustworthy.
 the size of the estimated results, we can add to the information about how potentially useful this model might be. The estimated MLR model is
 
 $$\widehat{\text{FYGPA}}_i=0.00737+0.0254\cdot\text{SATV}_i
-+0.0224\cdot\text{SATM}_i.$$
++0.0224\cdot\text{SATM}_i\ .$$
 
 So for a 1 percent increase in the *SATV* percentile, we expect, on average,
 to get a 0.0254 point change in *GPA*, after controlling for *SATM* percentile.
@@ -2100,7 +2102,7 @@ was anything different from other quantitative predictors.
 model as
 
 $$\widehat{\text{FYGPA}}_i = 0.216 + 0.0386\cdot\text{SATM}_i +
-0.313I_{\text{Female},i}.$$
+0.313I_{\text{Female},i}\ .$$
 
 When we have a *male* observation, the indicator takes on a value of 0 so the 
 0.313 drops out of the model, leaving an SLR just in terms of *SATM*. For a
@@ -2177,7 +2179,7 @@ baseline level that is not displayed after the name of the categorical variable.
 in general in the theoretical model with a single quantitative predictor $x_i$
 and indicator $I_i$. The model starts as
 
-$$y_i=\beta_0+\beta_1x_i + \beta_2I_i + \varepsilon_i.$$
+$$y_i=\beta_0+\beta_1x_i + \beta_2I_i + \varepsilon_i\ .$$
 
 Again, there are two versions:
 
@@ -2252,9 +2254,10 @@ in the intercept for each group.
 
 The same techniques can be extended to more than two groups. A study was
 conducted to explore sound tolerances using $n=98$ subjects with the data
-available in the ``Headache`` data set from the ``heplots`` package. Each
+available in the ``Headache`` data set from the ``heplots`` package 
+[@R-heplots]. Each
 subject was initially exposed to a tone, stopping when the tone became definitely
-untolerable (*DU*) and that decibel level was recorded (variable called ``du1``).
+intolerable (*DU*) and that decibel level was recorded (variable called ``du1``).
 Then the subjects were randomly assigned to one of four treatments: *T1* 
 (Listened again to the tone at their initial *DU* level, for the same amount of
 time they were able to tolerate it before); *T2* (Same as *T1*, with one
@@ -2278,7 +2281,7 @@ pre-treatment tolerance (du1) by treatment level (4 groups).
 require(heplots)
 data(Headache)
 require(tibble)
-Headache<-as.tibble(Headache)
+Headache <- as.tibble(Headache)
 Headache
 scatterplot(du2~du1|treatment, data=Headache, smooth=F, lwd=2,
             main="Plot of Maximum DB tolerances before and after treatment (by treatment)",
@@ -2351,7 +2354,7 @@ summary(head1)
 
 The complete estimated regression model is
 
-$$\widehat{\text{du2}}_i=0.809+0.837\cdot\text{du1}_i +0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i}.$$
+$$\widehat{\text{du2}}_i=0.809+0.837\cdot\text{du1}_i +0.077I_{\text{T2},i}+0.809I_{\text{T3},i}-0.558I_{\text{Control},i}\ .$$
 
 For each group, the model simplifies to an SLR as follows:
 
@@ -2374,11 +2377,11 @@ $$\begin{array}{rl}
 
 * Similarly for *T3*:
 
-$$\widehat{\text{du2}}_i = 1.618 + 0.837\cdot\text{du1}_i$$.
+$$\widehat{\text{du2}}_i = 1.618 + 0.837\cdot\text{du1}_i\ .$$
 
 * Finally, for *Control*:
 
-$$\widehat{\text{du2}}_i = 0.251 + 0.837\cdot\text{du1}_i$$.
+$$\widehat{\text{du2}}_i = 0.251 + 0.837\cdot\text{du1}_i\ .$$
 
 To reinforce what this additive model is doing, Figure \@ref(fig:Figure8-22)
 displays the estimated regression lines for all four
@@ -2579,7 +2582,7 @@ and simplify the equations.
 
     simplifies quickly to:
 
-    $$y_i=\beta_0+\beta_1x_i+\varepsilon_i.$$
+    $$y_i=\beta_0+\beta_1x_i+\varepsilon_i\ .$$
     
     * So the baseline group's model involves the initial intercept and
     quantitative slope coefficient.
@@ -2626,7 +2629,7 @@ and simplified for the two groups as:
 
 * For the baseline (non-dyslexic, $I_{\text{Level}1,i}=0$) students:
 
-    $$\widehat{\text{Score}}_i=0.876+0.058\cdot\text{ZIQ}_i$$.
+    $$\widehat{\text{Score}}_i=0.876+0.058\cdot\text{ZIQ}_i\ .$$
     
 * For the deviation (dyslexic, $I_{\text{Level1},i}=1$) students:
 
@@ -2638,7 +2641,7 @@ and simplified for the two groups as:
 
     which simplifies finally to:
     
-    $$\widehat{\text{Score}}_i=0.596-0.015\cdot\text{ZIQ}_i$$.
+    $$\widehat{\text{Score}}_i=0.596-0.015\cdot\text{ZIQ}_i\ .$$
 
 * So the slope switched from 0.058 in the non-dyslexic students to -0.015 in
 the dyslexic students. The interpretations of these coefficients are outlined
@@ -2745,7 +2748,7 @@ testing for differences in intercepts between groups is not very interesting
 when there are different slopes because if you change the slope, you have to
 change the intercept. The plot shows that there are clear differences in the
 means even though we don't have a test to directly assess that in this
-complicated of a model^[There is a way to test for a difference in the two lines at a particular $x$ value but it is beyond the scope of this material and uses what are called "constrasts".]. 
+complicated of a model^[There is a way to test for a difference in the two lines at a particular $x$ value but it is beyond the scope of this material and uses what are called "contrasts".]. 
 
 (ref:fig8-28) Term-plots for interaction model for reading scores. 
 
@@ -2795,7 +2798,11 @@ reduced to considering an additive model with the categorical and quantitative
 predictor variables. Either or both of those variables could also be considered
 for removal, possibly starting with the variable with the larger p-value, 
 leaving a string of ever-simpler models possible if large p-values are continually
-encountered^[This is an example of what is called "step down" testing for model refinement which is a commonly used technique for arriving at a final model to describe response variables. Note that each step in the process should be reported, not just the final model that variables with small p-values remaining in it.]. 
+encountered^[This is an example of what is called "step down" testing for model
+refinement which is a commonly used technique for arriving at a final model to
+describe response variables. Note that each step in the process should be 
+reported, not just the final model that only has variables with small p-values
+remaining in it.]. 
 
 \indent It is useful to note that the last model has returned us to the first 
 model we encountered in Chapter \@ref(chapter2) where we were just comparing 
@@ -2816,8 +2823,8 @@ $$\begin{array}{rl}
 y_i=\beta_0 &+ \beta_1x_i +\beta_2I_{\text{Level }2,i}+\beta_3I_{\text{Level }3,i}
 +\cdots+\beta_JI_{\text{Level }J,i} \\
 &+\beta_{J+1}I_{\text{Level }2,i}\:x_i+\beta_{J+2}I_{\text{Level }3,i}\:x_i
-+\cdots+\beta_{2J-1}I_{\text{Level }J,i}\:x_i +\varepsilon_i
-\end{array}$$.
++\cdots+\beta_{2J-1}I_{\text{Level }J,i}\:x_i +\varepsilon_i\ .
+\end{array}$$
 
 Specific to the audible tolerance/headache data that had four groups. The model
 with an interaction present is
@@ -2826,8 +2833,8 @@ $$\begin{array}{rl}
 \text{du2}_i = \beta_0 &+ \beta_1\cdot\text{du1}_i + \beta_2I_{T2,i} +
 \beta_3I_{T3,i} + \beta_4I_{\text{Control},i} \\
 &+ \beta_5I_{T2,i}\cdot\text{du1}_i + \beta_6I_{T3,i}\cdot\text{du1}_i
-+ \beta_7I_{\text{Control},i}\cdot\text{du1}_i+\varepsilon_i
-\end{array}$$.
++ \beta_7I_{\text{Control},i}\cdot\text{du1}_i+\varepsilon_i\ .
+\end{array}$$
 
 Based on the following output, the estimated general regression model is
 
@@ -2835,8 +2842,8 @@ $$\begin{array}{rl}
 \widehat{\text{du2}}_i = 1.33 &+ 0.733\cdot\text{du1}_i - 0.236I_{T2,i} -
 0.316I_{T3,i} - 1.091I_{\text{Control},i} \\
 &+ 0.066I_{T2,i}\cdot\text{du1}_i + 0.199I_{T3,i}\cdot\text{du1}_i
-+ 0.106I_{\text{Control},i}\cdot\text{du1}_i
-\end{array}$$.
++ 0.106I_{\text{Control},i}\cdot\text{du1}_i\ .
+\end{array}$$
 
 Then we could work out the specific equation for **each group** with
 replacing their indicator variable in two places with 1s and the rest of
@@ -2847,8 +2854,8 @@ $$\begin{array}{rll}
 - 1.091*1 \\
 &&+ 0.066*0*\text{du1}_i + 0.199*0*\text{du1}_i+ 0.106*1*\text{du1}_i \\
 \widehat{\text{du2}}_i&=1.33&+0.733\cdot\text{du1}_i - 1.091 + 0.106\cdot\text{du1}_i \\
-\widehat{\text{du2}}_i&=0.239 &+ 0.839\cdot\text{du1}_i
-\end{array}$$.
+\widehat{\text{du2}}_i&=0.239 &+ 0.839\cdot\text{du1}_i\ 
+\end{array}$$
 
 (ref:fig8-31) Term-plot for decibel tolerance interaction model (version 1). 
 
@@ -3040,7 +3047,7 @@ variable, assessing whether different y-intercepts are needed. The additive
 model here is
 
 $$\text{du2}_i = \beta_0 + \beta_1\cdot\text{du1}_i + \beta_2I_{T2,i} +
-\beta_3I_{T3,i} + \beta_4I_{\text{Control},i} +\varepsilon_i.$$
+\beta_3I_{T3,i} + \beta_4I_{\text{Control},i} +\varepsilon_i\ .$$
 
 The hypotheses assessed in the ANOVA test for treatment are:
 
