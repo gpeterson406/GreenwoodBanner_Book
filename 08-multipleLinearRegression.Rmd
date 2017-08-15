@@ -3104,9 +3104,9 @@ they are not important.
 
 There are a variety of techniques for selecting among a set of potential models 
 or refining an initially fit MLR
-model. Hypothesis testing can be used (in the case where we have nested models)
+model. Hypothesis testing can be used (in the case where we have nested models either by adding or deleting a single term at a time)
 or comparisons of adjusted ***R***^2^
-across different potential models (it is valid for nested or non-nested
+across different potential models (which is valid for nested or non-nested
 model comparisons). Diagnostics should play a role in the models considered and
 in selecting among models that might appear to be similar on a model comparison
 criterion. 
@@ -3114,7 +3114,7 @@ In this section, a new model selection method is introduced that has stronger
 theoretical underpinnings, a slightly more interpretable scale, and, often, 
 better performance in picking an optimal^[In most situations, it would be crazy
 to assume that the true model for a
-process has been obtained so we can never pick the correct model. In fact, we
+process has been obtained so we can never pick the "correct" model. In fact, we
 won't even know if we are picking a "good" model, but just the best from a set
 of the candidate models. But we can study the general performance of methods
 using simulations where we know the true model and the AIC has some useful
@@ -3137,7 +3137,7 @@ can compare how close two models are to the truth, picking the one that has a
 smaller distance (smaller AIC) as better. The AIC includes a component that is
 on the log-scale, so negative values are possible and you should not be
 disturbed if you are comparing large magnitude negative numbers -- just pick the
-one with the smallest value. 
+model with the smallest AIC score. 
 
 \indent The AIC is optimized (smallest) for a model that contains the optimal 
 balance of
@@ -3151,17 +3151,15 @@ the two models since it is more likely to be correct in general than the more
 complicated model. The AIC is calculated as $AIC=-2log(Likelihood)+2m$, where
 the ***Likelihood*** provides a measure of fit of the model (we let R
 calculate it for us) and gets smaller for better fitting models and 
-$m$ = (number of estimated $\beta\text{'s}+1$. The value $m$ is called the 
+$m$ = (number of estimated $\beta\text{'s}+1$). The value $m$ is called the 
 *model degrees of freedom* for AIC calculations and relates to how
 many total parameters are estimated. Note that it is a different measure of
 *degrees of freedom* than used in ANOVA $F$-tests. The main things to understand
 about the formula for the AIC is that as $m$ increases, the AIC will go up and
-that as the fit improves, the *likelihood* will decrease (and so will
-the *log-likelihood*). More details of these components of the methods will be
-left for more advanced material -- we will focus on how to use and interpret
-these results. 
+that as the fit improves, the *likelihood* will increase (so -2*log-likelihood* will get smaller)^[More details on these components of the methods will be
+left for more advanced material - we will focus on an introduction to using the AIC measure here.]. 
 
-\indent There are some other facets of this discussion to keep in mind when comparing
+\indent There are some facets of this discussion to keep in mind when comparing
 models. More complicated models always fit better (we saw this for the 
 ***R***^2^ measure, as the proportion of variation explained always goes
 up if more "stuff" is put into the model even if the "stuff" isn't useful). The
@@ -3172,7 +3170,7 @@ model more complicated (increasing $m$). The optimal model on AIC has to balance
 adding complexity and increasing quality of the fit. Since this measure
 provides an estimate of the distance or discrepancy to the "true model", the
 model with the smallest value "wins" -- it is top-ranked on the AIC. Note that
-the **top-ranked AIC model** will typically **not be the best fitting** model
+the **top-ranked AIC model** will often **not be the best fitting** model
 since the best fitting model is always the most complicated model considered. 
 The top AIC model is the one that is estimated to be closest to the truth, 
 where the truth is still unknown...
@@ -3202,7 +3200,7 @@ someone repeats a similar study^[Reproducibility ideas are used in statistics
 first by making data and code used available to others (like all the code and
 data in this book) and second by trying to use methods that when others perform
 similar studies they will find similar results (from Physics, think of the famous
-cold-fusion experiments http://en.wikipedia.org/wiki/Cold_fusion.]. 
+cold-fusion experiments http://en.wikipedia.org/wiki/Cold_fusion.)]. 
 For these reasons, there is a set of general recommendations that have been
 developed for using AICs:
 
@@ -3216,29 +3214,31 @@ smallest) AIC results.
     
 * Report a table with the models considered, sorted from smallest to largest
 AICs ($\Delta\text{AICs}$ from smaller to larger) that includes a count of
-number of parameters estimated^[Although often excluded, the count of
+number of parameters estimated^[Although sometimes excluded, the count of
 parameters should include counting the residual variance as a parameter.], the
 AICs, and $\Delta\text{AICs}$. 
+
+    * Remember to incorporate the mean-only model in the model selection results. This allows you to compare the top model to one that does not contain any predictors.
 
 * Interpret the top model or top models if a few are close on the AIC-scale to
 the top model.
 
-* **DO NOT REPORT P-VALUES OR CALL TERMS "SIGNIFICANT" when selecting models
+* **DO NOT REPORT P-VALUES OR CALL TERMS "SIGNIFICANT" when models were selected
 using AICs.**
 
     * Hypothesis testing and AIC model selection are not compatible philosophies
     and testing in models selected by AICs invalidates the tests as they have
-    inflated Type I error rates.
+    inflated Type I error rates. The AIC results are your "evidence" -- you don't need anything else. If you wanted to report p-values, use them to select your model.
     
 * You can describe variables as "important" or "useful" and report confidence
-intervals to aid in interpretation of the effects in the selected model(s)
-but need to avoid performing hypothesis tests.
+intervals to aid in interpretation of the terms in the selected model(s)
+but need to avoid performing hypothesis tests with the confidence intervals.
 
 * Remember that the selected model is not the "true" model -- it is only the
 best model *according to AIC* among the set of models *you provided*.
 
 * Model assumptions need to be met to use AICs. They assume that the model is
-specified correctly up to possibly comparing different predictor variables. 
+specified correctly up to possibly comparing different predictor variables. Perform diagnostic checks on your initial model and the top model.
 
 \indent When working with AICs, there are two options. Fit the models of interest and
 then run the ``AIC`` function on each model. This can be tedious, especially
@@ -3255,9 +3255,9 @@ approach where you plan to remove any terms with large p-values in this same
 situation, you are really considering all possible models as well because you
 could have removed some or all model components. Methods that consider all
 possible models are probably best used in exploratory analyses where you do not
-know if any or all effects should be important. If you have more specific
+know if any or all terms should be important. If you have more specific
 research questions, then you probably should try to focus on comparisons of models
-that help you directly answer those questions. 
+that help you directly answer those questions, either with AIC or p-value methods. 
 
 \indent The ``dredge`` function provides an automated method of assessing all possible
 simpler models based on an initial (full) model. It generates a table of AIC
@@ -3276,24 +3276,24 @@ Table \@ref(tab:Table8-1). In that situation we were considering
 a "full" model that included *Elevation*, *Min.Temp*, and *Max.Temp* as potential
 predictor variables after removing two influential points. And we considered all
 possible reduced models from that "full"^[We put quotes on "full" or sometimes
-call it "fullish" model because we could always add more to the model, like
-interactions or other explanatory variables. So we never have a full model but
+call it the "fullish" model because we could always add more to the model, like
+interactions or other explanatory variables. So we rarely have a completely full model but
 we do have our "most complicated that we are considering" model.] model. Note
 that the ``dredge`` output adds one more model that adjusted ***R***^2^
 can't consider -- the mean-only model that contains no predictor variables. In
 the following output it is the last model in the output (worst ranked on AIC).
 Including the mean-only model in these results helps us "prove" that there is
-support for having something in the model if there is better support for
+support for having something in the model, but only if there is better support for
 other models than this simplest possible model. 
 
-\indent In reading ``dredge`` output as it is constructed here, the models are sorted by
+\indent In reading ``dredge`` output^[The options in ``extra=...`` are to get extra information displayed that you do not necessarily need. You can simply run ``dredge(m6,rank="AIC")`` to get just the AIC results.] as it is constructed here, the models are sorted by
 top to bottom AIC values (smallest AIC to largest). The column ``delta`` is for
 the $\Delta\text{AICs}$ and shows a 0 for the first row, which is the
-top-ranked AIC model. Here it is for the model with *Elevation*and *Max.Temp* but
+top-ranked AIC model. Here it is for the model with *Elevation* and *Max.Temp* but
 not including *Min.Temp*. This was also the top ranked model from adjusted
 ***R***^2^, which is reproduced in the ``adjRsq`` column. The ``AIC``
 is calculated using the previous formula based on the ``df`` and ``logLik``
-columns. The ``df`` is the most useful column for comparing models as it helps
+columns. The ``df`` is also a useful column for comparing models as it helps
 you see how complex each model is. For example, the top model used up 4
 *model df* (three $\beta\text{'s}$ and the residual error variance) and the
 most complex model that included four predictor variables used up 5 *model df*. 
@@ -3340,7 +3340,7 @@ of a treatment on the subjects, it also makes sense to see if the differences
 created are beyond what you might expect by chance if the treatment didn't
 matter. 
 
-## Forced expiratory volume model selection using AICs	{#section8-14}
+## Case Study: Forced expiratory volume model selection using AICs	{#section8-14}
 
 Researchers were interested in studying the effects of smoking by children on
 their lung development by measuring the forced expiratory volume (*FEV*,
@@ -3362,7 +3362,7 @@ Initial explorations suggested that modeling the log-FEV would be more successfu
 than trying to model the responses on the original scale. Figure 
 \@ref(fig:Figure8-34) shows the suggestion of different slopes for the
 smokers than non-smokers and that there aren't very many smokers under 9 years
-old. 
+old in the data set. 
 
 \indent So we will start with a model that contains an *age* by *smoking* interaction
 and include *height* and *sex* as additive terms. We are not sure if any of
@@ -3378,10 +3378,10 @@ involved in the interaction if we don't need the interaction.
 require(coneproj)
 data(FEV)
 FEV<-as.tibble(FEV)
-FEV$sex <- factor(FEV$sex)
-levels(FEV$sex) <- c("Female","Male")
-FEV$smoke <- factor(FEV$smoke)
-levels(FEV$smoke) <- c("Nonsmoker","Smoker")
+FEV$sex <- factor(FEV$sex) #Make sex a factor
+levels(FEV$sex) <- c("Female","Male") #Make sex labels explicit
+FEV$smoke <- factor(FEV$smoke) #Make smoking status a factor
+levels(FEV$smoke) <- c("Nonsmoker","Smoker") #Make smoking status labels explicit
 require(car)
 scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
             main="Plot of log(FEV) vs Age of children by smoking  status",
@@ -3392,10 +3392,10 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
 require(coneproj)
 data(FEV)
 FEV <- as.tibble(FEV)
-FEV$sex <- factor(FEV$sex)
-levels(FEV$sex) <- c("Female","Male")
-FEV$smoke <- factor(FEV$smoke)
-levels(FEV$smoke) <- c("Nonsmoker","Smoker")
+FEV$sex <- factor(FEV$sex) #Make sex a factor
+levels(FEV$sex) <- c("Female","Male")  #Make sex labels explicit
+FEV$smoke <- factor(FEV$smoke) #Make smoking status a factor
+levels(FEV$smoke) <- c("Nonsmoker","Smoker") #Make smoking status labels explicit
 require(car)
 scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
             main="Plot of log(FEV) vs Age of children by smoking  status",
@@ -3406,7 +3406,7 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
 complicated model you want to consider. It is good to check assumptions before
 considering reducing the model as they rarely get better in simpler models and
 the **AIC is only appropriate to use if the model assumptions are reasonably
-well-met**. As noted above, our full model for the *log(FEV)* values is
+well-met**. As suggested above, our "fullish" model for the *log(FEV)* values is
 specified as ``log(FEV)~height+age*smoke+sex``. 
 
 (ref:fig8-35) Diagnostics for the log(FEV) model that includes height, sex,
@@ -3419,9 +3419,9 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(fm1, sub.caption="Diagnostics for full FEV model")
 ```
 
-There are a few outlying points noted in Figure \@ref(fig:Figure8-35) but they
-are not influential and the normality and constant
-variance assumptions are reasonably well met. If we select a different
+The diagnostic plots suggest that there are a few outlying points (Figure \@ref(fig:Figure8-35)) but they
+are not influential and there is no evidence of violations of the normality and constant
+variance assumptions. If we select a different
 model(s), we would want to check its diagnostics and make sure that the results
 do not look noticeably worse than these do. 
 
@@ -3439,8 +3439,8 @@ AIC(fm1, fm1R)
 ```
 
 These results tells us that the ``fm1R`` model (the one without the interaction)
-is better on the AIC. Note that this model does not "fit" as well
-as the other model, it is just the top AIC model -- the AIC results suggest that
+is better on the AIC by 0.09 AIC units. Note that this model does not "fit" as well
+as the full model, it is just the top AIC model -- the AIC results suggest that
 it is slightly closer to the truth than the more complicated model. But this
 provides only an assessment of the difference between including or excluding
 the interaction between *age* and *smoking* in a model with two other predictors.
@@ -3488,8 +3488,7 @@ having a $\Delta\text{AIC}$ of 43.96. So we certainly need to
 pursue something more complicated than SLR based on the AIC results. Closer to
 the top model is the third-ranked model that includes *age*, *height*, and *sex*.
 It has a $\Delta\text{AIC}$ of 2.87 so we would say that
-these results present only marginal support for this model compared to the two
-top models. It is the simplest model of the top three but not close enough to
+these results present marginal support for the top two models over this model. It is the simplest model of the top three but not close enough to
 be considered in detail. 
 
 \indent This table also provides the opportunity to compare the model selection
@@ -3512,10 +3511,9 @@ to use various methods, one after another, and forget to mention that you should
 not use **every** method we taught you in **every** analysis.]. Confidence
 intervals and term-plots are useful for describing the different
 model components and making inferences for the estimated sizes of differences
-in the population. These results should not be used for deciding if effects are
+in the population. These results should not be used for deciding if terms are
 "significant" when the models are selected using measures like the AIC or
-adjusted *R*^2^. But you can discuss how there was support or
-evidence to include them in the model based on AIC comparisons. 
+adjusted *R*^2^. But you can discuss the estimated model components to go with how you arrived at having them in the model. 
 
 \indent In this situation, the top model is estimated to be
 
@@ -3523,14 +3521,13 @@ $$\log(\widehat{\text{FEV}})_i = -1.94 + 0.043\cdot\text{Height}_i+ 0.0234\cdot\
 -0.046I_{\text{Smoker},i}+0.0293I_{\text{Male},i}$$
 
 based on the estimated coefficients provided below. Using these results and the
-term-plots (Figure \@ref(fig:Figure8-36)) we see that there are positive slopes
+term-plots (Figure \@ref(fig:Figure8-36)) we see that in this model there are positive slopes
 for *Age* and *Height* on *log-FEV*, a negative coefficient for *smoking*
-(*Smoker*), and a positive coefficient for *sex* (*Males*), all after controlling
-for those other aspects of the model. We could go further with interpretations
+(*Smoker*), and a positive coefficient for *sex* (*Males*). We could go further with interpretations
 such as for the *age* term: For a 1 year increase in *age*, we expect, on
 average, a 0.0234 log-liter increase in *FEV*, after controlling for the
 *height*, *smoking status*, and *sex* of the children. We can even interpret
-this on the original response model using the same techniques as in Section 
+this on the original scale since this was a *log(y)* response model using the same techniques as in Section 
 \@ref(section7-6). If we exponentiate the slope coefficient of the quantitative
 variable, $\exp(0.0234)=1.0237$. This provides the interpretation on the original
 *FEV* scale, for a 1 year increase in *age*, we expect 2.4% increase in the
@@ -3579,11 +3576,11 @@ different potential models and they do not need to be nested (a requirement of
 hypothesis testing methods used to sequentially simplify models). The automated
 consideration of all possible models in the ``dredge`` function should not be
 considered in all situations but can be useful in a preliminary model exploration
-study where no clear knowledge exists about useful models to consider. 
+study where no clear knowledge exists about useful models to consider. Reporting the summary of AIC results beyond just reporting the top model(s) selected for focused exploration provides the evidence to support that selection.
 
 ## Chapter summary	{#section8-15}
 
-\indent This chapter explored the most complicated models we're
+This chapter explored the most complicated models we're
 going to explore. MLR models can incorporate features of SLR and ANOVAs. The
 MLR's used in this chapter highlight the flexibility of the linear modeling
 framework to move from two-sample mean models to multi-predictor models with
@@ -3708,8 +3705,7 @@ interval="prediction")**
     and ``MODELNAME_2``.
     
 * **options(na.action = "na.fail")  
-dredge(`r colFmt("FULL\\_MODELNAME","red")`, rank="AIC", extra=c("R^2", 
-adjRsq=function(x) summary(x)$adj.r.squared))**
+dredge(`r colFmt("FULL\\_MODELNAME","red")`, rank="AIC")**
 
     * Requires the ``MuMIn`` package.
 
@@ -3728,8 +3724,7 @@ combined prediction built using a few variables using the MLR techniques. The
 following code will get us re-started in this situation. 
 
 ```
-treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv",
-                      header=T)
+treadmill <- read_csv("http://www.math.montana.edu/courses/s217/documents/treadmill.csv")
 tm1 <- lm(TreadMillOx~RunTime, data=treadmill)
 ```
 
@@ -3767,7 +3762,7 @@ dredge(mlr1, rank="AIC",
        extra=c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))
 ```
 
-8.8. For one of the models, interpret the Age slope coefficient. Remember that
+8.8. For one of the models, interpret the *Age* slope coefficient. Remember that
 only male subjects between 38 and 57 participated in this study. Discuss how 
 this might have impacted the results found as compared to a more general 
 population that could have been sampled from. 
