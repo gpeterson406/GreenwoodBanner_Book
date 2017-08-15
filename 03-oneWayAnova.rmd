@@ -1903,7 +1903,7 @@ Pair-wise comparisons using Tukey's HSD provide a method for comparing all the g
 and are a nice complement to the overall ANOVA results. A compact letter display was 
 shown that enhanced the interpretation of Tukey's HSD result. 
 
-In the guinea pig example, we are left with some lingering questions based on these 
+\indent In the guinea pig example, we are left with some lingering questions based on these 
 results. It appears that the effect of *dosage* changes as a function of the 
 *delivery method* (OJ, VC) because the size of the differences between OJ and VC
 change for different dosages. These methods can't directly assess the question

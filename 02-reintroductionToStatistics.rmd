@@ -2504,7 +2504,7 @@ the parametric procedures. When parametric and nonparametric approaches
 disagree, the nonparametric methods are likely to be more trustworthy since
 they have less restrictive assumptions but can still have problems. 
 
-When the noted conditions are not met in a hypothesis testing situation, the 
+\indent When the noted conditions are not met in a hypothesis testing situation, the 
 Type I error rates can be inflated, meaning that we reject the null hypothesis 
 more often than we have allowed to occur by chance. Specifically, we could have 
 a situation where our assumed 5% significance level test might actually reject 
