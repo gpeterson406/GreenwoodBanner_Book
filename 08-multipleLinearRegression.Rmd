@@ -1316,7 +1316,7 @@ times larger than it should be because of multicollinearity with other variables
 in the model. Similarly, the *Min.Temp* SE is 2.45 times larger and the
 *Max.Temp* SE is 1.83 times larger. All of this generally suggests issues with
 multicollinearity in the model and that we need to be cautious in interpreting
-any slope coefficients from this model because they all being impacted by shared information in the predictor variables. 
+any slope coefficients from this model because they are all being impacted by shared information in the predictor variables. 
 
 \indent In order to see how the VIF is calculated for *Elevation*, we need to 
 regress *Elevation* on *Min.Temp* and *Max.Temp*. Note that this model is only 
@@ -1614,7 +1614,7 @@ addressed with these data but this will keep us focused.
 require(openintro)
 data(satGPA)
 require(tibble)
-satGPA<-as.tibble(satGPA)
+satGPA <- as.tibble(satGPA)
 require(psych)
 pairs.panels(satGPA[,-4], ellipse=F, col="red", lwd=2)
 ```
@@ -1665,7 +1665,7 @@ and the diagnostic plots, allowing us to consider the tests of interest:
 (ref:fig8-14) Diagnostic plots for the 
 $\text{FYGPA}\sim\text{ SATV }+\text{ SATM}$ model.
 
-```{r Figure8-14,fig.cap="(ref:fig8-14)",,fig.height=5,fig.width=8}
+```{r Figure8-14,fig.cap="(ref:fig8-14)",fig.height=5,fig.width=8}
 gpa1 <- lm(FYGPA~SATV+SATM, data=satGPA)
 summary(gpa1)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -2546,7 +2546,7 @@ scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
 ```{r eval=F}
 require(smdata)
 data("dyslexic3")
-dyslexic3<-as.tibble(dyslexic3)
+dyslexic3 <- as.tibble(dyslexic3)
 scatterplot(score~ziq|dys, xlab="Standardized nonverbal IQ scores",
             ylab="Reading score", data=dyslexic3, smooth=F,
             main="Plot of IQ vs Reading by dyslexia status")
@@ -2863,7 +2863,7 @@ plot(allEffects(head2), x.var="du1", ci.style="bands")
 ```
 
 ```{r}
-head2<-lm(du2~du1*treatment,data=Headache)
+head2 <- lm(du2~du1*treatment, data=Headache)
 summary(head2)
 ```
 
@@ -3389,7 +3389,7 @@ scatterplot(log(FEV)~age|smoke, data=FEV, smooth=F,
 ```{r eval=F}
 require(coneproj)
 data(FEV)
-FEV<-as.tibble(FEV)
+FEV <- as.tibble(FEV)
 FEV$sex <- factor(FEV$sex)
 levels(FEV$sex) <- c("Female","Male")
 FEV$smoke <- factor(FEV$smoke)
