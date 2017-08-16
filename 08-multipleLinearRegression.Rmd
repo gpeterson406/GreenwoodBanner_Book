@@ -295,8 +295,6 @@ summary(m4)
 plot(allEffects(m4), main="MLR model with Elev, Min & Max Temps")
 ```
 
-\newpage
-
 Based on the output, the estimated MLR model is
 
 $$\widehat{\text{SnowDepth}}_i = -10.51 + 0.0123\cdot\text{Elevation}_i
@@ -492,7 +490,6 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m4, sub.caption="Diagnostics for m4")
 ```
 
-\newpage
 
 * **Linearity of relationship (**`r colFmtBold("NEW VERSION FOR MLR!","red")`**):**
 
@@ -523,6 +520,8 @@ plot(m4, sub.caption="Diagnostics for m4")
     
     * See Section \@ref(section8-5) for more on this issue in these data. 
     
+\newpage
+
 * **Equal (constant) variance:**
 
     * While there is a little bit more variability in the middle of the fitted
@@ -591,7 +590,6 @@ reporting of amounts of snow on the ground...].
 -10.51 + 0.0123*7350 - 0.505*28 - 0.562*45
 ```
 
-\newpage
 
 ```{r}
 11.2 - 40.465
@@ -743,7 +741,6 @@ par(mfrow=c(2,2), oma=c(0,0,2,0))
 plot(m6, sub.caption="Diagnostics for m6")
 ```
 
-\newpage
 
 This worry-some observation is located in the 22^nd^ row of the
 original data set:
@@ -919,9 +916,13 @@ newdata1
 The predicted snow depths along with 95% confidence intervals for the mean,
 holding temperatures at their means, are:
 
+\small
+
 ```{r}
 predict(m6, newdata=newdata1, interval="confidence")
 ```
+
+\normalsize
 
 So we could do this with any model **for each predictor** variable to create
 term-plots, or we can just use the ``allEffects`` function to do this for us.
@@ -1349,7 +1350,7 @@ a particular MLR model. And that we can't use the VIFs to do anything about
 multicollinearity in the models -- it is just a diagnostic to understand the
 magnitude of the problem. 
 
-## MLR Inference: Parameter inferences using the t-distribution	{#section8-6}
+## MLR inference: Parameter inferences using the t-distribution	{#section8-6}
 
 We have been deliberately vague about what an important variable is up to this
 point, and chose to focus on some bigger modeling issues. We now turn our
@@ -1575,7 +1576,7 @@ important when we are mixing categorical and quantitative predictor variables
 in our MLR models (Section \@ref(section8-12)), but the overall $F$-test is of
 very limited utility. 
 
-## Case Study: First year college GPA and SATs	{#section8-8}
+## Case study: First year college GPA and SATs	{#section8-8}
 
 Many universities require students to have certain test scores in order to be
 admitted into their institutions. They
@@ -1688,6 +1689,8 @@ plot(gpa1, sub.caption="Diagnostics for GPA model with SATV and SATM")
         plotted in the previous scatterplot matrix and is not quantitative --
         we will explore its use later.
         
+    \newpage
+    
     * **Independence of observations:**
     
         * With a sample from a single university from (we are assuming) a 
@@ -2074,8 +2077,10 @@ is 0 for *males* and 1 for *females* that we called ``SEXINDICATOR``, displayed
 for the first 10 observations:
 
 ```{r}
-satGPA$SEXINDICATOR <- as.numeric(satGPA$SEX=="FEMALE") #Convert logical to 0 for male, 1 for female
-head(tibble(SEX=satGPA$SEX, SEXINDICATOR=satGPA$SEXINDICATOR), 10) #Explore first few observations
+# Convert logical to 0 for male, 1 for female
+satGPA$SEXINDICATOR <- as.numeric(satGPA$SEX=="FEMALE") 
+# Explore first few observations
+head(tibble(SEX=satGPA$SEX, SEXINDICATOR=satGPA$SEXINDICATOR), 10) 
 ```
 
 We can define the indicator variable more generally by calling it
@@ -2236,6 +2241,8 @@ if the null is true, the p-value is $<0.0001$. We have very strong evidence that
 y-intercept in a *SATM* model for first year college GPA between *males* and *females*. The confidence
 interval is also informative:
 
+\newpage
+
 ```{r}
 confint(SATSex1)
 ```
@@ -2347,10 +2354,12 @@ differences in slopes -- we investigate that further in the next section. For
 now, we can proceed with fitting the additive model with different intercepts
 for the four levels of ``treatment`` and the quantitative explanatory variable, ``du1``. 
 
+
 ```{r}
 head1 <- lm(du2~du1+treatment, data=Headache)
 summary(head1)
 ```
+
 
 The complete estimated regression model is
 
@@ -2378,6 +2387,8 @@ $$\begin{array}{rl}
 * Similarly for *T3*:
 
 $$\widehat{\text{du2}}_i = 1.618 + 0.837\cdot\text{du1}_i\ .$$
+
+\newpage
 
 * Finally, for *Control*:
 
@@ -2565,7 +2576,7 @@ We can start with the general model for a two-level categorical variable with an
 interaction, which is
 
 $$y_i=\beta_0 + \beta_1x_i +\beta_2I_{\text{CatName},i} +
-\color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i,$$
+{\color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}}+\varepsilon_i,$$
 
 where the new component involves both the indicator and the quantitative
 predictor variable. The $\color{red}{\boldsymbol{\beta_3}}$ coefficient will be
@@ -2578,7 +2589,7 @@ and simplify the equations.
 * For any observation in the baseline group $I_{\text{CatName},i}=0$, so
 
     $$y_i=\beta_0+\beta_1x_i+\beta_2I_{\text{CatName},i}+
-    \color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i$$
+    {\color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}}+\varepsilon_i$$
 
     simplifies quickly to:
 
@@ -2591,16 +2602,16 @@ and simplify the equations.
 * For any observation in the second category $I_{\text{CatName},i}=1$, so
 
     $$y_i=\beta_0+\beta_1x_i+\beta_2I_{\text{CatName},i}+
-    \color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}+\varepsilon_i$$
+    {\color{red}{\boldsymbol{\beta_3I_{\text{CatName},i}x_i}}}+\varepsilon_i$$
     
     is
     
     $$y_i=\beta_0+\beta_1x_i+\beta_2*1+
-    \color{red}{\boldsymbol{\beta_3*1*x_i}}+\varepsilon_i$$
+    {\color{red}{\boldsymbol{\beta_3*1*x_i}}}+\varepsilon_i$$
     
     which "simplifies" to
     
-    $$y_i = (\beta_0+\beta_2) + (\beta_1+\color{red}{\boldsymbol{\beta_3}})x_i
+    $$y_i = (\beta_0+\beta_2) + (\beta_1+{\color{red}{\boldsymbol{\beta_3}}})x_i
     +\varepsilon_i,$$
 
     by combining like terms.
@@ -2623,7 +2634,7 @@ summary(dys_model)
 The estimated model can be written as  
 
 $$\widehat{\text{Score}}_i=0.876+0.058\cdot\text{ZIQ}_i - 0.280I_{\text{Level }1,i}
--\color{red}{\boldsymbol{0.073}}I_{\text{Level }1,i}\cdot\text{ZIQ}_i$$
+-{\color{red}{\boldsymbol{0.073}}}I_{\text{Level }1,i}\cdot\text{ZIQ}_i$$
 
 and simplified for the two groups as:
 
@@ -2720,8 +2731,8 @@ scatterplot(residuals(dys_model)~fitted(dys_model)|dys,
 \indent If we feel comfortable enough with the assumptions to trust the inferences here
 (this might be dangerous), then we can consider what some of the model inferences
 provide us in this situation. For example, the test for 
-$H_0: \color{red}{\boldsymbol{\beta_3}}=0$ vs 
-$H_A: \color{red}{\boldsymbol{\beta_3}}\ne 0$ provides an interesting comparison.
+$H_0: {\color{red}{\boldsymbol{\beta_3}}}=0$ vs 
+$H_A: {\color{red}{\boldsymbol{\beta_3}}}\ne 0$ provides an interesting comparison.
 Under the null hypothesis, the two groups would have the same slope so it
 provides an
 opportunity to directly consider whether the relationship (via the slope) is
@@ -2864,10 +2875,14 @@ head2<-lm(du2~du1*treatment,data=Headache)
 plot(allEffects(head2), x.var="du1", ci.style="bands")
 ```
 
+\small
+
 ```{r}
 head2 <- lm(du2~du1*treatment, data=Headache)
 summary(head2)
 ```
+
+\normalsize
 
 Or we can let the term-plots (Figures \@ref(fig:Figure8-31) and 
 \@ref(fig:Figure8-32)) show us all four different simplified models. Here we
@@ -2903,6 +2918,9 @@ you if a specific group is potentially different from the baseline group and
 the choice of the baseline is arbitrary. To assess whether we really need to
 have varying slopes or intercepts with more than two groups we need to develop
 $F$-tests for the interaction part of the model. 
+
+
+\sectionmark{F-tests for MLR models with Q and C variables and interactions}
 
 ## F-tests for MLR models with quantitative and categorical variables and interactions	{#section8-12}
 
@@ -3298,12 +3316,16 @@ you see how complex each model is. For example, the top model used up 4
 *model df* (three $\beta\text{'s}$ and the residual error variance) and the
 most complex model that included four predictor variables used up 5 *model df*. 
 
+\small
+
 ```{r warning=F,error=F}
 require(MuMIn)
 options(na.action = "na.fail") #Must run this code once to use dredge
 dredge(m6, rank="AIC",
        extra = c("R^2", adjRsq=function(x) summary(x)$adj.r.squared))
 ```
+
+\normalsize
 
 \indent There are two models that are clearly favored over the others with 
 $\Delta\text{AICs}$ for the model with *Elevation* and *Max.Temp* of 0 and for
@@ -3340,7 +3362,7 @@ of a treatment on the subjects, it also makes sense to see if the differences
 created are beyond what you might expect by chance if the treatment didn't
 matter. 
 
-## Case Study: Forced expiratory volume model selection using AICs	{#section8-14}
+## Case study: Forced expiratory volume model selection using AICs	{#section8-14}
 
 Researchers were interested in studying the effects of smoking by children on
 their lung development by measuring the forced expiratory volume (*FEV*,
@@ -3412,7 +3434,7 @@ specified as ``log(FEV)~height+age*smoke+sex``.
 (ref:fig8-35) Diagnostics for the log(FEV) model that includes height, sex,
 and an interaction between age and smoking status (the full model). 
 
-```{r Figure8-35,fig.cap="(ref:fig8-35)",fig.height=5,fig.width=8}
+```{r Figure8-35,fig.cap="(ref:fig8-35)",fig.height=5,fig.width=10}
 fm1 <- lm(log(FEV)~height+age*smoke+sex, data=FEV)
 summary(fm1)
 par(mfrow=c(2,2), oma=c(0,0,2,0))
@@ -3613,7 +3635,6 @@ provided. Because of multicollinearity in models, you should never remove more
 than one quantitative predictor at a time or else you could remove two variables
 that are important but were "hiding" when both were included in the model.
 
-\newpage
 
 ## Summary of important R code	{#section8-16}
 

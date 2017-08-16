@@ -1405,10 +1405,10 @@ $\exp(a+b)=\exp(a)\exp(b)$.
 to $x+1$, providing a new predicted $y$ that we can call $y^*$:
 $y^*=\exp(b_0)\exp[b_1(x+1)]$:
 
-* $y^*=\color{red}{\underline{\boldsymbol{\exp(b_0)\exp(b_1x)}}}\exp(b_1)$. 
+* $y^*={\color{red}{\underline{\boldsymbol{\exp(b_0)\exp(b_1x)}}}}\exp(b_1)$. 
 *Now note that the underlined, bold component was the y-value for* $x$.
 
-* $y^* = \color{red}{\boldsymbol{y}}\exp(b_1)$. *Found by replacing*
+* $y^* = {\color{red}{\boldsymbol{y}}}\exp(b_1)$. *Found by replacing*
 $\color{red}{\mathbf{\exp(b_0)\exp(b_1x)}}$ *with* $\color{red}{\mathbf{y}}$,
 *the value for* $x$.
 
@@ -1530,9 +1530,9 @@ be simplified using the rules for logs to be:
 
 * $\boldsymbol{y^*=b_0+b_1\log(2x)}$,
 
-* $\boldsymbol{y^*}=\color{red}{\underline{\boldsymbol{b_0+b_1\log(x)}}} + b_1\log(2)$. &nbsp; *Based on the rules for logs:* $log(2x)=log(x)+log(2)$.
+* $\boldsymbol{y^*}={\color{red}{\underline{\boldsymbol{b_0+b_1\log(x)}}}} + b_1\log(2)$. &nbsp; *Based on the rules for logs:* $log(2x)=log(x)+log(2)$.
 
-* $y^* = \color{red}{\boldsymbol{y}}+b_1\log(2)$
+* $y^* = {\color{red}{\boldsymbol{y}}}+b_1\log(2)$
 
 * So if we double $x$, we change the **mean** of $y$ by $b_1\log(2)$.
 
@@ -1657,11 +1657,11 @@ both sides*.
 exponents and logs, simplifying.*
 
 Now we can consider the impacts of doubling $x$ on $y$, going from 
-$(x,\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}})$ to $(2x,y^*)$ with
+$(x,{\color{red}{\boldsymbol{y=\exp(b_0)x^{b_1}}}})$ to $(2x,y^*)$ with
 
 * $y^* = \exp(b_0)(2x)^{b_1}$, 
 
-* $y^* = \exp(b_0)2^{b_1}x^{b_1} = 2^{b_1}\color{red}{\boldsymbol{\exp(b_0)x^{b_1}}}=2^{b_1}\color{red}{\boldsymbol{y}}$
+* $y^* = \exp(b_0)2^{b_1}x^{b_1} = 2^{b_1}{\color{red}{\boldsymbol{\exp(b_0)x^{b_1}}}}=2^{b_1}{\color{red}{\boldsymbol{y}}}$
 
 So doubling $x$ leads to a multiplicative change in the median of $y$
 of $2^{b_1}$.

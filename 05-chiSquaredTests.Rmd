@@ -769,7 +769,7 @@ pandoc.table(m, keep.line.breaks = TRUE,caption="(\\#tab:Table5-4) (ref:tab5-4)"
 
 
 Finally, the $X^2$ statistic here is the sum of these six results 
-$=\color{red}{2.616+0.004+3.752+2.744+0.004+3.935}=13.055$ 
+$={\color{red}{2.616+0.004+3.752+2.744+0.004+3.935}}=13.055$ 
 
 \indent Our favorite function in this chapter, ``chisq.test``, does not provide 
 the contributions to the $X^2$ statistic directly. It provides a related 
