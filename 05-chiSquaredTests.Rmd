@@ -404,9 +404,9 @@ ArthritisFAKE$Treat <- factor(c(rep("Placebo",84),rep("Treated",84))) #Just to m
 plot(Improved~Treat,data=ArthritisFAKE,main="Homogeneity Null Hypothesis True")
 ```
 
-Note that the proportions in the different response categories do not need to be the 
+\indent Note that the proportions in the different response categories do not need to be the 
 same just that the distribution needs
-to be the same across the groups. To make this clear, the null hypothesis does *not*
+to be the same across the groups. The null hypothesis does *not*
 require that all three response categories (*none*, *some*, *marked*) be equally 
 likely. It assumes
 that whatever the distribution of proportions is across these three levels that

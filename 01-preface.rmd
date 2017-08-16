@@ -46,7 +46,7 @@ and that you have seen all of this in a couple of basic situations. We start
 with a review of these ideas in one and two group situations with a
 quantitative response, something that you should have seen before. 
 
-This text covers a wide array of statistical tools that are connected through situation, methods used, 
+\indent This text covers a wide array of statistical tools that are connected through situation, methods used, 
 or both. As we explore various techniques, look for the identifying characteristics
 of each method -- what type of research questions are being addressed
 (relationships or group differences, for example) and what type of variables
@@ -77,7 +77,7 @@ important to retain a focus on how the appropriate statistical analysis depends
 on the research question and data collection process as well as the types of
 variables measured. 
 
-Figure \@ref(fig:Figure1-1) frames the topics we will discuss. Taking a broad
+\indent Figure \@ref(fig:Figure1-1) frames the topics we will discuss. Taking a broad
 vision of the methods we will consider, 
 there are basically two scenarios -- one when the response is quantitative and
 one when the response is categorical. Examples of quantitative responses we will
@@ -101,7 +101,7 @@ types of conclusions that are appropriate based on the design of the study.
 knitr::include_graphics('chapter1_files/image002.png')
 ```
 
-We will be spending most of the semester working on methods for quantitative
+\indent We will be spending most of the semester working on methods for quantitative
 response variables (the
 left side of Figure \@ref(fig:Figure1-1) is covered in Chapters \@ref(chapter2),
 \@ref(chapter3), \@ref(chapter4), \@ref(chapter6), \@ref(chapter7), and
@@ -114,7 +114,7 @@ to explore additional examples that illustrate how finding a
 path through Figure \@ref(fig:Figure1-1) can lead to the appropriate analysis. 
 
 
-The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
+\indent The first topics (Chapters \@ref(chapter1), and \@ref(chapter2)) will be more
 familiar as we start with single and two group situations
 with a quantitative response. In your previous statistics course, you should
 have seen methods for estimating and quantifying uncertainty for the mean of a
@@ -140,7 +140,7 @@ variable and the mean of the response changes depending on the levels of the
 other categorical variable. For example, extra fertilizer might enhance the
 growth of one variety and hinder the growth of another so we would say that *fertilizer* has different impacts based on the level of *variety*. Given this interaction may or may not actually be present, we will consider two versions of the model in Two-Way ANOVAs, what are called the ***additive*** (no interaction) and the ***interaction*** models. 
 
-Following the methods for two categorical variables and a quantitative response, we explore a method for
+\indent Following the methods for two categorical variables and a quantitative response, we explore a method for
 analyzing data where the response is categorical, called the ***Chi-square test***
 in Chapter \@ref(chapter5). This most closely matches the One-Way ANOVA
 situation with a single categorical explanatory variable, except now the
@@ -170,7 +170,7 @@ variable and a categorical response that we would need to "bin" or create
 categories of responses from the quantitative variable to use the Chi-square
 testing methods. 
 
-If the predictor and response variables are both quantitative, we start with
+\indent If the predictor and response variables are both quantitative, we start with
 scatterplots, correlation, 
 and ***simple linear regression*** models (Chapters \@ref(chapter6) and
 \@ref(chapter7)) -- things you should have seen, at least to some degree,
@@ -189,7 +189,7 @@ where the estimated relationship between a quantitative predictor and the
 mean response
 varies among different levels of the categorical variable. 
 
-By the end of Chapter \@ref(chapter9) you should be able to identify, perform 
+\indent By the end of Chapter \@ref(chapter9) you should be able to identify, perform 
 using the statistical software R [@R-base], and interpret the results from each of these methods. There
 is a lot to learn, but many of the tools for using R and interpreting results
 of the analyses accumulate and repeat during the semester. If you work hard to
@@ -200,7 +200,7 @@ actually an accomplishment. We will just be taking you on the first steps of a
 potentially long journey and it is up to you to decide how much further you
 want to go with learning the software. 
 
-All the methods you will learn require you to carefully consider how the data were collected, how that
+\indent All the methods you will learn require you to carefully consider how the data were collected, how that
 pertains to the population of interest, and how that impacts the inferences
 that can be made. The ***scope of inference*** from the bottom of Figure
 \@ref(fig:Figure1-1) is our shorthand term for remembering to think about two aspects
@@ -230,7 +230,7 @@ are randomly assigned levels of explanatory variables with a random sample from
 a population -- conclusions would be about causal impacts that would happen in the
 population. 
 
-By the end of this material, you should have some basic R skills and abilities to create basic ANOVA and
+\indent By the end of this material, you should have some basic R skills and abilities to create basic ANOVA and
 Regression models, as well as to handle Chi-squared testing situations. 
 Together, this should prepare you for future statistics courses or for other
 situations where you are expected to be able to identify an appropriate
@@ -247,7 +247,7 @@ statistics and is being adopted across academia, government, and businesses to
 help manage and learn from the growing volume of data being obtained. Hopefully
 you will get a sense of some of the power of R in this book. 
 
-The next pages will walk you through the process of getting the software downloaded and provide you with
+\indent The next pages will walk you through the process of getting the software downloaded and provide you with
 an initial experience using RStudio to do things that should look familiar
 even though the interface will be a new experience. Do not expect to master R
 quickly -- it takes years (sorry!) even if you know the statistical methods
@@ -263,7 +263,7 @@ more sophisticated things with R, allowing us to compare quantitative responses
 from two groups, make some graphical displays, do hypothesis testing and create
 confidence intervals in a couple of different ways. 
 
-You will have two downloading activities to complete before you can do anything
+\indent You will have two downloading activities to complete before you can do anything
 more than read this book^[I recorded a video that walks through getting R and RStudio installed on a PC available in the digital version [here]( https://camtasia.msu.montana.edu/Relay/Files/w76c139/R_Rstudio_Install/R_Rstudio_Install_-_20170808_152929_23.html). If you want to see them installed on a mac, you can try [this version](https://www.youtube.com/watch?v=GFImMj1lMRI). Or for either version, try searching YouTube for "How to install R and RStudio".
 ]. First, you need to download R. It is the engine that will do all the computing
 for us, but you will only interact with it once. Go to http://cran.rstudio.com
@@ -271,12 +271,10 @@ and click on the "**Download R for...**" button that
 corresponds to your operating system. On the next page, click on "**base**" and then it will take you 
 to a screen to download the most current version of R that is compiled for your
 operating system, something like "**Download R 3.4.1 for Windows**". Click on that link and then open 
-the file you downloaded. You will need to select your preferred language (choose English so your 
-instructor can help you), then hit "**Next**"
-until it starts to unpack and install the program (all the base settings will be fine). After you hit 
-"**Finish**" you will not do anything further with R directly. 
+the file you downloaded. You will need to select your preferred language (choose English so your  instructor can help you), then hit "**Next**"
+until it starts to unpack and install the program (all the base settings will be fine). After you hit "**Finish**" you will not do anything further with R directly. 
 
-Second, you need to download RStudio. It is an enhanced interface that will make interacting with
+\indent Second, you need to download RStudio. It is an enhanced interface that will make interacting with
 R less frustrating. To download RStudio, go near the bottom of  https://www.rstudio.com/products/rstudio/download/ and select the correct version under
 "Installers for Supported Platforms" for your operating system. Download and
 then install RStudio using the installer. From this point forward, you should only
@@ -288,7 +286,7 @@ will not work in older versions of R and sometimes old code won't work in new
 versions of R.^[The need to keep the code up-to-date as R continues to evolve is one reason that this book is locally published and that this is the 4^th^ version in
 four years...]
  
-To get started, we can complete some basic tasks in R using the RStudio
+\indent To get started, we can complete some basic tasks in R using the RStudio
 interface. When you open RStudio, you will see a screen like Figure 
 \@ref(fig:Figure1-2). The
 added annotation in this and the following screen-grabs is there to help you
@@ -318,7 +316,7 @@ plots that you make and requests for "Help" on specific functions.
 knitr::include_graphics('chapter1_files/fig1.2.png')
 ```
 
-As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
+\indent As a first interaction with R we can use it as a calculator. To do this, click near the command prompt
 (``>``) in the lower left "console" panel, type 3+4, and then hit enter. It
 should look like this:
 
@@ -397,7 +395,7 @@ With the data stored in a variable, we can use functions such as
 ```
 
 
-When dealing with real data, we will often have information about more than one
+\indent When dealing with real data, we will often have information about more than one
 variable. We could enter all observations by hand for each variable but this is
 prone to error and onerous for all but the smallest data sets. If you are to
 ever utilize the power of statistics in the evolving data-centered world, data
@@ -414,7 +412,7 @@ this is a bad idea, but it actually creates a more stable archival format and
 one that R can use directly^[There are ways to read ".xls" and ".xlsx" files 
 directly into R that we will explore later.]. 
 
-The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or RStudio. To get access to the packages, first "install" (basically
+\indent The following code to read in the data set relies on an R package called ``readr`` [@R-readr]. Packages in R provide additional functions and data sets that are not available in the initial download of R or RStudio. To get access to the packages, first "install" (basically
 download) and then "load" the package. To install an R package, go to the **Packages** tab in the lower right panel of
 RStudio. Click on the **Install** button and then type in the name of the package in
 the box (here type in ``readr``). RStudio will try to auto-complete the package name
@@ -426,7 +424,7 @@ package once on a given computer. If you ever see a message that R can't find a
 package, make sure it appears in the list in the **Packages** tab. If it 
 doesn't, repeat the previous steps to install it. 
 
-After installing the package, we need to load it to make it active in a given work
+\indent After installing the package, we need to load it to make it active in a given work
 session. Go to the command prompt and type (or copy and paste) ``require(readr)`` or ``library(readr)``:
 
 ```
@@ -462,7 +460,7 @@ ject   MillOx    MaxPulse                        Pulse
 ----------------------------------------------------------------------------
 
 
-The variables contain information on the subject number (*Subject*), subjects' 
+\indent The variables contain information on the subject number (*Subject*), subjects' 
 maximum treadmill oxygen consumption (*TreadMillOx*, in ml per kg per minute, also called maximum VO2) and 
 maximum pulse rate (*TreadMillMaxPulse*, in beats per minute), time to run 1.5
 miles (*Run Time*, in minutes), maximum pulse
@@ -503,7 +501,7 @@ code (``View(treadmill``)).
 knitr::include_graphics('chapter1_files/fig1.3.png')
 ```
 
-Just directly typing (or using) a line of code like this is actually the 
+\indent Just directly typing (or using) a line of code like this is actually the 
 other way that we can read in
 files. If you choose to use the text-only interface, then you need to tell R
 where to look in your computer to find the data file. ``read_csv`` is a 
@@ -514,7 +512,7 @@ copy a command like this from the text and read data sets and other
 code directly from the course folder, assuming you are connected to the
 internet. 
 
-To verify that you read the data set in correctly, it is always good to check 
+\indent To verify that you read the data set in correctly, it is always good to check 
 its contents. We can view the first and last rows in the data set using the 
 ``head`` and ``tail`` functions on the data set, which show the following 
 results for the
@@ -551,7 +549,7 @@ the panels.
  
 \normalsize
 
-When you require a package, you may see a warning message about versions of the package and versions of 
+\indent When you require a package, you may see a warning message about versions of the package and versions of 
 R -- this is *usually* something you can ignore. Other warning messages could
 be more ominous for proceeding but before getting too concerned, there are 
 couple of basic things to check. First, double check that the package is 
@@ -564,7 +562,7 @@ Center or by emailing your instructor)^[Most computer lab computers at
 Montana State University have RStudio installed and so provide another venue 
 to work.]. 
 
-To help you go from basic to intermediate R usage and especially to help with more
+\indent To help you go from basic to intermediate R usage and especially to help with more
 complicated problems, you will want to learn how to manage and save your R code. 
 The best way to do this is using the upper left panel in RStudio using what
 are called R Scripts, which are files that have a file extension of ".R". To
@@ -576,9 +574,7 @@ were working last by simply re-running the saved script file. With code in the
 script window, you can place the cursor on a line of code or highlight a chunk
 of code and hit the "Run" button^[You can also use Ctrl-R if you like hot keys.] on the upper part of the panel. It will appear
 in the console with results just like what you would obtain if you typed it
-after the command prompt and hit enter for each line. 
-
-Figure \@ref(fig:Figure1-4) shows the screen with the code used in this 
+after the command prompt and hit enter for each line. Figure \@ref(fig:Figure1-4) shows the screen with the code used in this 
 section in the upper left panel, saved in
 a file called "CH0.R", with the results of highlighting and executing the first
 section of code using the "Run" button. 
@@ -618,7 +614,7 @@ interest, generically as ``tibblename$variablename``. You can think of this as *
 [29] 12.63 12.88 14.03
 ```
 
-Just as in the previous section, we can generate summary statistics using functions like ``mean`` and ``sd`` by running them on a specific variable:
+\indent Just as in the previous section, we can generate summary statistics using functions like ``mean`` and ``sd`` by running them on a specific variable:
 
 ```
 > mean(treadmill$RunTime)
@@ -626,7 +622,7 @@ Just as in the previous section, we can generate summary statistics using functi
 > sd(treadmill$RunTime)
 [1] 1.387414
 ```
-\noindent And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
+And now we know that the average running time for 1.5 miles for the subjects in the study was 10.6 minutes with a standard deviation (SD) of 1.39 minutes. But you should remember that the
 mean and SD are only appropriate summaries if the distribution is roughly
 ***symmetric*** (both sides of the distribution are approximately the same shape and length). The 
 ``mosaic``  package provides a useful function called ``favstats`` that provides 
@@ -644,7 +640,7 @@ subjects had measurements available on this variable.
  8.17 9.78  10.47 11.27 14.03 10.58613 1.387414 31       0
 ```
 
-We are starting to get somewhere with understanding that the runners were 
+\indent We are starting to get somewhere with understanding that the runners were 
 somewhat fit with worst runner covering 1.5 miles in 14 minutes 
 (the equivalent of a 9.3 minute mile)
 and the best running at a 5.4 minute mile pace. The limited variation in the
@@ -653,7 +649,7 @@ somewhat common characteristics. When you explore the ages and weights of the
 subjects in the Practice Problems in Section \@ref(section1-6), you will get even more
 information about how similar all the subjects in this study were. Researchers often publish numerical summaries of this sort of demographic information to help readers understand the subjects that they studied and that their results might apply to.
 
-A graphical display of these results will help us to assess the shape 
+\indent A graphical display of these results will help us to assess the shape 
 of the distribution of run times -- including considering the potential for the presence of a ***skew*** (whether the right or left tail of the distribution 
 is noticeably more spread out, with left skew meaning that the left tail 
 is more spread out than the right tail) and ***outliers*** 
@@ -675,12 +671,14 @@ hist(treadmill$RunTime)
 ```
 
 
-You can save this plot by clicking on the **Export** button found above 
+\indent You can save this plot by clicking on the **Export** button found above 
 the plot, followed by **Copy to Clipboard** and clicking on the 
 **Copy Plot** button. Then if you open your
 favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
-parts of this process in the screen grab in Figure \@ref(fig:Figure1-6). 
+parts of this process in the screen grab in Figure \@ref(fig:Figure1-6). You can also directly save the figures as separate files using 
+**Save as Image** or **Save as PDF**and then insert them into your word 
+processing documents. 
 
 (ref:fig1-6) RStudio while in the process of copying the histogram.
 
@@ -688,11 +686,7 @@ parts of this process in the screen grab in Figure \@ref(fig:Figure1-6).
 knitr::include_graphics('chapter1_files/image010.png')
 ```
 
-\noindent You can also directly save the figures as separate files using 
-**Save as Image** or **Save as PDF**and then insert them into your word 
-processing documents. 
-
-The function ``hist`` defaults into providing a histogram on the ***frequency***
+\indent The function ``hist`` defaults into providing a histogram on the ***frequency***
 (count) scale. In most R functions, there are the default options that will 
 occur if we don't make any specific choices but we
 can override the default options if we desire. One option we can modify here is
@@ -710,14 +704,14 @@ hist(treadmill$RunTime, labels=T)
 ```
 
 
-Based on this histogram, it does not appear that there any outliers in the responses
+\indent Based on this histogram, it does not appear that there any outliers in the responses
 since there are no bars that are separated from the other observations. However, 
 the distribution does not look symmetric and there might be a skew to the
 distribution. Specifically, it appears to be ***skewed right*** (the right tail is longer than the left). But histograms can sometimes mask features of
 the data set by binning observations and it is hard to find the percentiles
 accurately from the plot. 
 
-When assessing outliers and skew, the ***boxplot*** 
+\indent When assessing outliers and skew, the ***boxplot*** 
 (or *Box and Whiskers* plot) can also be helpful (Figure \@ref(fig:Figure1-8)) to describe the 
 shape of the distribution as it displays the 5-number summary and will also indicate
 observations that are "far" above the middle of the observations. R's 
@@ -740,7 +734,7 @@ One observation (the maximum value of 14.03) is indicated as a potential outlier
 [1] 13.505
 ```
 
-The boxplot also shows a slight indication of a right skew (skew towards larger values) with the distance from the minimum to the median being smaller than the
+\indent The boxplot also shows a slight indication of a right skew (skew towards larger values) with the distance from the minimum to the median being smaller than the
 distance from the median to the maximum. Additionally, the distance from Q1 to
 the median is smaller than the distance from the median to Q3. It is modest skew,
 but worth noting. 
@@ -756,7 +750,7 @@ boxplot(treadmill$RunTime)
 > boxplot(treadmill$RunTime)
 ```
 
-While the default boxplot is fine, it fails to provide good graphical labels, 
+\indent While the default boxplot is fine, it fails to provide good graphical labels, 
 especially on the y-axis. Additionally, there is no title on the plot. The
 following code provides some enhancements to the plot by using the ``ylab`` and 
 ``main`` options in the call to ``boxplot``, with the results displayed in
@@ -777,7 +771,7 @@ boxplot(treadmill$RunTime, ylab="1.5 Mile Run Time (minutes)",cex.main=0.75,
           main="Boxplot of the Run Times of n=31 participants")
 ```
 
-Throughout the book, we will often use extra options to make figures that are easier for you to understand. There
+\indent Throughout the book, we will often use extra options to make figures that are easier for you to understand. There
 are often simpler versions of the functions that will suffice but the extra
 work to get better labeled figures is often worth it. I guess the point is that
 "a picture is worth a thousand words" but in data visualization, that is only
@@ -785,7 +779,7 @@ true if the reader can understand what is being displayed. It is also important
 to think about the quality of the information that is being displayed, 
 regardless of how pretty the graphic might be. So maybe it is better to say "a picture can be worth a thousand words" if it is well-labeled?
 
-All the previous results were created by running the R code and then copying the
+\indent All the previous results were created by running the R code and then copying the
 results from either the console or by copying the figure and then pasting the results into the typesetting program. There is another way
 to use RStudio where you can have it compile the results (both output and
 figures) directly into a document together with the code that generated it, 
@@ -800,7 +794,7 @@ the *RunTime* variable from ``favstats`` function would look like:
 favstats(treadmill$RunTime)
 ```
 
-Statisticians (and other scientists) are starting to use these methods because they provide what is called "Reproducible
+\indent Statisticians (and other scientists) are starting to use these methods because they provide what is called "Reproducible
 research" [@Gandrud2015] where all the code and output it produced are
 available in a single place. This allows different researchers to run and verify
 results or the original researchers to revisit their earlier work at a later
@@ -809,7 +803,7 @@ encouraging researchers to work in this way and may someday require it. In this
 book, we focus on the R code and show the results from running it, but you may
 want to consider exploring these alternative options. Ask your instructor to show you this way of working and see if you like it better than copying and pasting everything.
 
-Finally, when you are done with your work and attempt to exit out of RStudio, it will
+\indent Finally, when you are done with your work and attempt to exit out of RStudio, it will
 ask you to save your workspace. ***DO NOT DO THIS!*** It will just create a cluttered workspace and could even cause you to get incorrect results.  If you
 save your R code (and edit it to only contain the parts of it that worked) via the script window, you can re-create any results by simply
 re-running that code. If you find that you have lots of "stuff" in your
@@ -829,7 +823,7 @@ by starting with some example code that does most of what you want to do and
 then you modify it. If you can complete the Practice Problems that follow, you
 are well on your way to learning to use R. 
 
-The statistical methods in this chapter were minimal and all should have been
+\indent The statistical methods in this chapter were minimal and all should have been
 review. They involved a quick reminder of summarizing the center, spread, and
 shape of distributions using numerical summaries of the mean and SD and/or the
 min, Q1, median, Q3, and max and the histogram and boxplot as graphical
