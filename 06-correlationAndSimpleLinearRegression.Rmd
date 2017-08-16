@@ -148,7 +148,7 @@ see, then it is strong.
 
 3. **Consider the** $\underline{\textbf{linearity of the relationship}}$. Does it 
 appear to curve or does it follow a relatively straight line? Curving relationships are
-called ***curvilinear*** or ***nonlinear***  and can be strong or
+called ***curvilinear*** or ***nonlinear*** and can be strong or
 weak just like linear relationships -- it is all about how tightly the
 points follow the pattern you identify. 
 

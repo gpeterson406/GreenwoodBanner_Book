@@ -113,7 +113,7 @@ techniques for checking these assumptions -- meeting these
 assumptions is fundamental to having a regression line that we trust and
 inferences from it that we also can trust. 
 
-\indent To make this clearer, suppose that in the *Beers *and *BAC* study that 
+\indent To make this clearer, suppose that in the *Beers* and *BAC* study that 
 they had randomly assigned 20 students to consume each number of beers.
 We would expect some
 variation in the *BAC* for each group of 20 at each level of *Beers* but 

@@ -391,7 +391,8 @@ rug(jitter(MockJury$Years), col="blue", lwd=2)
 distribution of responses across more than one group. We will have two displays
 that will help us make these comparisons. The simplest is 
 the ***side-by-side boxplot***, where a boxplot is displayed for each group 
-of interest using the same y-axis scaling. In R, we can use its ***formula*** notation to see if the response (``Years``) differs based on the group 
+of interest using the same y-axis scaling. In R, we can use its ***formula***
+notation to see if the response (``Years``) differs based on the group 
 (``Attr``) by using something like ``Y~X`` or, here, ``Years~Attr``. 
 We also need to tell R where to find the variables -- use the last option in the command, ``data=DATASETNAME`` , to inform R of the tibble to look in 
 to find the variables. In this example, ``data=MockJury``. We will use 
@@ -790,7 +791,7 @@ selection, there would only be one label remaining to select. This makes sure
 that all original labels are re-used but that the order is random. Sampling
 without replacement is like picking names out of a hat, one-at-a-time, and not
 putting the names back in after they are selected. It is an exhaustive process
-for all the original observations. ***Sampling with replacement*** , in contrast,
+for all the original observations. ***Sampling with replacement***, in contrast,
 involves sampling from the specified list with each observation having an equal 
 chance of selection for each sampled observation -- in other words, observations 
 can be selected more than once. This is like picking $n$ names out of a hat that
@@ -1392,7 +1393,7 @@ direction of a difference in advance, especially in more complicated
 situations. The ***sampling distribution under the null*** is the 
 distribution of all possible values of a statistic under the assumption that
 $H_0$ is true. It 
-is used to calculate the ***p-value*** , the probability of obtaining a 
+is used to calculate the ***p-value***, the probability of obtaining a 
 result as extreme or more extreme than what we observed given that the null 
 hypothesis is true. We will find sampling distributions using 
 ***nonparametric*** approaches (like the permutation approach used previously) 
@@ -1928,7 +1929,7 @@ using the permutation results for the grade data:
     students with different GPA levels (such as the 9 am section had the
     best/worst GPA students...). 
 
-    * **Equal variance condition** : There is a small difference in the range 
+    * **Equal variance condition**: There is a small difference in the range 
     of the observations in the two groups but the standard deviations are very 
     similar so there is no evidence that this condition is violated. 
 

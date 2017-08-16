@@ -653,7 +653,7 @@ information about how similar all the subjects in this study were. Researchers o
 of the distribution of run times -- including considering the potential for the presence of a ***skew*** (whether the right or left tail of the distribution 
 is noticeably more spread out, with left skew meaning that the left tail 
 is more spread out than the right tail) and ***outliers*** 
-(unusual observations). A ***histogram *** is a good place to start.
+(unusual observations). A ***histogram*** is a good place to start.
 Histograms display connected bars with counts of observations defining
 the height of bars based on a set of bins of values of the quantitative variable. 
 We will apply the ``hist`` function to the ``RunTime`` variable, which produces 
@@ -677,7 +677,7 @@ the plot, followed by **Copy to Clipboard** and clicking on the
 favorite word-processing program, you should be able to paste it into a
 document for writing reports that include the figures. You can see the first
 parts of this process in the screen grab in Figure \@ref(fig:Figure1-6). You can also directly save the figures as separate files using 
-**Save as Image** or **Save as PDF**and then insert them into your word 
+**Save as Image** or **Save as PDF** and then insert them into your word 
 processing documents. 
 
 (ref:fig1-6) RStudio while in the process of copying the histogram.
@@ -717,7 +717,8 @@ shape of the distribution as it displays the 5-number summary and will also indi
 observations that are "far" above the middle of the observations. R's 
 ``boxplot`` function uses the standard rule to indicate an observation as a ***potential outlier*** if it falls more than 1.5 times the ***IQR*** 
 (Inter-Quartile Range, calculated as Q3 -- Q1) below Q1 or above Q3. The potential outliers are plotted with circles and the *Whiskers* (lines that extend from Q1 and Q3 typically to the minimum and maximum) are shortened to only go as far as
-observations that are within $1.5*$IQR of the upper and lower quartiles. The *box* part of the boxplot is a box that goes from Q1 to Q3 and the median is displayed as a line somewhere inside the box^[The median, quartiles and whiskers sometimes occur at the same values when there are many tied observations. If you can't see all the 
+observations that are within $1.5*$IQR of the upper and lower quartiles. The *box*
+part of the boxplot is a box that goes from Q1 to Q3 and the median is displayed as a line somewhere inside the box^[The median, quartiles and whiskers sometimes occur at the same values when there are many tied observations. If you can't see all the 
 components of the boxplot, produce the numerical summary to help you understand 
 what happened.]. Looking back at the summary statistics above, Q1=9.78 and Q3=11.27, providing an IQR of:
 

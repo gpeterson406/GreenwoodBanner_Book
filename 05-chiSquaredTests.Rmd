@@ -977,7 +977,7 @@ of the $X^2$ statistic under the null hypothesis come when expected
 cell counts are below 5. And the smaller the expected cell counts become, the
 more problematic the $\boldsymbol{\chi^2}$-distribution is as an 
 approximation of the sampling distribution of the $X^2$ statistic under 
-the null hypothesis.  **The standard rule of thumb is that all the expected
+the null hypothesis. **The standard rule of thumb is that all the expected
 cell counts need to exceed 5 for the parametric approach to be valid**. When 
 this condition is violated, it is better to use the permutation approach. 
 The ``chisq.test`` function will provide a warning message 

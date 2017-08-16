@@ -161,7 +161,7 @@ legend("topright", bty="n", c("HS", "PS"), fill=c("white","lightgreen"))
 
 In a 16-year experiment, @Gundale2013 studied the impacts
 of Nitrogen (``N``) additions on the mass of two feather moss species 
-(*Pleurozium schreberi *(``PS``) and *Hylocomium* (``HS``)) in the Svartberget
+(*Pleurozium schreberi* (``PS``) and *Hylocomium* (``HS``)) in the Svartberget
 Experimental Forest in Sweden. They used a randomized block design: here this 
 means that within each of 6 blocks (pre-specified areas that were divided into 
 three experimental units or plots of area 0.1 hectare), one of the three 

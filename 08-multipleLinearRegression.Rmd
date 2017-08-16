@@ -1165,7 +1165,7 @@ regression models that can result in common mistakes.
     We discussed making term-plots doing exactly this -- holding the other
     variables constant at their means. If we
     interpret each slope coefficient in an MLR conditionally then we can craft
-    interpretations such as: For locations that have a *Max.Temp * of, say,
+    interpretations such as: For locations that have a *Max.Temp* of, say,
     $45^\circ F$ and *Min.Temp* of, say, $30^\circ F$, a 1 foot increase in 
     *Elevation* tends to be associated with a 0.0268 inch increase in *Snow Depth*
     on average. This does not try to imply that we can actually make that sort
@@ -3023,7 +3023,7 @@ $$\begin{array}{rl}
 
 We can re-write the previous hypotheses in one of two more specific ways:
 
-* $H_0:$ The slope for *du1* is the same for all four *treatment* groups in the
+* $H_0:$ The slope for *du1* is the same for all four *Treatment* groups in the
 population OR
 
 * $H_0: \beta_5=\beta_6=\beta_7=0$

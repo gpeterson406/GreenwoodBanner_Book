@@ -765,7 +765,7 @@ means around the grand mean.
 the variation of the errors around the group means.
 
 \indent These results are put together using a ratio to define the ***ANOVA F-statistic***
-(also called the ***F-ratio*** ) as: 
+(also called the ***F-ratio***) as: 
 
 $$F=\text{MS}_A/\text{MS}_{\text{Error}}.$$
 
@@ -1405,7 +1405,7 @@ start. We will use a 5% significance level.
     that the calculation is at the numerical precision limits of the computer. 
     What R is really trying to report is that this is a very small number. 
     **When you encounter p-values that are smaller than 0.0001, you should just
-    report that the p-value < 0.0001** Do not report that it is 0 as this gives 
+    report that the p-value < 0.0001.** Do not report that it is 0 as this gives 
     the false impression that there is no chance of the result occurring when 
     it is just a really small probability. This p-value came from an $F(5,54)$
     distribution (this is the distribution of the test statistic if the null hypothesis
@@ -1463,7 +1463,7 @@ start. We will use a 5% significance level.
         the means differ. In fact, if you look back at Figure 
         \@ref(fig:Figure3-14), the means for the 2 mg dosages look almost the 
         same so we will have a tough time arguing that all groups differ. The 
-        $F$-test is about finding evidence of some difference *somewhere* among the true means.  The next section will
+        $F$-test is about finding evidence of some difference *somewhere* among the true means. The next section will
         provide some additional tools to get more specific about the source of 
         those detected differences and allow us to get at estimates of the differences we observed to complete our interpretation. 
         
